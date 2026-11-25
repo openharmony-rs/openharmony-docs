@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb的多进程架构，说明应用进程、渲染进程、GPU进程等各进程的职责划分，以及渲染进程模式设置、进程关闭与退出及无响应事件监听。"
+keywords: [ArkWeb, 多进程模型, 渲染进程, setRenderProcessMode, getRenderProcessMode, terminateRenderProcess, onRenderExited, onRenderProcessNotResponding, sharedRenderProcessToken]
+doctype: guide
+status: active
+---
+
 # ArkWeb进程
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

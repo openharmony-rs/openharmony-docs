@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍系统应用通过agentManager连接AgentExtensionAbility组件的完整流程，包括建立连接、双向数据通信、安全认证及断连操作。"
+keywords: [agentManager, connectAgentExtensionAbility, AgentProxy, AgentExtensionConnectCallback, 连接智能体, 智能体服务, disconnectAgentExtensionAbility]
+doctype: guide
+status: active
+---
 # 使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->

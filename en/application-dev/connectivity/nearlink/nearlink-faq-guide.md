@@ -5,7 +5,7 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=334711649411ef71eccb3a29729079fa474e252c translatedAt=2026-09-29T10:56:50.739Z pushedAt=2026-09-30T06:48:42.240Z -->
+<!-- md-trans-meta sourceCommit=8f2b98826059af486cf63a9d4c41fbaa00f93886 translatedAt=2026-11-16T01:41:08.739Z pushedAt=2026-11-16T12:43:09.118Z nl=1 -->
 
 ## What Is the Difference Between Standard UUIDs and Custom UUIDs
 
@@ -73,6 +73,20 @@ A NearLink device address is a 6-byte Media Access Control (MAC) address. Its st
 The device address returned in the scan result (`scan.ScanResults.address`) is a random address: to protect device privacy, the system does not directly expose the real address of a device. Instead, it converts the real address into a random address before reporting it, and maintains the mapping between the two. The random address of the same device remains unchanged within the mapping retention period (the mapping of a paired device is retained for a long time). After the mapping is cleared, a new random address is generated upon the next scan.
 
 Do not persist the scanned address as a long-term identifier. To identify a device over the long term, make a comprehensive judgment based on information such as the device name and pairing relationship. The address of a paired device can be obtained through manager.[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices). The random address does not affect device connection: you can initiate a connection using the current address obtained from the scan (for example, [SSAP connection](nearlink-ssap-connection-guide.md) and [port data transmission](nearlink-data-transfer-guide.md)).
+
+## What Is a Frame Type
+
+When NearLink devices send data to each other wirelessly, the data is packed into wireless frames in a certain format before transmission. The frame type specifies the transmission format of a wireless frame. Different frame types have different transmission capabilities and apply to different scenarios.
+
+The following two frame types are supported:
+
+- **FRAME_TYPE_1 (basic frame)**: the default frame type, suitable for most low-power, low-cost basic interaction scenarios.
+- **FRAME_TYPE_4 (extended coverage frame)**: adds error correction protection to the transmitted data, maintaining stable communication even when the signal is weak. It is suitable for scenarios where devices are far apart. Using this frame type requires chip support on the device.
+
+The `frameType` field in the advertising parameters, scan parameters, and port connection parameters specifies the frame type, and its value is a member of the `nearlinkConstant.FrameType` enumeration. The `frameType` field in the scan result indicates the frame type used by the received advertising packet. Note the following when using it:
+
+- Advertising and scan must use the same frame type to discover each other. For example, when a peripheral device starts advertising using `FRAME_TYPE_4`, the scan parameters of the central device must also be configured as `FRAME_TYPE_4`.
+- Before using `FRAME_TYPE_4`, call [isFrameType4Supported()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported) to check whether the device supports it. Initiating an advertising, a scan, or a connection on an unsupported device will return the [801 API function not supported on some devices](../../reference/errorcode-universal.md#801-api-not-supported-on-some-devices) error code.
 
 ## How to Select a NearLink Data Transfer Mode
 

@@ -32,11 +32,12 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **系统能力：** SystemCapability.Base
 
-<!--RP1-->
+
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
-| minApiVersion | string | 否 | 否 | minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。当minApiVersion大于build-profile.json5中指定的compatibleSdkVersion字段时，会生成兼容性警告。传入无效格式时，编译器会报错提示格式不正确。 |
+| minApiVersion | string | 否 | 否 | <!--RP1-->minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。当minApiVersion大于build-profile.json5中指定的compatibleSdkVersion字段时，会生成兼容性警告。传入无效格式时，编译器会报错提示格式不正确。<!--RP1End--> |
 
+<!--RP2-->
 **示例：**
 
   ```typescript
@@ -64,7 +65,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
     myFunc();
   }
   ```
-<!--RP1End-->
+<!--RP2End-->
 
 ## SuppressWarnings<sup>23+</sup>
 
@@ -90,9 +91,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **示例：**
 
-<!--RP2-->
+<!--RP3-->
 兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
-<!--RP2End-->
+<!--RP3End-->
 
 权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
 
@@ -157,9 +158,9 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **示例：**
 
-<!--RP3-->
+<!--RP4-->
 兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
-<!--RP3End-->
+<!--RP4End-->
 
 权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
 

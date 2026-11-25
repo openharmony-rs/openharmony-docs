@@ -6734,35 +6734,109 @@ struct AutoSpacing {
 ```
 ![AutoSpacing](figures/richEditorAutoSpacing.gif)
 
-### 示例32（设置文本选择的AI菜单）
-从API version 22开始，该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+### 示例32（获取图片文本标签）
+
+该示例通过[addImageSpan](#addimagespan)插入带[imageTag](#richeditorimagespanoptions)图片文本标签的表情图片，使用[getSelection](#getselection11)获取选中的图片Span并读取其图片文本标签。
+
+从API版本26.1.0开始，[RichEditorImageSpanOptions](#richeditorimagespanoptions)和[RichEditorImageSpanResult](#richeditorimagespanresult)新增imageTag属性。
 
 ```ts
+// xxx.ets
 @Entry
 @Component
-struct SelectedDataDetectorDemo {
+struct RichEditorImageTagDemo {
   controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
   textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
-  exampleText: string = '示例网址：www.example.com';
+  exampleText: string = 'RichEditor组件';
+  @State tagResult: string = '选中图片后点击按钮获取文本标签';
 
   build() {
     Column() {
-      Row() {
-        RichEditor({ controller: this.controller })
-          .onReady(() => {
-            this.controller.addTextSpan(this.exampleText, this.textSpanOptions);
+      Text(this.tagResult)
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 10 })
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions);
+        })
+        .width('80%')
+        .height('15%')
+        .margin(10)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+
+      Row({ space: 8 }) {
+        Button('微笑表情')
+          .onClick(() => {
+            // $r('app.media.startIcon')为统一占位资源，可替换为开发者所需的表情图片资源。
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【微笑】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
           })
-          .copyOptions(CopyOptions.LocalDevice)
-          .enableSelectedDataDetector(true)
-          .border({ width: 1, color: Color.Black })
-          .height(300)
-          .margin(10)
+        Button('哭泣表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【哭泣】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
+        Button('捂脸表情')
+          .onClick(() => {
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageTag: '【捂脸】',
+              imageStyle: {
+                size: ['30vp', '30vp'],
+                layoutStyle: { margin: 5 }
+              }
+            });
+          })
       }
+      .margin(10)
+
+      Row({ space: 8 }) {
+        Button('选中图片')
+          .onClick(() => {
+            this.controller.setSelection(12, 15, { menuPolicy: MenuPolicy.HIDE });
+          })
+        Button('获取选中图片文本标签')
+          .onClick(() => {
+            let selection = this.controller.getSelection();
+            if (selection === undefined || selection.spans.length === 0) {
+              this.tagResult = '未选中任何内容';
+              return;
+            }
+            let tags: string = '';
+            selection.spans.forEach(item => {
+              if (typeof (item as RichEditorImageSpanResult)['imageStyle'] !== 'undefined') {
+                let imageSpan = item as RichEditorImageSpanResult;
+                if (imageSpan.imageTag !== undefined) {
+                  tags += imageSpan.imageTag;
+                }
+              }
+            });
+            this.tagResult = tags === '' ? '选中的内容不含图片标签' : tags;
+          })
+      }
+      .margin(10)
     }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
   }
 }
 ```
-<!--RP2--><!--RP2End-->
+
+![RichEditorImageTagDemo](figures/richeditor-imagetag.gif)
 
 ### 示例33（设置监听输入法绑定事件）
 从API version 22开始，该示例通过[onWillAttachIME](#onwillattachime22)事件监听输入法绑定事件。
@@ -7578,107 +7652,3 @@ struct RichEditorBuilderSpanPage {
 ```
 
 ![builderSpanInfoDemo](figures/richeditor-builderspan-info.gif)
-
-### 示例46（获取图片文本标签）
-
-该示例通过[addImageSpan](#addimagespan)插入带[imageTag](#richeditorimagespanoptions)图片文本标签的表情图片，使用[getSelection](#getselection11)获取选中的图片Span并读取其图片文本标签。
-
-从API版本26.1.0开始，[RichEditorImageSpanOptions](#richeditorimagespanoptions)和[RichEditorImageSpanResult](#richeditorimagespanresult)新增imageTag属性。
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct RichEditorImageTagDemo {
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
-  exampleText: string = 'RichEditor组件';
-  @State tagResult: string = '选中图片后点击按钮获取文本标签';
-
-  build() {
-    Column() {
-      Text(this.tagResult)
-        .fontSize(18)
-        .fontWeight(FontWeight.Bold)
-        .margin({ bottom: 10 })
-
-      RichEditor(this.options)
-        .onReady(() => {
-          this.controller.addTextSpan(this.exampleText, this.textSpanOptions);
-        })
-        .width('80%')
-        .height('15%')
-        .margin(10)
-        .borderWidth(1)
-        .borderColor(Color.Blue)
-
-      Row({ space: 8 }) {
-        Button('微笑表情')
-          .onClick(() => {
-            // $r('app.media.startIcon')为统一占位资源，可替换为开发者所需的表情图片资源。
-            this.controller.addImageSpan($r('app.media.startIcon'), {
-              imageTag: '【微笑】',
-              imageStyle: {
-                size: ['30vp', '30vp'],
-                layoutStyle: { margin: 5 }
-              }
-            });
-          })
-        Button('哭泣表情')
-          .onClick(() => {
-            this.controller.addImageSpan($r('app.media.startIcon'), {
-              imageTag: '【哭泣】',
-              imageStyle: {
-                size: ['30vp', '30vp'],
-                layoutStyle: { margin: 5 }
-              }
-            });
-          })
-        Button('捂脸表情')
-          .onClick(() => {
-            this.controller.addImageSpan($r('app.media.startIcon'), {
-              imageTag: '【捂脸】',
-              imageStyle: {
-                size: ['30vp', '30vp'],
-                layoutStyle: { margin: 5 }
-              }
-            });
-          })
-      }
-      .margin(10)
-
-      Row({ space: 8 }) {
-        Button('选中图片')
-          .onClick(() => {
-            this.controller.setSelection(12, 15, { menuPolicy: MenuPolicy.HIDE });
-          })
-        Button('获取选中图片文本标签')
-          .onClick(() => {
-            let selection = this.controller.getSelection();
-            if (selection === undefined || selection.spans.length === 0) {
-              this.tagResult = '未选中任何内容';
-              return;
-            }
-            let tags: string = '';
-            selection.spans.forEach(item => {
-              if (typeof (item as RichEditorImageSpanResult)['imageStyle'] !== 'undefined') {
-                let imageSpan = item as RichEditorImageSpanResult;
-                if (imageSpan.imageTag !== undefined) {
-                  tags += imageSpan.imageTag;
-                }
-              }
-            });
-            this.tagResult = tags === '' ? '选中的内容不含图片标签' : tags;
-          })
-      }
-      .margin(10)
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .height('70%')
-  }
-}
-```
-
-![RichEditorImageTagDemo](figures/richeditor-imagetag.gif)

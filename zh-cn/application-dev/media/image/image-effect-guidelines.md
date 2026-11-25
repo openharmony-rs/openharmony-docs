@@ -25,17 +25,24 @@ ImageEffect提供了一系列接口用于图像的编辑。开发者可以通过
 
 CMakeLists.txt中添加以下lib。
 
+<!-- @[image_effect_cmake_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/CMakeLists.txt) -->
 ```txt
 target_link_libraries(entry PUBLIC
-    libace_ndk.z.so
-    libimage_effect.so
-    libpixelmap.so
-    libnative_window.so
-    libnative_buffer.so
+     libace_napi.z.so
+     libpixelmap_ndk.z.so
+     libimage_packer.so
+     libimage_source.so
+     libhilog_ndk.z.so
+     libimage_effect.so
+     libpixelmap.so
+     libnative_window.so
+     libnative_buffer.so
+     ${EGL-lib}
+     ${GLES-lib}
 )
 ```
 
-根据处理的图像类型添加对应动态链接库：`Pixelmap`(libpixelmap.so)、`NativeWindow`(libnative_window.so)、`NativeBuffer`(libnative_buffer.so)
+根据处理的图像类型添加对应动态链接库：`Pixelmap`(libpixelmap.so)、`NativeWindow`(libnative_window.so)、`NativeBuffer`(libnative_buffer.so)。纹理输入场景（`Texture`）还需要额外链接EGL与OpenGL ES动态库（EGL、GLESv3）。
 
 **添加头文件**
 
@@ -117,22 +124,21 @@ target_link_libraries(entry PUBLIC
 
    **场景四：设置纹理输入类型。**
 
-   纹理输入场景是使用硬件GPU渲染的高性能场景，此场景下，应用需要提供合法的OpenGL上下文环境，并在正确的环境下，设置参数以及进行渲染操作。
+   纹理输入场景是使用硬件GPU渲染的高性能场景，此场景下，应用需要提供合法的OpenGL上下文环境，并在正确的环境下，设置参数以及进行渲染操作。该场景还需要引入EGL、OpenGL ES以及色彩空间管理相关头文件，例如`#include <EGL/egl.h>`、`#include <GLES3/gl3.h>`、`#include <native_color_space_manager/native_color_space_manager.h>`。
 
+   纹理输入类型从API版本20开始支持。应用需要自行创建输入、输出纹理（例如通过glGenTextures创建），并保证输入纹理与输出纹理不是同一块纹理。纹理输入场景下，滤镜直接处理GPU纹理，仅支持输入、输出均为纹理缓冲（EFFECT_BUFFER_TYPE_TEXTURE）的滤镜，例如Brightness、Contrast。Crop等需要PixelMap信息的滤镜以及以像素缓冲注册的自定义滤镜不适用于纹理输入，需要从滤镜链中排除。
+
+   <!-- @[image_effect_texture_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 设置输入的纹理ID。
-   errorCode = OH_ImageEffect_SetInputTextureId(imageEffect, inputTex, ColorSpaceName::SRGB);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputTextureId fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_SetInputTextureId(imageEffect, inputTexture->GetName(), ColorSpaceName::SRGB);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetInputTextureId fail! errorCode = %{public}d", errorCode);
 
-   // 设置输出的纹理ID, 注意不能与输入是同一块纹理，否则可能产生渲染异常。
-   errorCode = OH_ImageEffect_SetOutputTextureId(imageEffect, outputTex);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputTextureId fail!");
-       return;
-   }
+   // 设置输出的纹理ID，注意不能与输入是同一块纹理，否则可能产生渲染异常。
+   errorCode = OH_ImageEffect_SetOutputTextureId(imageEffect, outputTexture->GetName());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputTextureId fail!");
    ```
 
    **场景五：设置OHNativeWindow输入类型。**
@@ -147,64 +153,70 @@ target_link_libraries(entry PUBLIC
 
    (1) 在xxx.ets中添加一个XComponent组件。
 
+   <!-- @[image_effect_add_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/ets/pages/ImageEditPage.ets) -->
    ```ts
-   XComponent({ 
-      id: 'xcomponentId', 
-      type: 'surface',
-      controller: this.mXComponentController, 
-      libraryname: 'entry'
+   XComponent({
+     id: 'xcomponentId',
+     type: XComponentType.SURFACE,
+     controller: this.mXComponentController,
+     libraryname: 'entry'
    })
-   .onLoad(() => {
-      // 获取XComponent的SurfaceId。
-      this.mSurfaceId = this.mXComponentController.getXComponentSurfaceId()
-
-      // 调用native接口获取输入SurfaceId。
-      this.mSurfaceId = imageEffect.getSurfaceId(this.mSurfaceId)
-
-      // 调用相机接口启动预览，将获取到的输入SurfaceId传递给相机框架。
-      // ...
-   })
-   .width('100%')
-   .height('100%')
+     .onLoad(async () => {
+       // 获取XComponent的SurfaceId。
+       this.mSurfaceId = this.mXComponentController.getXComponentSurfaceId();
+       // 调用native接口获取输入SurfaceId。
+       this.mSurfaceId = imageEffect.getSurfaceId(this.mSurfaceId);
+       // 调用相机接口启动预览，将获取到的输入SurfaceId传递给相机框架。
+       this.startPreview(this.mSurfaceId);
+     })
+     .width('100%')
+     .height('100%')
    ```
 
    (2) imageEffect.getSurfaceId的native c++层具体实现。
 
+   <!-- @[image_effect_get_surface_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 根据SurfaceId创建NativeWindow，注意创建出来的NativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    uint64_t outputSurfaceId;
-   std::istrstream iss(outputSurfaceIdStr);
+   std::istrstream iss(surfaceId.c_str());
    iss >> outputSurfaceId;
+   LOG_I("outputSurfaceId %{public}llu", outputSurfaceId);
    OHNativeWindow *outputNativeWindow = nullptr;
    int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(outputSurfaceId, &outputNativeWindow);
-   if (res != 0) {
-       OH_LOG_ERROR(LOG_APP, "OH_NativeWindow_CreateNativeWindowFromSurfaceId fail!");
-       return;
-   }
+   CHECK_AND_RETURN_RET_LOG(res == 0, result, "OH_NativeWindow_CreateNativeWindowFromSurfaceId fail!");
+
+   OH_ImageEffect *imageEffect = OH_ImageEffect_Create("imageEdit");
+   CHECK_AND_RETURN_RET_LOG(imageEffect != nullptr, result, "OH_ImageEffect_Create fail!");
+
+   ImageEffect_Any runningType;
+   runningType.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_INT32;
+   runningType.dataValue.int32Value = 1;
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_Configure(imageEffect, "runningType", &runningType);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_Configure fail!");
 
    // 设置输出显示的Surface。
-   ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetOutputSurface(imageEffect, outputNativeWindow);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputSurface fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_SetOutputSurface(imageEffect, outputNativeWindow);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputSurface fail!");
+
    // 获取输入的Surface。注意获取的inputNativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    OHNativeWindow *inputNativeWindow = nullptr;
    errorCode = OH_ImageEffect_GetInputSurface(imageEffect, &inputNativeWindow);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_GetInputSurface fail!");
-       return;
-   }
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_GetInputSurface fail!");
+
+   ImageEdit::imageEffect_ = imageEffect;
 
    // 从获取到输入的NativeWindow中获取SurfaceId。
    uint64_t inputSurfaceId = 0;
    res = OH_NativeWindow_GetSurfaceId(inputNativeWindow, &inputSurfaceId);
-   if (res != 0) {
-       OH_LOG_ERROR(LOG_APP, "OH_NativeWindow_GetSurfaceId fail!");
-       return;
-   }
+   CHECK_AND_RETURN_RET_LOG(res == 0, result, "OH_NativeWindow_GetSurfaceId fail!");
 
-   // 将SurfaceId转成字符串进行返回。
+   OH_NativeWindow_DestroyNativeWindow(outputNativeWindow);
+   OH_NativeWindow_DestroyNativeWindow(inputNativeWindow);
+
    std::string inputSurfaceIdStr = std::to_string(inputSurfaceId);
    ```
 
@@ -230,7 +242,7 @@ target_link_libraries(entry PUBLIC
 
    <!-- @[image_effect_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   // 序列化效果器(可选)。
+   // 序列化效果器（可选）。
    char *imageinfo = nullptr;
    errorCode = OH_ImageEffect_Save(imageEffect, &imageinfo);
    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result, "OH_ImageEffect_Save fail!");
@@ -294,7 +306,7 @@ target_link_libraries(entry PUBLIC
                    ImageEffect_Any value;
                    value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
                    value.dataValue.floatValue = brightness;
-                   // 设置滤镜参数, value为info中按json解析出来的参数。
+                   // 设置滤镜参数，value为info中按json解析出来的参数。
                    LOG_E("brightness value: %{public}f ", value.dataValue.floatValue);
                    ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "brightness", &value);
                    CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, nullptr,
@@ -416,7 +428,7 @@ target_link_libraries(entry PUBLIC
    <!-- @[image_effect_set_filter_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    
    ``` C++
-   // 设置滤镜参数, 滤镜强度设置为传入参数。
+   // 设置滤镜参数，滤镜强度设置为传入参数。
    ImageEffect_Any value;
    value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
    value.dataValue.floatValue = static_cast<float>(filterValue);

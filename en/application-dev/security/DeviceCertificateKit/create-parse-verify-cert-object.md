@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e4a47c564ac95ef0299462a1f33b58a9ac8a3a67 translatedAt=2026-11-03T05:10:26.490Z pushedAt=2026-11-03T06:48:28.332Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:37:07.337Z pushedAt=2026-11-20T06:06:42.372Z nl=1 -->
 
 This topic walks you through on how to create a certificate object, obtain information about the certificate, and check the validity period of the certificate.
 
@@ -47,7 +47,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   '-----END CERTIFICATE-----\n';
 
 // Certificate example.
-function certSample(): void {
+async function certSample() {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
     // Convert the certificate data from a string to a Uint8Array.
@@ -56,13 +56,9 @@ function certSample(): void {
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
-  // Create an X509Cert object.
-  cert.createX509Cert(encodingBlob, (err, x509Cert) => {
-    if (err != null) {
-      // The X509Cert object fails to be created.
-      console.error(`createX509Cert failed, errCode:${err.code}, errMsg:${err.message}`);
-      return;
-    }
+  try {
+    // Create an X509Cert instance.
+    let x509Cert = await cert.createX509Cert(encodingBlob);
     // The X509Cert object is created.
     console.info('createX509Cert result: success.');
 
@@ -87,33 +83,24 @@ function certSample(): void {
     console.info(`X509 certString: ${certString}`);
 
     // Use the getPublicKey() method of the upper-level certificate object or the self-signed certificate object to obtain the public key object.
-    try {
-      let pubKey = x509Cert.getPublicKey();
-      // Verify the certificate signature.
-      x509Cert.verify(pubKey, (err, _result) => {
-        if (err == null) {
-          // Signature verification is successful.
-          console.info('verify result: success.');
-        } else {
-          // Signature verification fails.
-          console.error(`verify failed, errCode: ${err.code} , errMsg:${err.message}`);
-        }
-      });
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`getPublicKey failed, errCode: ${e.code} , errMsg:${e.message}`);
-    }
-
+    let pubKey = x509Cert.getPublicKey();
+    // Verify the certificate signature.
+    x509Cert.verify(pubKey, (err, _result) => {
+      if (err == null) {
+        // Signature verification succeeded.
+        console.info('verify result: success.');
+      } else {
+        // Signature verification failed.
+        console.error(`verify failed, errCode: ${err.code} , errMsg:${err.message}`);
+      }
+    });
     // Use a string to represent the date.
     let date = '20230930000001Z';
-
-    // Check the validity period of the certificate.
-    try {
-      x509Cert.checkValidityWithDate(date);
-    } catch (error) {
-      let e: BusinessError = error as BusinessError;
-      console.error(`checkValidityWithDate failed, errCode: ${e.code}, errMsg:${e.message}`);
-    }
-  });
+    x509Cert.checkValidityWithDate(date);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`getPublicKey failed, errCode: ${e.code} , errMsg:${e.message}`);
+    // ...
+  }
 }
 ```

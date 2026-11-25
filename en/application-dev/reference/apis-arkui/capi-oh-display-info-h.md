@@ -2,10 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=3f18eb013c4d80b07cbba5e8314109f4d86922d6 translatedAt=2026-08-27T08:42:01.944Z pushedAt=2026-08-28T01:08:48.825Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:10:52.612Z pushedAt=2026-11-20T01:51:30.222Z nl=1 -->
 
 ## Overview
 

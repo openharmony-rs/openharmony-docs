@@ -6,7 +6,6 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=28af11ed79c46934da1ab57318c919f412319342 translatedAt=2026-10-31T07:00:25.319Z pushedAt=2026-10-31T08:05:58.233Z nl=1 -->
 
 ## How to Request
 
@@ -1649,7 +1648,7 @@ Allows in-vehicle applications to obtain the real-time weather of the environmen
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
-Allows an application on the in-vehicle rear-seat screen to call the spatial gesture APIs to complete air-gesture interaction between the passenger and the screen.
+Allows an in-vehicle application to call spatial gesture APIs to enable contactless interaction for passengers.
 
 <!--RP106--><!--RP106End-->
 
@@ -1893,6 +1892,20 @@ With this permission, the application can mark specified components as restricte
 Allows an application to intercept input events.
 
 <!--RP122--><!--RP122End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
+
+## ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION
+
+Allows an application to manipulate text in focused input boxes of other applications.
+
+<!--RP124--><!--RP124End-->
 
 **Permission level**: system_basic
 

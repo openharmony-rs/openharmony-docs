@@ -71,16 +71,16 @@ ArkTS要求函数参数显式标注类型（省略将因隐式`any`编译报错�
 
 ### 函数名与参数命名规范
 
-函数名使用camelCase动词短语（如`calculateTotal`、`validateInput`），应描述"做什么"而非"怎么做"；参数名使用描述性名词，避免缩写和无意义命名。
+函数名使用camelCase动词短语（如`calculateTotal`、`validateInput`），应描述“做什么”而非“怎么做”；参数名使用描述性名词，避免缩写和无意义命名。
 
 <!-- @[function_naming_conventions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
 ``` TypeScript
 // 函数名：动词或动词短语，camelCase
-function calculateTotal() {}
-function validateInput() {}
-function processData() {}
-function fetchUserInfo() {}
+function calculateTotal(): number { return 0; }  // 计算并返回总和
+function validateInput(): boolean { return true; }  // 校验输入合法性
+function processData(): void { console.info('processing'); }  // 处理数据
+function fetchUserInfo(): string { return 'Alice'; }  // 获取用户信息
 
 // 参数名：名词，camelCase，描述性
 function greet(userName: string): string {
@@ -153,7 +153,7 @@ function processValidData(data: string): void {
 }
 ```
 
-嵌套调用的求值顺序为由内向外：`double(double(5))`先求`double(5)`得10，再求`double(10)`得20。嵌套调用要求内层函数的返回类型与外层函数的参数类型匹配，类型不一致会在编译期报错。条件调用将"是否调用"与"调用什么"解耦，是后续可选链调用（`?.()`）的基础模式。
+嵌套调用的求值顺序为由内向外：`double(double(5))`先求`double(5)`得10，再求`double(10)`得20。嵌套调用要求内层函数的返回类型与外层函数的参数类型匹配，类型不一致会在编译期报错。条件调用将“是否调用”与“调用什么”解耦；其与后续介绍的可选链调用（`?.()`）在“可能不调用”上语义相近，但可选链调用取决于对象是否为空，条件调用取决于条件表达式的取值。
 
 ## 函数的参数
 
@@ -599,7 +599,7 @@ console.info(`${fibonacci(10)}`);  // 55
 
 ### 尾递归
 
-尾递归指递归调用是函数体中的最后一个操作，其返回值直接作为当前函数的返回值，不再有后续计算。普通递归（如`n * factorial(n - 1)`）在递归调用返回后还需执行乘法，外层调用的栈帧需要保留，调用栈随递归深度增长；尾递归将中间结果通过参数传递给下一次调用，当前调用没有未完成的计算。部分语言和编译器支持尾调用优化，将尾递归转换为循环执行，从而避免栈溢出；递归深度较大时，也可以直接改写为循环实现。
+尾递归指递归调用是函数体中的最后一个操作，其返回值直接作为当前函数的返回值，不再有后续计算。普通递归（如`n * factorial(n - 1)`）在递归调用返回后还需执行乘法，外层调用的栈帧需要保留，调用栈随递归深度增长。尾递归将中间结果通过参数传递给下一次调用，当前调用没有未完成的计算。部分语言和编译器支持尾调用优化，将尾递归转换为循环执行，从而避免栈溢出。ArkTS/ArkCompiler当前不支持尾调用优化，尾递归调用仍会压入调用栈，栈深随递归深度增长，深度过大时同样会导致栈溢出。递归深度较大时，应改写为循环实现。
 
 <!-- @[tail_vs_normal_recursion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -646,7 +646,7 @@ let doubleFn: (value: number) => number = (value: number): number => value * 2;
 
 ### 函数类型的定义与匹配规则
 
-函数类型赋值时需要满足函数的子类型规则，即参数类型逆变（父类型），返回值类型协变（子类型）。
+函数类型赋值时需要满足函数的子类型规则，即参数类型逆变（源函数的参数类型可以比目标函数类型声明的参数类型更宽，即为其父类型），返回值类型协变（源函数的返回值类型必须比目标函数类型声明的返回值类型更窄，即为其子类型）。
 
 <!-- @[ts_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
 
@@ -674,7 +674,7 @@ let greet: GreetingFunction = (name: string): string => {
 };
 
 // 不匹配的类型会编译错误
-let invalid: MathOperation = (a: string) => a; // 编译错误
+let invalid: MathOperation = (a: string) => a; // 编译错误：参数类型与返回类型均与MathOperation不匹配
 ```
 
 ### 函数类型作为参数
@@ -1098,10 +1098,10 @@ function compose<T, U, V>(
   return (x: T): V => f(g(x));
 }
 
-let functionsDouble2 = (n: number): number => n * 2;
-let addOne = (n: number): number => n + 1;
+let functionsDouble2: (n: number) => number = (n: number): number => n * 2;
+let addOne: (n: number) => number = (n: number): number => n + 1;
 
-let doubleThenAddOne = compose(addOne, functionsDouble2);
+let doubleThenAddOne: (x: number) => number = compose(addOne, functionsDouble2);
 doubleThenAddOne(5);  // 11
 ```
 
@@ -1323,7 +1323,7 @@ interface APIResponse {
 let response: APIResponse | null = null;
 
 response?.callback?.();  // 不执行
-response?.data?.items?.forEach?.(item => console.info(`${item}`));
+response?.data?.items?.forEach(item => console.info(`${item}`));
 ```
 
 ## void返回类型的赋值兼容性

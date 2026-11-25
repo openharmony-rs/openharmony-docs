@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件的焦点管理机制，涵盖组件级接口与网页内元素的W3C标准接口用法，并梳理主动与被动走焦场景及行为规范。"
+keywords: [焦点管理, requestFocus, onFocus, onBlur, 走焦, tabindex, autofocus]
+doctype: guide
+status: active
+---
+
 # Web组件焦点管理
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -74,7 +82,7 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 - 设置组件是否可获焦：应用可以通过设置[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)属性，控制Web组件是否能够获取焦点。Web组件默认可获焦。
 
 **示例：**
-1. requestFocus接口允许应用开发者主动控制让Web组件获焦。
+1. requestFocus()接口允许应用开发者主动控制让Web组件获焦。
 2. onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
 <!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
@@ -99,7 +107,7 @@ struct WebComponent {
             try {
               this.controller.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
         Button('web2 requestFocus')
@@ -107,7 +115,7 @@ struct WebComponent {
             try {
               this.controller2.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
       }
@@ -141,7 +149,7 @@ struct WebComponent {
 ```
 **示例图1**  组件获焦/失焦事件
 
-通过requestFocus接口主动请求获焦，并监听通用接口onFocus和onBlur事件，改变Web组件边框颜色。
+通过requestFocus()接口主动请求获焦，并监听通用接口onFocus和onBlur事件，改变Web组件边框颜色。
 
 ![web-focus1.gif](figures/web-focus1.gif)
 

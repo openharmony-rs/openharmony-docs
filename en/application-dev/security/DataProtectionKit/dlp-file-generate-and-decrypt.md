@@ -5,11 +5,13 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=eef9add48dd77c504f78fa94f4924cac143a2e1a translatedAt=2026-10-31T07:07:35.298Z pushedAt=2026-10-31T09:17:30.467Z nl=1 -->
+<!-- md-trans-meta sourceCommit=16a72700a14592b25d3effc396540a5d1e4f14e6 translatedAt=2026-11-20T09:39:33.465Z pushedAt=2026-11-23T08:05:06.416Z nl=1 -->
 
 ## When to Use
 
 Data Protection Kit provides applications with the capability to generate DLP files from plaintext files and to decrypt DLP files back into the original plaintext files. Applications do not need to define a custom encrypted file format; they only need to use the DLP file generation and decryption capabilities provided by OpenHarmony to protect sensitive files through encryption.
+
+<!--RP1--><!--RP1End-->
 
 ## Development Procedure
 

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:31:54.219Z pushedAt=2026-11-16T02:06:53.427Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:30:46.847Z pushedAt=2026-11-23T08:03:24.583Z nl=1 -->
 
 Starting from API version 21, a hardware entropy source can be used to generate secure random numbers.
 
@@ -77,6 +77,7 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -100,10 +101,12 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
         console.info('[Sync]: rand result: ' + randData.data);
       } else {
         console.error('[Sync]: get rand result: fail!');
+        // ...
       }
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`do rand failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

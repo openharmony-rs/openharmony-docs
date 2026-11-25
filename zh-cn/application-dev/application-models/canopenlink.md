@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍canOpenLink接口的使用方法，帮助开发者在拉起目标应用前判断其是否可访问，包括querySchemes配置与匹配规则。"
+keywords: [canOpenLink, 应用可访问性, querySchemes, URL scheme, 应用跳转]
+doctype: guide
+status: active
+---
 # （可选）使用canOpenLink判断应用是否可访问
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e50cd391e32ff59430fc2cd953e8729c4d27fda7 translatedAt=2026-11-03T05:15:54.454Z pushedAt=2026-11-03T06:54:11.171Z nl=1 -->
+<!-- md-trans-meta sourceCommit=afc00ea13fc0a3fa63e7c76bf4005d4a63c32f80 translatedAt=2026-11-20T03:21:39.118Z pushedAt=2026-11-20T06:15:23.553Z nl=1 -->
 
 ## Development Modes
 
@@ -41,53 +41,70 @@ The following is an example of using the system capability for two-way SSL authe
 
 1. The application on the device calls the certificate management capability to open the certificate selection dialog box [certificateManagerDialog.openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) and waits for the user to select a certificate.
 
-   ```ts
+   <!-- @[open_authorize_dialog_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/OpenAuthorizeDialog.ets) -->
+
+   ``` TypeScript
    import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
 
-   /* context is the application context information, obtained by the caller. This is only an example. */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
-   let certTypes: Array<certificateManagerDialog.CertificateType> = [
-     certificateManagerDialog.CertificateType.CREDENTIAL_USER,
-     certificateManagerDialog.CertificateType.CREDENTIAL_APP,
-     certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
-   ];
-   let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
-   let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
-   try {
-     certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
-       /* Record the keyUri obtained from the certificate selection dialog for later use. */
-       let keyUri = certReference.keyUri;
-       console.info('Succeeded in opening authorize dialog.');
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
-     });
-   } catch (err) {
-     let error = err as BusinessError;
-     console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+   @Entry
+   @Component
+   struct AuthorizeDialogPage {
+     private context: common.Context = getContext(this) as common.Context;
+
+     build() {
+       Column() {
+         Button($r('app.string.open_authorize_dialog'))
+           .onClick(() => {
+             this.openAuthorizeDialog();
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+
+     private openAuthorizeDialog(): void {
+       let certTypes: certificateManagerDialog.CertificateType[] = [
+         certificateManagerDialog.CertificateType.CREDENTIAL_USER,
+         certificateManagerDialog.CertificateType.CREDENTIAL_APP,
+         certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
+       ];
+       let certPurpose: certificateManager.CertificatePurpose =
+         certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
+       let authorizeRequest: certificateManagerDialog.AuthorizeRequest = {
+         certTypes: certTypes, certPurpose: certPurpose
+       };
+       try {
+         certificateManagerDialog.openAuthorizeDialog(this.context, authorizeRequest)
+           .then((certReference: certificateManagerDialog.CertReference) => {
+             /* Record the keyUri obtained from the certificate dialog box for later use. */
+             let keyUri = certReference.keyUri;
+             console.info('Succeeded in opening authorize dialog.');
+           }).catch((err: BusinessError) => {
+             console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+           });
+       } catch (err) {
+         let error = err as BusinessError;
+         console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+       }
+     }
    }
    ```
 
 2. The **Web** component parses the certificate, calls the HUKS to open the resource, and queries the PIN authentication status.
 
-   First, call the NDK API of certificate management, OH_CertManager_GetUkeyCertificate](../../reference/apis-device-certificate-kit/capi-cm-native-api-h.md#oh_certmanager_getukeycertificate), to parse the certificate selected by the user and obtain the corresponding certificate data.
+   First, call the NDK API of certificate management, [OH_CertManager_GetUkeyCertificate](../../reference/apis-device-certificate-kit/capi-cm-native-api-h.md#oh_certmanager_getukeycertificate), to parse the certificate selected by the user and obtain the corresponding certificate data.
 
    Next, use **keyUri** selected by the user as the resource ID to call the HUKS NDK API, [OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource) to open the resource.
-   
+
    Finally, call the HUKS NDK API [OH_Huks_GetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getukeypinauthstate) to query the PIN authentication status.
- 
-   ```c
-   #include "huks/native_huks_external_crypto_api.h"
-   #include "huks/native_huks_param.h"
-   #include <device_certificate/certmanager/cm_native_api.h>
-   #include <device_certificate/certmanager/cm_native_type.h>
-   #include "napi/native_api.h"
-   #include <string.h>
-   
-   /* 1. Call the NDK interface of the certificate management capability to parse the certificate selected by the user and obtain the corresponding certificate data. */
-   static napi_value GetUkeyCert(napi_env env, napi_callback_info info) 
+
+   <!-- @[ukey_best_practice_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
+   /* 1. Call the certificate management API to parse the certificate selected by the user and obtain the corresponding certificate data. */
+   static napi_value GetUkeyCert(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
        napi_value argv[1] = { nullptr };
@@ -98,14 +115,20 @@ The following is an example of using the system capability for two-way SSL authe
        /* Obtain the keyUri length. */
        size_t length = 0;
        napi_get_value_string_utf8(env, argv[0], nullptr, 0, &length);
+       if (length == 0 || length >= SIZE_MAX) {
+           return nullptr;
+       }
        /* Obtain the keyUri value. */
        char *keyUriBuffer = static_cast<char*>(malloc(length + 1));
+       if (keyUriBuffer == nullptr) {
+           return nullptr;
+       }
        size_t result = 0;
        napi_get_value_string_utf8(env, argv[0], keyUriBuffer, length + 1, &result);
-       OH_CM_Blob keyUri = { static_cast<uint32_t>(length + 1), (uint8_t*)keyUriBuffer };
+       OH_CM_Blob keyUri = { static_cast<uint32_t>(length), (uint8_t*)keyUriBuffer };
 
        /* Define the UkeyInfo input parameter. */
-       OH_CM_UkeyInfo ukeyInfo = { OH_CM_CERT_PURPOSE_SIGN }; /* Attribute information of the USB credential, omitted here. */
+       OH_CM_UkeyInfo ukeyInfo = { OH_CM_CERT_PURPOSE_SIGN };
 
        /* Obtain the UKey certificate details corresponding to keyUri. */
        OH_CM_CredentialDetailList credentialList = { 0, nullptr };
@@ -120,30 +143,10 @@ The following is an example of using the system capability for two-way SSL authe
        return retNapi;
    }
 
-   /* 2. Use the keyUri selected by the user as resourceId to call the HUKS NDK interface to open the resource. */
-   OH_Huks_Result InitParamSet(struct OH_Huks_ExternalCryptoParamSet **paramSet,
-       const struct OH_Huks_ExternalCryptoParam *params, uint32_t paramCount)
-   {
-       OH_Huks_Result ret = OH_Huks_InitExternalCryptoParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           return ret;
-       }
-       ret = OH_Huks_AddExternalCryptoParams(*paramSet, params, paramCount);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeExternalCryptoParamSet(paramSet);
-           return ret;
-       }
-       ret = OH_Huks_BuildExternalCryptoParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeExternalCryptoParamSet(paramSet);
-           return ret;
-       }
-       return ret;
-   }
+   /* 2. Based on the keyUri selected by the user as the resourceId, call the HUKS API to open a resource. */
+   static struct OH_Huks_ExternalCryptoParam g_bpOpenResourceParamsTest[] = {};
 
-   static struct OH_Huks_ExternalCryptoParam g_openResourceParamsTest[] = {};
-
-   static napi_value OpenResource(napi_env env, napi_callback_info info)
+   static napi_value BpOpenResource(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
        napi_value argv[1] = { nullptr };
@@ -154,17 +157,26 @@ The following is an example of using the system capability for two-way SSL authe
        /* Obtain the keyUri length. */
        size_t length = 0;
        napi_get_value_string_utf8(env, argv[0], nullptr, 0, &length);
+       if (length == 0 || length >= SIZE_MAX) {
+           return nullptr;
+       }
        /* Obtain the keyUri value. */
        char *keyUriBuffer = static_cast<char*>(malloc(length + 1));
+       if (keyUriBuffer == nullptr) {
+           return nullptr;
+       }
        size_t result = 0;
        napi_get_value_string_utf8(env, argv[0], keyUriBuffer, length + 1, &result);
-       OH_Huks_Blob resourceId = {.size = static_cast<uint32_t>(length), .data = (uint8_t*)keyUriBuffer};
+       OH_Huks_Blob resourceId = {
+           .size = static_cast<uint32_t>(length),
+           .data = (uint8_t*)keyUriBuffer
+       };
 
        struct OH_Huks_ExternalCryptoParamSet *openResourceParamSet = nullptr;
        OH_Huks_Result ohResult;
        do {
-           ohResult = InitParamSet(&openResourceParamSet, g_openResourceParamsTest,
-               sizeof(g_openResourceParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
+           ohResult = InitParamSet(&openResourceParamSet, g_bpOpenResourceParamsTest,
+               sizeof(g_bpOpenResourceParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
@@ -176,16 +188,15 @@ The following is an example of using the system capability for two-way SSL authe
        free(keyUriBuffer);
        OH_Huks_FreeExternalCryptoParamSet(&openResourceParamSet);
 
-       OH_Huks_Result res = OH_Huks_OpenResource(&resourceId, openResourceParamSet);
        napi_value ret;
-       napi_create_int32(env, res.errorCode, &ret);
+       napi_create_int32(env, ohResult.errorCode, &ret);
        return ret;
    }
 
-   /* 3. Call the HUKS NDK interface to query the PIN authentication status. */
-   static struct OH_Huks_ExternalCryptoParam g_getPinStateParamsTest[] = {};
+   /* 3. Call the HUKS API to query the PIN authentication status. */
+   static struct OH_Huks_ExternalCryptoParam g_bpGetPinStateParamsTest[] = {};
 
-   static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info) 
+   static napi_value BpGetUkeyPinAuthState(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
        napi_value argv[1] = { nullptr };
@@ -196,18 +207,27 @@ The following is an example of using the system capability for two-way SSL authe
        /* Obtain the keyUri length. */
        size_t length = 0;
        napi_get_value_string_utf8(env, argv[0], nullptr, 0, &length);
+       if (length == 0 || length >= SIZE_MAX) {
+           return nullptr;
+       }
        /* Obtain the keyUri value. */
        char *keyUriBuffer = static_cast<char*>(malloc(length + 1));
+       if (keyUriBuffer == nullptr) {
+           return nullptr;
+       }
        size_t result = 0;
        napi_get_value_string_utf8(env, argv[0], keyUriBuffer, length + 1, &result);
-       OH_Huks_Blob resourceId = {.size = static_cast<uint32_t>(length), .data = (uint8_t*)keyUriBuffer};
+       OH_Huks_Blob resourceId = {
+           .size = static_cast<uint32_t>(length),
+           .data = (uint8_t*)keyUriBuffer
+       };
 
        struct OH_Huks_ExternalCryptoParamSet *pinStateParamSet = nullptr;
        OH_Huks_ExternalPinAuthState authState = OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH;
        OH_Huks_Result ohResult;
        do {
-           ohResult = InitParamSet(&pinStateParamSet, g_getPinStateParamsTest,
-               sizeof(g_getPinStateParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
+           ohResult = InitParamSet(&pinStateParamSet, g_bpGetPinStateParamsTest,
+               sizeof(g_bpGetPinStateParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
@@ -229,19 +249,19 @@ The following is an example of using the system capability for two-way SSL authe
    {
        napi_property_descriptor desc[] = {
            { "getUkeyCert", nullptr, GetUkeyCert, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "openResource", nullptr, OpenResource, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "getUkeyPinAuthState", nullptr, GetUkeyPinAuthState, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "openResource", nullptr, BpOpenResource, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "getUkeyPinAuthState", nullptr, BpGetUkeyPinAuthState, nullptr, nullptr, nullptr, napi_default, nullptr },
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
    }
 
    static napi_module demoModule = {
-       .nm_version =1,
+       .nm_version = 1,
        .nm_flags = 0,
        .nm_filename = nullptr,
        .nm_register_func = Init,
-       .nm_modname = "hello",
+       .nm_modname = "entry",
        .nm_priv = ((void*)0),
        .reserved = { 0 },
    };
@@ -253,7 +273,7 @@ The following is an example of using the system capability for two-way SSL authe
 
    The corresponding d.ts API declaration is as follows:
 
-   ```ts
+   ``` TypeScript
    export function getUkeyCert(keyUri: string): number;
 
    export function openResource(keyUri: string): number;
@@ -263,8 +283,10 @@ The following is an example of using the system capability for two-way SSL authe
 
    The API call method is as follows:
 
-   ```ts
-   import testNapi from "libentry.so";
+   <!-- @[ukey_best_practice_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/UkeyBestPractice.ets) -->
+
+   ``` TypeScript
+   import testNapi from 'libentry.so';
    @Entry
    @Component
    struct Index {
@@ -274,13 +296,13 @@ The following is an example of using the system capability for two-way SSL authe
            Row() {
            Column() {
                Text('Hello World')
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                   testNapi.getUkeyCert(keyUri);
-                   testNapi.openResource(keyUri);
-                   testNapi.getUkeyPinAuthState(keyUri);
-               })
+                   .fontSize(50)
+                   .fontWeight(FontWeight.Bold)
+                   .onClick(() => {
+                       testNapi.getUkeyCert(this.keyUri);
+                       testNapi.openResource(this.keyUri);
+                       testNapi.getUkeyPinAuthState(this.keyUri);
+                   })
            }
            .width('100%')
            }
@@ -293,60 +315,54 @@ The following is an example of using the system capability for two-way SSL authe
 
    If the authentication is not performed, the application needs to start PIN authentication. In this case, the device application receives the authentication request, processes the event, and calls the certificate management capability to open the PIN authentication dialog box [certificateManagerDialog.openUkeyAuthDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22). After obtaining the authentication result, the application returns the result to the **Web** component and then performs the authenticated process.
 
-   ```ts
-   /* Launch the certificate management PIN authentication dialog. */
+   <!-- @[open_ukey_auth_dialog_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/UkeyAuthDialog.ets) -->
+
+   ``` TypeScript
    import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
 
-   /* context is the application context information, obtained by the caller; this is only an example. */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
-   /* keyUri is the unique identifier of the certificate credential, which was recorded in the first step; this is only an example. */
-   let keyUri: string = "testKeyAlias";
-   let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri };
-   try {
-     certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest)
-       .then(() => {
-         console.info('Succeeded in opening ukey authorization dialog.');
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
-       });
-   } catch (err) {
-     let error = err as BusinessError;
-     console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+   @Entry
+   @Component
+   struct UkeyAuthDialogPage {
+     private context: common.Context = getContext(this) as common.Context;
+     /* keyUri is the unique identifier of the certificate credential. It was recorded in the first step. This is only an example. */
+     private keyUri: string = 'testKeyAlias';
+
+     build() {
+       Column() {
+         Button($r('app.string.open_ukey_auth_dialog'))
+           .onClick(() => {
+             this.openUkeyAuthDialog();
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+
+     private openUkeyAuthDialog(): void {
+       let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: this.keyUri };
+       try {
+         certificateManagerDialog.openUkeyAuthDialog(this.context, ukeyAuthRequest)
+           .then(() => {
+             console.info('Succeeded in opening ukey authorization dialog.');
+           }).catch((err: BusinessError) => {
+             console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
+           });
+       } catch (err) {
+         let error = err as BusinessError;
+         console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+       }
+     }
    }
    ```
 
-   If the authentication is successful, the **Web** component can directly call the three-stage HUKS APIs for signing.
+   If the authentication is successful, the **Web** component can directly call the HUKS three-stage APIs for signing.
 
-   ```c
+   <!-- @[ukey_sign_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    /* Call the HUKS three-stage API to obtain the signed data. */
-   #include "huks/native_huks_api.h"
-   #include "huks/native_huks_param.h"
-   #include "napi/native_api.h"
-   #include <string.h>
-
-   OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet,
-       const struct OH_Huks_Param *params, uint32_t paramCount)
-   {
-       OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           return ret;
-       }
-       ret = OH_Huks_AddParams(*paramSet, params, paramCount);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeParamSet(paramSet);
-           return ret;
-       }
-       ret = OH_Huks_BuildParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeParamSet(paramSet);
-           return ret;
-       }
-       return ret;
-   }
-
    static struct OH_Huks_Param g_signParamsTest[] = {
        {
            .tag = OH_HUKS_TAG_ALGORITHM,
@@ -371,12 +387,10 @@ The following is an example of using the system capability for two-way SSL authe
 
    static const uint32_t RSA_COMMON_SIZE = 1024;
    static const char *DATA_TO_SIGN = "testData";
-   // For keyAlias here, refer to the resourceId acquisition method in step 2; this is only an example.
    static const char *KEY_ALIAS = "testKeyAlias";
 
    static napi_value Sign(napi_env env, napi_callback_info info)
    {
-       // Assume g_keyAlias is the obtained resourceId.
        struct OH_Huks_Blob keyAlias = {
            (uint32_t)strlen(KEY_ALIAS),
            (uint8_t *)KEY_ALIAS
@@ -388,18 +402,17 @@ The following is an example of using the system capability for two-way SSL authe
        struct OH_Huks_ParamSet *signParamSet = nullptr;
        OH_Huks_Result ohResult;
        do {
-           ohResult = InitParamSet(&signParamSet, g_signParamsTest, sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
+           ohResult = InitHuksParamSet(&signParamSet, g_signParamsTest,
+               sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
-           // Init
            uint8_t handleS[sizeof(uint64_t)] = {0};
            struct OH_Huks_Blob handleSign = { (uint32_t)sizeof(uint64_t), handleS };
            ohResult = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
-           // Finish
            uint8_t outDataS[RSA_COMMON_SIZE] = {0};
            struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
            ohResult = OH_Huks_FinishSession(&handleSign, signParamSet, &inData, &outDataSign);
@@ -408,7 +421,7 @@ The following is an example of using the system capability for two-way SSL authe
            }
        } while (0);
        OH_Huks_FreeParamSet(&signParamSet);
-       
+
        napi_value ret;
        napi_create_int32(env, ohResult.errorCode, &ret);
        return ret;

@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-27T08:48:55.529Z pushedAt=2026-08-28T02:55:37.498Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T09:15:34.418Z pushedAt=2026-11-20T02:13:49.185Z nl=1 -->
 
 ```c
 typedef struct {...} OH_NativeXComponent_TouchPoint
@@ -34,8 +34,8 @@ Defines the information about a touch point in a touch event. This struct is fil
 | float y | Y-coordinate of the touch point relative to the upper edge of the **XComponent**, in px. |
 | [OH_NativeXComponent_TouchEventType](capi-native-interface-xcomponent-h.md#oh_nativexcomponent_toucheventtype) type | Type of the touch event, used to distinguish different touch actions such as press, lift, and movement. For details about the values, see **OH_NativeXComponent_TouchEventType**. |
 | double size | Contact area between the finger pad and the screen. The value range is [0.0, 1.0], and a larger value indicates a larger contact area (normalized value). |
-| float force | Pressure of the current touch event. The value range is [0, 1], where **0** indicates no pressure and **1** indicates the maximum pressure recognizable by the device (the actual value range depends on the device capability). |
-| int64_t timeStamp | Timestamp of the touch event. It is the interval between the time when the event is triggered and the time when the system starts, in nanoseconds.|
+| float force | Pressure of the current touch event. The value range is [0.0, 1.0], where **0.0** indicates no pressure and **1.0** indicates the maximum pressure recognizable by the device (the actual value range depends on the device capability). |
+| int64_t timeStamp | Timestamp of the current touch event. It is the interval between the time when the event is triggered and the time when the system starts, in nanoseconds. |
 | bool isPressed | Whether the current point is pressed. **true** when the point is pressed, **false** when it is released.|
 
 

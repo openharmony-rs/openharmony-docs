@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过insight_intent.json配置文件定义意图，并实现InsightIntentExecutor执行器绑定Ability组件的方法。"
+keywords: [意图框架, insight_intent.json, 配置文件, InsightIntentExecutor, UIAbility, UIExtensionAbility, 卡片意图]
+doctype: guide
+status: active
+---
 # 使用配置文件开发意图
 
 <!--Kit: Ability Kit-->

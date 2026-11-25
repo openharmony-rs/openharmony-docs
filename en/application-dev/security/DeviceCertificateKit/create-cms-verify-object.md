@@ -6,11 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ae628f395efd1389baf7d540181f9bb8c5132144 translatedAt=2026-11-03T05:08:45.769Z pushedAt=2026-11-03T06:48:19.975Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:35:54.882Z pushedAt=2026-11-20T06:02:18.774Z nl=1 -->
 
 Certificate signature verification with CMS is supported since API version 22.
 
-PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
+PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signature data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
 
 Currently, only CMS signature data and encapsulated data are supported.
 
@@ -36,6 +36,7 @@ Signature verification example:
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -114,7 +115,9 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (error) {
-    console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 
   return x509Cert;
@@ -146,7 +149,9 @@ async function testCmsVerifyTest() {
     await verify.verifySignedData(config);
     console.info(`verifySignedData result: success.`);
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

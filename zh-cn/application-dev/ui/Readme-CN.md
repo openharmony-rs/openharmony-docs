@@ -81,6 +81,7 @@
       - [canBeObserved接口：判断对象是否可被观察](state-management/arkts-new-canBeObserved.md)
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
+      - [RecoverableStorage: 可恢复的UI状态存储](state-management/arkts-new-recoverablestorage.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
       - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
       - [!!语法：双向绑定](state-management/arkts-new-binding.md)
@@ -334,6 +335,15 @@
   - [NDK多实例场景开发](ndk-scope-task.md)
   - [NDK多线程创建组件](ndk-build-on-multi-thread.md)
   - [构建渲染节点](ndk-embed-render-components.md)
+  - UI信息采集和交互注入<!--arkts-ui-info-inject-ndk-->
+    - [UI信息采集和交互注入概述](ndk-ui-info-overview.md)
+    - [UI信息数据格式说明](ndk-ui-info-data-structure.md)
+    - [采集控件树信息](ndk-ui-info-collect-tree.md)
+    - [采集图文信息](ndk-ui-info-collect-text-image.md)
+    - [注入控件命令](ndk-ui-command-injection.md)
+    - [监听页面变化事件](ndk-ui-content-change-event.md)
+    - [监听全局手势](ndk-sense-gestures-and-events.md)
+    - [UI结构化数据映射附录](ndk-ui-appendix.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->

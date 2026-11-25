@@ -5,7 +5,7 @@
 <!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=10e69a7e3b2ed23e81703340714d0bb43850d090 translatedAt=2026-11-13T09:25:07.830Z pushedAt=2026-11-13T10:21:32.491Z nl=1 -->
+<!-- md-trans-meta sourceCommit=4cc9228003d70a46aaa1dfc8fdc45481130f70c9 translatedAt=2026-11-24T03:17:48.510Z pushedAt=2026-11-24T03:21:25.086Z nl=1 -->
 
 - ArkTS API<!--arkui-arkts-->
   - UI<!--ui-->
@@ -241,6 +241,7 @@
       - [Hover Effect](arkui-ts/ts-universal-attributes-hover-effect.md)
       - [Click Sound Effect](arkui-ts/ts-universal-attributes-click-sound.md)
       - [Smart Gesture Response](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md)
+      - [Agent Input Control](arkui-ts/ts-universal-attributes-agent-control-mode.md)
       - Touch Interaction Control<!--touch-interactions-->
         - [Touch Target](arkui-ts/ts-universal-attributes-touch-target.md)
         - [Hit Test Control](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -592,6 +593,7 @@
     - [SwipeRefresherV2](arkui-ts/ohos-arkui-advanced-SwipeRefresherV2.md)
     - [TabTitleBar](arkui-ts/ohos-arkui-advanced-TabTitleBar.md)
     - [ToolBar](arkui-ts/ohos-arkui-advanced-ToolBar.md)
+  
     - [ToolBarV2](arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [TreeViewV2](arkui-ts/ohos-arkui-advanced-TreeViewV2.md)
@@ -691,6 +693,7 @@
     - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - Header Files<!--arkui-headerfile-->
     - [common_attributes.h](capi-common-attributes-h.md)
+    - [common_type.h](capi-common-type-h.md)
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
     - [image.h](capi-image-h.md)
@@ -872,7 +875,6 @@
     - [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
-    - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
     - [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md)
     - [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md)
     - [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
@@ -987,6 +989,7 @@
     - [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)
     - [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)
     - [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)
+    - [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)
     - [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)
     - [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)
     - [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)

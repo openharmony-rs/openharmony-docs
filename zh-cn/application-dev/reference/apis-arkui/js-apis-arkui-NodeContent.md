@@ -45,16 +45,17 @@ constructor()
 <!--code_no_check-->
 
 ```ts
-import { nativeNode } from 'libNativeNode.so'; // 开发者自己实现的so
+import nativeNode from 'libentry.so'; // 开发者自己实现的so
 import { NodeContent } from '@kit.ArkUI';
 
+@Entry
 @Component
-struct Parent {
+struct Index {
   private nodeContent: NodeContent = new NodeContent();
 
   aboutToAppear() {
     // 通过C-API创建节点，并添加到管理器nodeContent上
-    nativeNode.createNativeNode(this.nodeContent);
+    nativeNode.createNativeRoot(this.nodeContent);
   }
 
   build() {
@@ -66,7 +67,7 @@ struct Parent {
 }
 ```
 
-上述代码中so的实现可参考<!--RP1-->[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponent)<!--RP1End-->。
+上述代码中so的实现可参考使用NDK接口构建UI界面的[示例](../../ui/ndk-access-the-arkts-page.md#示例)。
 
 ### addFrameNode
 

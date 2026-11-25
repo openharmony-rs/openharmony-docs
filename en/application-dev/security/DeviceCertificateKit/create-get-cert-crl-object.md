@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-11-03T05:09:26.475Z pushedAt=2026-11-03T06:48:22.930Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:36:14.177Z pushedAt=2026-11-20T06:02:29.989Z nl=1 -->
 
 This topic walks you through on how to filter certificates or CRLs based on a **CertCRLCollection** object.
 
@@ -58,6 +58,7 @@ async function createX509CRL(): Promise<cert.X509CRL> {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
   return x509CRL;
 }
@@ -86,6 +87,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -98,7 +100,9 @@ async function sample() {
     collection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
     console.info('createCertCRLCollection result: success.');
   } catch (err) {
-    console.error(`createCertCRLCollection failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertCRLCollection failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 
   const certParam: cert.X509CertMatchParameters = {
@@ -107,7 +111,9 @@ async function sample() {
   try {
     let certs: cert.X509Cert[] = await collection.selectCerts(certParam);
   } catch (err) {
-    console.error(`selectCerts failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`selectCerts failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 
   const crlParam: cert.X509CRLMatchParameters = {
@@ -117,7 +123,9 @@ async function sample() {
     let crls: cert.X509CRL[] = await collection.selectCRLs(crlParam);
     console.info('selectCRLs result: success.');
   } catch (err) {
-    console.error(`selectCRLs failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`selectCRLs failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

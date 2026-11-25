@@ -1647,7 +1647,7 @@ struct UIPickerComponentDisplayedCountExample {
 
 ### 示例11（设置选中项文本样式）
 
-该示例通过[selectedTextStyle](#selectedtextstyle)设置UIPickerComponent容器选中项的文本样式为红色加粗。
+该示例通过[selectedTextStyle](#selectedtextstyle)设置UIPickerComponent容器选中项的文本样式，通过[Text](./ts-basic-components-text.md)组件的属性设置非选中项的文本样式。具体包括：单独设置选中项样式、单独设置全部项样式、同时设置两种样式。
 
 从API版本26.1.0开始，新增[selectedTextStyle](#selectedtextstyle)属性。
 
@@ -1658,6 +1658,8 @@ struct UIPickerComponentDisplayedCountExample {
 struct UIPickerComponentTextStyleExample {
   private dataArray: string[] = [];
   @State selectedIndex: number = 0;
+  // 控制文本样式设置模式：0为默认，1为仅设置选中项样式，2为仅设置全部项样式，3为同时设置选中项和全部项样式。
+  @State mode: number = 0;
 
   aboutToAppear(): void {
     for (let i = 1; i <= 12; i++) {
@@ -1666,26 +1668,108 @@ struct UIPickerComponentTextStyleExample {
   }
 
   build() {
-    Column({ space: 12 }) {
-      UIPickerComponent({
-        selectedIndex: this.selectedIndex
-      }) {
-        ForEach(this.dataArray, (item: string) => {
-          Text(item)
+    Column() {
+      if (this.mode === 1) {
+        UIPickerComponent({
+          selectedIndex: this.selectedIndex
+        }) {
+          ForEach(this.dataArray, (item: string) => {
+            Text(item)
+          })
+        }
+        .onChange((selectedIndex: number) => {
+          this.selectedIndex = selectedIndex
         })
+        .width('70%')
+        .selectedTextStyle({
+          color: '#ff1d95f1',
+          font: {
+            size: '24fp',
+            weight: FontWeight.Bold
+          },
+          overflow: TextOverflow.Clip
+        })
+      } else if (this.mode === 2) {
+        UIPickerComponent({
+          selectedIndex: this.selectedIndex
+        }) {
+          ForEach(this.dataArray, (item: string) => {
+            Text(item)
+              .fontColor(Color.Orange)
+              .font({size: '20fp', weight: FontWeight.Medium})
+          })
+        }
+        .onChange((selectedIndex: number) => {
+          this.selectedIndex = selectedIndex
+        })
+        .width('70%')
+      } else if (this.mode === 3) {
+        UIPickerComponent({
+          selectedIndex: this.selectedIndex
+        }) {
+          ForEach(this.dataArray, (item: string) => {
+            Text(item)
+              .fontColor(Color.Orange)
+              .font({size: '20fp', weight: FontWeight.Medium})
+          })
+        }
+        .onChange((selectedIndex: number) => {
+          this.selectedIndex = selectedIndex
+        })
+        .width('70%')
+        .selectedTextStyle({
+          color: '#ff1d95f1',
+          font: {
+            size: '24fp',
+            weight: FontWeight.Bold
+          },
+          overflow: TextOverflow.Clip
+        })
+      } else {
+        UIPickerComponent({
+          selectedIndex: this.selectedIndex
+        }) {
+          ForEach(this.dataArray, (item: string) => {
+            Text(item)
+          })
+        }
+        .onChange((selectedIndex: number) => {
+          this.selectedIndex = selectedIndex
+        })
+        .width('70%')
       }
-      .onChange((selectedIndex: number) => {
-        this.selectedIndex = selectedIndex
-      })
-      .width('70%')
-      .selectedTextStyle({
-        color: '#ff1d95f1',
-        font: {
-          size: '24fp',
-          weight: FontWeight.Bold
-        },
-        overflow: TextOverflow.Clip
-      })
+
+      Row() {
+        Button('仅设置选中项样式')
+          .width(160)
+          .onClick(() => {
+            this.mode = 1;
+          })
+          .margin(5)
+        Button('仅设置全部项样式')
+          .width(160)
+          .onClick(() => {
+            this.mode = 2;
+          })
+          .margin(5)
+      }
+      .padding(10)
+
+      Row() {
+        Button('同时设置')
+          .width(120)
+          .onClick(() => {
+            this.mode = 3;
+          })
+          .margin(5)
+        Button('恢复默认')
+          .width(120)
+          .onClick(() => {
+            this.mode = 0;
+          })
+          .margin(5)
+      }
+      .padding(10)
     }
     .width('100%')
     .padding(16)

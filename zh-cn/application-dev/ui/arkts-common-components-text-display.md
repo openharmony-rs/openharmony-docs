@@ -1290,11 +1290,32 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
       }
     })
   ```
-
+<!--RP2--><!--RP2End-->
 
 - 如果需要调整识别出的样式，可以通过[dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11)实现，具体可以参考[TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明)配置项。
 - 如果需要调整菜单的位置，可以通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)实现，具体可以参考示例[文本扩展自定义菜单](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例12文本扩展自定义菜单)。 
-<!--RP2--><!--RP2End-->
+
+- 从API version 22开始，如果仅需在文本选择菜单中显示实体识别选项，可以配置[enableSelectedDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enableselecteddatadetector22)为true。具体示例如下所示：
+  <!-- @[selectedDataDetector_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectedDataDetector.ets) --> 
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct SelectedDataDetector {
+    build() {
+        Column({ space: 12 }) {
+          // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
+          Text($r('app.string.SelectedDataDetector_Text_One'))
+            .copyOption(CopyOptions.LocalDevice)
+            .enableSelectedDataDetector(true)
+            .border({ width: 1, color: Color.Black })
+            .padding(10)
+            .margin(10)
+        }
+    }
+  }
+  ```
+<!--RP3--><!--RP3End-->
 
 ### 设置自定义菜单
 

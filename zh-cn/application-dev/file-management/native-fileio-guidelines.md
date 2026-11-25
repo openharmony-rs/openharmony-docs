@@ -31,15 +31,7 @@ FileIO模块提供了部分文件基础操作能力，其他能力请参考[libc
 CMakeLists.txt中添加以下lib。
 
 ```txt
-target_link_libraries(sample PUBLIC libohfileio.so)
-```
-
-**添加头文件**
-
-```c++
-#include <cstdio>
-#include <cstring>
-#include <filemanagement/fileio/oh_fileio.h>
+target_link_libraries(entry PUBLIC libohfileio.so)
 ```
 
 调用OH_FileIO_GetFileLocation接口获取文件存储位置。示例代码如下所示：

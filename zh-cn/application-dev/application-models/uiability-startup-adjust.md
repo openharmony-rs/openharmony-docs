@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍从显式Want跳转切换到应用链接（App Linking）跳转的适配方法，包括openLink接口使用、skills标签配置、域名检查及获取返回结果等步骤。"
+keywords: [显式Want, 应用链接, 跳转适配]
+doctype: guide
+status: active
+---
 # 显式Want跳转切换应用链接跳转适配指导
 
 <!--Kit: Ability Kit-->

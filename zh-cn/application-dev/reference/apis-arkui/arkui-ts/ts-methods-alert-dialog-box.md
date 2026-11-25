@@ -116,7 +116,7 @@ confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
 | 名称             | 类型                | 只读   | 可选   | 说明                     |
 | --------------- | ---------------------- | ------------ | --------------------- | --------------------- |
-| primaryButton   | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否 | 否 | 主要按钮的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键，且多重弹窗可自动获焦连续响应。默认响应Enter键能力在defaultFocus为true时不生效。具体使用方式请参考[示例7](#示例7自定义背景模糊效果参数)。|
+| primaryButton   | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否 | 否 | 主要按钮的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键，且多重弹窗可自动获焦连续响应。默认响应Enter键能力在defaultFocus为true时不生效。具体使用方式请参考[示例6](#示例6自定义背景模糊效果参数)。|
 | secondaryButton | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否 | 否 | 次要按钮的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。 |
 
 ## AlertDialogParamWithOptions<sup>10+</sup>对象说明
@@ -619,59 +619,7 @@ struct AlertDialogExample {
 
 ![image-alert-style](figures/image-alert-style.gif)
 
-### 示例5（悬停态弹窗）
-
-<!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct AlertDialogExample {
-  build() {
-    Column({ space: 5 }) {
-      Button('one button dialog')
-        .onClick(() => {
-          this.getUIContext().showAlertDialog(
-            {
-              title: 'title',
-              message: 'text',
-              autoCancel: true,
-              alignment: DialogAlignment.Bottom,
-              gridCount: 3,
-              confirm: {
-                value: 'button',
-                action: () => {
-                  console.info('Button-clicking callback');
-                }
-              },
-              cancel: () => {
-                console.info('Closed callbacks');
-              },
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info(`reason= ${dismissDialogAction.reason}`);
-                console.info('AlertDialog onWillDismiss');
-                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
-                }
-                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
-                }
-              },
-              enableHoverMode: true,
-              hoverModeArea: HoverModeAreaType.TOP_SCREEN
-            }
-          )
-        })
-        .backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-<!--RP2--><!--RP2End-->
-
-### 示例6（弹窗生命周期）
+### 示例5（弹窗生命周期）
 
 该示例展示了弹窗生命周期的相关接口的使用方法。
 
@@ -727,7 +675,7 @@ struct AlertDialogLifecycleExample {
 
 ![image-alert-lifecycle](figures/image-alert-lifecycle.gif)
 
-### 示例7（自定义背景模糊效果参数）
+### 示例6（自定义背景模糊效果参数）
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundBlurStyleOptions属性，实现了自定义背景模糊效果。
 
@@ -778,7 +726,7 @@ struct AlertDialogExample {
 
 ![image-alert-backgroundBlurStyleOptions](figures/image-alert-backgroundBlurStyleOptions.png)
 
-### 示例8（自定义背景效果参数）
+### 示例7（自定义背景效果参数）
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundEffect属性，实现自定义背景效果。
 
@@ -830,7 +778,7 @@ struct AlertDialogExample {
 
 ![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
 
-### 示例9（设置弹窗的沉浸光感效果）
+### 示例8（设置弹窗的沉浸光感效果）
 
 该示例通过[AlertDialogParam](#alertdialogparam对象说明)中的systemMaterial属性设置组件的系统材质，实现沉浸光感效果。设置系统材质后，AlertDialog弹出过程中会有非线性形变和边缘流光。
 
@@ -886,7 +834,7 @@ struct AlertDialogExample {
 
 ![设置系统材质后](figures/alertdialogwithmaterial.gif)
 
-### 示例10（设置弹窗适配握持习惯）
+### 示例9（设置弹窗适配握持习惯）
 
 该示例通过[AlertDialogParam](#alertdialogparam对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
 

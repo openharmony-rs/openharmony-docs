@@ -397,7 +397,7 @@ struct WebComponent {
    }
    ```
 
-   在“src\main\resources\rawfile”文件夹下创建index.html：
+   在“src/main/resources/rawfile”文件夹下创建index.html：
    ```html
    <!-- index.html -->
    <!DOCTYPE html>
@@ -11078,9 +11078,11 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 > **说明：**
 >
-> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+> - User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
 >
-> 不使用该方法时，默认不开启User-Agent Client Hints功能。
+> - 不使用该方法时，默认不开启User-Agent Client Hints功能。
+>
+> - 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](#initializewebengine)），必须先调用[initializeWebEngine](#initializewebengine)完成初始化，否则接口调用无效。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -11631,7 +11633,7 @@ enableAutoReload(enable: boolean): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11683,7 +11685,7 @@ isAutoReloadEnabled(): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11805,7 +11807,7 @@ setNavigationEntryUserData(key: string, value: string): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11865,7 +11867,7 @@ getNavigationEntryUserData(key: string): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11895,7 +11897,7 @@ removeNavigationEntryUserData(key: string): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
 
 **示例：**
 
@@ -11997,6 +11999,114 @@ struct WebComponent {
           console.info(`DataDirectorySuffix is ${suffix}`);
         })
       Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## removeVisitedLinksSince
+
+static removeVisitedLinksSince(date: Date, callback: Callback\<void\>): void
+
+删除指定日期之后发生变化的已访问链接记录。使用callback异步回调。
+
+本接口是静态方法，通过`WebviewController`类调用。日期用于指定删除的起始时间，不用于删除该日期之前的过期记录。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| date | Date | 是 | 数据删除的时间点，删除该日期之后发生变化的已访问链接记录。 |
+| callback | Callback\<void\> | 是 | 回调函数，用于返回结果。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (callback)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince, () => {
+            console.info('Visited link removal completed.');
+          });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
+    }
+  }
+}
+```
+
+## removeVisitedLinksSince
+
+static removeVisitedLinksSince(date: Date): Promise\<void\>
+
+删除指定日期之后发生变化的已访问链接记录。使用Promise异步回调。
+
+本接口是静态方法，通过`WebviewController`类调用。日期用于指定删除的起始时间，不用于删除该日期之前的过期记录。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| date | Date | 是 | 数据删除的时间点，删除该日期之后发生变化的已访问链接记录。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (promise)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince)
+            .then(() => {
+              console.info('Visited link removal completed.');
+            })
+            .catch((error: BusinessError) => {
+              console.error(`Failed to remove visited links. Code: ${error.code}, message: ${error.message}`);
+            });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
     }
   }
 }

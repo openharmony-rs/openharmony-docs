@@ -294,7 +294,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 ##### Generate verification information for an end-entity certificate signature.
 
 1. Generate an ECDSA key pair `<ecc-l2-pk>` and `<ecc-l2-sk>` for an intermediate CA certificate signature.
-2. Use `<ecc-l2-sk>` to sign `<ecc-l3-pk>` (generated in step 3.2) to obtain `<ecc-l3-pk-signature>`.
+2. Use `<ecc-l2-sk>` to sign `<ecc-l3-pk>` (generated in [Generate a private key for signing data.](#generate-a-private-key-for-signing-data)) to obtain `<ecc-l3-pk-signature>`.
 3. Combine `<ecc-l3-pk>` and `<ecc-l3-pk-signature>` into a JSON string. The following is an example:
 
 ``` json
@@ -307,7 +307,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 ##### Generate verification information for an intermediate CA certificate signature.
 
 1. Generate an ECDSA key pair `<ecc-root-pk>` and `<ecc-root-sk>` for a root certificate signature.
-2. Use `<ecc-root-sk>` to sign `<ecc-l2-pk>` (generated in step 4.1) to obtain `<ecc-l2-pk-signature>`.
+2. Use `<ecc-root-sk>` to sign `<ecc-l2-pk>` (generated in [Generate verification information for an end-entity certificate signature.](#generate-verification-information-for-an-end-entity-certificate-signature)) to obtain `<ecc-l2-pk-signature>`.
 3. Combine `<ecc-l2-pk>` and `<ecc-l2-pk-signature>` into a JSON string. 
 The following is an example:
 
@@ -320,7 +320,7 @@ The following is an example:
 
 ##### Generate root signature verification information.
 
-1. Use `<ecc-root-sk>` to sign the `<ecc-root-pk>` (generated in step 4.2) to obtain `<ecc-root-pk-self-signature>` (a self-signature).
+1. Use `<ecc-root-sk>` to sign the `<ecc-root-pk>` (generated in [Generate verification information for an intermediate CA certificate signature.](#generate-verification-information-for-an-intermediate-ca-certificate-signature)) to obtain `<ecc-root-pk-self-signature>` (a self-signature).
 2. Combine `<ecc-root-pk>` and `<ecc-root-pk-self-signature>` into a JSON string. The following is an example: 
 
 ``` json

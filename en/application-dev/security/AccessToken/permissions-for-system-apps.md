@@ -8726,7 +8726,7 @@ Allows an application to append a content trust signature.
 
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
 
-Allows an application to set cellular network information.
+Allows an application to configure cellular network-related information.
 
 **Permission level**: system_basic
 
@@ -8740,7 +8740,7 @@ Allows an application to set cellular network information.
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
-Allows an application to read cellular network information.
+Allows an application to read cellular network-related information.
 
 **Permission level**: system_basic
 
@@ -8754,7 +8754,7 @@ Allows an application to read cellular network information.
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
-Allows an application to set TBox WiFi related information.
+Allows an application to configure T-Box Wi-Fi-related information.
 
 **Permission level**: system_basic
 
@@ -8796,9 +8796,10 @@ Allows an application to trigger network packet capture.
 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
 
-Allows the triggering of network self-check and self-healing.
+Allows an application to trigger network self-inspection and self-healing.
 
 **Permission level**: system_basic
+
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
@@ -9107,7 +9108,7 @@ Allows an application to access data on the external storage card of the dashcam
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
@@ -9355,7 +9356,7 @@ Allows a system application to manage SoftBus resources.
 
 ## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 
-Allows an application to install freely distributable applications.
+Allows an application to install Distributing OpenHarmony PC Software Outside the AppGallery.
 
 **Permission level**: system_core
 
@@ -9889,6 +9890,34 @@ Allows an application to mount the specified file directory to the sandbox direc
 
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.MMA_OCCUPANT
+ 
+Allows an in-vehicle application to obtain occupant status, including seat occupancy and occupant types.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_CARSTATUS
+ 
+Allows an in-vehicle application to obtain the real-time status of vehicle components.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.MANAGE_CURSOR_STYLE
 
 Allows an application to manage mouse cursor styles.
@@ -9902,3 +9931,33 @@ Allows an application to manage mouse cursor styles.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.1.0
+
+## ohos.permission.MANAGE_DAEMON_SERVICE
+ 
+Allows a system application to manage daemon services.
+
+With this permission, the system application can query daemon service information and set their enablement status.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0
+
+## ohos.permission.RESOURCE_SCHEDULE_PERF_HINT
+ 
+Allows a system application to report performance-sensitive scenario information.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+ 
+**Valid since**: 26.1.0

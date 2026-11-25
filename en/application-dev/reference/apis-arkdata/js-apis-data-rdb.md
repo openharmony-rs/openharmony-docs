@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=2c591998eed5470f922791050fc78c8f5b16882a translatedAt=2026-09-04T03:44:53.525Z pushedAt=2026-09-09T09:11:03.733Z -->
+<!-- md-trans-meta sourceCommit=029faf77717c006c0930e3ea79aaa82a0e15bd61 translatedAt=2026-11-16T02:10:51.491Z pushedAt=2026-11-20T07:27:53.963Z nl=1 -->
 
 The relational database (RDB) manages data based on relational models. With the underlying SQLite database, the RDB provides a complete mechanism for managing local databases. To satisfy different needs in complicated scenarios, the RDB offers a series of methods for performing operations such as adding, deleting, modifying, and querying data, and supports direct execution of SQL statements. The worker threads are not supported.
 
@@ -38,7 +38,7 @@ Obtains an RDB store. This API uses an asynchronous callback to return the resul
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context  | Context                                    | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).|
+| context  | Context                                    | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | config   | [StoreConfig](#storeconfig)                | Yes  | Configuration of the RDB store.                               |
 | version  | number                                     | Yes  | RDB store version.<br>Currently, automatic RDB upgrades and downgrades performed based on **version** are not supported.                                                |
 | callback | AsyncCallback&lt;[RdbStore](#rdbstore)&gt; | Yes | Callback invoked when the operation is successful, in which case **err** is **undefined** and **data** is the **RdbStore** object; otherwise, it is an error object. |
@@ -96,7 +96,7 @@ Obtains an RDB store. This API uses a promise to return the result. You can set 
 
 | Name | Type                       | Mandatory| Description                                                        |
 | ------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                     | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).|
+| context | Context                     | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | config  | [StoreConfig](#storeconfig) | Yes  | Configuration of the RDB store.                               |
 | version | number                      | Yes  | RDB store version.<br>Currently, automatic RDB upgrades and downgrades performed based on **version** are not supported.                                                |
 
@@ -157,7 +157,7 @@ Deletes an RDB store. This API uses an asynchronous callback to return the resul
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                   | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).|
+| context  | Context                   | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | name     | string                    | Yes   | Database name, which cannot be empty and cannot contain the path separator /.                                                 |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback invoked when the operation succeeds, **err** is **undefined**; otherwise, it is an error object.                                       |
 
@@ -211,7 +211,7 @@ Deletes an RDB store. This API uses a promise to return the result.
 
 | Name | Type   | Mandatory| Description                                                        |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).|
+| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | name    | string  | Yes   | Database name, which cannot be an empty string and cannot contain the path separator /.                                                 |
 
 **Return value**
@@ -385,7 +385,7 @@ deviceManager.createDeviceManager("com.example.appdatamgrverify", (err: Business
     deviceIds[i] = devices[i].deviceId;
   }
 })
-                                  
+
 let predicates = new data_rdb.RdbPredicates("EMPLOYEE");
 predicates.inDevices(deviceIds);
 ```
@@ -744,7 +744,7 @@ predicates.like("NAME", "%os%")
 
 glob(field: string, value: string): RdbPredicates
 
-Configures **RdbPredicates** to match the field whose data field is string and whose value matches the specified wildcard pattern, where * matches any number of characters and ? matches a single character. This method is equivalent to "GLOB" in an SQL statement.
+Creates an **RdbPredicates** to match the fields whose data type is string and whose value matches the specified wildcard pattern, where * matches any number of characters and ? matches a single character. This method is equivalent to **GLOB** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -753,7 +753,7 @@ Configures **RdbPredicates** to match the field whose data field is string and w
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | field | string | Yes | Column name in the database table. It cannot be an empty string. |
-| value | string | Yes | Indicates the value to match against the predicate. The length cannot exceed 1024 bytes.<br>Wildcards are supported. * indicates zero, one, or multiple digits or characters, and ? indicates one digit or character. |
+| value | string | Yes | Value to match with the predicate. The length cannot exceed 1024 bytes.<br>Wildcards are supported, where * indicates 0, 1, or multiple digits or characters, and ? indicates 1 digit or character. |
 
 **Return value**
 
@@ -801,7 +801,7 @@ predicates.between("AGE", 10, 50)
 
 notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 
-Configures the **RdbPredicates** to match the specified field whose data field is of the **ValueType** type and whose value is outside the given range. This method is equivalent to "NOT BETWEEN" in the SQL statement.
+Configures RdbPredicates to match the specified field whose data field is of the ValueType type and whose value exceeds the given range. This method is equivalent to "NOT BETWEEN" in the SQL statement.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1588,7 +1588,6 @@ Queries data from the RDB store based on specified conditions. This API uses an 
 | -------- | -------- | -------- | -------- |
 | predicates | [RdbPredicates](#rdbpredicates) | Yes| Query conditions specified by the **RdbPredicates** object.|
 | columns | Array&lt;string&gt; | Yes| Columns to query. If this parameter is not specified, the query applies to all columns.|
-| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset-1)&gt; | Yes | Callback used to return the ResultSet object if the operation is successful. |
 | callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset-1)&gt; | Yes | Callback invoked to return the result. If the operation is successful, **err** is **undefined** and **data** is the **ResultSet** object; otherwise, data is an error object. |
 
 **Example**
@@ -1655,7 +1654,6 @@ Queries data using the specified SQL statement. This API uses an asynchronous ca
 | -------- | -------- | -------- | -------- |
 | sql | string | Yes | SQL statement to execute. It cannot be empty. |
 | bindArgs | Array&lt;[ValueType](#valuetype)&gt; | Yes| Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, the value of this parameter must be an empty array.|
-| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset-1)&gt; | Yes | Callback invoked to return the result. If the operation is successful, a **ResultSet** object is returned. |
 | callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset-1)&gt; | Yes | Callback invoked to return the result. If the operation is successful, **err** is **undefined** and **data** is a **ResultSet** object; otherwise, err is an error object. |
 
 **Example**

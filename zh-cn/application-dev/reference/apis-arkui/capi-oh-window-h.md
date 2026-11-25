@@ -54,6 +54,9 @@
 | [int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getinputhandlingduration) | - | 获取当前帧中手势处理的耗时。 |
 | [int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getlayoutmeasureduration) | - | 获取当前帧中布局测量的耗时。 |
 | [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | 获取当前帧开始的时间戳。 |
+| [int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowManager_FrameMetrics *metrics, uint64_t *timestamp)](#oh_windowmanager_framemetrics_getintendedvsynctimestamp) | - | 获取当前帧的预期起始时间戳。 |
+| [int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)](#oh_windowmanager_framemetrics_gettotalduration) | - | 获取渲染此帧并将其发送到显示子系统所需要的总时间。 |
+| [int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)](#oh_windowmanager_framemetrics_getanimationduration) | - | 获取一帧中执行动画回调所消耗的时间。 |
 | [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | 订阅窗口帧率指标变更监听事件。 <br> 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 <br> 应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。 <br> 如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。 |
 | [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | 取消订阅窗口帧率指标变更监听事件。 <br> 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 <br> 如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](#oh_windowmanager_registerframemetricsmeasuredcallback)接口。 |
 | [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | 获取窗口所在屏幕的系统默认显示大小缩放系数。 |
@@ -797,6 +800,81 @@ int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_F
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowManager_FrameMetrics *metrics, uint64_t *timestamp)
+```
+
+**描述**
+
+获取当前帧的预期起始时间戳。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [入参] 帧率指标数据对象，不允许为空。 |
+| uint64_t *timestamp | [出参] 表示当前帧的预期起始时间戳，单位为纳秒，不允许为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数不合法。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_FrameMetrics_GetTotalDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)
+```
+
+**描述**
+
+获取渲染此帧并将其发送到显示子系统所需要的总时间。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [入参] 帧率指标数据对象，不允许为空。 |
+| uint64_t *duration | [出参] 表示渲染此帧并将其发送到显示子系统所需要的总时间，单位为纳秒，不允许为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数不合法。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_FrameMetrics_GetAnimationDuration()
+
+```c
+int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)
+```
+
+**描述**
+
+获取一帧中执行动画回调所消耗的时间。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) *metrics | [入参] 帧率指标数据对象，不允许为空。 |
+| uint64_t *duration | [出参] 表示一帧中执行动画回调所消耗的时间，单位为纳秒，不允许为空。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。 <br> 返回OK，表示函数调用成功。 <br> 返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数不合法。 <br> 具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
 
 ### OH_WindowManager_RegisterFrameMetricsMeasuredCallback()
 

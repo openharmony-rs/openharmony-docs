@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=c027433999a0c9e31e5a16efd17ba1235c5a3215 translatedAt=2026-10-31T06:59:45.175Z pushedAt=2026-10-31T09:11:59.909Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9dd55b053b89fa72857b413bdd99b8031d614bc7 translatedAt=2026-11-20T09:19:03.269Z pushedAt=2026-11-23T07:55:36.090Z nl=1 -->
 
 <!--RP1-->
 The following permissions are open to system applications and enterprise applications.
@@ -88,6 +88,8 @@ With this permission, the application can obtain the write permission on user fi
 
 Allows an application to interact across local accounts.
 
+<!--RP8--><!--RP8End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -106,6 +108,8 @@ Allows an application to interact across local accounts.
 Allows an application to query the identities (such as names and IDs) of specified or all local accounts.
 
 With this permission, the application can query the identities of specified or all local accounts in the system. Based on the obtained identities, the application can further access or manage the target local accounts.
+
+<!--RP13--><!--RP13End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -222,6 +226,8 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 ## ohos.permission.GET_DOMAIN_ACCOUNTS
 
 Allows an application to obtain domain account information.
+
+<!--RP12--><!--RP12End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -347,6 +353,8 @@ Currently, this permission is available only to 2-in-1 device applications.
 
 Allows an application to obtain domain account server configurations.
 
+<!--RP9--><!--RP9End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -362,6 +370,8 @@ Allows an application to obtain domain account server configurations.
 
 Allows an application to manage domain account server configurations.
 
+<!--RP10--><!--RP10End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -376,6 +386,8 @@ Allows an application to manage domain account server configurations.
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNTS
 
 Allows an application to manage domain accounts.
+
+<!--RP11--><!--RP11End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -806,17 +818,17 @@ Allows an enterprise application to obtain audio sound card information.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Whether certificate authorization is supported**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Initial version**: 26.1.0
+**Since**: 26.1.0
 
 ## ohos.permission.ENTERPRISE_MANAGE_DISK
 
-Allows an enterprise normal application to query local disk hardware information.
+Allows enterprise common applications to query local disk hardware information.
 
-With this permission, an application can query sensitive information related to the local disk, such as disk power-on hours and start/stop cycle count, helping enterprise administrators monitor disk health status.
+After obtaining this permission, applications can query sensitive information related to local disks, such as disk power-on time and disk start/stop count, to help enterprise administrators monitor disk health status.
 
 <!--RP2--><!--RP2End-->
 

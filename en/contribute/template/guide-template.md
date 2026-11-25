@@ -1,5 +1,7 @@
 # Development Guide Writing Template
 
+<!-- md-trans-meta sourceCommit=f7120928e40bf669fa3bb554bc843675eb9bfca2 translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ### Change History
 | Change Description                                                                | Date        |
 | ----------------------------------------------------------------------- | ------------ |
@@ -216,20 +218,6 @@ _**[Key Writing Points]**_
 
 ***[Example]***
 
-####  Device Constraints
-
-XXX (the official device category name, such as 2-in-1) devices do not support using this kit. or  This kit is only applicable to (the official device category name, such as 2-in-1) devices. or  Only XXX devices of version XXXXXX and above can use this kit.
-
-####  Emulator Support
-_Choose the appropriate fixed sentence structure based on the actual Emulator support of the Kit. The first option is for kits that do not support the Emulator; the second is for kits that fully support the Emulator; the third is for kits with partial Emulator support.
-Note: For OpenHarmony kits, this section will be replaced with tags. The approach to handling differences between domestic and international versions is still to be determined._
-
-- This kit does not support development with the Emulator.
-
-- This kit supports development with the Emulator.
-
-- This kit supports development with the Emulator, but there are some differences in capabilities compared to real devices. For more information, refer to "Differences Between the Emulator and the Real Device" (link to the relevant section in DevEco Studio as precisely as possible).
-
 ####  Specification Limitations
 
 - Data synchronization can be implemented across devices only for the applications with the same bundleName.
@@ -237,6 +225,10 @@ Note: For OpenHarmony kits, this section will be replaced with tags. The approac
 - Each distributed data object occupies 100 KB to 150 KB of memory. Therefore, you are advised not to create too many distributed data objects.
 
 - The maximum size of a distributed data object is 500 KB.
+
+####  Supported Devices
+
+XXX (the official device category name, such as 2-in-1) devices do not support using this kit. or  This kit is only applicable to (the official device category name, such as 2-in-1) devices. or  Only XXX devices of version XXXXXX and above can use this kit.
 
 ### Relationship with Other Kits/Solutions/Features/Functions/Modules (Writing Based on the Actual Conditions)
 

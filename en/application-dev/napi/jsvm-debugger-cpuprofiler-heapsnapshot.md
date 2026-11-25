@@ -9,8 +9,8 @@ status: active
 # JSVM-API Debugging
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=121843b3f484dae74a46a77d358bc4eb99fa2eaf translatedAt=2026-11-09T08:52:17.294Z nl=1 -->

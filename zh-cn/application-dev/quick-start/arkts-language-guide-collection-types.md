@@ -1,12 +1,12 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍ArkTS的数组、元组、Set、Map等集合类型及只读集合，讲解遍历迭代、集合选型流程，帮助开发者按场景正确选用集合。"
-keywords: [集合类型, 数组, Array, Map, 元组, Set, forEach, ReadonlyArray, 迭代器]
+keywords: [集合, 数组, Array, Map, 元组, Set, forEach, ReadonlyArray, 迭代器]
 doctype: guide
 status: active
 ---
 
-# 集合类型
+# 集合
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @jokerxd-liu-->
@@ -14,7 +14,7 @@ status: active
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-集合类型用于存储多个数据项。ArkTS提供多种集合类型，包括数组、元组、`Set`、`Map`等，每种类型有其特定的用途和特性。三类核心集合的差异是选型的前提：数组（`Array`）是有序、可重复的元素列表，通过索引访问，适合存储有序数据；集合（`Set`）存储不重复的元素，适合去重和成员存在性检查；映射（`Map`）存储键值对，键的类型不受限，适合通过键快速查找值。此外，集合按可变性还可区分为可变集合与只读集合（如`ReadonlyArray`）。
+集合用于存储多个数据项。ArkTS提供多种集合类型，包括数组、元组、`Set`、`Map`等，每种类型有其特定的用途和特性。三类核心集合的差异是选型的前提。数组（`Array`）是有序、可重复的元素列表，通过索引访问，适合存储有序数据。集合（`Set`）存储不重复的元素，适合去重和成员存在性检查。映射（`Map`）存储键值对，键的类型不受限，适合通过键快速查找值。此外，集合按可变性还可区分为可变集合与只读集合（如`ReadonlyArray`）。
 
 ## 数组（Array）
 
@@ -251,7 +251,7 @@ console.info(`${greaterThan3.join(', ')}`);  // 4, 5, 6
 
 ### 数组的高阶用法
 
-数组还提供`map`（映射）、`filter`（过滤）、`reduce`（归约）、`sort`/`reverse`（排序）、`flat`/`flatMap`（展平）等函数式方法，支持链式组合实现"筛选→变换→汇总"的数据处理管道。这些方法返回新数组（`sort`/`reverse`除外），不修改原数组。
+数组还提供`map`（映射）、`filter`（过滤）、`reduce`（归约）、`sort`/`reverse`（排序）、`flat`/`flatMap`（展平）等函数式方法，支持链式组合实现“筛选→变换→汇总”的数据处理管道。除`reduce`返回归约后的单个值、`sort`/`reverse`原地修改数组外，其余方法均返回新数组且不修改原数组。
 
 `map`：映射每个元素
 
@@ -284,7 +284,7 @@ console.info(`${afEvens.join(', ')}`);  // 2, 4, 6
 
 `reduce`：归约数组
 
-`reduce`将数组归约为单个值，需提供初始值。
+`reduce`将数组归约为单个值，通常建议提供初始值；初始值是可选项，不提供时以数组首个元素作为初始值，对空数组调用则会抛出`TypeError`。
 
 <!-- @[array_reduce](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -319,7 +319,7 @@ console.info(`${asReversed.join(', ')}`);  // 6, 2, 9, 5, 1, 4, 1, 3
 
 组合使用`map`、`filter`、`reduce`
 
-`map`、`filter`、`reduce`可通过链式调用组合使用，实现"筛选→变换→汇总"的数据处理管道。例如：先`filter`筛选有效数据，再`map`提取关键字段，最后`reduce`计算汇总值。链式调用时每一步返回新数组，不影响原始数据。
+`map`、`filter`、`reduce`可通过链式调用组合使用，实现“筛选→变换→汇总”的数据处理管道。例如：先`filter`筛选有效数据，再`map`提取关键字段，最后`reduce`计算汇总值。链式调用时每一步返回新数组，不影响原始数据。
 
 <!-- @[array_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -381,7 +381,7 @@ let coordinate: [number, number] = [10, 20];
 let user: [number, string, boolean] = [1, 'Alice', true];
 ```
 
-上述类型标注中每个位置的类型可以不同，从而表达固定结构的数据。在ArkTS中，简单的固定长度数组可以替代元组的作用。
+上述类型标注中每个位置的类型可以不同，从而表达固定结构的数据。当各位置元素类型相同时，可以通过约定固定长度（如约定`number[]`始终存放两个元素）来近似表达坐标等结构，但无法获得元组提供的逐位置类型检查；若各位置类型不同，仍应使用元组。
 
 ### 访问元组元素
 
@@ -680,14 +680,9 @@ for (let key of iterMap.keys()) {
 for (let value of iterMap.values()) {
   console.info(`${value}`);
 }
-
-// 不使用解构遍历，显式读取entry元素
-for (let entry of iterMap.entries()) {
-  let key: string = entry[0];
-  let value: number = entry[1];
-  console.info(`${key}: ${value}`);
-}
 ```
+
+ArkTS不支持使用解构赋值遍历`Map`条目，需通过`entry[0]`、`entry[1]`显式读取键和值。
 
 需要手动控制遍历节奏时，可通过`entries()`获取迭代器，用`next()`逐个取值：
 
@@ -707,7 +702,7 @@ while (!mapResult.done) {
 
 ### Record<K, V> 类型
 
-`Record<K, V>`是ArkTS内置的工具类型，将键类型`K`映射到值类型`V`，适合表达"字符串键值对象"。当键固定为字符串或数值、结构相对简单时，比`Map`更轻量，常用对象字面量初始化。
+`Record<K, V>`是ArkTS内置的工具类型，将键类型`K`映射到值类型`V`，适合表达“字符串键值对象”。当键固定为字符串或数值、结构相对简单时，比`Map`更轻量，常用对象字面量初始化。
 
 <!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -716,7 +711,11 @@ let ages: Record<string, number> = {
   'John': 25,
   'Mary': 21
 };
-ages['John']; // 25
+
+let johnAge: number | undefined = ages['John'];  // 25
+if (johnAge !== undefined) {
+  console.info(`${johnAge}`);
+}
 ```
 
 键类型`K`可为`string`或`number`（不含`bigint`），值类型`V`可为任意类型；按下标读取返回`V | undefined`，使用前需判空。
@@ -838,7 +837,7 @@ let readonlyNums: readonly number[] = mutableNums;
 
 ### 只读Map与只读Set
 
-只读集合通过`ReadonlyMap`或`ReadonlySet`类型声明，防止意外修改。`ReadonlyMap`和`ReadonlySet`为ArkTS内置只读接口。
+只读集合通过`ReadonlyMap`或`ReadonlySet`类型声明，防止意外修改。`ReadonlyMap`和`ReadonlySet`为ArkTS内置只读接口。只读视图仅为编译期约束：接口限制了调用方调用修改方法，运行时仍是原来的可变实例，持有原`Map`/`Set`引用的代码仍可修改它。
 
 <!-- @[readonly_map_set_interfaces](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
 
@@ -898,7 +897,7 @@ function getConstants(): ReadonlyArray<string> {
 
 ## ArkTS共享容器（@arkts.collections）
 
-除本篇介绍的原生集合类型外，ArkTS还提供基于`@arkts.collections`模块的共享容器（如`collections.Array`、`collections.Map`、`collections.Set`），用于并发场景下跨Worker线程的高性能数据传递，导入方式为`import { collections } from '@kit.ArkTS';`（API version 12起支持，仅可在.ets文件中使用）。
+除本篇介绍的原生集合类型外，ArkTS还提供基于`@arkts.collections`模块的共享容器（如`collections.Array`、`collections.Map`、`collections.Set`），用于并发场景下跨Worker线程的高性能数据传递，导入方式为`import { collections } from '@kit.ArkTS';`（API version 12起支持，仅可在`.ets`文件中使用）。
 
 共享容器与原生集合类型的主要差异：
 
@@ -913,7 +912,20 @@ function getConstants(): ReadonlyArray<string> {
 
 TypedArray是一类针对数值计算优化的数组类型，包括Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Float32Array等，每种类型固定存储对应位宽的数值（如Int8Array存储8位有符号整数，Float32Array存储32位浮点数），元素在内存中连续排列，无需装箱。
 
-与普通数组（`Array`）相比，普通数组是长度动态可变的数组，对象元素存储的是引用，数值元素访问存在装箱与类型检查开销，而TypedArray直接存储原始数值，访问和计算开销更小。因此涉及纯数值计算的场景（如图像像素处理、音频采样数据、科学计算）推荐使用TypedArray，普通数组则适合存储对象、字符串等通用数据。
+与普通数组（`Array`）相比，普通数组是长度动态可变的数组，对象元素存储的是引用，数值元素访问存在装箱与类型检查开销；TypedArray直接存储原始数值，访问和计算开销更小。因此涉及纯数值计算的场景（如图像像素处理、音频采样数据、科学计算）推荐使用TypedArray。普通数组则适合存储对象、字符串等通用数据。
+
+以`Int8Array`为例，类型化数组的基本用法如下：
+
+<!-- @[typed_array_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+
+``` TypeScript
+let bytes: Int8Array = new Int8Array([1, 2, 3]);
+
+let firstByte: number = bytes[0];      // 读取元素：1
+let byteCount: number = bytes.length;  // 获取长度：3
+bytes[1] = 10;  // 修改元素
+console.info(`${firstByte}, ${bytes[1]}, ${byteCount}`);  // 1, 10, 3
+```
 
 TypedArray的使用场景与性能对比示例见[高性能编程指南](arkts-high-performance-programming.md)。
 

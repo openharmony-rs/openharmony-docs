@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:35:06.694Z pushedAt=2026-11-16T02:06:53.446Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:35:27.898Z pushedAt=2026-11-23T08:04:29.963Z nl=1 -->
 
 **Encoding**
 
@@ -50,6 +50,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`prikeyEncoding failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -84,15 +85,17 @@
     '-----END RSA PRIVATE KEY-----';
   
   async function prikeyDecoding() {
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-    asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456')
-      .then(keyPair => {
-        let priKey = keyPair.priKey;
-        if (priKey) {
-          console.info('convertPemKey result: success.');
-        }
-      }).catch((error: BusinessError) => {
-      console.error(`convertPemKey failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    try {
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+      let keyPair = await asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456');
+      let priKey = keyPair.priKey;
+      if (priKey) {
+        console.info('convertPemKey result: success.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`convertPemKey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```

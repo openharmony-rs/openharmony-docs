@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=11607c3f645040dde4aef755769e96c598e33e96 translatedAt=2026-11-03T05:23:34.545Z pushedAt=2026-11-03T06:56:41.090Z nl=1 -->
+<!-- md-trans-meta sourceCommit=afc00ea13fc0a3fa63e7c76bf4005d4a63c32f80 translatedAt=2026-11-20T03:24:30.037Z pushedAt=2026-11-20T06:42:52.140Z nl=1 -->
 
 Starting from API version 26.0.0, HUKS provides key generation, import, and export capabilities. In key management extension scenarios (such as UKey physical devices), applications can use standard HUKS interfaces to generate key pairs, import encrypted and wrapped key pairs, or export public keys in the key management extension service.
 
@@ -36,93 +36,99 @@ An app initiates a key generation request by calling the HUKS [generateKeyItem](
 
 ### Development Cases
 
-```ts
+<!-- @[extension_key_generation_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/ExtensionKeyGeneration.ets) -->
+
+``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
-
-function stringToUint8Array(str: string): Uint8Array {
-  const encoder = new util.TextEncoder();
-  return encoder.encodeInto(str);
-}
 
 async function openResource(resourceId: string): Promise<void> {
   try {
-    await huksExternalCrypto.openResource(resourceId);
-    console.info('promise: openResource success.');
+    await huksExternalCrypto.openResource(resourceId)
+      .then(() => {
+        console.info('promise: openResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: openResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: openResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: openResource input arg invalid.');
   }
 }
 
 async function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<void> {
   try {
-    await huks.generateKeyItem(keyAlias, huksOptions);
-    console.info('promise: generateKeyItem success.');
+    await huks.generateKeyItem(keyAlias, huksOptions)
+      .then(() => {
+        console.info('promise: generateKeyItem success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: generateKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: generateKeyItem failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: generateKeyItem input arg invalid.');
   }
 }
 
 async function closeResource(resourceId: string): Promise<void> {
   try {
-    await huksExternalCrypto.closeResource(resourceId);
-    console.info('promise: closeResource success.');
+    await huksExternalCrypto.closeResource(resourceId)
+      .then(() => {
+        console.info('promise: closeResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: closeResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: closeResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: closeResource input arg invalid.');
   }
 }
 
 async function extensionKeyGeneration(): Promise<void> {
+  /* 1. Prepare the resource ID (keyAlias uses resourceId). */
+  const resourceId = JSON.stringify({
+    providerName: 'testProviderName',
+    bundleName: 'com.example.cryptoapplication',
+    abilityName: 'CryptoExtension',
+    index: {
+      key: 'testKey'
+    } as ESObject
+  });
+  const keyAlias = resourceId;
+
+  const properties: huks.HuksParam[] = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_CLASS,
+      value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_RSA
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
+    }
+  ];
+  const huksOptions: huks.HuksOptions = {
+    properties: properties,
+    inData: new Uint8Array([])
+  };
+
   try {
-    // 1. Obtain the resourceId.
-    const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: stringToUint8Array("CryptoExtensionAbility1"),
-      },
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: stringToUint8Array("com.example.cryptoapplication"),
-      },
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: stringToUint8Array("vendor_defined_resource_info"),
-      },
-    ];
-    const providerName = 'VendorA_ProductX'; // The ProviderName passed in during registration.
-    const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
-    const keyAlias = resourceId;  // keyAlias is the resourceId.
-
-    // 2. Construct the key parameters.
-    const properties: Array<huks.HuksParam> = [
-      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION },
-      { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
-      { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
-      { tag: huks.HuksTag.HUKS_TAG_PURPOSE, value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN }
-    ];
-
-    const huksOptions: huks.HuksOptions = {
-      properties: properties,
-      inData: new Uint8Array([])
-    };
-
-    // 3. Open the resource.
+    /* 2. Open the resource. */
     await openResource(resourceId);
 
-    // 4. Generate the key.
+    /* 3. Generate the key. */
     await generateKeyItem(keyAlias, huksOptions);
 
-    // 5. Close the resource.
+    /* 4. Close the resource. */
     await closeResource(resourceId);
 
     console.info('promise: extensionKeyGeneration completed successfully.');
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: extensionKeyGeneration failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: extensionKeyGeneration input arg invalid.');
   }
 }
 ```
@@ -147,65 +153,106 @@ An app initiates a key security import request by calling the [importWrappedKeyI
 
 ### Development Cases
 
-```ts
+<!-- @[extension_key_import_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/ExtensionKeyImport.ets) -->
+
+``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
 
-function stringToUint8Array(str: string): Uint8Array {
-  const encoder = new util.TextEncoder();
-  return encoder.encodeInto(str);
+async function openResource(resourceId: string): Promise<void> {
+  try {
+    await huksExternalCrypto.openResource(resourceId)
+      .then(() => {
+        console.info('promise: openResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: openResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
+  } catch (error) {
+    console.error('promise: openResource input arg invalid.');
+  }
+}
+
+async function importWrappedKeyItem(
+  keyAlias: string,
+  wrappingKeyAlias: string,
+  huksOptions: huks.HuksOptions
+): Promise<void> {
+  try {
+    await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
+      .then(() => {
+        console.info('promise: importWrappedKeyItem success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: importWrappedKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
+  } catch (error) {
+    console.error('promise: importWrappedKeyItem input arg invalid.');
+  }
+}
+
+async function closeResource(resourceId: string): Promise<void> {
+  try {
+    await huksExternalCrypto.closeResource(resourceId)
+      .then(() => {
+        console.info('promise: closeResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: closeResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
+  } catch (error) {
+    console.error('promise: closeResource input arg invalid.');
+  }
 }
 
 async function extensionKeyImport(): Promise<void> {
+  /* 1. Prepare the resource IDs (keyAlias and wrappingKeyAlias use resourceId). */
+  const resourceId = JSON.stringify({
+    providerName: 'testProviderName',
+    bundleName: 'com.example.cryptoapplication',
+    abilityName: 'CryptoExtension',
+    index: {
+      key: 'testKey'
+    } as ESObject
+  });
+  const keyAlias = resourceId;
+  const wrappingKeyAlias = resourceId;
+
+  const properties: huks.HuksParam[] = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_CLASS,
+      value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_RSA
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+    }
+  ];
+  // Encrypted and encapsulated key data (in a format defined by the implementer).
+  const wrappedKeyData: Uint8Array = new Uint8Array([/* encapsulated key data */]);
+  const huksOptions: huks.HuksOptions = {
+    properties: properties,
+    inData: wrappedKeyData
+  };
+
   try {
-    // 1. Obtain the resourceId.
-    const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: stringToUint8Array("CryptoExtensionAbility1"),
-      },
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: stringToUint8Array("com.example.cryptoapplication"),
-      },
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: stringToUint8Array("vendor_defined_resource_info"),
-      },
-    ];
-    const providerName = 'VendorA_ProductX'; // The ProviderName passed during registration.
-    const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
-    const keyAlias = resourceId;
-    const wrappingKeyAlias = resourceId;
+    /* 2. Open the resource. */
+    await openResource(resourceId);
 
-    // 2. Construct the key parameters.
-    const properties: Array<huks.HuksParam> = [
-      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION },
-      { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
-      { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
-      { tag: huks.HuksTag.HUKS_TAG_PURPOSE, value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT }
-    ];
-    // Encrypted wrapped key data (format defined by the external key management service provider)
-    const wrappedKeyData: Uint8Array = new Uint8Array([/* Wrapped key data */]);
-    const huksOptions: huks.HuksOptions = {
-      properties: properties,
-      inData: wrappedKeyData
-    };
+    /* 3. Import the encrypted and encapsulated key. */
+    await importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions);
 
-    // 3. Obtain the resource
-    await huksExternalCrypto.openResource(resourceId, []);
-
-    // 4. Import the encrypted wrapped key
-    await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions);
-
-    // 5. Close the resource
-    await huksExternalCrypto.closeResource(resourceId, []);
+    /* 4. Close the resource. */
+    await closeResource(resourceId);
 
     console.info('promise: extensionKeyImport completed successfully.');
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: extensionKeyImport failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: extensionKeyImport input arg invalid.');
   }
 }
 ```
@@ -226,30 +273,29 @@ An app initiates a public key export request by calling the HUKS [exportKeyItem]
 
 ### Development Cases
 
-```ts
+<!-- @[extension_key_export_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/ExtensionKeyExport.ets) -->
+
+``` TypeScript
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
-
-function stringToUint8Array(str: string): Uint8Array {
-  const encoder = new util.TextEncoder();
-  return encoder.encodeInto(str);
-}
 
 async function openResource(resourceId: string): Promise<void> {
   try {
-    await huksExternalCrypto.openResource(resourceId);
-    console.info('promise: openResource success.');
+    await huksExternalCrypto.openResource(resourceId)
+      .then(() => {
+        console.info('promise: openResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: openResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: openResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: openResource input arg invalid.');
   }
 }
 
 async function exportPublicKey(keyAlias: string): Promise<Uint8Array> {
-  let publicKey: Uint8Array = new Uint8Array();
+  let publicKey: Uint8Array = new Uint8Array([]);
   try {
-    const exportProperties: Array<huks.HuksParam> = [
+    const exportProperties: huks.HuksParam[] = [
       {
         tag: huks.HuksTag.HUKS_TAG_KEY_CLASS,
         value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION
@@ -258,64 +304,53 @@ async function exportPublicKey(keyAlias: string): Promise<Uint8Array> {
     const exportOptions: huks.HuksOptions = {
       properties: exportProperties
     };
-    const data = await huks.exportKeyItem(keyAlias, exportOptions);
-    publicKey = data.outData as Uint8Array;
-    console.info('promise: exportKeyItem success.');
+    await huks.exportKeyItem(keyAlias, exportOptions)
+      .then((data) => {
+        publicKey = data.outData as Uint8Array;
+        console.info('promise: exportKeyItem success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: exportKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: exportKeyItem failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: exportKeyItem input arg invalid.');
   }
   return publicKey;
 }
 
 async function closeResource(resourceId: string): Promise<void> {
   try {
-    await huksExternalCrypto.closeResource(resourceId);
-    console.info('promise: closeResource success.');
+    await huksExternalCrypto.closeResource(resourceId)
+      .then(() => {
+        console.info('promise: closeResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: closeResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: closeResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: closeResource input arg invalid.');
   }
 }
 
 async function extensionKeyExport(): Promise<Uint8Array> {
-  try {
-    // 1. Obtain the resourceId.
-    const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: stringToUint8Array("CryptoExtensionAbility1"),
-      },
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: stringToUint8Array("com.example.cryptoapplication"),
-      },
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: stringToUint8Array("vendor_defined_resource_info"),
-      },
-    ];
-    const providerName = 'VendorA_ProductX'; // The ProviderName passed in during registration.
-    const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
-    const keyAlias = resourceId;  // keyAlias is the resourceId.
+  /* 1. Prepare the resource ID. */
+  const resourceId = 'your_resource_id';
 
-    // 2. Open the resource.
+  let publicKey: Uint8Array = new Uint8Array([]);
+  try {
+    /* 2. Open the resource. */
     await openResource(resourceId);
 
-    // 3. Export the public key.
-    const publicKey = await exportPublicKey(keyAlias);
+    /* 3. Export the public key. */
+    publicKey = await exportPublicKey(resourceId);
     console.info(`promise: public key length: ${publicKey.length}`);
 
-    // 4. Close the resource.
+    /* 4. Close the resource. */
     await closeResource(resourceId);
 
     console.info('promise: extensionKeyExport completed successfully.');
-    return publicKey;
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: extensionKeyExport failed, errCode: ${e.code}, errMsg: ${e.message}`);
-    return new Uint8Array();
+    console.error('promise: extensionKeyExport input arg invalid.');
   }
+  return publicKey;
 }
 ```
 

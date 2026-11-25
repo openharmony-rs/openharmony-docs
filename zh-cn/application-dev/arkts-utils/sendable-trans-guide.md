@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍Sendable对象改造实践：使用TurboTrans三方库实现TurboTransJSON序列化反序列化、TurboTransProtobuf编解码并生成Sendable对象，结合makeObserved将Sendable对象转换为观察对象驱动UI实时更新。"
 keywords: [Sendable改造, TurboTrans, TurboTransJSON, TurboTransProtobuf, makeObserved, 可观察对象, UI实时更新]
 doctype: guide
@@ -367,7 +367,9 @@ export function observeProtobuf(): test_pb {
 runTests() {
   taskpool.execute(observeJSON1).then((res) => {
     this.layout = UIUtils.makeObserved(res as LayoutS);
-  })
+  }).catch((e: BusinessError) => {
+    console.error(`taskpool execute error, code: ${e.code}, message is: ${e.message}`);
+  });
 }
 ```
 
@@ -377,7 +379,9 @@ runTests() {
 runTestsPb() {
   taskpool.execute(observeProtobuf).then((res) => {
     this.pb = UIUtils.makeObserved(res as test_pb);
-  })
+  }).catch((e: BusinessError) => {
+    console.error(`taskpool execute error, code: ${e.code}, message is: ${e.message}`);
+  });
 }
 ```
 

@@ -1,4 +1,4 @@
-# SecureAccessFence (Secure Access Fence Service)
+# Security Access Fence Service<!--secure-access-fence-->
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,8 @@
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=10227dcf87bb004afff1dfa6cc337d0de0b50b63 translatedAt=2026-11-03T05:42:32.912Z pushedAt=2026-11-03T06:53:09.417Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ee3646b2ac8dc8dfc90ec5c9facb07df160a93db translatedAt=2026-11-20T03:32:17.176Z pushedAt=2026-11-20T06:13:08.884Z nl=1 -->
 
-- [Obtaining CLI Credentials (Ticket) Based on Secure Access Fence Service](secure-access-fence-guidelines.md)
+- [Secure Access Fence Service Overview](secure-access-fence-overview.md)
+- [Obtaining CLI Credentials (Ticket)](secure-access-fence-guidelines.md)
+- [Querying and Requesting Permissions to Control a Target Application](app-control-permission-guidelines.md)

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=fd500ca82713c7732ea8f0441b20e4da66f10c9e translatedAt=2026-10-30T03:38:19.021Z pushedAt=2026-10-30T08:01:40.018Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7a5935e618ade8fbefeb75aa99dbfa6365b3db00 translatedAt=2026-11-20T09:25:36.885Z pushedAt=2026-11-23T08:01:27.152Z nl=1 -->
 
 In data storage or transmission scenarios, encryption/decryption operations can be used to ensure data confidentiality and prevent sensitive data leakage.
 
@@ -22,13 +22,13 @@ Typical scenarios for using encryption/decryption operations include:
 
 This section describes the algorithms currently supported by the system and their corresponding specifications.
 
-The supported encryption mode adopted for each algorithm is described in the specification of that algorithm.
+The supported encryption modes adopted for each algorithm are described in the specification of that algorithm.
 
 ### AES
 
 The algorithm library currently provides seven commonly used encryption modes for [AES](crypto-key-generation-conversion.md#aes) encryption/decryption: ECB, CBC, OFB, CFB, CTR, GCM, and CCM. Different encryption modes apply to different encryption/decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
-Because AES is a block encryption algorithm, its block length is 16 bytes. In actual applications, the last block of plaintext may be shorter than 16 bytes. In this case, you can pad the data by using different [padding modes](#padding-mode).
+Because AES is a block encryption algorithm, its block length is 16 bytes. In actual applications, the last block of plaintext may be shorter than 16 bytes. In this case, you can pad the data by using different [Padding Mode](#padding-mode).
 
 Because padding to the block size is required, both PKCS5 and PKCS7 in the algorithm library use the block size as the padding length. That is, AES encryption pads data to 16 bytes.
 
@@ -97,7 +97,7 @@ The encryption and decryption process of the [3DES](crypto-key-generation-conver
 
 The algorithm library currently provides four common encryption modes for 3DES encryption and decryption: ECB, CBC, OFB, and CFB. Different encryption modes apply to different encryption/decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
-Because DES is a block encryption algorithm with a block length of 8 bytes, the last block of plaintext may be shorter than 8 bytes in actual applications. In this case, data can be padded using different [padding modes](#padding-mode).
+Because DES is a block encryption algorithm with a block length of 8 bytes, the last block of plaintext may be shorter than 8 bytes in actual applications. In this case, data can be padded using different [Padding Mode](#padding-mode).
 
 Because padding to the block size is required, both PKCS5 and PKCS7 in the algorithm library use the block size as the padding length. That is, 3DES encryption pads to 8 bytes.
 
@@ -129,7 +129,7 @@ Currently, 3DES encryption and decryption can be performed using a string parame
 
 The algorithm library currently provides seven commonly used encryption modes for [SM4](crypto-key-generation-conversion.md#sm4) encryption and decryption: ECB, CBC, CTR, OFB, CFB, CFB128, and GCM. Different encryption modes apply to different encryption/decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
-Because SM4 is a block encryption algorithm with a block length of 16 bytes, the last block of plaintext may be shorter than 16 bytes in actual applications. In this case, you can pad the data using different [padding modes](#padding-mode).
+Because SM4 is a block encryption algorithm with a block length of 16 bytes, the last block of plaintext may be shorter than 16 bytes in actual applications. In this case, you can pad the data using different [Padding Mode](#padding-mode).
 
 Because padding is required to reach the block size, both PKCS5 and PKCS7 in the algorithm library use the block size as the padding length. That is, SM4 encryption pads to 16 bytes.
 
@@ -254,8 +254,6 @@ Blowfish encryption/decryption is currently supported through a string parameter
 ### CAST
 
 Starting from API version 26.0.0, the block cipher algorithm [CAST](crypto-key-generation-conversion.md#cast) is supported. Its block length is 8 bytes, and the supported key length ranges from 40 bits to 128 bits, which must be a multiple of 8.
-
-[CAST](crypto-key-generation-conversion.md#cast) is a block cipher algorithm with a block length of 8 bytes. The supported key length ranges from 40 bits to 128 bits, which must be a multiple of 8.
 
 The algorithm library currently provides the following commonly used block modes for CAST encryption/decryption: ECB, CBC, OFB, and CFB. Different encryption modes apply to different encryption/decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
@@ -477,7 +475,7 @@ The maximum length supported for a single call is INT_MAX (the maximum length of
 
 **Development example:** [Segmented encryption/decryption using the AES symmetric key in GCM mode](crypto-aes-sym-encrypt-decrypt.md#encrypting-and-decrypting-with-an-aes-symmetric-key-gcm-mode-in-segments)
 
-**Development example:** [Segmented encryption/decryption using the SM4 symmetric key in GCM mode](crypto-sm4-sym-encrypt-decrypt.md#encrypting-and-decrypting-with-an-sm4-symmetric-key-gcm-mode)
+**Development example:** [Segmented encryption/decryption using the SM4 symmetric key in GCM mode](crypto-sm4-sym-encrypt-decrypt.md#performing-segmented-encryption-and-decryption-with-an-sm4-symmetric-key-gcm-mode)
 
 ### Asymmetric Encryption/Decryption
 

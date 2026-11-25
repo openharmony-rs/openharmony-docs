@@ -70,9 +70,9 @@ Toast支持通过应用级开启、组件级开启方式开启沉浸光感。
 
 ### 气泡提示（Popup和Tips）
 
-Popup和Tips支持通过组件级开启方式开启沉浸光感。
+Popup和Tips仅支持通过组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，气泡提示不会默认开启沉浸光感。
+应用级开启：当前组件不支持应用级开启。
 
 组件级开启：气泡支持通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的systemMaterial字段设置沉浸光感效果；悬浮提示通过[TipsOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md#tipsoptions类型说明)中的systemMaterial字段设置。
 
@@ -100,13 +100,13 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 - [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)组件拉起的弹出框目前暂不支持开启沉浸光感效果，通过通用属性设置的沉浸光感效果会体现在CalendarPicker组件本身。
 - [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)组件沉浸光感效果同CustomDialog相同。
 
-组件开启沉浸光感的效果请参见[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例9设置弹窗的沉浸光感效果)、[示例14（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#示例14设置弹窗的沉浸光感效果)和[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#示例9设置弹窗的沉浸光感效果)。
+组件开启沉浸光感的效果请参见[示例8（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例8设置弹窗的沉浸光感效果)、[示例13（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#示例13设置弹窗的沉浸光感效果)和[示例8（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#示例8设置弹窗的沉浸光感效果)。
 
 ### 半模态（bindSheet）
 
 bindSheet半模态转场仅支持通过组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，bindSheet半模态转场不会默认开启沉浸光感。
+应用级开启：当前组件不支持应用级开启。
 
 组件级开启：bindSheet支持通过[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial字段设置沉浸光感效果。systemMaterial默认值为undefined，无默认沉浸光感效果，需显式设置后生效。设置systemMaterial后，其影响的背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)等属性不再生效，不建议与上述属性一起使用。
 
@@ -118,9 +118,9 @@ bindSheet半模态转场仅支持通过组件级开启方式开启沉浸光感�
 
 ### 按钮（Button）
 
-按钮支持通过组件级开启方式开启沉浸光感。
+按钮仅支持通过组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，按钮不会默认开启沉浸光感。
+应用级开启：当前组件不支持应用级开启。
 
 组件级开启：按钮支持通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性为[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件设置沉浸光感效果。
 

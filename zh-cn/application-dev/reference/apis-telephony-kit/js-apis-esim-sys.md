@@ -1,7 +1,7 @@
 # @ohos.telephony.esim (eSIM卡管理) (系统接口)
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
-<!--Owner: @yangyannanyangyannan-->
+<!--Owner: @Fanyl8-->
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
@@ -900,7 +900,6 @@ getSupportedPkids\(slotId: number\): Promise\<string\>
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -951,7 +950,6 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |

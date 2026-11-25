@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:29:15.302Z pushedAt=2026-11-16T02:06:53.413Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:26:12.674Z pushedAt=2026-11-23T08:03:00.133Z nl=1 -->
 
 This topic walks you through on how to generate an RSA, an ECC, and an SM2 asymmetric key pair (**KeyPair**) based on the specified key parameters and obtain the key parameter properties.
 
@@ -87,21 +87,26 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
   }
   
   // Generate an RSA public key based on the RSA public key specifications, obtain the key specifications, and compare it with the expected value.
-  function rsaUsePubKeySpecGetCallback() {
-    let rsaPubKeySpec = genRsa2048PubKeySpec();
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
-    rsaGeneratorSpec.generatePubKey((error, key) => {
-      if (error) {
-        console.error('generate pubKey failed, ' + 'error code: ' + error.code + 'error message' + error.message);
-      }
-      let pubKey = key;
-      let nBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_N_BN);
-      let eBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_PK_BN);
-      if (compareRsaPubKeyBySpec(rsaPubKeySpec, nBN, eBN) != true) {
-        console.error('error pub key big number');
-      } else {
-        console.info('n, e in the pubKey are same as the spec.');
-      }
+  function rsaUsePubKeySpecGetCallback(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      let rsaPubKeySpec = genRsa2048PubKeySpec();
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
+      rsaGeneratorSpec.generatePubKey((error, key) => {
+        if (error) {
+          console.error(`generate pubKey failed: errCode: ${error.code}, message: ${error.message}`);
+          // ...
+          return;
+        }
+        let pubKey = key;
+        let nBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_N_BN);
+        let eBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_PK_BN);
+        if (compareRsaPubKeyBySpec(rsaPubKeySpec, nBN, eBN) != true) {
+          console.error('error pub key big number');
+        } else {
+          console.info('n, e in the pubKey are same as the spec.');
+        }
+        resolve();
+      });
     });
   }
   ```
@@ -163,23 +168,27 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
   
   // Generate an RSA public key based on the RSA public key specifications, obtain the key specifications, and compare it with the expected value.
   function rsaUsePubKeySpecGetSync() {
-    let rsaPubKeySpec = genRsa2048PubKeySpec();
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
+    
     try {
+      let rsaPubKeySpec = genRsa2048PubKeySpec();
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
       let pubKey = rsaGeneratorSpec.generatePubKeySync();
       if (pubKey != null) {
         let nBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_N_BN);
         let eBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_PK_BN);
         if (compareRsaPubKeyBySpec(rsaPubKeySpec, nBN, eBN) != true) {
           console.error('error pub key big number');
+          // ...
         } else {
           console.info('n, e in the pubKey are same as the spec.');
         }
       } else {
         console.error('get pub key result: fail!');
+        // ...
       }
     } catch (e) {
       console.error(`get pub key result failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -287,22 +296,18 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
   }
   
   // Generate an ECC key pair based on the EccCommonSpec instance and obtain the key specifications.
-  function testEccUseCommKeySpecGet() {
+  async function testEccUseCommKeySpecGet() {
     try {
       let commKeySpec = genEccCommonSpec(); // Construct the commKeySpec parameter.
       let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create a generatorBySpec instance based on the commKeySpec parameter.
-      let keyPairPromise = generatorBySpec.generateKeyPair(); // Generate the ECC key pair.
-      keyPairPromise.then(keyPair => {// Use generatorBySpec to create an ECC key pair.
-        showEccSpecDetailInfo(keyPair.priKey, "priKey"); // Obtain the private key specifications.
-        showEccSpecDetailInfo(keyPair.pubKey, "pubKey"); // Obtain the public key specifications.
-      }).catch((error: BusinessError) => {
-        // Capture synchronous exceptions such as logic errors here.
-        console.error(`generateComm failed: errCode: ${error.code}, message: ${error.message}`);
-      })
-    } catch (error) {
-      // Capture synchronous exceptions such as parameter errors here.
-      let e: BusinessError = error as BusinessError;
+      let keyPair = await generatorBySpec.generateKeyPair(); // Generate an ECC key pair.
+      showEccSpecDetailInfo(keyPair.priKey, 'priKey'); // Obtain the related key parameter attributes from the private key.
+      showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // Obtain the related key parameter attributes from the public key.
+    } catch (err) {
+      // Synchronous exceptions such as parameter errors and asynchronous exceptions such as logical errors are caught here.
+      let e: BusinessError = err as BusinessError;
       console.error(`ecc comm spec failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -401,10 +406,12 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
         showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // Obtain the public key specifications.
       } else {
         console.error('get key pair result: fail!');
+        // ...
       }
     } catch (e) {
       // Capture exceptions such as logic errors here.
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -459,6 +466,7 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -495,9 +503,11 @@ For the corresponding algorithm specification, see [Asymmetric Key Generation an
         console.info('ECC_CURVE_NAME_STR: ' + sm2CurveName); // NID_sm2
       } else {
         console.error('get key pair result: fail!');
+        // ...
       }
     } catch (e) {
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

@@ -77,7 +77,7 @@ if (role === 'admin') {
 
 ### switch语句
 
-`switch`语句根据表达式的值匹配多个`case`分支，适合离散值的多分支选择。
+`switch`语句根据表达式的值匹配多个`case`分支，适合离散值的多分支选择。其语法结构示意如下，其中`expression`、`value1`、`value2`均为占位符，并非可运行的代码：
 
 ``` TypeScript
 switch (expression) {
@@ -143,11 +143,11 @@ switch (status) {
 }
 ```
 
-`break`语句用来控制`switch`不继续向下执行，遗漏`break`导致执行了非预期的逻辑是很常见的编程错误。
+`break`语句用来控制`switch`不继续向下执行，无意遗漏`break`导致执行了非预期的逻辑是很常见的编程错误。
 
 `default`分支用于捕获所有未匹配的情况，适合处理未知命令等场景。
 
-省略`break`通常用于合并多个`case`标签，复用同一段执行逻辑，实现值的分组匹配：
+有意省略`break`用于合并多个`case`标签，复用同一段执行逻辑，实现值的分组匹配：
 
 <!-- @[switch_case_fallthrough](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
@@ -214,7 +214,7 @@ switch (grade) {
 
 ## 循环语句
 
-循环语句在条件满足时重复执行代码块，ArkTS提供`for`、`for...of`、`while`、`do...while`等多种循环形式。
+循环语句在条件满足时重复执行代码块，ArkTS提供`for`、`for...of`、`while`、`do...while`四种循环形式。
 
 ### for循环（传统计数式）
 
@@ -246,7 +246,7 @@ for (let i = 0; i < 10; i += 2) {
 // 遍历数组索引
 let arr: number[] = [10, 20, 30, 40, 50];
 for (let i = 0; i < arr.length; i++) {
-  console.info(`索引 ${i}: ${arr[i] ?? 0}`);
+  console.info(`索引 ${i}: ${arr[i]}`);
 }
 
 // 多变量循环
@@ -257,7 +257,7 @@ for (let i = 0, j = 10; i < j; i++, j--) {
 
 ### for...of循环
 
-`for...of`遍历可迭代对象的元素，语法简洁、通用性强、类型安全。
+`for...of`遍历可迭代对象的元素，语法简洁、通用性强；循环变量的类型由元素类型自动推导，享有编译期类型检查。
 
 <!-- @[for_of_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
@@ -275,11 +275,11 @@ for (let char of text) {
 }
 ```
 
-`for...of`常用于集合类型的遍历，更多示例见[集合类型](./arkts-language-guide-collection-types.md)章节。
+`for...of`常用于集合类型的遍历，更多示例见[集合](arkts-language-guide-collection-types.md)章节。
 
 ### while循环
 
-`while`循环先判断条件，再执行循环体，是基于条件控制的循环语句。
+`while`循环先判断条件，再执行循环体，是基于条件控制的循环语句。其语法结构示意如下，其中`condition`为占位符，并非可运行的代码：
 
 ``` TypeScript
 while (condition) {
@@ -308,15 +308,15 @@ while (loopValue < 5) {
 }
 
 // 处理数据直到条件满足
-let data: string | null = 'data';
-while (data !== null) {
-  console.info(`${data}`);
-  data = getNextData();
-}
-
 function getNextData(): string | null {
   // 返回数据或null
   return null;
+}
+
+let data: string | null = 'data';
+while (data !== null) {
+  console.info(`${data}`);  // 输出: data
+  data = getNextData();
 }
 
 // 累加直到满足条件
@@ -351,26 +351,27 @@ do {
 } while (loopValue2 < 5);
 
 // 用户输入验证
+function getInput(): string {
+  return 'valid input';
+}
+
 let input: string = '';
 do {
   input = getInput();
 } while (input.length === 0);
 
-function getInput(): string {
-  return 'valid input';
+// 重试逻辑：tryConnect()返回true时，循环仅执行一次
+function tryConnect(): boolean {
+  return true;
 }
 
-// 重试逻辑
 let success: boolean = false;
 let attempts: number = 0;
 do {
   success = tryConnect();
   attempts++;
 } while (!success && attempts < 3);
-
-function tryConnect(): boolean {
-  return true;
-}
+// attempts = 1, success = true
 ```
 
 ## 跳转语句
@@ -458,16 +459,16 @@ for (let num of continueNumbers) {
 // 输出：1, 2, 4, 5
 
 // 过滤无效数据
+function processItem(item: string): void {
+  console.info(`处理: ${item}`);
+}
+
 let continueData: (string | null)[] = ['valid', '', 'valid', null, 'valid'];
 for (let item of continueData) {
   if (item === '' || item === null) {
     continue;  // 跳过空值
   }
   processItem(item);
-}
-
-function processItem(item: string): void {
-  console.info(`处理: ${item}`);
 }
 ```
 

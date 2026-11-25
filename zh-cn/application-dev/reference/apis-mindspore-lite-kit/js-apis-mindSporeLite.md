@@ -1491,7 +1491,7 @@ globalContext.getApplicationContext()
 
 | 名称           | 值   | 说明                  |
 | -------------- | ---- | --------------------- |
-| DEFAULT_FORMAT | -1   | 未知数据排布方式。    |
+| DEFAULT_FORMAT | -1   | 默认数据排布方式。    |
 | NCHW           | 0    | 数据排布方式为NCHW。  |
 | NHWC           | 1    | 数据排布方式为NHWC。  |
 | NHWC4          | 2    | 数据排布方式为NHWC4。 |

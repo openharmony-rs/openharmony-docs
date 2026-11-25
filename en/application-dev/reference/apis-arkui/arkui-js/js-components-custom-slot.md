@@ -1,20 +1,20 @@
 # slot
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:00.456Z pushedAt=2026-06-23T10:57:28.329Z -->
+<!-- md-trans-meta sourceCommit=214e29279f37b00be7bd8f1096b2e4dc3af96177 translatedAt=2026-11-12T04:40:43.372Z pushedAt=2026-11-18T04:04:03.684Z nl=1 -->
 
 >  **NOTE**
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
+
 ## Default Slot
 
-You can use the **\<slot>** tag to create a slot inside a custom component to fill the content defined in the parent component. The sample code is as follows:
+You can use the **\<slot>** tag in a custom component to carry the content defined in the parent component. Using the **\<slot>** tag allows more flexible control over the content elements of a custom component. The usage is as follows:
 
 ```html
 <!-- comp.hml -->
@@ -25,16 +25,16 @@ You can use the **\<slot>** tag to create a slot inside a custom component to fi
 ```
 
 The following references the custom component:
-
 ```html
 <!-- xxx.hml --> 
  <element name='comp' src='../common/component/comp.hml'></element>  
  <div class="container">  
    <comp>
-     <text class="text-style">Content defined in the parent component</text>
+     <text class="text-style">Content defined in the parent component</text> 
    </comp>  
  </div>
 ```
+
 
 ## Named Slot
 
@@ -50,7 +50,6 @@ When multiple slots are needed inside a custom component, you can name them, so 
 ```
 
 The following references the custom component:
-
 ```html
 <!-- xxx.hml --> 
  <element name='comp' src='../common/component/comp.hml'></element>  

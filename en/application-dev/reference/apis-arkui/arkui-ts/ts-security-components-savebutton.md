@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=c603a0a8519aa227d7c69e53ac34b833087e4b67 translatedAt=2026-11-20T08:53:06.085Z pushedAt=2026-11-23T07:42:08.387Z nl=1 -->
 
 **SaveButton** is a system API for the save security control. It applies to scenarios where apps need temporary media library access permissions to save images or videos, such as saving images to albums and exporting media content.
 
@@ -23,9 +24,9 @@ You need to call media library APIs to obtain file handles and complete temporar
 
 ### Key Enums
 
-- [SaveIconStyle](#saveiconstyle): Enumeration of icon styles for the save button. Specifies the icon style displayed.
-- [SaveDescription](#savedescription): Enumeration of text descriptions for the save button. Specifies the text description displayed.
-- [SaveButtonOnClickResult](#savebuttononclickresult): Enumeration of click results for the save button. Indicates whether authorization succeeds after a click.
+- [SaveIconStyle](#saveiconstyle): Enumerates the icon styles for the save button. It specifies the icon style displayed.
+- [SaveDescription](#savedescription): Enumerates the text descriptions for the save button. It specifies the text description displayed.
+- [SaveButtonOnClickResult](#savebuttononclickresult): Enumerates the click results for the save button. It specifies whether authorization succeeds after a click.
 
 ### Key APIs
 
@@ -232,6 +233,11 @@ iconSize(size: Dimension | SizeOptions)
 
 Sets the icon size of the **SaveButton** component.
 
+> **NOTE**
+>
+> In API version 10, developers can set the icon size through the common security component attribute [iconSize](ts-securitycomponent-attributes.md#iconsize), in which case the **size** type supports only **Dimension**.<br/>
+> Since API version 20, you can set the icon size through this API, and the size type additionally supports **SizeOptions**.
+
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -357,7 +363,7 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 Sets the rendering strategy for the symbol icon of the save button.
 - Before calling this method, you need to call [setIcon](#seticon20) to configure a symbol-style icon resource (i.e., **$r('sys.symbol.*xxx*')**).
-- The configured rendering strategy will not apply if no symbol icon is set. 
+- The configured rendering strategy will not apply if no symbol icon is set.
 - When this parameter is used together with [symbolIconColor](#symboliconcolor), the rendering strategy determines how the color array is applied.
 
 **Since:** 26.0.0

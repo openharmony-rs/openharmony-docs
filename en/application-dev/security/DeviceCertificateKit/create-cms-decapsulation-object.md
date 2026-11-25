@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e84cbbf2e80bf551a43ab6e8f4f821cb891b50de translatedAt=2026-11-03T05:06:22.099Z pushedAt=2026-11-03T06:48:08.162Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:34:24.121Z pushedAt=2026-11-20T06:01:32.757Z nl=1 -->
 
 Certificate CMS decapsulation is supported since API version 22.
 
@@ -36,6 +36,7 @@ Decapsulation example:
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUBKEY: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -77,7 +78,9 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (error) {
-    console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -113,7 +116,9 @@ async function testCmsDecryptTest() {
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
     console.info('decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
   } catch (error) {
-    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`decryptEnvelopedData failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

@@ -1,11 +1,10 @@
 ---
 kits: ["Ability Kit / 程序框架服务"]
-description: "介绍在onCreate的launchParam中读取lastExitReason、lastExitMessage及进程内存rss/pss等信息，用于分析异常退出原因并优化应用存活率。"
-keywords: [异常退出, lastExitReason, lastExitMessage, lastExitDetailInfo, launchParam, rss, pss, 进程信息, APP_FREEZE]
+description: "介绍如何通过UIAbility的LaunchParam参数获取应用异常退出原因及进程运行信息，帮助开发者分析问题并优化业务逻辑。"
+keywords: [异常退出, lastExitReason, LaunchParam, LastExitDetailInfo, 退出原因]
 doctype: guide
 status: active
 ---
-
 # 获取应用异常退出原因
 
 <!--Kit: Ability Kit-->

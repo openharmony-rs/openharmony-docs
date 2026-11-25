@@ -5,7 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=15496fed0cae2d3de7549779264807cf5940b7af translatedAt=2026-09-04T04:00:28.955Z pushedAt=2026-09-09T09:11:03.751Z -->
+<!-- md-trans-meta sourceCommit=40f32de22bf3844030801fd151c8e4d2131d6ca7 translatedAt=2026-11-16T02:17:54.998Z pushedAt=2026-11-20T07:28:16.447Z nl=1 -->
 
 This module abstracts and defines uniform data types to uniformly represent and manage the hierarchy and belonging relationships of various data types (for example, JPEG belongs to IMAGE, and IMAGE belongs to MEDIA), facilitating consistent data interaction across modules and applications. For details about the design principles, see [Prebuilt UTDs](../../database/uniform-data-type-list.md).
 
@@ -253,14 +253,6 @@ Checks whether this data type belongs to the specified uniform data type.
 | ------- | ------------------------------------------------------------ |
 | boolean | Returns **true** if the data type belongs to or is the same as the specified uniform data type; returns **false** if they are not related.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -306,14 +298,6 @@ Checks whether this data type is a lower-level type of the specified uniform dat
 | ------- | ------------------------------------------------------------ |
 | boolean | Returns **true** if the data type is a lower-level type of the specified uniform data type; returns **false** otherwise.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -357,14 +341,6 @@ Checks whether this data type is a higher-level type of the specified uniform da
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
 | boolean | Returns **true** if the data type is a higher-level type of the specified uniform data type; returns **false** otherwise.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -410,14 +386,6 @@ Checks whether this data type is the same as the specified uniform data type. Th
 | ------- | ------------------------------------------------------------ |
 | boolean | **true** indicates that the two compared **TypeDescriptor** objects are the same; **false** indicates that they are different. |
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -461,14 +429,6 @@ Obtains the **TypeDescriptor** object based on the uniform data type ID.
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
 | [TypeDescriptor](#typedescriptor11) | Uniform Data Type descriptor object. If the Uniform Data Type to query does not exist, null is returned. |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -524,14 +484,6 @@ Obtains the uniform data type ID based on the given file name extension and data
 | ------- | ------------------------------------------------------------ |
 | string | Uniform data type ID that matches the given file name extension and the belonging type ID (if the belongsTo parameter is set). If the uniform data type to query does not exist, a dynamic type generated based on the input parameters according to the specified rules is returned. A dynamic type is a type identifier dynamically generated by the system, prefixed with 'flex.', and used to represent a data type that is not predefined. |
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -548,7 +500,7 @@ try {
   console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// If no uniform data type ID is found based on ".myts" and "general.plain-text", the type generated based on the input parameters is returned.
+// If no preset data type is found based on ".myts" and "general.plain-text", returns the dynamic type generated based on the input parameter information.
 try {
   let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.myts', 'general.plain-text');
   if (typeId) {
@@ -586,14 +538,6 @@ Obtains the uniform data type ID based on the given MIME type and data type. If 
 | ------- | ------------------------------------------------------------ |
 | string | ID of the uniform data type that matches the specified MIME type and **belongsTo** (if specified). If no match is found, the data type dynamically generated based on the rules specified by the input parameters is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -610,7 +554,7 @@ try {
   console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// If no uniform data type ID is found based on "image/myimage" and "general.image", the type generated based on the input parameters is returned.
+// If no preset data type is found for "image/myimage" and "general.image", returns the dynamic type generated based on the input parameter information.
 try {
   let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/myimage', 'general.image');
   if (typeId) {
@@ -648,14 +592,6 @@ Obtains the uniform data type IDs based on the given file name extension and dat
 | ------- | ------------------------------------------------------------ |
 | Array\<string> | Uniform data type IDs that match the specified file name extension and **belongsTo** (if specified). If no match is found, the data types dynamically generated based on the rules specified by the input parameters are returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -672,7 +608,7 @@ try {
   console.error(`getUniformDataTypesByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// If no uniform data type ID is found based on ".myts" and "general.plain-text", the types generated based on the input parameters are returned.
+// If no preset data type is found for ".myts" and "general.plain-text", return the dynamic type list generated based on the input parameter information.
 try {
   let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension('.myts', 'general.plain-text');
   for (let flexTypeId of flexTypeIds) {
@@ -709,14 +645,6 @@ Obtains the uniform data type IDs based on the given MIME type and data type.
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
 | Array\<string> | Uniform data type IDs that match the specified MIME type and **belongsTo** (if specified). If no match is found, the data types dynamically generated based on the rules specified by the input parameters are returned.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **ID**| **Error Message**                               |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 

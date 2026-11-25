@@ -77,10 +77,10 @@ console.info(`Point: (${point.x}, ${point.y})`);
 
 接口属性包括必选属性、可选属性（`?`）和只读属性（`readonly`）。
 
-<!-- @[ts_interface_property_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @[interface_property_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
 ``` TypeScript
-interface Product {
+interface ProductInfo {
   // 必选属性
   id: number;
   name: string;
@@ -90,11 +90,11 @@ interface Product {
   description?: string;
   stock?: number;
 
-  // 只读属性（使用readonly）
+  // 只读属性（使用 readonly）
   readonly createdAt: Date;
 }
 
-let product: Product = {
+let productInfo: ProductInfo = {
   id: 1,
   name: 'Laptop',
   price: 999,
@@ -102,62 +102,62 @@ let product: Product = {
 };
 
 // 可以访问可选属性
-if (product.description) {
-  console.info(`${product.description}`);
+if (productInfo.description) {
+  console.info(`${productInfo.description}`);
 }
 
 // 只读属性不能修改
-product.createdAt = new Date(); // 编译错误
+// productInfo.createdAt = new Date(); // 编译错误
 ```
 
 **方法声明**
 
 接口方法包括必选方法和可选方法（`?`），类通过`implements`实现接口方法。
 
-<!-- @[interface_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @[interface_method_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
 ``` TypeScript
-interface Calculator {
+interface ArithmeticOperations {
   reset(): void;
   add(a: number, b: number): number;
   subtract(a: number, b: number): number;
 
   // 可选方法（使用 ?）
-  logResult?(): void;
+  printResult?(): void;
 }
 
-class BasicCalculator implements Calculator {
+class ArithmeticCalculator implements ArithmeticOperations {
   private result: number = 0;
-  
+
   public reset(): void {
     this.result = 0;
     console.info('Calculator reset');
   }
-  
+
   public add(a: number, b: number): number {
     this.result = a + b;
     return this.result;
   }
-  
+
   public subtract(a: number, b: number): number {
     this.result = a - b;
     return this.result;
   }
-  
+
   // 可选方法可以不实现，如需实现可参考以下写法
-  public logResult(): void {
+  public printResult(): void {
     console.info(`Result: ${this.result}`);
   }
 }
 
-let calculator: BasicCalculator = new BasicCalculator();
-let sum: number = calculator.add(10, 5);
-console.info(`${sum}`); // 15
+let arithCalculator: ArithmeticCalculator = new ArithmeticCalculator();
+let arithSum: number = arithCalculator.add(10, 5);
+console.info(`${arithSum}`); // 15
 ```
 
 **访问器（getter/setter）**
 
-接口可以声明`get`/`set`访问器，要求实现类提供同名的getter和setter，用法与类的计算属性一致，详见[类的计算属性](arkts-language-guide-classes.md#计算属性)。
+接口可以声明`get`/`set`访问器，实现类须提供与声明同名且匹配的访问器；接口同时声明`get`和`set`时，getter和setter都须提供，用法与类的计算属性一致，详见[类的计算属性](arkts-language-guide-classes.md#计算属性)。
 
 <!-- @[interface_accessors](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -196,7 +196,7 @@ console.info(`${person.fullName}`); // 'Bob Brown'
 
 ### 类实现接口
 
-类通过`implements`关键字实现接口，必须提供接口中所有必选成员的实现，不同类可以实现同一接口提供不同行为。
+类通过`implements`关键字实现接口，必须提供接口中所有必选成员的实现，不同类可以实现同一接口提供不同行为。更多类与接口结合的用法，请参见[接口与类的结合](#接口与类的结合)。
 
 <!-- @[class_implements_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -217,7 +217,7 @@ class ConsoleLogger implements Logger {
   }
   
   public warn(message: string): void {
-    console.info(`[WARN] ${message}`);
+    console.warn(`[WARN] ${message}`);
   }
 }
 
@@ -455,68 +455,6 @@ function useOptionalInterface(obj: OptionalInterface): void {
 }
 ```
 
-### 替代方案：使用接口扩展实现可选成员
-
-通过让扩展接口继承基础接口并添加可选成员，实现类可以按需决定是否提供可选能力。
-
-<!-- @[extending_interface_with_optionals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-// 基础接口（必选成员）
-interface BaseInterface {
-  requiredMethod(): void;
-  requiredProperty: string;
-}
-
-// 扩展接口（包含可选成员）
-interface ExtendedInterface extends BaseInterface {
-  optionalMethod?(): void;
-  optionalProperty?: number;
-}
-
-class BaseInterfaceImpl implements BaseInterface {
-  public requiredProperty: string = 'Required value';
-
-  public requiredMethod(): void {
-    console.info('Required method');
-  }
-}
-
-class ExtendedInterfaceImpl implements ExtendedInterface {
-  public requiredProperty: string = 'Required value';
-  public optionalProperty: number = 42;
-
-  public requiredMethod(): void {
-    console.info('Required method');
-  }
-
-  public optionalMethod(): void {
-    console.info('Optional method');
-  }
-}
-
-// 使用基础接口
-let baseObj: BaseInterface = new BaseInterfaceImpl();
-
-// 使用扩展接口（可以选择是否提供可选成员）
-let extendedObj: ExtendedInterface = new ExtendedInterfaceImpl();
-
-// 让扩展接口继承基础接口
-function processObject(obj: BaseInterface): void {
-  obj.requiredMethod();
-  console.info(`${obj.requiredProperty}`);
-  
-  // 如果传入扩展接口对象，可以先转换为扩展接口再检查可选成员
-  let extended: ExtendedInterface = obj as ExtendedInterface;
-  if (extended.optionalMethod !== undefined) {
-    extended.optionalMethod();
-  }
-}
-
-processObject(baseObj);
-processObject(extendedObj);
-```
-
 ## 泛型接口
 
 泛型接口通过`<T>`引入类型参数，使一份接口适配多种数据类型。
@@ -570,38 +508,71 @@ console.info(`${numContainer.getValue().toString()}`); // 42
 console.info(`${strContainer.getValue()}`); // 'Hello'
 ```
 
+### 接口作为类的类型约束
+
+接口可用作泛型参数的约束（如`<T extends Comparable<T>>`），限制类型参数必须实现指定接口，从而在泛型代码中安全调用接口成员。
+
+<!-- @[comparable_equatable_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+
+``` TypeScript
+interface EquatableComparable<T> {
+  compareTo(other: T): number;
+}
+
+interface Equatable<T> {
+  equals(other: T): boolean;
+}
+
+class NumericValue implements EquatableComparable<NumericValue>, Equatable<NumericValue> {
+  public value: number;
+  
+  constructor(value: number) {
+    this.value = value;
+  }
+  
+  public compareTo(other: NumericValue): number {
+    return this.value - other.value;
+  }
+  
+  public equals(other: NumericValue): boolean {
+    return this.value === other.value;
+  }
+}
+
+let num1 = new NumericValue(10);
+let num2 = new NumericValue(20);
+let num3 = new NumericValue(10);
+
+console.info(`${num1.compareTo(num2)}`); // -10
+console.info(`${num1.equals(num2)}`);    // false
+console.info(`${num1.equals(num3)}`);    // true
+
+// 使用接口类型约束
+function findMax<T extends EquatableComparable<T>>(items: T[]): T | null {
+  if (items.length === 0) {
+    return null;
+  }
+  
+  let max: T = items[0];
+  for (let i = 1; i < items.length; i++) {
+    let current: T = items[i];
+    if (current.compareTo(max) > 0) {
+      max = current;
+    }
+  }
+  return max;
+}
+
+let values: NumericValue[] = [new NumericValue(5), new NumericValue(15), new NumericValue(10)];
+let maxValue = findMax(values);
+console.info(`${maxValue ? maxValue.value : 0}`); // 15
+```
+
 泛型的详细介绍（类型约束、泛型类、泛型函数等），请阅读[泛型](arkts-language-guide-generics.md)。
 
 ## 接口与类的结合
 
-类通过`implements`实现接口，接口定义契约、类提供实现。
-
-### 类实现单个接口
-
-类使用`implements`关键字实现单个接口，必须提供接口中所有必选成员的实现。
-
-<!-- @[single_interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface Drawable {
-  draw(): void;
-}
-
-class Circle implements Drawable {
-  private radius: number;
-  
-  constructor(radius: number) {
-    this.radius = radius;
-  }
-  
-  public draw(): void {
-    console.info(`Drawing a circle with radius ${this.radius}`);
-  }
-}
-
-let circle = new Circle(5);
-circle.draw(); // Drawing a circle with radius 5
-```
+类通过`implements`实现接口，接口定义契约、类提供实现。单个类实现的用法见[类实现接口](#类实现接口)，本章进一步介绍类实现多个接口、继承类同时实现接口的组合用法。
 
 ### 类实现多个接口
 
@@ -715,73 +686,13 @@ interfaceUser.activate();
 interfaceUser.deactivate();
 ```
 
-### 接口作为类的类型约束
-
-接口可用作泛型参数的约束（如`<T extends Comparable<T>>`），限制类型参数必须实现指定接口，从而在泛型代码中安全调用接口成员。
-
-<!-- @[comparable_equatable_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface EquatableComparable<T> {
-  compareTo(other: T): number;
-}
-
-interface Equatable<T> {
-  equals(other: T): boolean;
-}
-
-class NumericValue implements EquatableComparable<NumericValue>, Equatable<NumericValue> {
-  public value: number;
-  
-  constructor(value: number) {
-    this.value = value;
-  }
-  
-  public compareTo(other: NumericValue): number {
-    return this.value - other.value;
-  }
-  
-  public equals(other: NumericValue): boolean {
-    return this.value === other.value;
-  }
-}
-
-let num1 = new NumericValue(10);
-let num2 = new NumericValue(20);
-let num3 = new NumericValue(10);
-
-console.info(`${num1.compareTo(num2)}`); // -10
-console.info(`${num1.equals(num2)}`);    // false
-console.info(`${num1.equals(num3)}`);    // true
-
-// 使用接口类型约束
-function findMax<T extends EquatableComparable<T>>(items: T[]): T | null {
-  if (items.length === 0) {
-    return null;
-  }
-  
-  let max: T = items[0] as T;
-  for (let i = 1; i < items.length; i++) {
-    let current: T = items[i] as T;
-    if (current.compareTo(max) > 0) {
-      max = current;
-    }
-  }
-  return max;
-}
-
-let values: NumericValue[] = [new NumericValue(5), new NumericValue(15), new NumericValue(10)];
-let maxValue = findMax(values);
-console.info(`${maxValue ? maxValue.value : 0}`); // 15
-```
-
 ## 接口作为类型使用
 
 接口可以作为变量的类型标注，约束对象的结构。
 
 ### 接口作为变量类型
 
-接口名可直接作为变量的类型标注，赋值时对象字面量必须包含所有必选成员且类型匹配，多余属性会被编译器拒绝。
+接口名可直接作为变量的类型标注，赋值时对象字面量必须包含所有必选成员且类型匹配，多余属性会被编译器拒绝。ArkTS要求对象字面量显式标注类型（类或接口）。需要注意的是，对象字面量赋值给接口类型是ArkTS的一条特殊初始化规则，命名类型之间的赋值仍须基于显式`implements`/`extends`关系，不支持结构类型兼容。
 
 <!-- @[interface_object_literal_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 

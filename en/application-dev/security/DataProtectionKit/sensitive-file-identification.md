@@ -5,7 +5,7 @@
 <!--Designer: @zhengdu_628-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=277f347cc908207c2370f9910fda40cf9317cad3 translatedAt=2026-10-31T07:18:33.412Z pushedAt=2026-10-31T09:17:37.276Z nl=2 -->
+<!-- md-trans-meta sourceCommit=5f1a7feb50fd3026ea051af48897cc5b4ef740f8 translatedAt=2026-11-20T09:40:02.820Z pushedAt=2026-11-23T08:05:13.558Z nl=2 -->
 
  
 ## When to Use
@@ -16,6 +16,7 @@ Data Protection Kit provides applications with the capability to identify whethe
 
 1. File formats supported for identifying sensitive content: txt, doc, docx, xls, xlsx, ppt, pptx.
 2. A file to be identified can be up to 80 MB.
+<!--RP1--><!--RP1End-->
  
 ## Development Procedure
  

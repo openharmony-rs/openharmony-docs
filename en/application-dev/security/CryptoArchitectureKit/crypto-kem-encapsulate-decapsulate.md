@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=51c7d0d76eb53d3c36eed35b7e9afd4ac18e191c translatedAt=2026-11-13T12:32:43.842Z pushedAt=2026-11-16T02:06:53.430Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:32:19.293Z pushedAt=2026-11-23T08:03:45.377Z nl=1 -->
 
 Starting from API version 26.0.0, key encapsulation and decapsulation using the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM) algorithm is supported. For the corresponding algorithm specifications, see [KEM Encapsulation and Decapsulation Algorithm Specifications](#algorithm-specifications).
 
@@ -52,10 +52,10 @@ ML-KEM is a lattice-based post-quantum key encapsulation mechanism used to secur
   
   namespace Kem {
     export async function kemDecapsulateAwait() {
-      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
-      let keyPair = await asyKeyGenerator.generateKeyPair();
-      let kem : cryptoFramework.Kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
       try {
+        let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
+        let keyPair = await asyKeyGenerator.generateKeyPair();
+        let kem : cryptoFramework.Kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
         let encapResult : cryptoFramework.KemEncapResult = await kem.encapsulate(keyPair.pubKey, null);
         let sharedSecret : Uint8Array = await kem.decapsulate(keyPair.priKey, encapResult.wrappedKey);
         console.info('decapsulate success');
@@ -81,10 +81,10 @@ ML-KEM is a lattice-based post-quantum key encapsulation mechanism used to secur
   
   namespace Kem {
     export function kemDecapsulateSync() {
-      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
-      let keyPair = asyKeyGenerator.generateKeyPairSync();
-      let kem : cryptoFramework.Kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
       try {
+        let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
+        let keyPair = asyKeyGenerator.generateKeyPairSync();
+        let kem : cryptoFramework.Kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
         let encapResult : cryptoFramework.KemEncapResult= kem.encapsulateSync(keyPair.pubKey, null);
         let sharedSecret : Uint8Array = kem.decapsulateSync(keyPair.priKey, encapResult.wrappedKey);
         console.info('decapsulateSync success');

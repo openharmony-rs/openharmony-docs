@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f4ecce9099bc62e2d452c879c2a313ecec4e5ee9 translatedAt=2026-10-31T07:04:51.023Z pushedAt=2026-10-31T09:34:32.522Z nl=1 -->
+<!-- md-trans-meta sourceCommit=4ab32f2fe45cf02ee7ec70820c64544ed12bbfe6 translatedAt=2026-11-20T09:38:30.755Z pushedAt=2026-11-23T08:05:02.561Z nl=1 -->
 
 ## Setting Up a DLP Server
 
@@ -67,3 +67,5 @@ In this phase, the server performs exactly the same operations as in the credent
     - Generate a pair of temporary encryption/decryption public and private keys, use the temporary private key to perform key agreement with the temporary public key of the device side obtained from the certificate chain, and re-encrypt the policy plaintext with the agreed key.
 
     - Encapsulate the necessary information into a message and return it to the device-side client for decrypting the file and handling permission control.
+
+<!--RP1--><!--RP1End-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍如何使用画刷和画笔实现填充与描边，并结合混合模式、路径效果、着色器和滤波效果，呈现所需的绘制样式。"
+keywords: [画刷, 画笔, 填充效果, 描边效果, 混合模式, 路径效果, 着色器效果, 滤波效果]
+doctype: guide
+status: active
+---
+
 # 绘制效果概述
 
 <!--Kit: ArkGraphics 2D-->

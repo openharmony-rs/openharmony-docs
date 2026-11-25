@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=26981b54dcb92d5646f17bc8dcf56ce1bdfdfcf7 translatedAt=2026-08-27T08:45:58.907Z pushedAt=2026-08-28T01:44:08.588Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T09:12:38.992Z pushedAt=2026-11-20T02:05:33.636Z nl=1 -->
 
 ```c
 typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
@@ -30,7 +30,7 @@ Defines **OH_NativeXComponent_Callback**, which is used to register the Surface 
 | [void (\*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)](#onsurfacecreated) | Invoked when the surface is created. |
 | [void (\*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)](#onsurfacechanged) | Invoked when the size of the surface changes. |
 | [void (\*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)](#onsurfacedestroyed) | Invoked when the surface is destroyed.|
-| [void (\*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)](#dispatchtouchevent) | Invoked when a touch event is dispatched. |
+| [void (\*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)](#dispatchtouchevent) | Invoked when a touch event is dispatched. You can obtain touch event data in this callback to implement custom interaction logic, such as gesture recognition and custom drawing. |
 
 ## Member Function Description
 
@@ -72,7 +72,7 @@ Invoked when the size of the surface changes.
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to the **OH_NativeXComponent** instance. |
-| void* window | **NativeWindow** handle. This handle is passed in when the surface size or format changes, allowing you to perceive the latest surface state and update the rendering configuration. |
+| void* window | **NativeWindow** handle. This handle is passed in when the surface size changes, allowing you to perceive the latest surface state and update the rendering configuration. |
 
 ### OnSurfaceDestroyed()
 

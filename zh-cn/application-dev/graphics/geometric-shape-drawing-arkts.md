@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍点、圆弧、圆、矩形和圆角矩形的绘制方法，以及如何利用路径和区域组合绘制复杂图形。"
+keywords: [点, 圆弧, 圆, 路径, 区域, 矩形, 圆角矩形, Canvas]
+doctype: guide
+status: active
+---
+
 # 几何形状绘制（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->

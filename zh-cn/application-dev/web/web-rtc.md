@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍在Web组件中基于WebRTC打开摄像头和麦克风的完整流程，涵盖module.json5权限声明、系统侧与应用侧授权处理及示例代码。"
+keywords: [WebRTC, 摄像头, 麦克风, onPermissionRequest, getUserMedia, requestPermissionsFromUser, ohos.permission.CAMERA, ohos.permission.MICROPHONE, MediaStream]
+doctype: guide
+status: active
+---
+
 # 在Web中打开摄像头和麦克风
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

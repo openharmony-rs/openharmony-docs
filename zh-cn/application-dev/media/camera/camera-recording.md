@@ -6,11 +6,21 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
-
 相机应用可通过调用和控制相机设备，完成预览、拍照和录像等基础操作。
 
-录像也是相机应用的最重要功能之一，录像是循环帧的捕获。对于录像的自定义配置，开发者可以参考[拍照](camera-shooting.md)中的步骤6，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+录像是相机应用的最重要功能之一，录像是循环帧的捕获。对于录像的自定义配置，开发者可以参考[拍照](camera-shooting.md)中的步骤6，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+
+建议开发者查看[相机开发指导(ArkTS)](camera-device-management.md)的具体章节，了解[设备输入](camera-device-input.md)、[会话管理](camera-session-management.md)等基础流程。
+
+如需要将视频保存到媒体库中可参考[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)。
+
+## 开发流程
+
+在获取到相机支持的输出流能力后，开始创建录像流，开发流程如下。
+
+![Recording Development Process](figures/recording-development-process.png)
 
 ## 开发步骤
 
@@ -165,7 +175,7 @@
     if (err !== undefined && err.code !== 0) {
       return;
     }
-    console.info('Video frame started');
+    console.info(`Video frame started`);
   });
   ```
 
@@ -178,7 +188,7 @@
     if (err !== undefined && err.code !== 0) {
       return;
     }
-    console.info('Video frame ended');
+    console.info(`Video frame ended`);
   });
   ```
 

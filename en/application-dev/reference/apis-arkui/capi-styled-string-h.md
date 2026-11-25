@@ -5,11 +5,11 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6804dc0965f3a6a3b1ccc0fbcc76a3acb6111d5b translatedAt=2026-08-29T09:59:23.901Z pushedAt=2026-08-31T01:20:48.145Z -->
+<!-- md-trans-meta sourceCommit=dd5f5184946a370be059b349ca0e3437cf4bc207 translatedAt=2026-11-18T09:19:57.144Z pushedAt=2026-11-20T03:57:13.450Z nl=1 -->
 
 ## Overview
 
-Defines text styles and text layout managers for the component whose [ArkUI_NodeType](../apis-arkui/capi-native-node-h.md#arkui_nodetype) is **ARKUI_NODE_TEXT** on the native side. It provides rich text style settings, including font styles (text color, size, thickness, and style), text decoration lines, text shadows, baseline offsets, character spacing, line height, and line spacing, supports embedding of special content such as images, hyperlinks, and custom drawings, enables paragraph-level layout management, including alignment, indentation, and paragraph spacing, as well as allows text gesture interaction capabilities, such as tap, long-pressing, and touch events. It is applicable to scenarios that require rich text format display, complex text layout, mixed arrangement of text and images, and text interaction.
+Defines text styles and text layout managers for the component whose [ArkUI_NodeType](../apis-arkui/capi-native-node-h.md#arkui_nodetype) is **ARKUI_NODE_TEXT** on the native side. It provides rich text style settings, including font styles (text color, size, thickness, and style), text decoration lines, text shadows, baseline offsets, letter spacing, line height, and line spacing, supports embedding of special content such as images, hyperlinks, and custom drawings, enables paragraph-level layout management, including alignment, indentation, and paragraph spacing, as well as allows text gesture interaction capabilities, such as tap, long-pressing, and touch events. It is applicable to scenarios that require rich text format display, complex text layout, mixed arrangement of text and images, and text interaction.
 
 **File to include**: <arkui/styled_string.h>
 
@@ -236,6 +236,10 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* color)](#oh_arkui_backgroundcolorstyle_getcolor) | Obtains the background color of the background color style.|
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetRadius(OH_ArkUI_BackgroundColorStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)](#oh_arkui_backgroundcolorstyle_setradius) | Sets the background radii for the background color style.|
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetRadius(const OH_ArkUI_BackgroundColorStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)](#oh_arkui_backgroundcolorstyle_getradius) | Obtains the background radii of the background color style.|
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)](#oh_arkui_backgroundcolorstyle_setborderwidth) | Sets the border width of the background color style. |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)](#oh_arkui_backgroundcolorstyle_getborderwidth) | Obtains the border width of the background color style. |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)](#oh_arkui_backgroundcolorstyle_setbordercolor) | Sets the border color of the background color style. |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)](#oh_arkui_backgroundcolorstyle_getbordercolor) | Obtains the border color of the background color style. |
 | [OH_ArkUI_UrlStyle* OH_ArkUI_UrlStyle_Create()](#oh_arkui_urlstyle_create) | Creates an [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) object.|
 | [void OH_ArkUI_UrlStyle_Destroy(OH_ArkUI_UrlStyle* style)](#oh_arkui_urlstyle_destroy) | Releases the memory occupied by the [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) object.|
 | [ArkUI_ErrorCode OH_ArkUI_UrlStyle_SetUrl(OH_ArkUI_UrlStyle* style, const char* url)](#oh_arkui_urlstyle_seturl) | Sets the URL content for the URL style.|
@@ -256,10 +260,10 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResource(const OH_ArkUI_ImageAttachment* imageAttachment, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_imageattachment_getresource) | Obtains the image resource address in the image style.|
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeWidth(OH_ArkUI_ImageAttachment* imageAttachment, float width)](#oh_arkui_imageattachment_setsizewidth) | Sets the image width in the image style.|
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSizeWidth(const OH_ArkUI_ImageAttachment* imageAttachment, float* width)](#oh_arkui_imageattachment_getsizewidth) | Obtains the image width in the image style.|
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeHeight(OH_ArkUI_ImageAttachment* imageAttachment, float height)](#oh_arkui_imageattachment_setsizeheight) | Sets the image height in the image style.|
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSizeHeight(const OH_ArkUI_ImageAttachment* imageAttachment, float* height)](#oh_arkui_imageattachment_getsizeheight) | Obtains the image height in the image style.|
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetVerticalAlign(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment verticalAlign)](#oh_arkui_imageattachment_setverticalalign) | Sets the image alignment method in the image style.|
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetVerticalAlign(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment* verticalAlign)](#oh_arkui_imageattachment_getverticalalign) | Obtains the image alignment method in the image style.|
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeHeight(OH_ArkUI_ImageAttachment* imageAttachment, float height)](#oh_arkui_imageattachment_setsizeheight) | Sets the image height in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSizeHeight(const OH_ArkUI_ImageAttachment* imageAttachment, float* height)](#oh_arkui_imageattachment_getsizeheight) | Obtains the image height in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetVerticalAlign(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment verticalAlign)](#oh_arkui_imageattachment_setverticalalign) | Sets the image alignment method in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetVerticalAlign(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment* verticalAlign)](#oh_arkui_imageattachment_getverticalalign) | Obtains the image alignment method in the image style. |
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetObjectFit(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ObjectFit objectFit)](#oh_arkui_imageattachment_setobjectfit) | Sets the image scaling type in the image style.|
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetObjectFit(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ObjectFit* objectFit)](#oh_arkui_imageattachment_getobjectfit) | Obtains the image scaling type in the image style.|
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetMargin(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin margin)](#oh_arkui_imageattachment_setmargin) | Sets the image margin in the image style.|
@@ -276,6 +280,12 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSyncLoad(const OH_ArkUI_ImageAttachment* imageAttachment, bool* syncLoad)](#oh_arkui_imageattachment_getsyncload) | Obtains whether the image is loaded synchronously in the image style.|
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSupportSvg(OH_ArkUI_ImageAttachment* imageAttachment, bool supportSvg)](#oh_arkui_imageattachment_setsupportsvg) | Sets whether to enable the enhanced SVG tag parsing feature in the image style. If this feature is enabled, extended SVG tags and attributes can be parsed. |
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSupportSvg(const OH_ArkUI_ImageAttachment* imageAttachment, bool* supportSvg)](#oh_arkui_imageattachment_getsupportsvg) | Obtains whether the enhanced SVG tag parsing feature is enabled in the image style.|
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachment* imageAttachment, float left, float top, float right, float bottom)](#oh_arkui_imageattachment_setresizableslice) | Sets the image resizable slice in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageAttachment* imageAttachment, float* left, float* top, float* right, float* bottom)](#oh_arkui_imageattachment_getresizableslice) | Obtains the image resizable slice in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_Lattice* lattice)](#oh_arkui_imageattachment_setresizablelattice) | Sets the image resizable lattice in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_Lattice* lattice)](#oh_arkui_imageattachment_getresizablelattice) | Obtains the image resizable lattice in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *imageAttachment, const char *imageTag)](#oh_arkui_imageattachment_setimagetag) | Sets the image text tag in the image style. |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachment *imageAttachment, int32_t bufferSize, char *buffer, int32_t *writeLength)](#oh_arkui_imageattachment_getimagetag) | Obtains the image text tag in the image style. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetRangeBefore(const OH_ArkUI_TextEditorChangeEvent* event, uint32_t* start, uint32_t* end)](#oh_arkui_texteditorchangeevent_getrangebefore) | Obtains the range of the original text to be replaced in the text change information. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetReplacementStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorchangeevent_getreplacementstyledstring) | Obtains the styled string used for replacement in the text change information.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetPreviewStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorchangeevent_getpreviewstyledstring) | Obtains the styled string of the previewed content in the text change information.|
@@ -4219,7 +4229,7 @@ Sets the letter spacing. This API is applicable to scenarios where the text spac
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md)* letterSpacingStyle | Pointer to the [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md) object.|
-| float letterSpacing | Letter spacing value, in vp. The value range is (-∞, +∞). A positive value indicates that the character spacing is increased, a negative value indicates that the character spacing is decreased, and **0** indicates that the default spacing is used. |
+| float letterSpacing | Letter spacing value, in vp. The value range is (-∞, +∞). A positive value indicates that the letter spacing is increased, a negative value indicates that the letter spacing is decreased, and **0** indicates that the default spacing is used. |
 
 **Return value**
 
@@ -4750,6 +4760,122 @@ Obtains the background radii of the background color style.
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_BackgroundColorStyle_SetBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)
+```
+
+**Description**
+
+Sets the border width of the background color style.
+
+> **NOTE**
+>
+> All input pointers must be allocated, managed, and released by the caller.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [Input parameter] Pointer to the [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object. |
+| float borderWidth | [Input parameter] Border width, in vp. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_BackgroundColorStyle_GetBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)
+```
+
+**Description**
+
+Obtains the border width of the background color style.
+
+> **NOTE**
+>
+> All input pointers must be allocated, managed, and released by the caller.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [Input parameter] Pointer to the [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object. |
+| float* borderWidth | [Output parameter] Pointer to the border width, in vp. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_BackgroundColorStyle_SetBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)
+```
+
+**Description**
+
+Sets the border color for the background color style.
+
+> **NOTE**
+>
+> All input pointers must be allocated, managed, and released by the caller.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [Input parameter] Pointer to the [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object. |
+| uint32_t borderColor | [Input parameter] Border color, in 0xARGB format. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_BackgroundColorStyle_GetBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)
+```
+
+**Description**
+
+Obtains the border color of the background color style.
+
+> **NOTE**
+>
+> All input pointers must be allocated, managed, and released by the caller.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [Input parameter] Pointer to the [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object. |
+| uint32_t* borderColor | [Output parameter] Pointer to the border color, in 0xARGB format. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_UrlStyle_Create()
 
@@ -5748,6 +5874,168 @@ Obtains whether the enhanced SVG tag parsing feature is enabled in the image sty
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
+### OH_ArkUI_ImageAttachment_SetResizableSlice()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachment* imageAttachment,
+    float left, float top, float right, float bottom)
+```
+
+**Description**
+
+Sets the image resizable slice in the image style.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. |
+| float left | Width of the left edge, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| float top | Width of the top edge, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| float right | Width of the right edge, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| float bottom | Width of the bottom edge, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_ImageAttachment_GetResizableSlice()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageAttachment* imageAttachment,
+    float* left, float* top, float* right, float* bottom)
+```
+
+**Description**
+
+Obtains the image resizable slice in the image style.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. |
+| float* left | Pointer to the left edge width, in vp. This is an output parameter. Value range: [0, +∞). |
+| float* top | Pointer to the top edge width, in vp. This is an output parameter. Value range: [0, +∞). |
+| float* right | Pointer to the right edge width, in vp. This is an output parameter. Value range: [0, +∞). |
+| float* bottom | Pointer to the bottom edge width, in vp. This is an output parameter. Value range: [0, +∞). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_ImageAttachment_SetResizableLattice()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(
+    OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_Lattice* lattice)
+```
+
+**Description**
+
+Sets the image resizable lattice in the image style.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. |
+| const [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)* lattice | Pointer to the image resizable lattice. The parameter type is [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_ImageAttachment_GetResizableLattice()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(
+    const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_Lattice* lattice)
+```
+
+**Description**
+
+Obtains the image resizable lattice in the image style.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. |
+| [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)* lattice | Pointer to the image resizable lattice. This is an output parameter. The parameter type is [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_ImageAttachment_SetImageTag()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *imageAttachment, const char *imageTag)
+```
+
+**Description**
+
+Sets the image text tag in the image style.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) *imageAttachment | [Input parameter] Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. It cannot be **nullptr**. The caller owns the object and is responsible for its lifecycle. |
+| const char *imageTag | [Input parameter] Pointer to the image text tag string. It cannot be **nullptr**. The string must be **NUL**-terminated. The API copies the string internally, and the caller retains ownership of the original string. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### OH_ArkUI_ImageAttachment_GetImageTag()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachment *imageAttachment, int32_t bufferSize, char *buffer, int32_t *writeLength)
+```
+
+**Description**
+
+Obtains the image text tag in the image style.
+
+**Since**: 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) *imageAttachment | [Input parameter] Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. It cannot be **nullptr**. The caller owns the object and is responsible for its lifecycle. |
+| int32_t bufferSize | [Input parameter] Buffer size, in bytes. It must include space for the **NUL** terminator. |
+| char *buffer | [Output parameter] Pointer to the buffer used to store the image text tag string. It cannot be **nullptr**. The caller must allocate and manage this memory. The buffer stores a **NUL**-terminated UTF-8 encoded string. If the call fails, the buffer content remains unchanged. |
+| int32_t *writeLength | [Output parameter] Pointer to the length of the string actually written to the buffer. It cannot be **nullptr**. This value is always set regardless of success or failure. When [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned, it indicates the pointer to the length of the string actually written to the buffer, excluding the **NUL** terminator. When [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned, it indicates the pointer to the minimum length required to write the complete string to the buffer, excluding the **NUL** terminator; the caller must allocate at least **writeLength** + 1 bytes of space. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the buffer size is insufficient. |
+
 ### OH_ArkUI_TextEditorChangeEvent_GetRangeBefore()
 
 ```c
@@ -6239,7 +6527,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* 
 
 Sets tail indentation for a paragraph style.
 
-> **NOTE**
+> **NOTE** 
 > 
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
@@ -6270,7 +6558,7 @@ ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphS
 
 Obtains the tail indentation of the paragraph style.
 
-> **NOTE**
+> **NOTE** 
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 

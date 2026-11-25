@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-08-29T09:16:03.004Z pushedAt=2026-08-31T01:27:22.713Z -->
+<!-- md-trans-meta sourceCommit=72956694d9b7f65fcfb3ee690d9983a7bb12c90c translatedAt=2026-11-18T09:20:32.982Z pushedAt=2026-11-20T05:57:20.393Z nl=1 -->
 
 ## Overview
 
@@ -31,7 +31,7 @@ Defines common text enumerations and APIs, covering text alignment, decoration l
 | -- | -- | -- |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines the styled string descriptor object supported by the text component, enabling style configuration and management of text content. This struct is applicable when rich text display and style customization are required. |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md) | ArkUI_ShowCounterConfig | Defines the text input character counter configuration for managing character counting. This struct is applicable when character count limits and real-time prompts are needed for user input, helping users track input progress and prevent exceeding character limits. |
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | ArkUI_TextContentBaseController | Defines a basic controller for text content, providing content control capabilities for text components. This struct supports operations such as obtaining, setting, and updating text content. It is applicable when dynamic content management and real-time control of text components are needed, helping you manage displayed text content more flexibly. |
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | ArkUI_TextContentBaseController | Defines a base controller for text content, providing content control capabilities for text components. This struct supports operations such as obtaining, setting, and updating text content. It is applicable when dynamic content management and real-time control of text components are needed, helping you manage displayed text content more flexibly. |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md) | ArkUI_TextMenuItem | Defines a text menu item for setting attributes such as a title, icon, and enabled state, supporting text selection menus customization. |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | Defines a text menu item array for carrying multiple text menu item data in text selection menu or context menu scenarios. |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | Defines text menu extension options for extending the functionality of the text editing menu. This struct is applicable when you need to customize text editing menu operations. |
@@ -59,6 +59,7 @@ Defines common text enumerations and APIs, covering text alignment, decoration l
 | [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | Enumerates line break policies.|
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | Enumerates the text recognition types of a custom text selection menu.|
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | Enumerates the response types of a custom text selection menu.|
+| [OH_ArkUI_StrokeJoinStyle](#oh_arkui_strokejoinstyle) | OH_ArkUI_StrokeJoinStyle | Enumerates text stroke join styles. |
 
 ### Functions
 
@@ -372,6 +373,7 @@ Enumerates the IDs of text menu items.
 | ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | Ask AI. This menu item provides the AI query capability for the selected text. This menu item depends on a large language model to take effect. |
 | ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | Autofill. For example, the account and password can be automatically filled.<br>**Since:** 24|
 | ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | Password vault.<br>**Since:** 24|
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18 | Translate.<br>**Since:** 26.1.0 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | Start ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs.|
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | End ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs.|
 
@@ -431,6 +433,24 @@ Enumerates the response types of a custom text selection menu.
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected.|
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type is displayed when the operation of another type is triggered. If this type is set but other types are not set, the menu corresponding to this type is displayed when the operation of another type is triggered. For example, if there are two menus whose response types are **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** and **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** is displayed when you right-click the menu, and the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** is displayed when you hold down the right mouse button.|
 
+### OH_ArkUI_StrokeJoinStyle
+
+```c
+enum OH_ArkUI_StrokeJoinStyle
+```
+
+**Description**
+
+Enumerates text stroke corner styles.
+
+**Since**: 26.1.0
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0 | Miter join. The text stroke corner is displayed as a miter. |
+| OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN = 1 | Round join. The text stroke corner is displayed as a rounded join. |
+| OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN = 2 | Bevel join. The text stroke corner is displayed as a bevel join. |
+
 
 ## Function Description
 
@@ -444,7 +464,7 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 Callback for the text menu creation event. This callback is triggered when a text menu is created, allowing you to set menu data in it.
 
-> **NOTE**
+> **NOTE** 
 >
 > This callback and **ArkUI_TextPrepareMenuCallback** are both used for menu data setting, but their trigger timings differ: this callback is triggered when a menu is created, while **ArkUI_TextPrepareMenuCallback** is triggered after the text selection area changes and before the menu is displayed. Both can be registered simultaneously to handle menu initialization and selection change scenarios respectively.
 

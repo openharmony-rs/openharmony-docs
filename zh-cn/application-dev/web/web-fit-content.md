@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过layoutMode使Web组件高度随网页内容自适应，适用于长文章等Web与ArkUI组件共同滚动场景，并说明规格约束与常见问题。"
+keywords: [ArkWeb, layoutMode, WebLayoutMode.FIT_CONTENT, 自适应布局, 同步渲染, overScrollMode, metaviewport, Web组件高度, 滚动条]
+doctype: guide
+status: active
+---
+
 # Web组件大小自适应页面内容布局
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -123,7 +131,7 @@ fit_content.html页面代码如下：
             <li><p>维测能力：DevTools工具调试能力，使用crashpad收集Web组件崩溃信息。
             </p></li>
             <li><p>
-                其他高阶能力：与系统组件同层渲染、Web组件的网络托管、Web组件的媒体播放托管、Web组件输入框拉起自定义输入法、等。</p>
+                其他高阶能力：与系统组件同层渲染、Web组件的网络托管、Web组件的媒体播放托管、Web组件输入框拉起自定义输入法等。</p>
             </li>
         </ul>
     </div>

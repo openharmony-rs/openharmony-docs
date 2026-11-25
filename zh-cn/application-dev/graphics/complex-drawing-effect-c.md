@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍如何配置混合模式、路径效果、着色器和滤波器，实现图形叠加、虚线、渐变及模糊等绘制效果。"
+keywords: [混合模式, 虚线效果, 线性渐变, 径向渐变, 扇形渐变, 颜色滤波器, 图像滤波器, 蒙版滤波器]
+doctype: guide
+status: active
+---
+
 # 复杂绘制效果（C/C++）
 
 <!--Kit: ArkGraphics 2D-->

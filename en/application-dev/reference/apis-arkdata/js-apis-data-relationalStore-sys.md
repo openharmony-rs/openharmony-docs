@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=68d7b8030be7ba5da7e711fc0d0ad9a1a6eb2337 translatedAt=2026-09-04T03:40:56.110Z pushedAt=2026-09-09T09:11:03.723Z -->
+<!-- md-trans-meta sourceCommit=ec1718958bfb9b6933e3d4bdbd3691ff63eb5941 translatedAt=2026-11-16T02:13:06.791Z pushedAt=2026-11-20T07:27:56.630Z nl=1 -->
 
 A relational database (RDB) is a database that manages data based on the relational model. Based on the SQLite component, the relational database provides a complete mechanism for managing local databases and a series of APIs for adding, deleting, modifying, and querying data. It can also directly execute SQL statements entered by users to meet complex scenario requirements. Worker threads are not supported.
 
@@ -41,6 +41,7 @@ Defines the configuration of an RDB store.
 | isSearchable<sup>11+</sup> | boolean | No| Yes| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | No| Yes| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.|
 | autoCleanDeviceDirtyData | boolean | No | Yes | Whether the local device automatically cleans up the data synchronized from the remote device after the remote device deletes it. The value **true** indicates automatic cleanup, and **false** indicates manual cleanup. The default value is **true**. If this parameter is set to **false**, you need to actively call [cleanDeviceDirtyData](#cleandevicedirtydata) to clean up dirty data.<br/>The distributed data table configuration does not take effect in the [multi-device collaborative table mode](../../database/data-sync-of-rdb-store.md#data-sync-storage-mechanism).<br/>**System API:** This API is a system API.<br/>**Since:** 26.0.0<br/>**Model constraint:** This API is only used in the Stage model.<br/> |
+| dumpStackOnFileDeletion | boolean | No | Yes | Whether to enable call stack printing when a database file is deleted, which is used to locate the issue of a database file being deleted unexpectedly.<br>true indicates that after the database is opened, call stack information is printed when the database files (db, wal, shm) are deleted directly through the file API; false indicates that the feature is not enabled and the existing call stack printing switch set for the files remains unchanged. The default value is false.<br>It takes effect only on the db, wal, and shm files of the primary database and replica database, excluding auxiliary database files such as journal and binlog.<br>This parameter depends on the file deletion call stack printing capability of the device file system. It does not take effect when the file system does not support it, and it does not affect opening the database.<br>**System API:** This API is a system API.<br/>**Since:** 26.1.0<br>**Model restriction:** This API can only be used in the Stage model.|
 
 ## HAMode<sup>12+</sup>
 
@@ -69,6 +70,16 @@ Represents the reference between tables by field. If table **b** references tabl
 | targetTable | string | No| No| Name of the table that references the source table.  |
 | refFields   | Record<string, string> | No| No|Fields referenced. In a KV pair, the key indicates the field in the source table, and the value indicates the field in the target table.      |
 
+## Asset<sup>10+</sup>
+
+Represents the asset (such as a document, image, or video).
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| extension | string | No | Yes | Extension information of the asset, customized by the service side. The device side does not limit the length. The cloud side limits the length to 512 bytes, and truncates the excess part to retain the first 512 bytes. The default value is an empty string.<br/>**Since:** 26.1.0<br/>**System capability:** This API is a system API.<br/>**Model restriction:** This API can be used only in the stage model. |
+
 ## DistributedConfig<sup>10+</sup>
 
 Defines the configuration of the distributed mode of tables.
@@ -94,6 +105,7 @@ Defines the cloud sync configuration information.
 | Name | Type | Read-Only | Optional | Description |
 |------|------|------|------|----------------------------------------------------------------------------|
 | downloadOnly | boolean | No | Yes | Whether to download only cloud data to the local device. The value **true** means to download only cloud data to the local device, and **false** means to first download cloud data to the local device and then upload local data to the cloud. The default value is **false**. |
+| fullSync | boolean | No | Yes | Whether to perform full synchronization. **true** indicates that all cloud data is synced to the local device, and **false** indicates that only incremental data since the last device-cloud sync is synced. The default value is **false**.<br/>**Since:** 26.1.0<br/>**System API:** This API is a system API.<br/>**Model restriction:** This API can only be used in the Stage model. |
 
 ## RdbStore
 
@@ -122,7 +134,7 @@ Updates data based on the specified **DataSharePredicates** object. This API use
 | table      | string                                                       | Yes   | Name of the specified target table. It cannot be an empty string.                                             |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Update conditions specified by the **DataSharePredicates** object.               |
-| callback   | AsyncCallback&lt;number&gt;                                  | Yes   | Callback function used to return the number of affected rows.                   |
+| callback   | AsyncCallback&lt;number&gt;                                  | Yes   | Callback function. If the update is successful, **err** is **undefined** and **data** is the number of affected rows; otherwise, it is an error object.                   |
 
 **Error codes**
 
@@ -130,33 +142,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+ |
 
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { ValuesBucket } from '@kit.ArkData';
+import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 
 let value1 = "Rose";
 let value2 = 22;
@@ -228,33 +239,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+ |
 
 **Example**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { ValuesBucket } from '@kit.ArkData';
+import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let value1 = "Rose";
@@ -319,27 +329,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+ |
 
 **Example**
 
@@ -390,27 +400,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**     |
 |-----------| --------------------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
-| 14800047  | The WAL file size exceeds the default limit. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
+| 14800047  | The WAL file size exceeds the default limit.<br>Applicable versions: 10+ |
 
 **Example**
 
@@ -447,7 +457,7 @@ Queries data from the RDB store based on specified conditions. This API uses an 
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | table      | string                                                       | Yes   | Name of the specified target table, which cannot be an empty string.                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Query conditions specified by the **DataSharePredicates** object.              |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes   | Callback used to return the **ResultSet** object. |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the obtained **ResultSet** object. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -455,11 +465,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**          |
 |-----------| ------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -508,7 +518,7 @@ Queries data from the RDB store based on specified conditions (for example, colu
 | table      | string                                                       | Yes   | Name of the specified target table. It cannot be an empty string.                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Query conditions specified by the **DataSharePredicates** object.              |
 | columns    | Array&lt;string&gt;                                          | Yes  | Columns to query. If this parameter is not specified, the query applies to all columns.           |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes   | Callback used to return the **ResultSet** object. |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the obtained **ResultSet** object. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -516,11 +526,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**     |
 |-----------| --------------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -582,11 +592,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**        |
 |-----------| ----------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -646,10 +656,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**    |
 |-----------|--------------|
-| 202       | if permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
-| 801       | Capability not supported.  |
-| 14800014  | The target instance is already closed.      |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
 
 **Example 1**: Manually sync data on the local device with the cloud.
 
@@ -732,10 +742,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**           |
 |-----------|---------------------------|
-| 202       | if permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
-| 801       | Capability not supported.       |
-| 14800014  | The target instance is already closed.      |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
 
 **Example 1**: Manually sync data on the local device with the cloud.
 
@@ -812,25 +822,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**          |
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.                      |
-| 14800011  | The current operation failed because the database is corrupted.           |
-| 14800014  | The target instance is already closed.                        |
-| 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort.          |
-| 14800023  | SQLite: Access permission denied.         |
-| 14800024  | SQLite: The database file is locked.         |
-| 14800025  | SQLite: A table in the database is locked.           |
-| 14800026  | SQLite: The database is out of memory.            |
-| 14800027  | SQLite: Attempt to write a readonly database.         |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.             |
-| 14800029  | SQLite: The database is full.           |
-| 14800030  | SQLite: Unable to open the database file.        |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit.           |
-| 14800032  | SQLite: Abort due to constraint violation.        |
-| 14800033  | SQLite: Data type mismatch.             |
-| 14800034  | SQLite: Library used incorrectly.          |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+           |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+                        |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+          |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+          |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+         |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+         |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+           |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+            |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+         |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+             |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+           |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+        |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+           |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+        |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+             |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+          |
 
 **Example**
 
@@ -871,7 +881,7 @@ Finds the shared resource of the data records that match the specified predicate
 | Name  | Type                                                 | Mandatory| Description                                              |
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)              | Yes  | Query conditions.          |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result set.|
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes   | Callback function. If the query is successful, **err** is **undefined** and **data** is the obtained result set; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -880,25 +890,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**     |
 |-----------|------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
-| 801       | Capability not supported.                 |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.          |
-| 14800011  | The current operation failed because the database is corrupted.       |
-| 14800014  | The target instance is already closed.      |
-| 14800015  | The database does not respond.        |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort.         |
-| 14800023  | SQLite: Access permission denied.                    |
-| 14800024  | SQLite: The database file is locked.            |
-| 14800025  | SQLite: A table in the database is locked.           |
-| 14800026  | SQLite: The database is out of memory.           |
-| 14800027  | SQLite: Attempt to write a readonly database.            |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.         |
-| 14800029  | SQLite: The database is full.       |
-| 14800030  | SQLite: Unable to open the database file.       |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit.         |
-| 14800032  | SQLite: Abort due to constraint violation.      |
-| 14800033  | SQLite: Data type mismatch.         |
-| 14800034  | SQLite: Library used incorrectly.     |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+       |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+      |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+        |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+         |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+                    |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+            |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+           |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+           |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+            |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+         |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+       |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+       |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+         |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+      |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+         |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+     |
 
 
 **Example**
@@ -941,7 +951,7 @@ Finds the shared resources of the data records that match the specified predicat
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Query conditions.          |
 | columns    | Array&lt;string&gt;              | Yes  | Columns to be searched for.          |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | Yes  | Callback used to return the result set.|
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | Yes   | Callback function. If the query is successful, **err** is **undefined** and **data** is the obtained result set; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -950,25 +960,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**      |
 |-----------|--------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.            |
-| 14800011  | The current operation failed because the database is corrupted.         |
-| 14800014  | The target instance is already closed.          |
-| 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort.    |
-| 14800023  | SQLite: Access permission denied.     |
-| 14800024  | SQLite: The database file is locked.     |
-| 14800025  | SQLite: A table in the database is locked.       |
-| 14800026  | SQLite: The database is out of memory.      |
-| 14800027  | SQLite: Attempt to write a readonly database.    |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.       |
-| 14800029  | SQLite: The database is full.       |
-| 14800030  | SQLite: Unable to open the database file.       |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit.      |
-| 14800032  | SQLite: Abort due to constraint violation.       |
-| 14800033  | SQLite: Data type mismatch.        |
-| 14800034  | SQLite: Library used incorrectly.          |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+         |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+          |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+          |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+    |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+     |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+     |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+       |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+      |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+    |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+       |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+       |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+       |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+      |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+       |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+        |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+          |
 
 
 **Example**
@@ -1022,7 +1032,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**           |
 |-----------|---------------------------|
-| 202       | Permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 
 **Example**
 
@@ -1060,7 +1070,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**           |
 |-----------|---------------------------|
-| 202       | Permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 
 **Example**
 
@@ -1098,26 +1108,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | The current operation failed because the database is corrupted. |
-| 14800014  | The target instance is already closed. |
-| 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort. |
-| 14800023  | SQLite: Access permission denied. |
-| 14800024  | SQLite: The database file is locked. |
-| 14800025  | SQLite: A table in the database is locked. |
-| 14800026  | SQLite: The database is out of memory. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
-| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
-| 14800032  | SQLite: Abort due to constraint violation. |
-| 14800033  | SQLite: Data type mismatch. |
-| 14800034  | SQLite: Library used incorrectly. |
+| 14800011  | The current operation failed because the database is corrupted.<br>Applicable versions: 12+ |
+| 14800014  | The target instance is already closed.<br>Applicable versions: 12+ |
+| 14800015  | The database does not respond.<br>Applicable versions: 12+ |
+| 14800021  | SQLite: Generic error.<br>Applicable versions: 12+ |
+| 14800022  | SQLite: Callback routine requested an abort.<br>Applicable versions: 12+ |
+| 14800023  | SQLite: Access permission denied.<br>Applicable versions: 12+ |
+| 14800024  | SQLite: The database file is locked.<br>Applicable versions: 12+ |
+| 14800025  | SQLite: A table in the database is locked.<br>Applicable versions: 12+ |
+| 14800026  | SQLite: The database is out of memory.<br>Applicable versions: 12+ |
+| 14800027  | SQLite: Attempt to write a readonly database.<br>Applicable versions: 12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred.<br>Applicable versions: 12+ |
+| 14800029  | SQLite: The database is full.<br>Applicable versions: 12+ |
+| 14800030  | SQLite: Unable to open the database file.<br>Applicable versions: 12+ |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit.<br>Applicable versions: 12+ |
+| 14800032  | SQLite: Abort due to constraint violation.<br>Applicable versions: 12+ |
+| 14800033  | SQLite: Data type mismatch.<br>Applicable versions: 12+ |
+| 14800034  | SQLite: Library used incorrectly.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -1147,9 +1157,9 @@ The more data to be deleted, the longer the execution takes.
 > **NOTE**
 >
 > The input parameter can be empty, and the device ID list corresponding to a database table name can also be empty. However, neither the database table name nor the device ID can be an empty string.
->
+> 
 > If the input parameter is empty, all data synchronized from other devices in all single-version distributed tables of the current database is deleted.
->
+> 
 > If the device ID list corresponding to a database table name in the input parameter is empty, all data synchronized from other devices in the table is deleted.
 >
 > Data written locally and data synchronized from the device IDs passed in are retained, while data synchronized from other device IDs is deleted.
@@ -1176,7 +1186,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
@@ -1224,7 +1234,7 @@ It does not support updating distributed data tables in the multi-device collabo
 The more data to update, the longer the execution takes.
 
 > **NOTE**
->
+> 
 > If the device ID is passed in the input parameter **info**, it must be the ID of a device that has established a network connection with the current device.
 >
 > If [ORIGIN_ORIDEVICE](#distributedfield24) is passed in the input parameter **predicates**, only the equal-to-empty or not-equal-to-empty condition is allowed.
@@ -1252,7 +1262,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
@@ -1308,6 +1318,65 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
     }
   }
 }
+
+```
+### requestFullDataDonation
+
+requestFullDataDonation(tables: Array&lt;string&gt;): Promise&lt;void&gt;
+
+Requests full data donation of the specified distributed tables. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | type | Mandatory | Description |
+| -------- | ----------------------------------- | --- |-----------------|
+| tables   | Array&lt;string&gt;                 | Yes   | List of distributed table names that need full data donation. The list contains a maximum of 20 entries and cannot be empty.  |
+
+**Return value**
+
+| type | Description |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Store Error Codes](errorcode-data-rdb.md).
+
+| **ID** | **Error Message**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed. A non-system application calls a system API.|
+| 14800001     | Invalid arguments. Parameter out of range or empty table list.  |
+| 14800014     | The target instance is already closed.                            |
+| 14800043     | The database does not support this scenario.|
+
+**Example**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+
+let store: relationalStore.RdbStore | null = null;
+async function requestFullDataDonationExample() 
+{
+  if (store === null) {
+    console.error('RdbStore is null.');
+    return;
+  }
+  try {
+    const tables: Array<string> = ['EMPLOYEE'];
+    await store.requestFullDataDonation(tables);
+    console.info('Full data donation request submitted successfully.');
+  } catch (e) {
+    console.error(`Failed to request full data donation, code: ${e.code}`);
+  }
+}
 ```
 
 ## cleanDeviceDirtyData
@@ -1343,7 +1412,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**     |
 |-----------|---------------|
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -1399,7 +1468,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**         |
 |-----------| ------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | The capability is not supported because the database is not a vector DB. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The database is not a vector DB. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |

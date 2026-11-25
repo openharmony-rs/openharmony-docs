@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
-<!--Tester: @ybhou1993-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 工具栏用于展示针对当前界面内容的操作选项，适用于需要为用户提供快速操作入口的场景。
@@ -30,7 +30,8 @@
 
 | 名称                   | 类型                                            | 只读 | 可选 | 说明                                                                                                                                      |
 | :--------------------- | :---------------------------------------------- | :--- | :--- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)  | 否   | 是   | 工具栏背景材质。设置系统样式材质效果，会影响工具栏的backgroundColor、border、shadow等视觉属性。<br />默认值：undefined。<br />值为undefined时，不设置系统材质效果。 |
+| systemBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)  | 否   | 是   | 工具栏背景材质。设置系统样式材质效果，会影响工具栏的backgroundColor、borderColor、borderWidth、shadow等视觉属性。设置后，borderColor和borderWidth不生效。<br />默认值：undefined。<br />值为undefined时，不设置系统材质效果。 |
+| systemMaterialStyle | [ToolBarV2MaterialStyle](#toolbarv2materialstyle) | 否   | 是   | 工具栏简化系统材质样式。设置后会影响工具栏的backgroundColor、borderColor、borderWidth等视觉属性，borderColor和borderWidth不生效。<br />默认值：undefined。<br />值为undefined时，不设置系统材质样式。同时设置systemBackgroundMaterial和systemMaterialStyle时，systemBackgroundMaterial优先生效。 |
 
 ## ToolbarV2StyleConfigs
 
@@ -58,4 +59,22 @@
 
 | 名称                   | 类型                                            | 只读 | 可选 | 说明                                                                                                                                      |
 | :--------------------- | :---------------------------------------------- | :--- | :--- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)  | 否   | 是   | 工具栏背景材质。设置系统样式材质效果，会影响工具栏的backgroundColor、border、shadow等视觉属性。<br />默认值：undefined。<br />值为undefined时，不设置系统材质效果。<br />装饰器类型：@Trace |
+| systemBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)  | 否   | 是   | 工具栏背景材质。设置系统样式材质效果，会影响工具栏的backgroundColor、borderColor、borderWidth、shadow等视觉属性。设置后，borderColor和borderWidth不生效。<br />默认值：undefined。<br />值为undefined时，不设置系统材质效果。<br />装饰器类型：@Trace |
+| systemMaterialStyle | [ToolBarV2MaterialStyle](#toolbarv2materialstyle) | 否   | 是   | 工具栏简化系统材质样式。设置后会影响工具栏的backgroundColor、borderColor、borderWidth等视觉属性，borderColor和borderWidth不生效。<br />默认值：undefined。<br />值为undefined时，不设置系统材质样式。同时设置systemBackgroundMaterial和systemMaterialStyle时，systemBackgroundMaterial优先生效。<br />装饰器类型：@Trace |
+
+## ToolBarV2MaterialStyle
+
+工具栏的系统材质样式枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称    | 值 | 说明                       |
+| ------- | - | -------------------------- |
+| NONE    | 0 | 无系统材质样式。           |
+| DEFAULT | 1 | 默认的系统材质样式配置。   |

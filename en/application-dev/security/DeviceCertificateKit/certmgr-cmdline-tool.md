@@ -2,13 +2,15 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @chaceli-->
+<!--Owner: @liutianqi-->
 <!--Designer: @chande-->
 <!--Tester: @sunzibin001-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=c8093d1c731a16c88278ff4829f8fe5986157773 translatedAt=2026-11-03T05:05:40.072Z pushedAt=2026-11-03T06:48:04.226Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f5748e9ec1384a2f89f572bb52b7921846c51c5d translatedAt=2026-11-20T09:42:06.856Z pushedAt=2026-11-23T08:06:40.720Z nl=1 -->
 
 Starting from API version 26.0.1, the certificate management command-line tool (certmgr) is provided, mainly for installing user CA certificates on devices through the command line. It supports installing CA certificates at the current user level and the all users level (GlobalUser), supports certificate files in PEM/DER and PKCS#7 (P7B) formats, and also supports inputting certificate data through a pipe.
+
+Starting from API version 26.1.0, the certificate management command-line tool (certmgr) adds the capability to query user CA certificates. It supports querying installed user CA certificates by current user, all-user level (GlobalUser), or both simultaneously, and can output the PEM encoding and hash value of the certificate.
 
 ## Obtaining the Command Line Tool
 
@@ -19,7 +21,8 @@ Tools supported on OpenHarmony PC/2in1 devices: this tool is preinstalled with t
 | Command      | Description                                                         |
 | ------------- | ------------------------------------------------------------ |
 | -h            | Displays the commands supported by the tool.                         |
-| installUserCA | Installs a user CA certificate.  |
+| installUserCA | Installs a user CA certificate. Supported since API version 26.0.1. |
+| findUserCA    | Queries user CA certificates. Supported since API version 26.1.0. |
 
 ## Help Command (-h)
 
@@ -29,18 +32,21 @@ certmgr -h
 
 # Query the parameter information of the installUserCA command.
 certmgr installUserCA -h
+
+# Query the parameter information of the findUserCA command.
+certmgr findUserCA -h
 ```
 
 ## Installing a User CA Certificate (installUserCA)
 
-When installing a user CA certificate, the system triggers user identity authentication (PIN authentication) or administrator authorization authentication. The installation can be completed only after the authentication succeeds<!--RP1--><!--RP1End-->. When the `-g` parameter is specified, the certificate is installed to the all-users (GlobalUser) directory, which requires administrator authorization authentication. When the `-g` parameter is not specified, the certificate is installed to the current user directory, which requires user identity authentication.
+When installing a user CA certificate, the system triggers user identity authentication (PIN authentication) or administrator authorization authentication. The installation can be completed only after the authentication succeeds<!--RP1--><!--RP1End-->. When the `-g` parameter is specified, the certificate is installed to the all-user (GlobalUser) directory, which requires administrator authorization authentication. When the `-g` parameter is not specified, the certificate is installed to the current user directory, which requires user identity authentication.
 
 **Parameters**
 
 | Parameter        | Description               |
 | ---------------- | ------------------------- |
 | -h               | Displays help information.    |
-| -g               | Installs the certificate to the all-users (GlobalUser) directory. By default, the certificate is installed to the current user directory. Optional. |
+| -g               | Installs the certificate to the all-user (GlobalUser) directory. By default, the certificate is installed to the current user directory. Optional. |
 | -F certFileFormat | Certificate file format. Supports PEM_DER or P7B. The default value is PEM_DER. Optional. |
 | certFile         | Path of the CA certificate file to be installed. Only one file can be specified.<br>Supports pipe input. Required when pipe input is not used. |
 
@@ -53,7 +59,7 @@ certmgr installUserCA -F PEM_DER ca_cert.pem
 # 2. Install a P7B-format CA certificate to the current user.
 certmgr installUserCA -F P7B ca_cert.p7b
 
-# 3. Install a CA certificate to the all-users (GlobalUser) directory.
+# 3. Install a CA certificate to the all-user (GlobalUser) directory.
 certmgr installUserCA -g -F PEM_DER ca_cert.pem
 
 # 4. Install a CA certificate through pipe input.
@@ -67,9 +73,93 @@ certmgr installUserCA ca_cert.pem
 
 > **Note:**
 >
-> - When the `-g` parameter is used to install a certificate to the all-users (GlobalUser) directory, the operation is governed by the device security policy. The device security policy can control whether the current user is allowed to install an all-users CA certificate through the `installGlobalUserCA_defaultConfig`, `enableInstallGlobalUserCA_userList`, and `disableInstallGlobalUserCA_userList` configuration items.
+> - When the `-g` parameter is used to install a certificate to the all-user (GlobalUser) directory, the operation is governed by the device security policy. The device security policy can control whether the current user is allowed to install an all-user CA certificate through the `installGlobalUserCA_defaultConfig`, `enableInstallGlobalUserCA_userList`, and `disableInstallGlobalUserCA_userList` configuration items.
 > - When a certificate is installed, the system triggers the authentication UI. The title of the authentication UI is localized based on the device system language.
 > - A P7B-format certificate may contain multiple certificates. After the installation succeeds, the URI of each certificate is output.
+
+## Query User CA Certificate Command (findUserCA)
+
+Queries the user CA certificates installed on the device. It supports querying by current user, all-user level (GlobalUser), or both simultaneously, supports name filtering and return count restriction, and can optionally output the certificate's PEM encoding or hash value. The query operation does not trigger identity authentication.
+
+**Parameters**
+
+| Parameter | Description |
+| ---------------- | ---------------------- |
+| -h | Displays help information. |
+| -g | Queries only CA certificates in the all-user level (GlobalUser) directory. Mutually exclusive with -gu. Optional item. |
+| -gu | Queries CA certificates in both the current user directory and the all-user level (GlobalUser) directory simultaneously. Mutually exclusive with -g. Optional item. |
+| -n name | Filters by certificate name, matching the certificate alias or subject, with partial matching supported. Optional item. |
+| -c count | Maximum number of certificates to return. `0` means no restriction (return all), and the default is `0`. Optional item. |
+| -p | Additionally outputs the certificate's PEM encoding. Optional item. |
+| -z | Additionally outputs the certificate's SHA-256 and SHA-1 hash values. Optional item. |
+
+**Example**
+
+```bash
+# 1. Query all user CA certificates in the current user directory
+certmgr findUserCA
+
+# 2. Query only CA certificates in the all-user level (GlobalUser) directory
+certmgr findUserCA -g
+
+# 3. Query CA certificates in both the current user directory and the all-user level (GlobalUser) directory simultaneously
+certmgr findUserCA -gu
+
+# 4. Filter by name (alias or subject contains test)
+certmgr findUserCA -n test
+
+# 5. Return at most 2 certificates
+certmgr findUserCA -c 2
+
+# 6. Return all certificates and output PEM encoding and hash values
+certmgr findUserCA -c 0 -p -z
+```
+
+**Output format**:
+
+```text
+certificate count: 2
+
+URI: oh:t=c;o=yyy;u=0;a=0
+certType: userCA
+scope: globalUser
+attributes:
+  "alias": global_ca
+  "subject": CN=Global Test CA
+  "state": disable
+SHA-256 hash: A1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F67890
+SHA-1 hash: 1A2B3C4D5E6F7890A1B2C3D4E5F67890A1B2C3D4
+pem:
+-----BEGIN CERTIFICATE-----
+MIIBxxDCCAWygAwIBAgIUZm9vYmFyMjAyNjExMTAwMDAwMA0GCSqGSIb3DQEBCwUAMBQX
+...(PEM encoded content, can be multi-line)...
+-----END CERTIFICATE-----
+
+URI: oh:t=c;o=xxx;u=100;a=500
+certType: userCA
+scope: currentUser
+attributes:
+  "alias": my_ca
+  "subject": CN=My Test CA
+  "state": enable
+SHA-256 hash: B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F6789A
+SHA-1 hash: 2B3C4D5E6F7890A1B2C3D4E5F67890A1B2C3D4E5
+pem:
+-----BEGIN CERTIFICATE-----
+MIIBxxDCCAWygAwIBAgIUdGVzdDIwMjYxMTEwMDAwMDAwMBQX
+...(PEM encoded content, can be multi-line)...
+-----END CERTIFICATE-----
+```
+When -z is not specified, the `SHA-256 hash:` and `SHA-1 hash:` lines are not output. When -p is not specified, `pem:` and the subsequent PEM encoded content are not output. When both -z and -p are specified, the hash values (-z) are output first, followed by the PEM encoding (-p).
+
+Field descriptions:
+
+- `certificate count`: always output, and its value is the number of certificates.
+- `certType`: `userCA` is always output, and the current command queries only user CA certificates.
+- `scope`: the value is `currentUser` (current user directory, where `userId` is the current user) or `globalUser` (all-user level directory, where `userId` is 0). When -gu is specified, each certificate is displayed according to the directory it belongs to.
+- `state`: the value is `enable` (enabled) or `disable` (disabled).
+- SHA-256 hash:/SHA-1 hash: output only when `-z` is specified, in uppercase hexadecimal, calculated by certificate DER encoding.
+- pem: and subsequent PEM content are output only when `-p` is specified. The PEM content itself contains line breaks.
 
 ## Error Message
 
@@ -84,6 +174,11 @@ A command-line parameter error or invalid parameter occurs, and one of the follo
 - `Install failed: Invalid argument`
 - `Invalid file size: <size>`
 - `No data from pipe input`
+- `Missing value for -n parameter`
+- `Missing value for -c parameter`
+- `Invalid count value: <value>`
+- `Cannot specify both -g and -gu`
+- `Name too long`
 
 **Possible Causes**
 
@@ -93,6 +188,10 @@ A command-line parameter error or invalid parameter occurs, and one of the follo
 4. No certificate data is provided through a file path or pipe input.
 5. The certificate file size is 0 or exceeds the maximum limit of the corresponding format (8196 bytes for the PEM_DER format and 307200 bytes, that is, 300 KB, for the P7B format).
 6. No data is provided when inputting through a pipe.
+7. No value is specified when the `-n` or `-c` parameter is used.
+8. The value of the `-c` parameter is not a valid integer.
+9. `findUserCA` specifies the `-g` and `-gu` parameters simultaneously.
+10. The length of the name specified by the `-n` parameter exceeds the upper limit (256 bytes).
 
 **Solution**
 
@@ -102,6 +201,10 @@ A command-line parameter error or invalid parameter occurs, and one of the follo
 4. If no certificate file path is specified, input the certificate data through a pipe.
 5. Check that the certificate file has valid content and that the file size does not exceed the limit for the corresponding format (the PEM_DER format does not exceed 8196 bytes, and the P7B format does not exceed 307200 bytes, that is, 300 KB).
 6. When using pipe input, ensure that the pipe contains valid certificate data. For example, pass the certificate file content via `cat ca_cert.pem | certmgr installUserCA`, and avoid an empty pipe or no data being passed, which would cause a read failure.
+7. Add a value to the `-n` or `-c` parameter, for example, `certmgr findUserCA -c 2`.
+8. Check whether the `-c` parameter is a valid integer, for example `-c 0` or `-c 2`.
+9. The `-g` and `-gu` parameters of `findUserCA` are mutually exclusive. Keep only one of them.
+10. Shorten the length of the name specified by the `-n` parameter and retry.
 
 ### CM_CMD_ERR_OPEN_FILE_FAIL
 
@@ -193,3 +296,18 @@ The user cancels the authentication operation on the identity authentication or 
 **Solution**
 
 Re-execute the command and complete identity authentication or administrator authorization on the authentication screen.
+
+### Query Failure (findUserCA)
+
+Failed to query the user CA certificate. Error message: `Find failed: <detail>`
+
+**Possible Causes**
+
+1. The certificate management service is unavailable, or the query API returns an error.
+2. The caller lacks the permission to access the certificate management service.
+3. An exception occurs when querying the certificate attribute library.
+
+**Solution**
+
+1. Re-execute the query command and confirm that the certificate management service has started normally.
+2. Confirm that the current process has the permission to access the certificate management service. If the issue is caused by a permission problem, contact the system administrator.

@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ca610c3b31eac2a84ffac21a107ce522b473feb1 translatedAt=2026-08-27T08:41:38.107Z pushedAt=2026-08-27T12:16:45.824Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-18T09:09:44.244Z pushedAt=2026-11-20T01:52:52.047Z nl=1 -->
 
 ## Overview
 
@@ -56,6 +56,8 @@ Enumerates the states of the **NavDestination** component, used to describe the 
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | The **NavDestination** is about to be hidden.|
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | The **NavDestination** is about to be mounted to the component tree.|
 | ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | The **NavDestination** component is about to be unmounted from the component tree.|
+| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 | The **NavDestination** component is in the active state.<br>**Since:** 26.1.0 |
+| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 | The **NavDestination** component is in the inactive state.<br>**Since:** 26.1.0 |
 | ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | The **NavDestination** component receives a back operation, for example, when the user taps the back key or calls the back navigation API. |
 
 ### ArkUI_RouterPageState

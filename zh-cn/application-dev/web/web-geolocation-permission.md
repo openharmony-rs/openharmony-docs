@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件的网页位置权限管理，包括声明位置权限、响应授权弹窗，以及新增、查询和删除指定来源的网页权限。"
+keywords: [位置权限, GeolocationPermissions, onGeolocationShow, allowGeolocation, deleteGeolocation, getAccessibleGeolocation, geolocationAccess, ohos.permission.LOCATION, 位置信息]
+doctype: guide
+status: active
+---
+
 # 管理位置权限
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

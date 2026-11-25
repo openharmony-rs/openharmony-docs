@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=f711ea03cc0a77c02e528009e96bfda1200a7f2b translatedAt=2026-08-27T08:49:56.568Z pushedAt=2026-08-28T03:11:18.056Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:16:05.036Z pushedAt=2026-11-20T02:17:05.029Z nl=1 -->
 
 ## Overview
 
@@ -41,7 +41,7 @@ The file declares the common enums and definitions of the window manager.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | Enumerates the status codes returned by the window manager interface.|
+| [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | Enumerates the status codes returned by the window manager API.|
 | [WindowManager_AvoidAreaType](#windowmanager_avoidareatype) | WindowManager_AvoidAreaType | Enumerates the avoid area types.|
 | [WindowManager_WindowType](#windowmanager_windowtype) | WindowManager_WindowType | Enumerates the window types.|
 
@@ -62,7 +62,7 @@ enum WindowManager_ErrorCode
 
 **Description**
 
-Enumerates the status codes returned by the window manager interface.
+Enumerates the status codes returned by the window manager API.
 
 **Since**: 12
 

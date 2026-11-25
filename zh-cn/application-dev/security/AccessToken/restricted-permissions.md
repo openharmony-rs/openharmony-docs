@@ -1648,7 +1648,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
-允许车内后排屏上应用调用空间手势接口，完成乘客与屏幕隔空交互。
+允许车载应用调用空间手势接口，完成乘客与屏幕隔空交互。
 
 <!--RP106--><!--RP106End-->
 
@@ -1896,6 +1896,20 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **权限级别**：system_basic
 
 **授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION
+
+允许应用操作其他应用中已获焦输入框的文本。
+
+<!--RP124--><!--RP124End-->
+
+**权限级别**：system_basic
+
+**授权方式**：manual_settings
 
 **支持设备**：PC/2in1
 

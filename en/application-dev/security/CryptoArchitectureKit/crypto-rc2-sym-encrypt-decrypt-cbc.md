@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:31:56.925Z pushedAt=2026-08-10T09:35:13.846Z -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:35:21.880Z pushedAt=2026-11-23T08:04:20.099Z nl=1 -->
 
 The Crypto framework supports encryption and decryption with an RC2 symmetric key since API version 26.0.0.
 
@@ -15,8 +15,8 @@ For the corresponding algorithm specifications, see [Symmetric Key Encryption an
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator), [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1), or [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (SymKey) with the RC2 algorithm and a key length ranging from 8 bits to 1024 bits (for example, RC2_128).
-
-For details on how to generate an RC2 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: RC2](crypto-key-generation-conversion.md#rc2) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md)/[Converting Binary Data to a Symmetric Key](crypto-convert-binary-data-to-sym-key.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
+   
+   For details on how to generate an RC2 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: RC2](crypto-key-generation-conversion.md#rc2) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md)/[Converting Binary Data to a Symmetric Key](crypto-convert-binary-data-to-sym-key.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with a string parameter (for example, **'RC2|CBC|PKCS7'**) to create a **Cipher** instance with the symmetric key type of RC2, the block mode of CBC, and the padding mode of PKCS7, which is used to perform encryption.
 
@@ -33,12 +33,12 @@ For details on how to generate an RC2 symmetric key, refer to the following exam
 3. To decrypt a small amount of data, simply call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1).
 
 - Example (using asynchronous APIs):
-
   <!-- @[cbc_encrypt_decrypt_rc2_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -94,20 +94,23 @@ For details on how to generate an RC2 symmetric key, refer to the following exam
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed');
+        // ...
       }
     } catch (error) {
-      console.error(`RC2 CBC failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`RC2 CBC failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
 
 - Example (using synchronous APIs):
-
   <!-- @[cbc_encrypt_decrypt_rc2_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -163,11 +166,12 @@ For details on how to generate an RC2 symmetric key, refer to the following exam
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`RC2 CBC failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`RC2 CBC failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
-
-  <!--no_check-->

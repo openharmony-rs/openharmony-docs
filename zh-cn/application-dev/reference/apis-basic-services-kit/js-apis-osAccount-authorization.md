@@ -86,7 +86,7 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally.                         |
 | 12300302 | User interaction is required but not allowed.<br>Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground.<br>Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext.                |
 | 12300304 | Authorization service is busy. <br>Possible cause: Another authorization is being processed.                               |

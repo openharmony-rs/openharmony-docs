@@ -6,9 +6,8 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:28:44.006Z pushedAt=2026-11-16T02:06:53.409Z nl=2 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:23:28.471Z pushedAt=2026-11-23T07:57:01.146Z nl=2 -->
 
- 
 You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data.
 
 For ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).  
@@ -40,6 +39,7 @@ function eccPointUncompressedToCompressed() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`eccPointUncompressedToCompressed failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -84,6 +84,7 @@ async function eccPointCompressedToPoint() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`eccPointCompressedToPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

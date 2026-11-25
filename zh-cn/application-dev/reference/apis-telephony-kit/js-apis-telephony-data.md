@@ -325,7 +325,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 | 201      | Permission denied.                           |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                              |
+| 8300999  | Unknown error.                               |
 
 **示例：**
 

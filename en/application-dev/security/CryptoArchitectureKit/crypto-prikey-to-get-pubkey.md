@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e0df6fbe36074670a9ac1470e8ed74f9ab74e32e translatedAt=2026-10-30T03:49:47.588Z pushedAt=2026-10-30T07:28:46.102Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:35:06.534Z pushedAt=2026-11-23T08:04:17.807Z nl=1 -->
 
 Starting from API version 23, the algorithm library supports obtaining a public key object from a private key object.
 
@@ -100,6 +100,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
       console.info('result: ' + ret);
     } catch (e) {
       console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -173,6 +174,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
       console.info('result: ' + ret);
     } catch (e) {
       console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

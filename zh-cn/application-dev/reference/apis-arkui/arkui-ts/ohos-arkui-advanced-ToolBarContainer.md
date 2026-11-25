@@ -723,7 +723,7 @@ ToolBarContainerConfigs的构造函数。
 
 ## ToolBarSafeAreaMode
 
-业务内容避让策略枚举。
+业务内容避让策略枚举。效果请参考[示例2](#示例2toolbarsafeareamode避让策略与背景延伸)。
 
 **起始版本：** 26.1.0
 
@@ -737,7 +737,8 @@ ToolBarContainerConfigs的构造函数。
 | ---- | -- | ---- |
 | NONE | 0 | 不进行避让，工具栏覆盖在业务内容上方。 |
 | PADDING | 1 | 通过内边距使业务内容和背景均避开工具栏区域。 |
-| SAFEAREA_PADDING | 2 | 通过安全区内边距使可交互内容避开工具栏区域，业务内容背景可延伸至工具栏下方。 |
+| SAFEAREA_PADDING | 2 | 通过安全区内边距使可交互内容避开工具栏区域，业务内容背景可通过对背景节点设置宽高[LayoutPolicy.matchParent](ts-universal-attributes-size.md#layoutpolicy15)及[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)延伸至工具栏下方。 |
+
 
 ## 示例
 
@@ -848,3 +849,170 @@ struct ToolBarContainerExample {
 ```
 
 ![zh-cn_image_ToolBarContainer_example01](figures/image-toolbarcontainer-example01.png)
+
+### 示例2（ToolBarSafeAreaMode避让策略与背景延伸）
+
+该示例使用ToolBarContainer创建一个底部停靠的工具栏，通过[ToolBarSafeAreaOptions](#toolbarsafeareaoptions)设置四边避让策略，并支持点击按钮在[ToolBarSafeAreaMode](#toolbarsafeareamode)的NONE、PADDING、SAFEAREA_PADDING之间循环切换。容器内第一个子节点为Stack，Stack中的背景节点通过设置宽高[LayoutPolicy.matchParent](ts-universal-attributes-size.md#layoutpolicy15)及[ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)延伸至工具栏下方。
+
+```ts
+import {
+  ToolBarContainer,
+  ToolBarController,
+  DockArea,
+  ToolBarConfigs,
+  ToolBarState,
+  ToolBarContainerConfigs,
+  ToolBarSafeAreaMode,
+  ToolBarV2ItemState,
+  AdvancedToolBarV2Item,
+  ToolBarV2ItemPlacement,
+  ToolBarV2ItemText,
+  promptAction,
+  SymbolGlyphModifier,
+  ToolBarV2SymbolGlyph
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ToolBarContainerSafeAreaExample {
+  private controller = new ToolBarController();
+
+  private togglePin(): void {
+    if (this.controller.getState() === ToolBarState.FLOATING) {
+      this.controller.pin();
+      this.item1.state = ToolBarV2ItemState.ACTIVATE;
+    } else {
+      this.controller.unpin();
+      this.item1.state = ToolBarV2ItemState.ENABLE;
+    }
+  }
+
+  @Local
+  private item1: AdvancedToolBarV2Item = new AdvancedToolBarV2Item({
+    content: new ToolBarV2ItemText({ text: 'Pin' }),
+    // 引用系统图标资源。
+    icon: new ToolBarV2SymbolGlyph({
+      normal: new SymbolGlyphModifier($r('sys.symbol.pin')),
+      activated: new SymbolGlyphModifier($r('sys.symbol.pin_fill')),
+    }),
+    groupID: 'A',
+    state: ToolBarV2ItemState.ENABLE,
+    placement: ToolBarV2ItemPlacement.LEADING,
+    action: () => {
+      this.togglePin();
+    }
+  })
+  @Local
+  private item2: AdvancedToolBarV2Item = new AdvancedToolBarV2Item({
+    content: new ToolBarV2ItemText({ text: 'Edit' }),
+    // 引用系统图标资源。
+    icon: new ToolBarV2SymbolGlyph({
+      normal: new SymbolGlyphModifier($r('sys.symbol.cut')),
+    }),
+    groupID: 'A',
+    action: () => {
+      promptAction.showToast({ message: 'edit' })
+    }
+  })
+  @Local
+  private item3: AdvancedToolBarV2Item = new AdvancedToolBarV2Item({
+    content: new ToolBarV2ItemText({ text: 'Delete' }),
+    // 引用系统图标资源。
+    icon: new ToolBarV2SymbolGlyph({
+      normal: new SymbolGlyphModifier($r('sys.symbol.trash')),
+    }),
+    groupID: 'A',
+    action: () => {
+      promptAction.showToast({ message: 'delete' })
+    }
+  })
+  private toolbarConfig: ToolBarConfigs = new ToolBarConfigs({
+    toolBarList: [this.item1, this.item2, this.item3],
+    controller: this.controller,
+    initialParams: {
+      dockArea: DockArea.BOTTOM
+    }
+  })
+  @Local
+  private currentMode: ToolBarSafeAreaMode = ToolBarSafeAreaMode.NONE;
+  @Local
+  private containerConfigs: ToolBarContainerConfigs = new ToolBarContainerConfigs({
+    safeArea: {
+      top: ToolBarSafeAreaMode.NONE,
+      right: ToolBarSafeAreaMode.NONE,
+      bottom: ToolBarSafeAreaMode.NONE,
+      left: ToolBarSafeAreaMode.NONE
+    }
+  });
+
+  private switchSafeAreaMode(): void {
+    // 在NONE、PADDING、SAFEAREA_PADDING之间循环切换四边避让策略。
+    if (this.currentMode === ToolBarSafeAreaMode.NONE) {
+      this.currentMode = ToolBarSafeAreaMode.PADDING;
+    } else if (this.currentMode === ToolBarSafeAreaMode.PADDING) {
+      this.currentMode = ToolBarSafeAreaMode.SAFEAREA_PADDING;
+    } else {
+      this.currentMode = ToolBarSafeAreaMode.NONE;
+    }
+    this.containerConfigs.safeArea = {
+      top: this.currentMode,
+      right: this.currentMode,
+      bottom: this.currentMode,
+      left: this.currentMode
+    };
+  }
+
+  private modeLabel(): string {
+    if (this.currentMode === ToolBarSafeAreaMode.NONE) {
+      return 'NONE';
+    } else if (this.currentMode === ToolBarSafeAreaMode.PADDING) {
+      return 'PADDING';
+    }
+    return 'SAFEAREA_PADDING';
+  }
+
+  build() {
+    Stack() {
+      ToolBarContainer({
+        toolbars: [this.toolbarConfig],
+        containerConfigs: this.containerConfigs
+      }) {
+        Stack() {
+          // 背景节点：设置宽高matchParent并忽略布局安全区，使背景延伸至工具栏下方。
+          Column()
+            .width(LayoutPolicy.matchParent)
+            .height(LayoutPolicy.matchParent)
+            .backgroundColor('rgb(217, 217, 217)')
+            .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.BOTTOM])
+
+          // 内容节点：可交互内容在避让策略下避开工具栏区域。
+          Column() {
+            Text('Content')
+              .fontSize(20)
+              .fontWeight(FontWeight.Bold)
+            Text(`当前避让策略：${this.modeLabel()}`)
+              .fontSize(16)
+              .margin({ top: 8 })
+            Button('切换四边避让策略')
+              .margin({ top: 16 })
+              .onClick(() => {
+                this.switchSafeAreaMode();
+              })
+          }
+          .borderWidth(1)
+          .width('100%')
+          .height('100%')
+          .alignItems(HorizontalAlign.Center)
+          .justifyContent(FlexAlign.Center)
+        }
+        .width('100%')
+        .height('100%')
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![zh-cn_image_ToolBarContainer_example02](figures/image-toolbarcontainer-example02.gif)

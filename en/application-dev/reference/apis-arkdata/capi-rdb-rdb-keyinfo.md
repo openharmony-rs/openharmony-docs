@@ -5,10 +5,10 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5132c4c17b0f557197a655ef79c7a05df0e0bea5 translatedAt=2026-09-04T03:05:02.776Z pushedAt=2026-09-09T09:11:03.679Z -->
+<!-- md-trans-meta sourceCommit=a344fa18476f0d16c0d531be44b7138a04f15161 translatedAt=2026-11-16T01:36:15.039Z pushedAt=2026-11-20T07:27:07.827Z nl=1 -->
 
 ```c
-typedef struct {...} Rdb_KeyInfo
+typedef struct Rdb_KeyInfo {...} Rdb_KeyInfo
 ```
 
 ## Overview

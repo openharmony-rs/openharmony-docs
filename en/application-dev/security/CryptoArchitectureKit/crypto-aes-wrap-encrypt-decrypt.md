@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=3393a745e64d6ee2b3f80d65fb3f920593e0cfc7 translatedAt=2026-10-30T03:23:54.785Z pushedAt=2026-10-30T06:42:10.541Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:19:52.574Z pushedAt=2026-11-23T07:56:11.593Z nl=1 -->
 
 From API version 22, the crypto algorithm library supports encryption and decryption with this algorithm.
 
@@ -40,6 +40,7 @@ For the corresponding algorithm specifications, see [AES-WRAP encryption and dec
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -91,9 +92,12 @@ For the corresponding algorithm specifications, see [AES-WRAP encryption and dec
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`AES Wrap failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`AES Wrap failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -107,6 +111,7 @@ For the corresponding algorithm specifications, see [AES-WRAP encryption and dec
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
@@ -158,9 +163,12 @@ For the corresponding algorithm specifications, see [AES-WRAP encryption and dec
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (error) {
-      console.error(`AES Wrap failed: errCode: ${error.code}, message: ${error.message}`);
+      let e: BusinessError = error as BusinessError;
+      console.error(`AES Wrap failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

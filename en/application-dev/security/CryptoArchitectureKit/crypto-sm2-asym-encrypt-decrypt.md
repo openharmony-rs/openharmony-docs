@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:35:59.241Z pushedAt=2026-11-16T02:06:53.448Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:36:37.878Z pushedAt=2026-11-23T08:04:44.973Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Asymmetric Encryption and Decryption Algorithm Specifications: SM2](crypto-encryption-decryption.md#sm2).
 
@@ -99,10 +99,12 @@ For the corresponding algorithm specifications, see [Asymmetric Encryption and D
         console.info('decrypted result string:' + messageDecrypted);
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -169,10 +171,12 @@ For the corresponding algorithm specifications, see [Asymmetric Encryption and D
         console.info('decrypted result string:' + messageDecrypted);
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

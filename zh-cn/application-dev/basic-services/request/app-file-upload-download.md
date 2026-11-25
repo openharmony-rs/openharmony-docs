@@ -10,13 +10,15 @@
 
 > **说明：**
 >
-> · 使用上传下载模块，优先推荐使用[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)创建上传下载任务。
+> - 使用上传下载模块，优先推荐使用[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)创建上传下载任务。
 >
-> · 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+> - 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
 >
-> · 上传下载模块不支持Charles、Fiddler等代理抓包工具。
+> - 上传下载模块不支持Charles、Fiddler等代理抓包工具。
 >
-> · 上传下载模块接口目前暂不支持子线程调用场景，如[TaskPool](../../arkts-utils/taskpool-introduction.md)等。
+> - 上传下载模块接口目前暂不支持子线程调用场景，如[TaskPool](../../arkts-utils/taskpool-introduction.md)等。
+>
+> - 上传下载模块不保证传输速率，实际速率受网络状况、设备运行环境、对端服务器收发能力等多种因素影响。模块内部会根据系统资源统一调度任务，不保证任务及时完成。
 
 ## 上传应用文件
 

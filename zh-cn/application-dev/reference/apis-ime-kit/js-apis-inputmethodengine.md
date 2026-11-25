@@ -108,7 +108,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
 | ENTER_KEY_TYPE_UNSPECIFIED | number | 0 | 无功能键。 |
-| ENTER_KEY_TYPE_NONE | number | 1 | “无特定行为”功能键。<br>**起始版本：** 26.1.0 |
+| ENTER_KEY_TYPE_NONE | number | 1 | “无特定行为”功能键。<br>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | ENTER_KEY_TYPE_GO | number | 2 | “前往”功能键。 |
 | ENTER_KEY_TYPE_SEARCH| number | 3 | “搜索”功能键。 |
 | ENTER_KEY_TYPE_SEND | number | 4 | “发送”功能键。 |
@@ -118,7 +118,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | ENTER_KEY_TYPE_NEWLINE<sup>12+</sup> | number | 8 | “换行”功能键。 |
 | PATTERN_NULL | number | -1 | 无特殊性编辑框。 |
 | PATTERN_TEXT | number | 0 | 文本编辑框。 |
-| PATTERN_MULTILINE | number | 1 | 多行编辑框。<br>**起始版本：** 26.1.0 |
+| PATTERN_MULTILINE | number | 1 | 多行编辑框。<br>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_NUMBER | number | 2 | 数字编辑框。 |
 | PATTERN_PHONE | number | 3 | 电话号码编辑框。 |
 | PATTERN_DATETIME | number | 4 | 日期编辑框。 |
@@ -2079,7 +2079,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。
 >
 > 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用[updatePanelRect](#updatepanelrect)或[updatePanelRectSync](#updatepanelrectsync)。
 >
@@ -2091,7 +2091,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。 |
+| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED。 |
 | rect | [PanelRect](#panelrect12) | 是   | 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度。固定态：高度不能超过屏幕高度的70%，宽度不能超过屏幕宽度；悬浮态：高度不能超过屏幕高度，宽度不能超过屏幕宽度。超出范围时返回错误码401。|
 
 **错误码：**
@@ -2143,7 +2143,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
 > 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用[updatePanelRect](#updatepanelrect-1)或[updatePanelRectSync](#updatepanelrectsync-1)。
 >
@@ -2157,7 +2157,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 | 参数名 | 类型                                      | 必填 | 说明                                                       |
 | ------ | ----------------------------------------- | ---- | ---------------------------------------------------------- |
-| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。          |
+| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED。          |
 | rect   | [EnhancedPanelRect](#enhancedpanelrect15) | 是   | 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。 |
 
 **错误码：**
@@ -2211,7 +2211,7 @@ updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise&lt;void&gt;
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。
 >
 > 此接口为异步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
 >
@@ -2227,7 +2227,7 @@ updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise&lt;void&gt;
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。 |
+| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED。 |
 | rect | [PanelRect](#panelrect12) | 是   | 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度。固定态：高度不能超过屏幕高度的70%，宽度不能超过屏幕宽度；悬浮态：高度不能超过屏幕高度，宽度不能超过屏幕宽度。超出范围时返回错误码401。|
 
 **返回值：**
@@ -2281,7 +2281,7 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise&lt;void&gt;
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
 > 此接口为异步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
 >
@@ -2299,7 +2299,7 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise&lt;void&gt;
 
 | 参数名 | 类型                                      | 必填 | 说明                                                       |
 | ------ | ----------------------------------------- | ---- | ---------------------------------------------------------- |
-| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。          |
+| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED。          |
 | rect   | [EnhancedPanelRect](#enhancedpanelrect15) | 是   | 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。 |
 
 **返回值：**
@@ -2359,7 +2359,7 @@ updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[updatePanelRect](#updatepanelrect)。
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。
 >
 > 此接口为同步接口，接口返回代表系统侧收到设置的请求，并已完成设置。
 >
@@ -2375,7 +2375,7 @@ updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。 |
+| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED。 |
 | rect | [PanelRect](#panelrect12) | 是   | 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度。固定态：高度不能超过屏幕高度的70%，宽度不能超过屏幕宽度；悬浮态：高度不能超过屏幕高度，宽度不能超过屏幕宽度。超出范围时返回错误码401。|
 
 **错误码：**
@@ -2424,7 +2424,7 @@ updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[updatePanelRect](#updatepanelrect)。
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
 > 此接口为同步接口，接口返回代表系统侧收到设置的请求，并已完成设置。
 >
@@ -2442,7 +2442,7 @@ updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 | 参数名 | 类型                                      | 必填 | 说明                                                       |
 | ------ | ----------------------------------------- | ---- | ---------------------------------------------------------- |
-| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。          |
+| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED。          |
 | rect   | [EnhancedPanelRect](#enhancedpanelrect15) | 是   | 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。 |
 
 **错误码：**
@@ -2495,7 +2495,7 @@ updateRegion(inputRegion: Array&lt;window.Rect&gt;): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。
 >
 > 此接口为同步接口，接口返回仅代表系统侧收到更新热区的请求，不代表已完成热区更新。
 >
@@ -2588,7 +2588,7 @@ on(type: 'sizeChange', callback: SizeChangeCallback): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过adjustPanelRect等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如超出屏幕等场景），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。输入法通过adjustPanelRect等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如超出屏幕等场景），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 >
 >-  从API version 12-14开始支持，此接口回调函数中仅包含[window.Size](../apis-arkui/arkts-apis-window-i.md#size7)类型的必选参数。
 >-  从API version 15起，调用[adjustPanelRect](#adjustpanelrect15)接口后，此接口回调函数增加[KeyboardArea](#keyboardarea15)类型的可选参数。
@@ -2685,7 +2685,7 @@ off(type: 'sizeChange', callback?: SizeChangeCallback): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过adjustPanelRect等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如超出屏幕等场景），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。输入法通过adjustPanelRect等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如超出屏幕等场景），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 >
 >-  从API version 12-14开始支持，此接口回调函数中仅包含[window.Size](../apis-arkui/arkts-apis-window-i.md#size7)类型的必选参数。
 >-  从API version 15起，调用[adjustPanelRect](#adjustpanelrect15)接口后，此接口回调函数增加[KeyboardArea](#keyboardarea15)类型的可选参数。
@@ -4917,7 +4917,7 @@ setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Pr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。具体限制参见IPC[约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)。 |
 | range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
 | style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
 
@@ -4976,7 +4976,7 @@ setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。具体限制参见IPC[约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)。 |
 | range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
 | style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
 
@@ -5411,7 +5411,6 @@ getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -5474,7 +5473,6 @@ getLeftRichTextSync(length: number): InputMethodRichText
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -5541,7 +5539,6 @@ getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -5604,7 +5601,6 @@ getRightRichTextSync(length: number): InputMethodRichText
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -5903,6 +5899,7 @@ inputMethodEngine.getInputMethodAbility()!
 | FLG_FIXED  | 0 | 固定态面板类型。 |
 | FLG_FLOATING | 1 | 悬浮态面板类型。 |
 | FLAG_CANDIDATE<sup>15+</sup> | 2 | 候选词态面板类型。 |
+| FLAG_DETACHED | 3 | 分离态面板类型。 <br/>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。|
 
 ## PanelType<sup>10+</sup>
 
@@ -6175,7 +6172,7 @@ getBackward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9-1)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -7807,7 +7804,7 @@ if (proxyAbility !== null) {
 
 ## InputKeyEventCallback
 
-type InputKeyEventCallback = (event: KeyEvent) => boolean
+type InputKeyEventCallback = (event: InputKeyEvent) => boolean
 
 物理键盘按键事件的回调类型。
 
@@ -7819,7 +7816,7 @@ type InputKeyEventCallback = (event: KeyEvent) => boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是 | 物理键盘按键事件信息。 |
+| event | [InputKeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是 | 物理键盘按键事件信息。 |
 
 **返回值：**
 
@@ -7912,11 +7909,11 @@ onKeyEvent(callback: InputKeyEventCallback): void
 **示例：**
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
 if (proxyDelegate !== null) {
-  proxyDelegate.onKeyEvent((event: KeyEvent) => {
+  proxyDelegate.onKeyEvent((event: InputKeyEvent) => {
     console.info(`inputMethodEngine keyEvent.action:${event.action}`);
     return false;
   });
@@ -7944,10 +7941,10 @@ offKeyEvent(callback?: InputKeyEventCallback): void
 **示例：**
 
 ```ts
-import type { KeyEvent } from '@kit.InputKit';
+import type { KeyEvent as InputKeyEvent } from '@kit.InputKit';
 
 let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
-let callback: inputMethodEngine.InputKeyEventCallback = (event: KeyEvent) => {
+let callback: inputMethodEngine.InputKeyEventCallback = (event: InputKeyEvent) => {
   console.info(`inputMethodEngine keyEvent.action:${event.action}`);
   return false;
 };

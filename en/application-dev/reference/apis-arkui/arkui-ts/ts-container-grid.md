@@ -6,7 +6,7 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7203d660f89ed9a214ae8ebcf9c86f3d971ef4f3 translatedAt=2026-11-03T02:02:59.516Z pushedAt=2026-11-13T01:05:59.949Z nl=1 -->
+<!-- md-trans-meta sourceCommit=262d5733774b8dc875b940f5d553487ce4c677a5 translatedAt=2026-11-20T08:37:38.073Z pushedAt=2026-11-20T09:20:25.208Z nl=1 -->
 
 The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
 
@@ -372,7 +372,7 @@ After caching is set, **cachedCount** grid rows/columns are preloaded on both si
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | count  | number | Yes  | Number of grid items to be cached (preloaded).<br>Default value: the number of rows visible on the screen for vertical scrolling, or the number of columns visible on the screen for horizontal scrolling. The maximum value is 16.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>When the count value is updated using the state variable, the **Grid** component does not trigger a layout update. The number of cached nodes is updated only during the next layout.|
-| show  | boolean | Yes  | Whether to display the preloaded nodes. If this parameter is set to **true**, the preloaded **GridItem** is displayed. If this parameter is set to **false**, the preloaded **GridItem** is not displayed.<br> Default value: **false**|
+| show  | boolean | Yes   | Whether the preloaded **GridItem** needs to be displayed. When set to **true**, the preloaded **GridItem** is displayed; when set to **false**, the preloaded **GridItem** is not displayed. <br/> Default value: **false**<br/>When **show** is set to **true**, after the first row completely passes the bottom of the visible area (that is, the first row completely moves out of the visible area), **Grid** displays one additional row beyond the preload count. |
 
 
 ### editMode<sup>8+</sup>
@@ -739,6 +739,61 @@ This API is not supported for layouts that contain cross-column (irregular) grid
 | ------ | ------ | ---- | ------------------------------------ |
 | strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | No  | Scroll snap strategy.<br/>When a [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) enum is passed, the built-in alignment modes are used: **START**, **CENTER**, and **END** align items to the start, center, and end positions of the viewport along the scroll axis, respectively.<br/>When an object that implements the [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) API is passed, you need to calculate the scroll distance and the final snap position: [calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset) determines the scroll distance in the inertia phase, and [calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset) determines the final snap position.<br/>If this parameter is not set or **ScrollSnapAlign.NONE** or **undefined** is passed, snap scrolling is not enabled, and the grid does not perform snap alignment but slides naturally to a stop by inertia. |
 
+### scrollPlaceholder
+
+scrollPlaceholder(provider?: PlaceholderProvider)
+
+Sets the scroll placeholder provider of the **Grid** component. When the framework predicts that creating the next grid item within the remaining frame budget will cause frame overrun, a placeholder component is displayed for the item first. The real grid item is then created frame by frame on the UI thread to reduce frame loss during fast scrolling.
+
+> **NOTE**
+>
+> After the real grid item is created, the layout is performed again. The layout follows the normal constraints of [GridItem](ts-container-griditem.md). When the placeholder component is replaced, the position of the currently visible content remains unchanged.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| provider | [PlaceholderProvider](#placeholderprovider) | No | Placeholder provider of the grid item. Returning **undefined** indicates that the grid item does not need a placeholder. If the returned ID is empty or unregistered, the system default placeholder is used and scrolling is not interrupted. If this attribute is not set, scroll placeholder is disabled, the Grid retains its existing behavior, and the behavior of [syncLoad](#syncload20) is not affected. |
+
+**Example**
+
+<!--code_no_check-->
+```ts
+Grid() {
+  // Content of the grid item.
+}
+.scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+  // id corresponds to the registered placeholder template, and size is the recommended size of the placeholder.
+  return { id: 'itemPlaceholder', size: { height: 100 } };
+})
+```
+
+## PlaceholderProvider
+
+type PlaceholderProvider = import('../api/@ohos.arkui.placeholderRegister').PlaceholderProvider
+
+Provides the placeholder information of a grid item. This API is used by the [scrollPlaceholder](#scrollplaceholder) attribute of **Grid**.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description |
+| ---- | ---- |
+| import('../api/@ohos.arkui.placeholderRegister').[PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | Provider function of the placeholder information of a grid item, used by the [scrollPlaceholder](#scrollplaceholder) attribute of **Grid**. |
+
 ## GridItemAlignment<sup>12+</sup>
 
 Enumerates the alignment modes of grid items.
@@ -811,6 +866,8 @@ Drag gesture recognition is also initiated by a long press, and the event proces
 The dragged and lifted **GridItem** can move within the app window. To restrict the movement range, you can implement it through a custom gesture. For details, see [Example 16: Customizing the Drag Effect for GridItem](#example-16-customizing-the-drag-effect-for-griditem).
 
 Automatic scrolling when dragging to the edge of the **Grid** is not supported. You can use the universal drag to implement it. For details, see [Example 17: Dragging Grid Items with Drag Events](#example-17-dragging-grid-items-with-drag-events). Since API version 26.0.0, you can use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to implement this effect. For details, see [Example 22 (Dragging with OnMove)](#example-22-dragging-with-onmove). It also supports dragging of **GridItem** that spans rows and columns, but note that the **Grid** must be scrollable.
+
+When using **onMove** to implement drag sorting, it is not recommended to add data in the **onMove** callback. The start index and target index reported by **onMove** are based on the data source at the time the drag starts. The framework completes the placement and layout inference on the premise that the same batch of data only undergoes order changes. If data entries are added in the callback, the application-side indexes will be inconsistent with the framework's internal drag order, which may cause incorrect sorting results or anomalous placement animations. If data does need to be added, it is recommended to do so after the drag process ends and the **onMove** callback finishes executing. For general constraints on modifying the data source, see [onMove](./ts-universal-attributes-drag-sorting.md#onmove).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

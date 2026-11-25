@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何使用Deep Linking机制实现应用间跳转，涵盖目标应用module.json5的skills配置、URI解析获取，以及通过openLink、startAbility和Web组件三种方式发起跳转。"
+keywords: [Deep Linking, 应用间跳转, openLink, startAbility, skills标签, uri匹配, Web组件, 隐式Want]
+doctype: guide
+status: active
+---
 # 使用Deep Linking实现应用间跳转
 
 <!--Kit: Ability Kit-->

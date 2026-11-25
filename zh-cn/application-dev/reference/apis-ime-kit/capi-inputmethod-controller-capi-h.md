@@ -36,6 +36,7 @@
 | [InputMethod_ErrorCode OH_InputMethodController_AttachWithUIContext(ArkUI_ContextHandle context, InputMethod_TextEditorProxy *textEditorProxy, InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)](#oh_inputmethodcontroller_attachwithuicontext) | 将应用绑定到输入法服务，同时携带UI上下文信息。适用于需要将输入法与特定UI页面关联的场景（如多窗口场景下指定绑定到哪个页面）。必须在创建TextEditorProxy和AttachOptions之后调用，必须与OH_InputMethodController_Detach配对调用。 |
 | [InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodProxy *inputMethodProxy)](#oh_inputmethodcontroller_detach) | 将应用从输入法服务解除绑定。必须在OH_InputMethodController_Attach或AttachWithUIContext之后调用，解绑后inputMethodProxy不再有效，不可继续使用。 |
 | [InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char **bundleName, uint32_t *bundleNameLength, char **abilityName, uint32_t *abilityNameLength)](#oh_inputmethod_inputmethodcontroller_getcurrentinputmethod) | 查询当前正在使用的输入法信息。 |
+| [InputMethod_ErrorCode OH_InputMethodController_InjectText(const char *text, uint32_t textLen)](#oh_inputmethodcontroller_injecttext) | 向当前获焦、与输入法应用绑定且处于编辑状态的编辑框插入文本。 |
 
 ## 函数说明
 
@@ -45,7 +46,7 @@
 InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)
 ```
 
-**描述**
+**描述：**
 
 将应用绑定到输入法服务，建立应用与输入法之间的双向交互通道。绑定成功后，应用可通过返回的InputMethodProxy主动向输入法发送请求和通知，同时输入法可通过TextEditorProxy中注册的回调函数向应用发送文本插入、删除等通知。
 
@@ -97,7 +98,7 @@ InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProx
 InputMethod_ErrorCode OH_InputMethodController_AttachWithUIContext(ArkUI_ContextHandle context, InputMethod_TextEditorProxy *textEditorProxy, InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)
 ```
 
-**描述**
+**描述：**
 
 将应用绑定到输入法服务，同时携带UI上下文信息。与OH_InputMethodController_Attach的区别在于，此函数额外接受一个ArkUI_ContextHandle参数，用于在多窗口或多页面场景下指定绑定到具体的UI上下文，使输入法服务能精确关联到当前活跃的页面。
 
@@ -153,7 +154,7 @@ InputMethod_ErrorCode OH_InputMethodController_AttachWithUIContext(ArkUI_Context
 InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodProxy *inputMethodProxy)
 ```
 
-**描述**
+**描述：**
 
 将应用从输入法服务解除绑定，关闭交互通道。OH_InputMethodController_Detach后，inputMethodProxy不再有效，不可继续使用任何通过inputMethodProxy调用的函数（如ShowKeyboard、HideKeyboard、NotifyCursorUpdate等），否则会导致未定义行为或崩溃。
 
@@ -197,7 +198,7 @@ InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodPro
 InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod(char **bundleName, uint32_t *bundleNameLength, char **abilityName, uint32_t *abilityNameLength)
 ```
 
-**描述**
+**描述：**
 
 查询当前正在使用的输入法信息。调用此函数后，系统将返回当前输入法的bundleName和abilityName。
 
@@ -227,3 +228,41 @@ InputMethod_ErrorCode OH_InputMethod_InputMethodController_GetCurrentInputMethod
 | 类型 | 说明 |
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，*bundleName和*abilityName已填充当前输入法信息。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法管理服务异常。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，bundleName、bundleNameLength、abilityName或abilityNameLength为NULL。<br>具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+
+### OH_InputMethodController_InjectText()
+
+```c
+InputMethod_ErrorCode OH_InputMethodController_InjectText(const char *text, uint32_t textLen)
+```
+
+**描述：**
+
+向当前获焦、与输入法应用绑定且处于编辑状态的编辑框插入文本。调用成功仅表示请求已成功发送给目标，不代表已完成编辑。
+
+使用场景：PC上的普通应用需要向当前获焦应用的文本编辑框插入文本时调用此函数，如跨应用文本填充、辅助输入等场景。
+
+前置条件：当前须存在获焦、与输入法应用绑定且处于编辑状态的编辑框；不支持指定非获焦目标。
+
+约束限制：
+- 仅支持PC上的Stage模型应用。在其他设备上调用返回OH_INPUTMETHOD_ERR_DEVICE_NOT_SUPPORTED。
+- 允许空文本。发送空文本请求前仍会检查权限和目标状态。
+- 支持向密码框插入文本，但本接口不提供读取目标内容（含密码）的能力。
+
+调用方式：本接口为同步接口，会阻塞调用线程，在主线程调用时需谨慎。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.CONTROL_DEVICE 或 ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char *text | 入参，指向以NULL结尾的UTF-8编码文本字符串。指针不可为NULL，且至少有textLen字节可读。缓冲区由调用方管理，须保持有效至函数返回，返回后可释放。 |
+| uint32_t textLen | 入参，表示待插入文本的字节数，取值范围为0到512，不含末尾终止符。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示请求已成功发送给目标。<br>[OH_INPUTMETHOD_ERR_PERMISSION_DENIED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 权限校验失败。缺少插入文本所需权限时返回，请申请相应权限后重试。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端错误。可能是没有合法获焦且已绑定的目标，或目标已失效。<br>[IME_ERR_EDITABLE](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端不可编辑。可能是目标客户端处于非编辑状态。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法服务错误。可能是服务端异常。<br>[OH_INPUTMETHOD_ERR_DEVICE_NOT_SUPPORTED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 当前设备不支持本能力（非PC形态）。<br>具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |

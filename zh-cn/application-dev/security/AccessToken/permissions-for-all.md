@@ -934,3 +934,31 @@
 **支持设备**：Phone | PC/2in1 | Tablet | Car | TV
 
 **起始版本**：26.0.1
+
+## ohos.permission.REGISTER_DAEMON_SERVICE
+
+允许应用注册、取消注册daemon服务。
+
+获取该权限后，应用可注册daemon服务，声明了该权限的应用无法上架应用市场，仅在自由分发时使用。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.USE_DAEMON_SERVICE
+
+允许应用使用daemon服务。
+
+获取该权限后，应用可以拉起、连接daemon服务。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0

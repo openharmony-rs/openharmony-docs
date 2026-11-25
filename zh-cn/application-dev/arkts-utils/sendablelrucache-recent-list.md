@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍使用SendableLruCache获取最近访问列表的开发指导：以书架最近阅读为例演示缓存实例创建、容量设置及Sendable对象的存取，并说明使用时需加锁、存入对象必须为Sendable的注意事项。"
 keywords: [SendableLruCache, 最近访问列表, LRU缓存, 书架示例, 缓存容量, 加锁, Sendable对象]
 doctype: guide

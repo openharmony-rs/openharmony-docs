@@ -85,6 +85,34 @@ struct FancyUse {
 }
 ```
 
+## StylesVersionDecorator
+
+type StylesVersionDecorator = (versionCondition: VersionCondition) => MethodDecorator
+
+\@Styles装饰器传入版本条件配置项时的实际类型。
+
+**起始版本：** 26.1.0
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| version | [VersionCondition](#versioncondition) | 是 | 版本条件参数，声明样式的生效系统版本区间。以调用形式`@Styles({...})`使用时必须传入，且仅能传入一个。|
+
+**返回值：**
+
+| 类型            | 说明                                 |
+| --------------- | ------------------------------------ |
+| MethodDecorator | 方法装饰器，开发者无需关注该返回值。 |
+
 ## VersionCondition
 
 \@Styles装饰器的版本条件参数，声明样式的生效系统版本区间，作为\@Styles调用形式参数与\@Extend装饰器第二个参数的类型。区间语义为左闭右开`[minApiVersion, maxApiVersion)`：仅传入minApiVersion时，生效区间为大于等于minApiVersion对应的系统版本；仅传入maxApiVersion时，生效区间为小于maxApiVersion对应的系统版本。

@@ -33,6 +33,7 @@
 | querySchemes             | 允许应用进行跳转查询的URL schemes。| querySchemes              | -                          | -                                |
 | generateBuildHash        | 标识当前HAP或HSP是否由打包工具生成哈希值。| generateBuildHash    | generateBuildHash          | -                                |
 | buildVersion               | 应用的构建版本号。        | -                        | buildVersion                 | -                                |
+| keepDataOnUninstall | 标识应用卸载时是否保留数据。 | - | keepDataOnUninstall | - |
 
 ## 约束与限制
 
@@ -150,6 +151,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
 | buildVersion                | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
+| keepDataOnUninstall | 从API版本26.1.0开始，所有HAP（entry和feature模块）的keepDataOnUninstall字段值必须保持一致。 |
 
 > **说明：** 
 >
@@ -196,6 +198,8 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 installer模式用于将一个或多个应用的HAP、HSP和应用描述文件打包为一个.app包，供安装器读取。生成的包采用ZIP格式，根目录包含manifest.json和Contents目录，Contents下按应用目录存放原始HAP、HSP文件。
 
 该包与[App打包指令](#app打包指令)生成的包具有不同的内部结构，使用时需要安装器支持installer包格式。打包工具负责生成容器，不执行应用安装或签名、验签。
+
+从API版本26.1.0开始，同一应用内所有HAP（包括entry和feature模块）的keepDataOnUninstall字段取值必须保持一致（未配置时默认按false处理），否则会导致打包失败。该一致性校验仅限同一应用内部，不同应用之间无此要求。
 
 ### 命令与参数
 
@@ -292,6 +296,7 @@ versionCode和minAPIVersion均须为[0, 2147483647]范围内的整数，不接�
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
 | buildVersion                | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
+| keepDataOnUninstall | 从API版本26.1.0开始，所有HAP（entry和feature模块）的keepDataOnUninstall字段值必须保持一致。 |
 
 > **说明：** 
 >
@@ -482,6 +487,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 | minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | buildVersion                      | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。 |
+| keepDataOnUninstall | 从API版本26.1.0开始，所有HAP（entry和feature模块）的keepDataOnUninstall字段值必须保持一致。 |
 
 > **说明：** 
 >
@@ -2515,6 +2521,7 @@ Some app variable is different.
 5. 当前参与打包的HAP或HSP中，存在模块的targetBundleName（app.json5配置文件中的属性）与其他模块不一致。
 6. 当前参与打包的HAP或HSP中，存在模块的targetPriority（app.json5配置文件中的属性）与其他模块不一致。
 7. 当前参与打包的HAP中，存在模块的multiAppMode（app.json5配置文件中的属性）与其他模块不一致。
+8. 当前参与打包的HAP中，存在模块的keepDataOnUninstall（app.json5配置文件中的属性）与其他模块不一致。
 
 **处理步骤**
 
@@ -2525,6 +2532,7 @@ Some app variable is different.
 5. 确保当前参与打包的HAP或HSP的targetBundleName一致。
 6. 确保当前参与打包的HAP或HSP的targetPriority一致。
 7. 确保当前参与打包的HAP的multiAppMode一致。
+8. 确保当前参与打包的HAP的keepDataOnUninstall一致。
 
 ### 10016003 分发策略相交校验失败
 **错误信息**
@@ -3186,11 +3194,13 @@ installer模式下，同一应用目录内的模块未通过应用校验。
 
 1. 同一应用的bundleName、bundleType、versionCode、buildVersion或versionName不一致。
 2. debug、API版本、模块名称、依赖关系或其他模块配置不符合应用打包要求。
+3. 同一应用目录内的HAP的keepDataOnUninstall不一致。
 
 **处理步骤**
 
 1. 核对同一应用目录下各模块的应用标识和版本配置，确保一致，修改后重新构建模块。
 2. 优先查看此前的模块校验错误，根据日志修正配置及跨模块关系。
+3. 核对同一应用目录下各模块的应用卸载时是否保留数据标识，确保一致，修改后重新构建模块。
 
 ### 10022006 installer应用描述文件无效
 

@@ -52,6 +52,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // 完整的明文被拆分为input1和input2
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -77,15 +78,22 @@
   }
   
   async function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey);
-    let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey);
+      let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -97,6 +105,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // 完整的明文被拆分为input1和input2
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -122,15 +131,22 @@
   }
   
   function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey);
-    let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey);
+      let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -172,6 +188,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA1024|PKCS1|SHA256|OnlySign';
@@ -192,21 +209,28 @@
   }
   
   async function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // 先使用 Md 计算 SHA256 摘要（32字节）
-    let md = cryptoFramework.createMd('SHA256');
-    await md.update(messageData);
-    let digestBlob = await md.digest();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // 先使用 Md 计算 SHA256 摘要（32字节）
+      let md = cryptoFramework.createMd('SHA256');
+      await md.update(messageData);
+      let digestBlob = await md.digest();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey, digestBlob);
+      let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -218,6 +242,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA1024|PKCS1|SHA256|OnlySign';
@@ -238,21 +263,28 @@
   }
   
   function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // 先使用 Md 计算 SHA256 摘要（32字节）
-    let md = cryptoFramework.createMd('SHA256');
-    md.updateSync(messageData);
-    let digestBlob = md.digestSync();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // 先使用 Md 计算 SHA256 摘要（32字节）
+      let md = cryptoFramework.createMd('SHA256');
+      md.updateSync(messageData);
+      let digestBlob = md.digestSync();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey, digestBlob);
+      let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -286,6 +318,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // 完整的明文被拆分为input1和input2
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -307,15 +340,22 @@
   }
   
   async function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey);
-    let rawSignData = await verifyMessagePromise(signData, keyPair.pubKey);
-    if (rawSignData != null) {
-      console.info('recover result: ' + rawSignData.data);
-    } else {
-      console.error('get verify recover result: fail!');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey);
+      let rawSignData = await verifyMessagePromise(signData, keyPair.pubKey);
+      if (rawSignData != null) {
+        console.info('recover result: ' + rawSignData.data);
+      } else {
+        console.error('get verify recover result: fail!');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`recover failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -327,6 +367,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // 完整的明文被拆分为input1和input2
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
@@ -348,15 +389,22 @@
   }
   
   function main() {
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey);
-    let rawSignData = verifyMessageSync(signData, keyPair.pubKey);
-    if (rawSignData != null) {
-      console.info('recover result: ' + rawSignData.data);
-    } else {
-      console.error('get verify recover result: fail!');
+    try {
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey);
+      let rawSignData = verifyMessageSync(signData, keyPair.pubKey);
+      if (rawSignData != null) {
+        console.info('recover result: ' + rawSignData.data);
+      } else {
+        console.error('get verify recover result: fail!');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`recover failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -394,6 +442,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessageBySegment(priKey: cryptoFramework.PriKey, plainText: Uint8Array) {
     let signAlg = 'RSA1024|PKCS1|SHA256';
@@ -430,24 +479,31 @@
   }
   
   async function rsaSignatureBySegment() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
-    let signData = await signMessageBySegment(keyPair.priKey, messageData);
-    let verifyResult = await verifyMessageBySegment(keyPair.pubKey, messageData, signData);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
+      let signData = await signMessageBySegment(keyPair.priKey, messageData);
+      let verifyResult = await verifyMessageBySegment(keyPair.pubKey, messageData, signData);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -459,6 +515,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageBySegment(priKey: cryptoFramework.PriKey, plainText: Uint8Array) {
     let signAlg = 'RSA1024|PKCS1|SHA256';
@@ -495,24 +552,31 @@
   }
   
   function rsaSignatureBySegment() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
-    let signData = signMessageBySegment(keyPair.priKey, messageData);
-    let verifyResult = verifyMessageBySegment(keyPair.pubKey, messageData, signData);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let messageData = new Uint8Array(buffer.from(message, 'utf-8').buffer);
+      let signData = signMessageBySegment(keyPair.priKey, messageData);
+      let verifyResult = verifyMessageBySegment(keyPair.pubKey, messageData, signData);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -556,6 +620,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // 根据密钥参数属性构造RSA非对称密钥对密钥参数
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
@@ -593,53 +658,60 @@
   }
   
   async function verifyMessagePSS() {
-    // 完整的明文被拆分为input1和input2
-    let messagePart1 = 'This is Sign test plan1';
-    let messagePart2 = 'This is Sign test plan2';
-    let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
-    let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
-    // 获得RSA密钥对密钥参数对象
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // 构造RSA密钥对生成器
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    // sign和verify均支持RSA密钥带长度/不带长度的写法
-    let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
-    let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
-    let keyPair = await rsaGeneratorSpec.generateKeyPair();
-    await signer.init(keyPair.priKey);
-    // 在签名初始化后，对PSS参数进行set和get操作
-    let setN = 32;
-    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    console.info('mgf1Md: ' + mgf1Md);
-    await signer.update(input1);
-    let signMessageBlob = await signer.sign(input2);
-    // 在验签初始化前，对PSS参数进行set和get操作
-    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    await verifier.init(keyPair.pubKey);
-    await verifier.update(input1);
-    let verifyResult = await verifier.verify(input2, signMessageBlob);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      // 完整的明文被拆分为input1和input2
+      let messagePart1 = 'This is Sign test plan1';
+      let messagePart2 = 'This is Sign test plan2';
+      let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
+      let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
+      // 获得RSA密钥对密钥参数对象
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // 构造RSA密钥对生成器
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      // sign和verify均支持RSA密钥带长度/不带长度的写法
+      let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
+      let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
+      let keyPair = await rsaGeneratorSpec.generateKeyPair();
+      await signer.init(keyPair.priKey);
+      // 在签名初始化后，对PSS参数进行set和get操作
+      let setN = 32;
+      signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      console.info('mgf1Md: ' + mgf1Md);
+      await signer.update(input1);
+      let signMessageBlob = await signer.sign(input2);
+      // 在验签初始化前，对PSS参数进行set和get操作
+      verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      await verifier.init(keyPair.pubKey);
+      await verifier.update(input1);
+      let verifyResult = await verifier.verify(input2, signMessageBlob);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -651,6 +723,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   // 根据密钥参数属性构造RSA非对称密钥对密钥参数
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
@@ -688,53 +761,60 @@
   }
   
   function verifyMessagePSSSync() {
-    // 完整的明文被拆分为input1和input2
-    let messagePart1 = 'This is Sign test plan1';
-    let messagePart2 = 'This is Sign test plan2';
-    let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
-    let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
-    // 获得RSA密钥对密钥参数对象
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // 构造RSA密钥对生成器
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    // sign和verify均支持RSA密钥带长度/不带长度的写法
-    let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
-    let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
-    let keyPair = rsaGeneratorSpec.generateKeyPairSync();
-    signer.initSync(keyPair.priKey);
-    // 在签名初始化后，对PSS参数进行set和get操作
-    let setN = 32;
-    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    console.info('mgf1Md: ' + mgf1Md);
-    signer.updateSync(input1);
-    let signMessageBlob = signer.signSync(input2);
-    // 在验签初始化前，对PSS参数进行set和get操作
-    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-    saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
-    console.info('SaltLen: ' + saltLen);
-    tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
-    console.info('trailer field: ' + tf);
-    md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
-    console.info('md: ' + md);
-    mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
-    console.info('mgf: ' + mgf);
-    mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
-    verifier.initSync(keyPair.pubKey);
-    verifier.updateSync(input1);
-    let verifyResult = verifier.verifySync(input2, signMessageBlob);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      // 完整的明文被拆分为input1和input2
+      let messagePart1 = 'This is Sign test plan1';
+      let messagePart2 = 'This is Sign test plan2';
+      let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart1, 'utf-8').buffer) };
+      let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(messagePart2, 'utf-8').buffer) };
+      // 获得RSA密钥对密钥参数对象
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // 构造RSA密钥对生成器
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      // sign和verify均支持RSA密钥带长度/不带长度的写法
+      let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
+      let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
+      let keyPair = rsaGeneratorSpec.generateKeyPairSync();
+      signer.initSync(keyPair.priKey);
+      // 在签名初始化后，对PSS参数进行set和get操作
+      let setN = 32;
+      signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      let tf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      let md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      let mgf = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      let mgf1Md = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      console.info('mgf1Md: ' + mgf1Md);
+      signer.updateSync(input1);
+      let signMessageBlob = signer.signSync(input2);
+      // 在验签初始化前，对PSS参数进行set和get操作
+      verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+      saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+      console.info('SaltLen: ' + saltLen);
+      tf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_TRAILER_FIELD_NUM);
+      console.info('trailer field: ' + tf);
+      md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MD_NAME_STR);
+      console.info('md: ' + md);
+      mgf = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF_NAME_STR);
+      console.info('mgf: ' + mgf);
+      mgf1Md = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_MGF1_MD_STR);
+      verifier.initSync(keyPair.pubKey);
+      verifier.updateSync(input1);
+      let verifyResult = verifier.verifySync(input2, signMessageBlob);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -776,6 +856,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA|PSS|SHA256|MGF1_SHA256|OnlySign';
@@ -796,21 +877,28 @@
   }
   
   async function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // 先使用 Md 计算 SHA256 摘要（32字节）
-    let md = cryptoFramework.createMd('SHA256');
-    await md.update(messageData);
-    let digestBlob = await md.digest();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // 先使用 Md 计算 SHA256 摘要（32字节）
+      let md = cryptoFramework.createMd('SHA256');
+      await md.update(messageData);
+      let digestBlob = await md.digest();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey, digestBlob);
+      let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -822,6 +910,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'RSA|PSS|SHA256|MGF1_SHA256|OnlySign';
@@ -842,21 +931,28 @@
   }
   
   function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
-    // 先使用 Md 计算 SHA256 摘要（32字节）
-    let md = cryptoFramework.createMd('SHA256');
-    md.updateSync(messageData);
-    let digestBlob = md.digestSync();
-    let keyGenAlg = 'RSA1024';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessageSync(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is rsa onlySign test', 'utf-8').buffer) };
+      // 先使用 Md 计算 SHA256 摘要（32字节）
+      let md = cryptoFramework.createMd('SHA256');
+      md.updateSync(messageData);
+      let digestBlob = md.digestSync();
+      let keyGenAlg = 'RSA1024';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey, digestBlob);
+      let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

@@ -1,18 +1,18 @@
 # @ohos.arkui.componentSnapshot (Component Snapshot)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-07-29T09:22:32.041Z pushedAt=2026-08-03T02:35:51.828Z -->
+<!-- md-trans-meta sourceCommit=0bd31f970e01071c145da3999973e5a7342949bd translatedAt=2026-11-18T09:31:35.029Z pushedAt=2026-11-20T07:32:08.451Z nl=1 -->
 
 The **componentSnapshot** module provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet. Snapshots are strictly limited to the component's layout bounds. Content drawn outside the area of the owning component or the parent component is not visible in the snapshots. In addition, sibling components stacked in the component's area are not displayed in the snapshot.
 
 Transformation attributes such as scaling, translation, and rotation only apply to the child components of the target component. Applying these transformation attributes directly to the target component itself has no effect; the snapshot will still display the component as it appears before any transformations are applied.
 
 For typical use cases (for example, long screenshots) and best practices of component snapshots, see [Using Component Snapshot (ComponentSnapshot)](../../ui/arkts-uicontext-component-snapshot.md).
+
 
 > **NOTE**
 >
@@ -26,6 +26,7 @@ For typical use cases (for example, long screenshots) and best practices of comp
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 
+
 ## Modules to Import
 
 ```ts
@@ -38,7 +39,7 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 
 Obtains the snapshot of a component that has been loaded based on the provided [component ID](arkui-ts/ts-universal-attributes-component-id.md). This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [get](arkts-apis-uicontext-componentsnapshot.md#get12) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
@@ -58,7 +59,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the result.                              |
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)                              | No   | Custom settings of the snapshot.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
@@ -147,7 +148,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 | ----------------------------- | -------- |
 | Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
@@ -210,7 +211,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 
 Renders a custom component in the application background and outputs its snapshot. This API uses an asynchronous callback to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.
 
-> **NOTE**
+> **NOTE** 
 >
 > - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
@@ -233,10 +234,10 @@ Renders a custom component in the application background and outputs its snapsho
 | builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes    | Builder of the custom component.<br>**Note:** The global builder is not supported.<br>If the width and height of the root component of the builder are both 0, the snapshot operation fails and error code 100001 is thrown.|
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;      | Yes   | Callback used to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.|
 | delay<sup>12+</sup>   | number | No    | Delay time for triggering the snapshot command. When an image component is used in the layout, delay time must be specified so that the system can decode the image resource. The larger the resource, the longer the decoding takes. It is recommended to use PixelMap resources that do not require decoding whenever possible.<br> When PixelMap resources are used or **syncLoad** is set to **true** for the **Image** component, **delay** can be set to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from API call to return. Since the system needs to perform temporary off-screen construction of the passed-in builder, the return time is usually longer than this delay.<br>**Note:** In the builder passed to the snapshot API, state variables should not be used to control the construction of child components. If they must be used, they should not change when the snapshot API is called, to avoid unexpected snapshot results.<br> Default value: **300** <br> Unit: ms <br> Value range: [0, +∞). Values less than 0 are processed as the default value. |
-| checkImageStatus<sup>12+</sup>  | boolean | No    | Whether to verify the image decoding status before taking a snapshot. The value **true** indicates to check whether all **Image** components have been decoded. The value **false** indicates to skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
+| checkImageStatus<sup>12+</sup>  | boolean | No    | Whether to verify the image decoding status before taking a snapshot. The value **true** indicates to check whether all **Image** components have been decoded. The value **false** indicates to skip verification. If verification is enabled and an image is found not fully decoded, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
@@ -320,9 +321,9 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the promise.
 
-> **NOTE**
+> **NOTE** 
 >
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1) instead. Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 12, you can use the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object associated with the current UI context.
 > 
@@ -341,8 +342,8 @@ Renders a custom component in the application background and outputs its snapsho
 | Name    | Type                                      | Mandatory  | Description        |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes    | Builder of the custom component.<br>**Note:** The global builder is not supported.<br>If the width and height of the root component of the builder are both 0, the screenshot operation fails and error code 100001 is thrown. |
-| delay<sup>12+</sup>   | number | No    | Delay time for triggering the screenshot command. When an image component is used in the layout, delay time must be specified to allow the system to decode the image resource. The larger the resource, the longer the decoding takes. It is recommended to use PixelMap resources that do not require decoding whenever possible.<br> When PixelMap resources are used or **syncLoad** of the **Image** component is set to **true**, **delay** can be set to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from API call to return. Since the system needs to perform temporary off-screen building of the passed-in builder, the return time is usually longer than this delay.<br>**Note:** In the builder passed to the screenshot API, state variables should not be used to control the construction of child components. If they must be used, they should not change when the screenshot API is called, to avoid unexpected screenshot results.<br> Default value: **300** <br> Unit: ms|
-| checkImageStatus<sup>12+</sup>  | boolean | No    | Whether to verify the image decoding status before taking a snapshot. The value **true** indicates to check whether all **Image** components have been decoded. The value **false** indicates to skip verification. If the verification is not completed, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
+| delay<sup>12+</sup>   | number | No    | Delay time for triggering the snapshot command. When an image component is used in the layout, delay time must be specified so that the system can decode the image resource. The larger the resource, the longer the decoding takes. It is recommended to use PixelMap resources that do not require decoding whenever possible.<br> When PixelMap resources are used or **syncLoad** is set to **true** for the **Image** component, **delay** can be set to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from API call to return. Since the system needs to perform temporary off-screen construction of the passed-in builder, the return time is usually longer than this delay.<br>**Note:** In the builder passed to the snapshot API, state variables should not be used to control the construction of child components. If they must be used, they should not change when the snapshot API is called, to avoid unexpected snapshot results.<br> Default value: **300** <br> Unit: ms <br> Value range: [0, +∞). Values less than 0 are processed as the default value.|
+| checkImageStatus<sup>12+</sup>  | boolean | No    | Whether to verify the image decoding status before taking a snapshot. The value **true** indicates to check whether all **Image** components have been decoded. The value **false** indicates to skip verification. If an image is found not fully decoded, snapshot capture will be canceled and an exception will be returned.<br>Default value: **false**|
 | options<sup>12+</sup>       | [SnapshotOptions](#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
 **Return value**
@@ -351,7 +352,7 @@ Renders a custom component in the application background and outputs its snapsho
 | ----------------------------- | -------- |
 | Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result.|
 
-**Error codes**
+**Error codes** 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
@@ -526,8 +527,8 @@ Defines the size limit of a component screenshot.
 
 | Name       | Type    | Read-Only| Optional| Description                  |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | number | No   | No   | Maximum width for the component snapshot.<br>Value range: [0, +∞)<br>Unit: px |
-| maxHeight | number | No   | No   | Maximum height for the component snapshot.<br>Value range: [0, +∞)<br>Unit: px |
+| maxWidth  | number | No   | No   | Maximum width for the component snapshot.<br>Value range: [0, +∞). The abnormal value is **-1**, indicating a failure to query the component snapshot size limit.<br>Unit: px |
+| maxHeight | number | No   | No   | Maximum height for the component snapshot.<br>Value range: [0, +∞). The abnormal value is **-1**, indicating a failure to query the component snapshot size limit.<br>Unit: px |
 
 ## SnapshotOptions<sup>12+</sup>
 
@@ -536,7 +537,6 @@ Defines the size limit of a component screenshot.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name          | Type           |    Read-Only      |    Optional          |   Description                   |
 | ---------------|------------     | -------------|---------------| -----------------------------|
 | scale           | number | No  |  Yes | Scale ratio for rendering a PixelMap on the graphics side during snapshot. If the ratio is too large, the snapshot may take longer or fail.<br>Value range: [0, +∞). Values less than or equal to 0 are treated as the default value.<br>Default value: 1<br>**NOTE**<br>Do not take snapshots of excessively large sizes. It is recommended that the snapshot size not exceed the screen size. If the target width or height of the snapshot exceeds the underlying limit, the snapshot will fail. The underlying limit varies by device. You can obtain the specific limit through the [getSizeLimitation](./arkts-apis-uicontext-componentsnapshot.md#getsizelimitation) API.<br>**Atomic service API:** This API can be used in atomic services since API version 12.    |
@@ -788,5 +788,3 @@ struct SnapshotExample {
 ```
 
 ![localized_snapshot](figures/localized_snapshot.gif)
-
-<!--no_check-->
