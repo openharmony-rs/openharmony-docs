@@ -1,5 +1,5 @@
 # syscap_ndk.h
-<!--Kit: ArkUI-->
+<!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
 <!--Designer: @chenjinxiang3-->
