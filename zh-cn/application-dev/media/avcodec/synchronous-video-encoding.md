@@ -264,15 +264,17 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoEncoder_->GetOutputBuffer(bufferInfo, codecBufferTimeoutUs);
        if (!isStarted_) {
-           if (ret == AVCODEC_SAMPLE_ERR_OK &&
-               videoEncoder_->FreeOutputBuffer(bufferInfo) != AVCODEC_SAMPLE_ERR_OK) {
-               failure_.Record("recorder.video.release", AVCODEC_SAMPLE_ERR_ERROR,
-                   "Return video output while stopping failed");
-           }
+           // 输出线程退出后，由编码器Destroy统一回收未归还的Buffer。
            break;
        }
        if (ret == AVCODEC_SAMPLE_ERR_AGAIN) {
            continue;
+       }
+       // ...
+       if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+           // ...
+           AVCODEC_SAMPLE_LOGI("Catch EOS, primary video output thread out");
+           break;
        }
        // ...
    }
@@ -782,15 +784,17 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoEncoder_->GetOutputBuffer(bufferInfo, codecBufferTimeoutUs);
        if (!isStarted_) {
-           if (ret == AVCODEC_SAMPLE_ERR_OK &&
-               videoEncoder_->FreeOutputBuffer(bufferInfo) != AVCODEC_SAMPLE_ERR_OK) {
-               failure_.Record("recorder.video.release", AVCODEC_SAMPLE_ERR_ERROR,
-                   "Return video output while stopping failed");
-           }
+           // 输出线程退出后，由编码器Destroy统一回收未归还的Buffer。
            break;
        }
        if (ret == AVCODEC_SAMPLE_ERR_AGAIN) {
            continue;
+       }
+       // ...
+       if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
+           // ...
+           AVCODEC_SAMPLE_LOGI("Catch EOS, primary video output thread out");
+           break;
        }
        // ...
    }
