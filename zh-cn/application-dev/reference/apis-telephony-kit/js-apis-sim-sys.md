@@ -3694,11 +3694,11 @@ SIM卡鉴权响应。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称         | 类型   | 必填 |    说明    |
-| ------------ | ------ | ---- | ---------- |
-| simStatusWord1 | number |  是  | SIM卡状态字1。 |
-| simStatusWord2 | number |  是  | SIM卡状态字2。 |
-| response       | string |  是  | 鉴权响应。     |
+| 名称         | 类型   | 只读|可选 |    说明    |
+| ------------ | ------  | ---- | ---------- | ---------- |
+| simStatusWord1 | number  |  否 | 否| SIM卡状态字1。 |
+| simStatusWord2 | number |  否 | 否|SIM卡状态字2。 |
+| response       | string |  否 | 否| 鉴权响应。     |
 
 ## IccAccountInfo<sup>10+</sup>
 
