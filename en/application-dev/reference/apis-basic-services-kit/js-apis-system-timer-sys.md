@@ -1,4 +1,4 @@
-# @ohos.systemTimer (System Timer)(System API)
+# @ohos.systemTimer (System Timer) (System API)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
