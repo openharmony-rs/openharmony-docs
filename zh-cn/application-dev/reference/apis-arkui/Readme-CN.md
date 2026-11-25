@@ -166,6 +166,7 @@
       - [按键事件](arkui-ts/ts-universal-events-key.md)
       - [表冠事件](arkui-ts/ts-universal-events-crown.md)
       - [焦点轴事件](arkui-ts/ts-universal-events-focus-axis.md)
+      - [触控板原始事件](arkui-ts/ts-universal-events-touchpad.md)
     - 交互响应事件<!--interaction-events-->
       - [点击事件](arkui-ts/ts-universal-events-click.md)
       - [拖拽事件](arkui-ts/ts-universal-events-drag-drop.md)

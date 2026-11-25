@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供ArkTS侧[FrameNode](js-apis-arkui-frameNode.md)、[UIContext](arkts-apis-uicontext-uicontext.md)、NodeContent、DrawableDescriptor等对象与Native侧对象的转换，以及Navigation、Router页面信息查询、帧回调/空闲回调注册和事件直通启用或禁用等能力，适用于ArkTS与Native侧进行ArkUI节点、上下文、资源和页面状态联动的场景。
+提供ArkTS侧[FrameNode](js-apis-arkui-frameNode.md)、[UIContext](arkts-apis-uicontext-uicontext.md)、NodeContent、DrawableDescriptor等对象与Native侧对象的转换，以及Navigation、Router页面信息查询、帧回调/空闲回调注册、事件直通启用或禁用和触控板事件上报启用或禁用等能力，适用于ArkTS与Native侧进行ArkUI节点、上下文、资源和页面状态联动的场景。
 
 **引用文件：** `<arkui/native_node_napi.h>`
 
@@ -51,6 +51,7 @@
 | [int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData, void (\*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))](#oh_arkui_postframecallback) | 注册一个回调函数，以便在下一帧渲染时执行，适用于Native侧在下一帧执行界面刷新或渲染相关任务的场景。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。 |
 | [int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData, void (\*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))](#oh_arkui_postidlecallback) | 注册一个回调函数，适用于需要在Native侧利用帧间空闲时间处理非紧急任务的场景。下一帧渲染结束后，如果距离该帧之后的下一个VSync信号到来的剩余时间大于1ms，该回调函数将被执行；如果剩余时间小于1ms，回调函数将顺延至后续某一帧渲染结束后剩余时间大于1ms时执行。如果当前没有下一帧，将自动请求下一帧。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。 |
 | [ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, bool enabled, ArkUI_RawInputEventType type)](#oh_arkui_enableeventpassthrough) | 启用或禁用事件直通。事件直通表示在事件分发过程中，不经过[重采样](../../ui/arkts-interaction-development-guide-touch-screen.md#重采样与历史点)直接下发给组件。 |
+| [ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)](#oh_arkui_enabletouchpadevent) | 设置应用是否上报原始触控板事件。启用后，应用可通过注册[NODE_ON_TOUCH_PAD_EVENT](capi-native-node-h.md#arkui_nodeeventtype)事件接收触控板原始事件。 |
 
 ## 函数说明
 
@@ -687,3 +688,27 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) UIContext对象无效。 |
+
+### OH_ArkUI_EnableTouchPadEvent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_EnableTouchPadEvent(bool enabled)
+```
+
+**描述：**
+
+设置应用是否上报原始触控板事件。启用后，应用可通过注册[NODE_ON_TOUCH_PAD_EVENT](capi-native-node-h.md#arkui_nodeeventtype)事件接收触控板原始事件。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| bool enabled | [入参] 是否启用应用级触控板事件上报。true表示启用，false表示禁用。默认值为false。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI未初始化。 |
