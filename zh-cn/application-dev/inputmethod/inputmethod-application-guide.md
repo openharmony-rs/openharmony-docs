@@ -590,7 +590,8 @@
        }
        let keyHeight = Double.toLong(dHeight * keyHeightRate);
        this.barPosition = dHeight - keyHeight - navigationBar_height;
-       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
+       this.inputHandle.addLog(
+         `initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
        this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
        let panelInfo: inputMethodEngine.PanelInfo = {
          type: inputMethodEngine.PanelType.SOFT_KEYBOARD,

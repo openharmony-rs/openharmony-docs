@@ -123,8 +123,10 @@
        this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
        let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
        for (let i = 0; i < this.inputMethods.length; i++) {
-         if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
+         if (this.inputMethods[i].name === item && item != currentInputMethod.name) { // 判断是目标输入法且不是当前输入法时，切换到该输入法
            await inputMethod.switchInputMethod(this.inputMethods[i]);
+           this.currentInputMethodName = inputMethod.getCurrentInputMethod().name; // 更新当前输入法
+           this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; // 更新当前子类型
          }
        }
      } catch (err) {
