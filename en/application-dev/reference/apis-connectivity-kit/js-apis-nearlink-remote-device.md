@@ -1,24 +1,28 @@
 # @ohos.nearlink.remoteDevice (NearLink Remote Device Connection Capability)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=aa9545020692baaf11004432a3eb3c2a031071bf translatedAt=2026-08-17T08:50:22.644Z pushedAt=2026-08-18T12:31:03.176Z -->
+<!-- md-trans-meta sourceCommit=37ca604503d451441f6924864481deef5fcc486f translatedAt=2026-11-23T02:28:03.191Z pushedAt=2026-11-24T11:53:26.426Z nl=1 -->
+
 
 This module provides the capability of managing remote NearLink devices, including creating remote device instances, initiating pairing, querying remote device information, and subscribing to device status change events.
 
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
+
 **Since**: 26.0.0
+
 
 ## Modules to Import
 
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 ```
+
 
 ## PairingState
 
@@ -36,6 +40,7 @@ Enumerates the pairing statuses with a remote device.
 | -------- | -------- |
 | [nearlinkConstant.PairingState](js-apis-nearlink-constant.md#pairingstate) | Pairing status with a remote device. |
 
+
 ## ConnectionState
 
 type ConnectionState = nearlinkConstant.ConnectionState
@@ -51,6 +56,7 @@ Enumerates the connection states with a remote device.
 | Type | Description |
 | -------- | -------- |
 | [nearlinkConstant.ConnectionState](js-apis-nearlink-constant.md#connectionstate) | Connection state with a remote device. |
+
 
 ## DeviceClass
 
@@ -68,6 +74,7 @@ Enumerates the device types.
 | -------- | -------- |
 | [nearlinkConstant.DeviceClass](js-apis-nearlink-constant.md#deviceclass) | Device type. |
 
+
 ## AcbState
 
 type AcbState = nearlinkConstant.AcbState
@@ -84,11 +91,14 @@ Enumerates the logical link connection states with a remote device.
 | -------- | -------- |
 | [nearlinkConstant.AcbState](js-apis-nearlink-constant.md#acbstate) | Logical link connection state with a remote device. |
 
+
 ## remoteDevice.createRemoteDevice
 
 createRemoteDevice(address: string): RemoteDevice
 
 Creates a **RemoteDevice** instance.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -114,11 +124,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100041 | Invalid address. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -141,6 +150,8 @@ Subscribes to pairing status change events. This API uses an asynchronous callba
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -159,11 +170,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -184,6 +194,8 @@ offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
 Unsubscribes from pairing status change events. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -202,11 +214,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -226,6 +237,8 @@ Subscribes to the connection status change event. This API uses an asynchronous 
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -244,11 +257,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -269,6 +281,8 @@ offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
 Unsubscribes from the connection status change event. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -287,11 +301,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -311,6 +324,8 @@ Subscribes to the logical link connection status change event. This API uses an 
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -329,11 +344,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -354,6 +368,8 @@ offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
 Unsubscribes from the logical link connection status change event. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -372,11 +388,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -426,12 +441,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -449,6 +463,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### getPairingState
 
@@ -476,12 +491,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -496,6 +510,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### getDeviceName
 
@@ -523,12 +538,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -543,6 +557,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### getDeviceClass
 
@@ -570,12 +585,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -590,6 +604,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### getConnectionState
 
@@ -617,12 +632,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -637,6 +651,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### getAcbState
 
@@ -664,12 +679,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -684,6 +698,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### getDeviceInformation
 
@@ -711,12 +726,11 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -734,7 +748,8 @@ try {
 }
 ```
 
-### DeviceInformation
+
+## DeviceInformation
 
 Represents the remote device information.
 
@@ -749,7 +764,7 @@ Represents the remote device information.
 | manufacturerData | string | No | No | Manufacturer information. The value is in binary format and can be parsed using methods such as **buffer.from(manufacturerData, 'binary')**. |
 | modelData | string | No | No | Device model. The value is in binary format and can be parsed using methods such as **buffer.from(modelData, 'binary')**. |
 
-### ConnectionStateParam
+## ConnectionStateParam
 
 Represents the result of the connection status change event.
 
@@ -767,7 +782,7 @@ Represents the result of the connection status change event.
 | connectionReason | [ConnectionReason](#connectionreason) | No | No | Reason value. |
 | reasonMsg | string | No | Yes | Reason details. This field is used only for log information and should not be used for logical processing. If no reason details are available, this field is an empty string by default. |
 
-### ConnectionReason
+## ConnectionReason
 
 Enumerates the reason values of the NearLink connection status change result.
 
@@ -788,7 +803,8 @@ Enumerates the reason values of the NearLink connection status change result.
 | CONNECTION_FAIL_NO_AVAILABLE_SERVICE | 6 | No connectable/available profile. |
 | CONNECTION_FAIL_CONNECTION_NUM_LIMITED | 7 | The number of connections exceeds the limit. |
 
-### PairingStateParam
+
+## PairingStateParam
 
 Represents the result of the pairing status change event.
 
@@ -806,7 +822,8 @@ Represents the result of the pairing status change event.
 | reason | [PairingReason](#pairingreason) | No | No | Reason value. |
 | reasonMsg | string | No | Yes | Reason details. This field is used only for log information and should not be used for logical processing. If no reason details are available, this field is an empty string by default. |
 
-### PairingRequestParam
+
+## PairingRequestParam
 
 Represents the result of the pairing request event.
 
@@ -822,7 +839,8 @@ Represents the result of the pairing request event.
 | passkey | string | No | No | Pairing code for interaction, which is displayed to the user for confirmation. The value is a string of six digits. This parameter is valid only when **pairingType** is set to **PAIRING_TYPE_PASSCODE** or **PAIRING_TYPE_NUMBER_COMPARE**. |
 | pairingType | [PairingType](#pairingtype) | No | No | Pairing type. |
 
-### PairingReason
+
+## PairingReason
 
 Enumerates the reason values of the NearLink pairing status change result.
 
@@ -842,6 +860,7 @@ Enumerates the reason values of the NearLink pairing status change result.
 | PAIRING_REASON_LOCAL_CANCELED | 5 | Pairing failed because the local device cancels the pairing. |
 | PAIRING_REASON_AUTH_FAIL | 6 | Authentication failed. |
 
+
 ## PairingType
 
 Enumerates the NearLink pairing types.
@@ -857,6 +876,7 @@ Enumerates the NearLink pairing types.
 | NO_PASSKEY_CONFIRMATION | 0 | Pairing type that does not require a passkey. Users do not need to check the pairing code. |
 | PAIRING_TYPE_PASSCODE | 1 | Pairing type with passcode authentication. Users need to enter the pairing code displayed on one device into the other device. |
 | PAIRING_TYPE_NUMBER_COMPARE | 2 | Pairing type with authentication based on digit comparison. Users must ensure that the pairing codes on both devices are the same. |
+
 
 ## AcbStateParam
 

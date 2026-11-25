@@ -6,6 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=343cb44ba4593f6613080bdac1c3cb7664ea62d3 translatedAt=2026-11-23T02:33:30.440Z pushedAt=2026-11-24T11:59:54.985Z nl=1 -->
 
 The **nfcController** module provides APIs for opening and closing Near-Field Communication (NFC) and reading the NFC state.
 
@@ -212,7 +213,7 @@ Enables listening for NFC state changes. This API uses an asynchronous callback 
  
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type. The value is **nfcStateChange**.|
+| type | string | Yes | The value is **nfcStateChange**. |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | Yes| Callback used to return the NFC state.|
 
 **Example**
@@ -232,7 +233,7 @@ Unsubscribes from the NFC state changes. Upon successful unsubscription, the sub
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type. The value is **nfcStateChange**.|
+| type | string | Yes | The value is **nfcStateChange**. |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | No| Callback for the NFC state changes. This parameter can be left blank. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
   
 **Example**
@@ -241,7 +242,7 @@ Unsubscribes from the NFC state changes. Upon successful unsubscription, the sub
 import { nfcController } from '@kit.ConnectivityKit';
 
 // Register a callback for NFC status change events.
-nfcController.on("nfcStateChange", (nfcState : number) => {
+nfcController.on('nfcStateChange', (nfcState: number) => {
   console.info("nfcController on callback nfcState: " + nfcState);
 });
 
@@ -272,5 +273,5 @@ if (nfcController.isNfcOpen()) {
 }
 
 // Unregister the callback for NFC status change events.
-nfcController.off("nfcStateChange");
+nfcController.off('nfcStateChange');
 ```

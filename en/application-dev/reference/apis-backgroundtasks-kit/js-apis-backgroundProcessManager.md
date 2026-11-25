@@ -6,11 +6,11 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=398bdda8db5d447775b730c53183f9dadbc9f04d translatedAt=2026-11-17T07:24:17.327Z pushedAt=2026-11-17T07:52:51.399Z nl=1 -->
+<!-- md-trans-meta sourceCommit=170d834719fc6021ebf60adb0d9e32745f754395 translatedAt=2026-11-23T01:00:47.385Z pushedAt=2026-11-23T10:38:35.315Z nl=1 -->
 
 The **backgroundProcessManager** module provides APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess).
 
->  **NOTE**
+> **NOTE**
 >
 > The initial APIs of this module are supported since API version 17. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 

@@ -1,20 +1,21 @@
 # @ohos.nearlink.scan (NearLink Scanning Capability) (System API)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=d24a1f6e1187eccb8d59684feff7b18c39e0a378 translatedAt=2026-08-17T08:49:09.215Z pushedAt=2026-08-17T12:30:27.129Z -->
+<!-- md-trans-meta sourceCommit=dd305c3d6ada98668c2c88e9eede4ef19139d4fc translatedAt=2026-11-23T02:29:04.637Z pushedAt=2026-11-24T11:58:19.030Z nl=1 -->
+
 
 This module provides the definition of the NearLink scanning mode.
+
 
 **Since**: 26.0.0
 
 > **NOTE**
 >
-> The APIs provided by this module are system APIs.
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.nearlink.scan (NearLink Scanning Capability)](js-apis-nearlink-scan.md).
 
 ## Modules to Import
 

@@ -5,9 +5,9 @@
 <!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b2b40ad27b0a04a8c75aa3540e06525fdca8ac20 translatedAt=2026-11-04T03:59:46.734Z pushedAt=2026-11-04T10:12:33.448Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6efb585ec30bb3c07a6935fda330860409890a69 translatedAt=2026-11-23T02:49:43.748Z pushedAt=2026-11-24T12:09:19.379Z nl=1 -->
 
-BackupExtensionContext is the context of BackupExtensionAbility. It inherits from ExtensionContext and is used to obtain the temporary directory during backup and restore.
+**BackupExtensionContext** represents the context of **BackupExtensionAbility** and inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). It is used to obtain the temporary directory during backup and restore.
 
 The BackupExtensionContext module provides the capability to access the resources of a specific BackupExtensionAbility. When an application implements the backup and restore extension capability, it can use this context to obtain the temporary directory corresponding to el1 (device-level encryption zone) or el2 (user-level encryption zone), which is used to temporarily save the data to be backed up or read the data to be restored. This simplifies the development of the backup and restore extension capability and isolates temporary data by data security level. For an extended BackupExtensionAbility, you can directly use BackupExtensionContext as the context, or define a type that inherits from BackupExtensionContext as the context.
 

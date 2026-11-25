@@ -5,6 +5,7 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=8266731468c5c102bb32adcab35076a49f4ec824 translatedAt=2026-11-23T01:24:27.490Z pushedAt=2026-11-23T11:23:17.315Z nl=1 -->
 
 > **NOTE**
 >
@@ -12,7 +13,7 @@
 
 ## -1 Time and Time Zone Service Error
 
-**Error Message**
+**Error Message** 
 
 Parameter check failed, permission denied, or system error.
 
@@ -51,7 +52,7 @@ Make sure the network is connected and the system resources are sufficient.
 
 **Error Message**
 
-**updateNtpTime()** fails to be called.
+updateNtpTime() is not called successfully.
 
 **Description**
 

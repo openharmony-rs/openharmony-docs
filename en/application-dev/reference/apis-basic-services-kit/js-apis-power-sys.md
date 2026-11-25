@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=9968d661b25fc2e28ad9453110724cf8ae44fbc4 translatedAt=2026-11-23T01:39:54.661Z pushedAt=2026-11-23T12:08:49.226Z nl=1 -->
 
 The **power** module provides APIs for rebooting and shutting down the system, as well as querying the screen status.
 
@@ -43,7 +44,7 @@ Shuts down the system.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -83,7 +84,7 @@ Reboots a device.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -124,12 +125,13 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>Applicable versions: 19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices.<br>Applicable versions: 26.0.1+ |
 
 **Example**
 
@@ -166,12 +168,14 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>Applicable versions: 19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
+| 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam.<br>Applicable versions: 26.0.1+ |
+| 801     | Capability not supported. This API cannot work in car devices.<br>Applicable versions: 26.0.1+ |
 
 **Example**
 
@@ -206,9 +210,9 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed. <br>Applicable versions: 23+|
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -253,9 +257,9 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>Applicable versions: 23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -286,6 +290,8 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
+**Device behavior differences:** When this API is called on a car device, error code 801 is returned. On other devices, it is called normally.
+
 **Parameters**
 
 | Name   | Type    | Mandatory  | Description   |
@@ -296,12 +302,13 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>Applicable versions: 19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices.<br>Applicable versions: 26.0.1+ |
 
 **Example**
 
@@ -337,10 +344,10 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable versions: 19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 
@@ -368,6 +375,8 @@ This API takes effect only when the device is active. For details about the devi
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
+**Device behavior differences:** When this API is called on a car device, error code 801 is returned. On other devices, it is called normally.
+
 **Parameters**
 
 | Name   | Type    | Mandatory  | Description   |
@@ -378,12 +387,13 @@ This API takes effect only when the device is active. For details about the devi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. <br>Applicable versions: 26.0.1+|
 
 **Example**
 
@@ -419,7 +429,7 @@ For details about the power key filtering strategy, see [power.PowerKeyFiltering
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -457,7 +467,7 @@ Registers a callback to be invoked when the device is shut down or rebooted. Thi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -498,7 +508,7 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -549,7 +559,7 @@ Obtains the power configuration based on the specified scenario.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -595,7 +605,7 @@ Sets the power configuration based on the specified scenario.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |

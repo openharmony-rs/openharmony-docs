@@ -5,6 +5,7 @@
 <!--Designer: @starrylight; @jiayunpeng2-->
 <!--Tester: @yaoruijiang-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=7723421f3cd6590d3d48799b0e8f48feb3b59829 translatedAt=2026-11-23T02:09:37.016Z pushedAt=2026-11-23T12:25:28.679Z nl=1 -->
 
 The **screenLock** module is a system module in OpenHarmony. It provides APIs for screen lock applications to subscribe to screen lock status changes as well as callbacks for them to receive the results. It also provides APIs for third-party applications to unlock the screen, obtain the screen locked status, and check whether a lock screen password has been set.
 
@@ -74,7 +75,7 @@ Checks whether the screen is locked.
 
 **System API**: This is a system API.
 
-**Return value**
+**Return value** 
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
@@ -88,7 +89,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 
-**Example**
+**Example** 
 
 ```ts
 let isLocked = screenLock.isLocked();
@@ -104,7 +105,7 @@ Unlocks the screen. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type         | Mandatory| Description                                |
 | -------- | --------------------- | ---- | ------------------------- |
@@ -112,7 +113,7 @@ Unlocks the screen. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Management Error Codes](errorcode-screenlock.md).
 
 | Error Code| Error Message|
 | -------- | ---------------------------------------- |
@@ -121,7 +122,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 13200002  | the screenlock management service is abnormal.         |
 | 13200003  | illegal use.         |
 
-**Example**
+**Example** 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -149,7 +150,7 @@ Unlocks the screen. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
-**Return value**
+**Return value** 
 
 | Type               | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
@@ -157,7 +158,7 @@ Unlocks the screen. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Management Error Codes](errorcode-screenlock.md).
 
 | Error Code| Error Message|
 | -------- | ---------------------------------------- |
@@ -165,7 +166,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 13200002  | the screenlock management service is abnormal.         |
 | 13200003  | illegal use.         |
 
-**Example**
+**Example** 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -193,7 +194,7 @@ Locks the screen. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type         | Mandatory| Description                     |
 | -------- | ---------------------- | ---- | ---------------- |
@@ -201,7 +202,7 @@ Locks the screen. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Management Error Codes](errorcode-screenlock.md).
 
 | Error Code| Error Message|
 | -------- | ---------------------------------------- |
@@ -210,7 +211,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**Example**
+**Example** 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -236,7 +237,7 @@ Locks the screen. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
-**Return value**
+**Return value** 
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
@@ -244,7 +245,7 @@ Locks the screen. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Management Error Codes](errorcode-screenlock.md).
 
 | Error Code| Error Message|
 | -------- | ---------------------------------------- |
@@ -252,7 +253,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**Example**
+**Example** 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -276,13 +277,13 @@ Registers a callback for system events related to screen locking. This API can b
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                       | Mandatory| Description              |
 | -------- | ------------------------- | ---- | ----------------- |
 | callback | Callback\<[SystemEvent](#systemevent9)> | Yes  | Callback for system events related to screen locking.|
 
-**Return value**
+**Return value** 
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
@@ -290,7 +291,7 @@ Registers a callback for system events related to screen locking. This API can b
 
 **Error codes**
 
-For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Management Error Codes](errorcode-screenlock.md).
 
 | Error Code| Error Message|
 | -------- | ---------------------------------------- |
@@ -299,7 +300,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**Example**
+**Example** 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -326,7 +327,7 @@ Sends an event to the screen lock service. This API can be called only by screen
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type           | Mandatory| Description                                                                                                               |
 | --------- | ------------------------ | ---- |-------------------------------------------------------------------------------------------------------------------|
@@ -336,7 +337,7 @@ Sends an event to the screen lock service. This API can be called only by screen
 
 **Error codes**
 
-For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Management Error Codes](errorcode-screenlock.md).
 
 | Error Code| Error Message|
 | -------- | ---------------------------------------- |
@@ -345,7 +346,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  |the screenlock management service is abnormal.         |
 
-**Example**
+**Example** 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -371,14 +372,14 @@ Sends an event to the screen lock service. This API can be called only by screen
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type  | Mandatory| Description                                                                                                               |
 | --------- | ------ | ---- |-------------------------------------------------------------------------------------------------------------------|
 | event     | String | Yes  | Event type. Options are as follows:<br>- **"unlockScreenResult"**: Screen unlock result.<br>- **"lockScreenResult"**: Screen lock result.<br>- **"screenDrawDone"**: Screen drawing is complete.|
 | parameter | number | Yes  | Result.<br>- **0**: The operation is successful. For example, the screen is locked or unlocked successfully.<br>- **1**: The operation fails. For example, screen locking or unlocking fails.<br>- **2**: The operation is canceled. For example, screen locking or unlocking is canceled.|
 
-**Return value**
+**Return value** 
 
 | Type              | Description                                          |
 | ----------------- | ---------------------------------------------- |
@@ -386,7 +387,7 @@ Sends an event to the screen lock service. This API can be called only by screen
 
 **Error codes**
 
-For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Management Error Codes](errorcode-screenlock.md).
 
 | Error Code| Error Message|
 | -------- | ---------------------------------------- |
@@ -395,7 +396,7 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
 
-**Example**
+**Example** 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -406,3 +407,4 @@ For details about error codes, see [Universal Error Codes](../errorcode-universa
     console.error(`Failed to send screenlock event, Code: ${err.code}, message: ${err.message}`);
   });
   ```
+

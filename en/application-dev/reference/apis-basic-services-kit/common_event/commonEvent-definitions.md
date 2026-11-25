@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T12:08:53.091Z pushedAt=2026-10-10T01:36:15.837Z -->
+<!-- md-trans-meta sourceCommit=87dbb7dccdd55553f9b008ef4d22fbd61da3fce1 translatedAt=2026-11-23T01:01:33.053Z pushedAt=2026-11-23T10:50:33.085Z nl=1 -->
 
 This document provides indexes for predefined system common events.
 
@@ -106,7 +106,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_SCREEN_ON](commonEventManager-definitions.md#common_event_screen_on) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_SCREEN_ON](commonEventManager-definitions.md#common_event_screen_on) instead.
 
   - Value: **usual.event.SCREEN_ON**
   - Required permissions: none
@@ -116,7 +116,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 8 and deprecated since API version 9. You are advised to use [COMMON_EVENT_THERMAL_LEVEL_CHANGED](commonEventManager-definitions.md#common_event_thermal_level_changed) instead.
+  > This type is supported since API version 8 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_THERMAL_LEVEL_CHANGED](commonEventManager-definitions.md#common_event_thermal_level_changed) instead.
 
   - Value: **usual.event.THERMAL_LEVEL_CHANGED**
   - Required permissions: none
@@ -126,7 +126,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_USER_PRESENT](commonEventManager-definitions.md#common_event_user_presentdeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_USER_PRESENT](commonEventManager-definitions.md#common_event_user_presentdeprecated) instead.
 
   - Value: **usual.event.USER_PRESENT**
   - Required permissions: none
@@ -136,7 +136,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_TIME_TICK](commonEventManager-definitions.md#common_event_time_tick) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_TIME_TICK](commonEventManager-definitions.md#common_event_time_tick) instead.
 
   - Value: **usual.event.TIME_TICK**
   - Required permissions: none
@@ -146,7 +146,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_TIME_CHANGED](commonEventManager-definitions.md#common_event_time_changed) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_TIME_CHANGED](commonEventManager-definitions.md#common_event_time_changed) instead.
 
   - Value: **usual.event.TIME_CHANGED**
   - Required permissions: none
@@ -156,7 +156,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_DATE_CHANGED](commonEventManager-definitions.md#common_event_date_changed) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_DATE_CHANGED](commonEventManager-definitions.md#common_event_date_changed) instead.
 
   - Value: **usual.event.DATE_CHANGED**
   - Required permissions: none
@@ -166,7 +166,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_TIMEZONE_CHANGED](commonEventManager-definitions.md#common_event_timezone_changed) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_TIMEZONE_CHANGED](commonEventManager-definitions.md#common_event_timezone_changed) instead.
 
   - Value: **usual.event.TIMEZONE_CHANGED**
   - Required permissions: none
@@ -176,7 +176,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_CLOSE_SYSTEM_DIALOGS](commonEventManager-definitions.md#common_event_close_system_dialogs) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_CLOSE_SYSTEM_DIALOGS](commonEventManager-definitions.md#common_event_close_system_dialogs) instead.
 
   - Value: **usual.event.CLOSE_SYSTEM_DIALOGS**
   - Required permissions: none
@@ -186,7 +186,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_PACKAGE_ADDED](commonEventManager-definitions.md#common_event_package_added) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_PACKAGE_ADDED](commonEventManager-definitions.md#common_event_package_added) instead.
 
   - Value: **usual.event.PACKAGE_ADDED**
   - Required permissions: none
@@ -195,7 +195,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_PACKAGE_REPLACED](commonEventManager-definitions.md#common_event_package_replaced) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_PACKAGE_REPLACED](commonEventManager-definitions.md#common_event_package_replaced) instead.
 
   - Value: **usual.event.PACKAGE_REPLACED**
   - Required permissions: none
@@ -464,7 +464,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_USER_SWITCHED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_USER_SWITCHED instead.
 
   - Value: **usual.event.USER_SWITCHED**
   - Required permissions: **ohos.permission.MANAGE_LOCAL_ACCOUNTS** (for system applications only)
@@ -804,7 +804,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_sdp_resultdeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_sdp_resultdeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.remotedevice.SDP_RESULT**
   - Required permissions: none
@@ -814,7 +814,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_uuid_valuedeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_uuid_valuedeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.remotedevice.UUID_VALUE**
   - Required permissions: **ohos.permission.DISCOVER_BLUETOOTH**
@@ -824,7 +824,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_reqdeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_reqdeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.remotedevice.PAIRING_REQ**
   - Required permissions: **ohos.permission.DISCOVER_BLUETOOTH**
@@ -834,7 +834,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_canceldeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_canceldeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.remotedevice.PAIRING_CANCEL**
   - Required permissions: none
@@ -844,7 +844,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_reqdeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_reqdeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.remotedevice.CONNECT_REQ**
   - Required permissions: none
@@ -854,7 +854,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_replydeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_replydeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.remotedevice.CONNECT_REPLY**
   - Required permissions: none
@@ -864,7 +864,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_canceldeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_canceldeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.remotedevice.CONNECT_CANCEL**
   - Required permissions: none
@@ -874,7 +874,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_connect_state_updatedeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_connect_state_updatedeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE**
   - Required permissions: none
@@ -884,7 +884,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_audio_state_updatedeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_audio_state_updatedeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE**
   - Required permissions: none
@@ -894,7 +894,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_ag_common_eventdeprecated) instead.
+  > This type is supported since API version 7 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_ag_common_eventdeprecated) as a replacement.
 
   - Value: **usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT**
   - Required permissions: none
@@ -1094,7 +1094,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_USER_ADDED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_USER_ADDED instead.
 
   - Value: **usual.event.USER_ADDED**
   - Required permissions: **ohos.permission.MANAGE_LOCAL_ACCOUNTS** (for system applications only)
@@ -1104,7 +1104,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_USER_REMOVED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_USER_REMOVED instead.
 
   - Value: **usual.event.USER_REMOVED**
   - Required permissions: **ohos.permission.MANAGE_LOCAL_ACCOUNTS** (for system applications only)
@@ -1402,4 +1402,4 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 8 and deprecated since API version 9. You are advised to use [COMMON_EVENT_SPLIT_SCREEN](commonEventManager-definitions.md#common_event_split_screen) instead.
+  > This type is supported since API version 8 and deprecated since API version 9. It is recommended to use [COMMON_EVENT_SPLIT_SCREEN](commonEventManager-definitions.md#common_event_split_screen) instead.

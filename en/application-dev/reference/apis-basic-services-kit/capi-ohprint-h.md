@@ -1,10 +1,11 @@
 # ohprint.h
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-23T01:17:44.883Z pushedAt=2026-11-23T11:01:14.860Z nl=1 -->
 
 ## Overview
 
@@ -29,7 +30,7 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 | [Print_StringList](capi-oh-print-print-stringlist.md)        | Print_StringList        | Defines a struct for the string list.               |
 | [Print_Property](capi-oh-print-print-property.md)            | Print_Property          | Defines a struct for the printer property.               |
 | [Print_PropertyList](capi-oh-print-print-propertylist.md)    | Print_PropertyList      | Defines a struct for the printer property list.               |
-| [Print_Resolution](capi-oh-print-print-resolution.md)        | Print_Resolution        | Defines a struct for the printing resolution in dpi.|
+| [Print_Resolution](capi-oh-print-print-resolution.md)        | Print_Resolution        | Defines a struct for the printing resolution in dpi. |
 | [Print_Margin](capi-oh-print-print-margin.md)                | Print_Margin            | Defines a struct for the page margin to print.                 |
 | [Print_PageSize](capi-oh-print-print-pagesize.md)            | Print_PageSize          | Defines a struct for the page size.             |
 | [Print_PrinterCapability](capi-oh-print-print-printercapability.md) | Print_PrinterCapability | Defines a struct for the printer capabilities.               |
@@ -52,7 +53,7 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 | [Print_ColorMode](#print_colormode)                   | Print_ColorMode          | Enumerates the color modes.              |
 | [Print_OrientationMode](#print_orientationmode)       | Print_OrientationMode    | Enumerates the orientation modes.              |
 | [Print_Quality](#print_quality)                       | Print_Quality            | Enumerates the print qualities.              |
-| [Print_DocumentFormat](#print_documentformat)         | Print_DocumentFormat     | Enumerates the MIME types.  |
+| [Print_DocumentFormat](#print_documentformat)         | Print_DocumentFormat     | Enumerates the MIME types.   |
 | [Print_JobDocAdapterState](#print_jobdocadapterstate) | Print_JobDocAdapterState | Enumerates the print job adapter states.|
 | [OH_Print_JobState](#oh_print_jobstate)               | OH_Print_JobState        | Enumerates the print job states.|
 
@@ -65,26 +66,26 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 | [typedef void(\*Print_OnJobStateChanged)(const char *jobId, uint32_t state)](#print_onjobstatechanged) | Print_OnJobStateChanged        | Defines a callback to be invoked when the print job state changes.                                          |
 | [typedef void (\*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)](#print_printerdiscoverycallback) | Print_PrinterDiscoveryCallback | Defines a callback used to return the discovered printers.                                            |
 | [typedef void (\*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo)](#print_printerchangecallback) | Print_PrinterChangeCallback    | Defines a callback to be invoked when a printer is changed.                                            |
-| [Print_ErrorCode OH_Print_Init()](#oh_print_init)            | -                              | Checks and starts the print service, initializes the print client, and connects it with the print service.|
-| [Print_ErrorCode OH_Print_Release()](#oh_print_release)      | -                              | Disconnects from the print service, unregister all registered callbacks, and releases the print client resources.|
-| [Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback callback)](#oh_print_startprinterdiscovery) | -                              | Starts printer discovery.                                     |
-| [Print_ErrorCode OH_Print_StopPrinterDiscovery()](#oh_print_stopprinterdiscovery) | -                              | Stops printer discovery.                                     |
-| [Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)](#oh_print_connectprinter) | -                              | Connects to a printer by the printer ID.                           |
-| [Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)](#oh_print_startprintjob) | -                              | Starts a print job.                                   |
-| [Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallback callback)](#oh_print_registerprinterchangelistener) | -                              | Registers a listener for printer changes.                                 |
-| [void OH_Print_UnregisterPrinterChangeListener()](#oh_print_unregisterprinterchangelistener) | -                              | Unregisters this listener for printer changes.                                 |
-| [Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)](#oh_print_queryprinterlist) | -                              | Queries the list of added printers.                             |
-| [void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)](#oh_print_releaseprinterlist) | -                              | Releases the memory used to store the printer list.                       |
-| [Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterInfo \*\*printerInfo)](#oh_print_queryprinterinfo) | -                              | Queries printer information by printer ID.                       |
-| [void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)](#oh_print_releaseprinterinfo) | -                              | Releases the memory allocated for querying the printer information.                       |
-| [Print_ErrorCode OH_Print_LaunchPrinterManager()](#oh_print_launchprintermanager) | -                              | Starts the printer management window of the system.                           |
-| [Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Print_StringList *propertyKeyList, Print_PropertyList *propertyList)](#oh_print_queryprinterproperties) | -                              | Queries the printer properties based on the list of property keys.           |
-| [void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)](#oh_print_releaseprinterproperties) | -                              | Releases the memory used to store the property list.                         |
-| [Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Print_PropertyList *propertyList)](#oh_print_updateprinterproperties) | -                              | Updates the printer properties based on the KV pairs.                   |
-| [Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const Print_StringList *propertyKeyList)](#oh_print_restoreprinterproperties) | -                              | Restores printer properties to the default settings based on the property key list.       |
-| [Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)](#oh_print_startprintbynative) | -                              | Starts the system printing app.                           |
+| [Print_ErrorCode OH_Print_Init()](#oh_print_init)            | -                              | Checks and starts the print service, initializes the print client, and connects it with the print service. |
+| [Print_ErrorCode OH_Print_Release()](#oh_print_release)      | -                              | Disconnects from the print service, unregister all registered callbacks, and releases the print client resources. |
+| [Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback callback)](#oh_print_startprinterdiscovery) | -                              | Starts printer discovery.                                      |
+| [Print_ErrorCode OH_Print_StopPrinterDiscovery()](#oh_print_stopprinterdiscovery) | -                              | Stops printer discovery.                                      |
+| [Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)](#oh_print_connectprinter) | -                              | Connects to a printer by the printer ID.                            |
+| [Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)](#oh_print_startprintjob) | -                              | Starts a print job.                                    |
+| [Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallback callback)](#oh_print_registerprinterchangelistener) | -                              | Registers a listener for printer changes.                                  |
+| [void OH_Print_UnregisterPrinterChangeListener()](#oh_print_unregisterprinterchangelistener) | -                              | Unregisters this listener for printer changes.                                  |
+| [Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)](#oh_print_queryprinterlist) | -                              | Queries the list of added printers.                              |
+| [void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)](#oh_print_releaseprinterlist) | -                              | Releases the memory used to store the printer list.                        |
+| [Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterInfo \*\*printerInfo)](#oh_print_queryprinterinfo) | -                              | Queries printer information by printer ID.                        |
+| [void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)](#oh_print_releaseprinterinfo) | -                              | Releases the memory allocated for querying the printer information.                        |
+| [Print_ErrorCode OH_Print_LaunchPrinterManager()](#oh_print_launchprintermanager) | -                              | Starts the printer management window of the system.                            |
+| [Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Print_StringList *propertyKeyList, Print_PropertyList *propertyList)](#oh_print_queryprinterproperties) | -                              | Queries the printer properties based on the list of property keys.            |
+| [void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)](#oh_print_releaseprinterproperties) | -                              | Releases the memory used to store the property list.                          |
+| [Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Print_PropertyList *propertyList)](#oh_print_updateprinterproperties) | -                              | Updates the printer properties based on the KV pairs.                    |
+| [Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const Print_StringList *propertyKeyList)](#oh_print_restoreprinterproperties) | -                              | Restores printer properties to the default settings based on the property key list.        |
+| [Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)](#oh_print_startprintbynative) | -                              | Starts the system printing app.                            |
 | [typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state)](#oh_print_onjobstatechanged) | OH_Print_OnJobStateChanged                              | Defines a callback to be invoked when the print job state changes.                           |
-| [Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)](#oh_print_startprintwithjobstatecallback) | -                              | Starts a print job with the callback to be invoked when the print job state changes.                           |
+| [Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)](#oh_print_startprintwithjobstatecallback) | -                              | Starts a print job with the callback to be invoked when the print job state changes.                            |
 
 ## Enum Description
 
@@ -106,7 +107,7 @@ Enumerates the error codes.
 | PRINT_ERROR_NO_PERMISSION = 201          | Permission verification failed. Ensure that the corresponding permission has been declared in the app configuration.  |
 | PRINT_ERROR_INVALID_PARAMETER = 401      | Invalid parameter. Check the type and value range of the passed parameter.      |
 | PRINT_ERROR_GENERIC_FAILURE = 24300001   | Generic internal error. Check the running status of the printing service and try again.  |
-| PRINT_ERROR_RPC_FAILURE = 24300002       | RPC communication error. Ensure that the printing service has been started and try again.  |
+| PRINT_ERROR_RPC_FAILURE = 24300002       | RPC communication error. Ensure that the printing service has been started and try again.   |
 | PRINT_ERROR_SERVER_FAILURE = 24300003    | Server error. Check the running status of the printing service.    |
 | PRINT_ERROR_INVALID_EXTENSION = 24300004 | Invalid extension. Ensure that a valid printing extension has been installed.    |
 | PRINT_ERROR_INVALID_PRINTER = 24300005   | Invalid printer. Ensure that the printer is in the list of discovered or connected printers.  |
@@ -258,11 +259,11 @@ Enumerates the MIME types.
 
 | Enum Item                    | Description                                 |
 | -------------------------- | ------------------------------------- |
-| DOCUMENT_FORMAT_AUTO       | application/octet-stream.|
-| DOCUMENT_FORMAT_JPEG       | image/jpeg.              |
-| DOCUMENT_FORMAT_PDF        | application/pdf.         |
-| DOCUMENT_FORMAT_POSTSCRIPT | application/postscript.  |
-| DOCUMENT_FORMAT_TEXT       | text/plain.              |
+| DOCUMENT_FORMAT_AUTO       | application/octet-stream. |
+| DOCUMENT_FORMAT_JPEG       | image/jpeg.               |
+| DOCUMENT_FORMAT_PDF        | application/pdf.          |
+| DOCUMENT_FORMAT_POSTSCRIPT | application/postscript.   |
+| DOCUMENT_FORMAT_TEXT       | text/plain.               |
 
 ### Print_JobDocAdapterState
 
@@ -323,7 +324,7 @@ Defines a callback used to return the file write-back result.
 
 | Name             | Description           |
 | ------------------- | --------------- |
-| const char \*jobId | Pointer to the print job ID.|
+| const char \*jobId | Pointer to the print job ID. |
 | uint32_t code       | File write-back result. **0**: The file is successfully created. **1**: The file fails to be created. **2**: The file is successfully created but not rendered.|
 
 ### Print_OnStartLayoutWrite()
@@ -342,11 +343,11 @@ Defines a callback to be invoked when the file write-back starts.
 
 | Name                                                      | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| const char \*jobId                                          | Pointer to the print job ID.     |
+| const char \*jobId                                          | Pointer to the print job ID.      |
 | uint32_t fd                                                  | File descriptor to write.|
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*oldAttrs | Pointer to the print attributes of the previous print job.      |
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*newAttrs | Pointer to the print attributes of the current print job.        |
-| [Print_WriteResultCallback](#print_writeresultcallback) writeCallback | Defines a callback used to return the file write-back result.    |
+| [Print_WriteResultCallback()](#print_writeresultcallback) writeCallback | Defines a callback used to return the file write-back result.    |
 
 ### Print_OnJobStateChanged()
 
@@ -364,7 +365,7 @@ Defines a callback to be invoked when the print job state changes.
 
 | Name             | Description                |
 | ------------------- | -------------------- |
-| const char \*jobId | Pointer to the print job ID.     |
+| const char \*jobId | Pointer to the print job ID.      |
 | uint32_t state      | Status of the current print task. For details about the values and meanings, see [OH_Print_JobState](#oh_print_jobstate).|
 
 ### Print_PrinterDiscoveryCallback()
@@ -425,7 +426,7 @@ Checks and starts the print service, initializes the print client, and connects 
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>             [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>             [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>             [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): The CUPS service fails to be started.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>             [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>             [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>             [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): The CUPS service fails to be started. |
 
 ### OH_Print_Release()
 
@@ -473,7 +474,7 @@ Starts printer discovery. During the discovery process, you can use **Print_Prin
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): The print extension list fails to be obtained from the BMS.<br>         [PRINT_ERROR_INVALID_EXTENSION](#print_errorcode): No available print extension is found.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): The print extension list fails to be obtained from the BMS.<br>         [PRINT_ERROR_INVALID_EXTENSION](#print_errorcode): No available print extension is found. |
 
 ### OH_Print_StopPrinterDiscovery()
 
@@ -495,7 +496,7 @@ Stops printer discovery.
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected. |
 
 ### OH_Print_ConnectPrinter()
 
@@ -517,13 +518,13 @@ Connects to a printer by the printer ID.
 
 | Name               | Description               |
 | --------------------- | ------------------- |
-| const char *printerId | ID of the printer to connect to. The printer must be in the list of discovered printers. The value cannot be null.|
+| const char *printerId | ID of the printer to connect to. The printer must be in the list of discovered printers. The value cannot be null. |
 
 **Returns**
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Printer does not exist in the list of discovered printers.<br>         [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): The printer extension cannot be found.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Printer does not exist in the list of discovered printers.<br>         [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): The printer extension cannot be found. |
 
 ### OH_Print_StartPrintJob()
 
@@ -545,13 +546,13 @@ Starts a print job. Before calling this API, ensure that the printer to be used 
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [const Print_PrintJob](capi-oh-print-print-printjob.md) *printJob | Pointer to the [Print_PrintJob](capi-oh-print-print-printjob.md) instance. The value cannot be null. The referenced printer must have been connected using **OH_Print_ConnectPrinter**.|
+| [const Print_PrintJob](capi-oh-print-print-printjob.md) *printJob | Pointer to the [Print_PrintJob](capi-oh-print-print-printjob.md) instance. The value cannot be null. The referenced printer must have been connected using **OH_Print_ConnectPrinter**. |
 
 **Returns**
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Printer does not exist in the list of connected printers.<br>         [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): Failed to create a print job in the print service.<br>         [PRINT_ERROR_INVALID_PRINT_JOB](#print_errorcode): Failed to find the specified task in the task queue.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Printer does not exist in the list of connected printers.<br>         [PRINT_ERROR_SERVER_FAILURE](#print_errorcode): Failed to create a print job in the print service.<br>         [PRINT_ERROR_INVALID_PRINT_JOB](#print_errorcode): Failed to find the specified task in the task queue. |
 
 ### OH_Print_RegisterPrinterChangeListener()
 
@@ -579,7 +580,7 @@ Registers a listener for printer changes. When you no longer need to listen for 
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected. |
 
 ### OH_Print_UnregisterPrinterChangeListener()
 
@@ -617,13 +618,13 @@ Queries the list of added printers. After using this API, call **OH_Print_Releas
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Print_StringList](capi-oh-print-print-stringlist.md) *printerIdList | Pointer to the [Print_StringList](capi-oh-print-print-stringlist.md) instance that stores the queried printer ID list. The value cannot be null.|
+| [Print_StringList](capi-oh-print-print-stringlist.md) *printerIdList | Pointer to the [Print_StringList](capi-oh-print-print-stringlist.md) instance that stores the queried printer ID list. The value cannot be null. |
 
 **Returns**
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](#print_errorcode): **printerIdList** is null.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Failed to query any connected printers.<br>         [PRINT_ERROR_GENERIC_FAILURE](#print_errorcode): Failed to copy printer ID list.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](#print_errorcode): **printerIdList** is null.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Failed to query any connected printers.<br>         [PRINT_ERROR_GENERIC_FAILURE](#print_errorcode): Failed to copy printer ID list. |
 
 ### OH_Print_ReleasePrinterList()
 
@@ -643,7 +644,7 @@ Releases the memory used to store the printer list. The input pointer must come 
 
 | Name                                                      | Description                          |
 | ------------------------------------------------------------ | ------------------------------ |
-| [Print_StringList](capi-oh-print-print-stringlist.md) *printerIdList | Pointer to the queried printer ID list.|
+| [Print_StringList](capi-oh-print-print-stringlist.md) *printerIdList | Pointer to the queried printer ID list. |
 
 ### OH_Print_QueryPrinterInfo()
 
@@ -665,14 +666,14 @@ Queries printer information by printer ID. After using this API, call **OH_Print
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| const char *printerId                                        | ID of the printer to query. The printer must be in the list of connected printers. The value cannot be null.                                         |
+| const char *printerId                                        | ID of the printer to query. The printer must be in the list of connected printers. The value cannot be null.                                          |
 | [Print_PrinterInfo](capi-oh-print-print-printerinfo.md) \*\*printerInfo | Double pointer to the [Print_PrinterInfo](capi-oh-print-print-printerinfo.md). The value cannot be null.|
 
 **Returns**
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_INVALID_PARAMETER](#print_errorcode): **printerId** or **printerInfo** is null.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Failed to find the specified printer in the list of connected printers.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.<br>         [PRINT_ERROR_INVALID_PARAMETER](#print_errorcode): **printerId** or **printerInfo** is null.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Failed to find the specified printer in the list of connected printers. |
 
 ### OH_Print_ReleasePrinterInfo()
 
@@ -734,7 +735,7 @@ Queries the printer properties based on the list of property keys. After using t
 
 | Name                                                      | Description                      |
 | ------------------------------------------------------------ | -------------------------- |
-| const char *printerId                                        | ID of the printer to query. The printer must be connected. The value cannot be null.       |
+| const char *printerId                                        | ID of the printer to query. The printer must be connected. The value cannot be null.        |
 | [const Print_StringList](capi-oh-print-print-stringlist.md) *propertyKeyList | List of property keys to query. The value cannot be null, and the internal string array cannot be null.  |
 | [Print_PropertyList](capi-oh-print-print-propertylist.md) *propertyList | Pointer to the queried printer properties. The value cannot be null.|
 
@@ -742,7 +743,7 @@ Queries the printer properties based on the list of property keys. After using t
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](#print_errorcode): One of the parameters is null or the key list is empty.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Failed to find properties of the specified printer.<br>         [PRINT_ERROR_GENERIC_FAILURE](#print_errorcode): Failed to copy printer properties.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](#print_errorcode): One of the parameters is null or the key list is empty.<br>         [PRINT_ERROR_INVALID_PRINTER](#print_errorcode): Failed to find properties of the specified printer.<br>         [PRINT_ERROR_GENERIC_FAILURE](#print_errorcode): Failed to copy printer properties. |
 
 ### OH_Print_ReleasePrinterProperties()
 
@@ -784,14 +785,14 @@ Updates the printer properties based on the KV pairs.
 
 | Name                                                      | Description                      |
 | ------------------------------------------------------------ | -------------------------- |
-| const char *printerId                                        | ID of the printer to set. The printer must be in the list of connected printers. The value cannot be null.       |
+| const char *printerId                                        | ID of the printer to set. The printer must be in the list of connected printers. The value cannot be null.        |
 | [const Print_PropertyList](capi-oh-print-print-propertylist.md) *propertyList | List of printer properties to set. The value cannot be null, and the internal property array cannot be null.|
 
 **Returns**
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected. |
 
 ### OH_Print_RestorePrinterProperties()
 
@@ -813,14 +814,14 @@ Restores printer properties to the default settings based on the property key li
 
 | Name                                                      | Description                    |
 | ------------------------------------------------------------ | ------------------------ |
-| const char *printerId                                        | ID of the printer to be restored. The printer must be in the list of connected printers. The value cannot be null.     |
+| const char *printerId                                        | ID of the printer to be restored. The printer must be in the list of connected printers. The value cannot be null.      |
 | [const Print_StringList](capi-oh-print-print-stringlist.md) *propertyKeyList | List of property keys to be restored. The value cannot be null, and the internal string array cannot be null.|
 
 **Returns**
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected. |
 
 ### OH_Print_StartPrintByNative()
 
@@ -850,7 +851,7 @@ Starts the system printing app. This API enables users to select a printer and s
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected.|
+| [Print_ErrorCode](#print_errorcode) | [PRINT_ERROR_NONE](#print_errorcode): The operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](#print_errorcode): The **ohos.permission.PRINT** permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](#print_errorcode): The print service fails to be connected. |
 
 ### OH_Print_OnJobStateChanged()
 
@@ -868,7 +869,7 @@ Defines a callback to be invoked when the print job state changes. Compared with
 
 | Name             | Description                |
 | ------------------- | -------------------- |
-| const char \*jobId | Pointer to the print job ID.     |
+| const char \*jobId | Pointer to the print job ID.      |
 | [OH_Print_JobState](#oh_print_jobstate) state      | Print job state.|
 
 ### OH_Print_StartPrintWithJobStateCallback()
@@ -891,7 +892,7 @@ Starts a print job with the callback to be invoked when the print job state chan
 
 | Name                                                      | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| const [Print_PrintJob](capi-oh-print-print-printjob.md) *printJob           | Pointer to the [Print_PrintJob](capi-oh-print-print-printjob.md) instance. The value cannot be null. The referenced printer must have been connected using **OH_Print_ConnectPrinter**.  |
+| const [Print_PrintJob](capi-oh-print-print-printjob.md) *printJob           | Pointer to the [Print_PrintJob](capi-oh-print-print-printjob.md) instance. The value cannot be null. The referenced printer must have been connected using **OH_Print_ConnectPrinter**.   |
 | [OH_Print_OnJobStateChanged](#oh_print_onjobstatechanged) jobStateChangedCb | Callback for the print task status, which is used to listen for status changes of the print task specified by **printJob**. The value cannot be null.|
 
 

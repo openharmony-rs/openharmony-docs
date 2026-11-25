@@ -5,7 +5,7 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=054fc5e77d4aade491541c0c5d73757a31378403 translatedAt=2026-11-04T03:46:21.849Z pushedAt=2026-11-04T10:12:33.437Z nl=1 -->
+<!-- md-trans-meta sourceCommit=179ac8d0a788ed9e25c66022595d40e4bad5290a translatedAt=2026-11-23T02:48:49.817Z pushedAt=2026-11-24T12:08:34.834Z nl=1 -->
 
 ## Overview
 
@@ -570,7 +570,7 @@ CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPat
 
 **Description**
 
-Creates a placeholder file under the registered sync root path.
+Creates a placeholder file under the registered sync root path. During creation, the system sets the local file size to the logicalSize preset in placeholderInfo. The system does not guarantee consistency between the size of the local placeholder file and that of the cloud file. The application must use the OH_CloudDisk_UpdatePlaceholder() API to ensure consistency between the metadata of the local placeholder file and that of the cloud file.
 
 **Since:** 26.0.1
 
@@ -751,7 +751,7 @@ CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqH
 
 **Description**
 
-Responds to a callback request and writes the obtained data block into the active placeholder hydration task. A single data block cannot exceed 128 KiB. The function copies all input fields and data before returning.
+Responds to the callback request and writes the obtained data block to the active placeholder hydration task. A single data block cannot exceed 128KiB. The function copies all input fields and data before returning. The total hydration amount is determined by the fetchData.totalSize returned for the first time, and subsequent responses must remain consistent with it.
 
 **Since:** 26.0.1
 
@@ -872,6 +872,10 @@ Registers a callback table for hydration and dehydration requests.<br>The handli
 | Type | Description |
 | -- | -- |
 | [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | Returns CLOUD_DISK_OK if the API call succeeds; otherwise returns the cloud disk management module error code CloudDisk_ErrorCode. |
+
+**See also**
+
+[OH_CloudDisk_UnregisterCallbackTable()](#oh_clouddisk_unregistercallbacktable)
 
 ### OH_CloudDisk_UnregisterCallbackTable()
 

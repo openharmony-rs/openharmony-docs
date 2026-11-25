@@ -6,6 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=49eb80979d24efc646f232a5fdee339bb63c977e translatedAt=2026-11-23T02:37:35.007Z pushedAt=2026-11-24T12:00:30.131Z nl=1 -->
 
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available:
 <br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. Background mode does not involve tag-related APIs. For details, see [nfc-tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md#accessing-an-nfc-tag-without-starting-an-application).
@@ -560,8 +561,8 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
-| 3100202  | The element state is invalid. |
+| 3100201 | The tag running state is abnormal in the service.<br>Supported since: 12+ |
+| 3100202  | The element state is invalid.<br>Supported since: 12+ |
 
 **Example**
 
@@ -594,7 +595,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>Supported since: 12+ |
 
 **Example**
 
@@ -687,7 +688,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>Supported since: 12+ |
 | 3100202  | The element state is invalid. |
 
 **Example**
@@ -723,7 +724,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>Supported since: 12+ |
 | 3100203  | The off() API can be called only when the on() has been called. |
 
 **Example**
