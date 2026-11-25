@@ -122,7 +122,7 @@
          console.error('geofenceTransitionCallback: err=' + JSON.stringify(err));
        }
        if (transition) {
-         console.info("GeofenceTransition: " + JSON.stringify(transition));
+         console.info('GeofenceTransition: ' + JSON.stringify(transition));
        }
      }
    }

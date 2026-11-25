@@ -59,7 +59,7 @@
             console.error('current device do not support geocoder');
         }
       } catch (err) {
-        console.error("errCode:" + err.code + ", message:"  + err.message);
+        console.error('errCode:' + err.code + ', message:'  + err.message);
       }
       ```
 
@@ -74,14 +74,14 @@
         if (geoLocationManager.isGeocoderAvailable()) {
           geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
             if (err) {
-              console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
+              console.error('getAddressesFromLocation errCode:' + err.code + ', message:'  + err.message);
             } else {
               console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
             }
           });
         }
       } catch (err) {
-        console.error("errCode:" + err.code + ", message:"  + err.message);
+        console.error('errCode:' + err.code + ', message:'  + err.message);
       }
       ```
 
@@ -95,14 +95,14 @@
         if (geoLocationManager.isGeocoderAvailable()) {
           geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
             if (err) {
-              console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
+              console.error('getAddressesFromLocationName errCode:' + err.code + ', message:'  + err.message);
             } else {
               console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
             }
           });
         }
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+          console.error('errCode:' + err.code + ', message:'  + err.message);
       }
       ```
 
