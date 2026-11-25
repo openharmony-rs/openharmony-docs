@@ -530,7 +530,7 @@ hilog_param=40960
 
 ### 如何设置一个系统参数
 
-  1. hdc shell进入终端，执行param set param.key.xxx(系统参数名) param.value.xxx(系统参数名值), 确认参数是否可以设置成功，成功则无需其他设置
+  1. hdc shell进入终端，执行param set param.key.xxx(系统参数名) param.value.xxx(系统参数值), 确认参数是否可以设置成功，成功则无需其他设置
 
   2. 代码侧设置系统参数，调用SetParameter接口，具体参照[接口说明](#接口说明)
   
