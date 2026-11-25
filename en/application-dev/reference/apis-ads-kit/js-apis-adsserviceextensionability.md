@@ -5,7 +5,7 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=6493b14494a6c6b34e36a2da0a181b6e9e0f901d translatedAt=2026-11-23T09:10:43.781Z pushedAt=2026-11-24T09:09:17.858Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6493b14494a6c6b34e36a2da0a181b6e9e0f901d translatedAt=2026-11-23T09:10:43.781Z pushedAt=2026-11-25T02:48:27.838Z nl=1 -->
 
 
 The AdsServiceExtensionAbility module provides ExtensionAbilities for the ads service. Device vendors can implement the callbacks for ads requests.
@@ -45,7 +45,7 @@ Ad request callback.
 
 | **Name** | **Type** | Mandatory | Description | 
 | -------- | -------- | -------- | -------- |
-| respData | Map&lt;string, Array&lt;advertising.[Advertisement](js-apis-advertisement.md#advertisement-1)&gt;&gt; | Yes | Ad request callback data, which is a mapping set that uses ad slot IDs as keys and stores the requested ad content. |
+| respData | Map&lt;string, Array&lt;advertising.[Advertisement](js-apis-advertisement.md#advertisement)&gt;&gt; | Yes | Ad request callback data, which is a mapping set that uses ad slot IDs as keys and stores the requested ad content. |
 
 **Example**
 

@@ -6,7 +6,7 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=b040568d7ff9231a65bfe8a7246fbe07c7b70fc1 translatedAt=2026-11-23T09:10:00.523Z pushedAt=2026-11-24T11:44:53.983Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b040568d7ff9231a65bfe8a7246fbe07c7b70fc1 translatedAt=2026-11-23T09:10:00.523Z pushedAt=2026-11-25T02:46:42.010Z nl=1 -->
 
 
 This module provides the capability of displaying ads, covering native, roll, splash, and other ad styles.
@@ -46,7 +46,7 @@ Ad display component, which provides the capability of displaying native, roll, 
 
 | **Name** | **Type** | Mandatory | **Decorator** | Description | 
 | -------- | -------- | -------- | -------- | -------- |
-| ads | advertising.[Advertisement](js-apis-advertisement.md#advertisement-1)[] | Yes | - | Array of ad objects.<br/>Note: For non-roll ad types, the component displays only the first item in the array.<br/>Atomic service API: This API can be used in atomic services since API version 12. | 
+| ads | advertising.[Advertisement](js-apis-advertisement.md#advertisement)[] | Yes | - | Array of ad objects.<br/>Note: For non-roll ad types, the component displays only the first item in the array.<br/>Atomic service API: This API can be used in atomic services since API version 12. | 
 | displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes | - | Ad display parameters.<br/>Atomic service API: This API can be used in atomic services since API version 12. | 
 | interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes | - | Callback for ad status changes.<br/>Atomic service API: This API can be used in atomic services since API version 12. | 
 | adRenderer<sup>12+</sup> | () =&gt; void | No | \@BuilderParam | Application self-rendered ad style. The application self-rendered ad style is a restricted capability. For details, contact Traffic Monetization Official Website Customer Support.<br/>Atomic service API: This API can be used in atomic services since API version 20. | 

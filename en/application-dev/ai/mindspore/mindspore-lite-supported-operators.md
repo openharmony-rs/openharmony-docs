@@ -1,4 +1,4 @@
-# MindSpore Lite Kit Operator List
+# MindSpore Lite Kit Supported Operator List
 
 <!--Kit: MindSpore Lite Kit-->
 <!--Subsystem: AI-->
@@ -6,7 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @nierong182-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=74dbc0b46883bf93067f37341e912d6ceee0317b translatedAt=2026-11-23T08:58:26.986Z pushedAt=2026-11-24T07:17:52.946Z nl=1 -->
+<!-- md-trans-meta sourceCommit=74dbc0b46883bf93067f37341e912d6ceee0317b translatedAt=2026-11-23T08:58:26.986Z pushedAt=2026-11-25T02:55:15.489Z nl=1 -->
 
 This document describes the list of CPU backend [operators](mindspore-lite-term.md#operator) supported by MindSpore Lite Kit compared with ONNX Opset18, as well as their correspondence. When using the model conversion tool to convert an ONNX model into an ms model for deployment, you can query this table to learn the commonly used ONNX operators supported by MindSpore Lite Kit, so as to ensure successful model conversion.
 

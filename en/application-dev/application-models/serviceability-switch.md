@@ -40,3 +40,4 @@ In the stage model, third-party applications cannot provide services for other t
 | Providing services for other third-party applications| Match a scenario-specific [ExtensionAbility](extensionability-overview.md).| 
 | In-application: providing public use when it is running in the foreground| Extract the component code as a common module for other components to use.| 
 | In-application: continuing running when it switches to the background| Switch the service to a [background service](serviceextensionability-sys.md).| 
+<!--no_check-->

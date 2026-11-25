@@ -26,3 +26,4 @@
 | onActive?():&nbsp;void; | \@ohos.app.ability.UIAbility.d.ts | [onForeground():&nbsp;void;](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground) |
 | onNewWant?(want:&nbsp;Want):&nbsp;void; | \@ohos.app.ability.UIAbility.d.ts | [onNewWant(want:&nbsp;Want,&nbsp;launchParam:&nbsp;AbilityConstant.LaunchParam):&nbsp;void;](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) |
 | onMemoryLevel?(level:&nbsp;number):&nbsp;void | \@ohos.app.ability.UIAbility.d.ts | [onMemoryLevel(level:&nbsp;AbilityConstant.MemoryLevel):&nbsp;void;](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonmemorylevel) |
+<!--no_check-->

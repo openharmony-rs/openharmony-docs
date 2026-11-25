@@ -6,7 +6,7 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=6cc4edd56367a58fb88ee4c1bd89e2dee4ad18d0 translatedAt=2026-11-23T09:13:44.600Z pushedAt=2026-11-24T11:55:10.186Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6cc4edd56367a58fb88ee4c1bd89e2dee4ad18d0 translatedAt=2026-11-23T09:13:44.600Z pushedAt=2026-11-25T02:50:41.170Z nl=1 -->
 
 
 The advertising module provides APIs for requesting and displaying ads.
@@ -38,7 +38,7 @@ Shows a full-screen ad.
 
 | Name | Type | Mandatory | Description | 
 | -------- | -------- | -------- | -------- |
-| ad | [Advertisement](js-apis-advertisement.md#advertisement-1) | Yes | Ad object. | 
+| ad | [Advertisement](js-apis-advertisement.md#advertisement) | Yes | Ad object. | 
 | options | [AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes | Ad display parameters. | 
 | context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | No | Context of the UIAbility. If not set, it is obtained from api: [@ohos.app.ability.common](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-app-ability-common). |
 
@@ -565,7 +565,7 @@ Called when an ad request is successful.
 
 | Name | type | Mandatory | Description | 
 | -------- | -------- | -------- | -------- |
-| ads | Array&lt;[Advertisement](js-apis-advertisement.md#advertisement-1)&gt; | Yes | Ad data. |
+| ads | Array&lt;[Advertisement](js-apis-advertisement.md#advertisement)&gt; | Yes | Ad data. |
 
 **Example**
 
@@ -640,7 +640,7 @@ Called when a request for loading multiple ads is successful.
 
 | Name | type | Mandatory | Description | 
 | -------- | -------- | -------- | -------- |
-| adsMap | Map&lt;string, Array&lt;[Advertisement](js-apis-advertisement.md#advertisement-1)&gt;&gt; | Yes | Ad data, which is a mapping set that uses ad slot IDs as keys and stores the requested ad content. |
+| adsMap | Map&lt;string, Array&lt;[Advertisement](js-apis-advertisement.md#advertisement)&gt;&gt; | Yes | Ad data, which is a mapping set that uses ad slot IDs as keys and stores the requested ad content. |
 
 **Example**
 
@@ -683,7 +683,7 @@ Called when the ad display status changes.
 | Name| Type                           | Mandatory| Description                                                                        |
 |--------|---------------------------------|------|------------------------------------------------------------------------------|
 | status | string | Yes | Ad show status.<br/>- onAdLoad: Ad loaded successfully.<br/>- onAdFail: Ad failed to load.<br/>- onAdOpen: Ad opened.<br/>- onAdClick: Ad clicked.<br/>- onAdClose: Ad closed.<br/>- onMediaProgress: Ad playback progress.<br/>- onMediaStart: Ad playback started.<br/>- onMediaPause: Ad playback paused.<br/>- onMediaStop: Ad playback stopped.<br/>- onMediaComplete: Ad playback completed.<br/>- onMediaCountDown: Ad countdown.<br/>- onMediaError: Ad playback failed.<br/>- onLandscape: Full-screen button clicked in portrait mode.<br/>- onPortrait: Back button clicked in full-screen mode.<br/>- onBackClicked: Back button clicked. |
-| ad | [Advertisement](js-apis-advertisement.md#advertisement-1) | Yes | Ad content whose status changes. |
+| ad | [Advertisement](js-apis-advertisement.md#advertisement) | Yes | Ad content whose status changes. |
 | data | string | Yes | Extended information.<br/>When **status** is **onAdClose**, the data value is the close reason, described as follows:<br/>- adShowEnded: Ad show ended.<br/>- adCloseBtnClicked: Close button clicked.<br/>- adSkipBtnClicked: Skip button clicked.<br/>- adFeedbackClosed: The ad is closed due to negative feedback.<br/>- adBackgroundClosed: The splash ad is closed when the app switches to the background. |
 
 **Example**
