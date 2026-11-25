@@ -3189,9 +3189,9 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":115,
 						"name":"input_case_input_switchInputMethodgetInputMethods",
-						"start_line":90
+						"start_line":104
 					},
 					{
 						"end_line":102,
