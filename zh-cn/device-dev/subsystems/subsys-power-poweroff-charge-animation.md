@@ -178,8 +178,8 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
                     "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
                     "//vendor/hihope/rk3568/etc:product_etc_conf",
                     "//vendor/hihope/rk3568/battery/profile:battery_config",
-                    "//vendor/hihope/rk3568/animation/profile:animation_config", //添加animation_config的编译
-                    "//vendor/hihope/rk3568/animation/resources/resources_config" //添加图片资源的编译
+                    "//vendor/hihope/rk3568/animation/profile:animation_config",
+                    "//vendor/hihope/rk3568/animation/resources/resources_config"
                 ]
             }
         },
