@@ -1285,7 +1285,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of range. |
+| 12900001 | The index is out of the record. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -1400,8 +1400,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of range. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 12900001 | The index is out of the record. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1433,8 +1433,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of range. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 12900001 | The index is out of the record. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2059,7 +2059,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 getData(): Promise&lt;PasteData&gt;
 
-Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses a promise to return the result. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. This API can be used when an app needs to read data from the pasteboard using [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata).
+Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses a promise to return the result. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked.
 
 To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -3063,7 +3063,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
