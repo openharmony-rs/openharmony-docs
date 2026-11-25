@@ -544,6 +544,36 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    在落入事件中，通过[OH_ArkUI_DragEvent_GetUdmfData](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_getudmfdata)取得数据，再使用[OH_UdmfRecord_GetFileUri](../reference/apis-arkdata/capi-udmf-h.md#oh_udmfrecord_getfileuri)和[OH_UdsFileUri_GetFileUri](../reference/apis-arkdata/capi-uds-h.md#oh_udsfileuri_getfileuri)提取文件URI。
 
    <!-- @[virtual_drag_c_receive_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_receiver.cpp) -->
+   
+   ``` C++
+   bool GetDroppedFileUris(ArkUI_DragEvent* event, std::vector<std::string>& uris)
+   {
+       std::unique_ptr<OH_UdmfData, decltype(&OH_UdmfData_Destroy)> data(
+           OH_UdmfData_Create(), OH_UdmfData_Destroy);
+       if (!data || OH_ArkUI_DragEvent_GetUdmfData(event, data.get()) != 0) {
+           return false;
+       }
+       unsigned int count = 0;
+       // records及各record由data持有，不能单独销毁。
+       OH_UdmfRecord** records = OH_UdmfData_GetRecords(data.get(), &count);
+       if (records == nullptr) {
+           return false;
+       }
+       for (unsigned int index = 0; index < count; ++index) {
+           std::unique_ptr<OH_UdsFileUri, decltype(&OH_UdsFileUri_Destroy)> fileUri(
+               OH_UdsFileUri_Create(), OH_UdsFileUri_Destroy);
+           if (!fileUri || OH_UdmfRecord_GetFileUri(records[index], fileUri.get()) != UDMF_E_OK) {
+               continue;
+           }
+           const char* uri = OH_UdsFileUri_GetFileUri(fileUri.get());
+           if (uri != nullptr && uri[0] != '\0') {
+               // 复制字符串后交给业务使用，不保留临时对象中的指针。
+               uris.emplace_back(uri);
+           }
+       }
+       return !uris.empty();
+   }
+   ```
 
 6. 处理文件URI。
 
