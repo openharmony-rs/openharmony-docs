@@ -41,8 +41,8 @@
 
 ## 约束与限制
 
-- **调用时机与作用范围**：仅在组件构造期调用生效，即[\@ComponentInit](../../reference/apis-arkui/arkts-ts/ts-custom-component-new-lifecycle.md#componentinit)装饰的函数内（组件构造函数尾部执行）；仅对当前自定义组件实例生效，未调用enableAsyncLoad的组件保持既有同步加载行为。
-- **构造期外调用无效**：其余时机（含[aboutToAppear](../../reference/apis-arkui/arkts-ts/ts-custom-component-new-lifecycle.md#abouttoappear)、build执行中、组件已显示后）调用时无异步效果：调用正常返回、不抛异常，也无错误日志等可观测的失败信号，组件按既有同步方式完成加载显示。
+- **调用时机与作用范围**：仅在组件构造期调用生效，即[\@ComponentInit](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinit)装饰的函数内（组件构造函数尾部执行）；仅对当前自定义组件实例生效，未调用enableAsyncLoad的组件保持既有同步加载行为。
+- **构造期外调用无效**：其余时机（含[aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#abouttoappear)、build执行中、组件已显示后）调用时无异步效果：调用正常返回、不抛异常，也无错误日志等可观测的失败信号，组件按既有同步方式完成加载显示。
 - **仅首次生效**：同一组件重复调用enableAsyncLoad无效，仅首次调用生效；重复调用会记录维测告警日志（可观察于hilog）。
 - **嵌套规则**：祖先自定义组件异步构建过程中创建的子组件，其enableAsyncLoad调用不生效——子组件随父组件同步构建，父组件的异步加载预算与超时兜底已覆盖其构建。
 - **占位模板要求**：占位模板须先通过[getPlaceholderRegister()](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册，且builder须为全局、无参的[\@Builder](./arkts-builder.md)({ isPlaceholder: true })函数，受限Builder要求详见[\@ohos.arkui.placeholderRegister (滚动占位注册)](../../reference/apis-arkui/arkts-apis-placeholderregister.md)；占位模板注册表按UI实例隔离，注册结果对其他UI实例不可见。
