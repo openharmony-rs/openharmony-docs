@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍Worker和宿主线程的即时消息通信方法：宿主线程通过postMessage发送请求，Worker在onmessage中解析消息并调用对应方法后回传结果，适用于一个Worker执行多个不同任务并及时返回的场景。"
 keywords: [Worker通信, 即时消息, postMessage, onmessage, 宿主线程, 消息回传, 多任务执行]
 doctype: guide

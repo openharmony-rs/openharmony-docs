@@ -18,7 +18,7 @@ GPIO接口定义了操作GPIO管脚的标准方法集合，包括：
 
 ### 基本概念
 
-GPIO又俗称为I/O口，I指的是输入(in），O指的是输出（out）。可以通过软件来控制其输入和输出，即I/O控制。
+GPIO又俗称为I/O口，I指的是输入（in），O指的是输出（out）。可以通过软件来控制其输入和输出，即I/O控制。
 
 - GPIO输入
 
@@ -70,7 +70,8 @@ GPIO模块提供的主要接口如表1所示。具体API[详见](https://gitcode
 | int32_t GpioEnableIrq(uint16_t gpio) | 使能GPIO管脚中断 |
 | int32_t GpioDisableIrq(uint16_t gpio) | 禁止GPIO管脚中断 |
 
->![](../public_sys-resources/icon-note.gif) **说明：**<br>
+>**说明：**
+>
 >本文涉及GPIO的所有接口，支持内核态及用户态使用。
 
 ### 开发步骤
@@ -127,7 +128,9 @@ int32_t GpioSetDir(uint16_t gpio, uint16_t dir);
 | ---------- | ------------------ |
 | gpio | uint16_t类型，GPIO管脚号 |
 | dir | uint16_t类型，待设置的方向值 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ------------------ |
 | HDF_SUCCESS | 设置GPIO管脚方向成功 |
 | 负数 | 设置GPIO管脚方向失败 |
 
@@ -157,7 +160,9 @@ int32_t GpioGetDir(uint16_t gpio, uint16_t *dir);
 | ---------- | ------------------ |
 | gpio | uint16_t类型，GPIO管脚号 |
 | dir | uint16_t类型指针，获取到的方向值 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ------------------ |
 | HDF_SUCCESS | 获取GPIO管脚方向成功 |
 | 负数 | 获取GPIO管脚方向失败 |
 
@@ -165,7 +170,7 @@ int32_t GpioGetDir(uint16_t gpio, uint16_t *dir);
 
 ```c
 int32_t ret;
-uin16_t dir;
+uint16_t dir;
 
 ret = GpioGetDir(3, &dir);    // 获取3号GPIO管脚方向
 if (ret != HDF_SUCCESS) {
@@ -188,7 +193,9 @@ int32_t GpioRead(uint16_t gpio, uint16_t *val);
 | ---------- | -------------------- |
 | gpio | uint16_t类型，GPIO管脚号 |
 | val | uint16_t类型指针，接收读取电平值 |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------------- |
 | HDF_SUCCESS | 读取GPIO管脚电平值成功 |
 | 负数 | 读取GPIO管脚电平值失败 |
 
@@ -219,7 +226,9 @@ int32_t GpioWrite(uint16_t gpio, uint16_t val);
 | ---------- | ------------------ |
 | gpio | uint16_t类型，GPIO管脚号 |
 | val | uint16_t类型，待写入的电平值 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ------------------ |
 | HDF_SUCCESS | 写入GPIO管脚电平值成功 |
 | 负数 | 写入GPIO管脚电平值失败 |
 
@@ -251,12 +260,15 @@ int32_t GpioSetIrq(uint16_t gpio, uint16_t mode, GpioIrqFunc func, void *arg);
 | mode | uint16_t类型，中断触发模式 |
 | func | 函数指针，中断服务程序 |
 | arg | 无类型指针，传递给中断服务程序的入参 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ------------------------ |
 | HDF_SUCCESS | 设置GPIO管脚中断成功 |
 | 负数 | 设置GPIO管脚中断失败 |
 
-> ![icon-caution.gif](public_sys-resources/icon-caution.gif) **注意：**<br>
-> 同一时间，只能为某个GPIO管脚设置一个中断服务函数，如果重复调用GpioSetIrq函数，则之前设置的中断服务函数会被取代。
+>**注意：**
+>
+>同一时间，只能为某个GPIO管脚设置一个中断服务函数，如果重复调用GpioSetIrq函数，则之前设置的中断服务函数会被取代。
 
 #### 取消GPIO管脚中断
 
@@ -272,7 +284,9 @@ int32_t GpioUnsetIrq(uint16_t gpio, void *arg);
 | ---------- | -------------- |
 | gpio | uint16_t类型，GPIO管脚号 |
 | arg | 无类型指针，GPIO中断数据 |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------- |
 | HDF_SUCCESS | 取消GPIO管脚中断成功 |
 | 负数 | 取消GPIO管脚中断失败 |
 
@@ -289,12 +303,15 @@ int32_t GpioEnableIrq(uint16_t gpio);
 | **参数** | **参数描述** |
 | ---------- | -------------- |
 | gpio | uint16_t类型，GPIO管脚号 |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------- |
 | HDF_SUCCESS | 使能GPIO管脚中断成功 |
 | 负数 | 使能GPIO管脚中断失败 |
 
-> ![icon-caution.gif](public_sys-resources/icon-caution.gif) **注意：**<br>
-> 必须通过此函数使能管脚中断，之前设置的中断服务函数才能被正确响应。
+>**注意：**
+>
+>必须通过此函数使能管脚中断，之前设置的中断服务函数才能被正确响应。
 
 #### 禁止GPIO管脚中断
 
@@ -308,7 +325,9 @@ int32_t GpioDisableIrq(uint16_t gpio);
 | **参数** | **参数描述**|
 | ---------- | -------------- |
 | gpio | uint16_t类型，GPIO管脚号 |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------- |
 | HDF_SUCCESS | 禁止GPIO管脚中断成功 |
 | 负数 | 禁止GPIO管脚中断失败 |
 
@@ -347,7 +366,7 @@ if (ret != HDF_SUCCESS) {
 // 取消3号GPIO管脚中断服务程序
 ret = GpioUnsetIrq(3, NULL);
 if (ret != HDF_SUCCESS) {
-    HDF_LOGE("GpioUnSetIrq: gpio unset irq fail, ret:%d\n", ret);
+    HDF_LOGE("GpioUnsetIrq: gpio unset irq fail, ret:%d\n", ret);
     return ret;
 }
 ```
@@ -382,7 +401,7 @@ static int32_t TestCaseGpioIrqEdge(void)
     int32_t ret;
     uint16_t valRead;
     uint16_t mode;
-    uint16_t gpio = 84;  // 待测试的GPIO管脚号
+    uint16_t gpio = 83;  // 待测试的GPIO管脚号
     uint32_t timeout;
 
     // 将管脚方向设置为输出

@@ -36,19 +36,19 @@
 ## 接口说明
 
 > **说明：**
-> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅[API参考](../reference/apis-telephony-kit/js-apis-call.md)。
+> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用callback函数，更多方式可以查阅[@ohos.telephony.call (拨打电话)](../reference/apis-telephony-kit/js-apis-call.md)。
 
 |                                  接口名                                             | 描述                                                         |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| hasVoiceCapability(): boolean;                                                      | 判断是否具有语音功能，默认false。<br/>-true：是<br/>-false：否                                        |
+| hasVoiceCapability(): boolean;                                                      | 判断是否具有语音功能，默认true。<br/>-true：是<br/>-false：否                                        |
 |<!--DelRow--> dialCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 拨号。该接口为系统接口。                                      |
-| makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 转到拨号屏幕，显示被叫号码。                                  |
+| makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | 跳转到拨号界面，并显示待拨出的号码。                                  |
 
-observer模块为开发者提供订阅和取消订阅通话业务状态的功能。具体API说明详见[接口文档](../reference/apis-telephony-kit/js-apis-observer.md)。
+observer模块为开发者提供订阅和取消订阅通话业务状态的功能。具体API说明详见[@ohos.telephony.observer (电话服务状态监听)](../reference/apis-telephony-kit/js-apis-observer.md)。
 
 | 接口名                                                       | 描述               |
 | ------------------------------------------------------------ | ------------------ |
-| on(type: 'callStateChange', options: { slotId: number }, callback: Callback<{ state: CallState, number: string }>): void; | 监听通话状态变化。 |
+| on(type: 'callStateChange', options: { slotId: number }, callback: Callback<[CallStateInfo](../reference/apis-telephony-kit/js-apis-observer.md#callstateinfo11)>): void; | 监听通话状态变化。 |
 
 ## 开发步骤
 

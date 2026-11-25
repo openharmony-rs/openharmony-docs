@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件的深色模式适配方法，包括网页侧定义深色样式、应用侧控制深色模式与强制深色，并给出背景色适配与常见问题排查。"
+keywords: [深色模式, WebDarkMode, darkMode, forceDarkAccess, 强制深色模式, color-scheme, prefers-color-scheme, 背景色适配, backgroundColor]
+doctype: guide
+status: active
+---
+
 # Web深色模式适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

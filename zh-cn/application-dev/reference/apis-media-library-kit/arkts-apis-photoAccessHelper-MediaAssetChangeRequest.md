@@ -201,7 +201,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 待创建的文件类型，IMAGE或者VIDEO类型。              |
 | extension  | string        | 是   | 文件扩展名。必须为合法的图片或视频扩展名，如jpg、png、gif、mp4、mov等。 |
-| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，例如：{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符，包括： .. \ / : * ? " ' ` < > \| { } [ ]|
+| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，例如：{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符。<br>在API版本26.1.0之前，非法字符包括：` . .. \ / : * ? " ' < > \| { } [ ] `。<br>从API版本26.1.0开始，非法字符包括：`` \ / : * ? " ' ` < > \| { } [ ] ``，允许包含英文句点`.`，但不允许以英文句点`.`作为首字符。|
 
 **返回值：**
 

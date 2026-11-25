@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过SchemeHandler拦截Web组件HTTP(s)及自定义协议请求，涵盖ArkTS与NDK接口、scheme注册、请求信息获取与响应构造。"
+keywords: [SchemeHandler, 网络请求拦截, 自定义scheme, setWebSchemeHandler, customizeSchemes, onRequestStart, onRequestStop, WebResourceHandler, initializeWebEngine]
+doctype: guide
+status: active
+---
+
 # 拦截Web组件发起的网络请求
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -139,7 +147,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 在ArkTS中可以通过customizeSchemes注册自定义协议，示例如下：
 
-  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->
+  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->  
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -158,7 +166,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
       try {
       webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
       } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
       }
   }
   
@@ -206,7 +214,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
   ```
 
 在ArkTS中，获取被拦截请求的信息：
-  <!-- @[Intercept_requested_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets) -->
+  <!-- @[Intercept_requested_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets) -->  
   
   ``` TypeScript
   this.schemeHandler.onRequestStart
@@ -232,7 +240,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
         console.info('[schemeHandler] onRequestStart has no http body stream');
       }
     } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
     }
   
     // ...

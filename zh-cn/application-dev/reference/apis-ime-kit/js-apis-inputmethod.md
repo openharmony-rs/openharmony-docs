@@ -344,7 +344,7 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 ## inputMethod.switchInputMethod<sup>9+</sup>
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
-切换输入法，使用promise异步回调。
+切换输入法，使用Promise异步回调。
 
 含义/功能：将当前输入法切换为指定的目标输入法。
 
@@ -504,7 +504,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&gt;
 
-切换当前输入法的子类型。使用promise异步回调。
+切换当前输入法的子类型。使用Promise异步回调。
 
 **需要权限：**
 - API版本9-10：ohos.permission.CONNECT_IME_ABILITY
@@ -657,7 +657,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 
 switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype): Promise&lt;boolean&gt;
 
-切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。
+切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用Promise异步回调。
 
 **需要权限：**
 - API版本9-10：ohos.permission.CONNECT_IME_ABILITY
@@ -842,6 +842,150 @@ let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> =
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
+```
+
+## inputMethod.injectText
+
+injectText(text: string): Promise&lt;void&gt;
+
+向前台应用当前获焦的编辑框插入文本。使用Promise异步回调。仅支持PC设备。
+
+需要在当前调用中同步取得请求发送结果时，请使用[injectTextSync](#inputmethodinjecttextsync)。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION 或 ohos.permission.CONTROL_DEVICE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| text | string | 是 | 待插入的文本，无默认值。UTF-8编码后的长度为0到512字节。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | Permissions check fails. |
+| 801 | Capability not supported. |
+| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | Input method client is not editable. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+inputMethod.injectText(text).then(() => {
+  console.info(`Succeeded in inserting text, length: ${text.length}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to injectText, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```typescript
+'use static'
+
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+inputMethod.injectText(text).then((): void => {
+  console.info(`Succeeded in inserting text, length: ${text.length}`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to injectText, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.injectTextSync
+
+injectTextSync(text: string): void
+
+同步向前台应用当前获焦的编辑框插入文本。仅支持PC设备。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION 或 ohos.permission.CONTROL_DEVICE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| text | string | 是 | 待插入的文本，无默认值。UTF-8编码后的长度为0到512字节。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | Permissions check fails. |
+| 801 | Capability not supported. |
+| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | Input method client is not editable. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+try {
+  inputMethod.injectTextSync(text);
+  console.info(`Succeeded in inserting text synchronously, length: ${text.length}`);
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to injectTextSync, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```typescript
+'use static'
+
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+try {
+  inputMethod.injectTextSync(text);
+  console.info(`Succeeded in inserting text synchronously, length: ${text.length}`);
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to injectTextSync, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## TextInputType<sup>10+</sup>
@@ -1306,7 +1450,7 @@ inputMethod.getController().attach(true, textConfig, (err: BusinessError) => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1360,7 +1504,7 @@ inputMethod.getController().attach(true, textConfig).then(() => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1417,7 +1561,7 @@ inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then
 
 attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1474,7 +1618,7 @@ inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOpt
 
 discardTypingText(): Promise&lt;void&gt;
 
-编辑框应用发送“清空正在输入的文字”命令到输入法。使用promise异步回调。
+编辑框应用发送“清空正在输入的文字”命令到输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1514,7 +1658,7 @@ inputMethod.getController().discardTypingText().then(() => {
 
 requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
-请求系统输入能力。使用promise异步回调。
+请求系统输入能力。使用Promise异步回调。
 
 当type为TRANSLATION时，当前输入法须为系统配置的默认输入法，否则请求被拒绝。
 
@@ -1623,7 +1767,7 @@ inputMethod.getController().showTextInput((err: BusinessError) => {
 
 showTextInput(): Promise&lt;void&gt;
 
-进入文本编辑状态。使用promise异步回调。
+进入文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1663,7 +1807,7 @@ inputMethod.getController().showTextInput().then(() => {
 
 showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
-进入文本编辑状态。使用promise异步回调。
+进入文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1770,7 +1914,7 @@ inputMethod.getController().hideTextInput((err: BusinessError) => {
 
 hideTextInput(): Promise&lt;void&gt;
 
-退出文本编辑状态。使用promise异步回调。
+退出文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1857,7 +2001,7 @@ inputMethod.getController().detach((err: BusinessError) => {
 
 detach(): Promise&lt;void&gt;
 
-自绘控件解除与输入法的绑定。使用promise异步回调。
+自绘控件解除与输入法的绑定。使用Promise异步回调。
 
 含义/功能：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。
 
@@ -1947,7 +2091,7 @@ inputMethod.getController().setCallingWindow(windowId, (err: BusinessError) => {
 
 setCallingWindow(windowId: number): Promise&lt;void&gt;
 
-设置要避让软键盘的窗口。使用promise异步回调。
+设置要避让软键盘的窗口。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2046,7 +2190,7 @@ inputMethod.getController().updateCursor(cursorInfo, (err: BusinessError) => {
 
 updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 
-当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用promise异步回调。
+当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2145,7 +2289,7 @@ inputMethod.getController().changeSelection('text', 0, 5, (err: BusinessError) =
 
 changeSelection(text: string, start: number, end: number): Promise&lt;void&gt;
 
-当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用promise异步回调。
+当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2235,7 +2379,7 @@ inputMethod.getController().updateAttribute(inputAttribute, (err: BusinessError)
 
 updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 
-更新编辑框属性信息。使用promise异步回调。
+更新编辑框属性信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2338,7 +2482,7 @@ inputMethod.getController().stopInputSession((err: BusinessError, result: boolea
 
 stopInputSession(): Promise&lt;boolean&gt;
 
-结束输入会话。使用promise异步回调。
+结束输入会话。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2718,7 +2862,7 @@ inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
 
 stopInput(): Promise&lt;boolean&gt;
 
-结束输入会话。使用promise异步回调。
+结束输入会话。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -3912,7 +4056,7 @@ inputMethodSetting.listInputMethodSubtype(inputMethodProperty,
 
 listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
-获取指定输入法应用的所有子类型。使用promise异步回调。
+获取指定输入法应用的所有子类型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4002,7 +4146,7 @@ inputMethodSetting.listCurrentInputMethodSubtype((err: BusinessError, data: Arra
 
 listCurrentInputMethodSubtype(): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
-查询当前输入法应用的所有子类型。使用promise异步回调。
+查询当前输入法应用的所有子类型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4086,7 +4230,7 @@ inputMethod.getSetting().getInputMethods(true, (err: BusinessError, data: Array<
 
 getInputMethods(enable: boolean): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-获取已激活/未激活的输入法应用列表。使用promise异步回调。
+获取已激活/未激活的输入法应用列表。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -4216,7 +4360,7 @@ inputMethod.getSetting().getAllInputMethods((err: BusinessError, data: Array<inp
 
 getAllInputMethods(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-获取所有输入法应用列表。使用promise异步回调。
+获取所有输入法应用列表。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4327,7 +4471,7 @@ inputMethod.getSetting().showOptionalInputMethods((err: BusinessError, result: b
 
 showOptionalInputMethods(): Promise&lt;boolean&gt;
 
-显示输入法选择对话框。使用promise异步回调。
+显示输入法选择对话框。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4401,7 +4545,7 @@ inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputM
 
 listInputMethod(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-查询已安装的输入法列表。使用promise异步回调。
+查询已安装的输入法列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4463,7 +4607,7 @@ inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
 
 displayOptionalInputMethod(): Promise&lt;void&gt;
 
-显示输入法选择对话框。使用promise异步回调。
+显示输入法选择对话框。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4493,7 +4637,7 @@ inputMethod.getSetting().displayOptionalInputMethod().then(() => {
 
 getInputMethodState(): Promise&lt;EnabledState&gt;
 
-查询输入法的启用状态。使用promise异步回调。
+查询输入法的启用状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

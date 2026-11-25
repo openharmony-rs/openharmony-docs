@@ -7,6 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
+struct OH_AuxiliaryPictureInfo
 typedef struct OH_AuxiliaryPictureInfo OH_AuxiliaryPictureInfo
 ```
 

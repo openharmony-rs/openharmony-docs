@@ -88,7 +88,7 @@
       - [Working with Primitives Using JSVM-API](use-jsvm-about-primitive.md)
       - [Implementing Asynchronous Operations Using JSVM-API](use-jsvm-about-promise.md)
       - [Setting JS Object Properties Using JSVM-API](use-jsvm-about-property.md)
-      - [Working with Strings Using JSVM-API](use-jsvm-about-string.md)
+      - [Creating and Obtaining String Values Using JSVM-API](use-jsvm-about-string.md)
       - [Obtaining the JSVM-API Version Using JSVM-API](use-jsvm-about-version.md)
       - [Error Handling Using JSVM-API](use-jsvm-error.md)
       - [Debugging and Profiling JS Code Using JSVM-API](use-jsvm-heapstatistics-debugger-cpuprofiler-heapsnapshot.md)
@@ -106,7 +106,7 @@
     - Typical JSVM-API Use Cases<!--jsvm-scenarios-->
       - [JSVM-API Debugging](jsvm-debugger-cpuprofiler-heapsnapshot.md)
       - [Working with Trace Using JSVM-API](use-jsvm-about-trace.md)
-      - [Requesting the JIT Profile for JSVMs](jsvm-apply-jit-profile.md)
+      - [Requesting the JIT Profile for JSVM-API](jsvm-apply-jit-profile.md)
       - [JSVM-API Secure Shield Mode](jsvm-secure-shield-mode.md)
       - [Troubleshooting JSVM-API Memory Leaks](jsvm-locate-memory-leak.md)
       - JSVM-API Tuning and Performant Coding Cases<!--jsvm-usage-examples-->
@@ -114,7 +114,7 @@
         - [Accelerating Compilation Using a Code Cache](use-jsvm-about-code-cache.md)
         - [JSVM Tuning Practices](jsvm-optimizations.md)
     - JSVM Performance Debugging Guides<!--jsvm-performance-->
-      - [Collecting V8 Trace Data Using HiSmartPerf](use-jsvm-about-v8-trace.md)
+      - [Using HiSmartPerf to Collect JSVM Trace](use-jsvm-about-v8-trace.md)
       - [Analyzing Web Page Memory Using DevTools](use-jsvm-about-analyze-memory-usage.md)
   - Longque-JS-API<!--longque-->
     - [Using Longque JS APIs](use-longque-js-api.md)

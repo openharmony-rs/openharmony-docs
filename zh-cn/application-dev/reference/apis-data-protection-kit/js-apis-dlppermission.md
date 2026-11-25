@@ -1118,7 +1118,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2<sup>22</sup>-1字节，超出此范围抛出错误码401。 |
+| configInfo | string | 是 | 沙箱应用配置信息。长度不超过4194303字节，超出此范围抛出错误码401。 |
 
 **返回值：**
 

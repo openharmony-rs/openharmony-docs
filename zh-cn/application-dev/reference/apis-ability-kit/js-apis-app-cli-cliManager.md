@@ -35,6 +35,7 @@ import { cliManager } from '@kit.AbilityKit';
 | yieldMs    | number | 否 | 是 | 命令前台执行时长，单位为毫秒。取值范围：0 ~ 1000 * timeout，默认值：0。超出取值范围时抛出错误码401。 |
 | timeout    | number | 否 | 是 | 命令执行超时时长，单位为秒。取值范围：0 ~ 1800。默认值：1800，传0表示不会超时。超出取值范围时抛出错误码401。 |
 | policy     | string | 否 | 是 | 安全策略，参数格式为JSON字符串。 |
+| subjectId  | string | 否 | 是 | Agent所代表实体的唯一标识符。默认值：空字符串。字符串长度不能超过8192字节，超出时抛出错误码401。<br>**起始版本：** 26.1.0 |
 | callback   | [ToolEventCallback](js-apis-inner-application-toolEventCallback.md) | 否 | 是 | 事件回调函数，用于接收工具事件。若提供该参数，将自动订阅会话事件。 |
 
 ## ExecResult

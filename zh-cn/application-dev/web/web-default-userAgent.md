@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "说明ArkWeb默认User-Agent的结构与字段含义，介绍获取与自定义UA的接口及优先级，适用于设备识别、前端调试与H5兼容性问题处理。"
+keywords: [User-Agent, UA, setCustomUserAgent, getUserAgent, getDefaultUserAgent, setAppCustomUserAgent, setUserAgentForHosts, 设备识别, H5兼容性]
+doctype: guide
+status: active
+---
+
 # User-Agent开发指导
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -192,7 +200,7 @@ struct WebComponent {
 建议在Web组件创建前先调用静态接口[getDefaultUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14)获取默认的用户代理（User-Agent）字符串，然后调用setAppCustomUserAgent()，setUserAgentForHosts()方法设置User-Agent，再创建指定src的Web组件或通过loadUrl()加载具体页面。
 
 ArkTS-Dyn示例：
-<!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
+<!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';    
@@ -217,7 +225,7 @@ struct WebComponent {
         ]    
       );    
     } catch (error) {    
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);    
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);    
     }    
   }    
 

@@ -32,7 +32,7 @@ status: active
 
 ![bytecode-compilation-code-build](figures/bytecode-compilation-code-build.png) ![bytecode-compilation-build](figures/bytecode-compilation-build.png)
 
-字节码混淆后，obfuscation目录中多了obf、origin文件夹和config.json文件，具体详见[混淆效果](bytecode-obfuscation-guide.md#查看混淆效果)。
+字节码混淆后，`obfuscation`目录下会新增`obf`、`origin`文件夹及`config.json`文件，详见[查看字节码混淆效果](bytecode-obfuscation-guide.md#查看字节码混淆效果)。
 
 **文件内容差异**
 
@@ -534,7 +534,7 @@ city1
 |HAP/HSP|本地HAR|本地HAR与主模块一起编译，混淆后名称一致|
 |HAP/HSP|三方库|三方库中导出的名称及其属性会被收集到白名单，因此导入和导出时都不会被混淆|
 
-HSP需要将给其他模块用的方法配置到白名单中。因为主模块里也需要配置相同的白名单，所以推荐将HSP配置了白名单的混淆文件（假设名称为hsp-white-list.txt）添加到依赖它的模块的混淆配置项里，即下图files字段里。
+HSP需要将给其他模块用的方法配置到白名单中。因为主模块里也需要配置相同的白名单，所以推荐将HSP配置了白名单的混淆文件（假设名称为hsp-white-list.txt）添加到依赖它的模块的混淆配置项里，即下图`files`字段里。
 
 ![bytecode-buildoptionset](figures/bytecode-buildoptionset.png)
 
@@ -779,3 +779,135 @@ AppAbility
 
 1. 将HAP与HSP共同依赖的本地源码HAR改造为字节码HAR，这样此HAR在被依赖时不会被二次混淆。
 2. 将HAP与HSP共同依赖的本地源码HAR以release模式构建打包，这样此HAR在被依赖时，其文件名与对外接口不会被混淆。
+
+## 字节码混淆常规问题处理（ArkTS-Sta）
+
+### 开启-enable-bytecode-obfuscation，没有生成相应的混淆文件如何处理
+
+**问题现象：**
+
+开启`-enable-bytecode-obfuscation`后，没有生成混淆文件。
+
+**解决方案：**
+
+1. 确保`Build Mode`设置为release。
+2. 查看module目录下的`build-profile.json5`文件中`ruleOptions`的`enable`是否设置为`true`。
+
+### 开启-enable-bytecode-obfuscation后，编译失败如何处理
+
+**问题现象：**
+
+开启`-enable-bytecode-obfuscation`后，编译失败。
+
+**解决方案：**
+
+1. 在`obfuscation-rules.txt`文件中开启`-enable-bytecode-obfuscation-debugging`，重新编译后，在模块的build/default/[...]/obfuscation目录下查找debug.txt文件，定位混淆错误信息。
+2. 若新增内容混淆失败，可先尝试使用保留（keep）规则进行保留。
+
+### 为什么interface中get/set方法可以精准keep，而class中get/set方法不可以
+
+**问题现象：**
+
+class中定义属性，同时定义get/set方法，混淆后，属性名被混淆成不同名称。
+
+**问题分析：**
+
+interface中定义的field与get/set方法同名。class中定义field时，语法限制必须将get/set重命名，混淆时无法关联二者，从而被混淆成不同名称。
+
+**解决方案：**
+
+使用通配符`*`进行全量保留。
+
+示例：
+
+```typescript
+// StaticDemo.ets
+class ClassTest{
+    public static age: number = 10;
+    _name: string = "test";
+    sex: number = 0;
+
+    set name(stringVar:string){
+        this._name = stringVar;
+    }
+    get name(){
+        return this._name;
+    }
+}
+```
+
+代码中`set name`或`get name`无法单独精准保留，需要使用`-keep class entry.src.main.ets.entryability.StaticDemo.ClassTest {*;}`进行全量保留。
+
+### class中static和instance变量重名，编译异常报错
+
+**问题现象：**
+
+class 中声明了同名的 static 变量和 instance 变量（如 static age 和 age），开启混淆后编译报错。
+
+**解决方案：**
+
+不支持class中static和instance变量重名的混淆，需要手动保留，或重命名变量。
+
+```typescript
+// StaticDemo.ets
+class ClassTest{
+    public static age: number = 10;
+    age: int = 5;
+}
+```
+keep命令：
+
+```txt
+-keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassTest { age; }
+```
+
+### 使用-keep保留继承的抽象类方法时，子类和父类的同名方法都会被保留，无法只保留一侧
+
+**问题现象：**
+
+对继承自抽象类的子类，使用`-keep`规则保留父类或子类中某个抽象方法时，发现父子类中该同名方法都被保留了，无法只保留一侧。
+
+**解决方案：**
+
+为保证父子类继承的属性或方法的多态一致性，保留（keep）时会同时保留父子类中相同的成员。示例：
+
+```typescript
+// StaticDemo.ets
+abstract class AbstractClass {
+    public abstract PUBLIC_ABSTRACT_METHOD(): void;
+    protected abstract PROTECTED_ABSTRACT_METHOD(): void;
+}
+
+class ExampleClass extends AbstractClass {
+    public override PUBLIC_ABSTRACT_METHOD(): void {}
+    protected override PROTECTED_ABSTRACT_METHOD(): void {}
+}
+```
+
+若添加以下任一规则：
+
+```txt
+-keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}
+```
+
+或
+
+```txt
+-keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass {PROTECTED_ABSTRACT_METHOD():void;}
+```
+
+`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
+
+### 混合工程/互操作（interop）相关的问题和解决方案
+
+对于包含ArkTS-Dyn与ArkTS-Sta组件的混合工程，请注意ArkTS-Dyn的字节码混淆和ArkTS-Sta的字节码混淆会独立执行各自的混淆流程。
+
+**问题现象：**
+
+混合工程中，ArkTS-Dyn与ArkTS-Sta组件交互处出现报错，或混淆后两侧组件名称不一致。
+
+**解决方案：**
+
+1. 若工程中存在通过interop机制进行ArkTS-Dyn和ArkTS-Sta交互的场景，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到白名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+
+2. 若工程中存在ArkTS-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件中的所有内容保留。

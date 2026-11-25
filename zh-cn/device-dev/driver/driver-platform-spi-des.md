@@ -119,7 +119,9 @@ DevHandle SpiOpen(const struct SpiDevInfo *info);
 | **参数** | **参数描述** |
 | -------- | -------- |
 | info | 结构体类型，SPI设备描述符 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | NULL | 获取SPI设备句柄失败 |
 | 设备句柄 | 获取对应的SPI设备句柄成功 |
 
@@ -153,7 +155,9 @@ int32_t SpiGetCfg(DevHandle handle, struct SpiCfg *cfg);
 | -------- | -------- |
 | handle | DevHandle类型，SPI设备句柄 |
 | cfg | 结构体指针类型，SPI设备配置参数 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 获取设备属性成功 |
 | 负数 | 获取设备属性失败 |
 
@@ -181,7 +185,9 @@ int32_t SpiSetCfg(DevHandle handle, struct SpiCfg *cfg);
 | -------- | -------- |
 | handle | DevHandle类型，SPI设备句柄 |
 | cfg | 结构体指针类型，SPI设备配置参数 |
+
 | **返回值** | **返回值描述** |
+| -------- | -------- |
 | HDF_SUCCESS | 配置设备属性成功 |
 | 负数 | 配置设备属性失败 |
 
@@ -216,7 +222,9 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，SPI设备句柄 |
     | buf | uint8_t类型指针，待写入数据 |
     | len | uint32_t类型，待写入的数据长度 |
+
     | **返回值** | **返回值描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 写入成功 |
     | 负数 | 写入失败 |
 
@@ -246,7 +254,9 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，SPI设备句柄 |
     | buf | uint8_t类型指针，待读取数据 |
     | len | uint32_t类型，待读取的数据长度 |
+
     | **返回值** | **返回值描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 读取成功 |
     | 负数 | 读取失败 |
 
@@ -276,7 +286,9 @@ if (ret != HDF_SUCCESS) {
     | handle | DevHandle类型，SPI设备句柄 |
     | msgs | 结构体指针，待传输数据的数组 |
     | count | uint32_t类型，msgs数组长度 |
+
     | **返回值** | **返回值描述** |
+    | -------- | -------- |
     | HDF_SUCCESS | 传输执行成功 |
     | 负数 | 传输执行失败 |
 
@@ -376,7 +388,7 @@ void SpiTestSample(void)
     msg.wbuf = wbuff2;                      // 写入的数据
     msg.rbuf = rbuff;                       // 读取的数据
     msg.len = 4;                            // 读取写入数据的长度为4
-    msg.keepCs = 0;                         // 当前传输完成后是否保持CS活动，1表述保持，0表示关闭CS
+    msg.keepCs = 0;                         // 当前传输完成后是否保持CS活动，1表示保持，0表示关闭CS
     msg.delayUs = 0;                        // 进行下一次传输前不进行延时
     msg.speed = 115200;                     // 本次传输的速度
     // 进行一次自定义传输，传输的msg个数为1

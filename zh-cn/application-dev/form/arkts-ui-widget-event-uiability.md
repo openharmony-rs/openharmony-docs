@@ -77,7 +77,7 @@
   
 - 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) -->
+    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
@@ -96,27 +96,31 @@
       }
     
       handleFormRouterEvent(want: Want, source: string): void {
-        hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${JSON.stringify(want)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${want.parameters?.params as string}`);
         if (want.parameters && want.parameters[formInfo.FormParam.IDENTITY_KEY] !== undefined) {
-          let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
-          // want.parameters.params 对应 postCardAction() 中 params 内容
-          let message: string = (JSON.parse(want.parameters?.params as string))?.routerDetail;
-          hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
-          let formData: Record<string, string> = {
-            'routerDetail': message + ' ' + source + ' UIAbility', // 和卡片布局中对应
-          };
-          let formMsg = formBindingData.createFormBindingData(formData);
-          formProvider.updateForm(curFormId, formMsg).then((data) => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.', JSON.stringify(data));
-          }).catch((error: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm failed.', JSON.stringify(error));
-          });
+          try {
+            let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
+            // want.parameters.params 对应 postCardAction() 中 params 内容
+            let message: string = (JSON.parse(want.parameters?.params as string))?.routerDetail;
+            hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
+            let formData: Record<string, string> = {
+              'routerDetail': message + ' ' + source + ' UIAbility', // 和卡片布局中对应
+            };
+            let formMsg = formBindingData.createFormBindingData(formData);
+            formProvider.updateForm(curFormId, formMsg).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${err.code}, error message: ${err.message}`);
+            });
+          } catch (err) {
+            hilog.error(DOMAIN_NUMBER, TAG, `handleFormRouterEvent catch error, code: ${err.code}, message: ${err.message}`);
+          }
         }
       }
     
       // 如果UIAbility已在后台运行，在收到Router事件后会触发onNewWant生命周期回调
       onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN_NUMBER, TAG, 'onNewWant Want:', JSON.stringify(want));
+        hilog.info(DOMAIN_NUMBER, TAG, 'onNewWant Want:', want.parameters?.params as string);
         this.handleFormRouterEvent(want, 'onNewWant');
       }
     
@@ -124,12 +128,12 @@
     
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
     
-        windowStage.loadContent('pages/Index', (err, data) => {
+        windowStage.loadContent('pages/Index', (err) => {
           if (err.code) {
-            hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
             return;
           }
-          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
         });
       }
     }

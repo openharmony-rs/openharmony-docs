@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-start命令用于启动一个Ability组件，目标组件可以是[Stage模型](ability-terminology.md#stage模型)的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)，支持[显式启动](explicit-implicit-want-mappings.md#显式want匹配原理)和[隐式启动](explicit-implicit-want-mappings.md#隐式want匹配原理)。
+start命令用于启动一个Ability组件，目标组件可以是[Stage模型](../application-models/ability-terminology.md#stage模型)的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)，支持[显式启动](../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)和[隐式启动](../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。
 
 ## 命令格式
 

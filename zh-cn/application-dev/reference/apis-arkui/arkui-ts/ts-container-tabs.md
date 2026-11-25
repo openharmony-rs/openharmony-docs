@@ -499,6 +499,34 @@ ArkTS-Sta: barOverlap(value: boolean | undefined)
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: boolean <br > ArkTS-Sta: boolean \| undefined | 是   | TabBar是否背后变模糊并叠加在TabContent之上。当barOverlap设置为true时，TabBar背后变模糊并叠加在TabContent之上，并且TabBar默认模糊材质的[BlurStyle](ts-universal-attributes-background.md#blurstyle9)值修改为'BlurStyle.COMPONENT_THICK'。当barOverlap设置为false时，无模糊和叠加效果。<br/>默认值：false<br/>true：背后变模糊并叠加；false：无模糊和叠加效果。<br/>取值为undefined时，按默认值处理。 |
 
+### barOverlap
+
+ArkTS-Dyn: barOverlap(value: BarOverlapMode | boolean)
+
+ArkTS-Sta: barOverlap(value: BarOverlapMode | undefined)
+
+设置TabBar与TabContent的重叠模式。未通过该接口设置时，默认为false。
+
+> **说明：**
+>
+> 当设置为BarOverlapMode.SAFE_AREA_PADDING模式时，TabContent上已设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性会被组件设置的值覆盖。当切换为其他模式时，先前设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性值将会还原。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| value  | ArkTS-Dyn: [BarOverlapMode](#baroverlapmode) \| boolean <br > ArkTS-Sta: [BarOverlapMode](#baroverlapmode) \| undefined | 是   | TabBar与TabContent的重叠模式。取值为true对应BarOverlapMode.STACK，false对应BarOverlapMode.STANDARD。<br/>取值为undefined时，按默认值处理。 |
+
 ### barBackgroundColor<sup>10+</sup>
 
 ArkTS-Dyn: barBackgroundColor(value: ResourceColor)
@@ -856,6 +884,26 @@ TabBar布局模式枚举。
 | ALWAYS_CENTER | 0 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度时，TabBar不可滚动，页签紧凑居中。|
 | ALWAYS_AVERAGE_SPLIT | 1 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度时，TabBar不可滚动，且所有页签平均分配TabBar宽度。|
 | SPACE_BETWEEN_OR_CENTER      | 2 | 当页签内容超过TabBar宽度时，TabBar可滚动。<br/>当页签内容不超过TabBar宽度但超过TabBar宽度一半时，TabBar不可滚动，页签紧凑居中。<br/>当页签内容不超过TabBar宽度一半时，TabBar不可滚动，页签居中排列，页签之间的间距相等，所有页签的总宽度占用TabBar宽度的一半。|
+
+## BarOverlapMode
+
+TabBar与TabContent的重叠模式枚举。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| ------ | ---- | ---------- |
+| STANDARD | 0 | TabBar不与TabContent重叠，TabContent高度等于Tabs高度减去TabBar高度。等价于[barOverlap](#baroverlap)(false)。 |
+| STACK | 1 | TabBar叠加在TabContent之上，TabContent占满全部空间。等价于[barOverlap](#baroverlap)(true)。 |
+| SAFE_AREA_PADDING | 2 | TabBar区域成为TabContent的安全区内边距（[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)），TabContent可延伸到TabBar区域，同时TabBar背后变模糊。 |
 
 ## CommonModifier<sup>15+</sup>
 

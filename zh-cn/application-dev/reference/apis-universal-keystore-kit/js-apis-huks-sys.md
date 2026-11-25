@@ -53,10 +53,10 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the generateKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -157,10 +157,10 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the deleteKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported.<br>适用版本：23+ |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
@@ -271,10 +271,10 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the importKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -353,7 +353,7 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.ATTEST_KEY 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+**需要权限：** ohos.permission.ATTEST_KEY 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS<sup>11+</sup>，或 ohos.permission.ENTERPRISE_ATTEST_KEY 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS<sup>26.1.0+</sup>。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -377,10 +377,10 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the attestKeyItemAsUser API, missing Permission: ohos.permission.ATTEST_KEY, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -534,10 +534,10 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the anonAttestKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -699,9 +699,9 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The app does not have sufficient permissions. Possible causes: The cross-account permission is not granted, the system is not unlocked by the user, or the user does not exist. |
+| 201 | Permission verification failed: call the anonAttestKeyItemOfflineAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system is not unlocked by the user, or the user does not exist. |
 | 202 | Non-system apps use system APIs. |
-| 801 | The API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | The function is not supported. Possible causes: <br>1. The algorithm mode is not supported. <br>2. The group key is not supported. <br>3. The extended encryption key is not supported. |
 | 12000002 | The algorithm parameter is missing. |
 | 12000003 | The algorithm parameter is invalid. |
@@ -838,10 +838,10 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the importWrappedKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -1517,10 +1517,10 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the exportKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -1640,10 +1640,10 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the getKeyItemPropertiesAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -1760,10 +1760,10 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the hasKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
@@ -1879,10 +1879,10 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | the application permission is not sufficient, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 201 | Permission verification failed: call the initSessionAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |

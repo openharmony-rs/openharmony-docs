@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb的网页内容拖拽功能，说明拖拽数据格式与拖拽事件监听，结合消息通道在ArkTS侧处理拖拽数据，并给出禁用拖拽的方法。"
+keywords: [Web拖拽, onDrop, onDragEnter, draggable]
+doctype: guide
+status: active
+---
+
 # 使用Web组件的拖拽功能与网页交互
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

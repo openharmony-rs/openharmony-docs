@@ -274,7 +274,7 @@
 - UpdateByStatusFormAbility：将卡片的状态存储在本地数据库中，在刷新事件回调触发时，通过formId获取当前卡片的状态，然后根据卡片的状态选择不同的刷新内容。
 
     ArkTS-Dyn示例：
-    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) --> 
+    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) -->
     
     ``` TypeScript
     // entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts
@@ -298,8 +298,8 @@
             await storeDB.put('A' + formId, 'false');
             await storeDB.put('B' + formId, 'false');
             await storeDB.flush();
-          }).catch((err: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+          }).catch((error: BusinessError) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
           });
         }
         let formData: Record<string, Object | string> = {};
@@ -313,8 +313,8 @@
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
           await storeDB.delete('A' + formId);
           await storeDB.delete('B' + formId);
-        }).catch((err: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
         });
       }
     
@@ -345,8 +345,8 @@
             await formProvider.updateForm(formId, formInfo);
           }
           hilog.info(DOMAIN_NUMBER, TAG, `Update form success stateA:${stateA} stateB:${stateB}.`);
-        }).catch((err: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
         });
       }
     
@@ -356,18 +356,22 @@
         let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');
         promise.then(async (storeDB: preferences.Preferences) => {
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
-          let msg: Record<string, string> = JSON.parse(message);
-          if (msg.selectA !== undefined) {
-            hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectA info:' + msg.selectA);
-            await storeDB.put('A' + formId, msg.selectA);
+          try {
+            let msg: Record<string, string> = JSON.parse(message);
+            if (msg.selectA !== undefined) {
+              hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectA info:' + msg.selectA);
+              await storeDB.put('A' + formId, msg.selectA);
+            }
+            if (msg.selectB !== undefined) {
+              hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectB info:' + msg.selectB);
+              await storeDB.put('B' + formId, msg.selectB);
+            }
+            await storeDB.flush();
+          } catch (error) {
+            hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${error.code}, message: ${error.message}`);
           }
-          if (msg.selectB !== undefined) {
-            hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectB info:' + msg.selectB);
-            await storeDB.put('B' + formId, msg.selectB);
-          }
-          await storeDB.flush();
-        }).catch((err: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
         });
       }
     }
@@ -518,4 +522,4 @@
 
 > **说明：**
 >
-> 通过本地数据库进行卡片信息的持久化时，建议先在[**onAddForm**](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)生命周期进行卡片信息持久化；同时需要在卡片销毁(**[onRemoveForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonremoveform)**)时删除当前卡片存储的持久化信息，避免反复添加删除卡片导致数据库文件持续变大。
+> 通过本地数据库进行卡片信息的持久化时，建议先在[FormExtensionAbility.onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)生命周期进行卡片信息持久化；同时需要在卡片销毁(**[FormExtensionAbility.onRemoveForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonremoveform)**)时删除当前卡片存储的持久化信息，避免反复添加删除卡片导致数据库文件持续变大。

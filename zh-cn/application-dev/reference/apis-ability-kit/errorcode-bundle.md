@@ -48,7 +48,8 @@ The specified module name is not found.
 **可能原因**
 
 1. 输入的moduleName有误。
-2. 系统中对应的应用没有安装该模块。
+2. 系统中对应的应用没有安装该模块。<!--Del-->
+3. 调用[bundleManager.setAlternateModuleEnabled](js-apis-bundleManager-sys.md#bundlemanagersetalternatemoduleenabled)启用备用模块时，指定版本的业务模块已安装，但没有同版本备用模块。<!--DelEnd-->
 
 **处理步骤**
 
@@ -58,6 +59,8 @@ The specified module name is not found.
     # 需要将com.xxx.demo替换为实际查询的bundleName
     hdc shell bm dump -n com.xxx.demo
     ```
+    <!--Del-->
+3. 启用备用模块前，确认已安装与指定业务模块同包名、同模块名、同版本的备用模块。<!--DelEnd-->
 
 ## 17700003 指定的abilityName不存在
 
@@ -183,8 +186,9 @@ Failed to install the HAP because the HAP fails to be parsed.
 4. HAP中配置了可执行二进制文件（即module.json5中配置了[executableBinaryPaths标签](../../quick-start/module-configuration-file.md#executablebinarypaths标签)），但是没有配置解压模式，或当前设备不支持安装配置了该标签的HAP。
 5. 传入的安装路径中或目录下存在多个APP。
 6. APP中不包含适合在当前设备类型上安装的HAP。
-7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。<!--Del-->
-8. 在双模式设备上安装应用时，不同包体类别（[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy值为4、6、8）仅支持系统应用配置，非系统应用配置将无法安装；同时，新安装应用必须与设备上已存在的同包名应用保持包体类别属性大类一致，“不同包体类别”与“相同包体类别”（值为0、1、2、3、5、7）不能混合覆盖安装。<!--DelEnd-->
+7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
+8. 非应用间共享HSP将module.json5中的[alternateModule](../../quick-start/module-configuration-file.md#配置文件标签)配置为true。<!--Del-->
+9. 在双模式设备上安装应用时，不同包体类别（[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy值为4、6、8）仅支持系统应用配置，非系统应用配置将无法安装；同时，新安装应用必须与设备上已存在的同包名应用保持包体类别属性大类一致，“不同包体类别”与“相同包体类别”（值为0、1、2、3、5、7）不能混合覆盖安装。<!--DelEnd-->
 
 **处理步骤**
 
@@ -194,8 +198,9 @@ Failed to install the HAP because the HAP fails to be parsed.
 4. 配置应用为解压模式，即在应用的[module.json5配置文件](../../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true；或更换为PC/2in1设备。
 5. 检查传入的路径下是否包含多个APP。
 6. 确认APP内是否存在支持当前设备类型的HAP。
-7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。<!--Del-->
-8. 确认应用为系统应用后再配置不同包体类别；确认新安装的应用与已存在应用的[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy配置是否属于同一包体类别（均为不同包体或均为相同包体），避免不同包体类别与相同包体类别之间互转更新。<!--DelEnd-->
+7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
+8. 检查安装包是否为应用间共享HSP。仅当module.json5中的type和app.json5中的bundleType均为shared时，才可将alternateModule配置为true；其他类型的包应移除该配置。<!--Del-->
+9. 确认应用为系统应用后再配置不同包体类别；确认新安装的应用与已存在应用的[InstallParam](js-apis-installer-sys.md#installparam)中ohos.bms.param.deviceModeDistributionPolicy配置是否属于同一包体类别（均为不同包体或均为相同包体），避免不同包体类别与相同包体类别之间互转更新。<!--DelEnd-->
 
 ## 17700011 签名校验失败导致应用安装失败
 
@@ -1044,11 +1049,15 @@ Failed to install the HAP because this application is prohibited from being inst
 
 1. 当前使用的设备是洗白机。
 2. 指定的应用不支持在指定的用户下安装。
+3. 在[BOPD](../../quick-start/application-package-glossary.md#bopd-boot-on-pseudo-data)模式下安装三方应用。
+4. 指定用户存在恢复处置规则，不允许直接恢复应用。
 
 **处理步骤**
 
 1. 确认使用的设备是否是洗白机。
 2. 将指定的应用安装在其他用户下。
+3. 退出BOPD模式或重启设备重新安装三方应用。
+4. 检查该用户下是否存在恢复处置规则；若存在，则由设置方对规则进行处理。
 
 ## 17700059 指定的开发者ID不存在
 
@@ -1675,6 +1684,26 @@ The specified bundle not found app clone preference.
 1. 确认应用是否需要分身偏好。
 2. 使用[bundleManager.setAppClonePreference](js-apis-bundleManager-sys.md#bundlemanagersetappclonepreference)设置分身偏好后重试。
 
+## 17700096 指定版本的模块不存在
+
+**错误信息**
+
+The specified version of the module is not found.
+
+**错误描述**
+
+调用[bundleManager.setAlternateModuleEnabled](js-apis-bundleManager-sys.md#bundlemanagersetalternatemoduleenabled)或[bundleManager.isAlternateModuleEnabled](js-apis-bundleManager-sys.md#bundlemanagerisalternatemoduleenabled)时，模块存在，但指定版本的业务模块不存在。
+
+**可能原因**
+
+1. 输入的versionCode有误。
+2. 系统中未安装该版本的业务模块，或该版本已被卸载。
+
+**处理步骤**
+
+1. 检查bundleName、moduleName和versionCode是否与目标业务模块一致。
+2. 使用[bundleManager.getAllSharedBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallsharedbundleinfo10)查询已安装的共享HSP版本，确认指定版本的业务模块已安装后重试。
+
 ## 17700097 设备不支持双模式
 
 **错误信息**
@@ -2081,6 +2110,24 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 **处理步骤**
 
 请检查shortcutInfo列表中，是否有不同的bundleName和appIndex组合。
+
+## 18100002 更新的快捷方式不存在
+
+**错误信息**
+
+The specified shortcut to be updated is not found.
+
+**错误描述**
+
+调用[shortcutManager.updateDesktopShortcutInfo](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanagerupdatedesktopshortcutinfo)接口更新快捷方式时，指定的快捷方式不存在。
+
+**可能原因**
+
+传入的shortcutInfo在设备上不存在。
+
+**处理步骤**
+
+检查传入的shortcutInfo是否正确。
 
 ## 18400001 调用方未配置处置规则
 **错误信息**

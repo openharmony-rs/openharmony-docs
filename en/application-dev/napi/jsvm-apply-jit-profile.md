@@ -1,8 +1,8 @@
 # Requesting the JIT Profile for JSVM-API
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039; @string_sz-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 

@@ -28,7 +28,7 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
 
 4. 调用[cmsGenerator.addCert](../../reference/apis-device-certificate-kit/js-apis-cert.md#addcert18)添加证书。
 
-5. 调用[cmsGenerator.doFinal](../../reference/apis-device-certificate-kit/js-apis-cert.md#dofinal18)获取Cms最终签名数据。
+5. 调用[cmsGenerator.doFinal](../../reference/apis-device-certificate-kit/js-apis-cert.md#dofinal18)获取CMS最终签名数据。
 
 - 异步方法示例：
 
@@ -89,46 +89,39 @@ async function testPkcs7SignByPromise() {
     // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
-  cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
-    if (error) {
-      console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
-    } else {
-      try {
-        let cmsContentType = cert.CmsContentType.SIGNED_DATA;
-        let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-        console.info('testPkcs7SignByPromise createCmsGenerator result: success.');
-        let privateKeyInfo: cert.PrivateKeyInfo = {
-          key: rsaStr1024,
-          password: '123456'
-        };
-        // addCert设置为true时，第二次addSigner或者addCert增加相同的证书，会报错。
-        let config: cert.CmsSignerConfig = {
-          mdName: 'SHA256',
-          addCert: false,
-          addAttr: true,
-          addSmimeCapAttr: true
-        }
-        cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-        console.info('testPkcs7SignByPromise addSigner result: success.');
-        cmsGenerator.addCert(x509Cert);
-        console.info('testPkcs7SignByPromise addCert result: success.');
-        let content = new Uint8Array([1, 2, 3, 4]);
-        let optionsFinal: cert.CmsGeneratorOptions = {
-          contentDataFormat: cert.CmsContentDataFormat.BINARY,
-          outFormat: cert.CmsFormat.PEM,
-          isDetached: true
-        };
-        cmsGenerator.doFinal(content, optionsFinal).then(result => {
-          console.info('testPkcs7SignByPromise doFinal result: success, result = %s', result);
-        }).catch((error: BusinessError) => {
-          console.error(`testPkcs7SignByPromise failed: errCode: ${error.code}, message: ${error.message}`);
-        });
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        console.error(`testPkcs7SignByPromise failed: errCode: ${e.code}, message: ${e.message}`);
-      }
+  try {
+    let x509Cert = await cert.createX509Cert(certEncodingBlob);
+    let cmsContentType = cert.CmsContentType.SIGNED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info('testPkcs7SignByPromise createCmsGenerator result: success.');
+    let privateKeyInfo: cert.PrivateKeyInfo = {
+      key: rsaStr1024,
+      password: '123456'
+    };
+    // addCert设置为true时，第二次addSigner或者addCert增加相同的证书，会报错。
+    let config: cert.CmsSignerConfig = {
+      mdName: 'SHA256',
+      addCert: false,
+      addAttr: true,
+      addSmimeCapAttr: true
     }
-  });
+    cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
+    console.info('testPkcs7SignByPromise addSigner result: success.');
+    cmsGenerator.addCert(x509Cert);
+    console.info('testPkcs7SignByPromise addCert result: success.');
+    let content = new Uint8Array([1, 2, 3, 4]);
+    let optionsFinal: cert.CmsGeneratorOptions = {
+      contentDataFormat: cert.CmsContentDataFormat.BINARY,
+      outFormat: cert.CmsFormat.PEM,
+      isDetached: true
+    };
+    let result = await cmsGenerator.doFinal(content, optionsFinal);
+    console.info('testPkcs7SignByPromise doFinal result: success, result = %s', result);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPkcs7SignByPromise failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
+  }
 }
 ```
 
@@ -137,7 +130,6 @@ async function testPkcs7SignByPromise() {
 <!-- @[create-cms-sign-object-sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsSignObjectSync.ets) -->
 
 ``` TypeScript
-
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -185,48 +177,44 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-function testPkcs7SignBySync() {
+async function testPkcs7SignBySync() {
   let certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
-  cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
-    if (error) {
-      console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
-    } else {
-      try {
-        let cmsContentType = cert.CmsContentType.SIGNED_DATA;
-        let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-        console.info('testPkcs7SignBySync createCmsGenerator success.');
-        let privateKeyInfo: cert.PrivateKeyInfo = {
-          key: rsaStr1024,
-          password: '123456'
-        };
-        // addCert设置为true时，第二次addSigner或者addCert增加相同的证书，会报错。
-        let config: cert.CmsSignerConfig = {
-          mdName:'SHA256',
-          addCert:false,
-          addAttr:false,
-          addSmimeCapAttr:false
-        }
-        cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-        console.info('testPkcs7SignBySync addSigner result: success.');
-        cmsGenerator.addCert(x509Cert);
-        console.info('testPkcs7SignBySync addCert result: success.');
-        let content = new Uint8Array([1,2,3,4]);
-        let optionsFinal: cert.CmsGeneratorOptions = {
-          contentDataFormat : cert.CmsContentDataFormat.BINARY,
-          outFormat : cert.CmsFormat.DER,
-          isDetached : false
-        };
-        let output = cmsGenerator.doFinalSync(content, optionsFinal);
-        console.info('testPkcs7SignBySync doFinalSync result: success, output = %s.', output);
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        console.error(`testPkcs7SignBySync failed: errCode: ${e.code}, message: ${e.message}`);
-      }
-    }
-  });
+  try {
+    let x509Cert = await cert.createX509Cert(certEncodingBlob);
+    let cmsContentType = cert.CmsContentType.SIGNED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info('testPkcs7SignBySync createCmsGenerator success.');
+    let privateKeyInfo: cert.PrivateKeyInfo = {
+      key: rsaStr1024,
+      password: '123456'
+    };
+    // addCert设置为true时，第二次addSigner或者addCert增加相同的证书，会报错。
+    let config: cert.CmsSignerConfig = {
+      mdName: 'SHA256',
+      addCert: false,
+      addAttr: false,
+      addSmimeCapAttr: false
+    };
+    cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
+    console.info('testPkcs7SignBySync addSigner result: success.');
+    cmsGenerator.addCert(x509Cert);
+    console.info('testPkcs7SignBySync addCert result: success.');
+    let content = new Uint8Array([1,2,3,4]);
+    let optionsFinal: cert.CmsGeneratorOptions = {
+      contentDataFormat: cert.CmsContentDataFormat.BINARY,
+      outFormat: cert.CmsFormat.DER,
+      isDetached: false
+    };
+    let output = cmsGenerator.doFinalSync(content, optionsFinal);
+    console.info('testPkcs7SignBySync doFinalSync result: success, output = %s.', output);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPkcs7SignBySync failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
+  }
 }
 ```

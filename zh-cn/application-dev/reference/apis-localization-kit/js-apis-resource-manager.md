@@ -9939,7 +9939,7 @@ getNumber(resource: Resource): number
 
 | 类型     | 说明              |
 | ------ | --------------- |
-| number | resource对象对应的数值。<br>integer类型资源返回资源文件中定义的原始数值。<br>float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
+| number | resource对象对应的数值。integer类型或者float类型均返回资源文件中定义的原始数值。|
 
 **错误码：**
 

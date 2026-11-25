@@ -10,7 +10,7 @@
 
 **图1** 口令认证架构图
 
-![image](figures/口令认证架构图.png "口令认证架构图")
+![image](figures/口令认证架构图.png)
 
 ### 基本概念
 用户认证框架与各个基础认证服务（包含口令认证、人脸识别等）组成的身份认证系统，支持用户认证凭据设置、删除、认证等基础功能。
@@ -70,7 +70,7 @@ Pin_auth驱动的主要工作是为上层用户认证框架和Pin_auth服务提�
 
 **图2** Pin_auth服务和pin_auth驱动接口
 
-![image](figures/pin_auth服务与驱动交互.png "pin_auth服务与驱动交互")
+![image](figures/pin_auth服务与驱动交互.png)
 
 ### 约束与限制
 口令认证的实现需要在TEE安全环境中实现，口令凭据等数据的加密信息需要在安全环境中存储。
@@ -82,6 +82,7 @@ Pin_auth驱动的主要工作是为上层用户认证框架和Pin_auth服务提�
 ### 接口说明
 
 注：以下接口列举的为IDL接口描述生成的对应C++语言函数接口，接口声明见idl文件（/drivers/interface/pin_auth）。
+
 在本文中，口令凭据的录入、认证和删除相关的HDI接口如表1所示，表2中的回调函数分别用于口令执行器返回操作结果给框架和获取用户输入的口令信息。
 
 **表1** 接口功能介绍
@@ -93,10 +94,10 @@ Pin_auth驱动的主要工作是为上层用户认证框架和Pin_auth服务提�
 | OnRegisterFinish(const std::vector<uint64_t>& templateIdList,<br/>const std::vector<uint8_t>& frameworkPublicKey,<br/>const std::vector<uint8_t>&  extraInfo) | 执行器注册成功后，获取用户认证框架的公钥信息；获取用户认证框架的template 列表用于对账。 |
 | Cancel(uint64_t scheduleId) | 通过scheduleId取消指定操作。       |
 | SetData(uint64_t scheduleId, uint64_t authSubType, <br/>const std::vector<uint8_t> &data, int32_t resultCode) | 回调函数，返回用户录入的口令子类型和录入的口令脱敏数据。       |
-| Enroll(uint64_t scheduleId, const std::vector<uint8_t>& extraInfo, <br/>const sptr<IExecutorCallback>& callbackObj) | 录入pin码。      |
-| Authenticate(uint64_t scheduleId, const std::vector<uint64_t>& templateIdList, const std::vector<uint8_t>& extraInfo, const sptr<IExecutorCallback>& callbackObj) | pin码认证。      |
+| Enroll(uint64_t scheduleId, const std::vector<uint8_t>& extraInfo, <br/>const sptr\<IExecutorCallback\>& callbackObj) | 录入pin码。      |
+| Authenticate(uint64_t scheduleId, const std::vector<uint64_t>& templateIdList, const std::vector<uint8_t>& extraInfo, const sptr\<IExecutorCallback\>& callbackObj) | pin码认证。      |
 | Delete(uint64_t templateId)       | 删除pin码模板。       |
-| GetProperty(const std::vector<uint64_t>& templateIdList, <br/>const std::vector<GetPropertyType>& propertyTypes, Property& property) | 获取执行器属性信息。 |
+| GetProperty(const std::vector<uint64_t>& templateIdList, <br/>const std::vector\<GetPropertyType\>& propertyTypes, Property& property) | 获取执行器属性信息。 |
 
 
 **表2** 回调函数介绍
@@ -234,7 +235,7 @@ Pin_auth驱动的主要工作是为上层用户认证框架和Pin_auth服务提�
    };
 
    // 调用HDF_INIT将驱动入口注册到HDF框架中，在加载驱动时HDF框架会先调用Bind函数,再调用Init函数加载该驱动，当Init调用异常时，HDF框架会调用Release释放驱动资源并退出
-   HDF_INIT(g_pinauthinterfaceDriverEntry);
+   HDF_INIT(g_pinAuthInterfaceDriverEntry);
    ```
 
 

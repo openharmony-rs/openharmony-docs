@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍Node-API支持的数据类型和接口，包括napi_status枚举、napi_value值类型、扩展能力接口等，为开发者提供完整的Node-API数据类型和接口参考。"
 keywords: [Node-API, 数据类型, napi_value, napi_status, 接口参考, 扩展能力, napi_env, 回调函数]
 doctype: guide
@@ -46,8 +46,9 @@ typedef enum {
     napi_arraybuffer_expected,
     napi_detachable_arraybuffer_expected,
     napi_would_deadlock, /* unused */
-    napi_no_external_buffers_allowed,
-    napi_cannot_run_js
+    napi_create_ark_runtime_too_many_envs = 22,
+    napi_create_ark_runtime_only_one_env_per_thread = 23,
+    napi_destroy_ark_runtime_env_not_exist = 24
 } napi_status;
 ```
 
@@ -223,10 +224,6 @@ napi_async_complete_callback用于异步操作完成后的回调。当需要进�
 **napi_threadsafe_function_call_js**
 
 函数指针，在事件循环线程中执行，可与ArkTS/JS交互，从而实现更加复杂的功能，用于napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)接口。
-
-**napi_cleanup_hook**
-
-函数指针，用于napi_add_env_cleanup_hook接口，当环境销毁时会被执行。
 
 **napi_async_cleanup_hook**
 

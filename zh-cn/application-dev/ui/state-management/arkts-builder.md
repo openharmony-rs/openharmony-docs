@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkUI提供轻量的UI元素复用机制[\@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
+ArkUI提供轻量的UI元素复用机制\@Builder(ArkTS-Dyn [@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)和ArkTS-Sta [@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-static.md#builder))，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
 
 在ArkTS-Sta上下文中，需导入装饰器：
 
@@ -281,6 +281,11 @@ struct BuilderPlaceholderList {
     this.data = list;
   }
 
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister()
+      .unregister('itemPlaceholder');
+  }
+
   build() {
     Column({ space: 5 }) {
       List({ space: 10 }) {
@@ -346,6 +351,11 @@ struct BuilderPlaceholderList {
     this.data = list;
   }
 
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister()
+      .unregister('itemPlaceholder');
+  }
+
   build() {
     Column({ space: 5 } as ColumnOptions) {
       List({ space: 10 }) {
@@ -383,7 +393,7 @@ struct BuilderPlaceholderList {
 
 - `isPlaceholder`设置为`true`时，该\@Builder为占位构建函数。占位构建函数必须为全局、无参数的函数，内部仅执行不依赖状态变量的静态渲染，不能注册手势或业务回调。
 
-- `isPlaceholder`的默认值为`false`。设置为`false`时，该\@Builder等价于未传入配置项的\@Builder；`@Builder()`与`@Builder({})`同样等价于未传入配置项的\@Builder。
+- `isPlaceholder`设置为`false`时，该\@Builder等价于未传入配置项的\@Builder。
 
 传入配置项的\@Builder需要注意如下限制条件：
 

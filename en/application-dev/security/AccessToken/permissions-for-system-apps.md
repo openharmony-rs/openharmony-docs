@@ -5772,7 +5772,7 @@ Allows an application to manage clone preferences.
 
 ## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
  
-Allows an application to install freely distributable applications.
+Allows an application to install Distributing OpenHarmony PC Software Outside the AppGallery.
  
 **Permission level**: system_core
  
@@ -5783,6 +5783,48 @@ Allows an application to install freely distributable applications.
 **Supported devices**: PCs/2-in-1 devices
  
 **Valid since**: 26.0.1
+
+## ohos.permission.vehicle.MMA_OCCUPANT
+
+Allows an in-vehicle application to obtain occupant status, including seat occupancy and occupant types.
+
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.MMA_CARSTATUS
+
+Allows an in-vehicle application to obtain the real-time status of vehicle components.
+
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.MANAGE_CURSOR_STYLE
+
+Allows an application to manage mouse cursor styles.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 26.1.0
 
 ## ohos.permission.ALLOW_DIRECT_BOOT
 

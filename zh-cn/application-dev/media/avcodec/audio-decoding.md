@@ -67,14 +67,17 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 1. 添加所需的头文件。
 
+   <!-- @[AudioDecoder::IncludeHeaders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/include/audio_decoder.h) -->
+
    ```cpp
-   #include <multimedia/player_framework/native_avcodec_audiocodec.h>
-   #include <multimedia/native_audio_channel_layout.h>
-   #include <multimedia/player_framework/native_avcapability.h>
-   #include <multimedia/player_framework/native_avcodec_base.h>
-   #include <multimedia/player_framework/native_avformat.h>
-   #include <multimedia/player_framework/native_avbuffer.h>
+   #include "multimedia/player_framework/native_avcodec_audiocodec.h"
+   #include "multimedia/player_framework/native_avcapability.h"
+   #include "multimedia/player_framework/native_avbuffer_info.h"
    ```
+
+   > **说明：**
+   >
+   > native_avcodec_base.h（含OH_AVCodecCallback、AVCODEC_BUFFER_FLAGS_\*、AV_ERR_\*及OH_AVBuffer_\*接口）、native_avformat.h、native_averrors.h等由上述头文件传递包含，无需单独引入。
 
 2. 创建解码器实例对象，OH_AVCodec *为解码器实例指针。
 
@@ -138,6 +141,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        (void)codec;
        auto *codecUserData = static_cast<CodecUserData *>(userData);
        if (codecUserData != nullptr && !codecUserData->isDestroyed.load()) {
+           if (codecUserData->failureDetails != nullptr) {
+               codecUserData->failureDetails->Record("codec.callback", errorCode, "编解码服务返回异步错误");
+           }
            codecUserData->SignalError();
        }
        AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
@@ -168,6 +174,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        if (OH_AVFormat_GetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, &sampleFormat)) {
            AVCODEC_SAMPLE_LOGI("Audio sample format changed: %{public}d", sampleFormat);
        }
+       // 送显线程持有同一把锁的读锁；更新宽高、跨距和像素格式时需要写锁，避免读取到不一致的帧布局。
        std::unique_lock<std::shared_mutex> codecLock(codecUserData->codecMutex);
        // 可通过format获取到变化后的视频宽、高、跨距等。
        UpdateVideoOutputInfo(format, codecUserData);
@@ -190,12 +197,10 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
            return;
        }
-       if (codec == nullptr || buffer == nullptr) {
-           AVCODEC_SAMPLE_LOGE("Invalid codec input callback argument");
-           codecUserData->SignalError();
+       UpdateEncoderFirstInputDescription(codec, codecUserData);
+       if (codecUserData->hasError.load()) {
            return;
        }
-       UpdateEncoderFirstInputDescription(codec, codecUserData);
        // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
        codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
@@ -208,11 +213,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
        if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
-           return;
-       }
-       if (codec == nullptr || buffer == nullptr) {
-           AVCODEC_SAMPLE_LOGE("Invalid codec output callback argument");
-           codecUserData->SignalError();
            return;
        }
        if (codecUserData->isDecFirstFrame) {
@@ -267,7 +267,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    添加头文件:
 
-   ```c++
+   <!-- @[AudioDecoder::IncludeDrmHeaders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    #include <multimedia/drm_framework/native_mediakeysystem.h>
    #include <multimedia/drm_framework/native_mediakeysession.h>
    #include <multimedia/drm_framework/native_drm_err.h>
@@ -280,32 +282,33 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
    
    使用示例:
-   ```c++
-   // 根据DRM信息创建指定的DRM系统, 以创建"com.clearplay.drm"为例。
-   MediaKeySystem *system = nullptr;
-   int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
-   if (system == nullptr) {
-       printf("create media key system failed");
-       return;
-   }
+   <!-- @[AudioDecoder::SetDecryptionConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
-   // 创建解密会话。
-   MediaKeySession *session = nullptr;
-   DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-   ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-   if (ret != DRM_ERR_OK) {
-       // 如创建失败，请查看DRM接口文档及日志信息。
-       printf("create media key session failed.");
-       return;
+   ``` C++
+   int32_t AudioDecoder::SetDecryptionConfig()
+   {
+       // 根据DRM信息创建指定的DRM系统，以创建“com.clearplay.drm”为例。
+       MediaKeySystem *system = nullptr;
+       int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
+       CHECK_AND_RETURN_RET_LOG(ret == DRM_ERR_OK && system != nullptr, AVCODEC_SAMPLE_ERR_ERROR,
+           "Create media key system failed, ret: %{public}d", ret);
+       
+       // 创建解密会话。
+       MediaKeySession *session = nullptr;
+       DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+       ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
+       CHECK_AND_RETURN_RET_LOG(ret == DRM_ERR_OK && session != nullptr, AVCODEC_SAMPLE_ERR_ERROR,
+           "Create media key session failed, ret: %{public}d", ret);
+       
+       // 获取许可证请求、设置许可证响应等。
+       // 设置解密配置，即将解密会话、安全通路标志（当前音频解密不支持安全通路，应设置为false）设置到解码器中。
+       bool secureAudio = false;
+       ret = OH_AudioCodec_SetDecryptionConfig(decoder_, session, secureAudio);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+           "Set decryption config failed, ret: %{public}d", ret);
+   
+       return AVCODEC_SAMPLE_ERR_OK;
    }
-   if (session == nullptr) {
-       printf("media key session is nullptr.");
-       return;
-   }
-   // 获取许可证请求、设置许可证响应等。
-   // 设置解密配置, 即将解密会话、安全通路标志(当前音频解密不支持安全通路，应设置为false)设置到解码器中。
-   bool secureAudio = false;
-   ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
    ```
 
 5. 调用OH_AudioCodec_Configure()配置解码器。
@@ -342,32 +345,30 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
                "continue with decoder configure", sampleInfo.audio.audioCodecMime.c_str());
        }
        // format仅用于本次Configure；所有失败路径和成功路径都要在返回前销毁。
-       OH_AVFormat *format = OH_AVFormat_Create();
+       auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
        CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
-   
+
        // 必选：采样格式、声道数、声道布局、采样率。
-       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_S16LE);
-       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, sampleInfo.audio.audioChannelCount);
-       OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, sampleInfo.audio.audioChannelLayout);
-       OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, sampleInfo.audio.audioSampleRate);
+       OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_S16LE);
+       OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_AUD_CHANNEL_COUNT, sampleInfo.audio.audioChannelCount);
+       OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_CHANNEL_LAYOUT, sampleInfo.audio.audioChannelLayout);
+       OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_AUD_SAMPLE_RATE, sampleInfo.audio.audioSampleRate);
        // 可选：同步模式，按需设置。
        if (sampleInfo.codec.codecSyncMode) {
-           OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
+           OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codec.codecSyncMode);
        }
-   
+
        // 可选：编解码器特定数据（codec config），由解封装获取，没有则不设置。
        if (sampleInfo.audio.codecConfigLen > 0 &&
            sampleInfo.audio.codecConfig.size() >= sampleInfo.audio.codecConfigLen) {
-           OH_AVFormat_SetBuffer(format, OH_MD_KEY_CODEC_CONFIG, sampleInfo.audio.codecConfig.data(),
+           OH_AVFormat_SetBuffer(format.get(), OH_MD_KEY_CODEC_CONFIG, sampleInfo.audio.codecConfig.data(),
                sampleInfo.audio.codecConfigLen);
        }
-   
+
        // 配置解码器。
-       int ret = OH_AudioCodec_Configure(decoder_, format);
+       int ret = OH_AudioCodec_Configure(decoder_, format.get());
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Config failed, ret: %{public}d", ret);
-       OH_AVFormat_Destroy(format);
-       format = nullptr;
-   
+
        return AVCODEC_SAMPLE_ERR_OK;
    }
    ```
@@ -407,7 +408,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    添加头文件：
 
-   ```c++
+   <!-- @[AudioDecoder::IncludeCencHeaders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    #include <multimedia/player_framework/native_cencinfo.h>
    ```
    在 CMake 脚本中链接动态库：
@@ -417,58 +420,62 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
 
    使用示例：
-   ```c++
-   OH_AVBuffer *buffer = ...; // 待解密的输入buffer，获取方式可参考步骤9。
-   uint32_t keyIdLen = DRM_KEY_ID_SIZE;
-   uint8_t keyId[] = {
-       0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
-       0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
-   uint32_t ivLen = DRM_KEY_IV_SIZE;
-   uint8_t iv[] = {
-       0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
-       0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
-   uint32_t encryptedBlockCount = 0;
-   uint32_t skippedBlockCount = 0;
-   uint32_t firstEncryptedOffset = 0;
-   uint32_t subsampleCount = 1;
-   DrmSubsample subsamples[1] = { { .clearHeaderLen = 0x10, .payLoadLen = 0x16 } };
-   // 创建CencInfo实例。
-   OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
-   if (cencInfo == nullptr) {
-       // 异常处理。
+   <!-- @[AudioDecoder::SetAVBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   void AudioDecoder::SetAVBuffer(OH_AVBuffer *buffer)
+   {
+       uint32_t keyIdLen = DRM_KEY_ID_SIZE;
+       uint8_t keyId[] = {
+           0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
+           0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
+       uint32_t ivLen = DRM_KEY_IV_SIZE;
+       uint8_t iv[] = {
+           0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
+           0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
+       uint32_t encryptedBlockCount = 0;
+       uint32_t skippedBlockCount = 0;
+       uint32_t firstEncryptedOffset = 0;
+       uint32_t subsampleCount = 1;
+       DrmSubsample subsamples[1] = { { .clearHeaderLen = 0x10, .payLoadLen = 0x16 } };
+       // 创建CencInfo实例。
+       OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
+       if (cencInfo == nullptr) {
+           // 异常处理。
+       }
+       // 设置解密算法。
+       OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 设置KeyId和Iv。
+       errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 设置Sample信息。
+       errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
+           subsampleCount, subsamples);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 设置模式：KeyId、Iv和SubSamples已被设置。
+       errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 将CencInfo设置到AVBuffer中。
+       errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 销毁CencInfo实例。
+       errNo = OH_AVCencInfo_Destroy(cencInfo);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       cencInfo = nullptr;
    }
-   // 设置解密算法。
-   OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 设置KeyId和Iv。
-   errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 设置Sample信息。
-   errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
-       subsampleCount, subsamples);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 设置模式：KeyId、Iv和SubSamples已被设置。
-   errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 将CencInfo设置到AVBuffer中。
-   errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 销毁CencInfo实例。
-   errNo = OH_AVCencInfo_Destroy(cencInfo);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   cencInfo = nullptr;
    ```
 
 9. 调用OH_AudioCodec_PushInputBuffer()，写入待解码的数据。
@@ -532,12 +539,12 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     <!-- @[AudioDecoder::FreeOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
     
     ``` C++
-    int32_t AudioDecoder::FreeOutputBuffer(uint32_t bufferIndex, bool render)
+    int32_t AudioDecoder::FreeOutputBuffer(const CodecBufferInfo &info)
     {
         CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null");
-    
+
         int32_t ret = AVCODEC_SAMPLE_ERR_OK;
-        ret = OH_AudioCodec_FreeOutputBuffer(decoder_, bufferIndex);
+        ret = OH_AudioCodec_FreeOutputBuffer(decoder_, info.bufferIndex);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Free output data failed");
         return AVCODEC_SAMPLE_ERR_OK;
     }
@@ -647,8 +654,10 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
             // 销毁前刷新并停止解码器，不可重复destroy。
             Flush();
             Stop();
-            OH_AudioCodec_Destroy(decoder_);
+            const int32_t ret = OH_AudioCodec_Destroy(decoder_);
             decoder_ = nullptr;
+            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                "Destroy failed, ret: %{public}d", ret);
         }
         return AVCODEC_SAMPLE_ERR_OK;
     }

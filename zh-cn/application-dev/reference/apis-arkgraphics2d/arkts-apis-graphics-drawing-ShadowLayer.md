@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -45,9 +45,9 @@ ArkTS-Sta: static create(blurRadius: double, x: double, y: double, color: common
 
 | 参数名     | 类型      | 必填 | 说明                                 |
 | ---------- | -------- | ---- | ----------------------------------- |
-| blurRadius  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 阴影的模糊半径，必须为大于0的浮点数。     |
-| x           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴上的偏移量，该参数为浮点数。        |
-| y           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴上的偏移量，该参数为浮点数。        |
+| blurRadius  | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是   | 阴影的模糊半径，必须为大于0的浮点数。单位为物理像素px。     |
+| x           | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是   | x轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
+| y           | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是   | y轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
 | color       | [common2D.Color](js-apis-graphics-common2D.md#color) | 是   | ARGB格式的颜色。每个颜色通道的值是[0, 255]的整数。 |
 
 **返回值：**
@@ -73,7 +73,6 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     let color : common2D.Color = {alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00};
     let shadowLayer = drawing.ShadowLayer.create(3, -3, 3, color);
   }
@@ -96,7 +95,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## create<sup>18+</sup>
 
-ArkTS-Dyn: static create(blurRadius: number, x: number, y: number, color: common2D.Color | number): ShadowLayer
+ArkTS-Dyn: static create(blurRadius: number, x: number, y: number, color: common2D.Color \| number): ShadowLayer
 
 ArkTS-Sta: static create(blurRadius: double, x: double, y: double, color: common2D.Color | int): ShadowLayer | undefined
 
@@ -112,10 +111,10 @@ ArkTS-Sta: static create(blurRadius: double, x: double, y: double, color: common
 
 | 参数名     | 类型      | 必填 | 说明                                 |
 | ---------- | -------- | ---- | ----------------------------------- |
-| blurRadius  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 阴影的模糊半径，必须为大于0的浮点数。     |
-| x           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴上的偏移量，该参数为浮点数。        |
-| y           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴上的偏移量，该参数为浮点数。        |
-| color       | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int    | 是   | 颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，必须是16进制ARGB格式的无符号整数，取值范围为[0, 0xFFFFFFFF]。  |
+| blurRadius  | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是   | 阴影的模糊半径，必须为大于0的浮点数。单位为物理像素px。     |
+| x           | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是   | x轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
+| y           | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是   | y轴上的偏移量，该参数为浮点数。单位为物理像素px。        |
+| color       | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int   | 是   | 颜色。为common2D.Color类型时，每个颜色通道的值是[0, 255]的整数；为number类型时，必须是16进制ARGB格式的无符号整数，取值范围为[0, 0xFFFFFFFF]。  |
 
 **返回值：**
 
@@ -140,7 +139,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     let shadowLayer = drawing.ShadowLayer.create(3, -3, 3, 0xff00ff00);
   }
 }

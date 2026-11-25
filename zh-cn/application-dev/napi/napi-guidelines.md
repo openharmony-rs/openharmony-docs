@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍Node-API开发规范，涵盖参数获取、作用域管理、引用管理等编码规则，帮助开发者编写安全可靠的Node-API代码，避免内存越界和泄漏等问题。"
 keywords: [Node-API, 开发规范, 编码规则, napi_get_cb_info, 作用域管理, 引用管理, 参数校验, 内存安全]
 doctype: guide
@@ -529,8 +529,8 @@ napi_object_freeze等同于Object.freeze语义，freeze后对象的所有属性�
 
 [Native侧子线程与UI主线程通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/native_subthread-to-uimain);
 
-[如何在Native侧C++子线程直接调用ArkTS接口，不用通过ArkTS侧触发回调](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-8-V5);
+[如何在Native侧C++子线程直接调用ArkTS接口，不用通过ArkTS侧触发回调](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-8);
 
-[napi_env、napi_value实例是否可以跨worker线程共享](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-55-V5);
+[napi_env、napi_value实例是否可以跨worker线程共享](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-55);
 
-[Native如何创建子线程，有什么约束，与主线程如何通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-68-V5).
+[Native如何创建子线程，有什么约束，与主线程如何通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-68).

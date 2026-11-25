@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -45,13 +45,13 @@ ArkTS-Sta: static createImageLattice(xDivs: Array\<int>, yDivs: Array\<int>, fXC
 
 | 参数名       | 类型                                                                | 必填 | 说明                                                                               |
 | ------------ | ------------------------------------------------------------------ | ---- | --------------------------------------------------------------------------------- |
-| xDivs        | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int>             | 是   | 用于划分图像的X坐标值数组，单位为物理像素px。数组元素需为整数。若传入小数，会直接舍弃小数部分，转为整数。                                             |
-| yDivs        | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int>             | 是   | 用于划分图像的Y坐标值数组，单位为物理像素px。数组元素需为整数。若传入小数，会直接舍弃小数部分，转为整数。                                             |
-| fXCount      | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | X坐标值数组的元素个数，需与xDivs数组的长度一致。基于功能和性能的考虑，取值范围为[0, 5]。                            |
-| fYCount      | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | Y坐标值数组的元素个数，需与yDivs数组的长度一致。基于功能和性能的考虑，取值范围为[0, 5]。                            |
-| fBounds      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | ArkTS-Dyn: 可选，要绘制的原始边界矩形，矩形参数须为整数。当fBounds传入undefined时，该方法将抛错误码。不传该参数时，默认为原始图像矩形大小。矩形参数需为整数，单位为物理像素px（若矩形参数为小数，会直接舍弃小数部分，转为整数）。<br/>ArkTS-Sta: 可选，要绘制的原始边界矩形，矩形参数须为整数。当不传该参数，或者fBounds传入undefined时，默认为原始图像矩形大小。矩形参数需为整数，单位为物理像素px（若矩形参数为小数，会直接舍弃小数部分，转为整数）。 |
-| fRectTypes   | Array\<[RectType](arkts-apis-graphics-drawing-e.md#recttype12)> \| null                              | 否   | 可选，填充矩形网格类型的数组，用于指定每个矩形网格的绘制类型，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
-| fColors      | Array\<[common2D.Color](js-apis-graphics-common2D.md#color)> \| null | 否   | 可选，填充网格的颜色数组，用于为每个网格单元格指定填充颜色，设置后对应网格区域将以指定颜色进行纯色填充，替换原有图像内容。不传入时默认为空（网格不使用自定义颜色填充，保留原始图像内容）。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
+| xDivs        | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int>                                                     | 是   | 用于划分图像的X坐标值数组，单位为物理像素px。数组元素需为整数。若传入小数，会直接舍弃小数部分，转为整数。                                             |
+| yDivs        | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int>                                                     | 是   | 用于划分图像的Y坐标值数组，单位为物理像素px。数组元素需为整数。若传入小数，会直接舍弃小数部分，转为整数。                                             |
+| fXCount      | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                             | 是   | X坐标值数组的元素个数，需与xDivs数组的长度一致。基于功能和性能的考虑，取值范围为[0, 5]。                            |
+| fYCount      | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                             | 是   | Y坐标值数组的元素个数，需与yDivs数组的长度一致。基于功能和性能的考虑，取值范围为[0, 5]。                            |
+| fBounds      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | ArkTS-Dyn: 要绘制的原始边界矩形。当仅需绘制图像的局部区域时传入此参数，不传入时默认为原始图像矩形大小。矩形参数需为整数，单位为物理像素px（若矩形参数为小数，会直接舍弃小数部分，转为整数）。<br/>ArkTS-Sta: 可选，要绘制的原始边界矩形，矩形参数须为整数。当不传该参数，或者fBounds传入undefined时，默认为原始图像矩形大小。矩形参数需为整数，单位为物理像素px（若矩形参数为小数，会直接舍弃小数部分，转为整数）。 |
+| fRectTypes   | Array\<[RectType](arkts-apis-graphics-drawing-e.md#recttype12)> \| null                              | 否   | 填充矩形网格类型的数组，用于指定每个矩形网格的绘制类型，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
+| fColors      | Array\<[common2D.Color](js-apis-graphics-common2D.md#color)> \| null | 否   | 填充网格的颜色数组，用于为每个网格单元格指定填充颜色，设置后对应网格区域将以指定颜色进行纯色填充，替换原有图像内容。不传入时默认为空（网格不使用自定义颜色填充，保留原始图像内容）。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
 
 **返回值：**
 
@@ -121,9 +121,9 @@ static createImageLattice(xDivs: Array\<number>, yDivs: Array\<number>, fXCount:
 | yDivs        | Array\<number>                                                     | 是   | 用于划分图像的Y坐标值数组，单位为物理像素px。数组元素需为整数。若传入小数，会直接舍弃小数部分，转为整数。                                             |
 | fXCount      | number                                                             | 是   | X坐标值数组的元素个数，需与xDivs数组的长度一致。基于功能和性能的考虑，取值范围为[0, 5]。                            |
 | fYCount      | number                                                             | 是   | Y坐标值数组的元素个数，需与yDivs数组的长度一致。基于功能和性能的考虑，取值范围为[0, 5]。                            |
-| fBounds      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | 可选，要绘制的原始边界矩形，矩形参数须为整数。当fBounds传入undefined时，该方法将抛错误码。不传该参数时，默认为原始图像矩形大小。矩形参数需为整数，单位为物理像素px（若矩形参数为小数，会直接舍弃小数部分，转为整数）。 |
-| fRectTypes   | Array\<[RectType](arkts-apis-graphics-drawing-e.md#recttype12)> \| null                              | 否   | 可选，填充矩形网格类型的数组，用于指定每个矩形网格的绘制类型，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
-| fColors      | Array\<number> \| null | 否   | 可选，填充网格的颜色数组，用于为每个网格单元格指定填充颜色，设置后对应网格区域将以指定颜色进行纯色填充，替换原有图像内容。颜色用16进制ARGB格式的32位无符号整数表示，取值范围[0, 4294967295]。不传入时默认为空（网格不使用自定义颜色填充，保留原始图像内容）。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
+| fBounds      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | 否   | 要绘制的原始边界矩形。当仅需绘制图像的局部区域时传入此参数，不传入时默认为原始图像矩形大小。矩形参数需为整数，单位为物理像素px（若矩形参数为小数，会直接舍弃小数部分，转为整数）。 |
+| fRectTypes   | Array\<[RectType](arkts-apis-graphics-drawing-e.md#recttype12)> \| null                              | 否   | 填充矩形网格类型的数组，用于指定每个矩形网格的绘制类型，默认为空。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
+| fColors      | Array\<number> \| null | 否   | 填充网格的颜色数组，用于为每个网格单元格指定填充颜色，设置后对应网格区域将以指定颜色进行纯色填充，替换原有图像内容。颜色用16进制ARGB格式的32位无符号整数表示，取值范围[0, 4294967295]。不传入时默认为空（网格不使用自定义颜色填充，保留原始图像内容）。如果设置，大小必须为(fXCount + 1) * (fYCount + 1)。 |
 
 **返回值：**
 

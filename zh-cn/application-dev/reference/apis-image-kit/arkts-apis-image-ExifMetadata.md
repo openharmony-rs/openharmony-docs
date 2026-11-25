@@ -384,11 +384,11 @@ async function exifMetadataSetProperties(context: Context) {
   let imageSource = image.createImageSource(fd);
   let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
   if (metaData != undefined && metaData.exifMetadata != undefined) {
-    let setkey: Record<string, string | null> = {
+    let setKey: Record<string, string | null> = {
       "ImageWidth": "200",
       "ImageLength": "300"
     };
-    await metaData.exifMetadata.setProperties(setkey).then(async () => {
+    await metaData.exifMetadata.setProperties(setKey).then(async () => {
       console.info('Succeeded in setting properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);

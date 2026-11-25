@@ -2,14 +2,14 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-文件中定义了画布（Canvas）的创建、绑定、绘制、变换、裁剪及状态管理等功能函数。画布是ArkGraphics 2D中用于2D图形渲染的核心组件，支持绘制形状、路径、图像、像素图和文字，并提供画布变换（旋转、平移、缩放、倾斜）、裁剪、矩阵操作等能力。<br>画布自带一个默认画刷，画刷为黑色、开启抗锯齿、不具备其他任何样式，当且仅当画布中主动设置的画刷和画笔都不存在时生效。<br>画布自带一个黑色，开启抗锯齿，不具备其他任何样式的默认画刷，当且仅当画布中主动设置的画刷和画笔都不存在时生效。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+文件中定义了画布（Canvas）的创建、绑定、绘制、变换、裁剪及状态管理等功能函数。画布是ArkGraphics 2D中用于2D图形渲染的核心组件，支持绘制形状、路径、图像、像素图和文字，并提供画布变换（旋转、平移、缩放、倾斜）、裁剪、矩阵操作等能力。<br>画布自带一个默认画刷，画刷为黑色、开启抗锯齿、不具备其他任何样式，当且仅当画布中主动设置的画刷和画笔都不存在时生效。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 <!--RP1-->
 **相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
@@ -243,7 +243,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canv
 
 **描述**
 
-用于将像素图的指定区域绘制到画布的指定区域。与[OH_Drawing_CanvasDrawPixelMapRect](#oh_drawing_canvasdrawpixelmaprect)的区别是，本接口支持指定源矩形区域约束类型
+用于将像素图的指定区域绘制到画布的指定区域。与[OH_Drawing_CanvasDrawPixelMapRect](#oh_drawing_canvasdrawpixelmaprect)的区别是，本接口支持指定源矩形区域约束类型。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -886,7 +886,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint3
 
 **描述**
 
-用于以指定的颜色及混合模式填充整个画布。该函数将指定颜色按照blendMode定义的混合规则与画布上已有内容进行合成，不同混合模式产生不同的视觉效果。与[OH_Drawing_CanvasClear](#oh_drawing_canvasclear)的区别是，本接口通过混合模式将颜色与画布现有内容混合，而OH_Drawing_CanvasClear直接使用指定颜色替换画布所有内容
+用于以指定的颜色及混合模式填充整个画布。该函数将指定颜色按照blendMode定义的混合规则与画布上已有内容进行合成，不同混合模式产生不同的视觉效果。与[OH_Drawing_CanvasClear](#oh_drawing_canvasclear)的区别是，本接口通过混合模式将颜色与画布现有内容混合，而OH_Drawing_CanvasClear直接使用指定颜色替换画布所有内容。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

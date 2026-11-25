@@ -1577,7 +1577,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>值为undefined时，不做描边处理。 |
+| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>值为undefined时，不做描边处理。 |
 
 ### strokeColor<sup>20+</sup>
 
@@ -3738,7 +3738,8 @@ struct TextInputExample {
     // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
     // 从API version 23开始支持TextMenuItemId.autoFill
     const idsToFilter: TextMenuItemId[] = [
-      TextMenuItemId.autoFill
+      TextMenuItemId.autoFill,
+      TextMenuItemId.AI_WRITER
     ]
     const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
     let item1: TextMenuItem = {
@@ -3806,10 +3807,7 @@ struct TextInputExample {
   }
 }
 ```
-
-<!--RP4-->
-![textInputEditMenuOptions](figures/textInputEditMenuOptions.png)
-<!--RP4End-->
+![textInputEditMenuOptions](figures/textInputEditMenuOptions-2.gif)
 
 ### 示例15（设置symbol类型清除按钮）
 
@@ -4031,7 +4029,7 @@ struct TextInputExample {
 
 ### 示例18（设置最小字体范围与最大字体范围）
 
-从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围<!--Del-->（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）<!--DelEnd-->。
+从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。
 <!--code_no_check-->
 ```json5
 // 开启应用缩放跟随系统
@@ -4060,36 +4058,14 @@ struct TextInputExample {
   }
 }
 ```
-<!--RP3-->
 <!--code_no_check-->
 ```ts
 // xxx.ets
-import { abilityManager, Configuration } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct TextInputExample {
-  @State currentFontSizeScale: number = 1;
   @State minFontScale: number = 0.85;
   @State maxFontScale: number = 2;
-
-  // 设置字体大小
-  async setFontScale(scale: number): Promise<void> {
-    let configInit: Configuration = {
-      fontSizeScale: scale
-    };
-    // 更新配置-字体大小，调用系统接口更新字体配置
-    // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION
-    abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to update configuration. Code: ${err.code}, message: ${err.message}`);
-      } else {
-        this.currentFontSizeScale = scale;
-        console.info('updateConfiguration success.');
-      }
-    });
-  }
 
   build() {
     Column() {
@@ -4102,32 +4078,10 @@ struct TextInputExample {
           .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
-      // 以下按钮仅用于调整字体大小倍数，不在示例图中呈现
-      Column() {
-        Row() {
-          Button('1倍').onClick(() => {
-            this.setFontScale(1);
-          }).margin(10)
-          Button('1.75倍').onClick(() => {
-            this.setFontScale(1.75);
-          }).margin(10)
-        }
-
-        Row() {
-          Button('2倍').onClick(() => {
-            this.setFontScale(2);
-          }).margin(10)
-          Button('3.2倍').onClick(() => {
-            this.setFontScale(3.2);
-          }).margin(10)
-        }
-      }.margin({ top: 50 })
     }
   }
 }
 ```
-<!--RP3End-->
-
 | 系统字体缩放倍数为2倍 | 系统字体缩放倍数为3.2倍 |
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextInput_font_scale1.png)  | ![](figures/TextInput_font_scale2.png)  |

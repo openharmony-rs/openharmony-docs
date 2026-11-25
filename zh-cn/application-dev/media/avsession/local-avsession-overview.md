@@ -109,4 +109,4 @@ async function createController() {
 - [AVSession Kit简介](avsession-overview.md)
 - [媒体会话提供方(ArkTS)](using-avsession-developer.md)
 - [媒体会话控制方](using-avsession-controller.md)
-- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
+- [AVSession Kit指南配套示例代码](avsession-kit-samples.md)

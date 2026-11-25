@@ -95,6 +95,9 @@
 | inputHandlingDuration    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的手势处理耗时（单位：纳秒）。 |
 | layoutMeasureDuration  | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 一帧中的布局测量耗时（单位：纳秒）。 |
 | vsyncTimestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 否   | 当前帧的开始时间戳（单位：纳秒）。 |
+| intendedVsyncTimestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 是   | 当前帧的预期起始时间戳（单位：纳秒）。默认值为undefined。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
+| totalDuration | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 是   | 渲染此帧并将其发送到显示子系统所需要的总时间（单位：纳秒）。默认值为undefined。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
+| animationDuration | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 是   | 执行一帧中动画回调所消耗的时间（单位：纳秒）。默认值为undefined。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## Rect<sup>7+</sup>
 
@@ -159,6 +162,29 @@
 > 示意图展示了leftRect、topRect、rightRect、bottomRect的含义。
 >
 >  ![avoidArea](figures/avoidArea.png)
+
+## AvoidAreaInsets
+
+窗口的避让区边衬。
+
+避让区边衬表示由于[避让区](#avoidarea7)的存在，窗口内容在上下左右四个方向上需要避让的距离。
+
+> **说明：**
+>
+> 避让区边衬的计算不包括[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称   | 类型 | 只读 | 可选 | 说明                         |
+| ------ | -------- | ---- | ---- | ---------------------------- |
+| top    | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口顶部需要避让的距离。单位为像素，取值限定为整数。 |
+| left   | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口左侧需要避让的距离。单位为像素，取值限定为整数。 |
+| right  | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口右侧需要避让的距离。单位为像素，取值限定为整数。 |
+| bottom | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否   | 否   | 窗口底部需要避让的距离。单位为像素，取值限定为整数。 |
 
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
@@ -516,6 +542,23 @@
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | focusOnShow | boolean  |  否  |  是  | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦，默认为true。该参数对主窗口、模态窗、dialog窗口不生效。|
 
+## WindowShowParams
+
+应用显示时的窗口参数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| windowFocused | boolean  |  否  |  是  | 窗口显示时是否自动获取焦点。true表示窗口显示时自动获取焦点，false表示窗口显示时不自动获取焦点。默认为true。|
+| raiseTop | boolean  |  否  |  是  | 窗口显示时是否自动抬升至顶层。true表示窗口显示时自动抬升至顶层，false表示窗口显示时不自动抬升至顶层。默认为true。<br>**说明：**<br>1. 该参数仅对应用主窗口生效；如需提升子窗口到应用内顶层，请使用[raiseToAppTop()](arkts-apis-window-Window.md#raisetoapptop14)。<br>2. 该参数仅调整应用主窗口之间的前后层级，不会使窗口位于层级更高的窗口（如画中画窗口、全局悬浮窗）之上；如需跨应用置顶，请使用[setWindowTopmost()](arkts-apis-window-Window.md#setwindowtopmost14)。|
+
 ## WindowSnapshotAnimationConfig
 
 窗口截图动画配置，仅支持在调用[maximizeWithOptions()](arkts-apis-window-Window.md#maximizewithoptions)或[recover()](arkts-apis-window-Window.md#recover)接口时配置。
@@ -566,7 +609,7 @@
 | 名称     | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | curve    | [WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)           |  否  |  否   | 动画曲线类型。                                               |
-| duration | ArkTS-Dyn: number<br>ArkTS-Sta: long |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: long |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]，超出取值范围时会返回错误码1300016。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
 | param    | [WindowAnimationCurveParam](arkts-apis-window-t.md#windowanimationcurveparam20) |  否  |  是   | 动画曲线参数，根据动画曲线类型决定是否必填。不设置，则默认为空。                 |
 
 ## WindowInfo<sup>18+</sup>
@@ -603,7 +646,7 @@
 | 名称    | 类型                                              | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | config  | [WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20) |  否  |  否   | 本次转场动画配置。                                           |
-| opacity | ArkTS-Dyn: number<br>ArkTS-Sta: double |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围0~1.0，在动画结束时恢复为1.0。 |
+| opacity | ArkTS-Dyn: number<br>ArkTS-Sta: double |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围[0, 1.0]，超出取值范围时会返回错误码1300016。在动画结束时恢复为1.0。<br/>该参数以float32精度存储，通过[getWindowTransitionAnimation()](arkts-apis-window-Window.md#getwindowtransitionanimation20)获取的值可能因系统内的double与float转换导致精度截断而与传入值存在细微差异。  |
 
 ## StartAnimationParams<sup>20+</sup>
 

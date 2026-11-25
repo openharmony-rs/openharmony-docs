@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "创建Canvas并按需配置绘制效果后，通过几何形状、图片和字块等基础图元的组合，构建应用界面。"
+keywords: [图元绘制, Canvas, 几何形状, 点, 圆, 矩形, 图片绘制, 字块绘制]
+doctype: guide
+status: active
+---
+
 # 图元绘制概述
 
 <!--Kit: ArkGraphics 2D-->

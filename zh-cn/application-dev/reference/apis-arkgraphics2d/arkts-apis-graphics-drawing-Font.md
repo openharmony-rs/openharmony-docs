@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -113,7 +113,7 @@ ArkTS-Sta: getSkewX(): double
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setSkewX(-1.0);
+font.setSkewX(-1);
 console.info("values=" + font.getSkewX());
 ```
 
@@ -175,7 +175,7 @@ ArkTS-Sta: getScaleX(): double
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setScaleX(2.0);
+font.setScaleX(2);
 console.info("values=" + font.getScaleX());
 ```
 
@@ -388,7 +388,7 @@ ArkTS-Sta: setSize(textSize: double): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
-font.setSize(5.0);
+font.setSize(5);
 ```
 
 ## getSize
@@ -419,7 +419,7 @@ ArkTS-Sta: getSize(): double
 import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
-font.setSize(5.0);
+font.setSize(5);
 let fontSize = font.getSize();
 ```
 
@@ -553,7 +553,7 @@ ArkTS-Sta: measureText(text: string, encoding: TextEncoding): double
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 文本的宽度，浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 文本的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -634,7 +634,7 @@ ArkTS-Sta: measureSingleCharacter(text: string): double
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -702,7 +702,7 @@ ArkTS-Sta: measureSingleCharacterWithFeatures(text: string, features: Array\<Fon
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数，单位为px。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -723,7 +723,7 @@ class DrawingRenderNode extends RenderNode {
     const font = new drawing.Font();
     font.setSize(20);
     let fontFeatures : Array<drawing.FontFeature> = [];
-    fontFeatures.push({name: 'calt', value: 0.0});
+    fontFeatures.push({name: 'calt', value: 0});
     let width = font.measureSingleCharacterWithFeatures("你", fontFeatures);
   }
 }
@@ -782,7 +782,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-ArkTs-Sta示例：
+ArkTS-Sta示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1238,7 +1238,7 @@ ArkTS-Sta: getWidths(glyphs: Array\<int>): Array\<double> | undefined
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> \| undefined | 返回字形宽度数组，浮点数，单位为物理像素px。获取失败时返回undefined。 |
+| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> \| undefined | 返回字形宽度数组，浮点数。单位为物理像素px。获取失败时返回undefined。 |
 
 **错误码：**
 
@@ -1258,9 +1258,9 @@ let font: drawing.Font = new drawing.Font();
 let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontWidths: Array<number> = font.getWidths(glyphs);
-for (let index = 0; index < fontWidths.length; index++) {
-  console.info("get fontWidths[", index, "]:", fontWidths[index]);
-}
+fontWidths.forEach((fontWidth, index) => {
+  console.info("get fontWidths[", index, "]:", fontWidth);
+});
 ```
 
 ArkTS-Sta示例：
@@ -1388,16 +1388,16 @@ class DrawingRenderNode extends RenderNode {
     let infos : Array<drawing.TypefaceFallbackInfo> = font.textToGlyphsWithFallback(text);
     console.info("drawing textToGlyphsWithFallback infos length = " + infos.length );
     let offset = 0;
-    for (let run of infos) {
+    infos.forEach((run) => {
       font.setTypeface(run.typeface);
       let positions: Array<common2D.Point> = [];
       let glyphWidths = font.getWidths(run.glyphIds);
-      for (let j = 0; j < run.glyphIds.length; j++) {
+      glyphWidths.forEach((glyphWidth) => {
         positions.push({x: offset, y: 80});
-        offset += glyphWidths[j];
-      }
+        offset += glyphWidth;
+      });
       canvas.drawGlyphs(run.glyphIds, 0, positions, 0, run.glyphIds.length, font);
-    }
+    });
   }
 }
 ```
@@ -1440,10 +1440,10 @@ let font: drawing.Font = new drawing.Font();
 let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontBounds: Array<common2D.Rect> = font.getBounds(glyphs);
-for (let index = 0; index < fontBounds.length; index++) {
-  console.info("get fontBounds[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
-    " right:", fontBounds[index].right, " bottom:", fontBounds[index].bottom);
-}
+fontBounds.forEach((fontBound, index) => {
+  console.info("get fontBounds[", index, "] left:", fontBound.left, " top:", fontBound.top,
+    " right:", fontBound.right, " bottom:", fontBound.bottom);
+});
 ```
 
 ArkTS-Sta示例：
@@ -1630,7 +1630,7 @@ ArkTS-Sta: createPathForGlyph(index: int): Path | undefined
 
 ArkTS-Dyn示例：
 ```ts
-import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -1640,10 +1640,10 @@ class DrawingRenderNode extends RenderNode {
     font.setSize(50);
     let text: string = '你好';
     let glyphs: number[] = font.textToGlyphs(text);
-    for (let index = 0; index < glyphs.length; index++) {
-      let path: drawing.Path = font.createPathForGlyph(glyphs[index]);
+    glyphs.forEach((glyph) => {
+      let path: drawing.Path = font.createPathForGlyph(glyph);
       canvas.drawPath(path);
-    }
+    });
   }
 }
 ```
@@ -1712,7 +1712,7 @@ font.setThemeFontFollowed(true);
 console.info("font is theme font followed: " + font.isThemeFontFollowed());
 ```
 
-## isThemeFontFollowed()<sup>15+</sup>
+## isThemeFontFollowed<sup>15+</sup>
 
 isThemeFontFollowed(): boolean
 

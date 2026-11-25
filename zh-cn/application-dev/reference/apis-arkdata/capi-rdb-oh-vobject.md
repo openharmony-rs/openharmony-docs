@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_VObject
+typedef struct OH_VObject {...} OH_VObject
 ```
 
 ## 概述
@@ -66,6 +66,10 @@ int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### putDouble()
 
 ```c
@@ -92,6 +96,10 @@ int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### putText()
 
 ```c
@@ -116,6 +124,10 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_VObject](capi-rdb-oh-vobject.md)
 
 ### putTexts()
 
@@ -143,6 +155,10 @@ int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
 
+**参考：**
+
+[OH_VObject](capi-rdb-oh-vobject.md)
+
 ### destroy()
 
 ```c
@@ -166,3 +182,7 @@ int (*destroy)(OH_VObject *valueObject)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。 |
+
+**参考：**
+
+[OH_VObject](capi-rdb-oh-vobject.md)

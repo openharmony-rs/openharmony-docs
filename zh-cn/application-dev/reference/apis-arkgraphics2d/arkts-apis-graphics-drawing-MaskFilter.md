@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -46,7 +46,7 @@ ArkTS-Sta: static createBlurMaskFilter(blurType: BlurType, sigma: double): MaskF
 | 参数名     | 类型                   | 必填 | 说明                                 |
 | ---------- | --------------------- | ---- | ----------------------------------- |
 | blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型，用于指定蒙版滤镜的模糊操作方式。                           |
-| sigma      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。 |
+| sigma      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。单位为物理像素px。 |
 
 **返回值：**
 
@@ -67,12 +67,11 @@ ArkTS-Sta: static createBlurMaskFilter(blurType: BlurType, sigma: double): MaskF
 ArkTS-Dyn示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10.0);
+  draw(context: DrawContext) {
+    const maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
   }
 }
 ```

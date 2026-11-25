@@ -397,6 +397,71 @@ isModifiable(): boolean
 
 请参考[节点操作示例](#节点操作示例)。
 
+### dispatchInputEvent
+
+dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+
+向当前FrameNode派发输入事件，并可指定竞争策略。支持[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)、[MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)和[AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent)。KeyEvent请使用[dispatchKeyEvent](#dispatchkeyevent)派发。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| event | [InputEventType](./js-apis-arkui-builderNode.md#inputeventtype20) | 是 | 需要派发的输入事件。|
+| competitionStrategy | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | 否 | 派发事件的手势竞争策略。CompetitionStrategy.DEFAULT表示非竞争模式（目标组件与当前组件的手势不竞争），适用于当前组件与目标组件各自独立处理手势、无需竞争同一事件的场景；CompetitionStrategy.COMPETITION表示竞争模式（目标组件与当前组件的手势参与竞争），适用于当前组件与目标组件需要竞争同一手势事件的场景。不传入时默认为CompetitionStrategy.DEFAULT（非竞争）。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 是否成功派发事件。返回true表示成功派发事件；返回false表示未成功派发。|
+
+**示例：**
+
+请参考[节点操作示例](#节点操作示例)。
+
+### dispatchKeyEvent
+
+dispatchKeyEvent(event: KeyEvent): boolean
+
+向当前FrameNode派发按键事件。[onKeyPreIme](./arkui-ts/ts-universal-events-key.md#onkeypreime12)不会触发该事件。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| event | [KeyEvent](./arkui-ts/ts-universal-events-key.md#keyevent对象说明) | 是 | 需要派发的按键事件。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 按键事件是否被消费。返回true表示按键事件被消费，不再继续传递；返回false表示未被消费，可继续传递。|
+
+**示例：**
+
+请参考[节点操作示例](#节点操作示例)。
+
 ### appendChild<sup>12+</sup> 
 
 appendChild(node: FrameNode): void
@@ -5055,6 +5120,11 @@ isDisposed(): boolean
 请参考[检验NodeAdapter是否有效示例](#检验nodeadapter是否有效示例)。
 
 ## 节点操作示例
+
+该示例通过[dispatchInputEvent](#dispatchinputevent)接口向子节点派发触摸事件，通过[dispatchKeyEvent](#dispatchkeyevent)接口向子节点派发按键事件。
+
+从API版本26.1.0开始，新增[dispatchInputEvent](#dispatchinputevent)、[dispatchKeyEvent](#dispatchkeyevent)接口。
+
 ```ts
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5325,6 +5395,30 @@ class MyNodeController extends NodeController {
     console.info(`${TEST_TAG}${JSON.stringify(bindingInfo)}`);
   }
 
+  // 向子节点派发触摸事件
+  dispatchInputEvent() {
+    this.frameNode!.commonEvent.setOnTouch((event: TouchEvent) => {
+      let childNode = this.frameNode!.getChild(0);
+      if (childNode) {
+        let result = childNode.dispatchInputEvent(event, CompetitionStrategy.DEFAULT);
+        console.info(`${TEST_TAG} dispatchInputEvent result: ${result}`);
+      }
+    })
+    console.info(`${TEST_TAG} dispatchInputEvent registered`);
+  }
+
+  // 向子节点派发按键事件
+  dispatchKeyEvent() {
+    this.frameNode!.commonEvent.setOnKeyEvent((event: KeyEvent) => {
+      let childNode = this.frameNode!.getChild(0);
+      if (childNode) {
+        let result = childNode.dispatchKeyEvent(event);
+        console.info(`${TEST_TAG} dispatchKeyEvent result: ${result}`);
+      }
+    })
+    console.info(`${TEST_TAG} dispatchKeyEvent registered`);
+  }
+
   throwError() {
     try {
       this.rootNode!.getParent()!.clearChildren();
@@ -5567,6 +5661,16 @@ struct Index {
           .width(300)
           .onClick(() => {
             this.myNodeController.getInteractionEventBindingInfo();
+          })
+        Button('dispatchInputEvent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.dispatchInputEvent();
+          })
+        Button('dispatchKeyEvent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.dispatchKeyEvent();
           })
         Button('throwError')
           .width(300)

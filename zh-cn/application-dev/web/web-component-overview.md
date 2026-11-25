@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb（方舟Web）Web组件的整体能力与应用场景，涵盖网页加载、生命周期管理、Cookie与数据存储、无痕浏览及同层渲染等能力。"
+keywords: [ArkWeb, Web组件, 方舟Web, 网页加载, 无痕浏览, 广告拦截, JavaScriptProxy, ohos.permission.INTERNET, Chromium版本]
+doctype: guide
+status: active
+---
+
 # ArkWeb简介
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

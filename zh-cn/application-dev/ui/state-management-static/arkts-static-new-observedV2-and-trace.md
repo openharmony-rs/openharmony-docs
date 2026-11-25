@@ -1,6 +1,13 @@
 # \@ObservedV2装饰器和\@Trace装饰器：类属性变化观测
 
-为增强状态管理框架对类对象中属性的观测能力，开发者可以使用\@ObservedV2装饰器和\@Trace装饰器装饰类及其中的属性。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+为增强状态管理框架对类对象中属性的观测能力，开发者可以使用[\@ObservedV2](../../reference/apis-arkui/arkui-ts/ts-state-management-observedv2-static.md#observedv2-1)装饰器和[\@Trace](../../reference/apis-arkui/arkui-ts/ts-state-management-trace-static.md#trace-1)装饰器装饰类及其中的属性。
 
 > **说明：**
 >

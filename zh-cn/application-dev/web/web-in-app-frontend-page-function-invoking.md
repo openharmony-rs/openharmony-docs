@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍应用侧通过runJavaScript和runJavaScriptExt调用前端页面JavaScript函数的方法，涵盖无参调用、有参调用及代码传递等场景。"
+keywords: [ArkWeb, runJavaScript, runJavaScriptExt, JavaScript调用]
+doctype: guide
+status: active
+---
+
 # 应用侧调用前端页面函数
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

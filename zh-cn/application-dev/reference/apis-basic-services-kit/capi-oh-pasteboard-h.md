@@ -330,6 +330,10 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 | -- | -- |
 | int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
+**参考：**
+
+[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) [Pasteboard_Notify](#pasteboard_notify) [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)
+
 ### OH_Pasteboard_Create()
 
 ```c
@@ -772,6 +776,10 @@ void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* p
 |----------------------------------------------------------------------------------| -- |
 | [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params             | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | const [OH_Pasteboard_ProgressListener](#oh_pasteboard_progresslistener) listener | 表示进度上报回调函数。 |
+
+**参考：**
+
+[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) [OH_Pasteboard_ProgressListener](#oh_pasteboard_progresslistener)
 
 ### OH_Pasteboard_ProgressInfo_GetProgress()
 

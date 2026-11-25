@@ -10,8 +10,8 @@ status: active
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @jokerxd-liu; @zmw1-->
-<!--Designer: @huyunhui1; @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @zmw1; @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

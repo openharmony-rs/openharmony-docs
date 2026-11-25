@@ -1,6 +1,13 @@
 # \@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化
 
-装饰器[\@State](arkts-static-state.md)、[\@PropRef](arkts-static-propref.md)、[\@Link](arkts-static-link.md)、[\@Provide和\@Consume](arkts-static-provide-and-consume.md)仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如对象数组项class，或者嵌套类，他们的第二层的属性变化是无法观察到的。这就引出了\@Observed和\@ObjectLink装饰器。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liwenzhen3-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+装饰器[\@State](arkts-static-state.md)、[\@PropRef](arkts-static-propref.md)、[\@Link](arkts-static-link.md)、[\@Provide和\@Consume](arkts-static-provide-and-consume.md)仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如对象数组项class，或者嵌套类，它们的第二层的属性变化是无法观察到的。这就引出了[\@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed-static.md#observed-1)和[\@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink-static.md#objectlink-1)装饰器。
 
 ## 概述
 

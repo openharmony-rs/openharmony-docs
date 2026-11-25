@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
-description: "讲解ArkTS错误处理机制，涵盖try-catch-finally异常捕获、throw抛出错误、异步代码错误处理、错误恢复策略及断言函数的使用。"
-keywords: [ArkTS, 错误处理, try-catch-finally, throw, Error对象, 异步错误处理, 错误恢复, 断言函数]
+description: "讲解ArkTS错误处理机制，涵盖try-catch-finally异常捕获、throw抛出错误、异步代码错误处理及错误恢复策略。"
+keywords: [ArkTS, 错误处理, try-catch-finally, throw, Error对象, 异步错误处理, 错误恢复]
 doctype: guide
 status: active
 ---
@@ -9,20 +9,22 @@ status: active
 # 错误处理
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-错误处理是程序开发中的重要环节，良好的错误处理机制能够提高程序的健壮性和可维护性。ArkTS基于TypeScript，继承了JavaScript的错误处理机制，并在此基础上提供了更完善的类型支持。
+错误处理是程序开发中的重要环节，良好的错误处理机制能够提高程序的健壮性和可维护性。
 
 ## 错误处理的基础概念
 
-ArkTS通过try-catch-finally捕获运行时异常，通过throw主动抛出Error对象，确保程序在异常情况下仍能优雅处理。
+ArkTS通过`try-catch-finally`捕获运行时错误，通过`throw`主动抛出`Error`对象，确保程序在异常情况下仍能优雅处理。
 
 ### 错误的定义与分类
 
-错误是程序运行过程中发生的异常情况，分为语法错误、运行时错误和逻辑错误等类型，需要不同的处理方式。
+错误是程序开发与运行过程中发生的异常情况，分为编译期错误、运行时错误和逻辑错误等类型，需要不同的处理方式。
+
+其中，编译期错误与运行时错误的处理方式不同。编译期错误（如类型不匹配、引用未声明的变量）在编译阶段即被拦截，不会进入运行时，无法被`try-catch`捕获，应通过修正代码解决，而非依赖运行时错误处理机制。运行时错误在程序运行过程中才暴露，可通过`try-catch`捕获并处理。以下示例中，前两段为编译期诊断示例，仅第三段为运行时错误示例。
 
 <!-- @[ts_basic_error_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
 
@@ -52,7 +54,7 @@ try {
 
 ### 错误处理的核心目标
 
-错误处理的目标是捕获异常、提供恢复机制、传递错误信息，确保程序的健壮性和可用性。基本原则是：只捕获能处理的异常（不要捕获所有异常），记录错误信息便于追踪，提供合理的恢复机制或降级方案，不要在catch块中忽略异常。
+错误处理的目标是捕获错误、提供恢复机制、传递错误信息，确保程序的健壮性和可用性。基本原则是：只捕获能处理的错误（不要捕获所有错误），记录错误信息便于追踪，提供合理的恢复机制或降级方案，不要在`catch`块中忽略错误。
 
 <!-- @[divide_with_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -75,51 +77,13 @@ try {
 }
 ```
 
-### TypeScript错误处理的常用方案
-
-TypeScript错误处理的常用方案包括try-catch、返回错误信息、异步错误处理等多种方式。
-
-<!-- @[error_handling_patterns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandlingPatterns.ets) -->
-
-``` TypeScript
-// 方案1: try-catch捕获异常
-function tryCatchExample(): void {
-  try {
-    // 可能出错的代码
-    let data: Object = JSON.parse('invalid json');
-  } catch (error) {
-    console.error(`解析失败: ${(error as Error).message}`);
-  }
-}
-
-// 方案2: 返回错误信息（函数式风格）
-function parseJSON(jsonStr: string): [Object | null, Error | null] {
-  try {
-    let data: Object = JSON.parse(jsonStr) as Object;
-    return [data, null];
-  } catch (error) {
-    return [null, error as Error];
-  }
-}
-
-// 方案3: 异步错误处理
-async function asyncErrorHandling(): Promise<void> {
-  try {
-    let response = await http.createHttp().request('EXAMPLE_API_URL');
-    let data = response.result;
-  } catch (error) {
-    console.error(`请求失败: ${(error as Error).message}`);
-  }
-}
-```
-
 ## 错误对象的创建与使用
 
-通过`new Error(message)`创建错误对象，可携带name、message、stack等属性，catch块中通过`instanceof`区分错误类型并读取详情。
+通过`new Error(message)`创建错误对象，可携带`name`、`message`、`stack`等属性，`catch`块中通过`instanceof`区分错误类型并读取详情。
 
 ### 原生Error类的使用
 
-JavaScript提供了原生的`Error`类作为所有错误对象的基类，是错误处理的基础类型，提供标准的错误信息结构。
+ArkTS提供了原生的`Error`类作为所有错误对象的基类，是错误处理的基础类型，提供标准的错误信息结构。
 
 <!-- @[error_object_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -149,7 +113,7 @@ try {
 
 ### 原生错误类型
 
-JavaScript提供了多种原生错误类型，每种类型对应特定的错误场景，便于精确识别和处理错误。
+ArkTS提供了多种原生错误类型，每种类型对应特定的错误场景，便于精确识别和处理错误。
 
 <!-- @[built_in_error_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -240,13 +204,9 @@ try {
 }
 ```
 
-### 错误传播的概念与机制
-
-错误传播是指错误对象在当前位置创建并抛出后，沿调用栈向上传递，直至被最近的try-catch捕获；若始终未被捕获，则程序终止。
-
 ### 错误信息的封装
 
-自定义错误类继承 Error 并扩展 code、details、context、timestamp 等字段，将错误码、上下文、堆栈等信息一并封装，并提供 toErrorInfo 等方法输出结构化错误对象，便于上层统一处理与日志记录。
+自定义错误类继承 `Error` 并扩展`code`、`details`、`context`、`timestamp`等字段，将错误码、上下文、堆栈等信息一并封装，并提供`toErrorInfo`等方法输出结构化错误对象，便于上层统一处理与日志记录。
 
 <!-- @[detailed_error_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -320,23 +280,104 @@ try {
 }
 ```
 
-## try-catch-finally异常捕获
+## 抛出错误（throw语句）
 
-try块包裹可能抛出异常的代码，catch块捕获并处理异常，finally块无论是否异常都会执行，常用于资源清理。
+`throw`语句抛出`Error`对象，中断当前函数执行并将控制权转移到调用栈中最近的`catch`块。
+
+### 抛出原生Error实例
+
+使用`throw`关键字抛出`Error`对象或其子类实例。ArkTS中`throw`语句可抛出的值类型限制，见[抛出非Error值的限制](#抛出非error值的限制)。
+
+<!-- @[email_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
+
+``` TypeScript
+function validateEmail(email: string): void {
+  let emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  if (!email) {
+    throw new Error('邮箱地址不能为空');
+  }
+  
+  if (!emailRegex.test(email)) {
+    throw new Error(`无效的邮箱地址: ${email}`);
+  }
+}
+
+try {
+  validateEmail('invalid-email');
+} catch (error) {
+  console.error(`验证失败: ${(error as Error).message}`);
+}
+```
+
+### 抛出自定义错误实例
+
+继承`Error`创建自定义错误类（如`AppError`），扩展`code`、`field`等业务字段，使`catch`块能按业务语义区分错误。
+
+<!-- @[custom_error_with_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
+
+``` TypeScript
+class AppError extends Error {
+  public code: number;
+  
+  constructor(code: number, message: string) {
+    super(message);
+    this.name = 'AppError';
+    this.code = code;
+  }
+}
+
+function withdrawMoney(balance: number, amount: number): number {
+  if (amount <= 0) {
+    throw new AppError(1001, '取款金额必须大于零');
+  }
+  
+  if (amount > balance) {
+    throw new AppError(1002, '余额不足');
+  }
+  
+  return balance - amount;
+}
+
+try {
+  let newBalance: number = withdrawMoney(100, 200);
+  console.info(`取款成功，余额: ${newBalance}`);
+} catch (error) {
+  if (error instanceof AppError) {
+    console.error(`错误码: ${error.code}, 错误信息: ${error.message}`);
+    // 根据错误码执行不同逻辑
+    if (error.code === 1002) {
+      console.info('建议: 请先存款或申请贷款');
+    }
+  }
+}
+```
+
+### 抛出非Error值的限制
+
+ArkTS中，`throw`语句只能抛出`Error`及其子类型的实例，抛出其他类型的值会在编译期报错。这一限制确保调用方总是能稳定读取错误信息和堆栈。
+
+### 错误传播的概念与机制
+
+错误传播是指错误对象在当前位置创建并抛出后，沿调用栈向上传递，直至被最近的`try-catch`捕获；若始终未被捕获，则程序终止。
+
+## try-catch-finally错误捕获
+
+ArkTS通过`try-catch-finally`语句捕获并处理运行时错误。
 
 ### 基本语法结构
 
-try-catch-finally由三个块组成：`try`块包裹可能抛出异常的代码，`catch`块捕获并处理异常，`finally`块无论是否发生异常都会执行（常用于资源清理）。三者中`catch`和`finally`至少出现一个。
+`try-catch-finally`由三个块组成：`try`块包裹可能抛出错误的代码，`catch`块捕获并处理错误，`finally`块无论是否发生错误都会执行（常用于资源清理）。三者中`catch`和`finally`至少出现一个。
 
 <!-- @[try_catch_finally_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
 ``` TypeScript
 try {
-  // 可能抛出异常的代码
+  // 可能抛出错误的代码
 } catch (error) {
-  // 异常处理代码
+  // 错误处理代码
 } finally {
-  // 无论是否发生异常都会执行的代码（可选）
+  // 无论是否发生错误都会执行的代码（可选）
 }
 ```
 <!-- @[try_catch_finally_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
@@ -372,7 +413,7 @@ calculateExample();
 
 ### 捕获特定类型的错误
 
-在catch块中用`instanceof`判断错误类型，针对NetworkError、DatabaseError等分别执行重试、日志等不同处理逻辑。
+在`catch`块中用`instanceof`判断错误类型，针对`NetworkError`、`DatabaseError`等分别执行重试、日志等不同处理逻辑。
 
 <!-- @[error_type_discrimination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -436,7 +477,7 @@ handleFetchData('other');    // 未知错误: 未知错误
 
 ### finally块的执行特性
 
-无论try块是否抛出异常、catch是否捕获，finally块都会执行，常用于释放资源、关闭连接等收尾工作；即便try中return，finally也会在返回前运行。
+无论`try`块是否抛出错误、`catch`是否捕获，`finally`块都会执行，常用于释放资源、关闭连接等收尾工作；即便`try`中`return`，`finally`也会在返回前运行。
 
 <!-- @[resource_cleanup_finally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -466,7 +507,7 @@ function useResource(): void {
     resource = new DemoResource('数据库连接');
     resource.use();
   } catch (error) {
-    console.error('捕获错误:', (error as Error).message);
+    console.error(`捕获错误: ${(error as Error).message}`);
   } finally {
     // 确保资源被清理
     if (resource) {
@@ -483,7 +524,7 @@ useResource();
 // 数据库连接 资源已清理
 ```
 
-除了资源清理，finally块还有一个值得注意的特性：即使try块中使用了return，finally仍会在函数返回前执行。
+除了资源清理，`finally`块还有一个值得注意的特性：即使`try`块中使用了`return`，`finally`仍会在函数返回前执行。
 
 <!-- @[finally_with_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -504,14 +545,14 @@ function testFinally(): string {
 let result: string = testFinally();
 console.info(`返回值: ${result}`);
 // 输出:
-// try块
-// finally块
+// try 块
+// finally 块
 // 返回值: return from try
 ```
 
 ### 嵌套try-catch的使用场景
 
-嵌套try-catch是在try-catch块内部再使用try-catch的错误处理方式，用于分层处理不同层次的错误。
+嵌套`try-catch`是在`try-catch`块内部再使用`try-catch`的错误处理方式，用于分层处理不同层次的错误。
 
 <!-- @[ts_nested_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
 
@@ -526,10 +567,10 @@ function nestedErrorHandling(): void {
     } catch (innerError) {
       console.info(`内层 catch: ${(innerError as Error).message}`);
       // 决定是否向上层抛出错误
-      throw innerError; // 将错误传递到外层
+      throw innerError as Error; // 将错误传递到外层
     }
 
-    console.info(`外层 try 继续`);
+    console.info(`外层 try 继续`); // 不会执行：内层catch重新抛出错误后，控制流直接进入外层catch
   } catch (outerError) {
     console.info(`外层 catch: ${(outerError as Error).message}`);
   }
@@ -537,311 +578,19 @@ function nestedErrorHandling(): void {
 
 nestedErrorHandling();
 // 输出:
-// 外层try
-// 内层try
-// 内层catch: 内层错误
-// 外层try继续
-```
-
-## 抛出错误（throw语句）
-
-throw语句抛出Error对象，中断当前函数执行并将控制权转移到调用栈中最近的try-catch块。
-
-### 抛出原生Error实例
-
-使用`throw`关键字抛出`Error`对象或其子类实例，中断当前函数执行并将控制权转移到调用栈中最近的`catch`块。ArkTS应抛出`Error`体系对象，避免抛出字符串或数字等非Error值。
-
-<!-- @[email_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-function validateEmail(email: string): void {
-  let emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
-  if (!email) {
-    throw new Error('邮箱地址不能为空');
-  }
-  
-  if (!emailRegex.test(email)) {
-    throw new Error(`无效的邮箱地址: ${email}`);
-  }
-}
-
-try {
-  validateEmail('invalid-email');
-} catch (error) {
-  console.error(`验证失败: ${(error as Error).message}`);
-}
-```
-
-### 抛出自定义错误实例
-
-继承Error创建自定义错误类（如AppError），扩展code、field等业务字段，使catch块能按业务语义区分错误。
-
-<!-- @[custom_error_with_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-class AppError extends Error {
-  public code: number;
-  
-  constructor(code: number, message: string) {
-    super(message);
-    this.name = 'AppError';
-    this.code = code;
-  }
-}
-
-function withdrawMoney(balance: number, amount: number): number {
-  if (amount <= 0) {
-    throw new AppError(1001, '取款金额必须大于零');
-  }
-  
-  if (amount > balance) {
-    throw new AppError(1002, '余额不足');
-  }
-  
-  return balance - amount;
-}
-
-try {
-  let newBalance: number = withdrawMoney(100, 200);
-  console.info(`取款成功，余额: ${newBalance}`);
-} catch (error) {
-  if (error instanceof AppError) {
-    console.error(`错误码: ${error.code}, 错误信息: ${error.message}`);
-    // 根据错误码执行不同逻辑
-    if (error.code === 1002) {
-      console.info('建议: 请先存款或申请贷款');
-    }
-  }
-}
-```
-
-### 抛出非Error值的限制
-
-TypeScript允许抛出任意类型的值，但ArkTS中应抛出`Error`体系对象，避免调用方无法稳定读取错误信息和堆栈。
-
-**TypeScript对照**
-
-<!-- @[ts_throw_non_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
-
-``` TypeScript
-// TypeScript允许抛出任意类型，ArkTS只能抛出Error
-throw 'Something went wrong';
-```
-
-**TypeScript对照**
-
-<!-- @[ts_throw_best_practices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，ArkTS中不要这样写：
-function badExample1(): void {
-  throw '这是一个字符串错误';
-}
-
-function badExample2(): void {
-  throw 404;
-}
-
-function badExample3(): void {
-  throw { code: 1001, message: '自定义错误对象' };
-}
-
-// 正确做法：始终抛出Error实例
-function goodExample(): void {
-  throw new Error('这是一个标准错误');
-}
-
-try {
-  goodExample();
-} catch (error) {
-  if (error instanceof Error) {
-    console.error(`Error 对象: ${error.message}`);
-  } else {
-    console.error('未知类型错误');
-  }
-}
-```
-
-### 函数内抛出错误的声明与提示
-
-通过JSDoc的@throws标注函数可能抛出的错误类型。
-
-<!-- @[function_throws_documentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-/**
- * 除法运算
- * @param a 被除数
- * @param b 除数
- * @returns 商
- * @throws {Error} 当除数为零时抛出错误
- */
-function documentationDivide(a: number, b: number): number {
-  if (b === 0) {
-    throw new Error('除数不能为零');
-  }
-  return a / b;
-}
-
-/**
- * 解析JSON字符串
- * @param jsonStr JSON字符串
- * @returns 解析后的对象
- * @throws {SyntaxError} 当JSON格式不正确时抛出错误
- */
-function documentationParseJSON(jsonStr: string): Object {
-  try {
-    return JSON.parse(jsonStr) as Object;
-  } catch (error) {
-    throw new SyntaxError('JSON 字符串格式不正确');
-  }
-}
-```
-
-## 函数的错误声明与处理约定
-
-函数错误声明约定异常处理方式，明确错误传播路径，使调用方了解函数可能产生的错误并据此编写处理逻辑。常见约定包括：JSDoc `@throws`标注可能抛出的错误类型、返回`Result<T>`类型对象（含`data`和`error`字段）替代异常抛出、使用错误码区分不同错误场景。
-
-### 函数返回值包含错误信息
-
-使用显式结果对象返回数据和错误，避免使用异常处理，这样可以提供结构化的错误信息和数据返回方式。
-
-<!-- @[result_type_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-interface Result<T> {
-  data: T | null;
-  error: Error | null;
-}
-
-// 函数返回数据与错误
-function parseJSONSafe(jsonStr: string): Result<Object> {
-  try {
-    let data: Object = JSON.parse(jsonStr) as Object;
-    return {
-      data: data,
-      error: null
-    };
-  } catch (error) {
-    return {
-      data: null,
-      error: error as Error
-    };
-  }
-}
-
-let parseResult: Result<Object> = parseJSONSafe('{"name": "Alice"}');
-
-if (parseResult.error !== null) {
-    console.error('解析失败:', parseResult.error.message);
-} else {
-    console.info(`解析成功: ${parseResult.data}`);
-}
-
-// 另一个示例
-function patternDivideNumbers(a: number, b: number): Result<number> {
-  if (b === 0) {
-    return {
-      data: null,
-      error: new Error('除数不能为零')
-    };
-  }
-  return {
-    data: a / b,
-    error: null
-  };
-}
-
-let divideResult: Result<number> = patternDivideNumbers(10, 2);
-if (divideResult.error !== null) {
-    console.error('计算失败:', divideResult.error.message);
-} else {
-    console.info(`计算结果: ${divideResult.data}`);
-}
-```
-
-### 结合可选链与空值合并处理潜在错误
-
-用可选链?.安全访问可能为null或undefined的深层属性，避免运行时抛错；用空值合并??在链路结果为nullish时提供默认值。二者结合可在不写try-catch的前提下优雅处理缺失数据。
-
-<!-- @[optional_chaining_nullish_coalescing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-interface ErrorHandlingUserProfile {
-  avatar?: string;
-  bio?: string;
-}
-
-interface ErrorHandlingUser {
-  id: number;
-  name: string;
-  email?: string;
-  profile?: ErrorHandlingUserProfile;
-}
-
-function getUserEmail(user: ErrorHandlingUser | null): string {
-  // 使用可选链和空值合并
-  return user?.email ?? '未设置邮箱';
-}
-
-function getAvatar(user: ErrorHandlingUser | null): string {
-  return user?.profile?.avatar ?? 'default-avatar.png';
-}
-
-// 示例
-let errorUser1: ErrorHandlingUser = { id: 1, name: 'Alice' };
-let errorUser2: ErrorHandlingUser = { id: 2, name: 'Bob', email: 'bob@example.com' };
-let errorUser3: ErrorHandlingUser = {
-  id: 3,
-  name: 'Charlie',
-  profile: { avatar: 'charlie.png', bio: 'Developer' }
-};
-
-console.info(`${getUserEmail(errorUser1)}`); // '未设置邮箱'
-console.info(`${getUserEmail(errorUser2)}`); // 'bob@example.com'
-console.info(`${getAvatar(errorUser1)}`);    // 'default-avatar.png'
-console.info(`${getAvatar(errorUser3)}`);    // 'charlie.png'
-```
-
-### 异步函数的错误处理
-
-异步函数的错误处理可以使用async/await结合try-catch或Promise.catch() 来实现。
-
-<!-- @[async_await_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-async function fetchUserData(userId: number): Promise<string> {
-  try {
-    if (userId <= 0) {
-      throw new Error(`无效的用户ID: ${userId}`);
-    }
-    return `用户${userId}的数据`;
-  } catch (error) {
-    console.error(`获取用户数据失败: ${(error as Error).message}`);
-    throw new Error((error as Error).message);
-  }
-}
-
-async function aehMain(): Promise<void> {
-  try {
-    let user: string = await fetchUserData(1);
-    console.info(`用户信息: ${user}`);
-  } catch (error) {
-    console.error(`主流程错误: ${(error as Error).message}`);
-  }
-}
-
-aehMain();
+// 外层 try
+// 内层 try
+// 内层 catch: 内层错误
+// 外层 catch: 内层错误
 ```
 
 ## 异步代码的错误处理
 
-async函数中用try-catch包裹await表达式捕获Promise rejection。
+`async`函数中用`try-catch`包裹`await`表达式捕获`Promise` rejection。
 
 ### async/await结合try-catch捕获异步错误
 
-async/await结合try-catch是处理异步错误的标准方式，提供清晰的异步错误处理流程。
+`async`/`await`结合`try-catch`是处理异步错误的标准方式，提供清晰的异步错误处理流程。
 
 <!-- @[promise_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -865,17 +614,17 @@ async function handleAsyncOperation(): Promise<void> {
   try {
     let result = await asyncOperation();
     console.info(`结果: ${result}`);
-    } catch (error) {
-    console.error('捕获异步错误:', (error as Error).message);
+  } catch (error) {
+    console.error(`捕获异步错误: ${(error as Error).message}`);
   }
 }
 
 handleAsyncOperation();
 ```
 
-### Promise的.catch() 链式捕获错误
+### Promise的.catch()链式捕获错误
 
-Promise的.catch()方法是链式捕获Promise错误的方式，提供Promise链的错误处理机制。
+`Promise`的`.catch()`方法是链式捕获`Promise`错误的方式，提供`Promise`链的错误处理机制。
 
 <!-- @[promise_catch_finally_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -907,12 +656,12 @@ promiseCatchExample();
 
 ### 多个异步操作的错误处理
 
-Promise.all中任一任务失败则整体进入catch，可逐个catch独立处理。
+`Promise.all`中任一任务失败则整体进入`catch`；若需对单个任务独立处理错误，应在传入`Promise.all`之前为每个子Promise链式调用`.catch`（如`Promise.all([task1.catch(handleError), task2.catch(handleError)])`）。
 
 <!-- @[promise_all_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAllErrorHandling.ets) -->
 
 ``` TypeScript
-import http from '@ohos.net.http';
+import { http } from '@kit.NetworkKit';
 
 async function parallelErrorHandling(): Promise<void> {
   try {
@@ -956,6 +705,8 @@ allSettledExample();
 // 第3个成功: 成功2
 ```
 
+上述`parallelErrorHandling`示例引入了`@kit.NetworkKit`，运行该示例需要申请网络权限，并将`EXAMPLE_API_URL`替换为真实可用的服务地址。
+
 与并行执行不同，串行异步操作中每一步依赖前一步的结果，错误处理需要记录已完成步骤以便排查和恢复。
 
 <!-- @[serial_async_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
@@ -991,27 +742,176 @@ async function serialErrorHandling(): Promise<void> {
 serialErrorHandling();
 ```
 
-### 全局异步错误的监听
+### 监听当前线程中未处理的 Promise rejection
 
-通过`unhandledRejection`事件捕获未处理的Promise rejection。
+通过[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)的`unhandledRejection`事件监听当前线程中未处理的`Promise` rejection（从API version 12开始支持）。该监听仅对当前线程生效，无法捕获`Worker`、`TaskPool`等其他运行实例中的错误。建议将监听回调保存为`observer`变量，在不再需要监听时（如页面销毁）调用`off`方法注销，避免重复注册或无法精确移除监听器。
 
-<!-- @[unhandled_rejection_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/UnhandledRejectionHandler.ets) -->
+<!-- @[unhandled_rejection_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/UnhandledRejectionHandler.ts) -->
 
 ``` TypeScript
-import errorManager from '@ohos.app.ability.errorManager';
+import { errorManager } from '@kit.AbilityKit';
 
-// 监听未处理的Promise拒绝
-errorManager.on('unhandledRejection', (reason: Error, promise: Promise<Object>) => {
+// 将监听回调保存为observer，便于后续精确注销
+let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   console.error(`未处理的 Promise 拒绝: ${reason.message}`);
-});
+};
 
-// 示例：触发全局错误处理
+// 注册监听（只能在主线程注册）
+errorManager.on('unhandledRejection', observer);
+
+// 示例：触发未处理的Promise rejection
 async function triggerUnhandledRejection(): Promise<void> {
   // 这个错误没有try-catch或.catch() 处理
   await Promise.reject(new Error('未捕获的 Promise 错误'));
 }
 
-triggerUnhandledRejection(); // 运行时报错，将触发全局错误监听器
+triggerUnhandledRejection(); // 该rejection未被处理，将触发上方注册的监听器
+
+// 在合适的时机（如页面销毁时）注销监听：
+errorManager.off('unhandledRejection', observer);
+```
+
+如需监听整个进程（包括`Worker`、`TaskPool`等实例）中未处理的`Promise` rejection，可使用`errorManager`的`globalUnhandledRejectionDetected`事件（从API version 18开始支持）。该事件可在进程内任意线程注册，用于捕获当前进程中未处理的`Promise` rejection。
+
+## 使用@throws 标记错误
+
+使用`@throws`在注释中标记方法/函数潜在的错误，给调用者提示，但并不强制调用处使用`try-catch`。
+
+<!-- @[function_throws_documentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
+
+``` TypeScript
+/**
+ * 除法运算
+ * @param a 被除数
+ * @param b 除数
+ * @returns 商
+ * @throws {Error} 当除数为零时抛出错误
+ */
+function documentationDivide(a: number, b: number): number {
+  if (b === 0) {
+    throw new Error('除数不能为零');
+  }
+  return a / b;
+}
+
+/**
+ * 解析JSON字符串
+ * @param jsonStr JSON字符串
+ * @returns 解析后的对象
+ * @throws {SyntaxError} 当JSON格式不正确时抛出错误
+ */
+function documentationParseJSON(jsonStr: string): Object {
+  try {
+    return JSON.parse(jsonStr) as Object;
+  } catch (error) {
+    throw new SyntaxError('JSON 字符串格式不正确');
+  }
+}
+```
+
+需要注意的是，`documentationParseJSON`在`catch`中重新抛出的是新建的`SyntaxError`，会丢失原始错误的`stack`。若需保留原始错误信息，可在新错误的`message`中拼接原始信息，例如``throw new SyntaxError(`JSON 字符串格式不正确: ${error.message}`)``。此外，`@throws`是注释文档约定，用于向调用者提示潜在错误。ArkTS编译器不会基于该标签做强制检查。
+
+## 函数返回值包含错误信息
+
+使用显式结果对象返回数据和错误，避免抛出错误，这样可以提供结构化的错误信息和数据返回方式。`Result<T>`约定`data`与`error`互斥：操作成功时`data`为结果、`error`为`null`，操作失败时`data`为`null`、`error`为错误对象，二者有且仅有一个为非`null`。
+
+<!-- @[result_type_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
+
+``` TypeScript
+interface Result<T> {
+  data: T | null;
+  error: Error | null;
+}
+
+// 函数返回数据与错误
+function parseJSONSafe(jsonStr: string): Result<Object> {
+  try {
+    let data: Object = JSON.parse(jsonStr) as Object;
+    return {
+      data: data,
+      error: null
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: error as Error
+    };
+  }
+}
+
+let parseResult: Result<Object> = parseJSONSafe('{"name": "Alice"}');
+
+if (parseResult.error !== null) {
+  console.error(`解析失败: ${parseResult.error.message}`);
+} else {
+  console.info(`解析成功: ${parseResult.data}`);
+}
+
+// 另一个示例
+function patternDivideNumbers(a: number, b: number): Result<number> {
+  if (b === 0) {
+    return {
+      data: null,
+      error: new Error('除数不能为零')
+    };
+  }
+  return {
+    data: a / b,
+    error: null
+  };
+}
+
+let divideResult: Result<number> = patternDivideNumbers(10, 2);
+if (divideResult.error !== null) {
+  console.error(`计算失败: ${divideResult.error.message}`);
+} else {
+  console.info(`计算结果: ${divideResult.data}`);
+}
+```
+
+在适用场景上，可预期的业务错误（如参数校验失败、资源不存在）适合用`Result`等显式结果对象返回，由调用方逐分支检查处理；不可预期的异常（如程序缺陷、外部系统故障）适合用`throw`抛出并通过`try-catch`捕获，沿调用栈向上传递。
+
+## 结合可选链与空值合并处理潜在错误
+
+用[可选链运算符](arkts-language-guide-basic-operators.md#可选链运算符)（`?.`）安全访问可能为`null`或`undefined`的深层属性，避免运行时抛错；用[空值合并运算符](arkts-language-guide-basic-operators.md#空值合并运算符)（`??`）在链路结果为nullish时提供默认值。二者结合可在不写`try-catch`的前提下优雅处理缺失数据。
+
+<!-- @[optional_chaining_nullish_coalescing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
+
+``` TypeScript
+interface ErrorHandlingUserProfile {
+  avatar?: string;
+  bio?: string;
+}
+
+interface ErrorHandlingUser {
+  id: number;
+  name: string;
+  email?: string;
+  profile?: ErrorHandlingUserProfile;
+}
+
+function getUserEmail(user: ErrorHandlingUser | null): string {
+  // 使用可选链和空值合并
+  return user?.email ?? '未设置邮箱';
+}
+
+function getAvatar(user: ErrorHandlingUser | null): string {
+  return user?.profile?.avatar ?? 'default-avatar.png';
+}
+
+// 示例
+let errorUser1: ErrorHandlingUser = { id: 1, name: 'Alice' };
+let errorUser2: ErrorHandlingUser = { id: 2, name: 'Bob', email: 'bob@example.com' };
+let errorUser3: ErrorHandlingUser = {
+  id: 3,
+  name: 'Charlie',
+  profile: { avatar: 'charlie.png', bio: 'Developer' }
+};
+
+console.info(`${getUserEmail(errorUser1)}`); // '未设置邮箱'
+console.info(`${getUserEmail(errorUser2)}`); // 'bob@example.com'
+console.info(`${getAvatar(errorUser1)}`);    // 'default-avatar.png'
+console.info(`${getAvatar(errorUser3)}`);    // 'charlie.png'
 ```
 
 ## 错误恢复与兜底策略
@@ -1020,7 +920,7 @@ triggerUnhandledRejection(); // 运行时报错，将触发全局错误监听器
 
 ### 捕获错误后的默认值返回
 
-catch块中返回默认值，保证函数总有有效返回。
+`catch`块中返回默认值，保证函数总有有效返回。
 
 <!-- @[fallback_default_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -1040,10 +940,10 @@ function safeParseJSON(jsonStr: string, defaultValue: FallbackData | null = null
 }
 
 let fbData1: FallbackData | null = safeParseJSON('{"name": "Alice"}', { name: 'Unknown' });
-console.info(`${JSON.stringify(fbData1)}`);  // {"name":"Alice"}
+console.info(`${JSON.stringify(fbData1)}`);  // '{"name":"Alice"}'
 
 let fbData2: FallbackData | null = safeParseJSON('invalid json', { name: 'Unknown' });
-console.info(`${JSON.stringify(fbData2)}`);  // {"name":"Unknown"}
+console.info(`${JSON.stringify(fbData2)}`);  // '{"name":"Unknown"}'
 
 function safeArrayAccess<T>(arr: T[], index: number, defaultValue: T): T {
   try {
@@ -1133,7 +1033,7 @@ testRetry();
 
 ### 降级处理方案
 
-异常发生时执行降级逻辑，保证系统基本功能正常运行。
+错误发生时执行降级逻辑，保证系统基本功能正常运行。
 
 <!-- @[service_fallback_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -1144,7 +1044,7 @@ interface FallbackDataService {
 
 class PrimaryDataService implements FallbackDataService {
   async getData(): Promise<string> {
-        // 模拟主服务可能失败
+    // 模拟主服务可能失败
     throw new Error('主服务不可用');
   }
 }
@@ -1220,7 +1120,7 @@ class ApiClient {
     let url: string = `${this.baseUrl}${endpoint}`;
     let lastError: Error | null = null;
 
-    for (let attempt: number = 0; attempt <= this.maxRetries; attempt++) {
+    for (let attempt = 0; attempt <= this.maxRetries; attempt++) {
       try {
         let result: string = await this.mockRequest(url);
         return result;
@@ -1269,129 +1169,4 @@ async function retryFetchUserInfo(): Promise<void> {
 }
 
 retryFetchUserInfo();
-```
-
-## catch变量的类型
-
-在`strict`模式下，`catch`子句中的变量类型为`unknown`，必须先进行类型检查才能访问错误属性。
-
-<!-- @[catch_unknown_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-function cuProcessData(data: string): void {
-  try {
-    let parsed: number = Number.parseInt(data, 10);
-    if (Number.isNaN(parsed)) {
-      throw new Error(`Invalid number: ${data}`);
-    }
-    console.info(`Parsed: ${parsed}`);
-  } catch (error) {
-    // error类型不能直接访问.message
-    if (error instanceof Error) {
-      console.info(`Error: ${error.message}`);
-    } else {
-      console.info(`Unknown error: ${error}`);
-    }
-  }
-}
-
-cuProcessData('abc');  // Error: Invalid number: abc
-```
-
-捕获特定类型的错误时，使用`instanceof`区分不同错误类型。
-
-<!-- @[catch_specific_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-class CsValidationError extends Error {
-  public field: string;
-
-  constructor(field: string, message: string) {
-    super(message);
-    this.field = field;
-  }
-}
-
-class CsNetworkError extends Error {
-  public statusCode: number;
-
-  constructor(statusCode: number, message: string) {
-    super(message);
-    this.statusCode = statusCode;
-  }
-}
-
-function csHandleRequest(url: string): void {
-  try {
-    if (url.length === 0) {
-      throw new CsValidationError('url', 'URL cannot be empty');
-    }
-    throw new CsNetworkError(500, 'Server error');
-  } catch (error) {
-    if (error instanceof CsValidationError) {
-      console.info(`验证错误 [${error.field}]: ${error.message}`);
-    } else if (error instanceof CsNetworkError) {
-      console.info(`网络错误 [${error.statusCode}]: ${error.message}`);
-    } else if (error instanceof Error) {
-      console.info(`未知错误: ${error.message}`);
-    } else {
-      console.info(`未知异常: ${error}`);
-    }
-  }
-}
-
-csHandleRequest('');  // 验证错误 [url]: URL cannot be empty
-csHandleRequest('EXAMPLE_API_URL');  // 网络错误 [500]: Server error
-```
-
-## 断言函数
-
-断言函数在运行时检查条件，不满足时抛出异常。TypeScript中调用后可收窄类型。ArkTS中用if检查替代。
-
-**TypeScript对照**
-
-<!-- @[ts_assertion_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，ArkTS中用if检查替代
-function assert(value: unknown): asserts value {
-  if (value === undefined || value === null) {
-    throw new Error('Value must be defined');
-  }
-}
-
-function assertString(val: unknown): asserts val is string {
-  if (typeof val !== 'string') {
-    throw new Error('Expected string');
-  }
-}
-```
-
-ArkTS中使用if检查和类型守卫函数替代。
-
-<!-- @[assertion_function_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-function afAssertDefined(value: string | null): string {
-  if (value === null) {
-    throw new Error('Value must be defined');
-  }
-  return value;
-}
-
-function afIsString(val: Object): boolean {
-  return typeof val === 'string';
-}
-
-function afProcess(value: string | number): void {
-  if (typeof value === 'string') {
-    let v: string = afAssertDefined(value);
-    console.info(`${v.toUpperCase()}`);
-  } else {
-    console.info(`${value.toString()}`);
-  }
-}
-
-afProcess('hello');  // HELLO
-afProcess(42);       // 42
 ```
