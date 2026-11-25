@@ -278,7 +278,7 @@ getSecurityLabelSync(path:string):string
 
 > **说明：**
 >
-> 指定路径的文件或目录不存在时，本接口不会抛出异常'。建议在[fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync)为真的条件语句内使用该函数。
+> 指定路径的文件或目录不存在时，本接口不会抛出异常。建议在[fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync)为真的条件语句内使用该函数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
