@@ -521,6 +521,23 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    通过[OH_ArkUI_SetNodeAllowedDropDataTypes](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodealloweddropdatatypes)配置接收节点，并注册[NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
 
    <!-- @[virtual_drag_c_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   bool ConfigureDropTarget(std::string& error)
+   {
+       ArkUI_AttributeItem text {};
+       // 本地化文字由ArkTS资源传入，原生节点不硬编码界面文字。
+       text.string = g_dropText.c_str();
+       if (!CheckNodeResult(g_nodeApi->setAttribute(g_drop, NODE_TEXT_CONTENT, &text), "Set drop text", error)) {
+           return false;
+       }
+       SetAreaLayout(g_drop, 0xFFDCF2DF);
+       const char* types[] = {"general.file-uri"};
+       return CheckNodeResult(OH_ArkUI_SetNodeAllowedDropDataTypes(g_drop, types, 1), "Set drop types", error) &&
+           CheckNodeResult(g_nodeApi->registerNodeEvent(g_drop, NODE_ON_DROP, 1, nullptr), "Register drop", error) &&
+           CheckNodeResult(g_nodeApi->addNodeEventReceiver(g_drop, OnNodeEvent), "Add drop receiver", error);
+   }
+   ```
 
 5. 获取文件URI。
 
