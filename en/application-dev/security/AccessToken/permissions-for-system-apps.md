@@ -9194,7 +9194,7 @@ Allows a system application to modify the delayed task parameters of specified a
 
 **Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
-**Valid since**: 26.0.1
+**Valid since**: 26.1.0
 
 ## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
