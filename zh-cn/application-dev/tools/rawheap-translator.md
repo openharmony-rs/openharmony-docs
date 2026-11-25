@@ -135,16 +135,20 @@ rawheap_translator 工具提供以下解析能力：
 单文件模式下，开发者传入一份`.rawheap`文件，工具将其转换为`.heapsnapshot`文件：
 
 ```text
-rawheap_translator <rawheap_file> [heapsnapshot_file]
+rawheap_translator <rawheap_file> [heapsnapshot_file] [--prune]
 ```
 
 双文件混合模式下，开发者依次传入动态和静态运行时的配套文件，工具合并生成一个`.heapsnapshot`文件。使用前请确认帮助信息包含此模式，并检查前文的文件配对条件：
 
 ```text
-rawheap_translator <dynamic_rawheap_file> <static_rawheap_file> [heapsnapshot_file]
+rawheap_translator <dynamic_rawheap_file> <static_rawheap_file> [heapsnapshot_file] [--prune]
 ```
 
-尖括号表示必选参数，方括号表示可选参数，执行命令时不输入这些括号。Windows 命令提示符中使用`rawheap_translator.exe`。
+尖括号表示必选参数，方括号表示可选参数，执行命令时不输入这些括号。`--prune`为可选开关，可放在位置参数之前或之后。Windows 命令提示符中使用`rawheap_translator.exe`。
+
+执行`rawheap_translator --help`（或`-h`）可查看用法说明，执行`rawheap_translator --version`（或`-v`）可查看工具版本。选项可放在任意参数位置，按从左到右的顺序处理；遇到帮助或版本选项时，工具立即输出对应信息并退出，不执行转换。
+
+`--prune`的支持情况取决于所用工具版本。使用前请执行`rawheap_translator --help`，确认帮助信息包含`--prune`；若未包含，请更新SDK配套的工具。该选项用于转换阶段的节点裁剪，与[文件参考规格](#文件参考规格)中设备侧HeapDump的裁剪级别设置不同。
 
 ### 参数说明
 
@@ -154,8 +158,21 @@ rawheap_translator <dynamic_rawheap_file> <static_rawheap_file> [heapsnapshot_fi
 | dynamic_rawheap_file | 双文件混合 | 是 | ArkTS-Dyn 侧快照路径，必须放在静态快照参数之前。 |
 | static_rawheap_file | 双文件混合 | 是 | 双文件混合解析时的 ArkTS-Sta 侧快照路径。静态快照可通过单文件模式独立解析，无需配套的动态快照。 |
 | heapsnapshot_file | 两种模式 | 否 | 输出文件路径。省略时，在当前工作目录生成`hprof_<时间戳>.heapsnapshot`，例如`hprof_2026-9-18-10-20-30.heapsnapshot`。时间戳使用命令执行时的本地时间，各字段不补零。显式指定时，建议使用完整的`.heapsnapshot`后缀；支持自动补后缀的工具会在其他名称后追加该后缀。输出目录必须存在且可写。 |
+| --prune | 两种模式 | 否 | 可选开关，默认关闭。启用后，裁剪基本类型值节点（例如表示整数、浮点数和布尔值的节点），以及ArkTS-Sta静态运行时生成的堆快照中为基本类型数组元素合成的包装节点和对应值节点，以减小生成的`.heapsnapshot`文件体积。适用于大体积快照因内存占用过高而无法导入分析工具的场景。真实堆对象、根节点框架及保留对象之间的引用关系不受影响。 |
 
 路径中包含空格时，请用双引号包围整个路径。保存位置以本次转换日志显示的路径为准。
+
+`--prune`按节点用途决定裁剪范围，不按节点名称匹配。即使真实堆对象与基本类型值节点同名，也不会因此被裁剪。该选项只影响本次转换结果，不修改输入的`.rawheap`文件。若需要查看被裁剪的基本类型值，请使用未启用`--prune`时生成的快照。
+
+### 命令退出码
+
+| 退出码 | 含义 |
+| --- | --- |
+| 0 | 转换成功，或已输出帮助、版本信息。查询帮助或版本时不会生成快照。 |
+| 1 | 转换失败、输出文件名生成失败或输出文件无法保存。 |
+| 2 | 参数无效或缺少必选参数，例如未知选项、未提供输入文件。 |
+
+命令执行结束后，应立即读取退出码。Windows命令提示符中可执行`echo %ERRORLEVEL%`；Linux和macOS终端中可执行`echo $?`。
 
 ## 解析示例与结果验证
 
@@ -179,6 +196,14 @@ rawheap_translator.exe static.rawheap static.heapsnapshot
 rawheap_translator.exe dynamic.rawheap static.rawheap merged.heapsnapshot
 ```
 
+需要减小输出文件体积时，可在上述三种调用中加入`--prune`。以下命令依次演示动态单文件、静态单文件和双文件混合解析，使用不同的输出文件名保留未裁剪结果：
+
+```bat
+rawheap_translator.exe memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979-pruned.heapsnapshot --prune
+rawheap_translator.exe static.rawheap static-pruned.heapsnapshot --prune
+rawheap_translator.exe dynamic.rawheap static.rawheap merged-pruned.heapsnapshot --prune
+```
+
 ### Linux 和 macOS 解析示例
 
 打开终端，进入 rawheap 文件所在目录，执行以下命令，在当前目录生成指定文件。两个平台使用相同的解析命令：
@@ -199,9 +224,17 @@ rawheap_translator static.rawheap static.heapsnapshot
 rawheap_translator dynamic.rawheap static.rawheap merged.heapsnapshot
 ```
 
+需要减小输出文件体积时，可在上述三种调用中加入`--prune`。以下命令依次演示动态单文件、静态单文件和双文件混合解析，使用不同的输出文件名保留未裁剪结果：
+
+```bash
+rawheap_translator memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979-pruned.heapsnapshot --prune
+rawheap_translator static.rawheap static-pruned.heapsnapshot --prune
+rawheap_translator dynamic.rawheap static.rawheap merged-pruned.heapsnapshot --prune
+```
+
 ### 参考输出
 
-以下是动态快照单文件转换的一组参考日志。实际日志内容、数量和保存路径会随工具版本、输入文件及运行目录变化：
+以下是未启用`--prune`时，动态快照单文件转换的一组参考日志。实际日志内容、数量和保存路径会随工具版本、输入文件及运行目录变化：
 
 ```text
 [INFO ] ParseVersion            current metadata version is 1.0.0
@@ -221,11 +254,19 @@ rawheap_translator dynamic.rawheap static.rawheap merged.heapsnapshot
 [INFO ] Translate               file save to /data/local/tmp/myapplication-7979-7979.heapsnapshot
 ```
 
+启用`--prune`时，也应确认转换成功并记录输出路径。裁剪效果可按下文比较输出文件大小，不以是否出现专门的裁剪日志作为判断依据。
+
 ### 验证并查看结果
 
 1. 检查本次日志，确认没有解析或保存错误，并记录工具报告的输出路径。双文件混合模式还需检查是否存在引用未解析等合并提示。
 2. 确认对应`.heapsnapshot`文件已由本次命令生成或更新，且文件非空。Windows 可执行`dir myapplication-7979-7979.heapsnapshot`；Linux 和 macOS 可执行`ls -l myapplication-7979-7979.heapsnapshot`。静态快照单独解析示例应检查`static.heapsnapshot`，双文件示例应检查`merged.heapsnapshot`。
 3. 通过 DevEco Studio 的[Snapshot 模板基本操作][snapshot-operations]页面，参照“离线导入内存快照文件”小节导入文件，或使用 Chrome 开发者工具的内存面板导入文件。检查对象与引用关系。文件存在并不代表转换结果一定完整；若合并存在引用未解析提示，应重新核对文件配对和工具版本。
+
+验证裁剪效果时，先按上述示例将同一份`.rawheap`文件分别转换为未裁剪和已裁剪的快照，再比较两个输出文件的字节数。Windows可执行`dir /-C myapplication-7979-7979.heapsnapshot myapplication-7979-7979-pruned.heapsnapshot`；Linux和macOS可执行`ls -l myapplication-7979-7979.heapsnapshot myapplication-7979-7979-pruned.heapsnapshot`。
+
+单独解析静态快照时，应比较`static.heapsnapshot`与`static-pruned.heapsnapshot`；双文件混合解析时，应使用同一对配套的动态和静态快照，比较`merged.heapsnapshot`与`merged-pruned.heapsnapshot`。
+
+使用`--prune`转换快照后，输出文件通常比未启用该选项时更小，具体缩小幅度取决于被裁剪的节点及其引用边。如果输入快照中没有可裁剪节点，两个输出文件的大小可能相同。裁剪后的快照不再显示这些节点及其引用边，但仍可用于分析真实堆对象及保留对象之间的引用关系。
 
 ## 文件参考规格
 
