@@ -146,7 +146,7 @@ Users can use the on-screen awareness feature through capability items (**capLis
     |SmartAutoFill|Intelligently fills the content of the page input box.<br> **Since:** 26.0.0|
     |SmartAutoFillSwitch|Subscribes to or unsubscribes from the smart fill switch status of page content.<br> **Usage Specification**: Only the smart fill application (com.huawei.hms.textautofill) is allowed to call this API. Calling by non-trustlisted applications returns error code 34000002.<br> **Since:** 26.0.0|
     |PrivacyWindow|Monitors whether there are privacy windows.<br> **Since:** 26.1.0|
-    |ModalDialog|Monitors whether there are modal dialogs.<br> **Since:** 26.1.0|
+    |ModalDialog|Monitors whether there are system modal dialogs.<br> **Since:** 26.1.0|
     |SystemNotification|Monitors whether there are system notifications.<br> **Since:** 26.1.0|
 
   * groupId Capability List<br>
@@ -161,7 +161,7 @@ Users can use the on-screen awareness feature through capability items (**capLis
     |CeliaMemory|Article|Obtains the awareness information of the reading scenario.|
     |SmartBar|SmartAutoFill|Intelligently fills the content of the page input box.|
     |StateAwareness|PrivacyWindow|Monitors whether there are privacy windows.|
-    |StateAwareness|ModalDialog|Monitors whether there are modal dialogs.|
+    |StateAwareness|ModalDialog|Monitors whether there are system modal dialogs.|
     |StateAwareness|SystemNotification|Monitors whether there are system notifications.|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
