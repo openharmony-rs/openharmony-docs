@@ -2427,11 +2427,14 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+    controller_2: webview.WebviewController = new webview.WebviewController();
     private result: WebContextMenuResult | undefined = undefined;
     private param: WebContextMenuParam | undefined = undefined;
     @State offsetX: number = 0;
     @State offsetY: number = 0;
     @State showMenu: boolean = false;
+    @State showNewMenu: boolean = false;
+    @State url: string = 'https://www.baidu.com';
  
     @Builder
     // 构建自定义菜单及触发功能接口
@@ -2465,9 +2468,55 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
       .width(150)
       .height(450)
     }
+
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuNewBuilder() {
+    // 以垂直列表形式显示的菜单。
+        Menu() {
+          // 展示菜单Menu中具体的item菜单项。
+          MenuItem({
+            content: 'TBD',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.showNewMenu = false;
+          })
+
+          MenuItem({
+            content: 'copyLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyLinkToTextMenu();
+            console.info("new isOverTextFragment=" + this.param?.isOverTextFragment());
+            console.info("new getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
+            this.showNewMenu = false;
+          })
  
+          MenuItem({
+            content: 'removeLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+              this.result?.removeFragments();
+              console.info("new shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
+              this.showNewMenu = false;
+            })
+      }
+      .width(150)
+      .height(450)
+    }
+
     build() {
       Column() {
+        TextArea().onChange((val:string)=>{
+          this.url = val;
+          console.info("onChange url = " + this.url);
+        }).height("5%")
         Web({ src: 'https://www.baidu.com', controller: this.controller })
         // 触发自定义弹窗
           .onContextMenuShow((event) => {
@@ -2477,7 +2526,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
             }
             this.showMenu = true;
             this.offsetX = 0;
-            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0) - 0, 0);
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0), 0);
             return true;
           })
           .onContextMenuUpdate((menuItemId, options) => {
@@ -2487,7 +2536,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
           })
           .bindPopup(this.showMenu,
             {
-              builder: this.MenuBuilder(),
+              builder: this.MenuBuilder,
               enableArrow: false,
               placement: Placement.LeftTop,
               mask: false,
@@ -2499,6 +2548,49 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
               }
             })
           .height("70%")
+
+        Button("在下面的web loadUrl")
+          .onClick(() => {
+              try {
+                // 点击按钮时，通过loadUrl，跳转到url
+                console.info("loadUrl url = " + this.url);
+                this.controller_2.loadUrl(this.url);
+              } catch (error) {
+                console.error(`ErrorCode: ${error}`);
+              }
+            }).height("5%")
+        Web({ src: this.url, controller: this.controller_2 })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              this.param = event.param;
+            }
+
+            this.showNewMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0), 0);
+            return true;
+          })
+          .bindPopup(this.showNewMenu,
+            {
+              builder: this.MenuNewBuilder,
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              mask: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.showNewMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            })
+          .onContextMenuUpdate((menuItemId, options) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("new onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .height("40%")
       }
     }
   }
@@ -5088,7 +5180,7 @@ struct WebComponent {
 }
 ```
 
-> **示例说明：**
+> **说明：**
 >
 > 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
 
