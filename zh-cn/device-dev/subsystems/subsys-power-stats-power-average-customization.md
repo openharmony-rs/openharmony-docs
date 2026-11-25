@@ -70,7 +70,8 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     | cpu_active | CPU | Double | CPU活动状态时的基准耗电量，用于计算CPU活动状态的功耗。<br/>-&nbsp;功耗类型：软件功耗<br/>-&nbsp;统计方法：耗电量 = 持续时间 * 耗电基准 |
     | cpu_clusters<br/>cpu_speed_clusterX | CPU | Double数组 | cpu_clusters：cpu cluster的基准耗电量，数组形式，用于配置不同cpu cluster基准耗电量。默认配置包括3个不同cpu cluster基准耗电信息。<br/>cpu_speed_clusterX：cpu cluster不同频率的基准耗电量，数组形式。X代表序号，默认配置中X的范围0~2，对应cpu_clusters数组大小。例如：默认配置cpu_clusters的数组大小为3，顺序对应配置项cpu_speed_cluster0、cpu_speed_cluster1、cpu_speed_cluster2。<br/>-&nbsp;扩展性：可扩展<br/>-&nbsp;功耗类型：软件功耗<br/>-&nbsp;统计方法：耗电量 = 持续时间 * 耗电基准 |
 
-    >说明：表格中描述的硬件类型为真实硬件名称，不代表耗电统计类型，具体的耗电统计类型，请参考[ConsumptionType](../../application-dev/reference/apis-basic-services-kit/js-apis-batteryStatistics-sys.md#consumptiontype)定义。
+    > **说明：**
+    > 表格中描述的硬件类型为真实硬件名称，不代表耗电统计类型，具体的耗电统计类型，请参考ConsumptionType定义。
 
 4. 参考[默认耗电统计配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_statistics/blob/master/services/profile/BUILD.gn)编写BUILD.gn文件，将power_average.json打包安装到`/vendor/etc/profile`目录下，例如： 
 
@@ -95,7 +96,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
           "module_list": [
               "//vendor/hihope/rk3568/default_app_config:default_app_config",
               "//vendor/hihope/rk3568/image_conf:custom_image_conf",
-              "//vendor/hihope/rk3568/battery_statistics/profile:power_average_config", # 添加power_average_config的编译
+              "//vendor/hihope/rk3568/battery_statistics/profile:power_average_config", // 添加power_average_config的编译
               "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
               "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
               "//vendor/hihope/rk3568/etc:product_etc_conf"

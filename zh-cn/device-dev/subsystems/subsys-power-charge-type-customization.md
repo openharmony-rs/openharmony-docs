@@ -9,6 +9,7 @@ OpenHarmony默认提供了充电类型的特性。在对终端设备进行充电
 ### 约束与限制
 
 配置策略：
+
 产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以/vendor进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
@@ -66,19 +67,19 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     ```json
     {
-    "parts": {
-        "product_rk3568": {
-        "module_list": [
-            "//vendor/hihope/rk3568/default_app_config:default_app_config",
-            "//vendor/hihope/rk3568/image_conf:custom_image_conf",
-            "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
-            "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
-            "//vendor/hihope/rk3568/etc:product_etc_conf",
-            "//vendor/hihope/rk3568/battery/profile:battery_config" #添加battery_config的编译
-        ]
-        }
-    },
-    "subsystem": "product_hihope"
+        "parts": {
+            "product_rk3568": {
+                "module_list": [
+                    "//vendor/hihope/rk3568/default_app_config:default_app_config",
+                    "//vendor/hihope/rk3568/image_conf:custom_image_conf",
+                    "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
+                    "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
+                    "//vendor/hihope/rk3568/etc:product_etc_conf",
+                    "//vendor/hihope/rk3568/battery/profile:battery_config" //添加battery_config的编译
+                ]
+            }
+        },
+        "subsystem": "product_hihope"
     }
     ```
     “//vendor/hihope/rk3568/battery/”为文件夹路径，“profile”为创建的文件夹名字，“battery_config”为编译目标。
@@ -95,48 +96,48 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 
 1. 开机后，进入shell命令行：
-    ```
+    ```shell
     hdc shell
     ```
 
 2. 进入电池电量的节点路径（以当前DAYU开发板路径为例）。
-    ```
+    ```shell
     cd /data/service/el0/battery/
     ```
 
 3. 默认充电类型的映射配置数据为例，修改充电状态，模拟电池信息上报，观察是否发送对应充电类型广播。
     1. 修改充电类型
-    ```
-    echo 1 > charger_type
-    ```
+        ```shell
+        echo 1 > charger_type
+        ```
     2. 上报改变充电状态，触发映射
-    ```
-    hidumper -s 3302 -a -r
-    ```
+        ```shell
+        hidumper -s 3302 -a -r
+        ```
     3. 输出定制后的充电类型
-    ```
-    hidumper -s 3302 -a -i 
-    ```
-    ```
-    -------------------------------[ability]----------------------------
-    ------------------------------BatteryService------------------------
-    capacity: 11 
-    batteryLevel: 4 
-    chargingStatus: 1 
-    healthState: 1 
-    pluggedType: 2 
-    voltage: 4123456 
-    present: 0 
-    technology: Li-ion 
-    nowCurrent: 1000 
-    currentAverage: 1000 
-    totalEnergy: 4000000 
-    remainingEnergy: 4000000 
-    remainingChargeTime: 0 
-    temperature: 222 
-    chargeType: 1 
-    ```
-    ![charger_type1](figures/charger_type1.jpg)
+        ```shell
+        hidumper -s 3302 -a -i 
+        ```
+        ```shell
+        -------------------------------[ability]----------------------------
+        ------------------------------BatteryService------------------------
+        capacity: 11 
+        batteryLevel: 4 
+        chargingStatus: 1 
+        healthState: 1 
+        pluggedType: 2 
+        voltage: 4123456 
+        present: 0 
+        technology: Li-ion 
+        nowCurrent: 1000 
+        currentAverage: 1000 
+        totalEnergy: 4000000 
+        remainingEnergy: 4000000 
+        remainingChargeTime: 0 
+        temperature: 222 
+        chargeType: 1 
+        ```
+        ![charger_type1](figures/charger_type1.jpg)
 
 
 ## 参考 
@@ -144,14 +145,14 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 默认配置
 
-    ```json
-    {
-        "charger": {
-            "type": {
-                "path": "/data/service/el0/battery/charger_type"
-            }
+```json
+{
+    "charger": {
+        "type": {
+            "path": "/data/service/el0/battery/charger_type"
         }
     }
-    ``` 
+}
+```
 
 打包路径：/system/etc/battery 

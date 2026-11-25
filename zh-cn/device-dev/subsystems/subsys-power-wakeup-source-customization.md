@@ -9,6 +9,7 @@ OpenHarmony支持多种唤醒源，如电源键、键盘、鼠标等，并提供
 ### 约束与限制
 
 配置策略：
+
 产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以`/vendor`进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导

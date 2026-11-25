@@ -121,7 +121,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
           "module_list": [
             "//vendor/hihope/rk3568/default_app_config:default_app_config",
             "//vendor/hihope/rk3568/image_conf:custom_image_conf",
-            "//vendor/hihope/rk3568/power_manager/profile:power_mode_config_vendor", # 添加power_mode_config_vendor的编译。
+            "//vendor/hihope/rk3568/power_manager/profile:power_mode_config_vendor", // 添加power_mode_config_vendor的编译
             "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
             "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
             "//vendor/hihope/rk3568/etc:product_etc_conf"
@@ -133,7 +133,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ``` 
     
 
-6. 参考《[快速入门](../quick-start/Readme-CN.md)》编译定制版本，编译命令如下：
+6. 参考《[快速入门](../quick-start/quickstart-overview.md)》编译定制版本，编译命令如下：
 
     ```shell
     ./build.sh --product-name rk3568 --ccache

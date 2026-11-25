@@ -9,6 +9,7 @@ OpenHarmony默认提供了电量等级，根据当前的电量来定义系统统
 ### 约束与限制
 
 配置策略：
+
 产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以/vendor进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
@@ -83,19 +84,19 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     ```json
     {
-    "parts": {
-        "product_rk3568": {
-        "module_list": [
-            "//vendor/hihope/rk3568/default_app_config:default_app_config",
-            "//vendor/hihope/rk3568/image_conf:custom_image_conf",
-            "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
-            "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
-            "//vendor/hihope/rk3568/etc:product_etc_conf",
-            "//vendor/hihope/rk3568/battery/profile:battery_config" #添加battery_config的编译
-        ]
-        }
-    },
-    "subsystem": "product_hihope"
+        "parts": {
+            "product_rk3568": {
+                "module_list": [
+                    "//vendor/hihope/rk3568/default_app_config:default_app_config",
+                    "//vendor/hihope/rk3568/image_conf:custom_image_conf",
+                    "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
+                    "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
+                    "//vendor/hihope/rk3568/etc:product_etc_conf",
+                    "//vendor/hihope/rk3568/battery/profile:battery_config" //添加battery_config的编译
+                ]
+            }
+        },
+        "subsystem": "product_hihope"
     }
     ```
     “//vendor/hihope/rk3568/battery/”为文件夹路径，“profile”为创建的文件夹名字，“battery_config”为编译目标。
@@ -111,184 +112,184 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 ### 调测验证 
 
 1. 开机后，进入shell命令行：
-    ```
+    ```shell
     hdc shell
     ```
 
 2. 进入电池电量的节点路径（以当前DAYU开发板路径为例）。
-    ```
+    ```shell
     cd /data/service/el0/battery/battery/
     ```
 
 3. 以默认电量等级的映射配置数据为例，修改电量信息，模拟电池信息上报，观察是否发送对应电量等级广播。
 
     1. 修改电量信息。
-    ```
-    echo 100 > capacity
-    ```
+        ```shell
+        echo 100 > capacity
+        ```
     2. 上报电量信息改变，获取当前电量等级。
-    ```
-    hidumper -s 3302 -a -i
-    ```
-    3. 成功获取电量等级如下: 
-    
-    ```
-    -------------------------------[ability]-------------------------------
+        ```shell
+        hidumper -s 3302 -a -i
+        ```
+    3. 成功获取电量等级如下：
+
+        ```shell
+        -------------------------------[ability]-------------------------------
 
 
-    ----------------------------------BatteryService---------------------------------
-    Current time: 2017-08-05 17:22:48.589
+        ----------------------------------BatteryService---------------------------------
+        Current time: 2017-08-05 17:22:48.589
 
-    ······(省略其他，只显示batteryLevel的配置)
+        ······(省略其他，只显示batteryLevel的配置)
 
-    batteryLevel: 1
+        batteryLevel: 1
 
-    ······
-    ```
+        ······
+        ```
 
     4. 修改电量信息。
-    ```
-    echo 90 > capacity
-    ```
+        ```shell
+        echo 90 > capacity
+        ```
     5. 上报电量信息改变，获取当前电量等级。
-    ```
-    hidumper -s 3302 -a -i
-    ```
-    6. 成功获取电量等级如下: 
-    
-    ```
-    -------------------------------[ability]-------------------------------
+        ```shell
+        hidumper -s 3302 -a -i
+        ```
+    6. 成功获取电量等级如下：
+
+        ```shell
+        -------------------------------[ability]-------------------------------
 
 
-    ----------------------------------BatteryService---------------------------------
-    Current time: 2017-08-05 17:24:29.716
+        ----------------------------------BatteryService---------------------------------
+        Current time: 2017-08-05 17:24:29.716
 
-    ······(省略其他，只显示batteryLevel的配置)
+        ······(省略其他，只显示batteryLevel的配置)
 
-    batteryLevel: 2
-    
-    ······
-    ```
+        batteryLevel: 2
+
+        ······
+        ```
 
     7. 修改电量信息。
-    ```
-    echo 60 > capacity
-    ```
+        ```shell
+        echo 60 > capacity
+        ```
     8. 上报电量信息改变，获取当前电量等级。
-    ```
-    hidumper -s 3302 -a -i
-    ```
-    9. 成功获取电量等级如下:
+        ```shell
+        hidumper -s 3302 -a -i
+        ```
+    9. 成功获取电量等级如下：
 
-    ```
-    -------------------------------[ability]-------------------------------
+        ```shell
+        -------------------------------[ability]-------------------------------
 
 
-    ----------------------------------BatteryService---------------------------------
-    Current time: 2017-08-05 17:25:09.837
+        ----------------------------------BatteryService---------------------------------
+        Current time: 2017-08-05 17:25:09.837
 
-    ······(省略其他，只显示batteryLevel的配置)
+        ······(省略其他，只显示batteryLevel的配置)
 
-    batteryLevel: 3
-    
-    ······
-    ```
+        batteryLevel: 3
+
+        ······
+        ```
 
     10. 修改电量信息。
-    ```
-    echo 30 > capacity
-    ```
+        ```shell
+        echo 30 > capacity
+        ```
     11. 上报电量信息改变，获取当前电量等级。
-    ```
-    hidumper -s 3302 -a -i
-    ```
-    12. 成功获取电量等级如下:
+        ```shell
+        hidumper -s 3302 -a -i
+        ```
+    12. 成功获取电量等级如下：
 
-    ```
-    -------------------------------[ability]-------------------------------
+        ```shell
+        -------------------------------[ability]-------------------------------
 
 
-    ----------------------------------BatteryService---------------------------------
-    Current time: 2017-08-05 17:26:20.495
+        ----------------------------------BatteryService---------------------------------
+        Current time: 2017-08-05 17:26:20.495
 
-    ······(省略其他，只显示batteryLevel的配置)
+        ······(省略其他，只显示batteryLevel的配置)
 
-    batteryLevel: 4
-    
-    ······
-    ```
+        batteryLevel: 4
+
+        ······
+        ```
 
     13. 修改电量信息。
-    ```
-    echo 15 > capacity
-    ```
+        ```shell
+        echo 15 > capacity
+        ```
     14. 上报电量信息改变，获取当前电量等级。
-    ```
-    hidumper -s 3302 -a -i
-    ```
-    15. 成功获取电量等级如下:
+        ```shell
+        hidumper -s 3302 -a -i
+        ```
+    15. 成功获取电量等级如下：
 
-    ```
-    -------------------------------[ability]-------------------------------
+        ```shell
+        -------------------------------[ability]-------------------------------
 
 
-    ----------------------------------BatteryService---------------------------------
-    Current time: 2017-08-05 17:27:05.312
+        ----------------------------------BatteryService---------------------------------
+        Current time: 2017-08-05 17:27:05.312
 
-    ······(省略其他，只显示batteryLevel的配置)
+        ······(省略其他，只显示batteryLevel的配置)
 
-    batteryLevel: 5
-    
-    ······
-    ```
+        batteryLevel: 5
+
+        ······
+        ```
 
     16. 修改电量信息。
-    ```
-    echo 10 > capacity
-    ```
+        ```shell
+        echo 10 > capacity
+        ```
     17. 上报电量信息改变，获取当前电量等级。
-    ```
-    hidumper -s 3302 -a -i
-    ```
-    18. 成功获取电量等级如下:
+        ```shell
+        hidumper -s 3302 -a -i
+        ```
+    18. 成功获取电量等级如下：
 
-    ```
-    -------------------------------[ability]-------------------------------
+        ```shell
+        -------------------------------[ability]-------------------------------
 
 
-    ----------------------------------BatteryService---------------------------------
-    Current time: 2017-08-05 17:27:56.270
+        ----------------------------------BatteryService---------------------------------
+        Current time: 2017-08-05 17:27:56.270
 
-    ······(省略其他，只显示batteryLevel的配置)
+        ······(省略其他，只显示batteryLevel的配置)
 
-    batteryLevel: 6
-    
-    ······
-    ```
+        batteryLevel: 6
+
+        ······
+        ```
 
     19. 修改电量信息。
-    ```
-    echo 5 > capacity
-    ```
+        ```shell
+        echo 5 > capacity
+        ```
     20. 上报电量信息改变，获取当前电量等级。
-    ```
-    hidumper -s 3302 -a -i
-    ```
-    21. 成功获取电量等级如下:
+        ```shell
+        hidumper -s 3302 -a -i
+        ```
+    21. 成功获取电量等级如下：
 
-    ```
-    -------------------------------[ability]-------------------------------
+        ```shell
+        -------------------------------[ability]-------------------------------
 
 
-    ----------------------------------BatteryService---------------------------------
-    Current time: 2017-08-05 17:28:38.066
+        ----------------------------------BatteryService---------------------------------
+        Current time: 2017-08-05 17:28:38.066
 
-    ······(省略其他，只显示batteryLevel的配置)
+        ······(省略其他，只显示batteryLevel的配置)
 
-    batteryLevel: 7
-    
-    ······
-    ```
+        batteryLevel: 7
+
+        ······
+        ```
 
 ## 参考 
 开发过程中可参考的配置文件路径：[电量等级配置源码路径](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/) 

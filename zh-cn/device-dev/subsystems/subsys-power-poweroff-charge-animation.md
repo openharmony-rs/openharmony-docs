@@ -9,6 +9,7 @@ OpenHarmony默认提供了关机充电动画的特性，展示关机状态下的
 ### 约束与限制
 
 配置策略：
+
 产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以/vendor进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
@@ -168,21 +169,21 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     ```json
     {
-    "parts": {
-        "product_rk3568": {
-        "module_list": [
-            "//vendor/hihope/rk3568/default_app_config:default_app_config",
-            "//vendor/hihope/rk3568/image_conf:custom_image_conf",
-            "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
-            "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
-            "//vendor/hihope/rk3568/etc:product_etc_conf",
-            "//vendor/hihope/rk3568/battery/profile:battery_config",
-            "//vendor/hihope/rk3568/animation/profile:animation_config", #添加animation_config的编译
-            "//vendor/hihope/rk3568/animation/resources/resources_config" #添加图片资源的编译
-        ]
-        }
-    },
-    "subsystem": "product_hihope"
+        "parts": {
+            "product_rk3568": {
+                "module_list": [
+                    "//vendor/hihope/rk3568/default_app_config:default_app_config",
+                    "//vendor/hihope/rk3568/image_conf:custom_image_conf",
+                    "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
+                    "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
+                    "//vendor/hihope/rk3568/etc:product_etc_conf",
+                    "//vendor/hihope/rk3568/battery/profile:battery_config",
+                    "//vendor/hihope/rk3568/animation/profile:animation_config", //添加animation_config的编译
+                    "//vendor/hihope/rk3568/animation/resources/resources_config" //添加图片资源的编译
+                ]
+            }
+        },
+        "subsystem": "product_hihope"
     }
     ```
     “//vendor/hihope/rk3568/animation/”为文件夹路径，“profile”为创建的文件夹名字，“animation_config”为编译目标。
@@ -270,51 +271,51 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 6. 在极低电量时（此处默认1%）修改充电状态，不同的充电状态对应显示动画或关机。
     
     1. 进入电池电量的节点路径。
-    ```shell
-    cd /data/service/el0/battery/battery
-    cat capacity
-    ```
+        ```shell
+        cd /data/service/el0/battery/battery
+        cat capacity
+        ```
     2. 修改当前电量为1。
-    ```shell
-    echo 1 > capacity
-    ```
+        ```shell
+        echo 1 > capacity
+        ```
     3. 查看当前状态。
-    ```shell
-    cat status
-    ```
-    当前状态为Charging。
+        ```shell
+        cat status
+        ```
+        当前状态为Charging。
 
-    ![animation_low_power](figures/animation_low_power.jpg)
+        ![animation_low_power](figures/animation_low_power.jpg)
 
     4. 改变当前状态，为未连接电源状态。
-    ```shell
-    echo Not charging > status
-    ```
-    ![animation_low_power2](figures/animation_low_power2.jpg)
+        ```shell
+        echo Not charging > status
+        ```
+        ![animation_low_power2](figures/animation_low_power2.jpg)
 
 7. 以下对关机动画的图片进行可定制化的测试修改，步骤与上方相同，只是图片作出替换。
 
     1. 初始状态。
 
-    ![animation_charging_power2](figures/animation_charging_power2.jpg)
+        ![animation_charging_power2](figures/animation_charging_power2.jpg)
 
     2. 3%电量状态。
 
-    ![animation_initial_power2](figures/animation_initial_power2.jpg)
+        ![animation_initial_power2](figures/animation_initial_power2.jpg)
 
     3. 1%电量，充电状态。
 
-    ![animation_low_power](figures/animation_low_power.jpg)
+        ![animation_low_power](figures/animation_low_power.jpg)
 
     4. 1%电量，未充电状态。
 
-    ![animation_low_power2](figures/animation_low_power2.jpg)
+        ![animation_low_power2](figures/animation_low_power2.jpg)
 
     5. 当电量高于1%，切为Not charging状态。
-    ```shell
-    echo 3 > capacity
-    echo Not charging > status
-    ```
+        ```shell
+        echo 3 > capacity
+        echo Not charging > status
+        ```
 
 
 
@@ -351,7 +352,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
                     "bgColor": "#00000000",
                     "align": "center"
                 }
-            ],
+            ]
         },
         "lackpowerChargingPrompt": {
             "components": [
