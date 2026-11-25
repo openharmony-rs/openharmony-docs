@@ -68,7 +68,13 @@
    let TIMEOUT = 10 * NETWORK_CONNECTION_TIMEOUT;
    
    // 创建NetConnection对象
-   let conn = connection.createNetConnection(netSpecifier, TIMEOUT);
+   let conn: connection.NetConnection | undefined = undefined;
+   try {
+     conn = connection.createNetConnection(netSpecifier, TIMEOUT);
+   } catch (err) {
+     let error = err as BusinessError;
+     hilog.error(0x0000, 'testTag', `createNetConnection failed, code: ${error.code}, message: ${error.message}`);
+   }
    ```
 
 4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
@@ -160,11 +166,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 <!-- @[monitor_default_network_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-const netConnection = connection.createNetConnection();
-/* 监听默认网络改变 */
-netConnection.on('netAvailable', (data: connection.NetHandle) => {
+try {
+  const netConnection = connection.createNetConnection();
+  /* 监听默认网络改变 */
+  netConnection.on('netAvailable', (data: connection.NetHandle) => {
   hilog.info(0x0000, 'testTag', JSON.stringify(data));
-});
+  });
+  } catch (err) {
+  let error = err as BusinessError;
+  hilog.error(0x0000, 'testTag', `createNetConnection failed, code: ${error.code}, message: ${error.message}`);
+  }
 ```
 ### 默认网络变化后重新建立网络连接
 
@@ -196,7 +207,7 @@ function useSocket() {
   sock.connect(tcpConnectOptions, (err: BusinessError) => {
     if (err) {
       hilog.error(0x0000, 'testTag', 'connect fail: '+JSON.stringify(err));
-    // ···
+      // ...
       return;
     }
     hilog.info(0x0000, 'testTag', 'connect success');
@@ -213,33 +224,39 @@ function useSocket() {
 function socketSend(tcpSendOptions: socket.TCPSendOptions) {
   sock.send(tcpSendOptions).then(() => {
     hilog.info(0x0000, 'testTag', 'send success');
-    // ···
+    // ...
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'send fail');
-    // ···
+    // ...
   });
 }
 
 function socketTest() {
-  const netConnection = connection.createNetConnection();
+  let netConnection: connection.NetConnection | undefined = undefined;
+try {
+  netConnection = connection.createNetConnection();
+} catch (err) {
+  let error = err as BusinessError;
+  hilog.error(0x0000, 'testTag', `createNetConnection failed, code: ${error.code}, message: ${error.message}`);
+}
   // 网络切换会导致网络发生中断，原socket失效，故需重新建立socket。
-  netConnection.on('netAvailable', (netHandle: connection.NetHandle) => {
+  netConnection?.on('netAvailable', (netHandle: connection.NetHandle) => {
     hilog.info(0x0000, 'testTag', 'default network changed: ' + JSON.stringify(netHandle));
     sock.close();
     sock = socket.constructTCPSocketInstance();
     // 通过socket发送数据。
     useSocket();
   });
-// ···
+  // ...
     // 订阅指定网络状态变化的通知。
-    netConnection.register((error: BusinessError) => {
+    netConnection?.register((error: BusinessError) => {
       if (error) {
         hilog.error(0x0000, 'testTag', 'register fail: ' + JSON.stringify(error));
       } else {
         hilog.info(0x0000, 'testTag', 'register success');
       }
     });
-    // ···
+    // ...
 }
 ```
 
@@ -261,6 +278,7 @@ function socketTest() {
    // 从@kit.NetworkKit中导入connection命名空间。
    import { connection } from '@kit.NetworkKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    // ...
        // 调用getAllNets,获取所有处于连接状态的网络列表(Array<NetHandle>)
        connection.getAllNets().then((data: connection.NetHandle[]) => {
@@ -270,6 +288,8 @@ function socketTest() {
            GlobalContext.getContext().netList = data;
            // ...
          }
+       }).catch((error: BusinessError) => {
+         hilog.error(0x0000, 'testTag', 'getAllNets error: ' + JSON.stringify(error));
        });
    ```
 ## 查询默认网络或者指定网络的连接信息
@@ -287,13 +307,14 @@ function socketTest() {
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     // ...
         let netHandleInfo:connection.NetHandle|null = null;
         // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
             hilog.error(0x0000, 'testTag', `don't have defaultNet`);
-            // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理
+            // 当前无默认网络时，获取的NetHandle的netid为0,属于异常情况，需要额外处理
             return;
           }
           if (data) {
@@ -341,13 +362,17 @@ function socketTest() {
                     hilog.info(0x0000, 'testTag', JSON.stringify('NET_CAPABILITY_VALIDATED'));
                   }
                 }
-              });
+              }).catch((error: BusinessError) => {
+                hilog.error(0x0000, 'testTag', 'getNetCapabilities error: ' + JSON.stringify(error));
+              });    
             // 获取netHandle对应的网络的连接信息。需在获取到有效netHandle后调用。
             connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
               hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
             })
           }
-        });
+        }).catch((error: BusinessError) => {
+          hilog.error(0x0000, 'testTag', 'getDefaultNet error: ' + JSON.stringify(error));
+        });    
       // ...
     ```
     
