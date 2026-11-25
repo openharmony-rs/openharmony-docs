@@ -62,51 +62,6 @@
 
 当密钥废弃不用时，需要调用[deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
 
-## ML-DSA签名模式
-
-ML-DSA（44/65/87）支持三种签名模式，通过`HUKS_TAG_PQC_SIG_MODE`指定，取值见[HuksPQCSigMode](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukspqcsigmode)：
-
-| 模式 | inData | 额外参数 | 说明 |
-| ---- | ------ | -------- | ---- |
-| HUKS_PQC_SIG_MODE_PURE | 原始消息M | 可选HUKS_TAG_CONTEXT（≤255字节） | 默认模式。 |
-| HUKS_PQC_SIG_MODE_PREHASH | 摘要PH(M) | HUKS_TAG_DIGEST（SHA-256/384/512、SHAKE128/256）+ 可选context | HashML-DSA，HUKS不计算摘要。 |
-| HUKS_PQC_SIG_MODE_EXTERNAL_MU | 64字节μ | 无（context被忽略） | μ由调用方计算。 |
-
-模式与密钥的绑定是可选的：生成/导入密钥时不传`HUKS_TAG_PQC_SIG_MODE`，密钥不绑定模式，签名/验签时可自由选择（缺省纯模式）；传了则密钥绑定该模式，签名/验签必须使用相同模式。
-
-预哈希模式示例：
-
-``` ts
-import { huks } from '@kit.UniversalKeystoreKit';
-
-let properties: huks.HuksParam[] = [{
-  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-  value: huks.HuksKeyAlg.HUKS_ALG_ML_DSA
-}, {
-  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-  value: huks.HuksKeySize.HUKS_ML_DSA_KEY_PARAM_SET_44
-}, {
-  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
-}, {
-  tag: huks.HuksTag.HUKS_TAG_PQC_SIG_MODE,
-  value: huks.HuksPQCSigMode.HUKS_PQC_SIG_MODE_PREHASH
-}, {
-  tag: huks.HuksTag.HUKS_TAG_DIGEST,
-  value: huks.HuksKeyDigest.HUKS_DIGEST_SHAKE256
-}, {
-  tag: huks.HuksTag.HUKS_TAG_CONTEXT,
-  value: new Uint8Array([0x6d, 0x6c, 0x64, 0x73, 0x61])
-}];
-
-// inData 传入 PH(M)（SHAKE256 摘要，64字节），而不是原始消息
-let options: huks.HuksOptions = { properties: properties, inData: digest };
-let handle: huks.HuksSessionHandle = await huks.initSession(keyAlias, options);
-let result: huks.HuksReturnResult = await huks.finishSession(handle.handle, options);
-```
-
-外部μ模式只需把`HUKS_TAG_PQC_SIG_MODE`设为`HUKS_PQC_SIG_MODE_EXTERNAL_MU`、去掉`HUKS_TAG_DIGEST`，并在`inData`中传入64字节μ。
-
 ## 开发案例
 
 ### ECC256/SHA256
@@ -1146,3 +1101,48 @@ async function testSignVerify() {
 ```
 
 <!--RP2--><!--RP2End-->
+
+### ML-DSA签名模式
+
+ML-DSA（44/65/87）支持三种签名模式，通过`HUKS_TAG_PQC_SIG_MODE`指定，取值见[HuksPQCSigMode](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukspqcsigmode)：
+
+| 模式 | inData | 额外参数 | 说明 |
+| ---- | ------ | -------- | ---- |
+| HUKS_PQC_SIG_MODE_PURE | 原始消息M | 可选HUKS_TAG_CONTEXT（≤255字节） | 默认模式。 |
+| HUKS_PQC_SIG_MODE_PREHASH | 摘要PH(M) | HUKS_TAG_DIGEST（SHA-256/384/512、SHAKE128/256）+ 可选context | HashML-DSA，HUKS不计算摘要。 |
+| HUKS_PQC_SIG_MODE_EXTERNAL_MU | 64字节μ | 无（context被忽略） | μ由调用方计算。 |
+
+模式与密钥的绑定是可选的：生成/导入密钥时不传`HUKS_TAG_PQC_SIG_MODE`，密钥不绑定模式，签名/验签时可自由选择（缺省纯模式）；传了则密钥绑定该模式，签名/验签必须使用相同模式。
+
+预哈希模式示例：
+
+``` ts
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let properties: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_ML_DSA
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_ML_DSA_KEY_PARAM_SET_44
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PQC_SIG_MODE,
+  value: huks.HuksPQCSigMode.HUKS_PQC_SIG_MODE_PREHASH
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DIGEST,
+  value: huks.HuksKeyDigest.HUKS_DIGEST_SHAKE256
+}, {
+  tag: huks.HuksTag.HUKS_TAG_CONTEXT,
+  value: new Uint8Array([0x6d, 0x6c, 0x64, 0x73, 0x61])
+}];
+
+// inData 传入 PH(M)（SHAKE256 摘要，64字节），而不是原始消息
+let options: huks.HuksOptions = { properties: properties, inData: digest };
+let handle: huks.HuksSessionHandle = await huks.initSession(keyAlias, options);
+let result: huks.HuksReturnResult = await huks.finishSession(handle.handle, options);
+```
+
+外部μ模式只需把`HUKS_TAG_PQC_SIG_MODE`设为`HUKS_PQC_SIG_MODE_EXTERNAL_MU`、去掉`HUKS_TAG_DIGEST`，并在`inData`中传入64字节μ。
