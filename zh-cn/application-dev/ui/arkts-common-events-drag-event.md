@@ -2600,6 +2600,44 @@ struct GridEts {
    ArkTS-Sta示例：
 
    <!-- @[virtual_drag_sta_provider](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Udmf/VirtualFileDrag-Sta/entry/src/main/ets/model/VirtualFileProvider.ets) -->
+   
+   ``` TypeScript
+   // 创建文件树及内容回调，供FileUri.virtualEntry使用。
+   public createVirtualEntry(): uniformDataStruct.VirtualFileInfo {
+     const rootItem: uniformDataStruct.VirtualItemType | undefined = this.rootItem;
+     if (!rootItem) {
+       throw new Error('Prepare a file before dragging');
+     }
+     return {
+       // itemInfo是根文件或根目录；目录通过subItems描述子节点。
+       itemInfo: rootItem,
+       // 可选：按文件id返回文件信息。
+       onStat: async (id: string): Promise<uniformDataStruct.VirtualFileItem> => this.getSourceFile(id).metadata,
+       // 必选：从offset开始提供最多length字节；失败时抛出异常。
+       onRead: async (id: string, offset: long, length: int): Promise<Uint8Array> => {
+         const file: SourceFile = this.getSourceFile(id);
+         if (offset < 0 ||
+           length <= 0 || length > MAX_READ_LENGTH) {
+           throw new Error('Invalid read parameters');
+         }
+         const remaining: long = file.metadata.size - offset;
+         const count: int = remaining <= 0 ? 0 : (remaining < length ? Long.toInt(remaining) : length);
+         if (count === 0) {
+           return new Uint8Array(0); // offset已到文件末尾。
+         }
+         if (file.archivePath.length > 0) {
+           return this.readArchive(file, offset, count);
+         }
+         return file.content.slice(Long.toInt(offset), Long.toInt(offset + count));
+       },
+       // 可选：取消对应id当前待处理的任务。
+       onCancel: async (_ids: string[]): Promise<void> => {
+         // 本地读取没有额外的可取消任务。实际提供方可在此停止对应id的待处理任务。
+         // 取消通知不表示永久禁用这些id，也不应影响其后续读取。
+       }
+     };
+   }
+   ```
 
 2. 创建拖拽数据。
 
