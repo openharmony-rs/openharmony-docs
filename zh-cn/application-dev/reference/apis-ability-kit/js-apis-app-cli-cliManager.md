@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供三方应用与系统命令行工具（CLI）的交互能力，可以执行Shell命令，以及管理会话。会话在调用execCmd接口时创建，用于跟踪命令的执行状态和结果。
+本模块提供三方应用与系统命令行工具（CLI）的交互能力，可以查询CLI工具信息、执行Shell命令，以及管理会话。会话在调用execCmd接口时创建，用于跟踪命令的执行状态和结果。
 
 **起始版本：** 26.0.1
 
@@ -89,6 +89,167 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 | toolName  | string | 否 | 否 | 工具名称。 |
 | status  | [SessionStatus](#sessionstatus) | 否 | 否 | 会话状态。 |
 | result  | [ExecResult](#execresult) | 否 | 是 | 工具执行结果。默认值：undefined。 |
+
+## cliManager.queryToolSummaries
+
+queryToolSummaries(): Promise\<Array\<ToolSummary>>
+
+查询CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.QUERY_CLI_TOOL 或 ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**返回值：**
+
+| 类型                               | 说明                       |
+| ---------------------------------- | -------------------------- |
+| Promise\<Array\<[ToolSummary](js-apis-inner-application-ToolInfo-sys.md#toolsummary)>> | Promise对象，返回工具摘要信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
+
+**示例：**
+
+```ts
+import { cliManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 查询CLI工具的摘要信息
+  cliManager.queryToolSummaries().then((toolSummaries) => {
+    hilog.info(0x0000, 'CliManager', 'queryToolSummaries success, count: %{public}d', toolSummaries.length);
+    for (const summary of toolSummaries) {
+      hilog.info(0x0000, 'CliManager', 'Tool name: %{public}s, version: %{public}s', summary.name, summary.version);
+    }
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000, 'CliManager', 'queryToolSummaries failed, code: %{public}d, message: %{public}s',
+      error.code, error.message);
+  });
+} catch (error) {
+  hilog.error(0x0000, 'CliManager', 'queryToolSummaries failed, error: %{public}s', JSON.stringify(error));
+}
+```
+
+## cliManager.queryTools
+
+queryTools(): Promise\<Array\<ToolInfo\>\>
+
+查询CLI工具的详细信息，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.QUERY_CLI_TOOL 或 ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**返回值：**
+
+| 类型                               | 说明                       |
+| ---------------------------------- | -------------------------- |
+| Promise\<Array\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)\>\> | Promise对象，返回工具详细信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
+
+**示例：**
+
+```ts
+import { cliManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 查询CLI工具的详细信息
+  cliManager.queryTools().then((toolInfos) => {
+    hilog.info(0x0000, 'CliManager', 'queryTools success, count: %{public}d', toolInfos.length);
+    for (const toolInfo of toolInfos) {
+      hilog.info(0x0000, 'CliManager', 'Tool name: %{public}s, version: %{public}s', toolInfo.name, toolInfo.version);
+    }
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000, 'CliManager', 'queryTools failed, code: %{public}d, message: %{public}s',
+      error.code, error.message);
+  });
+} catch (error) {
+  hilog.error(0x0000, 'CliManager', 'queryTools failed, error: %{public}s', JSON.stringify(error));
+}
+```
+
+## cliManager.getToolInfoByName
+
+getToolInfoByName(toolName: string): Promise\<ToolInfo\>
+
+根据工具名称获取单个工具的详细信息，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具，查询private工具时返回错误码35600030。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.QUERY_CLI_TOOL 或 ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| toolName | string | 是   | 目标工具的名称。 |
+
+**返回值：**
+
+| 类型                                         | 说明                               |
+| -------------------------------------------- | ---------------------------------- |
+| Promise\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)> | Promise对象，返回工具的详细信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 35600030 | No tool with the specified name exists.                      |
+| 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
+
+**示例：**
+
+```ts
+import { cliManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let toolName = 'example_tool';
+try {
+  // 根据工具名称获取工具的详细信息
+  cliManager.getToolInfoByName(toolName).then((toolInfo) => {
+    hilog.info(0x0000, 'CliManager', 'getToolInfoByName success, name: %{public}s', toolInfo.name);
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000, 'CliManager', 'getToolInfoByName failed, code: %{public}d, message: %{public}s',
+      error.code, error.message);
+  });
+} catch (error) {
+  hilog.error(0x0000, 'CliManager', 'getToolInfoByName failed, error: %{public}s', JSON.stringify(error));
+}
+```
 
 ## cliManager.execCmd
 
