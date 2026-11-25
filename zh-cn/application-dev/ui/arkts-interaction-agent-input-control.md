@@ -10,8 +10,6 @@
 
 从API版本26.1.0开始，支持Agent输入管控和节点输入监听。Agent输入管控支持设置组件对Agent输入事件的管控级别，应用还可以通过监听节点输入事件，在输入事件分发到节点前获取通知。上述功能一般用于监控Agent是否尝试输入密码等交互行为。
 
-Agent输入事件包括系统Agent生成的输入事件，以及具有[ohos.permission.CONTROL_COMPONENT](../security/AccessToken/restricted-permissions.md#ohospermissioncontrol_component)权限的应用注入的事件。管控设置不影响用户生成的输入事件或其他注入事件。
-
 ## 约束与限制
 
 1. 仅支持对触摸、鼠标和按键事件的管控与监听，其中按键事件仅支持对Enter键进行管控。
