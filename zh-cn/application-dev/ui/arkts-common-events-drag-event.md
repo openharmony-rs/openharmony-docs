@@ -2698,6 +2698,17 @@ struct GridEts {
    ArkTS-Dyn示例：
 
    <!-- @[virtual_drag_js_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   .onDragStart((event: DragEvent) => {
+     try {
+       event.setData(this.createDragData());
+     } catch (error) {
+       logSampleError('Set drag data', error as Error);
+       this.getUIContext().getPromptAction().showToast({ message: $r('app.string.drag_failed') });
+     }
+   })
+   ```
 
    ArkTS-Sta示例：
 
