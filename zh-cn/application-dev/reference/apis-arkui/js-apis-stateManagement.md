@@ -2329,6 +2329,103 @@ struct Index {
 }
 ```
 
+### enableAsyncLoad
+
+enableAsyncLoad(options?: CustomComponentAsyncLoadOptions): void
+
+将当前自定义组件置为异步加载。组件创建（实例化）仍为同步，其内容构建（[build](arkui-ts/ts-custom-component-lifecycle.md#build)函数执行）由框架推迟到异步任务中完成，不再阻塞当前帧的构建和渲染。
+
+调用成功后，该自定义组件进入由组件上下文管理的异步加载状态。
+
+加载未完成期间，显示已注册的占位组件（经[PlaceholderRegister](./arkts-apis-placeholderregister.md)注册的占位模板，已配置且可找到时）或不显示内容；加载完成后，占位组件自动替换为实际内容，并由框架自动触发渲染更新。
+
+具体使用方式和限制，详见[自定义组件异步加载](../../ui/state-management/arkts-custom-component-async-load.md)。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                                | 必填 | 说明                                                                                              |
+| ------- | ------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------- |
+| options | [CustomComponentAsyncLoadOptions](#customcomponentasyncloadoptions) | 否   | 异步加载配置。默认值`undefined`表示加载完成前不显示占位组件，并使用默认超时阈值（1000 ms）。 |
+
+**示例：**
+
+以下示例在\@ComponentInit装饰的函数内调用enableAsyncLoad，将当前组件置为异步加载：
+
+<!--code_no_check-->
+```ts
+import { UIUtils, ComponentInit } from '@kit.ArkUI';
+
+@ComponentV2
+struct HeavyComponent {
+  @ComponentInit
+  init() {
+    // 在组件构造期内调用，进入异步加载（timeout缺省1000 ms，加载完成前不显示占位）
+    UIUtils.getCustomComponentContext(this).enableAsyncLoad();
+  }
+
+  build() {
+    Text('实际内容')
+  }
+}
+```
+
+## CustomComponentAsyncLoadOptions
+
+描述自定义组件异步加载的配置选项，作为[enableAsyncLoad](#enableasyncload)的入参。
+
+### 属性
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称        | 类型                                                                         | 只读 | 可选 | 说明 |
+| ----------- | ---------------------------------------------------------------------------- | ---- | ---- | ---- |
+| placeholder | [PlaceholderOptions](./arkts-apis-placeholderregister.md#placeholderoptions) | 否   | 是   | 异步加载期间显示的占位组件。**id**指向经[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册的模板，**size**为[SizeOptions](arkui-ts/ts-types.md#sizeoptions)类型的布局建议。若配置，该尺寸作为占位根节点的理想尺寸参与测量：数字单位为vp，带单位字符串保留其单位，Resource类型视为未设置。**size**未配置，或其中某一维未设置或非法时，占位组件按占位模板自身的设置布局。<br/>未配置**placeholder**，或其**id**为空或未注册时，异步加载完成前不显示占位组件。<br/>默认值：undefined |
+| timeout     | number                                                                       | 否   | 是   | 异步加载的超时阈值，单位ms，自异步加载生效起计算。<br/>取值可为任意数值：**NaN**按默认值处理，正/负无穷大按负值处理，正小数值向上取整到整毫秒。若组件在该阈值内未完成加载，框架会在后续帧中强制加载该组件，且单帧强制加载的组件数量不超过系统定义的上限。取值**0**表示不等待：组件在后续帧中被强制加载。取值为负数（含正/负无穷大）表示永不超时：组件持续等待直至异步加载完成。<br/>默认值：1000 |
+
+**示例：**
+
+以下示例配置占位组件与超时阈值。占位模板的注册方式与滚动占位注册一致，详见[\@ohos.arkui.placeholderRegister](./arkts-apis-placeholderregister.md)。
+
+<!--code_no_check-->
+```ts
+import { UIUtils, ComponentInit } from '@kit.ArkUI';
+
+@ComponentV2
+struct HeavyComponent {
+  @ComponentInit
+  init() {
+    UIUtils.getCustomComponentContext(this).enableAsyncLoad({
+      placeholder: {
+        // id指向经PlaceholderRegister注册的占位模板
+        id: 'heavyPlaceholder',
+        // 占位建议尺寸，数字单位为vp
+        size: { height: 120 }
+      },
+      // 3秒内未完成加载时，由框架在后续帧强制加载
+      timeout: 3000
+    });
+  }
+
+  build() {
+    Text('实际内容')
+  }
+}
+```
+
 ## IReusePool
 
 `IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。通过[CustomComponentContext.getReusePool](#getreusepool)获取实例，开发者请勿自行实现或重写该接口。

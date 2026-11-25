@@ -26,6 +26,8 @@
         - [\@Reusable装饰器：V1组件复用](state-management/arkts-reusable.md)
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md)
         - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
+      - [自定义组件异步加载](state-management/arkts-custom-component-async-load.md)
+      - [自定义组件异步加载（ArkTS-Sta）](../ui/state-management-static/arkts-static-custom-component-async-load.md)
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）（ArkTS-Dyn）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V1）（ArkTS-Sta）](../ui/state-management-static/arkts-static-freeze.md)
