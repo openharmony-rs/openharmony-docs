@@ -31,7 +31,7 @@
        }
      } catch (err) {
        let error: BusinessError = err as BusinessError;
-       console.error(`SwitchCurrentInputMethodSubtype error: ${err.code} ${err.message}`);
+       console.error(`SwitchCurrentInputMethodSubtype error: ${error.code} ${error.message}`);
      }
    }
    ```
@@ -46,8 +46,8 @@
        await inputMethod.switchCurrentInputMethodSubtype(item);
        this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
      } catch (err) {
-       console.error(`SwitchCurrentInputMethodSubtype error: ${err.code} ${err.message}`);
        let error: BusinessError = err as BusinessError;
+       console.error(`switchCurrentInputMethodSubtype error: ${error.code} ${error.message}`);
      }
    }
    ```
@@ -102,13 +102,15 @@
        this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
        let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
        for (let i = 0; i < this.inputMethods.length; i++) {
-         if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
+         if (this.inputMethods[i].name === item && item != currentInputMethod.name) { // 判断是目标输入法且不是当前输入法时，切换到该输入法
            await inputMethod.switchInputMethod(this.inputMethods[i]);
+           this.currentInputMethodName = inputMethod.getCurrentInputMethod().name; // 更新当前输入法
+           this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; // 更新当前子类型
          }
        }
      } catch (err) {
        let error = err as BusinessError;
-       Log.showError(TAG, `switchInputMethod catch error: ${error.code} ${error.message}`);
+       console.error(`switchInputMethod catch error: ${error.code} ${error.message}`);
      }
    }
    ```
@@ -123,8 +125,10 @@
        this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
        let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
        for (let i = 0; i < this.inputMethods.length; i++) {
-         if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
+         if (this.inputMethods[i].name === item && item != currentInputMethod.name) { // 判断是目标输入法且不是当前输入法时，切换到该输入法
            await inputMethod.switchInputMethod(this.inputMethods[i]);
+           this.currentInputMethodName = inputMethod.getCurrentInputMethod().name; // 更新当前输入法
+           this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; // 更新当前子类型
          }
        }
      } catch (err) {
@@ -134,33 +138,46 @@
    }
    ```
 
+
 ## 切换输入法应用和子类型
 
 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodAndSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodandsubtype9)接口，传入目标输入法的[InputMethodProperty](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)，目标输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)信息，即可切换输入法到目标输入法的指定子类型。
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { inputMethod } from '@kit.IMEKit';
+   ArkTS-Dyn示例：
 
-export class KeyboardController {
-  async switchInputMethodAndSubtype() {
-    try {
-      let inputMethods: Array<inputMethod.InputMethodProperty> =
-        await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
-      let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(); // 获取当前输入法
-      for (let i = 0; i < inputMethods.length; i++) {
-        if (inputMethods[i].name != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
-          let subTypes = await inputMethod.getSetting().listInputMethodSubtype(inputMethods[i]); // 获取目标输入法的子类型
-          if (subTypes.length > 0) {
-            await inputMethod.switchCurrentInputMethodAndSubtype(inputMethods[i], subTypes[0]); // 本示例默认切换到获取的首个子类型
-          }
-          return;
-        }
-      }
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
-    }
-  }
-}
-```
+   <!-- @[input_case_input_switchInputMethodAndSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
+
+   ``` TypeScript
+   async switchInputMethodAndSubtype(targetProperty: inputMethod.InputMethodProperty, subtype: InputMethodSubtype) {
+     try {
+       let isSuccess = await inputMethod.switchCurrentInputMethodAndSubtype(targetProperty, subtype); // 切换到目标输入法的指定子类型
+       if (isSuccess) {
+         this.currentInputMethodName = inputMethod.getCurrentInputMethod().name; // 更新当前输入法
+         this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; // 更新当前子类型
+       }
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       console.error(`Failed to switchInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[input_case_input_switchInputMethodAndSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
+
+   ``` TypeScript
+   async switchInputMethodAndSubtype(targetProperty: inputMethod.InputMethodProperty, subtype: InputMethodSubtype) {
+     try {
+       let isSuccess = await inputMethod.switchCurrentInputMethodAndSubtype(targetProperty, subtype); // 切换到目标输入法的指定子类型
+       if (isSuccess) {
+         this.currentInputMethodName = inputMethod.getCurrentInputMethod().name; // 更新当前输入法
+         this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; // 更新当前子类型
+       }
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       console.error(`Failed to switchInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
+     }
+   }
+   ```
+

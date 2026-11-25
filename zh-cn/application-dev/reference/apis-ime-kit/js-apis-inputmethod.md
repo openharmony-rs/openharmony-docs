@@ -1670,6 +1670,8 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
  
 **ArkTS-Sta起始版本：** 26.1.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4677,6 +4679,8 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |

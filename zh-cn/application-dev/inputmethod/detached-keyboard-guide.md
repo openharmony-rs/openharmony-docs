@@ -10,7 +10,11 @@
 
 在大屏设备（折叠屏展开态、平板）上，用户双手握持设备两侧打字时，传统底部固定键盘无法满足舒适的握持体验。分离键盘（FLAG_DETACHED）将软键盘左右分离、中间镂空，双手自然落在分离键盘上，中间区域可显示更多应用内容。
 
-本指南在已实现一个输入法应用的前提下，介绍如何适配分离键盘，包括切换分离态、分离态布局、热区设置、键盘拖动等功能。
+本指南在已实现一个输入法应用的前提下，介绍如何适配分离键盘，包括切换面板到分离态、设置分离态UI布局、设置分离态热区、拖动分离态键盘、切换回固定态等功能。
+
+## 约束与限制
+
+分离态键盘从API 26.1.0开始支持。在输入法应用已经创建面板的情况下，可以切换面板状态到分离态，分离态键盘面板宽度会自动调整为屏幕宽度，只能纵向移动。
 
 ## 框架原理
 
@@ -30,7 +34,7 @@
 
 ### 切换面板到分离态
 
-输入法应用创建SOFT_KEYBOARD类型面板后，可以调用[changeFlag](../reference/apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)或[updatePanelRectSync](../reference/apis-ime-kit/js-apis-inputmethodengine.md#updatepanelrectsync)将面板切换至分离态。切换成功后，面板宽度自动等于屏幕宽度，无需手动设置，建议使用updatePanelRectSync同时切换PanelFlag和设置键盘窗口高度。
+在实现一个输入法应用，并创建SOFT_KEYBOARD类型面板后，可以调用[changeFlag](../reference/apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)或[updatePanelRectSync](../reference/apis-ime-kit/js-apis-inputmethodengine.md#updatepanelrectsync)将面板切换至分离态。切换成功后，面板宽度自动等于屏幕宽度，无需手动设置，建议使用updatePanelRectSync同时切换PanelFlag和设置键盘窗口高度。
 
 ArkTS-Dyn示例：
 
@@ -92,7 +96,6 @@ public switchToDetachedPanel(): void {
 }
 ```
 
-
 ArkTS-Sta示例：
 
 <!-- @[input_case_detached_switchToDetachedPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
@@ -153,124 +156,7 @@ public switchToDetachedPanel(): void {
 }
 ```
 
-
-### 设置分离态热区
-
-分离键盘左右两部分区域为有效输入区域，中间镂空区域不接收触摸事件。通过[updateRegion](../reference/apis-ime-kit/js-apis-inputmethodengine.md#updateregion15)设置自定义热区。
-
-ArkTS-Dyn示例：
-
-<!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
-``` TypeScript
-// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
-public refreshSplitHotZone(width: number, height: number): void {
-  if (this.mPanel === undefined) {
-    this.addLog('refreshSplitHotZone panel is undefined');
-    return;
-  }
-  if (width <= 0 || height <= 0) {
-    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
-    return;
-  }
-  let halfWidth = Math.floor(width * KEYBOARD_SPLIT_WIDTH_RATE);
-  let inputRegion: window.Rect[] = [
-    { left: 0, top: 0, width: halfWidth, height: height },
-    { left: width - halfWidth, top: 0, width: halfWidth, height: height }
-  ];
-  try {
-    this.mPanel.updateRegion(inputRegion);
-    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
-ArkTS-Sta示例：
-
-<!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
-``` TypeScript
-// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
-public refreshSplitHotZone(width: int, height: int): void {
-  if (this.mPanel === undefined) {
-    this.addLog('refreshSplitHotZone panel is undefined');
-    return;
-  }
-  if (width <= 0 || height <= 0) {
-    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
-    return;
-  }
-  let halfWidth: int = Double.toInt(width * KEYBOARD_SPLIT_WIDTH_RATE);
-  let w: int = width;
-  let h: int = height;
-  let inputRegion: Array<window.Rect> = [
-    { left: 0, top: 0, width: halfWidth, height: h },
-    { left: w - halfWidth, top: 0, width: halfWidth, height: h }
-  ];
-  try {
-    this.mPanel!.updateRegion(inputRegion);
-    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
-### 分离态键盘拖动
-
-分离态面板支持通过[startMoving](../reference/apis-ime-kit/js-apis-inputmethodengine.md#startmoving15)启动拖动模式。
-
-通过startMoving启动拖动模式，用户可手指拖动调整键盘位置。拖动结束后调用[moveTo](../reference/apis-ime-kit/js-apis-inputmethodengine.md#moveto10)同步位置并刷新热区。
-
-ArkTS-Dyn示例：
-
-<!-- @[input_case_detached_startMovingPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
-``` TypeScript
-public startMovingPanel(): void {
-  if (this.mPanel === undefined) {
-    this.addLog('startMovingPanel panel is undefined');
-    return;
-  }
-  try {
-    this.mPanel.startMoving();
-    this.addLog('startMovingPanel success');
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`startMovingPanel catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
-ArkTS-Sta示例：
-
-<!-- @[input_case_detached_startMovingPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-
-``` TypeScript
-public startMovingPanel(): void {
-  if (this.mPanel === undefined) {
-    this.addLog('startMovingPanel panel is undefined');
-    return;
-  }
-  try {
-    this.mPanel!.startMoving();
-    this.addLog('startMovingPanel success');
-  } catch (err) {
-    let error = err as BusinessError;
-    this.addLog(`startMovingPanel catch error: ${error.code} ${error.message}`);
-  }
-}
-```
-
-
-### 分离态UI布局
+### 设置分离态UI布局
 
 分离态下，键盘UI需要根据`isSplitKeyboard`状态切换布局：左右两半键盘区域+中间透明镂空区域。键盘根组件背景在分离态下设为透明，使中间镂空区域可穿透显示下层应用内容。
 
@@ -711,6 +597,100 @@ build(): void {
   }
 }
 ```
+
+
+### 设置分离态热区
+
+分离键盘左右两部分区域为有效输入区域，中间镂空区域不接收触摸事件。通过[updateRegion](../reference/apis-ime-kit/js-apis-inputmethodengine.md#updateregion15)设置自定义热区。
+
+ArkTS-Dyn示例：
+ 
+<!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+ 
+``` TypeScript
+// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
+public refreshSplitHotZone(width: number, height: number): void {
+  if (this.mPanel === undefined) {
+    this.addLog('refreshSplitHotZone panel is undefined');
+    return;
+  }
+  if (width <= 0 || height <= 0) {
+    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
+    return;
+  }
+  let halfWidth = Math.floor(width * KEYBOARD_SPLIT_WIDTH_RATE);
+  let inputRegion: window.Rect[] = [
+    { left: 0, top: 0, width: halfWidth, height: height },
+    { left: width - halfWidth, top: 0, width: halfWidth, height: height }
+  ];
+  try {
+    this.mPanel.updateRegion(inputRegion);
+    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
+  }
+}
+```
+ 
+ArkTS-Sta示例：
+ 
+<!-- @[input_case_detached_refreshSplitHotZone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+ 
+``` TypeScript
+// 按分体面板尺寸刷新左右热区，中间透明区域不接收输入事件
+public refreshSplitHotZone(width: int, height: int): void {
+  if (this.mPanel === undefined) {
+    this.addLog('refreshSplitHotZone panel is undefined');
+    return;
+  }
+  if (width <= 0 || height <= 0) {
+    this.addLog(`refreshSplitHotZone invalid size, width = ${width}, height = ${height}`);
+    return;
+  }
+  let halfWidth: int = Double.toInt(width * KEYBOARD_SPLIT_WIDTH_RATE);
+  let w: int = width;
+  let h: int = height;
+  let inputRegion: Array<window.Rect> = [
+    { left: 0, top: 0, width: halfWidth, height: h },
+    { left: w - halfWidth, top: 0, width: halfWidth, height: h }
+  ];
+  try {
+    this.mPanel!.updateRegion(inputRegion);
+    this.addLog(`refreshSplitHotZone success, width = ${width}, height = ${height}`);
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`refreshSplitHotZone catch error: ${error.code} ${error.message}`);
+  }
+}
+```
+
+### 拖动分离态键盘
+
+分离态面板支持通过[startMoving](../reference/apis-ime-kit/js-apis-inputmethodengine.md#startmoving15)启动拖动模式。
+
+通过startMoving启动拖动模式，用户可手指拖动调整键盘位置。拖动结束后调用[moveTo](../reference/apis-ime-kit/js-apis-inputmethodengine.md#moveto10)同步位置并刷新热区。
+
+ArkTS-Dyn示例：
+ 
+<!-- @[input_case_detached_startMovingPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+ 
+``` TypeScript
+public startMovingPanel(): void {
+  if (this.mPanel === undefined) {
+    this.addLog('startMovingPanel panel is undefined');
+    return;
+  }
+  try {
+    this.mPanel.startMoving();
+    this.addLog('startMovingPanel success');
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`startMovingPanel catch error: ${error.code} ${error.message}`);
+  }
+}
+```
+
 
 ### 切换回固定态
 

@@ -269,95 +269,94 @@
        }
      }
    ```
+
+   <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
-      <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   ``` TypeScript
+   private registerListener(): void {
+     this.inputHandle.addLog('registerListener');
+     try {
+       display.on('change', () => {
+         this.inputHandle.addLog('screenChangeEvent');
+         this.resizePanel();
+       });
+     } catch (err) {
+       let error = err as BusinessError;
+       Log.showError(TAG, `display on change catch error: ${error.code} ${error.message}`);
+     }
+     inputMethodAbility.on('inputStart',
+       (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
+         this.inputHandle.addLog('keyboard inputStart');
+         this.inputHandle.onInputStart(kbController, textInputClient);
+       })
    
-      ``` TypeScript
-         
-         private registerListener(): void {
-           this.inputHandle.addLog('registerListener');
-           try {
-             display.on('change', () => {
-               this.inputHandle.addLog('screenChangeEvent');
-               this.resizePanel();
-             });
-           } catch (err) {
-             let error = err as BusinessError;
-             Log.showError(TAG, `display on change catch error: ${error.code} ${error.message}`);
-           }
-           inputMethodAbility.on('inputStart',
-             (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
-               this.inputHandle.addLog('keyboard inputStart');
-               this.inputHandle.onInputStart(kbController, textInputClient);
-             })
-         
-           // 设置监听子类型事件，改变输入法应用界面
-           inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-             if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-               AppStorage.setOrCreate('subtypeChange', 0);
-             }
-             if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-               AppStorage.setOrCreate('subtypeChange', 1);
-             }
-           });
-         
-           inputMethodAbility.on('inputStop', () => {
-             this.inputHandle.addLog('keyboard inputStop');
-             this.onDestroy();
-             if (this.mContext) {
-               this.mContext.destroy();
-             }
-           });
-         
-           this.inputHandle.addLog('pre on privateCommand');
-           try {
-             inputMethodAbility.on('privateCommand', (record: Record<string, inputMethodEngine.CommandDataType>) => {
-               this.inputHandle.addLog(`keyboard privateCommand : ${record}`);
-               Object.keys(record).forEach((key: string) => {
-                 this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
-               })
-             });
-           } catch (err) {
-             let error = err as BusinessError;
-             this.inputHandle.addLog(`on privateCommand sendPrivateCommand catch error: ${error.code} ${error.message}`);
-           }
-         
-           this.mKeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
-         
-           this.mKeyboardDelegate.on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
-             if (this.isKeyboardShow) {
-               this.inputHandle.hideKeyboardSelf();
-             }
-             this.inputHandle.addLog(`keyDown: code = ${keyEvent.keyCode}`);
-             let result = this.onKeyDown(keyEvent);
-             this.inputHandle.addLog(`keyDown: result = ${result}`);
-             return result;
-           });
-         
-           this.mKeyboardDelegate.on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
-             this.inputHandle.addLog(`keyUp: code = ${keyEvent.keyCode}`);
-             let result = this.onKeyUp(keyEvent);
-             this.inputHandle.addLog(`keyUp: result = ${result}`);
-             return result;
-           });
-           this.mKeyboardDelegate.on('cursorContextChange', (x: number, y: number, height: number) => {
-             let cursorInfo: CursorInfo = { x: x, y: y, height: height };
-             this.inputHandle.setCursorInfo(cursorInfo);
-           });
-           if (isDebug) {
-             this.mKeyboardDelegate.on('selectionChange',
-               (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
-                 this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' +
-                   newEnd + ')');
-               });
-             this.mKeyboardDelegate.on('textChange', (text: string) => {
-               this.inputHandle.setTextInfo('textInfo: ' + text);
-             });
-           }
-      }
-      ```
+     // 设置监听子类型事件，改变输入法应用界面
+     inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
+       if (inputMethodSubtype.id === 'InputMethodExtAbility') {
+         AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.english);
+       }
+       if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
+         AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.chinese);
+       }
+     });
    
-      <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+     inputMethodAbility.on('inputStop', () => {
+       this.inputHandle.addLog('keyboard inputStop');
+       this.onDestroy();
+       if (this.mContext) {
+         this.mContext.destroy();
+       }
+     });
+   
+     this.inputHandle.addLog('pre on privateCommand');
+     try {
+       inputMethodAbility.on('privateCommand', (record: Record<string, inputMethodEngine.CommandDataType>) => {
+         this.inputHandle.addLog(`keyboard privateCommand : ${record}`);
+         Object.keys(record).forEach((key: string) => {
+           this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
+         })
+       });
+     } catch (err) {
+       let error = err as BusinessError;
+       this.inputHandle.addLog(`on privateCommand sendPrivateCommand catch error: ${error.code} ${error.message}`);
+     }
+   
+     this.mKeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+   
+     this.mKeyboardDelegate.on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
+       if (this.isKeyboardShow) {
+         this.inputHandle.hideKeyboardSelf();
+       }
+       this.inputHandle.addLog(`keyDown: code = ${keyEvent.keyCode}`);
+       let result = this.onKeyDown(keyEvent);
+       this.inputHandle.addLog(`keyDown: result = ${result}`);
+       return result;
+     });
+   
+     this.mKeyboardDelegate.on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
+       this.inputHandle.addLog(`keyUp: code = ${keyEvent.keyCode}`);
+       let result = this.onKeyUp(keyEvent);
+       this.inputHandle.addLog(`keyUp: result = ${result}`);
+       return result;
+     });
+     this.mKeyboardDelegate.on('cursorContextChange', (x: number, y: number, height: number) => {
+       let cursorInfo: CursorInfo = { x: x, y: y, height: height };
+       this.inputHandle.setCursorInfo(cursorInfo);
+     });
+     if (isDebug) {
+       this.mKeyboardDelegate.on('selectionChange',
+         (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
+           this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' +
+             newEnd + ')');
+         });
+       this.mKeyboardDelegate.on('textChange', (text: string) => {
+         this.inputHandle.setTextInfo('textInfo: ' + text);
+       });
+     }
+   }
+   ```
+
+   <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
      public isShiftKeyHold(): boolean {
@@ -590,7 +589,8 @@
        }
        let keyHeight = Double.toLong(dHeight * keyHeightRate);
        this.barPosition = dHeight - keyHeight - navigationBar_height;
-       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
+       this.inputHandle.addLog(
+         `initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
        this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
        let panelInfo: inputMethodEngine.PanelInfo = {
          type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
@@ -678,7 +678,6 @@
        }
      }
    ```
-
    <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
@@ -909,181 +908,183 @@
    
    export const keyboardController: KeyboardController = new KeyboardController();
    ```
-   
+
 3. KeyboardKeyData.ets文件。 定义软键盘的按键显示内容。
 
    ArkTS-Dyn示例：
     <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
 
    ``` TypeScript
-   export interface keySourceListType {
-     title: string,
-     content: string,
-     upperContent: string
-   }
+   export let numberSourceListData: sourceListType[] = [
+     {
+       content: '1'
+     },
+     {
+       content: '2'
+     },
+     {
+       content: '3'
+     },
+     {
+       content: '4'
+     },
+     {
+       content: '5'
+     },
+     {
+       content: '6'
+     },
+     {
+       content: '7'
+     },
+     {
+       content: '8'
+     },
+     {
+       content: '9'
+     },
+     {
+       content: '0'
+     },
+     {
+       content: '@'
+     },
+     {
+       content: '#'
+     },
+     {
+       content: '$'
+     },
+     {
+       content: '%'
+     },
+     {
+       content: '&'
+     },
+     {
+       content: '-'
+     },
+     {
+       content: '+'
+     },
+     {
+       content: '('
+     },
+     {
+       content: ')'
+     },
+     {
+       content: '/'
+     },
+     {
+       content: '*'
+     },
+     {
+       content: '"'
+     },
+     {
+       content: "'"
+     },
+     {
+       content: ':'
+     },
+     {
+       content: ';'
+     },
+     {
+       content: '!'
+     },
+     {
+       content: '?'
+     },
    
-   export interface sourceListType {
-     content: string
-   }
+   ]
    
-   export enum MenuKey {
-     NUMBER_KEY = '?123',
-     NORMAL_KEY = 'ABC',
-     SPECIAL_KEY = '=/\<'
-   }
-   
-   export enum SubMenuType {
-     NORMAL = 0,
-     MENU = 1,
-     EDIT = 2
-   }
-   
-   export enum MenuType {
-     NORMAL = 0,
-     NUMBER = 1,
-     SPECIAL = 2
-   }
-   
-   export enum KeyState {
-     LOWER_CASE = 0,
-     ONCE_UPPER_CASE = 1,
-     UPPER_CASE = 2
-   }
-   
-   export let keySourceListData: keySourceListType[] = [
+   export let symbolSourceListData: sourceListType[] = [
      {
-       title: '1',
-       content: 'q',
-       upperContent: 'Q'
+       content: '~'
      },
      {
-       title: '2',
-       content: 'w',
-       upperContent: 'W'
+       content: '`'
      },
      {
-       title: '3',
-       content: 'e',
-       upperContent: 'E'
+       content: '|'
      },
      {
-       title: '4',
-       content: 'r',
-       upperContent: 'R'
+       content: '\u2022'
      },
      {
-       title: '5',
-       content: 't',
-       upperContent: 'T'
+       content: '\u221A'
      },
      {
-       title: '6',
-       content: 'y',
-       upperContent: 'Y'
+       content: '\u03A0'
      },
      {
-       title: '7',
-       content: 'u',
-       upperContent: 'U'
+       content: '\u00F7'
      },
      {
-       title: '8',
-       content: 'i',
-       upperContent: 'I'
+       content: '\u00D7'
      },
      {
-       title: '9',
-       content: 'o',
-       upperContent: 'O'
+       content: String.fromCharCode(182)
      },
      {
-       title: '0',
-       content: 'p',
-       upperContent: 'P'
+       content: '\u2206'
      },
      {
-       title: String.fromCharCode(126),
-       content: 'a',
-       upperContent: 'A'
+       content: String.fromCharCode(163)
      },
      {
-       title: String.fromCharCode(33),
-       content: 's',
-       upperContent: 'S'
+       content: '\u20ac'
      },
      {
-       title: '@',
-       content: 'd',
-       upperContent: 'D'
+       content: String.fromCharCode(165)
      },
      {
-       title: String.fromCharCode(35),
-       content: 'f',
-       upperContent: 'F'
+       content: String.fromCharCode(162)
      },
      {
-       title: '%',
-       content: 'g',
-       upperContent: 'G'
+       content: String.fromCharCode(94)
      },
      {
-       title: String.fromCharCode(39),
-       content: 'h',
-       upperContent: 'H'
+       content: '\u00B0'
      },
      {
-       title: '&',
-       content: 'j',
-       upperContent: 'J'
+       content: '='
      },
      {
-       title: '*',
-       content: 'k',
-       upperContent: 'K'
+       content: String.fromCharCode(123)
      },
      {
-       title: '?',
-       content: 'l',
-       upperContent: 'L'
+       content: String.fromCharCode(125)
      },
      {
-       title: String.fromCharCode(72),
-       content: 'z',
-       upperContent: 'Z'
+       content: String.fromCharCode(44)
      },
      {
-       title: String.fromCharCode(73),
-       content: 'x',
-       upperContent: 'X'
+       content: String.fromCharCode(92)
      },
      {
-       title: String.fromCharCode(175),
-       content: 'c',
-       upperContent: 'C'
+       content: String.fromCharCode(169)
      },
      {
-       title: String.fromCharCode(95),
-       content: 'v',
-       upperContent: 'V'
+       content: String.fromCharCode(174)
      },
      {
-       title: String.fromCharCode(58),
-       content: 'b',
-       upperContent: 'B'
+       content: '\u2122'
      },
      {
-       title: String.fromCharCode(59),
-       content: 'n',
-       upperContent: 'N'
+       content: '\u2105'
      },
      {
-       title: String.fromCharCode(47),
-       content: 'm',
-       upperContent: 'M'
+       content: '['
+     },
+     {
+       content: ']'
      }
    ]
    ```
-   
+
       <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
    
    ``` TypeScript
@@ -1643,13 +1644,16 @@
      @StorageLink('isRkDevice') isRkDevice: boolean = true;
      @StorageLink('inputStyle') inputStyle: KeyStyle = StyleConfiguration.getInputStyle(this.isLandscape, this.isRkDevice, DEVICE_TYPE);
      private panel: inputMethodEngine.Panel | undefined;
-     @StorageLink('subtypeChange') subtypeChange: number = CustomInputMethodSubtype.english;;
+     @StorageLink('subtypeChange') subtypeChange: number = CustomInputMethodSubtype.english;
+   
    
      aboutToAppear(): void {
        // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
        inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+         console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
          if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE) {
            this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+           console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
          }
        })
      }
@@ -1673,6 +1677,8 @@
        AppStorage.set('inputStyle', StyleConfiguration.getInputStyle(this.isLandscape, this.isRkDevice, DEVICE_TYPE));
      }
    
+   
+   
      build() {
        Stack() {
          Column() {
@@ -1686,7 +1692,7 @@
                }
              } else {
                if (this.menuType === MenuType.NORMAL) {
-                 if (this.subtypeChange == CustomInputMethodSubtype.english;) {
+                 if (this.subtypeChange == CustomInputMethodSubtype.english) {
                    KeyMenu()
                  } else {
                    NumberMenu()
