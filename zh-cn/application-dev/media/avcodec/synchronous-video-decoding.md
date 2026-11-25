@@ -376,7 +376,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        if (!isStarted_) {
-           // 停止或Seek结束本轮输出，Buffer由后续Destroy或Flush统一回收。
+           if (ret == AVCODEC_SAMPLE_ERR_OK &&
+               videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+           }
            break;
        }
        CHECK_AND_CONTINUE_LOG(ret != AVCODEC_SAMPLE_ERR_AGAIN, "Get output buffer timeout, retry");
@@ -387,7 +390,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
            break;
        }
        if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-           // EOS结束本轮输出，Buffer由后续Destroy或Seek时的Flush统一回收。
+           if (videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+               isStarted_ = false;
+           }
            AVCODEC_SAMPLE_LOGI("Catch EOS, video output thread out");
            break;
        }
@@ -558,15 +564,12 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     <!-- @[player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp)-->
 
     ```c++
-    void Player::ReleaseVideoDecoder(bool trackCleanup)
+    void Player::ReleaseVideoDecoder()
     {
         OHNativeWindow *decoderWindow = decoderWindowLease_.GetWindow();
         if (videoDecoder_ != nullptr) {
             // ...
-            if (trackCleanup) {
-                cleanupProgress_.Enter("codec.video.destroy");
-            }
-            RecordCleanup("video.decoder.destroy", videoDecoder_->Release());
+            videoDecoder_->Release();
             videoDecoder_.reset();
         }
         if (sampleInfo_.video.window == decoderWindow) {
@@ -812,7 +815,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        if (!isStarted_) {
-           // 停止或Seek结束本轮输出，Buffer由后续Destroy或Flush统一回收。
+           if (ret == AVCODEC_SAMPLE_ERR_OK &&
+               videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+           }
            break;
        }
        CHECK_AND_CONTINUE_LOG(ret != AVCODEC_SAMPLE_ERR_AGAIN, "Get output buffer timeout, retry");
@@ -823,7 +829,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
            break;
        }
        if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-           // EOS结束本轮输出，Buffer由后续Destroy或Seek时的Flush统一回收。
+           if (videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+               isStarted_ = false;
+           }
            AVCODEC_SAMPLE_LOGI("Catch EOS, video output thread out");
            break;
        }

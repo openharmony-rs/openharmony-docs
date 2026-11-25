@@ -854,15 +854,12 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     <!-- @[player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp)-->
 
     ```c++
-    void Player::ReleaseVideoDecoder(bool trackCleanup)
+    void Player::ReleaseVideoDecoder()
     {
         OHNativeWindow *decoderWindow = decoderWindowLease_.GetWindow();
         if (videoDecoder_ != nullptr) {
             // ...
-            if (trackCleanup) {
-                cleanupProgress_.Enter("codec.video.destroy");
-            }
-            RecordCleanup("video.decoder.destroy", videoDecoder_->Release());
+            videoDecoder_->Release();
             videoDecoder_.reset();
         }
         if (sampleInfo_.video.window == decoderWindow) {
@@ -886,10 +883,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     int32_t VideoDecoder::Release()
     {
         if (decoder_ != nullptr) {
-            const int32_t ret = OH_VideoDecoder_Destroy(decoder_);
+            OH_VideoDecoder_Destroy(decoder_);
             decoder_ = nullptr;
-            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
-                "Destroy video decoder failed, ret: %{public}d", ret);
         }
         return AVCODEC_SAMPLE_ERR_OK;
     }

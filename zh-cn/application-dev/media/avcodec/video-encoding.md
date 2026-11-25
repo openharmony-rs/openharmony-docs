@@ -1137,27 +1137,21 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    <!-- @[recorder_video_buffer_eos_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
    ```c++
-   const auto input = encContext_->inputBufferQueue.Dequeue(DRAIN_WAIT_MS);
-   if (!isStarted_.load()) {
-       break;
+   int32_t Recorder::SendBufferVideoEndOfStreamAsync()
+   {
+       const auto input = encContext_->inputBufferQueue.Dequeue(DRAIN_WAIT_MS);
+       if (input == nullptr || input->buffer == nullptr) {
+           return AVCODEC_SAMPLE_ERR_ERROR;
+       }
+       // 配置buffer info信息，设置AVCODEC_BUFFER_FLAGS_EOS标识。
+       CodecBufferInfo info = *input;
+       info.attr.size = 0;
+       info.attr.offset = 0;
+       // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
+       info.attr.pts = lastVideoInputPtsUs_;
+       info.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
+       return videoEncoder_->PushInputBuffer(info);
    }
-   if (input == nullptr || input->buffer == nullptr) {
-       AbortRecording("Get video EOS input buffer failed");
-       break;
-   }
-   CodecBufferInfo info = *input;
-   info.attr.size = 0;
-   info.attr.offset = 0;
-   info.attr.pts = lastVideoInputPtsUs_;
-   info.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
-   const int32_t ret = videoEncoder_->PushInputBuffer(info);
-   if (ret != AVCODEC_SAMPLE_ERR_OK) {
-       failure_.Record("recorder.video.input.eos", ret, "Submit video EOS input buffer failed");
-       AbortRecording("Submit video EOS input buffer failed");
-       break;
-   }
-   AVCODEC_SAMPLE_LOGI("Async video input submitted EOS, thread exiting");
-   break;
    ```
 
 10. 调用OH_VideoEncoder_FreeOutputBuffer()释放编码帧。
