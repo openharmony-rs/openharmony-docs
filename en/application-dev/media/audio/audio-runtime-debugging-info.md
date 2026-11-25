@@ -1,12 +1,11 @@
 # Using Audio Snapshots for Troubleshooting
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a3f7155f1e6bb7e48d4c9deff57b23f465bc9974 translatedAt=2026-08-18T11:02:45.907Z pushedAt=2026-08-18T11:38:34.435Z -->
+<!-- md-trans-meta sourceCommit=61c08d373812f0b6e156fe4f99155409daa119e9 translatedAt=2026-11-09T07:44:30.738Z pushedAt=2026-11-09T08:07:44.273Z nl=1 -->
 
 Starting from API version 26.0.0, the system provides audio snapshot (Audio Debugging Info) capability, which allows apps to obtain the runtime status of the audio subsystem in the current process. Audio Debugging Info captures a point-in-time snapshot of the audio subsystem, including key information such as audio stream parameters, routing status, volume information, audio focus state, and error records. It helps you inspect the internal state of the audio subsystem without affecting app behavior. You can use the captured snapshot to obtain diagnostic information for troubleshooting issues related to audio rendering, audio capture, audio loopback, and audio sessions, such as silent playback, abnormal volume levels, and audio focus loss.
 
@@ -479,7 +478,7 @@ OH_AudioSessionManager *audioSessionManager;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 // ...
   // Set the audio concurrency mode.
   let strategy: audio.AudioSessionStrategy = {
@@ -496,10 +495,10 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
   // fd is a file descriptor. Obtain it based on the actual situation during use.
   let filePath = context.filesDir + '/audio_session_info.txt';
-  let fd = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY | fs.OpenMode.TRUNC).fd;
+  let fd = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.TRUNC).fd;
   // Output to file.
   audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
-  fs.closeSync(fd);
+  fileIo.closeSync(fd);
 ```
 
 **Example:**
@@ -612,21 +611,13 @@ Pipeline [ID: 1]                         // Unique identifier of the pipeline.
 ## Notes
 
 - When calling a print API, if `fd` is less than 0 or not writable, the snapshot information will be output to the running log (hilog) and can be viewed using the log tool.
-
 - It is recommended that you obtain snapshot information when an audio exception occurs (such as no sound, abnormal volume, or focus loss) for fault locating.
-
 - Each print API is a synchronous call. It is recommended that you avoid calling them in audio data callbacks to prevent affecting audio processing performance.
-
 - The snapshot file is saved in the app sandbox directory and can be exported to the local device for viewing using the hdc tool:
-
   ``` bash
   hdc file recv /data/app/el2/100/base/<bundleName>/haps/entry/cache/audio_snapshot.txt ./
   ```
-
 - The complete snapshot information can be queried only when audio loopback is in an available state (`AVAILABLE_IDLE` or `AVAILABLE_RUNNING`).
-
 - Before calling the session snapshot API, an audio session must be created and activated; otherwise, complete snapshot information cannot be obtained.
-
 - When the `pipeline` parameter is NULL, information about all pipelines under the engine is output.
-
 - The specific parameters for node attribute configuration vary by node type. For details, see the description of each node in [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md).

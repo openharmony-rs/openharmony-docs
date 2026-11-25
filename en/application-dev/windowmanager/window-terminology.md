@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=2abf667dbc2d51b70a89f4f659d06c8abfb5f4de translatedAt=2026-10-08T09:05:53.431Z pushedAt=2026-10-09T00:42:43.668Z -->
+<!-- md-trans-meta sourceCommit=1c0d32565a07d6161c64b340be482cf76a1a393d translatedAt=2026-11-16T09:29:22.189Z pushedAt=2026-11-16T11:06:59.655Z nl=1 -->
 
 ## F
 
@@ -17,14 +17,14 @@ Floating windows are divided into multi-window floating windows, global floating
 
   They are typically used to temporarily handle another task while a full-screen task is running or for short-term parallel use of multiple tasks, such as replying to messages while browsing the web.
 
-  For details, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) and [Multi-Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-window-practice).
+  Related reference: [Multi-Window Introduction](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
 - A global floating window is a special type of app auxiliary window that can remain displayed on the foreground even after the app's main window and corresponding UIAbility are moved to the background.
 
   Global floating windows can be used to continue displaying the UI in a small window after the app is moved to the background.
 
   Before creating a global floating window, the application needs to request the corresponding permission.
-
+  
   For details, see [Global Floating Window Development Guide](global-floating-window-guide.md).
 
 - A float view is a special type of app auxiliary window whose UI is managed and rendered by the system. It can remain displayed on the foreground even after the app's main window and corresponding UIAbility are moved to the background.
@@ -88,6 +88,12 @@ Usage scenarios:
 
 A state in which the app's layout area extends to the entire window display area. In immersive layout, the available layout area within the app extends to the full window size. The app UI layout content can overlap with the system UI, but system UI elements always remain above the app content in the layer hierarchy.
 
+## M
+
+### Multi-Window
+
+A practical paradigm that combines multiple window modes, allowing multiple app windows to run simultaneously on the same screen at the same time in the form of floating windows, split-screen mode, or panoramic multi-window, thereby enabling multi-tasking. Multi-Window includes various display modes such as multi-window floating windows, split-screen mode, and panoramic multi-window.
+
 ## P
 
 ### Desktop Mode
@@ -95,10 +101,6 @@ A state in which the app's layout area extends to the entire window display area
 An interaction method that supports multi-tasking on mobile devices. In Desktop Mode, multiple app windows can be displayed simultaneously on a single screen. In this mode, app windows are [freeform window](#freeform-window). On some tablets, you can enable Desktop Mode by pulling down Control Panel and tapping the **Desktop mode** button.
 
 ## S
-
-### Multi-Window
-
-A practical paradigm that combines multiple window modes, allowing multiple app windows to run simultaneously on the same screen at the same time in the form of floating windows, split-screen mode, or panoramic multi-window, thereby enabling multi-tasking. Multi-Window includes various display modes such as multi-window floating windows, split-screen mode, and panoramic multi-window.
 
 ### Starting Window
 

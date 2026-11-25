@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ada336886a6e06f7fda77a14a7da94471e31c791 translatedAt=2026-08-11T10:12:27.761Z pushedAt=2026-08-11T11:34:06.138Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:53:30.758Z pushedAt=2026-11-06T01:44:51.814Z nl=1 -->
 
 ## Overview
 
@@ -55,6 +55,7 @@ The flow of the main window's lifecycle events is as shown in the following figu
 
 ![lifecycleEvent](figures/window-lifecycle-event.png)
 
+
 ### Listening for the Main Window's Lifecycle State Changes
 
 You can use the following APIs to listen for lifecycle changes of the **WindowStage**.
@@ -70,6 +71,7 @@ You can use the following APIs to listen for lifecycle changes of the **WindowSt
   - The lifecycle states returned at this point are [WindowStageLifeCycleEventType](../reference/apis-arkui/arkts-apis-window-e.md#windowstagelifecycleeventtype20), which includes four states: **SHOWN** (foreground state), **RESUMED** (foreground interactive state), **PAUSED** (foreground non-interactive state), and **HIDDEN** (background state).
 
   - For the focused and unfocused states of **WindowStage**, it is recommended to use [on('windowEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowevent10) for listening.
+
 
 ### Differentiated Behavior of UIAbility Lifecycle on Different Devices
 

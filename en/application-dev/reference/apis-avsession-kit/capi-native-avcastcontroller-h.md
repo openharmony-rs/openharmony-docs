@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=9d00e85ff51cb70de18b56e95b79607bff2c7328 translatedAt=2026-11-18T03:21:18.311Z pushedAt=2026-11-19T11:33:04.746Z nl=1 -->
 
 ## Overview
 
@@ -78,6 +79,14 @@ Triggered when the playback state changes.
 
 **Since:** 23
 
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the **OH_AVCastController** instance. |
+| [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Playback state to set. |
+| void* userData | User data passed. |
+
 ### OH_AVCastControllerCallback_MediaItemChange()
 
 ```c
@@ -89,6 +98,14 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(O
 Triggered when the media item changes.
 
 **Since:** 23
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the **OH_AVCastController** instance. |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)* avQueueItem | AVQueueItem to set. |
+| void* userData | User data passed. |
 
 ### OH_AVCastControllerCallback_PlayNext()
 
@@ -102,6 +119,13 @@ Triggered when the next track is played.
 
 **Since:** 23
 
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the **OH_AVCastController** instance. |
+| void* userData | User data passed. |
+
 ### OH_AVCastControllerCallback_PlayPrevious()
 
 ```c
@@ -113,6 +137,13 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayPrevious)(OH_A
 Triggered when the previous track is played.
 
 **Since:** 23
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the **OH_AVCastController** instance. |
+| void* userData | User data passed. |
 
 ### OH_AVCastControllerCallback_SeekDone()
 
@@ -126,6 +157,14 @@ Triggered when the seek is complete.
 
 **Since:** 23
 
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the **OH_AVCastController** instance. |
+| int32_t position | Position after the seek. |
+| void* userData | User data passed. |
+
 ### OH_AVCastControllerCallback_EndOfStream()
 
 ```c
@@ -138,6 +177,13 @@ Triggered when the playback stream ends.
 
 **Since:** 23
 
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the **OH_AVCastController** instance. |
+| void* userData | User data passed. |
+
 ### OH_AVCastControllerCallback_Error()
 
 ```c
@@ -149,6 +195,14 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_Error)(OH_AVCastCo
 Triggered when a playback error occurs.
 
 **Since:** 23
+
+**Parameters**
+ 
+| Name | Description |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the **OH_AVCastController** instance. |
+| void* userData | User data passed. |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) error | Error code of the casting playback. |
 
 ### OH_AVCastController_Destroy()
 
@@ -756,3 +810,5 @@ Requests to play the current item. The parameter should contain media resources;
 | Type| Description|
 | -- | -- |
 | [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: Internal server error.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avcastcontroller** parameter is **nullptr**.<br>                                         2. The **avqueueItem** parameter is **nullptr**.|
+
+

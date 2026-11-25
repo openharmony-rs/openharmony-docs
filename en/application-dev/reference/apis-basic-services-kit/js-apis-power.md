@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=24df9d23687984d25420adf815976d462a7444a0 translatedAt=2026-11-23T01:46:04.354Z pushedAt=2026-11-23T12:09:26.113Z nl=1 -->
 
 The **power** module provides APIs for rebooting and shutting down the system, as well as querying the screen status. You can use these APIs to obtain the device activity status, power mode, and screen on/off status.
 > **NOTE**
@@ -32,7 +33,7 @@ Checks whether the current device is active.
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| boolean | Returns **true** if the device is active; returns **false** otherwise.|
+| boolean | The value **true** is returned if the device is active; **false** is returned if the device is inactive or the device activity status fails to be obtained. |
 
 **Example**
 
@@ -78,7 +79,7 @@ Obtains the power mode of this device.
 
 | Type                                | Description      |
 | ------------------------------------ | ---------- |
-| [DevicePowerMode](#devicepowermode9) | Power mode.|
+| [DevicePowerMode](#devicepowermode9) | Power mode of the current device. The value can be standard mode, power saving mode, performance mode, or super power saving mode. If the power mode of the current device fails to be obtained, **0** is returned, which is not an enumerated value of [DevicePowerMode](#devicepowermode9). You should check whether the return value is a valid enumerated value (600 or greater). |
 
 **Example**
 
@@ -105,7 +106,7 @@ Checks whether the device is in standby mode.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md).
 
-| Error Code  | Error Message   |
+|   | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 

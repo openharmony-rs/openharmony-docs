@@ -5,6 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=952609329994c7570483f225e6ce06cad9e62eea translatedAt=2026-11-09T11:03:25.233Z pushedAt=2026-11-10T02:03:08.697Z nl=1 -->
 
 The following lifecycle callbacks are provided for the lifecycle of a custom component, which is one decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2):
 
@@ -34,11 +35,11 @@ Based on the preceding flowchart, this document describes the initial creation, 
 
 2. Initialization of custom component member variables: The member variables are initialized with locally defined defaults or component constructor parameters. The initialization happens in the document order, which is the order in which the member variables are defined.
 
-3. If **aboutToAppear** is defined, this method is executed before the build method is executed.
+3. If you define `aboutToAppear`, this method is executed before the **build** function is executed.
 
-4. On initial render, the **build** function of the built-in component is executed for rendering. If the child component is a custom component, the rendering creates an instance of the child component. During initial render, the framework records the mapping between state variables and components. When a state variable changes, the framework drives the related components to update.
+4. On initial render, the **build** function is executed for rendering built-in components. If the child component is a custom component, the rendering creates an instance of the child component. During initial render, the framework records the mapping between state variables and components. When a state variable changes, the framework drives the related components to update.
 
-5. If **onDidBuild** is defined, this method is executed after the build method is executed.
+5. If you define `onDidBuild`, this method is executed after the **build** function is executed.
 
 ## Custom Component Re-rendering
 
@@ -54,7 +55,7 @@ For example, if the branch of the if component changes or the number of arrays i
 
 1. Before the component is deleted, the **aboutToDisappear** callback is invoked to mark the component for deletion. The node deletion mechanism of ArkUI is as follows: The backend node is directly removed from the component tree, the backend node is destroyed, and the frontend node is de-referenced. When the frontend node has no reference, the Ark VM garbage collection is performed.
 
-2. The custom component and its variables will be deleted. If the component has synchronous variables (such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), and [@StorageLink](arkts-appstorage.md#storagelink)), the component is deregistered from the [State Data Source](arkts-state-management-glossary.md#state-data-source)
+2. The custom component and its variables will be deleted. If the component has synchronized variables (such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), [@StorageLink](arkts-appstorage.md#storagelink)), they will be deregistered from the [state data source](arkts-state-management-glossary.md#state-data-source).
 
 You are not advised to use async await in aboutToDisappear. If asynchronous operations (such as Promise or callback methods) are used in this lifecycle, the custom component will be retained in the Promise closure until the callback method is executed. This will prevent the custom component from being garbage collected.
 
@@ -62,7 +63,7 @@ You are not advised to use async await in aboutToDisappear. If asynchronous oper
 
 The following example details the call sequence of the custom component lifecycle when custom components are nested:
 
-<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -73,17 +74,17 @@ struct Parent {
   @State showChild: boolean = true;
   @State btnColor: string = '#FF007DFF';
 
-  // Component lifecycle
+  // Called when Parent is about to appear.
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToAppear');
   }
 
-  // Component lifecycle
+  // Called after the build function triggered by Parent's first render completes.
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Parent onDidBuild');
   }
 
-  // Component lifecycle
+  // Called before Parent is destroyed.
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToDisappear');
   }
@@ -95,6 +96,7 @@ struct Parent {
         Child()
       }
       Button(this.showChild ? 'delete Child' : 'add Child')
+        .width(300)
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
@@ -103,6 +105,7 @@ struct Parent {
           this.showChild = !this.showChild;
         })
     }
+    .width('100%')
   }
 }
 
@@ -110,17 +113,17 @@ struct Parent {
 struct Child {
   @State title: string = 'Hello World';
 
-  // Component lifecycle
+  // Called before Child is destroyed.
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToDisappear');
   }
 
-  // Component lifecycle
+  // Called after the build function triggered by Child's first render completes.
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Child onDidBuild');
   }
 
-  // Component lifecycle
+  // Called when Child is about to appear.
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToAppear');
   }
@@ -135,6 +138,8 @@ struct Child {
   }
 }
 ```
+
+![page-custom-components-lifecycle-0](figures/page-custom-components-lifecycle-0.gif)
 
 In the preceding example, the Index page contains two custom components: Parent and Child. The Parent and Child components declare their own lifecycle functions (aboutToAppear, onDidBuild, and aboutToDisappear).
 

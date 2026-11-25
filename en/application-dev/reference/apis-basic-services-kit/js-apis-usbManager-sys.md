@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b2abee6fde0080e246d10ff0f94cb54cace432c9 translatedAt=2026-11-23T02:18:46.218Z pushedAt=2026-11-24T11:39:13.080Z nl=1 -->
 
 This module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control on the host side as well as port management, and function switch and query on the device side. This module can be used to exchange data with USB peripherals, manage USB device permissions, and dynamically switch the USB device mode. As a system interface, this module provides the system-level permission control mechanism, USB function configuration capabilities on the device, and port role management capability. It helps the system app implement flexible USB device management and meet USB communication requirements in different service scenarios.
 
@@ -351,26 +352,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let deviceName: string = '1-1';
 // Define the tokenId variable.
 let tokenId: string = '';
-  // Add the USB device access permission for a specified app.
-try {
-  // Obtain the bundle information flag.
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
-  // Asynchronously obtain the bundle information of the current app.
-  bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. Data:', JSON.stringify(bundleInfo));
-    // Obtain the access token ID of the app.
-    let token = bundleInfo.appInfo.accessTokenId;
-    tokenId = token.toString();
-    // Add the device access permission.
-    if (usbManager.addDeviceAccessRight(tokenId, deviceName)) {
-      console.info(`Succeed in adding right`);
-    }
-  }).catch((err : BusinessError) => {
-    console.error(`testTag getBundleInfoForSelf failed. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  console.error(`testTag failed. Code: ${err.code}, message: ${err.message}`);
-}
+// Obtain the bundle information flag.
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+// Obtain the bundle information of the current application asynchronously.
+bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
+  console.info('testTag', 'getBundleInfoForSelf successfully. Data:', JSON.stringify(bundleInfo));
+  // Obtain the accessTokenId of the application.
+  let token = bundleInfo.appInfo.accessTokenId;
+  tokenId = token.toString();
+  // Add the device access permission.
+  if (usbManager.addDeviceAccessRight(tokenId, deviceName)) {
+    console.info(`Succeed in adding right`);
+  }
+}).catch((err : BusinessError) => {
+  console.error(`testTag getBundleInfoForSelf failed. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getFunctionsFromString<sup>12+</sup>
@@ -874,3 +870,4 @@ Enumerates data role types.
 | NONE   | 0  | None        |
 | HOST   | 1  | USB host.|
 | DEVICE | 2  | USB device.|
+

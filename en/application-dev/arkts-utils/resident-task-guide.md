@@ -1,10 +1,11 @@
-# Resident Task Development (Worker)
+# Resident Task Development Guide (Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-11-04T09:28:19.905Z pushedAt=2026-11-04T09:37:06.205Z nl=1 -->
 
 This topic describes how to use Worker to execute a resident task. Worker continuously executes the task until it receives a termination command from the host thread.
 
@@ -16,8 +17,9 @@ The development process and example are outlined as follows:
 
 2. Import the Worker module, and then call [constructor()](../reference/apis-arkts/js-apis-worker.md#constructor9) of ThreadWorker in the host thread to create a Worker object. The thread that creates the Worker object is the host thread. Enable the host thread to send messages. The host thread (UI main thread) sends 'start' to initiate a long-running task and receive messages from the Worker thread. When the task is no longer needed, the host thread sends 'stop' to terminate the task. In this example, the task is terminated after 10 seconds.
 
-   ```ts
-   // Index.ets
+   <!-- @[worker_receive_child_thread_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/ResidentTaskGuide.ets) --> 
+   
+   ``` TypeScript
    import { MessageEvents, worker } from '@kit.ArkTS';
    
    @Entry
@@ -25,17 +27,17 @@ The development process and example are outlined as follows:
    struct Index {
      build() {
        Column() {
-         Text("Listener task")
+         Text('Listener task')
            .id('HelloWorld')
            .fontSize(50)
            .fontWeight(FontWeight.Bold)
            .onClick(() => {
              const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
-             workerInstance.postMessage({type: 'start'})
              workerInstance.onmessage = (event: MessageEvents) => {
-               console.info('The UI main thread receives a message:', event.data);
+               console.info('UI main thread received message: ', event.data);
              }
-             // Stop the Worker thread after 10 seconds.
+             workerInstance.postMessage({type: 'start'})
+             // Stop the worker after 10 seconds.
              setTimeout(() => {
                workerInstance.postMessage({ type: 'stop' });
              }, 10000);
@@ -46,14 +48,14 @@ The development process and example are outlined as follows:
      }
    }
    ```
-   <!-- @[worker_receive_child_thread_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/ResidentTaskGuide.ets) -->
 
 3. Handle messages in the Worker thread. When receiving 'start' from the host thread, the Worker thread starts executing the long-running, non-periodic task and sends messages back to the host thread in real-time. When receiving 'stop', it terminates the task and sends a corresponding message back to the host thread.
 
-   ```ts
-   // Worker.ets
+   <!-- @[worker_correspond_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/Worker.ets) -->
+   
+   ``` TypeScript
    import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-
+   
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    let isRunning = false;
    workerPort.onmessage = (e: MessageEvents) => {
@@ -61,7 +63,7 @@ The development process and example are outlined as follows:
      if (type === 'start') {
        if (!isRunning) {
          isRunning = true;
-         // Start a resident task.
+         // Start the resident task.
          performTask();
        }
      } else if (type === 'stop') {
@@ -69,7 +71,7 @@ The development process and example are outlined as follows:
      }
    }
    
-   // Simulate a resident task.
+   // Simulate the resident task.
    function performTask() {
      if (isRunning) {
        // Simulate a long-running task.
@@ -82,4 +84,3 @@ The development process and example are outlined as follows:
      }
    }
    ```
-   <!-- @[worker_correspond_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/Worker.ets) -->

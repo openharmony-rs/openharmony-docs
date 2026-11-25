@@ -3,11 +3,13 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=6273e0cee115a95082fe5ceee9943e85a85ead90 translatedAt=2026-11-04T09:48:46.990Z pushedAt=2026-11-04T09:52:33.930Z nl=1 -->
 
 ```c
-typedef struct {...} OH_NativeBundle_ElementName
+struct OH_NativeBundle_ElementName {...}
+typedef struct OH_NativeBundle_ElementName OH_NativeBundle_ElementName
 ```
 
 ## Overview
@@ -28,4 +30,4 @@ The struct describes the elementName information.
 | -- | -- |
 | char* bundleName | Pointer to the bundle name of the application.|
 | char* moduleName | Pointer to the module name.|
-| char* abilityName | Pointer to the ability name.|
+| char* abilityName | Ability name. |

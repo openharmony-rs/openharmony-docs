@@ -283,11 +283,11 @@
      return obj;
    }
    
-   function testencode(obj: test_pb) {
+   function testEncode(obj: test_pb) {
      return test_pb.encode(obj);
    }
    
-   function testdecode(data: ArrayBuffer | collections.ArrayBuffer) {
+   function testDecode(data: ArrayBuffer | collections.ArrayBuffer) {
      let obj = test_pb.decode(data);
      console.info(`expect value_int32 ${obj?.value_int32} = 1`);
      console.info(`expect value_double ${obj?.value_double} = 12`);
@@ -298,9 +298,9 @@
    
    export function testProtobuf(): test_pb {
      let obj = testCreate();
-     let buf = testencode(obj);
+     let buf = testEncode(obj);
      if (buf) {
-       testdecode(buf);
+       testDecode(buf);
      }
      return obj;
    }
@@ -359,7 +359,9 @@ export function observeProtobuf(): test_pb {
 runTests() {
   taskpool.execute(observeJSON1).then((res) => {
     this.layout = UIUtils.makeObserved(res as LayoutS);
-  })
+  }).catch((e: BusinessError) => {
+    console.error(`taskpool execute error, code: ${e.code}, message is: ${e.message}`);
+  });
 }
 ```
 
@@ -369,7 +371,9 @@ runTests() {
 runTestsPb() {
   taskpool.execute(observeProtobuf).then((res) => {
     this.pb = UIUtils.makeObserved(res as test_pb);
-  })
+  }).catch((e: BusinessError) => {
+    console.error(`taskpool execute error, code: ${e.code}, message is: ${e.message}`);
+  });
 }
 ```
 

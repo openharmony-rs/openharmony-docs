@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=1b9dc846389405d57ea9496c8b5a7a7ff4d36877 translatedAt=2026-10-09T02:05:06.068Z pushedAt=2026-10-10T02:49:01.678Z -->
+<!-- md-trans-meta sourceCommit=ccb2328b60eb675989566b23a830be06b8bbccad translatedAt=2026-11-10T01:11:57.693Z pushedAt=2026-11-10T02:43:58.352Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Symmetric Encryption and Decryption Algorithm Specifications: SM4](crypto-encryption-decryption.md#sm4).
 
@@ -15,22 +15,22 @@ For the corresponding algorithm specifications, see [Symmetric Encryption and De
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
-
+   
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|ECB|PKCS7'** to create a **Cipher** instance for encryption. The key type is **SM4_128**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption) and key to **SymKey** (the key used for encryption).
-
+   
    If ECB mode is used, pass in **null**.
 
 4. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
-
+   
    - If a small amount of data is to be encrypted, you can use **Cipher.doFinal** immediately after **Cipher.init**.
    - If a large amount of data is to be encrypted, you can call **Cipher.update** multiple times to pass in the data by segment.
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
-
+   
    - If data has been passed in by **Cipher.update**, pass in **null** in the **data** parameter of **Cipher.doFinal**.
    - The output of **Cipher.doFinal** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
 
@@ -44,12 +44,12 @@ For the corresponding algorithm specifications, see [Symmetric Encryption and De
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
-If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB or SM4-CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecb-or-sm4-cbc).
+If SM4 (ECB mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB/CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecb-or-sm4-cbc).
 
 - Example (using asynchronous APIs):
 
   <!-- @[async_symmetry_encrypt_decrypt_sm4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_ecb_encryption_decryption/sm4_ecb_encryption_decryption_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -97,7 +97,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 - Example (using synchronous APIs):
 
   <!-- @[sync_symmetry_encrypt_decrypt_sm4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_ecb_encryption_decryption/sm4_ecb_encryption_decryption_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -147,7 +147,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
-
+   
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|CBC|PKCS7'** to create a **Cipher** instance with the symmetric key type of SM4_128, the block mode of CBC, and the padding mode of PKCS7, which is used to perform encryption.
@@ -155,12 +155,12 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **IvParamsSpec** (the encryption parameters for CBC mode).
 
 4. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
-
+   
    - If a small amount of data is to be encrypted, you can use **Cipher.doFinal** immediately after **Cipher.init**.
    - If a large amount of data is to be encrypted, you can call **Cipher.update** multiple times to pass in the data by segment.
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
-
+   
    - If data has been passed in by **Cipher.update**, pass in **null** in the **data** parameter of **Cipher.doFinal**.
    - The output of **Cipher.doFinal** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
 
@@ -179,7 +179,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 - Example (using asynchronous APIs):
 
   <!-- @[async_symmetry_encrypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_cbc_encryption_decryption/sm4_cbc_encryption_decryption_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -249,7 +249,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 - Example (using synchronous APIs):
 
   <!-- @[sync_symmetry_encrypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_cbc_encryption_decryption/sm4_cbc_encryption_decryption_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -319,7 +319,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
-
+   
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|GCM'** to create a **Cipher** instance for encryption. The key type is SM4_128, and the block cipher mode is GCM.
@@ -327,7 +327,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **GcmParamsSpec** corresponding to the GCM mode.
 
 4. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
-
+   
    There is no limit on the length of a single `update` call. You can decide how to call `update` based on the amount of data.
 
    - If a small amount of data is to be encrypted, you can use **Cipher.doFinal** immediately after **Cipher.init**.
@@ -356,7 +356,7 @@ If SM4 (GCM mode) decryption fails with error code 17630001, see [Failed to Call
 - Example (using asynchronous APIs):
 
   <!-- @[async_symmetry_encrypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_encryption_decryption/sm4_gcm_encryption_decryption_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -439,7 +439,7 @@ If SM4 (GCM mode) decryption fails with error code 17630001, see [Failed to Call
 - Example (using synchronous APIs):
 
   <!-- @[sync_symmetry_encrypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_encryption_decryption/sm4_gcm_encryption_decryption_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -524,7 +524,7 @@ If SM4 (GCM mode) decryption fails with error code 17630001, see [Failed to Call
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
-
+   
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|GCM'** to create a **Cipher** instance for encryption. The key type is SM4_128, and the block mode is GCM.
@@ -532,21 +532,21 @@ If SM4 (GCM mode) decryption fails with error code 17630001, see [Failed to Call
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **GcmParamsSpec** corresponding to the GCM mode.
 
 4. Set the amount of data passed in at a time to 20 bytes, and call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) multiple times to update the data (plaintext).
-
+   
    - Currently, there is no limit on the length of a single update. You can decide how to call update based on the amount of data.
    - It is recommended that you check whether the result of each update is null, and when the result is not null, extract the data from it and concatenate it to form the complete ciphertext. This is because in different modes, the result of update may be affected differently.
-
+      
       1) For example, in ECB and CBC modes, encryption is always performed in units of blocks, and the encrypted block result produced by this update is output. That is, when this update operation fills a complete block, the ciphertext is output; if it does not fill a block, this update outputs null, and the unencrypted data is concatenated with the data input next time to fill a block before output. At the final doFinal, the unencrypted data is padded according to the specified padding mode, and then the remaining encryption result is output. The same applies to update during decryption.
 
       2) For stream cipher modes (such as CTR and OFB), the ciphertext length is usually equal to the plaintext length.
 
 5. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the encrypted data.
-
+   
    - If data has been passed in by **Cipher.update**, pass in **null** in the **data** parameter of **Cipher.doFinal**.
    - The output of **Cipher.doFinal** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
 
 6. Obtain [GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag as the authentication information for decryption.
-
+   
    In GCM mode, you need to extract the last 16 bytes from the encrypted data as the authentication information for initialization during decryption. In the example, authTag is exactly 16 bytes.
 
 **Decryption**
@@ -564,7 +564,7 @@ If SM4 (GCM mode) decryption fails with error code 17630001, see [Failed to Call
 - Example (using asynchronous APIs):
 
   <!-- @[async_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -671,7 +671,7 @@ If SM4 (GCM mode) decryption fails with error code 17630001, see [Failed to Call
 - Example (using synchronous APIs):
 
   <!-- @[sync_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';

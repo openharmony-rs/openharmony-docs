@@ -5,6 +5,8 @@
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=cc14dc6278c2431b213acdc6dc59da94581fb2b0 translatedAt=2026-11-04T04:22:09.526Z pushedAt=2026-11-04T08:04:44.648Z nl=2 -->
+
 OpenGL is a cross-platform graphics API that specifies a standard software interface for 3D graphics processing hardware. [OpenGL ES](https://www.khronos.org/opengles/) is a flavor of the OpenGL specification intended for embedded devices. OpenHarmony now supports OpenGL ES 3.2.
 
 ## Supported Capabilities
@@ -42,7 +44,7 @@ libEGL.so
 
 ## References
 
-To use the OpenGL ES API in your application development, familiarize yourself with the NDK development process and the **XComponent** usage, which are described in the following topics:
+To use OpenGL ES and perform related development, you need to understand the NDK development process and the use of components such as XComponent. For details, see:
 
 - [Getting Started with the NDK](../../napi/ndk-development-overview.md)
 
@@ -143,7 +145,7 @@ int32_t Init(void *window, int32_t width,  int32_t height)
     // Bind the EGL context to the surface.
     eglMakeCurrent(mEGLDisplay, mEGLSurface, mEGLSurface, mEGLContext);
     
-    // Create a shader program.
+    // Create the shader program.
     const char* g_vertexShader =
         "#version 300 es\n"
         "in vec4 a_pos;\n"
@@ -237,7 +239,7 @@ void Update(float angleXOffset, float angleYOffset)
     angleX = angleXOffset;
     angleY = angleYOffset;
 
-    // Y-axis rotation angle.
+    // Y-axis rotation angle. 
     float radianY = (angleY * pi) / 180.0;
     float cosY = cosf(radianY);
     float sinY = sinf(radianY);
@@ -408,7 +410,7 @@ After the EGL display connection is initialized, determine the type and configur
          }
   ```
   
-  The preceding code snippet traverses each configuration in **configs** and uses **eglGetConfigAttrib** to query the value of a specific attribute in the configuration, save the value in the fourth parameter, check whether the configuration is the desired one, and if yes, save the configuration. If the call is successful, **EGL_TRUE** is returned. Otherwise, **EGL_FALSE** is returned. In the latter case, you can use **eglGetError** to obtain the failure cause. If **EGL_BAD ATTRIBUTE** is returned, the attribute is invalid.
+  As shown above, iterate over each configuration in configs, use eglGetConfigAttrib to query the value of a specific attribute under that configuration, store the value in the fourth parameter, and determine whether the value is what you need. If it is, save the configuration for later use. If the call succeeds, EGL_TRUE is returned; if the call fails, EGL_FALSE is returned. If EGL_FALSE is returned, you can use eglGetError to query the cause of the failure. If EGL_BAD_ATTRIBUTE is returned, attribute is not a valid attribute.
   
   ```cpp
   EGLBoolean eglGetConfigAttrib(EGLDisplay display,     // Handle to the EGL display connection for which configurations are selected.
@@ -432,7 +434,7 @@ The following values can be passed in to **attrib_list** of **eglCreateWindowSur
 ```cpp
 EGL_RENDER_BUFFER EGL_SINGLE_BUFFER or EGL_BACK_BUFFER
 EGL_SINGLE_BUFFER // There is only one render buffer on the EGL surface. After the rendering is complete, the content in the render buffer is directly displayed on the screen. As a result, screen flickering or tearing may occur.
-EGL_BACK_BUFFER // There is a front buffer and a back buffer. After the rendering is complete, the content in the render buffer is first rendered to the back buffer, and then the content in the back buffer is displayed on the screen by means of buffer swapping. In this way, screen flickering or tearing can be avoided. 
+EGL_BACK_BUFFER // There is a front buffer and a back buffer. After the rendering is complete, the content in the render buffer is first rendered to the back buffer, and then the content in the back buffer is displayed on the screen by means of buffer swapping. In this way, screen flickering or tearing can be avoided.
 // The default value is EGL_BACK_BUFFER. If this parameter is set to null, the default value is used.
 ```
 The possible causes of a failure to call **eglCreateWindowSurface** are as follows:
@@ -521,7 +523,7 @@ The process of using the **XComponent** to obtain a native window is as follows:
    }
    ```
 <!--Del-->
-For details about how to use the **XComponent**, see [ArkTS XComponent Usage Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent).
+For details about how to use the ArkTS XComponent component, see [ArkTS XComponent Component Usage Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D).
 <!--DelEnd-->
 
 ### Using eglCreateContext to Create a Rendering Context
@@ -616,7 +618,7 @@ void glLinkProgram(GLuint program);
 
 Use **glLinkProgram** to link a shader program object, that is, to link the shader attached to the program object to an executable rendering pipeline.
 
-The **program** parameter is the identifier of the target shader program object. After the shader program is linked, OpenGL merges the code in each individual shader object into an executable rendering pipeline, performs connector optimization to optimize the performance of the rendering pipeline, and binds the **Uniform** variable to the information about the Uniform block.
+The parameter program is the identifier of the shader program object to be linked. When linking a shader program, OpenGL performs the following operations: merges the code in each shader object into an executable rendering pipeline, performs linker optimization to optimize the performance of the rendering pipeline, and binds the information of Uniform variables and Uniform blocks.
 
 ```cpp
 void glUseProgram(GLuint program);
@@ -716,15 +718,22 @@ You can call **glClear(GL_COLOR_BUFFER_BIT)** to clear the color buffer and fill
 GLint glGetAttribLocation(GLuint program, const GLchar *name);
 ```
 
-Use **glGetAttribLocation** to obtain the location of an attribute variable in a vertex shader. This location is determined based on the attribute name when the vertex shader program is compiled and linked. **program** is the program object to be queried, and **name** is the name of the attribute variable whose location is to be queried.
+Use **glGetAttribLocation** to obtain the location of an attribute variable in a vertex shader. This location is determined based on the attribute name when the vertex shader program is compiled and linked. **program** is the program object to be queried, and **name** is the name of the attribute variable whose location is to be queried. 
 
-### Using glGetUniformLocation to Obtain the Location of a Uniform Variable
+### Using glGetUniformLocation to Get the Uniform Variable Location
 
 ```cpp
 GLint glGetUniformLocation(GLuint program, const GLchar *name);
 ```
 
-Use **glGetUniformLocation** to obtain the location of a uniform variable in a program object. **program** is the program object to be queried, and **name** is the name of the uniform variable whose location is to be queried.
+The glGetUniformLocation function is used to query the location of a specific uniform variable in a program object. The parameters are described as follows:
+
+- program: identifier of the program object to query.
+- name: name of the uniform variable whose location is to be queried. This name must be consistent with the uniform variable name defined in the vertex or fragment shader.
+
+The return value of glGetUniformLocation is the location of the uniform variable to be queried (of the GLint type). If -1 is returned, the specified uniform variable is not found. Note that the program object must be successfully linked (by calling glLinkProgram) before this function is called. In addition, if the uniform variable is optimized out in the shader or does not exist, this function also returns -1.
+
+After the uniform variable location is obtained, you can use functions such as glUniformMatrix4fv and glUniform3f to pass data to the uniform variable.
 
 ### Using glUniformMatrix4fv to Pass a 4 x 4 Matrix
 
@@ -732,7 +741,7 @@ Use **glGetUniformLocation** to obtain the location of a uniform variable in a p
 void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 ```
 
-Use **glGetUniformLocation** to obtain the location of a uniform variable in a shader. The following parameters are available in the function:
+The glUniformMatrix4fv function is used to pass 4 x 4 matrix data to a uniform variable. The parameters are described as follows:
 - **location**: location of the uniform variable to modify.
 - **count**: Number of matrices to modify. If the target uniform variable is not an array, the value must be **1**. If the target uniform variable is an array, the value must be greater than or equal to **1**.
 - **transpose**: whether to transpose the matrix. If the value is **GL_FALSE**, the matrix is passed in column-major order. If the value is **GL_TRUE**, the matrix is passed in row-major order.
@@ -781,7 +790,7 @@ void glVertexAttribPointer(GLuint index,         // Start index of the vertex ar
                            GLint size,           // Number of components of each vertex attribute.
                            GLenum type,          // Type of each component.
                            GLboolean normalized, // Whether to map the vertex data to [0, 1] or [-1, 1] when accessing the data.
-                           GLsizei stride,       // Stride between the vertex attributes. For precision arrangement, set this parameter to 0.
+                           GLsizei stride,       // Specifies the offset between vertex attributes. Set it to 0 if the data is tightly packed.
                            const void *offset);  // Offset of the attribute in the buffer. It is the position from which data reading starts in the buffer.
 ```
 

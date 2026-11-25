@@ -5,8 +5,9 @@
 <!--Designer:  @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f591a4e488f57c0e85bc666bbc867ec6b4d2ed64 translatedAt=2026-10-29T09:08:32.832Z pushedAt=2026-10-30T03:09:59.304Z nl=1 -->
 
-Provides the capability of displaying and hiding of the magnifier. The magnifier enlarges the component content for you to view the component details.
+Provides the capability to control the display and hiding of the magnifier. The magnifier enlarges component content to facilitate viewing of details. This is suitable for scenarios where non‑text components (such as images) require detail inspection.
 
 > **NOTE**
 >
@@ -24,7 +25,13 @@ bind(id: string): void
 
 Binds the magnifier to the component with the specified ID.
 
+> **NOTE**
+>
+> Before using this API, obtain a **Magnifier** instance through the **getMagnifier()** method in **UIContext**.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,18 +62,18 @@ struct MagnifierExample {
         .height(200)
         .margin(50)
         .id('image')
-        .onTouch((event?: TouchEvent) => {
+        .onTouch((event: TouchEvent) => {
           if (event && event.sourceTool === SourceTool.Finger) {
             if (event.type === TouchType.Down) {
-              this.magnifier.bind('image')
+              this.magnifier.bind('image');
             } else if (event.type === TouchType.Move) {
-              let x = event.touches[0].x
-              let y = event.touches[0].y
-              this.magnifier.show(x, y)
+              let touchX = event.touches[0].x;
+              let touchY = event.touches[0].y;
+              this.magnifier.show(touchX, touchY);
             } else if (event.type === TouchType.Up) {
-              this.magnifier.unbind()
+              this.magnifier.unbind();
             } else if (event.type === TouchType.Cancel) {
-              this.magnifier.unbind()
+              this.magnifier.unbind();
             }
           }
         })
@@ -85,9 +92,15 @@ Sets the position of the component content displayed by the magnifier relative t
 
 > **NOTE**
 >
-> When the content of the component bound to the magnifier changes, the magnifier does not automatically update the displayed content. You need to call the **show** API to update the displayed content of the magnifier.
+> - Before using this API, obtain a **Magnifier** instance through the **getMagnifier()** method in **UIContext**.
+>
+> - Before calling this API, call [bind](#bind) to bind the target component.
+>
+> - When the content of the component bound to the magnifier changes, the content displayed by the magnifier is not automatically updated. You need to actively call the **show** API to update the content.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,8 +108,8 @@ Sets the position of the component content displayed by the magnifier relative t
 
 | Parameter     | Type        | Mandatory  | Description  |
 | -------- | ---------- | ---- | ---- |
-| x | number | Yes   | Horizontal coordinate of the component content displayed by the magnifier, relative to the component itself, in vp. If the coordinate value is greater than the component width or less than 0, the magnifier is not displayed. If the value is **undefined**, the current display status of the magnifier is retained.|
-| y | number | Yes   | Vertical coordinate of the component content displayed by the magnifier, relative to the component itself, in vp. If the coordinate value is greater than the component height or less than 0, the magnifier is not displayed. If the value is **undefined**, the current display status of the magnifier is retained.|
+| x | number | Yes | Horizontal coordinate of the component content displayed in the magnifier relative to the upper left corner of the component, in vp. The magnifier is not displayed when the coordinate value is greater than the component width or less than 0. If **undefined** is passed, the setting does not take effect and the current display state of the magnifier is retained. |
+| y | number | Yes | Vertical coordinate of the component content displayed in the magnifier relative to the upper left corner of the component, in vp. The magnifier is not displayed when the coordinate value is greater than the component height or less than 0. If **undefined** is passed, the setting does not take effect and the current display state of the magnifier is retained. |
 
 **Example**
 
@@ -108,7 +121,13 @@ unbind(): void
 
 Unbinds the magnifier from the current component.
 
+> **NOTE**
+>
+> Before using this API, obtain a **Magnifier** instance through the **getMagnifier()** method in **UIContext**.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,10 +1,11 @@
 # Buffer and FastBuffer
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=31ba07988632b6f2ed98a078bdae886436926502 translatedAt=2026-11-04T09:09:24.973Z pushedAt=2026-11-04T09:35:56.422Z nl=1 -->
 
 ## When to Use
 
@@ -42,7 +43,7 @@ The core functionalities of the FastBuffer module are as follows:
 
 1. **Memory allocation**: You can initialize a FastBuffer based on the uint32 size specified. The memory capacity is fixed after the FastBuffer is created.
 
-2. **Data read/write and copying**: You can access bytes within a buffer by index, read and write data byte-by-byte, and copy parts of a buffer to another buffer or array.
+2. **Read, write, and copy data**: You can access bytes in a FastBuffer by index, read and write data in byte blocks, and copy part of a FastBuffer to another FastBuffer or array.
 
 3. **Conversion operations**: You can convert between FastBuffer and basic types (such as Uint8Array and string) to meet different data processing requirements.
 

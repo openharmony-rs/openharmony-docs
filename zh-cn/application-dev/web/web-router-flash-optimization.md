@@ -36,6 +36,6 @@
   <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
 
   ``` TypeScript
-  Web({ src: $rawfile('xxx.html'),  controller: this.webController})
+  Web({ src: $rawfile('xxx.html'), controller: this.webController})
     .backgroundColor(Color.Gray)
   ```

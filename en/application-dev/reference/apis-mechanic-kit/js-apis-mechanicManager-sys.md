@@ -1,12 +1,11 @@
 # @ohos.distributedHardware.mechanicManager (Mechanic Manager) (System API)
-
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @qxqxqxqxqx-->
 <!--Designer: @peter__1024-->
 <!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=37a12f1e50194a2d1b2c27164b02b846158b3a86 translatedAt=2026-08-05T01:25:18.116Z pushedAt=2026-08-05T01:42:02.898Z -->
+<!-- md-trans-meta sourceCommit=9330466aa40c3118bef9fdc498038eab4805d201 translatedAt=2026-11-04T06:06:08.498Z pushedAt=2026-11-04T08:04:44.819Z nl=1 -->
 
 The **mechanicManager** module provides the mechanic device interaction capabilities, such as connection management, device control, and monitoring.
 
@@ -564,7 +563,6 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 ```
 
 ## mechanicManager.searchTarget<sup>21+</sup>
-
 searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 
 Rotates the mechanical body 360 degrees to search for the target. This API uses a promise to return the result.
@@ -574,7 +572,6 @@ Rotates the mechanical body 360 degrees to search for the target. This API uses 
 **System API**: This is a system API.
 
 **Parameters**
-
 | Name    | Type                   | Mandatory| Description  |
 | ---------- | ---------------------- | ---- | ----- |
 | target | [TargetType](#targettype21) | Yes| Target face information.|
@@ -611,6 +608,456 @@ mechanicManager.searchTarget(targetInfo,
     searchParams).then((searchResult) => {
     console.info(`'result:' ${searchResult}`);
 });
+```
+
+## mechanicManager.move
+
+move(mechId: number, params: MoveParams): Promise&lt;Result&gt;
+
+Moves a mechanic device with the specified parameters.
+  
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | Yes | ID of the mechanic device. |
+| params | [MoveParams](#moveparams) | Yes | Movement parameters. |
+
+**Return value**
+
+| Type                                        | Description        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt; | Promise used to return the movement execution result. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**Example**
+
+```ts
+let mechId: number = 0;
+let moveParams: mechanicManager.MoveParams = {
+    distance: 0,
+    angle: 0,
+    speedGear: undefined,
+    mode: undefined
+};
+try {
+  mechanicManager.move(mechId, moveParams).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.moveBySpeed
+
+moveBySpeed(mechId: number, params: SpeedParams, duration: number): Promise&lt;Result&gt;
+
+Moves a mechanic device at a specific speed.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | Yes | ID of the mechanic device. |
+| params | [SpeedParams](#speedparams) | Yes | Movement parameters. |
+| duration | number | Yes | Movement duration, in ms. |
+
+**Return value**
+
+| Type                                        | Description        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise used to return the movement execution result. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**Example**
+
+```ts
+let mechId: number = 0;
+let speedParams: mechanicManager.SpeedParams = {
+    speed: 0,
+    angle: 0,
+    mode: undefined
+};
+let duration: number = 1;
+try {
+  mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.turnBySpeed
+
+turnBySpeed(mechId: number, angleSpeed: number, duration: number): Promise&lt;Result&gt;
+
+Rotates in place at a fixed speed.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | Yes | ID of the mechanic device. |
+| angleSpeed | number | Yes | Angular speed. |
+| duration | number | Yes | Rotation duration, in ms. |
+
+**Return value**
+
+| Type                                        | Description        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise used to return the rotation result. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**Example**
+
+```ts
+let mechId: number = 0;
+let angleSpeed: number = 1.2;
+let duration: number = 1;
+try {
+  mechanicManager.turnBySpeed(mechId, angleSpeed, duration).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.isSupportAction
+
+isSupportAction(mechId: number, actionType: ActionType): boolean
+
+Checks whether a specific action is supported.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | Yes | ID of the mechanic device. |
+| actionType | [ActionType](#actiontype) | Yes | Action sequence type. |
+
+**Return value**
+
+| Type                                        | Description        |
+| ------------------------------------------- | --------- |
+| boolean | Whether the specific action is supported. true indicates supported, and false indicates not supported. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+
+**Example**
+
+```ts
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  let isSupported = mechanicManager.isSupportAction(mechId, actionType);
+  console.info(`isSupported: ${isSupported}`);
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.doAction
+
+doAction(mechId: number, actionType: ActionType): Promise&lt;Result&gt;
+
+Executes an action sequence.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | Yes | ID of the mechanic device. |
+| actionType | [ActionType](#actiontype) | Yes | Action sequence type.|
+
+**Return value**
+
+| Type                                        | Description        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise object used to return the execution result. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**Example**
+
+```ts
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  mechanicManager.doAction(mechId, actionType).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.subscribe
+
+subscribe(events: MechEventType[], callback: Callback&lt;MechEvent&gt;): void
+
+Subscribes to mechanic device events.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| events | [MechEventType](#mecheventtype) | Yes | List of events to subscribe to. |
+| callback | Callback&lt;[MechEvent](#mechevent)&gt; | Yes | Callback invoked to return the subscribed mechanic device events. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**Example**
+
+```ts
+let eventsSet: Set<mechanicManager.MechEventType> = new Set();
+let events = Array.from(eventsSet);
+try {
+  mechanicManager.subscribe(events, (event: mechanicManager.MechEvent) => {
+    console.info('subscribe callback');
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.unSubscribe
+
+unSubscribe(events: MechEventType[]): void
+
+Unsubscribes from the event.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| events | [MechEventType](#mecheventtype) | Yes | List of events to subscribe to. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**Example**
+
+```ts
+let eventsSet: Set<mechanicManager.MechEventType> = new Set();
+let events = Array.from(eventsSet);
+try {
+  mechanicManager.unSubscribe(events);
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.connectDevice
+
+connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise&lt;AttachStateChangeInfo&gt;
+
+Connects to a device based on the address.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| addrInfo | [AddressInfo](#addressinfo) | Yes | Address information. |
+| params | [ConnectParam](#connectparam) | Yes | Operation parameters. |
+
+**Return value**
+
+| Type                                        | Description        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[AttachStateChangeInfo](#attachstatechangeinfo)&gt;| Promise used to return the device attachment state. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+**Example**
+
+```ts
+let addrInfo: mechanicManager.AddressInfo = {
+  address: '123',
+  addressType: mechanicManager.AddressType.BLE_ADDR
+}
+let params: mechanicManager.ConnectParam = {
+  deviceName: "deviceName",
+  custdata: '123',
+  identifier: Number('0x551b9225')
+}
+try {
+  mechanicManager.connectDevice(addrInfo, params)
+    .then((info: mechanicManager.AttachStateChangeInfo) => {
+      console.info(`connectDevice -- info: ${JSON.stringify(info)}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.disconnectDevice
+
+disconnectDevice(mechId: number): Promise&lt;Result&gt;
+
+Disconnects a device based on the mechanic device ID.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | Yes | ID of the mechanic device. |
+
+**Return value**
+
+| Type                                        | Description        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise object used to return the execution result. |
+
+**Error codes**
+
+For details about the error codes, see [Mechanic Manager Error Codes](errorcode-mechanic.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message           |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+**Example**
+
+```ts
+let mechId: number = 0;
+try {
+  mechanicManager.disconnectDevice(mechId).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
 ```
 
 ## RotationAngles
@@ -742,6 +1189,8 @@ Enumerates the rotation results.
 | COMPLETED | 0 | Completed.|
 | INTERRUPTED | 1 | Interrupted.|
 | LIMITED | 2 | Restricted by the maximum rotation angle.|
+| TERMINATE_OBSTACLE<sup>26.0.0+<sup> | 4 | Terminated due to an obstacle. |
+| TERMINATE_CLIFF<sup>26.0.0+<sup> | 5 | Terminated due to a cliff. |
 | TIMEOUT | 3 | Operation timeout.|
 | SYSTEM_ERROR | 100 | System error.|
 
@@ -806,3 +1255,247 @@ Displays the execution result of the search command.
 | Name  | Type| Read-Only| Optional| Description|
 | ----- | ---- | ---- | --- | --- |
 | targetCount | number | No| No| Number of found targets.|
+
+## MoveParams
+
+Device movement parameters.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name  | Type| Read-Only| Optional| Description|
+| ----- | ---- | ---- | --- | --- |
+| distance | number | No| No| Movement distance (the value is restricted to an integer).|
+| angle | number | No| No| Rotation angle.|
+| speedGear | [SpeedGear](#speedgear) | No| Yes| Speed gear.|
+| mode | [MarchingMode](#marchingmode) | No| Yes| Movement mode.|
+
+## SpeedParams
+
+Speed control parameters.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name   | Type | Read-Only | Optional | Description|
+| ----- | ---- | ---- | --- | --- |
+| speed | number | No | No | Rotation or movement speed (value restricted to an integer).|
+| angle | number | No | No | Rotation angle.|
+| mode | [MarchingMode](#marchingmode) | No | Yes | Movement mode.|
+
+## SpeedGear
+
+Enumerates the speed gears.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name | Type | Value | Description |
+| ----------- | ------|---- | --------------- |
+| LOW_SPEED  | int | 0 | Low speed gear. |
+| MIDDLE_SPEED  | int | 1 | Middle speed gear, which is the default value. |
+| HIGH_SPEED   | int | -1 | High speed gear. |
+
+
+## MarchingMode
+
+Enumerates the marching modes.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name | Type | Value | Description |
+| ----------- | ------|---- | --------------- |
+| TURN_THEN_MOVE  | int | 0 | Turns first and then moves. |
+| TURNING_MOVING  | int | 1 | Moves while turning. |
+
+## ActionType
+
+Enumerates the action sequence types.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name | Type | Value | Description |
+| ----------- | ------|---- | --------------- |
+| LANDSCAPE_PORTRAIT_SWITCH  | int | 0 | Landscape/portrait rotation. |
+| PATROL_MODE  | int | 1 | Patrol mode. |
+| GREET_MODE  | int | 2 | Greeting mode. |
+| HEAD_UP  | int | 3 | Head up. |
+| HEAD_UP_SLIGHTLY  | int | 4 | Head slightly up. |
+| EYE_LEVEL  | int | 5 | Eye level. |
+| HEAD_DOWN_SLIGHTLY  | int | 6 | Head slightly down. |
+| HEAD_DOWN  | int | 7 | Head fully down. |
+| HEAD_WIGGLE  | int | 8 | Head wiggle. |
+| NOD  | int | 9 | Nod. |
+| HEAD_SHAKE  | int | 10 | Head shake. |
+| HEAD_TURN_TO_BASE  | int | 11 | Head returns to the base. |
+| BASE_TURN_TO_HEAD  | int | 12 | Base returns to the head. |
+| FRONT_TO_BACK_FLIP  | int | 13 | Gimbal flips front to back. |
+| HAPPY  | int | 1000 | Happy. |
+| ANGRY  | int | 1001 | Angry. |
+| SAD  | int | 1002 | Sad. |
+| SCARED  | int | 1003 | Scared. |
+| DANCE  | int | 2000 | Dance. |
+| ACTING_CUTE  | int | 2001 | Acting cute. |
+| CELEBRATE  | int | 2002 | Celebrate. |
+| WAKEUP  | int | 2003 | Wake up. |
+| SLEEP  | int | 2004 | Sleep. |
+| LOW_POWER  | int | 2005 | Low power. |
+| THINKING  | int | 2006 | Thinking. |
+
+## MechEvent
+
+Defines the mechanic device events.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name   | Type | Read-Only | Optional | Description|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | No | No | ID of the mechanic device. |
+| event | [MechEventType](#mecheventtype) | No | No | Event type. |
+
+## MechEventType
+
+Defines the mechanic device events.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name | Type | Value | Description |
+| ----------- | ------|---- | --------------- |
+| DEVICE_ADSORBED  | int | 0 | Adsorption event. |
+| DEVICE_UNADSORBED  | int | 1 | Non-adsorption event. |
+| REACH_CLIFF  | int | 2 | A cliff is encountered during movement. |
+| REACH_OBSTACLE  | int | 3 | An obstacle is encountered during movement. |
+| LOW_POWER  | int | 4 | The device is low on power. |
+
+## AddressInfo
+
+Defines the accessory device information.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name   | Type | Read-Only | Optional | Description|
+| ----- | ---- | ---- | --- | --- |
+| address | string | No | No | Accessory device address. |
+| addressType | [AddressType](#addresstype) | No | No | Address type. |
+
+## AddressType
+
+Enumerates the address types of a mechanic device.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name | Type | Value | Description |
+| ----------- | ------|---- | --------------- |
+| BLE_ADDR  | int | 0 | Bluetooth address type of the mechanic device. |
+
+## ConnectParam
+
+Defines the connection parameters.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name   | Type | Read-Only | Optional | Description |
+| ----- | ---- | ---- | --- | --- |
+| deviceName | string | No | Yes | Mechanic device name. |
+| identifier | number | No | Yes | Current device identifier (restricted to an integer). |
+| custdata | string | No | No | Data carried when the device is discovered. |
+
+## AttachStateChangeInfo
+
+Defines the connection parameters.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name   | Type | Read-Only | Optional | Description|
+| ----- | ---- | ---- | --- | --- |
+| state | [AttachState](#attachstate) | No | No | Attachment state. |
+| mechInfo | [MechInfo](#mechinfo) | No | No | Mechanic device information. |
+
+## AttachState
+
+Enumerates the attachment states of a mechanic device.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name | Type | Value | Description |
+| ----------- | ------|---- | --------------- |
+| ATTACHED  | int | 0 | Device attached. |
+| DETACHED  | int | 1 | Device detached. |
+
+## MechInfo
+
+Mechanic device information.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name   | Type | Read-Only | Optional | Description|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | No | No | ID of the mechanic device. |
+| mechInfo | [MechDeviceType](#mechdevicetype) | No | No | Mechanic device type. |
+| mechName | string | No | No | Mechanic device name. |
+
+## MechDeviceType
+
+Enumerates the mechanic device types.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Mechanic.Core
+
+**System API**: This API is a system API.
+
+| Name | Type | Value | Description |
+| ----------- | ------|---- | --------------- |
+| GIMBAL_DEVICE  | int | 0 | Gimbal device type. |
+| DESKTOP_GIMBAL_DEVICE  | int | 1 | Desktop gimbal. |
+| WHEELED_BASE_DEVICE  | int | 2 | Wheeled base. |
+| POCKET_GIMBAL_CAMERA_DEVICE  | int | 3 | Pocket gimbal camera. |

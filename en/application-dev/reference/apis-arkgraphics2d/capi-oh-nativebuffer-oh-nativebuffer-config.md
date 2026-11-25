@@ -1,10 +1,11 @@
 # OH_NativeBuffer_Config
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c9742d4d4a757fbb6f0510281af0e732af135c64 translatedAt=2026-11-04T10:34:21.067Z pushedAt=2026-11-04T10:35:52.744Z nl=1 -->
 
 ```c
 typedef struct {...} OH_NativeBuffer_Config
@@ -30,3 +31,4 @@ The **OH_NativeBuffer_Config** struct describes the **OH_NativeBuffer** attribut
 | int32_t format | Pixel format. For details about the available options, see [OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format).|
 | int32_t usage  | Usage of the buffer. For details about the available options, see [OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage).|
 | int32_t stride | Double pointer to the image processing instance created. Stride of the local window buffer, in bytes.<br>**Since**: 10|
+

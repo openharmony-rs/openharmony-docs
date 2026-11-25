@@ -2,10 +2,11 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1c82fe64143ca179b80fafe272ca5a84323e9159 translatedAt=2026-11-13T03:02:38.391Z pushedAt=2026-11-13T08:26:10.422Z nl=1 -->
 
 ```c
 typedef struct {...} ffrt_function_header_t
@@ -13,7 +14,7 @@ typedef struct {...} ffrt_function_header_t
 
 ## Overview
 
-The **ffrt_function_header_t** struct describes a task execution function.
+Describes a task execution body, which is used to define the execution and destruction callbacks of a task. The **exec** callback is invoked when the task is scheduled, and the **destroy** callback is invoked after the task is completed to release task-related resources. Together, they manage the complete lifecycle of an FFRT task.
 
 **Since**: 10
 
@@ -27,6 +28,8 @@ The **ffrt_function_header_t** struct describes a task execution function.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) exec | Function used to execute a task.|
-| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) destroy | Function used to destroy a task.|
-| uint64_t reserve[2] | Reserved bit, which must be set to **0**.|
+| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) exec | Function for executing the task. It is called by the framework when the task is scheduled. |
+| [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) destroy | Function for destroying the task. It is called by the framework to release resources after the task is executed. |
+| uint64_t reserve[2] | Reserved field. Set it to **0**. |
+
+

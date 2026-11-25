@@ -1,20 +1,23 @@
 # @ohos.nearlink.constant (NearLink Common Constants) (System API)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=02fce05de566ce8f56f53550eea84cf8ca0dfad8 translatedAt=2026-08-17T08:47:43.806Z pushedAt=2026-08-17T11:58:14.278Z -->
+<!-- md-trans-meta sourceCommit=dd305c3d6ada98668c2c88e9eede4ef19139d4fc translatedAt=2026-11-18T04:17:12.170Z pushedAt=2026-11-20T09:28:46.617Z nl=1 -->
 
-This module provides definitions of common constants for NearLink communication, including the device pairing status, device connection status, and device type.
+
+
+This module provides the enum values of connection interval in NearLink communication.
+
 
 **Since**: 26.0.0
 
 > **NOTE**
 >
-> The APIs provided by this module are system APIs.
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.nearlink.constant (NearLink Common Constants)](js-apis-nearlink-constant.md).
+
 
 ## Modules to Import
 

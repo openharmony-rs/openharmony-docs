@@ -5,7 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4606664f710e584bd6ff3bf94fe143ad758cd129 translatedAt=2026-09-01T02:47:51.519Z pushedAt=2026-09-02T07:17:06.785Z -->
+<!-- md-trans-meta sourceCommit=ba8152752183cb2085a5cf0998701f96bb340cdb translatedAt=2026-11-05T00:50:31.270Z pushedAt=2026-09-02T07:17:06.785Z nl=2 -->
 
 ## Introduction
 
@@ -208,13 +208,13 @@ The following describes the development procedure specific to each application s
          domain: '*.HarmonyOS.cn'
        },{
          isWildcard: true,
-         domain: '*w.HarmonyOS.cn' // Supported since API version 26.0.0.
+         domain: '*w.HarmonyOS.cn' // Supported since API version 26.0.1.
        },{
          isWildcard: true,
-         domain: 'www.HarmonyOS.*' // Supported since API version 26.0.0.
+         domain: 'www.HarmonyOS.*' // Supported since API version 26.0.1.
        },{
          isWildcard: true,
-         domain: 'www.HarmonyOS.c*' // Supported since API version 26.0.0.
+         domain: 'www.HarmonyOS.c*' // Supported since API version 26.0.1.
      }] as domain[],
      userId: 100,
      interface:'wlan0' // Supported since API version 26.0.0.

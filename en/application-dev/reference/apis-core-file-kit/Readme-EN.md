@@ -2,10 +2,11 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=59eeb9f6a3c275fe7a80a4997398fbcb8aee3ded translatedAt=2026-11-04T04:49:42.388Z pushedAt=2026-11-04T10:12:33.504Z nl=1 -->
 
 - ArkTS APIs<!--core-file-arkts-->
   - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)](js-apis-application-backupExtensionAbility.md)
@@ -19,6 +20,7 @@
   - [@ohos.file.securityLabel (Data Label)](js-apis-file-securityLabel.md)
   - [@ohos.file.statvfs (File System Space Statistics)](js-apis-file-statvfs.md)
   - [@ohos.file.storageStatistics (Application Storage Statistics)](js-apis-file-storage-statistics.md)
+  - [@ohos.file.volumeManager (Volume Management)](js-apis-file-volumemanager.md)
   - [@ohos.fileshare (File Sharing)](js-apis-fileShare.md)
   - [@ohos.file.BackupExtensionContext (Backup and Restore Extension Capability)](js-apis-file-backupextensioncontext.md)
   <!--Del-->
@@ -75,15 +77,24 @@
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md)
+    - [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md)
+    - [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md)
+    - [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md)
+    - [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md)
+    - [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md)
+    - [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md)
+    - [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md)
+    - [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md)
+    - [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md)
     - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
     - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
-    - [ArchiveWriteCtx](capi-archive-archivewritectx.md)
-    - [ArchiveReadCtx](capi-archive-archivereadctx.md)
-    - [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md)
-    - [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md)
+    - [ArchiveWriteCtx*](capi-archive-archivewritectx.md)
+    - [ArchiveReadCtx*](capi-archive-archivereadctx.md)
+    - [ArchiveStreamWriteCtx*](capi-archive-archivestreamwritectx.md)
+    - [ArchiveStreamReadCtx*](capi-archive-archivestreamreadctx.md)
 - Error Codes<!--core-file-arkts-errcode-->
   - [File Management Error Codes](errorcode-filemanagement.md)
   <!--Del-->
-  - [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md)
+  - [Cloud Disk Management Error Codes (System API)](errorcode-clouddiskmanager-sys.md)
   <!--DelEnd-->
-  

@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:33:33.375Z pushedAt=2026-08-22T03:29:48.329Z -->
+<!-- md-trans-meta sourceCommit=21d5d5f3f928e5fc857cd41aae0935ab534c5ac6 translatedAt=2026-11-05T01:00:48.366Z pushedAt=2026-08-22T03:29:48.329Z nl=2 -->
 
 ## Overview
 
@@ -87,8 +87,13 @@ The following table lists the APIs for registering and using custom fonts. For d
 
    ``` C++
    int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
+   // 0 indicates success. Otherwise, log the error code, release the font collection, and return.
+   if (errorCode != 0) {
+       DRAWING_LOGE("OH_Drawing_RegisterFont failed, errorCode: %{public}d", errorCode);
+       OH_Drawing_DestroyFontCollection(fontCollection);
+       return;
+   }
    ```
-
 6. After the custom font is successfully registered, call **OH_Drawing_CreateTextStyle()** to create a text style object and call **OH_Drawing_SetTextStyleFontFamilies()** to add the custom font.
 
    <!-- @[custom_font_c_custom_font_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
@@ -126,6 +131,9 @@ The following table lists the APIs for registering and using custom fonts. For d
    OH_Drawing_TypographyLayout(typography, maxWidth);
    // Draw the text on the canvas (0,100).
    OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
+   // Release the paragraph and paragraph builder.
+   OH_Drawing_DestroyTypography(typography);
+   OH_Drawing_DestroyTypographyHandler(handler);
    ```
 
 8. To release a custom font, call the **OH_Drawing_UnregisterFont** API.
@@ -146,4 +154,10 @@ The following table lists the APIs for registering and using custom fonts. For d
    OH_Drawing_TypographyLayout(typography1, maxWidth);
    // Draw the text on the canvas (0, 300).
    OH_Drawing_TypographyPaint(typography1, cCanvas_, 0, 300);
+   // Release memory.
+   OH_Drawing_DestroyTypography(typography1);
+   OH_Drawing_DestroyTypographyHandler(handler1);
+   OH_Drawing_DestroyTypographyStyle(typographyStyle);
+   OH_Drawing_DestroyTextStyle(textStyle);
+   OH_Drawing_DestroyFontCollection(fontCollection);
    ```

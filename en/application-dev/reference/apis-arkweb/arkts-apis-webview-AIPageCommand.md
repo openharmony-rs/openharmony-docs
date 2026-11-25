@@ -1,12 +1,11 @@
 # AIPageCommand
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=834fb8867c57c74a3b50ed24000e6570d97317a8 translatedAt=2026-08-13T13:23:44.791Z pushedAt=2026-08-17T08:14:23.346Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-11-04T10:46:01.928Z pushedAt=2026-11-04T10:51:01.304Z nl=1 -->
 
 `AIPageCommand` defines the JSON command protocol supported by [executeAIPageCommand](./arkts-apis-webview-WebviewController.md), including the input parameter format and response format of different commands. Before calling this API, the app needs to serialize the command object into a JSON string.
 
@@ -590,6 +589,7 @@ struct Index {
 }
 ```
 
+
 ## getZoomLevel
 
 Obtains the scale ratio of the current web page. This command is a pure query operation and is not restricted by [zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22).
@@ -668,4 +668,4 @@ On failure:
   "message": "browser or host is null"
 }
 ```
-<!--no_check-->
+

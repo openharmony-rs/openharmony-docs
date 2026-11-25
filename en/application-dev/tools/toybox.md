@@ -5,7 +5,7 @@
 <!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=cf6296169fb396f1e68d81a285b8a379497cf438 translatedAt=2026-10-10T04:03:04.201Z pushedAt=2026-10-12T03:13:58.392Z -->
+<!-- md-trans-meta sourceCommit=ae34b5c3c21d4dd01212481e6bc0b98790f63a41 translatedAt=2026-11-16T09:21:39.667Z pushedAt=2026-11-16T11:04:35.455Z nl=1 -->
 
 Toybox is a lightweight collection of Linux command line utilities. It combines many common Linux command line utilities into a single executable file.
 
@@ -230,16 +230,16 @@ Format: help [-ahu] [COMMAND]
 | <!--DelRow-->chattr    | Modifies the file attributes of a Linux Ext2 file system.<br>usage: chattr [-R] [-+=AacDdijsStTu] [-v version] [File...] |
 | chcon     | Modifies the SELinux security context of a file.<br>usage: chcon [-hRv] CONTEXT FILE... |
 | chgrp/chown | Modifies the group of a file.<br>usage: chgrp/chown [-RHLP] [-fvh] GROUP FILE... |
-| chmod     | Changes the access mode of a file (recursively with **-R**).<br>usage: chmod [-R] MODE FILE... |
+| chmod     | Changes the mode of a file (recursively with **-R**).<br>usage: chmod [-R] MODE FILE... |
 | cksum     | Outputs the checksum, length, and file name of a file using 32-bit CRC algorithm. If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: cksum [-HIPLN] [FILE...] |
-| cmp       | Compares the contents of two files. (If only one file is specified, the command compares the file contents with the contents of the standard input device). You can specify whether to skip a certain number of bytes at the beginning.<br>usage: cmp [-ls] [-n LEN] FILE1 [FILE2 [SKIP1 [SKIP2]]] |
+| cmp       | Compares the contents of files. (If only one file is specified, the command compares the file contents with the contents of the standard input device). You can specify whether to skip a certain number of bytes at the beginning.<br>usage: cmp [-ls] [-n LEN] FILE1 [FILE2 [SKIP1 [SKIP2]]] |
 | comm      | Reads the contents from **FILE1** and **FILE2** in sequence and outputs three text columns: lines only in **FILE1**, lines only in **FILE2**, and lines in both files. "-" indicates a standard input device.<br>usage: comm [-123] FILE1 FILE2  |
 | count     | Copies the standard input device to the standard output device and displays a simple progress indicator to the standard error output **stderr**.<br>usage: count [-l] |
 | cp        | Copies the contents from **SOURCE** to **DEST**. If there are multiple sources, **DEST** must be a directory.<br>usage: cp [-aDdFfHiLlnPpRrsTuv] [--preserve=motcxa] [-t TARGET] SOURCE... [DEST] |
 | cpio      | Reads and writes files from the **cpio** archive in the **newc** format.<br>usage: cpio -{o \| t \| i \| p DEST} [-v] [--verbose] [-F FILE] [--no-preserve-owner]<br>&emsp;[ignored: -mdu -H newc] |
-| crc32     | Outputs the CRC32 checksum of each file.<br>usage: crc32 [file...] |
+| crc32     | Outputs the crc32 checksum of each file.<br>usage: crc32 [file...] |
 | cut       | Prints selected parts of lines from each file to the standard output device. Each selection list is separated by a comma, which can be a number (counted from 1) or a range separated by a dash (where **X-** indicates X to the end of the line, and **-X** indicates from the start to X).<br>usage: cut [-Ds] [-bcCfF LIST] [-dO DELIM] [FILE...] |
-| dd        |  Converts and copies a file. It can be used to create disk mirroring, back up data, and convert character encoding.<br>usage: dd [if \| of=FILE] [ibs \| obs \| bs \| count \| seek \| skip=N] [conv \| status \| iflag \| oflag=FLAG[,FLAG...]] |
+| dd        |  Converts and copies a file. It can be used to create disk images, back up data, and convert character encoding.<br>usage: dd [if \| of=FILE] [ibs \| obs \| bs \| count \| seek \| skip=N] [conv \| status \| iflag \| oflag=FLAG[,FLAG...]] |
 | diff      | Compares files or folders and outputs their differences.<br>usage: diff [-abBdiNqrTstw] [-L LABEL] [-S FILE] [-U LINES] [-F REGEX ] FILE1 FILE2 |
 | dirname   | Displays the directory portion of a path.<br>usage: dirname PATH... |
 | dos2unix  | Converts the newline format in a file from DOS "\\r\\n" to Unix "\\n". If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: dos2unix [FILE...] |
@@ -249,9 +249,9 @@ Format: help [-ahu] [COMMAND]
 | expand    | Expands a tab to a space based on the input parameter.<br>usage: expand [-t TABLIST] [FILE...] |
 | fallocate | Reserves space for a file in a file system.<br>usage: fallocate [-o OFFSET] -l SIZE FILE |
 | file      | Checks a file and describes its content type.<br>usage: file [-bhLs] [FILE...] |
-| find      | Finds a file in the directory.<br>usage: find [-HL] [DIR...] [<options>] |
+| find      | Finds a file in the directory.<br/>usage: find [-HL] [DIR...] [&lt;options&gt;] |
 | flock     | Manages the advisory lock.<br>usage: flock [-sxun] fd |
-| fmt       | Reformats the input to a wordwrap of a given line length, preserves the existing indentation level, and writes it to the standard output device.<br>usage: fmt [-w WIDTH] [FILE...] |
+| fmt       | Reformats the input into lines of a given length, preserves the existing indentation levels, and writes the result to standard output.<br>usage: fmt [-w WIDTH] [FILE...] |
 | gunzip    | Decompresses a file. If no file is specified, the command decompresses the standard input device as a standard output device. After the command is successfully executed, the input file is deleted and replaced with a new file without the file name extension .gz.<br>usage: gunzip [-cfkt] [FILE...] |
 | head      | Copies the first line in a file to the standard output device. If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: head [-cn NUM] [-qv] [FILE...] |
 | hexedit   | Edits a hexadecimal file. All modifications are written to disk immediately.<br>usage: hexedit [-r] FILE |
@@ -274,7 +274,7 @@ Format: help [-ahu] [COMMAND]
 | nl        | Adds a line number to an input file.<br>usage: nl [-E] [-l #] [-b MODE] [-n STYLE] [-s SEPARATOR] [-v #] [-w WIDTH] [FILE...] |
 | od        | Dumps data in octal/hexadecimal format.<br>usage: od [-bcdosxv] [-j #] [-N #] [-w #] [-A doxn] [-t acdfoux[#]] |
 | paste     | Merges corresponding lines from each input file.<br>usage: paste [-s] [-d DELIMITERS] [FILE...] |
-| patch     | Applies a diff file to one or more files.<br>usage: patch [-d DIR] [-i file] [-p depth] [-Rlsu] [--dry-run] |
+| patch     | Applies a unified diff file to one or more files.<br>usage: patch [-d DIR] [-i file] [-p depth] [-Rlsu] [--dry-run] |
 | pgrep     | Searches for a process. **PATTERN** is an extended regular expression used to check command names.<br>usage: pgrep [-clfnovx] [-d DELIM] [-L SIGNAL] [PATTERN] [-G GID,] [-g PGRP,] [-P PPID,] [-s SID,] [-t TERM,] [-U UID,] [-u EUID,] |
 | printf    | Uses printf in C to format and print parameters based on the **FORMAT**.<br>usage: printf FORMAT [ARGUMENT...] |
 | pwd       | Prints the working (current) directory.<br>usage: pwd [-L \| -P] |
@@ -285,7 +285,7 @@ Format: help [-ahu] [COMMAND]
 | rm        | Removes a file.<br>usage: rm [-fiRrv] FILE... |
 | rmdir     | Removes one or more directories.<br>usage: rmdir [-p] [DIR...] |
 | sed       | Stream editor that applies the edit script to the input line.<br>usage: sed [-inrszE] [-e SCRIPT]... \| SCRIPT [-f SCRIPT\_FILE]... [FILE...] |
-| seq       | Counts in ascending order from the beginning (specified by **first**) to the end (specified by **last**). If no parameter is carried, the default value is 1.  The parameter can be a negative number or a floating point number.<br>usage: seq [-w \| -f fmt\_str] [-s sep\_str] [first] [increment] last |
+| seq       | Counts in ascending order from the beginning (specified by **first**) to the end (specified by **last**). If no parameter is carried, the default value is 1. The parameter can be a negative number or a floating point number.<br>usage: seq [-w \| -f fmt\_str] [-s sep\_str] [first] [increment] last |
 | setfattr  | Writes POSIX extended attributes.<br>usage: setfattr [-h] [-x \| -n NAME] [-v VALUE] FILE... |
 | sha1sum/sha256sum | Calculates the SHA hash value.<br>usage: ???sum [-bcs] [FILE]... |
 | shred     | Securely deletes files (overwrite file contents with random data).<br/>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
@@ -299,7 +299,7 @@ Format: help [-ahu] [COMMAND]
 | tee       | Copies the standard input device to each listed file, and also to the standard output device. "-" indicates a standard output device.<br>usage: tee [-ai] [FILE...] |
 | touch     | Updates the access and modification time of each file to the current time.<br>usage: touch [-amch] [-d DATE] [-t TIME] [-r FILE] FILE... |
 | truncate  | Sets the length of the file, sparsely expanding if necessary.<br>usage: truncate [-c] -s SIZE file... |
-| uniq      | Reports or filters output duplicate lines in a file.<br>usage: uniq [-cduiz] [-w MAXCHARS] [-f FIELDS] [-s CHAR] [INFILE [OUTFILE]] |
+| uniq      | Reports or filters duplicate lines in a file.<br>usage: uniq [-cduiz] [-w MAXCHARS] [-f FIELDS] [-s CHAR] [INFILE [OUTFILE]] |
 | unix2dos  | Converts the newline format from Unix "\\n" to DOS "\\r\\n". If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: unix2dos [FILE...] |
 | unlink    | Removes a file.<br>usage: unlink FILE |
 | uudecode  | Decodes a file from the standard input device (or INFILE).<br>usage: uudecode [-o OUTFILE] [INFILE] |

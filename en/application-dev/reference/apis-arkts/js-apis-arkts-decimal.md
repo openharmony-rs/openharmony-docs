@@ -1,10 +1,11 @@
 # @arkts.math.Decimal (High-Precision Math Library Decimal)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cc99e5187aa152bc96569f8b87fca412b6552a60 translatedAt=2026-11-16T05:22:13.996Z pushedAt=2026-11-16T06:31:14.177Z nl=1 -->
 
 The Decimal module provides high-precision mathematical operation capabilities, supporting high-precision floating-point calculations.
 
@@ -26,7 +27,7 @@ type Value = string | number | Decimal
 
 Enumerates the value types available for constructing a decimal.
 
-The actual value type can be the union of the types listed below.
+The value can be any of the following types.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -34,8 +35,8 @@ The actual value type can be the union of the types listed below.
 
 | Type               | Description                          |
 | ------------------- | ------------------------------ |
-| string              | The value can be any string.|
-| number              | The value can be any number.|
+| string              | Indicates that the value type is string, which can accept a numeric-format string when constructing a Decimal. |
+| number              | Indicates that the value type is number, which can accept a finite numeric value when constructing a Decimal. |
 | [Decimal](#decimal) | The value is a decimal.     |
 
 ## Rounding
@@ -44,7 +45,7 @@ type Rounding = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 
 Enumerates the rounding modes available.
 
-The actual rounding mode can be the union of the types listed below.
+The value can be any of the following types.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -68,7 +69,7 @@ type Modulo = Rounding | 9
 
 Enumerates the rounding modes available in the modulo operation.
 
-The actual rounding mode can be the union of the types listed below.
+The value can be any of the following types.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -76,14 +77,12 @@ The actual rounding mode can be the union of the types listed below.
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| [Rounding](#rounding) | Same rounding mode as that represented by [Rounding](#constants). |
-| 9                      | Positive remainder Euclid's division, which is the same as [Decimal.EUCLIDEAN](#constants).|
+| [Rounding](#rounding) | Rounding type under modulo operation. Same as the rounding mode represented by [Rounding](#rounding).  |
+| 9                      | Under modulo operation, the remainder is always positive. Euclidean division, consistent with [Decimal.EUCLIDEAN](#constants). |
 
 ## DecimalConfig
 
 Describes the configuration of a **Decimal** object. You can call [Decimal.set](#set) to set these properties.
-
-### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -92,14 +91,14 @@ Describes the configuration of a **Decimal** object. You can call [Decimal.set](
 | Name     | Type                  | Read-Only| Optional| Description                                                        |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
 | precision | number                 | No  | Yes  | Maximum number of significant digits of the result of an operation. The value range is [1, 1e9], and the default value is **20**.    |
-| rounding  | [Rounding](#rounding) | No  | Yes  | Rounding mode. The value is an integer ranging from 0 to 8, and the default value is **4**.                 |
+| rounding  | [Rounding](#rounding) | No   | Yes   | Rounding mode, an integer in the value range [0, 8]. The default value is 4.                  |
 | toExpNeg  | number                 | No  | Yes  | Negative exponent value at and below which [toString](#tostring) returns exponential notation. The value range is [-9e15, 0], and the default value is **-7**.|
 | toExpPos  | number                 | No  | Yes  | Positive exponent value at and above which [toString](#tostring) returns exponential notation. The value range is [0, 9e15], and the default value is **21**.|
 | minE      | number                 | No  | Yes  | Minimum negative exponents. A decimal with an exponent less than this minimum value underflows towards zero. The value range is [-9e15, 0], and the default value is **-9e15**.|
 | maxE      | number                 | No  | Yes  | Maximum positive exponent. A decimal with an exponent greater than this maximum value overflows to infinity. The value range is [0, 9e15], and the default value is **9e15**.|
 | crypto    | boolean                | No  | Yes  | Whether to use a pseudorandom number for encryption. The value **true** means to use a pseudorandom number for encryption, and **false** means the opposite. The default value is **false**. The capability is not supported yet, and error code 10200061 is reported if it is used. |
-| modulo    | [Modulo](#modulo)      | No  | Yes  | Rounding mode used in the modulo operation. The value is an integer ranging from 0 to 9, and the default value is **1**.   |
-| defaults  | boolean                | No  | Yes  | Whether the default value is used if no value is passed in for a property. The value **true** means that the default value is used, and **false** means the opposite. The default value is **true**.|
+| modulo    | [Modulo](#modulo)      | No   | Yes   | Rounding mode used in modulo operation, an integer in the value range [0, 9]. The default value is 1.    |
+| defaults  | boolean                | No   | Yes   | Indicates whether unspecified properties are set to default values. true means default values are used, and false means default values are not used. The default value is false. |
 
 ## Decimal
 
@@ -204,7 +203,7 @@ Returns a **Decimal** object representing the nearest integer to which this deci
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the nearest integer rounded.|
+| [Decimal](#decimal) | Returns a Decimal object instance rounded toward negative infinity. |
 
 **Example**
 
@@ -227,7 +226,7 @@ Returns a **Decimal** object representing the nearest integer to which this deci
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the nearest integer rounded.|
+| [Decimal](#decimal) | Returns a Decimal object instance rounded toward positive infinity. |
 
 **Example**
 
@@ -312,7 +311,6 @@ add(n: Value): Decimal
 
 Returns a **Decimal** object representing the sum of adding the specified number *n* to this decimal.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -351,7 +349,6 @@ sub(n: Value): Decimal
 
 Returns a **Decimal** object representing the difference of subtracting the specified number *n* from this decimal.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -390,7 +387,6 @@ mul(n: Value): Decimal
 
 Returns a **Decimal** object representing the product of multiplying this decimal by the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -429,7 +425,6 @@ div(n: Value): Decimal
 
 Returns a **Decimal** object representing the quotient of dividing this decimal by the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -468,7 +463,6 @@ mod(n: Value): Decimal
 
 Returns a **Decimal** object representing the remainder of dividing this decimal by the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -478,13 +472,13 @@ You can use [DecimalConfig.precision](#decimalconfig) to specify the precision a
 
 | Name| Type           | Mandatory| Description            |
 | ------ | --------------- | ---- | ---------------- |
-| n      | [Value](#value) | Yes  | Divisor.|
+| n      | [Value](#value) | Yes   | Divisor of the modulo operation. |
 
 **Return value**
 
 | Type   | Description                           |
 | ------- | ------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the remainder.|
+| [Decimal](#decimal) | Returns a Decimal object instance after the modulo operation. |
 
 **Error codes**
 
@@ -507,7 +501,6 @@ sqrt(): Decimal
 
 Returns a **Decimal** object representing the square root of this decimal.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -532,7 +525,6 @@ cbrt(): Decimal
 
 Returns a **Decimal** object representing the cube root of this decimal.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -557,7 +549,6 @@ pow(n: Value): Decimal
 
 Returns a **Decimal** object representing the value resulting from raising this decimal to the power of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -567,7 +558,7 @@ You can use [DecimalConfig.precision](#decimalconfig) to specify the precision a
 
 | Name| Type           | Mandatory| Description            |
 | ------ | --------------- | ---- | ---------------- |
-| n      | [Value](#value) | Yes  | Power of the exponentiation operation.|
+| n      | [Value](#value) | Yes   | Exponent value of the power operation. |
 
 **Return value**
 
@@ -597,7 +588,6 @@ exp(): Decimal
 
 Returns a **Decimal** object representing the value resulting from raising e to the power of this decimal.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -628,9 +618,8 @@ console.info("test Decimal exp:" + data.toString()); // 'test Decimal exp:7.3890
 
 log(n: Value): Decimal
 
-Returns a **Decimal** object representing the logarithm of this decimal to the specified base *n*.
+Returns a Decimal object after a logarithm operation, whose value is the logarithm of this Decimal with base n.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -670,7 +659,6 @@ ln(): Decimal
 
 Returns a **Decimal** object representing the natural logarithm of this decimal.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -701,7 +689,8 @@ console.info("test Decimal ln:" + data.toString()); // 'test Decimal ln:69.28456
 
 cos(): Decimal
 
-Returns a **Decimal** object representing the cosine of this decimal.
+Returns a new Decimal object whose value is the cosine of this Decimal. The input value is in radians.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -726,6 +715,7 @@ sin(): Decimal
 
 Returns a **Decimal** object representing the sine of this decimal.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -748,6 +738,7 @@ console.info("test Decimal sin:" + data.toString()); // 'test Decimal sin:0.6816
 tan(): Decimal
 
 Returns a **Decimal** object representing the tangent of this decimal.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -772,6 +763,7 @@ cosh(): Decimal
 
 Returns a **Decimal** object representing the hyperbolic cosine of this decimal.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -794,6 +786,7 @@ console.info("test Decimal cosh:" + data.toString()); // 'test Decimal cosh:1.12
 sinh(): Decimal
 
 Returns a **Decimal** object representing the hyperbolic sine of this decimal.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -818,6 +811,7 @@ tanh(): Decimal
 
 Returns a **Decimal** object representing the hyperbolic tangent of this decimal.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -840,6 +834,7 @@ console.info("test Decimal tanh:" + data.toString()); // 'test Decimal tanh:0.46
 acos(): Decimal
 
 Returns a **Decimal** object representing the arc cosine of this decimal.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -872,6 +867,7 @@ asin(): Decimal
 
 Returns a **Decimal** object representing the arc sine of this decimal.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -903,6 +899,7 @@ atan(): Decimal
 
 Returns a **Decimal** object representing the arc tangent of this decimal.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -932,7 +929,8 @@ console.info("test Decimal atan:" + data.toString()); // 'test Decimal atan:0.64
 
 acosh(): Decimal
 
-Returns a **Decimal** object representing the inverse hyperbolic cosine of this decimal.
+Returns a new Decimal object whose value is the inverse hyperbolic cosine of this Decimal value.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -942,7 +940,7 @@ Returns a **Decimal** object representing the inverse hyperbolic cosine of this 
 
 | Type               | Description                                       |
 | ------------------- | ------------------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the inverse hyperbolic cosine.|
+| [Decimal](#decimal) | Returns a Decimal object instance that calculates the inverse hyperbolic cosine value. |
 
 **Error codes**
 
@@ -963,7 +961,8 @@ console.info("test Decimal acosh:" + data.toString()); // 'test Decimal acosh:4.
 
 asinh(): Decimal
 
-Returns a **Decimal** object representing the inverse hyperbolic sine of this decimal.
+Returns a new Decimal object whose value is the inverse hyperbolic sine of this Decimal value.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -973,7 +972,7 @@ Returns a **Decimal** object representing the inverse hyperbolic sine of this de
 
 | Type               | Description                                       |
 | ------------------- | ------------------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the inverse hyperbolic sine.|
+| [Decimal](#decimal) | Returns a Decimal object instance that calculates the inverse hyperbolic sine value. |
 
 **Error codes**
 
@@ -994,7 +993,8 @@ console.info("test Decimal asinh:" + data.toString()); // 'test Decimal asinh:4.
 
 atanh(): Decimal
 
-Returns a **Decimal** object representing the inverse hyperbolic tangent of this decimal.
+Returns a new Decimal object whose value is the inverse hyperbolic tangent of this Decimal value.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1004,7 +1004,7 @@ Returns a **Decimal** object representing the inverse hyperbolic tangent of this
 
 | Type               | Description                                       |
 | ------------------- | ------------------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the inverse hyperbolic tangent.|
+| [Decimal](#decimal) | Returns a Decimal object instance that calculates the inverse hyperbolic tangent value. |
 
 **Error codes**
 
@@ -1025,7 +1025,7 @@ console.info("test Decimal atanh:" + data.toString()); // 'test Decimal atanh:0.
 
 comparedTo(n: Value): number
 
-Compares this decimal with the specified number *n*.
+Returns the comparison result between this Decimal and the compared value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1041,7 +1041,7 @@ Compares this decimal with the specified number *n*.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| number | Comparison result, which can be any of the following:<br>**1**: The decimal is greater than *n*.<br>**-1**: The decimal is less than *n*.<br>**0**: The decimal is equal to *n*.<br>**NaN**: Either the decimal or *n* is Not a Number (NaN).|
+| number | Returns the comparison result between this Decimal and n.<br>1: This Decimal is greater than the compared value.<br>-1: This Decimal is less than the compared value.<br>0: This Decimal is equal to the compared value.<br>NaN: One of this Decimal and the compared value is NaN. |
 
 **Error codes**
 
@@ -1083,7 +1083,7 @@ Checks whether this decimal is equal to the specified number *n*.
 
 | Type   | Description                                            |
 | ------- | ------------------------------------------------ |
-| boolean | Check result. The value **true** is returned if they are equal; otherwise, **false** is returned.|
+| boolean | true indicates that this Decimal is equal to the compared value, and false indicates that this Decimal is not equal to the compared value. |
 
 **Error codes**
 
@@ -1121,7 +1121,7 @@ Checks whether this decimal is greater than the specified number *n*.
 
 | Type   | Description                                          |
 | ------- | ---------------------------------------------- |
-| boolean | Check result. The value **true** is returned if the decimal is greater than *n*; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is greater than the compared value, and false indicates that the Decimal is less than or equal to the compared value. |
 
 **Error codes**
 
@@ -1159,7 +1159,7 @@ Checks whether this decimal is greater than or equal to the specified number *n*
 
 | Type   | Description                                              |
 | ------- | -------------------------------------------------- |
-| boolean | Check result. The value **true** is returned if the decimal is greater than or equal to *n*; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is greater than or equal to the compared value, and false indicates that the Decimal is less than the compared value. |
 
 **Error codes**
 
@@ -1197,7 +1197,7 @@ Checks whether this decimal is less than the specified number *n*.
 
 | Type   | Description                                          |
 | ------- | ---------------------------------------------- |
-| boolean | Check result. The value **true** is returned if the decimal is less than *n*; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is less than the comparison value, and false indicates that the Decimal is greater than or equal to the comparison value. |
 
 **Error codes**
 
@@ -1211,7 +1211,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let data: Decimal = new Decimal(0.3).sub(0.2);
-let data1: boolean = data.lessThan(0.1)
+let data1: boolean = data.lessThan(0.1);
 console.info("test Decimal lessThan:" + data1); // 'test Decimal lessThan:false'
 ```
 
@@ -1235,7 +1235,7 @@ Checks whether this decimal is less than or equal to the specified number *n*.
 
 | Type   | Description                                              |
 | ------- | -------------------------------------------------- |
-| boolean | Check result. The value **true** is returned if the decimal is less than or equal to *n*; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is less than or equal to the compared value, and false indicates that the Decimal is greater than the compared value. |
 
 **Error codes**
 
@@ -1249,7 +1249,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let data: Decimal = new Decimal(0.1);
-let data1: boolean = data.lessThanOrEqualTo(new Decimal(0.3).sub(0.2))
+let data1: boolean = data.lessThanOrEqualTo(new Decimal(0.3).sub(0.2));
 console.info("test Decimal lessThanOrEqualTo:" + data1); // 'test Decimal lessThanOrEqualTo:true'
 ```
 
@@ -1267,7 +1267,7 @@ Checks whether this decimal is finite.
 
 | Type   | Description                                        |
 | ------- | -------------------------------------------- |
-| boolean | Check result. The value **true** is returned if the decimal is finite; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is a finite value, and false indicates that the Decimal is not a finite value (such as Infinity or NaN). |
 
 **Example**
 
@@ -1291,7 +1291,7 @@ Checks whether this decimal is an integer.
 
 | Type   | Description                                      |
 | ------- | ------------------------------------------ |
-| boolean | Check result. The value **true** is returned if the decimal is an integer; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is an integer, and false indicates that the Decimal is not an integer. |
 
 **Example**
 
@@ -1315,7 +1315,7 @@ Checks whether this decimal is NaN.
 
 | Type   | Description                                     |
 | ------- | ----------------------------------------- |
-| boolean | Check result. The value **true** is returned if the decimal is NaN; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is NaN, and false indicates that the Decimal is not NaN. |
 
 **Example**
 
@@ -1339,7 +1339,7 @@ Checks whether this decimal is negative (including a distinction between positiv
 
 | Type   | Description                                      |
 | ------- | ------------------------------------------ |
-| boolean | Check result. The value **true** is returned if the decimal is negative; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is a negative number, and false indicates that the Decimal is not a negative number. |
 
 **Example**
 
@@ -1367,7 +1367,7 @@ Checks whether this decimal is positive (including a distinction between positiv
 
 | Type   | Description                                      |
 | ------- | ------------------------------------------ |
-| boolean | Check result. The value **true** is returned if the decimal is positive; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is a positive number, and false indicates that the Decimal is not a positive number. |
 
 **Example**
 
@@ -1395,7 +1395,7 @@ Returns whether this decimal is zero or minus zero.
 
 | Type   | Description                                         |
 | ------- | --------------------------------------------- |
-| boolean | Check result. The value **true** is returned if the decimal is zero or minus zero; otherwise, **false** is returned.|
+| boolean | true indicates that the Decimal is 0 or -0, and false indicates that the Decimal is neither 0 nor -0. |
 
 **Example**
 
@@ -1411,7 +1411,6 @@ dividedToIntegerBy(n: Value): Decimal
 
 Returns a **Decimal** object representing the integer part of this decimal divided by the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1450,7 +1449,7 @@ console.info("test Decimal dividedToIntegerBy:" + data2.toString()); // 'test De
 
 negate(): Decimal
 
-Negates this decimal.
+Negates the Decimal value (multiplies by -1).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1476,7 +1475,6 @@ toBinary(): string
 
 Converts this decimal into a binary string.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1581,7 +1579,6 @@ toOctal(): string
 
 Converts this decimal into an octal string.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1686,7 +1683,6 @@ toHexadecimal(): string
 
 Converts this decimal into a hexadecimal string.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1789,7 +1785,7 @@ console.info("test Decimal toHexadecimal:" + data1); // 'test Decimal toHexadeci
 
 toDecimalPlaces(): Decimal
 
-Truncates this decimal, without rounding.
+Returns a Decimal object with the specified number of decimal places retained, without rounding the decimals.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1886,7 +1882,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let data: Decimal = new Decimal(9876.54321);
 let data1: Decimal = data.toDecimalPlaces(1, 0);
 console.info("test Decimal toDecimalPlaces:" + data1.toString()); // 'test Decimal toDecimalPlaces:9876.6'
-data1 = data.toDecimalPlaces(1, Decimal.ROUND_DOWN) // data1: '9876.5'
+data1 = data.toDecimalPlaces(1, Decimal.ROUND_DOWN); // data1: '9876.5'
 ```
 
 ### toExponential
@@ -1998,7 +1994,7 @@ console.info("test Decimal toExponential:" + data1); // 'test Decimal toExponent
 
 toFixed(): string
 
-Converts this decimal to a string expressed in decimal fixed-point mode, without rounding.
+Converts the value to a string in decimal fixed-point notation, without rounding the decimals.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2022,7 +2018,7 @@ console.info("test Decimal toFixed:" + data1); // 'test Decimal toFixed:3.456'
 
 toFixed(decimalPlaces: number): string
 
-Converts this decimal to a string expressed in decimal fixed-point mode, with the number of decimal places specified.
+Converts the value to a string in decimal fixed-point notation, with the number of decimal places set by decimalPlaces.
 
 You can use [DecimalConfig.rounding](#decimalconfig) to set the rounding mode.
 
@@ -2054,10 +2050,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let data: Decimal = new Decimal(3.456);
-let data1: string = data.toFixed(0)
+let data1: string = data.toFixed(0);
 console.info("test Decimal toFixed:" + data1); // 'test Decimal toFixed:3'
-data1 = data.toFixed(2) // data1: '3.46'
-data1 = data.toFixed(5) // data1: '3.45600'
+data1 = data.toFixed(2); // data1: '3.46'
+data1 = data.toFixed(5); // data1: '3.45600'
 ```
 
 ### toFixed
@@ -2096,7 +2092,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 let data: Decimal = new Decimal(3.456);
 let data1: string = data.toFixed(2, Decimal.ROUND_DOWN);
-console.info("test Decimal toFixed:" + data1); // b: 'test Decimal toFixed:3.45'
+console.info("test Decimal toFixed:" + data1); // data1: 'test Decimal toFixed:3.45'
 ```
 
 ### toFraction
@@ -2169,7 +2165,7 @@ data1 = pi.toFraction(1); // data1: '3, 1'
 
 toNearest(n: Value): Decimal
 
-Multiplies the specified number *n* to a value closet to this decimal and returns this closest value in the form of a **Decimal object**.
+Returns a new Decimal object whose value is the multiple of the specified value n that is closest to the original Decimal value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2185,7 +2181,7 @@ Multiplies the specified number *n* to a value closet to this decimal and return
 
 | Type   | Description                                       |
 | ------- | ------------------------------------------- |
-| Decimal | **Decimal** object representing the closest value.|
+| [Decimal](#decimal) | Returns a Decimal object that is the multiple of the specified value closest to the original value. |
 
 **Error codes**
 
@@ -2207,7 +2203,7 @@ console.info("test Decimal toNearest:" + data1.toString()); // 'test Decimal toN
 
 toNearest(n: Value, rounding: Rounding): Decimal
 
-Multiplies the specified number *n* to a value closet to this decimal and returns this closest value after rounding in the form of a **Decimal** object.
+Returns a new Decimal object whose value is the multiple of the specified value n that is closest to the original Decimal value, with the rounding mode set by rounding.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2249,7 +2245,6 @@ toPrecision(): string
 
 Converts this decimal into a string.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2285,7 +2280,7 @@ You can use [DecimalConfig.rounding](#decimalconfig) to set the rounding mode.
 
 | Name           | Type  | Mandatory| Description                  |
 | ----------------- | ------ | ---- | ---------------------- |
-| significantDigits | number | Yes  | Number of significant digits to reserve.|
+| significantDigits | number | Yes | Number of significant digits to reserve. The value is an integer in the range of [1, 1e9]. |
 
 **Return value**
 
@@ -2355,7 +2350,6 @@ toSignificantDigits(): Decimal
 
 Converts this decimal into another one with the number of significant digits specified.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2391,7 +2385,7 @@ You can use [DecimalConfig.rounding](#decimalconfig) to set the rounding mode.
 
 | Name           | Type  | Mandatory| Description                  |
 | ----------------- | ------ | ---- | ---------------------- |
-| significantDigits | number | Yes  | Number of significant digits to reserve.|
+| significantDigits | number | Yes | Number of significant digits to reserve. The value is an integer in the range of [1, 1e9]. |
 
 **Return value**
 
@@ -2663,7 +2657,7 @@ console.info("test Decimal abs:" + data.toString()); // 'test Decimal abs:0.5'
 
 static floor(n: Value): Decimal
 
-Returns a **Decimal** object representing the nearest integer to which the specified number *n* is rounded down.
+Returns a new Decimal object whose value is the result of rounding the parameter n toward negative infinity.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2700,7 +2694,7 @@ console.info("test Decimal floor:" + data.toString()); // 'test Decimal floor:1'
 
 static ceil(n: Value): Decimal
 
-Returns a **Decimal** object representing the nearest integer to which the specified number *n* is rounded up.
+Returns a new Decimal object whose value is the result of rounding the parameter n toward positive infinity.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2737,7 +2731,7 @@ console.info("test Decimal ceil:" + data.toString()); // 'test Decimal ceil:2'
 
 static trunc(n: Value): Decimal
 
-Returns a **Decimal** object representing the integer part truncated from this decimal.
+Returns a new Decimal object whose value is the integer part of the parameter n after truncation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2774,7 +2768,7 @@ console.info("test Decimal trunc:" + data.toString()); // 'test Decimal trunc:2'
 
 static clamp(n: Value, min: Value, max: Value): Decimal
 
-Returns a **Decimal** object representing the value clamped to the inclusive range of **min** and **max** of the specified number *n*. If the actual value exceeds the maximum limit, **max** is returned; if it falls below the minimum limit, **min** is returned; otherwise, the actual value is returned.
+Returns a Decimal object whose value is the value of parameter n clamped to the range from min to max. When n is greater than max, max is returned; when n is less than min, min is returned; when n is within the range, the value remains unchanged.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2816,7 +2810,6 @@ static add(x: Value, y: Value): Decimal
 
 Returns a **Decimal** object representing the sum of two numbers *x* and *y*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2856,7 +2849,6 @@ static sum(...n: Value[]): Decimal
 
 Returns a **Decimal** object representing the sum of elements in an array. This API is used to sum up the parameters. If no parameter is passed, a runtime exception will be thrown.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2895,7 +2887,6 @@ static sub(x: Value, y: Value): Decimal
 
 Returns a **Decimal** object representing the difference between two numbers *x* and *y*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2935,7 +2926,6 @@ static mul(x: Value, y: Value): Decimal
 
 Returns a **Decimal** object representing the product of two numbers *x* and *y*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2975,7 +2965,6 @@ static div(x: Value, y: Value): Decimal
 
 Returns a **Decimal** object representing the quotient of two numbers *x* and *y*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3016,7 +3005,6 @@ static mod(x: Value, y: Value): Decimal
 
 Returns a **Decimal** object representing the remainder of two numbers *x* and *y*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3026,14 +3014,14 @@ You can use [DecimalConfig.precision](#decimalconfig) to specify the precision a
 
 | Name| Type           | Mandatory| Description              |
 | ------ | --------------- | ---- | ------------------ |
-| x      | [Value](#value) | Yes  | Dividend.|
-| y      | [Value](#value) | Yes  | Divisor.  |
+| x      | [Value](#value) | Yes   | Dividend of the modulo operation. |
+| y      | [Value](#value) | Yes   | Divisor of the modulo operation.   |
 
 **Return value**
 
 | Type               | Description                             |
 | ------------------- | --------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the remainder.|
+| [Decimal](#decimal) | Returns a Decimal object instance after the modulo operation. |
 
 **Error codes**
 
@@ -3056,7 +3044,6 @@ static sqrt(n: Value): Decimal
 
 Returns a **Decimal** object representing the square root of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3095,7 +3082,6 @@ static cbrt(n: Value): Decimal
 
 Returns a **Decimal** object representing the cube root of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3143,7 +3129,7 @@ Returns a **Decimal** object representing the value resulting from raising a num
 | Name  | Type           | Mandatory| Description              |
 | -------- | --------------- | ---- | ------------------ |
 | base     | [Value](#value) | Yes  | Base of the exponentiation operation.|
-| exponent | [Value](#value) | Yes  | Power of the exponentiation operation.  |
+| exponent | [Value](#value) | Yes | Exponent value of the power operation. |
 
 **Return value**
 
@@ -3173,7 +3159,6 @@ static exp(n: Value): Decimal
 
 Returns a **Decimal** object representing the value resulting from raising e to the power of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3213,7 +3198,6 @@ static log(n: Value, base: Value): Decimal
 
 Returns a **Decimal** object representing the logarithm of the specified number *n* to the specified base.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3254,7 +3238,6 @@ static ln(n: Value): Decimal
 
 Returns a **Decimal** object representing the natural logarithm of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3294,7 +3277,6 @@ static log2(n: Value): Decimal
 
 Returns a **Decimal** object representing the base 2 logarithm of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3334,7 +3316,6 @@ static log10(n: Value): Decimal
 
 Returns a **Decimal** object representing the base 10 logarithm of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3374,7 +3355,6 @@ static cos(n: Value): Decimal
 
 Returns a **Decimal** object representing the cosine of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3413,7 +3393,6 @@ static sin(n: Value): Decimal
 
 Returns a **Decimal** object representing the sine of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3452,7 +3431,6 @@ static tan(n: Value): Decimal
 
 Returns a **Decimal** object representing the tangent of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3491,7 +3469,6 @@ static cosh(n: Value): Decimal
 
 Returns a **Decimal** object representing the hyperbolic cosine of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3530,7 +3507,6 @@ static sinh(n: Value): Decimal
 
 Returns a **Decimal** object representing the hyperbolic sine of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3569,7 +3545,6 @@ static tanh(n: Value): Decimal
 
 Returns a **Decimal** object representing the hyperbolic tangent of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3608,7 +3583,6 @@ static acos(n: Value): Decimal
 
 Returns a **Decimal** object representing the arc cosine of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3648,7 +3622,6 @@ static asin(n: Value): Decimal
 
 Returns a **Decimal** object representing the arc sine of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3688,7 +3661,6 @@ static atan(n: Value): Decimal
 
 Returns a **Decimal** object representing the arc tangent of the specified number *n*.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3726,9 +3698,8 @@ console.info("test Decimal atan:" + data.toString()); // 'test Decimal atan:0.64
 
 static acosh(n: Value): Decimal
 
-Returns a **Decimal** object representing the inverse hyperbolic cosine of the specified number *n*.
+Returns a new Decimal object whose value is the inverse hyperbolic cosine of n.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3738,13 +3709,13 @@ You can use [DecimalConfig.precision](#decimalconfig) to specify the precision a
 
 | Name| Type           | Mandatory| Description                      |
 | ------ | --------------- | ---- | -------------------------- |
-| n      | [Value](#value) | Yes  | Target number to operate.|
+| n      | [Value](#value) | Yes   | Value for which the inverse hyperbolic cosine is to be calculated. |
 
 **Return value**
 
 | Type               | Description                                          |
 | ------------------- | ---------------------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the inverse hyperbolic cosine.|
+| [Decimal](#decimal) | Returns a Decimal object instance corresponding to the inverse hyperbolic cosine of n. |
 
 **Error codes**
 
@@ -3766,9 +3737,8 @@ console.info("test Decimal acosh:" + data.toString()); // 'test Decimal acosh:4.
 
 static asinh(n: Value): Decimal
 
-Returns a **Decimal** object representing the inverse hyperbolic sine of the specified number *n*.
+Returns a new Decimal object whose value is the inverse hyperbolic sine of n.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3778,13 +3748,13 @@ You can use [DecimalConfig.precision](#decimalconfig) to specify the precision a
 
 | Name| Type           | Mandatory| Description                      |
 | ------ | --------------- | ---- | -------------------------- |
-| n      | [Value](#value) | Yes  | Target number to operate.|
+| n      | [Value](#value) | Yes   | Value for which the inverse hyperbolic sine is to be calculated. |
 
 **Return value**
 
 | Type               | Description                                          |
 | ------------------- | ---------------------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the inverse hyperbolic sine.|
+| [Decimal](#decimal) | Returns a Decimal object instance corresponding to the inverse hyperbolic sine value of n. |
 
 **Error codes**
 
@@ -3806,9 +3776,8 @@ console.info("test Decimal asinh:" + data.toString()); // 'test Decimal asinh:4.
 
 static atanh(n: Value): Decimal
 
-Returns a **Decimal** object representing the inverse hyperbolic tangent of the specified number *n*.
+Returns a new Decimal object whose value is the inverse hyperbolic tangent of n.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3818,13 +3787,13 @@ You can use [DecimalConfig.precision](#decimalconfig) to specify the precision a
 
 | Name| Type           | Mandatory| Description                      |
 | ------ | --------------- | ---- | -------------------------- |
-| n      | [Value](#value) | Yes  | Target number to operate.|
+| n      | [Value](#value) | Yes   | Value for which the inverse hyperbolic tangent is to be calculated. |
 
 **Return value**
 
 | Type               | Description                                          |
 | ------------------- | ---------------------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the inverse hyperbolic tangent.|
+| [Decimal](#decimal) | Returns a Decimal object instance corresponding to the inverse hyperbolic tangent of n. |
 
 **Error codes**
 
@@ -3848,7 +3817,6 @@ static atan2(y: Value, x: Value): Decimal
 
 Returns a **Decimal** object representing the arc tangent of y/x in the range from -π to π.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3858,14 +3826,14 @@ You can use [DecimalConfig.precision](#decimalconfig) to specify the precision a
 
 | Name| Type           | Mandatory| Description          |
 | ------ | --------------- | ---- | -------------- |
-| y      | [Value](#value) | Yes  | Dividend.|
-| x      | [Value](#value) | Yes  | Divisor.  |
+| y      | [Value](#value) | Yes   | y-coordinate value, used to calculate the arctangent of y/x and determine the quadrant. |
+| x      | [Value](#value) | Yes   | x-coordinate value, used to calculate the arctangent of y/x and determine the quadrant.   |
 
 **Return value**
 
 | Type               | Description                                                      |
 | ------------------- | ---------------------------------------------------------- |
-| [Decimal](#decimal) | **Decimal** object representing the arc tangent of y/x in the range from -π to π.|
+| [Decimal](#decimal) | Returns a Decimal object instance corresponding to the arctangent value of "y/x" in the range from -π to π. |
 
 **Error codes**
 
@@ -3889,7 +3857,6 @@ static hypot(...n: Value[]): Decimal
 
 Returns a **Decimal** object representing the Euclidean norm of elements in an array. If no parameter is passed, 0 is returned by default.
 
-You can use [DecimalConfig.precision](#decimalconfig) to specify the precision and use [DecimalConfig.rounding](#decimalconfig) to specify the rounding mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4067,7 +4034,7 @@ let data: Decimal = Decimal.random(20);
 
 static sign(n: Value): number
 
-Checks the specified number **n**. In the case of n>0, **1** is returned; in the case of n<0, **-1** is returned; in the case of n==0, **0** is returned; in the case of n==-0, **-0** is returned; in any other cases, **NaN** is returned.
+Determines the corresponding value based on the parameter: returns 1 when n > 0, returns -1 when n < 0, returns 0 when n == 0, and returns NaN otherwise.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4083,7 +4050,8 @@ Checks the specified number **n**. In the case of n>0, **1** is returned; in the
 
 | Type  | Description                              |
 | ------ | ---------------------------------- |
-| number | Value based on the check result.|
+| Decimal | Applicable version: 12-17. Returns the sign determination result of the parameter. |
+| number | Applicable version: 18+. Returns the sign determination result of the parameter.<br>1: The parameter is a positive number.<br>-1: The parameter is a negative number.<br>0: The parameter is 0.<br>NaN: The parameter is NaN. |
 
 **Error codes**
 
@@ -4245,7 +4213,7 @@ let d1 : Decimal = new Decimal(100000); // d1:'Infinity'
 <!--code_no_check-->
 ```ts
 // /entry/src/main/ets/pages/test.ets
-export function test(){
+export function test() {
   let data : Decimal = new Decimal(1.2345678901234567);
   Decimal.set({
     precision: 5,

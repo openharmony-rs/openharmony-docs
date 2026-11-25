@@ -89,7 +89,7 @@ export function Page2Builder() {
   Page2()
 }
 
-// Page2组件获得了父亲Page1组件的LocalStorage实例
+// Page2组件获得了父组件Page1的LocalStorage实例
 @Component
 struct Page2 {
   @LocalStorageLink('count') count: number = 0;
@@ -120,7 +120,7 @@ struct Page2 {
 }
 ```
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/router_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:router_map"。
 
 ```json
 {
@@ -223,7 +223,7 @@ struct Page2 {
 }
 ```
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/router_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:router_map"。
 
 ```json
 {
@@ -293,7 +293,7 @@ export function Page2Builder() {
   Page2()
 }
 
-// Page2组件获得了父亲Page1组件的LocalStorage实例
+// Page2组件获得了父组件Page1的LocalStorage实例
 @Component
 struct Page2 {
   @LocalStorageProp('count') count: number = 0;
@@ -866,7 +866,7 @@ export default class PDFData {
 <!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
 
 ``` TypeScript
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import PDFData from './model/PDFData';
 

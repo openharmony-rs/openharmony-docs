@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b14020cf5179addac6fed15ff34cea0ffa2ccb64 translatedAt=2026-11-18T03:14:35.411Z pushedAt=2026-11-19T10:54:46.520Z nl=1 -->
 
 Defines the audio template controller, which can be used to obtain the unique ID of the audio template controller and exchange data with the media application accessing the audio template.
 
@@ -1403,9 +1404,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * Simulate the search and playback operation.
+   * Simulate search and play.
    *
-   * @returns Promise used to return the operation result.
+   * @returns Promise type operation result.
    */
   public async playForSearch(): Promise<boolean> {
     let command: avMusicTemplate.SearchPlayInfoType = avMusicTemplate.SearchPlayInfoType.PLAY_MUSIC;
@@ -1432,6 +1433,76 @@ export class ControllerManager {
       return true;
     } catch (e) {
       console.error(TAG, `playForSearch failed, errCode: ${e?.code}`)
+      return false;
+    }
+  }
+}
+```
+
+## sendCustomCommand
+
+sendCustomCommand(command: string, args: string): Promise&lt;OperResult&gt;
+
+Sends a custom control command. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**Parameters**
+
+| Name    | Type   | Mandatory | Description |
+| ------- | ------ | -------- | ----------- |
+| command | string | Yes      | Custom control command. |
+| args    | string | Yes      | Parameter of the custom control command event. |
+
+**Return value**
+
+| Type                                                         | Description                        |
+| ------------------------------------------------------------ | ---------------------------------- |
+| Promise<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise used to return the operation result. |
+
+**Error codes**
+
+For details about the error codes, see [Audio Template Error Codes](errorcode-avmusictemplate.md).
+
+| ID | Error Message                                  |
+| -------- | ----------------------------------------- |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
+**Example**
+
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+const TAG: string = 'ControllerManager';
+
+export class ControllerManager {
+  private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
+
+  /**
+   * Custom control command
+   *
+   * @returns Promise used to return the operation result.
+   */
+  public async sendCustomCommand(): Promise<boolean> {
+    let command: string = 'commandTest';
+    let args: string = 'argsTest';
+    try {
+      let operResult: avMusicTemplate.OperResult | undefined =
+        await this.controller?.sendCustomCommand(command, args);
+      if (operResult?.errorCode != 0) {
+        console.warn(TAG, 'sendCustomCommand fail')
+        return false;
+      }
+      console.info('Succeeded in sending custom command.');
+      return true;
+    } catch (e) {
+      console.error(TAG, `sendCustomCommand failed, errCode: ${e?.code}`)
       return false;
     }
   }

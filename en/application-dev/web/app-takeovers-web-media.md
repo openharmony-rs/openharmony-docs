@@ -1,12 +1,11 @@
 # Taking Over the Media Playback on Web Pages
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=16323ca1d7f88c9bb8af541a7972663c80002af0 translatedAt=2026-08-14T03:41:43.410Z pushedAt=2026-08-14T06:57:56.399Z -->
+<!-- md-trans-meta sourceCommit=9daa7323e6448718085edb55eedb15ca10a7a47b translatedAt=2026-11-05T10:35:28.462Z pushedAt=2026-11-05T11:10:28.091Z nl=1 -->
 
 The **Web** component provides the capability for applications to take over media playback on web pages, which improves media playback qualities on the web page.
 
@@ -41,6 +40,7 @@ When web media playback takeover is enabled, the playback architecture of the Ar
   >
   > - In the preceding figure, step 1 indicates that the ArkWeb kernel creates a **WebMediaPlayer** to play media resources on web pages.
   > - Step 2 indicates that **WebMediaPlayer** uses **NativeMediaPlayer** provided by the application to render media data.
+
 
 ### Interactions Between the ArkWeb Kernel and Application
 
@@ -82,12 +82,11 @@ Use the [enableNativeMediaPlayer](../reference/apis-arkweb/arkts-basic-component
 
 After this feature is enabled, the ArkWeb kernel triggers the callback registered by [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12) when a media file needs to be played on the web page.
 
-The app needs to call onCreateNativeMediaPlayer to register a callback for creating a native media player.
+The application needs to call onCreateNativeMediaPlayer() to register a callback function for creating a local player.
 
 The callback function determines whether to create a native media player to take over the web page media resources based on the media information.
 
   * If the app does not take over the current web media resource, return null in the callback.
-
   * If the application takes over the web page media resource, a native media player instance is returned by the callback.
 
 The native media player needs to implement the [NativeMediaPlayerBridge](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md) API so that the ArkWeb kernel can control the playback on the native media player.
@@ -155,7 +154,7 @@ This process is the same as that of [same-layer rendering](web-same-layer.md)
 1. During app startup, save the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) so that it can be used in the subsequent same-layer rendering and drawing process.
 
    <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
-
+   
    ``` TypeScript
    import { window } from '@kit.ArkUI';
    
@@ -321,7 +320,7 @@ To facilitate the control over native media player by the ArkWeb kernel, the app
 
 ### Notifying the Status Information of Native Media Player to the ArkWeb Kernel
 
-The ArkWeb kernel needs to update the status information (such as the video width and height, playback time, and cache time) of the native player to the web page. Therefore, the application needs to notify the ArkWeb kernel of the status information of the native player.
+The ArkWeb kernel needs to update the status information (such as the video width and height, playback time, and buffered time) of the native player to the web page. Therefore, the application needs to notify the ArkWeb kernel of the status information of the native player.
 
 In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12) API, the ArkWeb kernel passes a [NativeMediaPlayerHandler](../reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md) object to the application. The application needs to use this object to notify the ArkWeb kernel of the latest status information of the native media player.
 
@@ -369,15 +368,15 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
       this.handler.handleTimeUpdate(currentTimeInSeconds);
     }
     onBufferedChanged() {
-      // The buffer is changed.
-      // Obtain the cache duration of the native media player.
+      // The buffered state is changed.
+      // Obtain the buffered duration of the local player.
       let bufferedEndTime: number = getCurrentBufferedTime();
       // Convert the time unit to second.
       let bufferedEndTimeInSeconds = convertToSeconds(bufferedEndTime);
       this.handler.handleBufferedEndTimeChanged(bufferedEndTimeInSeconds);
 
-      // Check the cache state.
-      // If the cache state changes, notify the ArkWeb engine of the cache state.
+      // Check the buffered state.
+      // If the buffered state changes, notify the ArkWeb engine of the buffered state.
       let lastReadyState: webview.ReadyState = getLastReadyState();
       let currentReadyState: webview.ReadyState = getCurrentReadyState();
       if (lastReadyState != currentReadyState) {
@@ -438,7 +437,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
               // Create a native media player instance.
               // let nativePlayer: NativeMediaPlayerImpl = new NativeMediaPlayerImpl(handler, mediaInfo);
 
-              // Create a listener for the native media player state. 
+              // Create a listener for the native media player state.
               let nativeMediaPlayerListener: ActualNativeMediaPlayerListener = new ActualNativeMediaPlayerListener(handler);
               // Listen for the native media player state.
               // nativePlayer.setListener(nativeMediaPlayerListener);
@@ -471,6 +470,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
     return webview.ReadyState.HAVE_NOTHING;
   }
   ```
+
 
 ## Sample Code
 
@@ -652,7 +652,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
     }
     onError() {
       // Notify the ArkWeb kernel that the local player encounters an error.
-      console.info('AVPlayerListenerImpl.onError');
+      console.error('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
         this.handler.handleError(1, "Oops!");
@@ -993,7 +993,7 @@ In the [onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-W
   }
   ```
 
-- Example of using video playback on the application side:
+- Application-side code, video playback example, ./PlayerDemo.ets. For the XComponent creation method, see [Custom Rendering (XComponent)](../ui/napi-xcomponent-guidelines.md).
 
   ```ts
   import { media } from '@kit.MediaKit';

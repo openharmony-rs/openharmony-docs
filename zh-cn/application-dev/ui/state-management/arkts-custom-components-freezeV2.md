@@ -614,7 +614,7 @@ struct PageB {
 ```
 
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageB页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/router_map.json，并替换pageSourceFile为PageB页面的路径，并且在module.json5中添加："routerMap": "$profile:router_map"。
 
 ```json
 {
@@ -914,7 +914,7 @@ class TextNodeController extends NodeController {
   }
 }
 
-// 定义一个Index组件，它包含一个message属性和一个data数组
+// 定义一个Index组件，它包含一个storage属性和一个data数组
 @Entry
 @ComponentV2
 struct Index {
@@ -948,7 +948,7 @@ struct Index {
   }
 }
 
-// 定义一个FreezeBuildNode组件，它包含一个message属性和一个index属性
+// 定义一个FreezeBuildNode组件，它包含一个storage属性和一个index属性
 @ComponentV2({ freezeWhenInactive: true })
 struct FreezeBuildNode {
   // 使用Params实例作为storage属性

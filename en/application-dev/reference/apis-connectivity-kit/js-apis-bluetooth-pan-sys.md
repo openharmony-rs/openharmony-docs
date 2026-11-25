@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T13:11:37.381Z pushedAt=2026-10-10T07:10:21.972Z -->
+<!-- md-trans-meta sourceCommit=0c35e2da2a6ef71cfecc03dfb2bbc3c0f3345833 translatedAt=2026-11-18T04:03:28.854Z pushedAt=2026-11-20T09:22:49.287Z nl=1 -->
 
 The PAN module provides methods for accessing [Personal Area Networking (PAN)](../../connectivity/bluetooth/terminology.md#pan). It supports the two roles of [personal area network user (PANU)](../../connectivity/bluetooth/terminology.md#panu) and [network access point (NAP)](../../connectivity/bluetooth/terminology.md#nap). A PANU device can initiate a connection to an NAP device to achieve network sharing.
 
@@ -58,9 +58,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile not supported.                |
+|2900004 | Remote Device profile not supported.                |
 |2900099 | Operation failed.                        |
 
 **Example**
@@ -118,6 +118,7 @@ try {
     panProfile.disconnect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 
@@ -167,4 +168,5 @@ try {
     panProfile.setTethering(false);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```

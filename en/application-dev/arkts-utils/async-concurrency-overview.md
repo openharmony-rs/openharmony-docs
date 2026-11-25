@@ -1,17 +1,18 @@
-# Asynchronous Concurrency (Promise and Async/Await)
+# Asynchronous Concurrency (Promise and async/await)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=6a2160de7f946f511924c492fc7938582c7172e2 translatedAt=2026-11-04T09:08:47.579Z pushedAt=2026-11-04T12:45:27.836Z nl=1 -->
 
 
-Promise and async/await are standard JavaScript asynchronous syntax, which provides the asynchronous concurrency capability. Asynchronous code is suspended and continues to execute later, ensuring that only one piece of code is executed at any given moment. The following are typical scenarios of asynchronous concurrency:
+Promise and async/await are standard JS asynchronous syntax that provide asynchronous concurrency capabilities. When asynchronous code is executed, it is suspended and resumes execution after the asynchronous operation is complete, ensuring that only one piece of code is running at a time. The following are typical asynchronous concurrency usage scenarios:
 
-- Non-blocking I/O operations: network requests, file reading and writing, and timers.
+- Non-blocking I/O operations: network requests, file reads and writes, timers, etc.
 
-- Lightweight tasks without CPU blocking: tasks with short execution times.
+- Lightweight tasks without CPU blocking: a single task has a short execution time.
 
 - Clear logical dependencies: tasks with explicit order or parallel relationships.
 
@@ -21,12 +22,17 @@ Asynchronous concurrency is a feature of programming languages that allows progr
 
 A Promise is an object used to process asynchronous operations. It converts asynchronous operations into a style similar to synchronous operations for easier code writing and maintenance. A Promise manages different phases of asynchronous operations through the state mechanism. There are three states for a Promise: pending (in progress), fulfilled (completed, also called resolved), and rejected (failed). After creation, a Promise is in the pending state and transitions to the fulfilled or rejected state upon completion of the asynchronous operation.
 
+The Promise state is irreversible (once pending changes to fulfilled/rejected, it cannot change again).
+
 Promise provides the **then**, **catch**, and **finally** methods to register callback functions to handle the success or failure of asynchronous operations. When the Promise status changes, the callback function is added to the microtask queue for execution. The event loop mechanism ensures that microtasks are executed first after macro tasks are executed, thereby ensuring asynchronous scheduling of callback functions.
 
-The most basic usage involves instantiating a Promise object through its constructor, passing in a function (usually named **executor**) with two parameters. The two parameters are **resolve** and **reject**, which represent the callback functions for the success and failure of the asynchronous operation, respectively.
-For example, the code snippet below creates a Promise object and simulates an asynchronous operation:
+The most basic usage is to instantiate a Promise object through the constructor, passing in a function with two parameters, called the executor function. The executor function receives two parameters: resolve and reject, which represent the callback functions for the success and failure of the asynchronous operation, respectively.
 
-```ts
+For example, the following code creates a Promise object and simulates an asynchronous operation:
+
+<!-- @[promise_async_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
   setTimeout(() => {
     const randomNumber: number = Math.random();
@@ -38,45 +44,43 @@ const promise: Promise<number> = new Promise((resolve: Function, reject: Functio
   }, 1000);
 })
 ```
-<!-- @[promise_async_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+
 
 In the above code, the **setTimeout** function simulates an asynchronous operation and generates a random number after 1 second. If the random number is greater than 0.5, the **resolve** callback is invoked with the random number; otherwise, the **reject** callback is invoked with an error object.
 
-After a Promise object is created, you can use the **then** and **catch** methods to specify callback functions for the fulfilled and rejected states. The **then** method can accept two parameters: one for handling the fulfilled state and the other for handling the rejected state. If only one parameter is passed in, the **then** method automatically calls the callback function when the Promise object state changes to **fulfilled**, with the result of the Promise object passed as a parameter. The **catch** method receives a callback function to handle failures, that is, capturing the Promise's transition to the rejected state or any exceptions thrown during the operation. The **finally** method receives a callback function, which will be executed regardless of the Promise's final state (fulfilled or rejected). The code snippet below shows the use of the **then** and **catch** methods.
+Promise can also use finally to register a callback function, which is executed regardless of the final state of the Promise (fulfilled or rejected). For example:
 
-```ts
-const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
-  setTimeout(() => {
-    const randomNumber: number = Math.random();
-    if (randomNumber > 0.5) {
-      resolve(randomNumber);
-    } else {
-      reject(new Error('Random number is too small'));
-    }
-  }, 1000);
-})
+<!-- @[promise_then_catch_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) --> 
 
-// Use the then method to define success and failure callbacks.
-promise.then((result: number) => {
-  console.info(`The number for success is ${result}`); // Executed on success.
-}, (error: Error) => {
-  console.error(error.message); // Executed on failure.
-}
-);
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// Use the then method to define a success callback and the catch method to define a failure callback.
-promise.then((result: number) => {
-  console.info(`Random number is ${result}`); // Executed on success.
-}).catch((error: Error) => {
-  console.error(error.message); // Executed on failure.
-});
+// ...
+  /*
+   * After a Promise object is created, you can use the then method and the catch method to specify the callback functions for the fulfilled state and the rejected state.
+   * The then method can accept two parameters: one function that handles the fulfilled state, and another function that handles the rejected state.
+   *
+   * If only one parameter is passed, it means that when the state of the Promise object changes to fulfilled, the then method automatically calls this callback function and passes the result of the Promise object to it as a parameter.
+   * Use the catch method to register a callback function for handling the "failure" result, that is, to catch the exception thrown when the state of the Promise changes to the rejected state or when the operation fails.
+   */
+  // Use the then method to define the callbacks for success and failure.
+  promise.then((result: number) => {
+    console.info(`Succeeded in getting number, number is ${result}`); // Execute on success.
+  }, (error: BusinessError) => {
+    console.error(`Failed to get number. Code: ${error.code}, message: ${error.message}`); // Execute on failure.
+  });
 
-// Executed regardless of success or failure.
-promise.finally(() => {
-  console.info('finally complete');
-})
+  // Use the then method to define the success callback, the catch method to define the failure callback, and the finally method to define the callback after the task ends.
+  promise.then((result: number) => {
+    console.info(`Succeeded in getting number, number is ${result}`); // Execute on success.
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get number. Code: ${error.code}, message: ${error.message}`); // Execute on failure.
+  }).finally(() => {
+    // Execute after the task ends, regardless of success or failure.
+    console.info('Promise execution finished.');
+  });
 ```
-<!-- @[promise_then_catch_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+
 
 In the preceding code, the callback function of the **then** method receives the success result of the Promise object and outputs the result to the console. If the Promise object enters the rejected state, the callback function of the **catch** method receives the error object and outputs the error object to the console.
 
@@ -92,7 +96,9 @@ An **async** function returns a Promise object to implement an asynchronous oper
 
 The code snippet below uses async/await to simulate an asynchronous operation that returns a string after 3 seconds.
 
-```ts
+<!-- @[async_await_sync_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 async function myAsyncFunction(): Promise<string> {
   const result: string = await new Promise((resolve: Function) => {
     setTimeout(() => {
@@ -105,8 +111,9 @@ async function myAsyncFunction(): Promise<string> {
 
 @Entry
 @Component
-struct Index {
+struct PromiseAsyncAwait {
   @State message: string = 'Hello World';
+
   build() {
     Row() {
       Column() {
@@ -114,8 +121,9 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(async () => {
-            let res = await myAsyncFunction();
-            console.info('res is: ' + res);
+            let res: string = await myAsyncFunction();
+            console.info(`Result is:  ${res}`);
+            this.message = 'success';
           })
       }
       .width('100%')
@@ -124,24 +132,23 @@ struct Index {
   }
 }
 ```
-<!-- @[async_await_sync_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+
 
 In the preceding example code, **await** waits for the Promise to resolve and stores the resolved value in the **result** variable.
 
-Since you need to wait for the completion of the asynchronous operation, the entire operation must be wrapped in an **async** function and used with the **await** keyword. The **await** keyword is valid only in **async** functions. You can also use **try**/**catch** blocks to catch exceptions.
+Note that when waiting for an asynchronous operation, you need to place the operation in an async function and use it with await, and the await keyword is only valid inside an async function (it can only be used inside an async function). You can also use a try/catch block to catch exceptions.
 
-```ts
+<!-- @[async_operation_error_handling_with_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 async function myAsyncFunction(): Promise<void> {
   try {
-    const result: string = await new Promise((resolve: Function) => {
-      resolve('Hello, world!');
-    });
-    console.info(result); // Output: Hello, world!
+     const result: string = await new Promise((resolve: Function) => {
+        resolve('Hello, world!');
+     });
   } catch (e) {
-    console.error(`Get exception: ${e}`);
+     console.error(`Get exception: ${e}`);
   }
 }
-
-myAsyncFunction();
 ```
-<!-- @[async_operation_error_handling_with_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+

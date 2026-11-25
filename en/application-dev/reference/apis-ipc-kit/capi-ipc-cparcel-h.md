@@ -1,12 +1,11 @@
 # ipc_cparcel.h
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=15ceafc6c2bb65a39316427b2ecad83e575c42d0 translatedAt=2026-07-30T06:04:19.520Z pushedAt=2026-07-30T08:17:51.052Z -->
+<!-- md-trans-meta sourceCommit=563b8be563e11a9d9d559f338c53d2269358d4f7 translatedAt=2026-11-04T03:51:20.390Z pushedAt=2026-11-04T10:13:14.892Z nl=1 -->
 
 ## Overview
 
@@ -38,48 +37,48 @@ For the corresponding development guide and samples, please refer to [IPC and RP
 
 | Name| typedef Keyword| Description|
 | ---- | ------------- | ---- |
-| [typedef void* (\*OH_IPC_MemAllocator)(int32_t len)](#oh_ipc_memallocator) | [OH_IPC_MemAllocator](#oh_ipc_memallocator) | Defines the type of a memory allocation function. |
-| [OHIPCParcel* OH_IPCParcel_Create(void)](#oh_ipcparcel_create) | - | Creates an **OHIPCParcel** object, which cannot exceed 204,800 bytes.|
+| [typedef void* (\*OH_IPC_MemAllocator)(int32_t len)](#oh_ipc_memallocator) | [OH_IPC_MemAllocator()](#oh_ipc_memallocator) | Defines the memory allocation function type, used to customize the memory allocation strategy in IPC communication. Commonly used when needing special memory management, for example, shared memory transfer, memory pool management, and limiting the upper bound of memory usage. |
+| [OHIPCParcel* OH_IPCParcel_Create(void)](#oh_ipcparcel_create) | - | Creates an OHIPCParcel object for data serialization in IPC communication. |
 | [void OH_IPCParcel_Destroy(OHIPCParcel *parcel)](#oh_ipcparcel_destroy) | - | Destroys an **OHIPCParcel** object.|
-| [int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)](#oh_ipcparcel_getdatasize) | - | Obtains the size of the data contained in an **OHIPCParcel** object.|
-| [int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)](#oh_ipcparcel_getwritablebytes) | - | Obtains the number of bytes that can be written to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)](#oh_ipcparcel_getreadablebytes) | - | Obtains the number of bytes that can be read from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)](#oh_ipcparcel_getreadposition) | - | Obtains the position where data is read in an **OHIPCParcel** object.|
-| [int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)](#oh_ipcparcel_getwriteposition) | - | Obtains the position where data is written in an **OHIPCParcel** object.|
-| [int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)](#oh_ipcparcel_rewindreadposition) | - | Resets the position to read data in an **OHIPCParcel** object.|
-| [int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)](#oh_ipcparcel_rewindwriteposition) | - | Resets the position to write data in an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)](#oh_ipcparcel_writeint8) | - | Writes an int8_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)](#oh_ipcparcel_readint8) | - | Reads an int8_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)](#oh_ipcparcel_writeint16) | - | Writes an int16_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)](#oh_ipcparcel_readint16) | - | Reads an int16_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)](#oh_ipcparcel_writeint32) | - | Writes an int32_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)](#oh_ipcparcel_readint32) | - | Reads an int32_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)](#oh_ipcparcel_writeint64) | - | Writes an int64_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)](#oh_ipcparcel_readint64) | - | Reads an int64_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)](#oh_ipcparcel_writeuint8) | - | Writes a uint8_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)](#oh_ipcparcel_readuint8) | - | Reads a uint8_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)](#oh_ipcparcel_writeuint16) | - | Writes a uint16_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)](#oh_ipcparcel_readuint16) | - | Reads a uint16_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)](#oh_ipcparcel_writeuint32) | - | Writes a uint32_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)](#oh_ipcparcel_readuint32) | - | Reads a uint32_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)](#oh_ipcparcel_writeuint64) | - | Writes a uint64_t value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)](#oh_ipcparcel_readuint64) | - | Reads a uint64_t value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)](#oh_ipcparcel_writefloat) | - | Writes a float value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)](#oh_ipcparcel_readfloat) | - | Reads a float value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)](#oh_ipcparcel_writedouble) | - | Writes a double value to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)](#oh_ipcparcel_readdouble) | - | Reads a double value from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)](#oh_ipcparcel_writestring) | - | Writes a string including a string terminator to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)](#oh_ipcparcel_getdatasize) | - | Obtains the size of the data contained in the OHIPCParcel object. Commonly used for checking data transfer progress, checking whether the IPC total serialization size limit is exceeded, and debugging the data read/write process. |
+| [int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)](#oh_ipcparcel_getwritablebytes) | - | Obtains the number of bytes that can be written to the OHIPCParcel object. Commonly used for checking whether there is still space to write more data, preventing write overflow, and pre-checking before batch writing. |
+| [int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)](#oh_ipcparcel_getreadablebytes) | - | Obtains the number of bytes that can still be read from the OHIPCParcel object. Commonly used for checking how much data remains to be read, reading data in a loop, and debugging the data read process. |
+| [int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)](#oh_ipcparcel_getreadposition) | - | Obtains the current read position of the OHIPCParcel object. Commonly used for recording the read position for later restoration, implementing repeated reads together with OH_IPCParcel_RewindReadPosition(), and debugging the data read progress. |
+| [int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)](#oh_ipcparcel_getwriteposition) | - | Obtains the current write position of the OHIPCParcel object. Commonly used for recording the write position, correcting write errors together with OH_IPCParcel_RewindWritePosition(), and debugging the data write progress. |
+| [int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)](#oh_ipcparcel_rewindreadposition) | - | Resets the read position of the OHIPCParcel object to the specified position. Commonly used when needing to parse data repeatedly. |
+| [int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)](#oh_ipcparcel_rewindwriteposition) | - | Resets the write position of the OHIPCParcel object to the specified position. Commonly used for correcting preceding data errors discovered after writing, implementing segmented rewriting of data, and undoing part of the write operations. |
+| [int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)](#oh_ipcparcel_writeint8) | - | Writes an int8_t value to the OHIPCParcel object. Does not support multiple threads concurrently accessing the same object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)](#oh_ipcparcel_readint8) | - | Reads an int8_t value from the OHIPCParcel object. Does not support multiple threads concurrently accessing the same object. |
+| [int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)](#oh_ipcparcel_writeint16) | - | Writes an int16_t value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)](#oh_ipcparcel_readint16) | - | Reads an int16_t value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)](#oh_ipcparcel_writeint32) | - | Writes an int32_t value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)](#oh_ipcparcel_readint32) | - | Reads an int32_t value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)](#oh_ipcparcel_writeint64) | - | Writes an int64_t value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)](#oh_ipcparcel_readint64) | - | Reads an int64_t value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)](#oh_ipcparcel_writeuint8) | - | Writes a uint8_t value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)](#oh_ipcparcel_readuint8) | - | Reads a uint8_t value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)](#oh_ipcparcel_writeuint16) | - | Writes a uint16_t value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)](#oh_ipcparcel_readuint16) | - | Reads a uint16_t value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)](#oh_ipcparcel_writeuint32) | - | Writes a uint32_t value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)](#oh_ipcparcel_readuint32) | - | Reads a uint32_t value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)](#oh_ipcparcel_writeuint64) | - | Writes a uint64_t value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)](#oh_ipcparcel_readuint64) | - | Reads a uint64_t value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)](#oh_ipcparcel_writefloat) | - | Writes a float value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)](#oh_ipcparcel_readfloat) | - | Reads a float value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)](#oh_ipcparcel_writedouble) | - | Writes a double value to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)](#oh_ipcparcel_readdouble) | - | Reads a double value from the OHIPCParcel object. |
+| [int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)](#oh_ipcparcel_writestring) | - | Writes a string, including the string terminator, to the OHIPCParcel object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
 | [const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)](#oh_ipcparcel_readstring) | - | Reads a string from an **OHIPCParcel** object. You can obtain the length of the string from **strlen**.|
-| [int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t len)](#oh_ipcparcel_writebuffer) | - | Writes data of the specified length from the memory to an **OHIPCParcel** object. |
-| [const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)](#oh_ipcparcel_readbuffer) | - | Reads memory information of the specified length from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stub)](#oh_ipcparcel_writeremotestub) | - | Writes an **OHIPCRemoteStub** object to an **OHIPCParcel** object.|
-| [OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)](#oh_ipcparcel_readremotestub) | - | Reads the **OHIPCRemoteStub** object from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *proxy)](#oh_ipcparcel_writeremoteproxy) | - | Writes an **OHIPCRemoteProxy** object to an **OHIPCParcel** object.|
-| [OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)](#oh_ipcparcel_readremoteproxy) | - | Reads the **OHIPCRemoteProxy** object from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)](#oh_ipcparcel_writefiledescriptor) | - | Writes a file descriptor to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)](#oh_ipcparcel_readfiledescriptor) | - | Reads a file descriptor from an **OHIPCParcel** object.|
-| [int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)](#oh_ipcparcel_append) | - | Appends data to an **OHIPCParcel** object.|
-| [int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)](#oh_ipcparcel_writeinterfacetoken) | - | Writes an interface token to an **OHIPCParcel** object for interface identity verification.|
+| [int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t len)](#oh_ipcparcel_writebuffer) | - | Writes memory information of the specified length to the OHIPCParcel object. Commonly used for writing binary data, image data, custom structures, and shared memory content. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create). |
+| [const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)](#oh_ipcparcel_readbuffer) | - | Reads memory information of the specified length from the OHIPCParcel object. Commonly used for reading binary data, image data, custom structures, and shared memory content. |
+| [int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stub)](#oh_ipcparcel_writeremotestub) | - | Writes an OHIPCRemoteStub object to the OHIPCParcel object. Commonly used for transferring service objects across processes, implementing remote calls on the IPC server side, and sharing service objects. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)](#oh_ipcparcel_readremotestub) | - | Reads an OHIPCRemoteStub object from the OHIPCParcel object. Commonly used for receiving service objects across processes, implementing remote calls on the IPC server side, and sharing service objects. |
+| [int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *proxy)](#oh_ipcparcel_writeremoteproxy) | - | Writes an OHIPCRemoteProxy object to the OHIPCParcel object. Commonly used for transferring proxy objects across processes, implementing remote calls on the IPC client side, and sharing proxy objects. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)](#oh_ipcparcel_readremoteproxy) | - | Reads an OHIPCRemoteProxy object from the OHIPCParcel object. Commonly used for receiving proxy objects across processes, implementing remote calls on the IPC client side, and sharing proxy objects. |
+| [int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)](#oh_ipcparcel_writefiledescriptor) | - | Writes a file descriptor to the OHIPCParcel object. Commonly used for transferring file handles, shared memory file descriptors, and pipe file descriptors across processes. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)](#oh_ipcparcel_readfiledescriptor) | - | Reads a file descriptor from the OHIPCParcel object. Commonly used for receiving file handles, shared memory file descriptors, and pipe file descriptors across processes. Does not support multiple threads concurrently accessing the same object. |
+| [int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)](#oh_ipcparcel_append) | - | Appends the data of an OHIPCParcel object. Commonly used for merging data of multiple Parcels, assembling data packets, and merging segmented written data. The appended data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
+| [int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)](#oh_ipcparcel_writeinterfacetoken) | - | Writes an interface descriptor to the OHIPCParcel object for interface identity verification. Commonly used for security verification in IPC communication, for example, preventing malicious processes from sending forged requests, ensuring that messages are sent to the correct service interface, and distinguishing different interface calls in a multi-interface service. Does not support multiple threads concurrently accessing the same object. The written data is subject to the IPC total serialization size limit (see OH_IPCParcel_Create()). |
 | [int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int32_t *len, OH_IPC_MemAllocator allocator)](#oh_ipcparcel_readinterfacetoken) | - | Reads an interface token from an **OHIPCParcel** object for interface identity verification.|
 
 ## Function Description
@@ -87,7 +86,7 @@ For the corresponding development guide and samples, please refer to [IPC and RP
 ### OH_IPC_MemAllocator()
 
 ```C
-typedef void* (*OH_IPC_MemAllocator)(int32_t len);
+typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 ```
 
 **Description**
@@ -118,29 +117,14 @@ OHIPCParcel* OH_IPCParcel_Create(void)
 
 **Description**
 
-Creates an **OHIPCParcel** object for data serialization in IPC communication.
+Creates an [OHIPCParcel](capi-ohipcparcel.md) object for data serialization in IPC communication.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. An **OHIPCParcel** object is allocated and initialized in memory.
-
-2. The object is initially empty, and its serializable size must not exceed 204800 bytes.
-
-3. The returned object pointer can be used for subsequent data read and write operations.
-
-**Constraints**
-
-- **Memory limit**: The serializable size of the created object cannot exceed 204800 bytes.
-
-- **Lifecycle**: After use, you must call [OH_IPCParcel_Destroy()](#oh_ipcparcel_destroy) to release resources; otherwise, memory leaks will occur.
-
-- **Thread safety**: Concurrent access to the same object from multiple threads is not supported.
-
-**Usage flow**
-
-Typical usage flow: [OH_IPCParcel_Create](#oh_ipcparcel_create) → Data read/write operations → [OH_IPCParcel_Destroy()](#oh_ipcparcel_destroy).
+Call this function to:
+- Allocate and initializes an [OHIPCParcel](capi-ohipcparcel.md) object in memory.
+- The object is initially empty, and its serializable size cannot exceed 204800 bytes.
+- Return the object pointer for subsequent data read and write operations.
+- Multiple-thread concurrent access to the same object is not supported.
+- Typical usage flow: OH_IPCParcel_Create() → data read/write operations → [OH_IPCParcel_Destroy()](#oh_ipcparcel_destroy).
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -150,7 +134,7 @@ Typical usage flow: [OH_IPCParcel_Create](#oh_ipcparcel_create) → Data read/wr
 
 | Type| Description|
 | ---- | ---- |
-| OHIPCParcel* | Returns the pointer to the **OHIPCParcel** object created if the operation is successful; returns NULL otherwise.|
+| [OHIPCParcel](capi-ohipcparcel.md)* | OHIPCParcel object pointer on success; NULL on failure. |
 
 ### OH_IPCParcel_Destroy()
 
@@ -160,43 +144,19 @@ void OH_IPCParcel_Destroy(OHIPCParcel *parcel)
 
 **Description**
 
-Destroys an **OHIPCParcel** object.
+Destroys the [OHIPCParcel](capi-ohipcparcel.md) object.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The memory buffer occupied by the **OHIPCParcel** object is released.
-
-2. All data inside the object is cleared.
-
-3. The memory of the object itself is released.
-
-4. The input pointer becomes invalid and should not be used any more.
-
-**Constraints**
-
-- **Pre-use check**: Ensure that no other thread is using the object.
-
-- **Pointer nullification**: After destruction, it is recommended to set the pointer to NULL to avoid dangling pointers.
-
-- **Destruction timing**: Ensure that all required data has been read before destruction.
-
-- **Multiple destruction**: Do not call the destroy function on the same object multiple times.
-
-**Pairing requirements**
-
-- This function and [OH_IPCParcel_Create](#oh_ipcparcel_create) must be used in pairs.
-
-- Only objects created by [OH_IPCParcel_Create](#oh_ipcparcel_create) can be destroyed.
-
+Call this function to:
+- Release the memory buffer occupied by the [OHIPCParcel](capi-ohipcparcel.md) object.
+- Clear all data inside the object and releases the memory of the object itself.
+- The passed pointer becomes invalid and should no longer be used.
+- Check before use: ensure that no other thread is using the object.
+- Set the pointer to NULL after destruction to avoid a dangling pointer.
+- Must be used in pairs with [OH_IPCParcel_Create()](#oh_ipcparcel_create).
+- Destruction timing: Ensure that all required data has been read before destruction.
+- Multiple destruction: Do not call the destroy function multiple times on the same object.
+- Only objects created by [OH_IPCParcel_Create()](#oh_ipcparcel_create) can be destroyed.
 - The object cannot be accessed after destruction.
-
-**Precautions**
-
-- Before calling this method, ensure that the Parcel object is no longer needed.
-
-- After destruction, all pointers to the object become invalid.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -206,7 +166,7 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object to be destroyed. It cannot be NULL. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object to be destroyed. It cannot be null. |
 
 ### OH_IPCParcel_GetDataSize()
 
@@ -216,15 +176,12 @@ int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)
 
 **Description**
 
-Obtains the size of the data contained in an **OHIPCParcel** object. This function is commonly used in scenarios such as monitoring data transmission progress, checking whether the IPC serialization size limit has been exceeded, and debugging data read/write processes.
+Obtains the size of the data contained in the [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for monitoring data transfer progress, checking whether the IPC serialization size limit is exceeded, and debugging the data read/write process.
 
-**Behavior after calling**
-
-1. The total number of bytes of data that has been written to the **OHIPCParcel** object is calculated.
-
-2. The data size value is returned.
-
-3. Neither the read/write position nor the data content of the **OHIPCParcel** object is changed.
+Call this function:
+- Calculates the total number of bytes of data written to the Parcel object.
+- Returns the total size of the written data.
+- Keeps the read/write position and data content unchanged.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -234,7 +191,7 @@ Obtains the size of the data contained in an **OHIPCParcel** object. This functi
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
@@ -250,17 +207,12 @@ int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)
 
 **Description**
 
-Obtains the number of bytes that can be written to an **OHIPCParcel** object. This function is commonly used in scenarios such as checking whether there is enough space to write more data, preventing write overflow, and performing pre-checks before batch writes.
+Obtains the number of bytes that can be written to the [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for checking whether there is still space to write more data, preventing write overflow, and pre-checking before batch writing.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The size of the remaining writable space in the **OHIPCParcel** object is calculated.
-
-2. The number of writable bytes is returned.
-
-3. Neither the read/write position nor the data content of the **OHIPCParcel** object is changed.
+Call this function:
+- Calculates the size of the remaining writable space in the Parcel object.
+- Returns the number of writable bytes.
+- Does not change the read/write position or data content of the Parcel object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -270,7 +222,7 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
@@ -286,17 +238,12 @@ int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)
 
 **Description**
 
-Obtains the number of bytes that can be read from an **OHIPCParcel** object. This function is commonly used in scenarios such as checking how much data is available to read, reading data cyclically, and debugging the data reading process.
+Obtains the number of bytes that can still be read from the [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for checking how much data remains to be read, reading data in a loop, debugging the data reading process, and other scenarios.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The number of bytes of unread data in the **OHIPCParcel** object is calculated.
-
-2. The number of readable bytes is returned.
-
-3. Neither the read/write position nor the data content of the **OHIPCParcel** object is changed.
+Call this function:
+- Calculates the number of unread bytes in the Parcel object.
+- Returns the number of readable bytes.
+- Does not change the read/write position or data content of the Parcel object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -306,7 +253,7 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
@@ -322,25 +269,21 @@ int OH_IPCParcel_GetReadPosition(const OHIPCParcel *parcel)
 
 **Description**
 
-Obtains the position where data is read in an **OHIPCParcel** object. This function is commonly used in scenarios such as recording the read position for later restoration, working with **RewindReadPosition** to enable repeated reads, and debugging the data reading progress.
+Obtains the current read position of the [OHIPCParcel](capi-ohipcparcel.md) object. It is commonly used for recording the read position for later restoration, implementing repeated reads in combination with [OH_IPCParcel_RewindReadPosition()](#oh_ipcparcel_rewindreadposition), and debugging the data read progress.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The current read position of the **OHIPCParcel** object is returned.
-
-2. The read position and data content remain unchanged.
+Call this function:
+- Returns the current read position value of the Parcel object.
+- Does not change the read position or data content.
 
 **System capability**: SystemCapability.Communication.IPC.Core
-
+ 
 **Since**: 12
 
 **Parameters**
 
   | Name| Description|
   | ---- | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
@@ -356,15 +299,11 @@ int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)
 
 **Description**
 
-Obtains the position where data is written in an **OHIPCParcel** object. This function is commonly used in scenarios such as recording the write position, working with **RewindWritePosition** to correct write errors, and debugging the data write progress.
+Obtains the current write position of the [OHIPCParcel](capi-ohipcparcel.md) object. It is commonly used for recording the write position, correcting write errors in conjunction with [OH_IPCParcel_RewindWritePosition()](#oh_ipcparcel_rewindwriteposition), and tracking the progress of debug data writing.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The current write position of the **OHIPCParcel** object is returned.
-
-2. The write position and data content remain unchanged.
+Calling this function:
+- Returns the current write position value of the Parcel object.
+- Does not change the write position or data content.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -374,7 +313,7 @@ After this function is called:
 
   | Name| Description|
   | ----- | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
@@ -390,25 +329,12 @@ int OH_IPCParcel_RewindReadPosition(OHIPCParcel *parcel, uint32_t newReadPos)
 
 **Description**
 
-Resets the read position of an **OHIPCParcel** object to the specified position.
+Resets the read position of the [OHIPCParcel](capi-ohipcparcel.md) object to the specified position. It is commonly used in scenarios where data needs to be parsed repeatedly.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The read position pointer moves to the position specified by **newReadPos**.
-
-2. The data already written remains unchanged.
-
-3. Subsequent read operations start from the new position.
-
-**Constraints**
-
-- **Position range**: **newReadPos** must be within the range [0, current data size].
-
-- **Write impact**: Resetting the read position does not affect the write position.
-
-- **Usage scenario**: Commonly used in scenarios where data needs to be parsed repeatedly.
+Call this function:
+- The read position pointer moves to the position specified by newReadPos, which must be within the range [0, current data size].
+- The written data remains unchanged.
+- Subsequent read operations start from the new position.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -418,8 +344,8 @@ After this function is called:
 
   | Name | Description |
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to an OHIPCParcel object, which cannot be null. It must be created by [OH_IPCParcel_Create()](#oh_ipcparcel_create) first. |
-  | uint32_t newReadPos | New read position. The value ranges from 0 to the current data size, in bytes. If the value is out of range, OH_IPC_CHECK_PARAM_ERROR is returned. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint32_t newReadPos | New read position, in the range [0, current data size], in bytes. If the value is out of range, OH_IPC_CHECK_PARAM_ERROR is returned. |
 
 **Returns**
 
@@ -435,27 +361,13 @@ int OH_IPCParcel_RewindWritePosition(OHIPCParcel *parcel, uint32_t newWritePos)
 
 **Description**
 
-Resets the write position of an **OHIPCParcel** object to the specified position.
+Resets the write position of the [OHIPCParcel](capi-ohipcparcel.md) object to the specified position. It is commonly used in scenarios such as correcting erroneous preceding data after writing, performing partial data rewriting, and undoing some write operations.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The write position pointer moves to the position specified by **newWritePos**.
-
-2. Data after this position will be overwritten or become invalid.
-
-3. Subsequent write operations start from the new position.
-
-**Usage scenario**: Commonly used in scenarios such as correcting errors in previously written data, implementing segmented data rewriting, and undoing partial write operations.
-
-**Constraints**
-
-- **Position range**: **newWritePos** must be within the range [0, current data size].
-
-- **Data risk**: Resetting the position may cause some data to be overwritten. Use with caution.
-
-- **Read impact**: Resetting the write position does not affect the read position.
+Call this function:
+- The write position pointer moves to the position specified by newWritePos, which must be within the range [0, current data size].
+- Resetting the position may cause some data to be overwritten or become invalid, so use it with caution.
+- Subsequent write operations start from the new position.
+- Resetting the write position does not affect the read position.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -465,8 +377,8 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint32_t newWritePos | New write position. The value ranges from 0 to the current data size, in bytes. If the value is out of range, OH_IPC_CHECK_PARAM_ERROR is returned. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint32_t newWritePos | New write position, in the range [0, current data size], in bytes. Returns OH_IPC_CHECK_PARAM_ERROR if the value is out of range. |
 
 **Returns**
 
@@ -482,7 +394,11 @@ int OH_IPCParcel_WriteInt8(OHIPCParcel *parcel, int8_t value)
 
 **Description**
 
-Writes an int8_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes an int8_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. Does not support multiple threads accessing the same object concurrently. The written data is subject to the total serialization size limit of IPC (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with the [OH_IPCParcel_ReadInt8()](#oh_ipcparcel_readint8) method.
+- Call sequence: call OH_IPCParcel_WriteInt8() to write data first, and then the receiving end calls [OH_IPCParcel_ReadInt8()](#oh_ipcparcel_readint8) to read data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -492,8 +408,8 @@ Writes an int8_t value to an **OHIPCParcel** object. The data written is subject
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int8_t value | int8_t data value to write, used for IPC communication data serialization. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int8_t value | int8_t data value to write, used for data serialization in IPC communication. |
 
 **Returns**
 
@@ -509,7 +425,7 @@ int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)
 
 **Description**
 
-Reads an int8_t value from an **OHIPCParcel** object.
+Reads an int8_t value from the [OHIPCParcel](capi-ohipcparcel.md) object. Concurrent access to the same object from multiple threads is not supported.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -519,8 +435,8 @@ Reads an int8_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int8_t *value | Pointer to the int8_t data read. It cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int8_t *value | Pointer to the int8_t data read, which cannot be null. |
 
 **Returns**
 
@@ -536,7 +452,11 @@ int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)
 
 **Description**
 
-Writes an int16_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes an int16_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the IPC total serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with [OH_IPCParcel_ReadInt16()](#oh_ipcparcel_readint16).
+- Call sequence: call OH_IPCParcel_WriteInt16() to write the data first, and then the receiving end calls [OH_IPCParcel_ReadInt16()](#oh_ipcparcel_readint16) to read the data.
+- Incorrect pairing: If the calls are not made in order or the read type does not match, the read fails or a data error occurs.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -546,8 +466,8 @@ Writes an int16_t value to an **OHIPCParcel** object. The data written is subjec
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int16_t value | int16_t data value to write, used for data serialization in IPC communication. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int16_t value | int16_t data value to write, used for IPC communication data serialization. |
 
 **Returns**
 
@@ -563,7 +483,7 @@ int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)
 
 **Description**
 
-Reads an int16_t value from an **OHIPCParcel** object.
+Reads an int16_t value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -573,8 +493,8 @@ Reads an int16_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int16_t *value | Pointer to the value for storing the read int16_t data. It cannot be NULL. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int16_t *value | Pointer used to store the read int16_t data, which cannot be null. |
 
 **Returns**
 
@@ -590,7 +510,11 @@ int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)
 
 **Description**
 
-Writes an int32_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit. For details, see [OH_IPCParcel_Create](#oh_ipcparcel_create).
+Writes an int32_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with [OH_IPCParcel_ReadInt32()](#oh_ipcparcel_readint32).
+- Call sequence: first call OH_IPCParcel_WriteInt32() to write data, and then the receiving end calls [OH_IPCParcel_ReadInt32()](#oh_ipcparcel_readint32) to read data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -600,7 +524,7 @@ Writes an int32_t value to an **OHIPCParcel** object. The data written is subjec
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
   | int32_t value | int32_t data value to write, used for IPC communication data serialization. |
 
 **Returns**
@@ -617,7 +541,7 @@ int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)
 
 **Description**
 
-Reads an int32_t value from an **OHIPCParcel** object.
+Reads an int32_t value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -627,8 +551,8 @@ Reads an int32_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int32_t *value | Pointer to the storage for the read data. It cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int32_t *value | Pointer to the storage for the read data, which cannot be null. |
 
 **Returns**
 
@@ -644,7 +568,11 @@ int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)
 
 **Description**
 
-Writes an int64_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes an int64_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with [OH_IPCParcel_ReadInt64()](#oh_ipcparcel_readint64).
+- Calling sequence: call OH_IPCParcel_WriteInt64() to write data first, and then the receiving end calls [OH_IPCParcel_ReadInt64()](#oh_ipcparcel_readint64) to read data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -654,7 +582,7 @@ Writes an int64_t value to an **OHIPCParcel** object. The data written is subjec
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
   | int64_t value | int64_t data value to write, used for IPC communication data serialization. |
 
 **Returns**
@@ -671,7 +599,7 @@ int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 
 **Description**
 
-Reads an int64_t value from an **OHIPCParcel** object.
+Reads an int64_t value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -681,8 +609,8 @@ Reads an int64_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int64_t *value | Pointer to the value for storing the data read. It cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int64_t *value | Pointer to the storage for the read data, which cannot be null. |
 
 **Returns**
 
@@ -698,7 +626,11 @@ int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
 
 **Description**
 
-Writes a uint8_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a uint8_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with the [OH_IPCParcel_ReadUint8()](#oh_ipcparcel_readuint8) method.
+- Calling sequence: first call OH_IPCParcel_WriteUint8() to write data, and then the receiving end calls [OH_IPCParcel_ReadUint8()](#oh_ipcparcel_readuint8) to read data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -708,8 +640,8 @@ Writes a uint8_t value to an **OHIPCParcel** object. The data written is subject
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint8_t value | uint8_t value to write, used for data serialization in IPC communication. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint8_t value | uint8_t data value to write, used for IPC communication data serialization. |
 
 **Returns**
 
@@ -725,7 +657,7 @@ int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
 
 **Description**
 
-Reads a uint8_t value from an **OHIPCParcel** object.
+Reads a uint8_t value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -735,8 +667,8 @@ Reads a uint8_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint8_t *value | Pointer to the buffer for storing the read data. It cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint8_t *value | Pointer to the storage for the read data, which cannot be null. |
 
 **Returns**
 
@@ -752,7 +684,11 @@ int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
 
 **Description**
 
-Writes a uint16_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a uint16_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with the [OH_IPCParcel_ReadUint16()](#oh_ipcparcel_readuint16) method.
+- Calling sequence: first call OH_IPCParcel_WriteUint16() to write data, and then the receiving end calls [OH_IPCParcel_ReadUint16()](#oh_ipcparcel_readuint16) to read data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -762,8 +698,8 @@ Writes a uint16_t value to an **OHIPCParcel** object. The data written is subjec
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint16_t value | uint16_t data value to be written, which is used for IPC data serialization. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint16_t value | uint16_t data value to write, used for IPC communication data serialization. |
 
 **Returns**
 
@@ -779,7 +715,7 @@ int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
 
 **Description**
 
-Reads a uint16_t value from an **OHIPCParcel** object.
+Reads a uint16_t value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -789,8 +725,8 @@ Reads a uint16_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint16_t *value | Pointer to the value for storing the read data. It cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint16_t *value | Pointer to the storage for the read data, which cannot be null. |
 
 **Returns**
 
@@ -806,7 +742,11 @@ int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
 
 **Description**
 
-Writes a uint32_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a uint32_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with the [OH_IPCParcel_ReadUint32()](#oh_ipcparcel_readuint32) method.
+- Calling order: first call OH_IPCParcel_WriteUint32() to write data, then the receiving end calls [OH_IPCParcel_ReadUint32()](#oh_ipcparcel_readuint32) to read data.
+- Incorrect pairing: If the calls are not made in order or the read type does not match, the read fails or a data error occurs.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -816,8 +756,8 @@ Writes a uint32_t value to an **OHIPCParcel** object. The data written is subjec
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint32_t value | uint32_t data value to be written, which is used for IPC data serialization. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint32_t value | uint32_t data value to write, used for IPC communication data serialization. |
 
 **Returns**
 
@@ -833,7 +773,7 @@ int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
 
 **Description**
 
-Reads a uint32_t value from an **OHIPCParcel** object.
+Reads a uint32_t value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -843,8 +783,8 @@ Reads a uint32_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint32_t *value | Pointer to the variable that stores the read data. This parameter cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint32_t *value | Pointer to the storage for the read data, which cannot be null. |
 
 **Returns**
 
@@ -860,7 +800,11 @@ int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
 
 **Description**
 
-Writes a uint64_t value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a uint64_t value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total serialization size limit of IPC (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with the [OH_IPCParcel_ReadUint64()](#oh_ipcparcel_readuint64) method.
+- Call sequence: first call OH_IPCParcel_WriteUint64() to write data, and then the receiving end calls [OH_IPCParcel_ReadUint64()](#oh_ipcparcel_readuint64) to read data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -870,8 +814,8 @@ Writes a uint64_t value to an **OHIPCParcel** object. The data written is subjec
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint64_t value | uint64_t data value to be written, which is used for IPC data serialization. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint64_t value | uint64_t data value to write, used for IPC communication data serialization. |
 
 **Returns**
 
@@ -887,7 +831,7 @@ int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
 
 **Description**
 
-Reads a uint64_t value from an **OHIPCParcel** object.
+Reads a uint64_t value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -897,8 +841,8 @@ Reads a uint64_t value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | uint64_t *value | Pointer to the value that stores the read data. It cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | uint64_t *value | Pointer to the storage for the read data, which cannot be null. |
 
 **Returns**
 
@@ -914,7 +858,11 @@ int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)
 
 **Description**
 
-Writes a float value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a float value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the IPC total serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with [OH_IPCParcel_ReadFloat()](#oh_ipcparcel_readfloat).
+- Calling sequence: call OH_IPCParcel_WriteFloat() first to write data, and then the receiving end calls [OH_IPCParcel_ReadFloat()](#oh_ipcparcel_readfloat) to read data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -924,8 +872,8 @@ Writes a float value to an **OHIPCParcel** object. The data written is subject t
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | float value | Float data value to write for IPC communication data serialization. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | float value | Float data value to write, used for data serialization in IPC communication. |
 
 **Returns**
 
@@ -941,7 +889,7 @@ int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)
 
 **Description**
 
-Reads a float value from an **OHIPCParcel** object.
+Reads a float value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -951,8 +899,8 @@ Reads a float value from an **OHIPCParcel** object.
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | float *value | Pointer to the value that stores the read data. It cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | float *value | Pointer to the buffer for storing the read data, which cannot be null. |
 
 **Returns**
 
@@ -968,7 +916,11 @@ int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)
 
 **Description**
 
-Writes a double value to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a double value to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+- Must be used in pair with [OH_IPCParcel_ReadDouble()](#oh_ipcparcel_readdouble).
+- Call order: call OH_IPCParcel_WriteDouble() first to write the data, and then the receiving end calls [OH_IPCParcel_ReadDouble()](#oh_ipcparcel_readdouble) to read the data.
+- Incorrect pairing: If the functions are not called in order or the read type does not match, the read fails or the data is incorrect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -978,7 +930,7 @@ Writes a double value to an **OHIPCParcel** object. The data written is subject 
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
   | double value | Double data value to write, used for IPC communication data serialization. |
 
 **Returns**
@@ -995,7 +947,7 @@ int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)
 
 **Description**
 
-Reads a double value from an **OHIPCParcel** object. After this function is called, an 8-byte double value is read from the current read position. The read position is automatically advanced by 8 bytes, and the read value is stored in the memory pointed to by the **value** pointer.
+Reads a double value from the [OHIPCParcel](capi-ohipcparcel.md) object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1005,8 +957,8 @@ Reads a double value from an **OHIPCParcel** object. After this function is call
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | double *value | Pointer to the data read, which cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | double *value | Pointer to the storage for the read data, which cannot be null. |
 
 **Returns**
 
@@ -1022,27 +974,15 @@ int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)
 
 **Description**
 
-Writes a string including a string terminator to an **OHIPCParcel** object. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a string, including the string terminator, to the [OHIPCParcel](capi-ohipcparcel.md) object. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The string content (including the null terminator '\0') is written to the current write position of the **OHIPCParcel** object.
-
-2. The write position is automatically advanced by (string length + 1) bytes.
-
-3. The string data is serialized and stored in the **OHIPCParcel** object.
-
-**Constraints**
-
-- **Length limit**: The length of the string to write is subject to the IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create), with a maximum of 204800 bytes).
-
-- **Null pointer check**: The **str** parameter cannot be NULL; otherwise, a parameter error is returned.
-
-- **Memory management**: The memory of the written string is managed internally by the Parcel object and does not need to be managed by the caller.
-
-- **Encoding note**: The string must be in valid UTF-8 or ASCII encoding.
+Call this function:
+- Writes the string content (including the terminator '\0')) to the current write position of the [OHIPCParcel](capi-ohipcparcel.md) object.
+- The write position automatically moves forward by (string length + 1) bytes.
+- The string data is serialized and stored in the Parcel object, and the caller does not need to manage it.
+- The length of the written string is subject to the IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create), with a maximum of 204800 bytes).
+- The str parameter cannot be null; otherwise, a parameter error is returned.
+- Encoding note: the string must be valid UTF-8 or ASCII encoding.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1052,8 +992,8 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | const char *str | Pointer to the string to write, which is used for string data transmission in IPC communication. It cannot be NULL. The length range is [0, 204800], in bytes (including the null terminator. The actual length is dynamically affected by the data already written to the parcel and the overhead of the terminator). The length of the written string is subject to the IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)). If the limit is exceeded, the **OH_IPC_PARCEL_WRITE_ERROR** error is returned. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | const char *str | String to write, used for string data transfer in IPC communication, which cannot be null. The length ranges from 0 to 204800, in bytes (including the terminator; the actual length is dynamically affected by the data already written to the parcel and the terminator overhead). The length of the string to write is subject to the IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)). If the limit is exceeded, the OH_IPC_PARCEL_WRITE_ERROR error code is returned. |
 
 **Returns**
 
@@ -1069,27 +1009,16 @@ const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)
 
 **Description**
 
-Reads a string from an **OHIPCParcel** object. You can obtain the length of the string from **strlen**.
+Reads a string from the [OHIPCParcel](capi-ohipcparcel.md) object. The user can obtain the string length by using strlen.
 
-**Behavior after calling**
-
-After this function is called:
-
+Call this function:
 1. The string content is read from the current read position.
-
 2. The memory address pointer to the string is returned.
-
 3. The read position is automatically advanced to the position after the string terminator.
-
-**Constraints**
-
-- **Memory management**: The memory of the returned string is managed by the Parcel object and does not need to be released by the caller.
-
-- **Lifecycle**: The validity of the string is bound to the Parcel object. The string becomes invalid after the Parcel is destroyed.
-
-- **Null pointer check**: NULL is returned if invalid parameters are found or the read operation fails. Check the return value.
-
-- **Usage**: You can use **strlen** to obtain the length and directly use the returned pointer to access the string content.
+4. The memory of the returned string is managed by the Parcel object and does not need to be released by the caller.
+5. The validity of the string is bound to the Parcel object. The string becomes invalid after the Parcel is destroyed.
+6. NULL is returned when the parameter is invalid or the read fails. Check the return value.
+7. The length can be obtained by using strlen, and the returned pointer can be used directly to access the string content.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1099,7 +1028,7 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
@@ -1115,29 +1044,17 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 
 **Description**
 
-Writes data of the specified length from the memory to an **OHIPCParcel** object. This function is commonly used in scenarios such as writing binary data, image data, custom structures, and shared memory content. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes memory information of a specified length to the [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for writing binary data, image data, custom structures, shared memory content, and other scenarios. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The memory data pointed to by **buffer** is written to the current write position of the **OHIPCParcel** object.
-
-2. The write position is automatically advanced by **len** bytes.
-
-3. The memory data is serialized and stored in the **OHIPCParcel** object.
-
-**Constraints**
-
-- **Buffer management**: The buffer must be pre-allocated with sufficient memory space, and the memory must be valid.
-
-- **Length limit**: The value of **len** must be within the range [0, writable bytes of the parcel]. An error is returned if the value is out of range.
-
-- **Null pointer check**: **buffer** cannot be NULL; otherwise, a parameter error is returned.
-
-- **Data validity**: The data to write must remain valid during the call. There is no restriction after the write is complete.
-
-- **Memory release**: After the write is complete, the buffer memory is managed by the caller. The Parcel stores a copy internally.
+Call this function:
+- Writes the memory data pointed to by buffer to the current write position of the [OHIPCParcel](capi-ohipcparcel.md) object.
+- The write position automatically moves backward by len bytes.
+- The memory data is serialized and stored in the Parcel object.
+- The buffer must be allocated with sufficient memory space in advance, and the memory must be valid.
+- The value of len ranges from [0, the number of writable bytes in the parcel]. If it is out of range, an error is returned.
+- The buffer cannot be null; otherwise, a parameter error is returned.
+- The data to be written must remain valid during the call. There is no restriction after the write is complete.
+- After the write is complete, the buffer memory is managed by the caller, and the Parcel stores a copy internally.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1147,9 +1064,9 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | const uint8_t *buffer  | Starting address of the memory to be written. This is the starting address of the data buffer to be written, pointing to the binary data to be transmitted via IPC. It cannot be NULL. The buffer must have sufficient memory space allocated in advance. |
-  | int32_t len | Length of the data to be written, in bytes. The value range is [0, available writable bytes of the parcel]. The size of the written data is subject to the IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)). If a negative value is passed, the **OH_IPC_CHECK_PARAM_ERROR** error is returned. If the value exceeds the available writable bytes, the **OH_IPC_PARCEL_WRITE_ERROR** error is returned. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | const uint8_t *buffer  | Starting address of the memory to write, that is, the starting address of the data buffer to write, which points to the binary data to be transferred over IPC and cannot be null. The buffer must be pre-allocated with sufficient memory space. |
+  | int32_t len | Length of the information to write, in bytes. Value range: [0, the number of writable bytes in the parcel]. The size of the written data is subject to the IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)). Returns OH_IPC_CHECK_PARAM_ERROR if a negative number is passed in; returns OH_IPC_PARCEL_WRITE_ERROR if the number of writable bytes is exceeded. |
 
 **Returns**
 
@@ -1165,27 +1082,14 @@ const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)
 
 **Description**
 
-Reads memory information of the specified length from an **OHIPCParcel** object. This function is commonly used in scenarios such as reading binary data, image data, custom structures, and shared memory content.
+Reads memory information of the specified length from the [OHIPCParcel](capi-ohipcparcel.md) object. This is often used to read binary data, image data, custom structs, and shared memory contents.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. **len** bytes of memory data are read from the current read position.
-
-2. A pointer to the internal data of the **OHIPCParcel** object is returned.
-
-3. The read position is automatically advanced by **len** bytes.
-
-**Constraints**
-
-- **Length limit**: The value of **len** must be within the range [0, readable bytes of the parcel]. NULL is returned if the value is out of range.
-
-- **Memory management**: The returned memory is managed by the Parcel object and does not need to be released by the caller.
-
-- **Lifecycle**: The validity of the data is bound to the Parcel object. The data becomes invalid after the Parcel is destroyed.
-
-- **Null pointer check**: NULL is returned if **len** exceeds the readable length or invalid parameters are found. Check the return value.
+Call this function:
+- Reads len bytes of memory data from the current read position. The value of len ranges from [0, the number of readable bytes in the parcel]. If the value is out of range, NULL is returned.
+- Returns a pointer to the data stored inside the Parcel object.
+- The read position automatically moves forward by len bytes.
+- The returned memory is managed by the Parcel object and does not need to be released by the caller.
+- Lifecycle: The validity of the data is bound to the Parcel object; the data becomes invalid after the Parcel is destroyed.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1195,8 +1099,8 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int32_t len | Length of memory to be read, in bytes. The value range is [0, the number of remaining readable bytes in the parcel]. If the value exceeds the readable bytes, NULL is returned. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int32_t len | Length of the memory to read, in bytes. The value ranges from 0 to the number of bytes currently remaining readable in the parcel. NULL is returned if the length exceeds the number of readable bytes. |
 
 **Returns**
 
@@ -1212,33 +1116,15 @@ int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stu
 
 **Description**
 
-Writes an **OHIPCRemoteStub** object to an **OHIPCParcel** object. This function is commonly used in scenarios such as passing service objects across processes, implementing remote calls in an IPC server, and sharing service objects. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes the [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object to the [OHIPCParcel](capi-ohipcparcel.md) object. This function is commonly used for cross-process transfer of service objects, remote calls on the IPC server side, service object sharing, and other scenarios. The written data is subject to the total serialization size limit of IPC (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The reference information of the **OHIPCRemoteStub** object is written to the **OHIPCParcel** object.
-
-2. The write position is automatically advanced.
-
-3. The reference information of the **Stub** object is serialized and stored.
-
-**Pairing requirements**
-
-- This method and [OH_IPCParcel_ReadRemoteStub()](#oh_ipcparcel_readremotestub) method must be used in pairs.
-
-- Calling sequence: First call WriteRemoteStub() to write the Stub object, and then the receiving side calls ReadRemoteStub() to read it.
-
+Call this function:
+- Writes the reference information of the [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object into the [OHIPCParcel](capi-ohipcparcel.md) object, and the write position automatically advances.
+- The reference information of the **Stub** object is serialized and stored.
+- Call sequence: first call OH_IPCParcel_WriteRemoteStub() to write the **Stub** object, and then the receiving side calls [OH_IPCParcel_ReadRemoteStub()](#oh_ipcparcel_readremotestub) to read it.
 - Incorrect pairing: If the functions are not called in the correct sequence or the calls are not properly paired, the receiving side will be unable to correctly obtain the reference to the **Stub** object, which will affect the establishment of IPC communication.
-
-**Constraints**
-
-- **Object validity**: stub must be a valid pointer to an **OHIPCRemoteStub** object.
-
-- **Null pointer check**: **stub** cannot be NULL; otherwise, a parameter error is returned.
-
-- **Reference management**: After writing, the reference count of the Stub object increases. Ensure that the Stub object has a sufficient lifecycle.
+- Object validity: **stub** cannot be null and must be a valid [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object pointer; otherwise, a parameter error is returned.
+- Reference management: after writing, the reference count of the **Stub** object increases, so ensure that the lifecycle of the **Stub** object is sufficient.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1248,8 +1134,8 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | const [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) *stub | Pointer to the **OHIPCRemoteStub** object to write. It cannot be NULL. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | const [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) *stub | Pointer to the OHIPCRemoteStub object to be written, which cannot be null. |
 
 **Returns**
 
@@ -1265,25 +1151,16 @@ OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)
 
 **Description**
 
-Reads the **OHIPCRemoteStub** object from an **OHIPCParcel** object. This function is commonly used in scenarios such as receiving service objects across processes, implementing remote calls in an IPC server, and sharing service objects.
+Reads an [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object from an [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for cross-process receiving of service objects, implementing server-side remote calls in IPC, and sharing service objects.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The reference information of the **Stub** object is read from the current read position.
-
-2. The pointer to the **OHIPCRemoteStub** object is returned.
-
-3. The read position is automatically advanced.
-
-**Constraints**
-
-- **Object management**: The returned Stub object pointer is managed by the system and must be used in accordance with IPC specifications.
-
-- **Validity check**: NULL is returned if the read operation fails. Check the return value.
-
-- **Usage scenario**: Typically used to receive the Stub object passed by the server for establishing IPC communication.
+Call this function:
+- Reads the reference information of the Stub object from the current read position.
+- Returns the pointer to the [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object.
+- The read position moves backward automatically.
+- Must be used in pair with [OH_IPCParcel_WriteRemoteStub()](#oh_ipcparcel_writeremotestub).
+- The returned Stub object pointer is managed by the system and must be used in accordance with IPC specifications.
+- Returns NULL if reading fails; check the return value.
+- Typically used to receive the Stub object passed by the server to establish IPC communication.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1293,13 +1170,13 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
 | Type| Description|
 | ---- | ---- |
-| OHIPCRemoteStub* | Returns the pointer to the **OHIPCRemoteStub** object read if the operation is successful; returns NULL otherwise.|
+| [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)* | Return on success: pointer to the OHIPCRemoteStub object; return on failure: NULL. |
 
 ### OH_IPCParcel_WriteRemoteProxy()
 
@@ -1309,33 +1186,16 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 
 **Description**
 
-Writes an **OHIPCRemoteProxy** object to an **OHIPCParcel** object. This function is commonly used in scenarios such as passing proxy objects across processes, implementing remote calls in an IPC client, and sharing proxy objects. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes an [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object to an [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for cross-process transfer of proxy objects, implementing client-side remote calls in IPC, and sharing proxy objects. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The reference information of the **OHIPCRemoteProxy** object is written to the **OHIPCParcel** object.
-
-2. The write position is automatically advanced.
-
-3. The reference information of the **OHIPCRemoteProxy** object is serialized and stored.
-
-**Pairing requirements**
-
-- This method and the [OH_IPCParcel_ReadRemoteProxy()](#oh_ipcparcel_readremoteproxy) method must be used in pairs.
-
-- Calling sequence: First call [OH_IPCParcel_WriteRemoteProxy()](#oh_ipcparcel_writeremoteproxy) to write the Proxy object, and then the receiving side calls [OH_IPCParcel_ReadRemoteProxy()](#oh_ipcparcel_readremoteproxy) to read it.
-
+Call this function:
+- Writes the reference information of the [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object into the [OHIPCParcel](capi-ohipcparcel.md) object.
+- The write position moves backward automatically.
+- The reference information of the Proxy object is serialized and stored.
+- Call sequence: first call OH_IPCParcel_WriteRemoteProxy() to write the Proxy object, and then the receiving side calls [OH_IPCParcel_ReadRemoteProxy()](#oh_ipcparcel_readremoteproxy) to read it.
 - Incorrect pairing: If the functions are not called in the correct sequence or the calls are not properly paired, the receiving side will be unable to correctly obtain the reference to the **OHIPCRemoteProxy** object, which will affect the establishment of IPC communication.
-
-**Constraints**
-
-- **Object validity**: **proxy** must be a valid pointer to an **OHIPCRemoteProxy** object.
-
-- **Null pointer check**: **proxy** cannot be NULL; otherwise, a parameter error is returned.
-
-- **Reference management**: After writing, the reference count of the Proxy object increases. Ensure that the Proxy object has a sufficient lifecycle.
+- Object validity: proxy cannot be null and must be a valid pointer to an [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object; otherwise, a parameter error is returned.
+- Reference management: after writing, the reference count of the Proxy object increases, so ensure that the lifecycle of the Proxy object is sufficient.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1345,8 +1205,8 @@ After this function is called:
 
   | Name | Description |
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | const [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) *proxy | Pointer to the **OHIPCRemoteProxy** object to write. It cannot be NULL. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | const [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) *proxy | Pointer to the OHIPCRemoteProxy object to be written, which cannot be null. |
 
 **Returns**
 
@@ -1362,25 +1222,15 @@ OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)
 
 **Description**
 
-Reads the **OHIPCRemoteProxy** object from an **OHIPCParcel** object. This function is commonly used in scenarios such as receiving proxy objects across processes, implementing remote calls in an IPC client, and sharing proxy objects.
+Reads an [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object from an [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for receiving proxy objects across processes, implementing remote calls of IPC clients, sharing proxy objects, and other scenarios.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The reference information of the **OHIPCRemoteProxy** object is read from the current read position.
-
-2. The pointer to the **OHIPCRemoteProxy** object is returned.
-
-3. The read position is automatically advanced.
-
-**Constraints**
-
-- **Object management**: The returned Proxy object pointer is managed by the system and must be used in accordance with IPC specifications.
-
-- **Validity check**: NULL is returned if the read operation fails. Check the return value.
-
-- **Usage scenario**: Typically used to receive the Proxy object passed by the client for establishing IPC communication.
+Call this function:
+- Reads the reference information of the Proxy object from the current read position.
+- Returns the pointer to the [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object.
+- The read position moves backward automatically.
+- This function must be used in pair with [OH_IPCParcel_WriteRemoteProxy()](#oh_ipcparcel_writeremoteproxy).
+- The returned Proxy object pointer is managed by the system and must be used in accordance with the IPC specifications.
+- NULL is returned when the read fails. Check the return value.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1390,13 +1240,13 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
 | Type| Description|
 | ---- | ---- |
-| OHIPCRemoteProxy* | Returns the pointer to the **OHIPCRemoteProxy** object created if the operation is successful; returns NULL otherwise.|
+| [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)* | Return on success: pointer to the OHIPCRemoteProxy object; return on failure: NULL. |
 
 ### OH_IPCParcel_WriteFileDescriptor()
 
@@ -1406,35 +1256,18 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 
 **Description**
 
-Writes a file descriptor to an **OHIPCParcel** object. This function is commonly used in scenarios such as passing file handles across processes, shared memory file descriptors, and pipe file descriptors. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes a file descriptor to the [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for cross-process transfer of file handles, shared memory file descriptors, pipe file descriptors, and other scenarios. The written data is subject to the total serialization size limit of IPC (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
 
-**Behavior after calling**
-
-After this function is called:
-
-1. A copy of the file descriptor is written to the **OHIPCParcel** object.
-
-2. The write position is automatically advanced.
-
-3. The file descriptor information is serialized for storage and can be transferred during IPC communication.
-
-**Pairing requirements**
-
-- This function and the [OH_IPCParcel_ReadFileDescriptor()](#oh_ipcparcel_readfiledescriptor) method must be used in pairs.
-
-- Calling sequence: First call [OH_IPCParcel_WriteFileDescriptor()](#oh_ipcparcel_writefiledescriptor) to write the file descriptor, and then the receiving side calls [OH_IPCParcel_ReadFileDescriptor()](#oh_ipcparcel_readfiledescriptor) to read it.
-
+Call this function:
+- Writes a copy of the file descriptor to the [OHIPCParcel](capi-ohipcparcel.md) object.
+- The write position moves backward automatically.
+- The file descriptor information is serialized and stored, and can be transferred during IPC communication.
+- Call sequence: First call OH_IPCParcel_WriteFileDescriptor() to write the file descriptor, and then the receiving side calls [OH_IPCParcel_ReadFileDescriptor()](#oh_ipcparcel_readfiledescriptor) to read it.
 - Incorrect pairing: If the functions are not called in sequence or the calls are not properly paired, the receiving side cannot obtain the correct file descriptor, affecting cross-process file sharing and access.
-
-**Constraints**
-
-- **File descriptor validity**: **fd** must be a valid non-negative integer file descriptor.
-
-- **Resource management**: After writing, the original file descriptor is still managed by the caller and must be closed by the caller.
-
-- **Permission transfer**: The file descriptor obtained by the receiving side has the same access permissions.
-
-- **System limitation**: File descriptor transfer is subject to system limitations. Some special file descriptors may not be transferable.
+- File descriptor validity: fd must be a valid non-negative integer file descriptor.
+- Resource management: After writing, the original file descriptor is still managed by the caller and must be closed by the caller.
+- Permission transfer: The file descriptor obtained by the receiving side has the same access permissions.
+- System limitation: File descriptor transfer is subject to system limitations, and some special file descriptors may not be transferable.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1444,8 +1277,8 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int32_t fd | File descriptor to write. The value must be a valid file descriptor, which is a non-negative integer. If a negative value or an invalid file descriptor is passed, the **OH_IPC_CHECK_PARAM_ERROR** error is returned. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int32_t fd | File descriptor to write. It must be a valid non-negative integer. If a negative number or an invalid file descriptor is passed in, OH_IPC_CHECK_PARAM_ERROR is returned. |
 
 **Returns**
 
@@ -1461,29 +1294,17 @@ int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
 
 **Description**
 
-Reads a file descriptor from an **OHIPCParcel** object. This function is commonly used in scenarios such as receiving file handles across processes, shared memory file descriptors, and pipe file descriptors. Concurrent access to the same object from multiple threads is not supported.
+Reads a file descriptor from an [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for cross-process receiving of file handles, shared memory file descriptors, pipe file descriptors, and other scenarios. Does not support multiple threads concurrently accessing the same object.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The file descriptor information is read from the current read position.
-
-2. A new valid file descriptor is returned.
-
-3. The read position is automatically advanced.
-
-4. The new file descriptor points to the same resource as the original file.
-
-**Constraints**
-
-- **Resource management**: The file descriptor read must be managed by the receiver and should be closed after use.
-
-- **Validity check**: The returned file descriptor should be checked for validity (non-negative value).
-
-- **Access permissions**: The new file descriptor inherits the access permissions of the original file descriptor.
-
-- **Lifecycle**: The lifecycle of the file descriptor is independent of the Parcel object.
+Call this function:
+- Reads the file descriptor information from the current read position.
+- Returns a new valid file descriptor.
+- The read position automatically moves backward.
+- The new file descriptor points to the same resource as the original file and inherits the access permissions of the original file descriptor.
+- It must be used in pair with [OH_IPCParcel_WriteFileDescriptor()](#oh_ipcparcel_writefiledescriptor).
+- The file descriptor read must be managed by the receiver and should be closed after use.
+- The returned file descriptor should be checked for validity (a non-negative value).
+- The lifecycle of the file descriptor is independent of the Parcel object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1493,8 +1314,8 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | int32_t *fd | Pointer to store the read file descriptor. It cannot be NULL. Before reading, ensure that valid file descriptor data has been written to the parcel. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | int32_t *fd | Pointer to the storage for the read file descriptor, which cannot be null. Before reading, ensure that valid file descriptor data has been written to the parcel. |
 
 **Returns**
 
@@ -1510,7 +1331,16 @@ int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
 
 **Description**
 
-Appends data to an **OHIPCParcel** object. This function is commonly used in scenarios such as merging data from multiple parcels, packet assembly, and merging data written in segments. The data appended is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Appends the data of an [OHIPCParcel](capi-ohipcparcel.md) object. Commonly used for merging data from multiple Parcel objects, assembling data packets, and merging segmented written data. The appended data is subject to the total serialization size limit of IPC (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+
+Call this function:
+- Copies the data in the source [OHIPCParcel](capi-ohipcparcel.md) object (data) and appends it to the current write position of the target [OHIPCParcel](capi-ohipcparcel.md) object (parcel).
+- The write position automatically moves forward by the number of bytes of the appended data.
+- The read position and content of the source [OHIPCParcel](capi-ohipcparcel.md) object remain unchanged.
+- The append operation copies the source data to the target [OHIPCParcel](capi-ohipcparcel.md), and the memory is managed by the target [OHIPCParcel](capi-ohipcparcel.md).
+- The total size of the concatenated data must not exceed the IPC serialization limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
+- Neither the parcel nor the data parameter can be null; otherwise, a parameter error is returned.
+- Both parameters must be valid objects created by [OH_IPCParcel_Create()](#oh_ipcparcel_create).
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1520,8 +1350,8 @@ Appends data to an **OHIPCParcel** object. This function is commonly used in sce
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | const [OHIPCParcel](capi-ohipcparcel.md) *data | Pointer to data source **OHIPCParcel** object. It cannot be NULL. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *data | Pointer to the source OHIPCParcel object, which cannot be null. |
 
 **Returns**
 
@@ -1537,35 +1367,18 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 
 **Description**
 
-Writes an interface token to an **OHIPCParcel** object for interface identity verification. This function is commonly used in security verification scenarios in IPC communication, such as preventing malicious processes from sending forged requests, ensuring that messages are sent to the correct service API, and distinguishing different API calls in multi-API services. Concurrent access to the same object from multiple threads is not supported. The data written is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create](#oh_ipcparcel_create)).
+Writes the interface descriptor to the [OHIPCParcel](capi-ohipcparcel.md) object for interface identity verification. It is commonly used in security verification scenarios in IPC communication, for example, preventing malicious processes from sending forged requests, ensuring that messages are sent to the correct service interface, and distinguishing different interface calls in a multi-interface service. It does not support multiple threads concurrently accessing the same object. The written data is subject to the total IPC serialization size limit (see [OH_IPCParcel_Create()](#oh_ipcparcel_create)).
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The interface token string is written to the current write position of the **OHIPCParcel** object.
-
-2. The write position is automatically advanced by the corresponding number of bytes.
-
-3. The interface token data is serialized and stored in the **OHIPCParcel** object.
-
-**Pairing requirements**
-
-- This method and the [OH_IPCParcel_ReadInterfaceToken()](#oh_ipcparcel_readinterfacetoken) method must be used in pairs.
-
-- Calling sequence: The client first calls [OH_IPCParcel_WriteInterfaceToken()](#oh_ipcparcel_writeinterfacetoken) to write the interface token, and then the server calls [OH_IPCParcel_ReadInterfaceToken()](#oh_ipcparcel_readinterfacetoken) to read and verify it.
-
-- If not properly paired: If the calls are not made in the correct order or not used in pair, interface identity verification will fail. The request may be rejected or sent to the wrong interface, causing interface confusion.
-
-**Constraints**
-
-- **Memory limit**: The length of the interface token string cannot exceed the remaining writable space of the Parcel.
-
-- **Null pointer check**: The token parameter cannot be NULL; otherwise, a parameter error is returned.
-
-- **Verification timing**: It is recommended to write the interface token before writing other request data.
-
-- **Uniqueness**: The interface token should be the fully qualified name or a unique identifier string of the interface.
+Call this function:
+- Writes the interface descriptor string to the current write position of the [OHIPCParcel](capi-ohipcparcel.md) object.
+- The write position automatically advances by the corresponding number of bytes.
+- The interface descriptor data is serialized and stored in the Parcel object.
+- The length of the interface descriptor string cannot exceed the remaining writable space of the Parcel.
+- Calling sequence: first call OH_IPCParcel_WriteInterfaceToken() to write the interface descriptor, and then the receiving end calls [OH_IPCParcel_ReadInterfaceToken()](#oh_ipcparcel_readinterfacetoken) to read and verify it.
+- If the functions are not called in sequence or not used in pairs, interface identity verification fails, and the request may be rejected or sent to the wrong interface, causing interface confusion.
+- The token parameter cannot be null; otherwise, a parameter error is returned.
+- It is recommended to write the interface descriptor before writing other request data.
+- The interface descriptor should be the fully qualified name or a unique identifier string of the interface.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1575,8 +1388,8 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | const char *token | Pointer to the interface token to write. It cannot be NULL. The interface token is usually the fully qualified name or a unique identifier string of an interface, and is used for interface identity verification. The string length range is [0, remaining writable space of the parcel]. The unit is bytes. If the limit is exceeded, the **OH_IPC_PARCEL_WRITE_ERROR** error is returned. |
+  | [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | const char *token | Interface descriptor information to be written, which cannot be null. The interface descriptor is usually the fully qualified name or a unique identifier string of the interface, used for interface identity verification. The string length ranges from (0, remaining writable space of the parcel], in bytes. If the limit is exceeded, OH_IPC_PARCEL_WRITE_ERROR is returned. |
 
 **Returns**
 
@@ -1592,29 +1405,18 @@ int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int
 
 **Description**
 
-Reads an interface token from an **OHIPCParcel** object for interface identity verification.
+Reads the interface descriptor information from the [OHIPCParcel](capi-ohipcparcel.md) object, which is used for interface identity verification.
 
-**Behavior after calling**
-
-After this function is called:
-
-1. The interface token string is read from the current read position.
-
-2. The memory for storing the interface token is allocated using the user-provided allocator.
-
-3. The address and length of the interface token are returned.
-
-4. The read position is automatically advanced.
-
-**Constraints**
-
-- **Memory management**: The token memory is allocated by the user-provided allocator and must be explicitly released after use.
-
-- **Error handling**: Even if the function returns a failure, check whether token is NULL and release it.
-
-- **Memory leak risk**: Failure to properly release token will cause memory leaks.
-
-- **Interface verification**: It is recommended to verify the interface token before processing the request.
+Call this function:
+- It must be used in pairs with [OH_IPCParcel_WriteInterfaceToken()](#oh_ipcparcel_writeinterfacetoken).
+- It reads the interface descriptor string from the current read position.
+- It allocates memory through the allocator provided by the user to store the descriptor.
+- Returns the descriptor address and length.
+- The read position moves forward automatically.
+- The token memory is allocated by the user-provided allocator and must be released after use.
+- Even if the function fails, check whether the token is empty and release it.
+- Failure to release the token properly causes a memory leak.
+- It is recommended to verify the interface descriptor before processing the request.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -1624,10 +1426,10 @@ After this function is called:
 
   | Name| Description|
   | ------ | ---- |
-  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
-  | char **token | Memory address for storing the interface token information. The memory is allocated using the user-provided allocator, and must be explicitly freed by the user after use. It must not be NULL. If an error code is returned, you still need to check whether the memory is empty and release the memory. Otherwise, memory leaks may occur. |
-  | int32_t *len | Pointer to store the length of the read interface token (including the null terminator). The unit is bytes. It must not be NULL. |
-  | [OH_IPC_MemAllocator](#oh_ipc_memallocator) allocator | Memory allocator specified by the user for allocating the memory for **token**. It must not be NULL. |
+  | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the OHIPCParcel object, which cannot be null. |
+  | char **token | Memory address used to store the interface descriptor information. The memory is allocated by the user-provided allocator and must be released by the user after use. It cannot be null. If the interface returns a failure, the user must still check whether the memory is null and release it proactively; otherwise, a memory leak will occur. |
+  | int32_t *len | Length of the read interface descriptor (including the terminator), in bytes. It cannot be null. |
+  | [OH_IPC_MemAllocator()](#oh_ipc_memallocator) allocator | User-specified memory allocator used to allocate the token, which cannot be null. |
 
 **Returns**
 

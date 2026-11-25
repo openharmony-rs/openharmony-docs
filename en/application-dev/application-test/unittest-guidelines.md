@@ -5,7 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-11-16T03:47:18.088Z pushedAt=2026-11-16T06:31:13.972Z nl=1 -->
 
 ## Overview
 
@@ -156,7 +157,7 @@ The following lists the common commands used in the unit test. For details about
 >
 > The following parameter settings and command examples are based on the stage model.
 >
-> You need to run the command parameters based on the @ohos/hypium version, and the test application package must integrate this version. Otherwise, the command parameters cannot be responded. For details, see [Release Mode](#release-mode). 
+> You need to run the command parameters based on the @ohos/hypium version, and the test application package must integrate this version. Otherwise, the command parameters cannot be responded. For details, see [Release Mode](#release-mode).  
 
 
 Example 1: Execute all test cases.
@@ -277,7 +278,7 @@ Example 11: Execute test cases for a specified number of times.
     >
     > If the execution is stopped upon an error, check the **Ignore** field and the error message.
 
-## Using JSUnit Capabilities 
+## Using JSUnit Capabilities
 ### Basic Process
 JSUnit provides the basic process APIs required for executing test scripts. You need to implement related APIs for JSUnit to identify test cases, schedule and execute test cases, and summarize test results. Currently, the following basic process APIs are supported.
 | Name              | Description                                                                  |
@@ -735,7 +736,7 @@ export default function afterReturnTest() {
       let claser: ClassName = new ClassName();
       // Mock method_1 of the ClassName class.
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // It is expected that, after the claser.method_1 function is mocked, the result '1' is returned when the function is called with 'testA' passed in, and the result undefined is returned when the function is called with 'testB' passed in.
+      // Expect that after the claser.method_1 function is mocked, the function return result when called with input parameter 'testA' is '1', and the function return result when called with input parameter 'testB' is undefined
       when(mockfunc)('testA').afterReturn('1');
       when(mockfunc)('testB').afterReturnNothing();
       // Assert the mocked function to check whether the expected result is returned. If the function is called with 'testA' passed in, 1 should be returned. If called with 'testB' passed in, undefined should be returned.
@@ -1017,7 +1018,7 @@ export default function afterThrowTest() {
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
       // It is expected that, after the claser.method_1 function is mocked, error xxx is thrown when the function is called with the test parameter passed in.
       when(mockfunc)('test').afterThrow('error xxx');
-      // Execute the mocked function, capture the exception, and use assertEqual() to check whether message meets the expectation.
+      // Execute the function after Mock, capture the exception, and use assertEqual to compare whether msg matches expectation.
       try {
         claser.method_1('test');
       } catch (e) {
@@ -1341,9 +1342,10 @@ export default class TestAbility extends UIAbility {
    value: string
  }
  ```
->**NOTE**
+ 
+> **Description:** 
 >
->To use the data-driven capability for passing in parameters, pass the **done** and **data** parameters in the **func** of **it**, and their sequence cannot be changed. If the capability is not needed, you can pass no parameter or only the **done** parameter in **func**.
+> To use the data-driven parameter passing feature, the `func` of the test case `it` must pass in two parameters: `done` and `data`, and the order of the input parameters cannot be changed. If the data-driven parameter passing feature is not used, `func` can take no parameters or only pass in `done`.
 
 ### Special Capability
 Special capability allows you to configure the script execution, which can be specified execution, pressure execution, and random execution. For details, see [Running Test Scripts in the CLI](#running-test-scripts-in-the-cli).
@@ -1374,10 +1376,14 @@ After the test case execution is complete, the console displays the error messag
 
 1. The **done** function is not called when the asynchronous API is executed; consequently, the case cannot complete normally and times out.
 2. The time taken for API call is longer than the timeout interval (5000 ms by default) set for test case execution.
-3. The assertion fails and throws an exception when the case calls the function. As a result, the case execution times out and ends. 
+3. The assertion fails and throws an exception when the case calls the function. As a result, the case execution times out and ends.  
 
 **Solution**
 
 1. Check the case code logic and ensure that the **done** function can be called when the assertion fails.
 2. Modify the case execution timeout settings under **Run/Debug Configurations** in DevEco Studio.
 3. Check the test case code logic to ensure that the assertion is successful.
+## Sample Code
+<!--RP3-->
+[test framework](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/jsunit)
+<!--RP3End-->

@@ -6,12 +6,13 @@
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=7723421f3cd6590d3d48799b0e8f48feb3b59829 translatedAt=2026-11-23T02:12:25.702Z pushedAt=2026-11-23T12:27:46.341Z nl=1 -->
 
 The **settings** module provides APIs for setting data items.
 
 > **NOTE**
 >
->  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
 > 
 >  - If no value is obtained for the accessed data item, it indicates that the current system app does not add the value of the data item to the database.
 
@@ -292,8 +293,8 @@ Sets the value for a data item. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**: 
-- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications);
+**Required permissions**:  
+- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications); 
 - ohos.permission.MANAGE_SECURE_SETTINGS for writing the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -315,7 +316,7 @@ Sets the value for a data item. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID | Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -338,7 +339,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', set
 
 getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses an asynchronous callback to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -374,7 +375,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 
 getValue(context: Context, name: string): Promise\<string>
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses a promise to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -417,7 +418,7 @@ Obtains the value of a data item in the database. This API uses a promise to ret
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**:  
+**Required permissions**:   
 - ohos.permission.MANAGE_SECURE_SETTINGS for reading the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -496,7 +497,7 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**:  
+**Required permissions**:   
 - ohos.permission.MANAGE_SECURE_SETTINGS for reading the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -583,8 +584,8 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**: 
-- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications); 
+**Required permissions**:  
+- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications);  
 - ohos.permission.MANAGE_SECURE_SETTINGS for writing the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -606,7 +607,7 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID | Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -727,7 +728,7 @@ Opens the WLAN settings window. This API uses a promise to return the result.
 
 For details about the error codes, see [Settings Error Codes](./errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 14800000 | Parameter error.        |
 | 14800010 | Original service error. |
@@ -747,11 +748,15 @@ settings.openNetworkManagerSettings(context).then((status) => {
 });
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean, callback: AsyncCallback\<void>): void
 
 Enables or disables airplane mode. This API uses an asynchronous callback to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 26.0.0. This API no longer provides an alternative API.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -775,11 +780,15 @@ settings.enableAirplaneMode(isEnabled, (err:Error) => {
 })
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean): Promise\<void>
 
 Enables or disables airplane mode. This API uses a promise to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -806,11 +815,15 @@ settings.enableAirplaneMode(isEnabled).then(() => {
 })
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(callback: AsyncCallback\<boolean>): void
 
 Checks whether the application can be displayed in a floating window. This API uses an asynchronous callback to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API started to support since API version 7 and started to be deprecated since API version 26.0.0. This API no longer provides an alternative API.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -832,11 +845,15 @@ settings.canShowFloating((err:Error, status: boolean) => {
 });
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(): Promise\<boolean>
 
 Checks whether the application can be displayed in a floating window. This API uses a promise to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -854,11 +871,15 @@ settings.canShowFloating().then((status:boolean) => {
 });
 ```
 
-## settings.getUriSync<sup>8+</sup>
+## settings.getUriSync<sup>(deprecated)</sup>
 
 getUriSync(name: string): string
 
 Obtains the URI of a data item. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -946,7 +967,7 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses an asynchronous callback to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -984,7 +1005,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise\<object>
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses a promise to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1124,7 +1145,7 @@ Open the input method settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1165,7 +1186,7 @@ Opens the input method details page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1206,7 +1227,7 @@ Opens the biometric recognition and password settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1248,7 +1269,7 @@ Opens the NFC settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1290,7 +1311,7 @@ Opens the double-click settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.    |
 | 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
@@ -1362,7 +1383,7 @@ Opens the mobile network settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1406,7 +1427,7 @@ Opens the display and brightness setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1450,7 +1471,7 @@ Opens the screen refresh rate setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1494,7 +1515,7 @@ Opens the sound and vibration setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1538,7 +1559,7 @@ Opens the about device setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1584,7 +1605,7 @@ Opens the application details setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |

@@ -1,18 +1,17 @@
 # \@State Decorator: State Owned by Component
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:22:39.213Z pushedAt=2026-07-25T01:08:12.586Z -->
+<!-- md-trans-meta sourceCommit=471200c68ae4e4e45485585923907f9999ef399d translatedAt=2026-11-09T11:10:33.479Z pushedAt=2026-11-10T01:46:18.029Z nl=1 -->
 
 A variable decorated with a state decorator is called a state variable, enabling regular variables to possess state attributes. When a state variable changes, the UI components bound to it re-render and update accordingly.
 
 Among the state variable decorators, [@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state.md#state) is the most basic decorator and the data source for most state variables.
 
-Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the state management framework. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
+Before reading the \@State documentation, it is recommended that developers have a basic understanding of state management frameworks. It is recommended to read [State Management Overview](./arkts-state-management-overview.md) in advance. For frequently asked questions, refer to [State Management FAQ](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -34,8 +33,8 @@ An \@State decorated variable is private and accessible only within its componen
 | ------------------ | ------------------------------------------------------------ |
 | Parameters        | None                                                          |
 | Synchronization type          | Does not synchronize with any type of variable in the parent component.                            |
-| Allowed variable types| object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#union-type-instances-supported-by-state).<br>For details about the supported types, see [Observing Changes](#observing-changes).|
-| Disallowed variable types| Function.     |
+| Allowed variable types| object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Union Type Instances Supported by @State](#union-type-instances-supported-by-state).<br>For details about the supported types, see [Observing Changes](#observing-changes).|
+| Disallowed variable types | The `Function` type cannot be decorated.      |
 | Initial value for the decorated variable| Required.     |
 
 ## Variable Transfer/Access Rules
@@ -66,11 +65,10 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
   ```
 
 - When the decorated variable is of the class or Object type, changes in its own assignment and property assignments are observable. Properties here refer to all properties returned by **Object.keys(observedObject)**. Example:
-
+  
   Declare the **Person** and **Model** classes.
-
   <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) --> 
-
+  
   ``` TypeScript
   // Declare the Person class.
   class Person {
@@ -94,36 +92,32 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
   ```
 
   The type decorated by @State is Model.
-
     <!-- @[state_decorate_type_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // Class type
     @State title: Model = new Model('Hello', new Person('World'));
     ```
 
   Assign a value to the \@State decorated variable.
-
     <!-- @[state_decorate_object_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // Assign a value to the class object.
     this.title = new Model('Hi', new Person('ArkUI'));
     ```
 
   Assign a value to a property of the \@State decorated variable.
-
     <!-- @[state_decorate_object_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // Assign a value to a property of the class object.
     this.title.value = 'Hi';
     ```
 
   The value assignment of a property of the nested object cannot be observed. Therefore, the UI is not refreshed.
-
     <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
-
+  
     ``` TypeScript
     // The value assignment of the nested property cannot be observed.
     this.title.name.value = 'ArkUI';
@@ -159,10 +153,10 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
 
    Starting from API version 23, relevant compile-time validation has been added. Decorating a **Function** type variable with \@State will result in an **ERROR** message. You should remove the \@State decorator from variables of the **Function** type in your code.
 
-3. If the parent component passes **undefined**, the variable decorated by \@State is still initialized using the local default value.
-
+3. When the parent component passes in **undefined**, the **@State** decorated variable is still initialized with its local default value.
+   
    <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) --> 
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -203,9 +197,8 @@ The following example shows a simple type decorated by @State. **count** is deco
 - When the state variable **count** changes, only the **Button** component is identified as dependent.
 
 - The framework executes the update method of the **Button** component to implement on-demand updates.
-
     <!-- @[state_scene_simple_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneSimpleType.ets) -->
-
+    
     ``` TypeScript
     @Entry
     @Component
@@ -237,7 +230,7 @@ The following example shows a simple type decorated by @State. **count** is deco
 - The **EntryComponent** has multiple **MyComponent** instances. The internal state change of the first **MyComponent** instance does not affect the second **MyComponent** instance.
 
     <!-- @[state_scene_type_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
-
+    
     ``` TypeScript
     class Model {
       public value: string;
@@ -296,7 +289,6 @@ The following example shows a simple type decorated by @State. **count** is deco
 ### Decorating Variables of the Array Type
 
 In this example, the **fruits** variable decorated with \@State is of the **Array\<Fruit\>** type. After the button is clicked, the value of **fruits** changes, and the UI is re-rendered.
-
 <!-- @[state_scene_type_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeArray.ets) -->
 
 ``` TypeScript
@@ -373,7 +365,6 @@ struct ArraySample {
 > Since API version 11, \@State supports the Map type.
 
 In this example, the **fruits** variable decorated with \@State is of the **Map\<string, number\>** type. After the button is clicked, the value of **fruits** changes, and the UI is re-rendered.
-
 <!-- @[state_scene_type_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeMap.ets) -->
 
 ``` TypeScript
@@ -442,7 +433,6 @@ struct MapSample {
 > Since API version 11, \@State supports the Set type.
 
 In this example, the **fruits** variable decorated with \@State is of the **Set\<string\>** type. After the button is clicked, the value of **fruits** changes, and the UI is re-rendered.
-
 <!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->  
 
 ``` TypeScript
@@ -500,7 +490,6 @@ struct SetSample {
 ### Decorating Variables of the Date Type
 
 In this example, the **selectedDate** variable decorated by \@State is of the **Date** type. After the button is clicked, the value of **selectedDate** changes, and the UI is re-rendered.
-
 <!-- @[state_scene_type_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeDate.ets) -->
 
 ``` TypeScript
@@ -558,7 +547,6 @@ struct DatePickerExample {
 ### Union Type Instances Supported by @State
 
 \@State supports **undefined**, **null**, and union types. In the following example, the type of **count** is number | undefined. If the value of **count** is changed when the button is clicked, the view will be updated accordingly.
-
 <!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->
 
 ``` TypeScript
@@ -592,7 +580,4 @@ struct UnionTypeSample {
   }
 }
 ```
-
 ![state-union](figures/state-union.gif)
-
-<!--no_check-->

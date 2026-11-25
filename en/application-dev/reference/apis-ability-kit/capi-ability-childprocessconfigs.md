@@ -4,16 +4,17 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=5bb247b05c17392f13f8ef23a0a57c57e37f2a5a translatedAt=2026-11-04T09:46:28.000Z pushedAt=2026-11-04T09:49:23.984Z nl=1 -->
 
 ```c
-typedef struct Ability_ChildProcessConfigs Ability_ChildProcessConfigs
+typedef struct Ability_ChildProcessConfigs Ability_ChildProcessConfigs;
 ```
 
 ## Overview
 
-The struct describes the configuration information about a child process, including the child process name and the sharing mode of the data sandbox and network environment.
+Configuration information for starting a child process, including the process name of the child process, the sharing mode of the data sandbox and network environment, and the configuration of whether the UID of the main process and the child process are isolated. Developers can use [OH_Ability_ChildProcessConfigs_SetProcessName](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setprocessname), [OH_Ability_ChildProcessConfigs_SetIsolationMode](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setisolationmode), and [OH_Ability_ChildProcessConfigs_SetIsolationUid](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setisolationuid) to modify the corresponding configuration information.
 
 **Since**: 20
 

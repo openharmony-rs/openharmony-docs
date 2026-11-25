@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=615911b0ee49fce00580141968cadc359896d5c7 translatedAt=2026-11-04T04:33:30.636Z pushedAt=2026-11-04T08:04:44.680Z nl=1 -->
 
 > **NOTE**
 >
@@ -67,6 +68,45 @@ Non-input applications call this API.
 **Procedure**
 
 Use an input application to call this API.
+
+<!--Del-->
+## 3900004 The Specified Display Does Not Exist
+
+**Error Message**
+
+The specified display does not exist.
+
+**Description**
+
+The specified displayId does not exist.
+
+**Possible Causes**
+
+The current device does not have this display ID.
+
+**Solution**
+
+1. Query the valid display ID and pass in the correct display ID.
+2. Check the connection status of the display.<!--DelEnd-->
+
+<!--Del-->
+## 3900005 Unsupported input device
+
+**Error Message**
+
+Unsupported input device.
+
+**Description**
+
+This peripheral device is not supported.
+
+**Possible Causes**
+
+The peripheral device corresponding to the specified inputDeviceId is not an external USB or Bluetooth peripheral device.
+
+**Solution**
+
+Set the ID of the external USB or Bluetooth peripheral device again.<!--DelEnd-->
 
 ## 3800001 Multimodal input internal error
 

@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:35:32.897Z pushedAt=2026-08-22T03:30:22.296Z -->
+<!-- md-trans-meta sourceCommit=48d25fbfce6ff5915476dbc43637ec03a10f637a translatedAt=2026-11-05T01:00:48.367Z pushedAt=2026-08-22T03:30:22.296Z nl=2 -->
 
 ## Overview
 
@@ -253,12 +253,12 @@ In some use cases, you may want to use only custom fonts to ensure font consiste
    OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
    // Possible cases when the system fonts are disabled:
    // Case 1: If the custom font is used, the text is displayed properly.
-   // This path is the path of the custom font file to be registered on the application device. Ensure that the custom font file is properly placed in this path.
-   // The font family name is required when the custom font is used.
+   // This is the path to a system font file on the device. Register the system font file with the font collection for use here.
+   // Use this font family name when using the font later.
    // Case 2: If OH_Drawing_SetTextStyleFontFamilies is not called or empty parameters are passed, the text uses the system default font by default. However, since the system font is disabled at this point, the text cannot be displayed.
    const char* fontFamily = "HarmonyOS_Sans"; 
    const char* fontPath = "/system/fonts/HarmonyOS_Sans.ttf"; 
-   // Returns **0** if the font is registered; returns **1** if the file does not exist; returns **2** if opening the file fails; returns **3** if reading the file fails; returns **4** if the file is not found; returns **5** if the file size is not obtained; returns **9** if the file is damaged.
+   // Return values: 0: success; 1: file does not exist; 2: failed to open the file; 3: failed to read the file; 4: failed to find the file; 5: failed to obtain the size; 9: corrupted file.
    int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
    DRAWING_LOGI("errorCode = %{public}d", errorCode);
    const char *myFontFamilies[] = {"HarmonyOS_Sans"}; // Ensure that the custom font has been successfully registered and enter the family name of the custom font.

@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T12:40:18.342Z pushedAt=2026-10-10T07:01:15.360Z -->
+<!-- md-trans-meta sourceCommit=8a0e36109bea79cc35522d2aee4c1b8ad683b256 translatedAt=2026-11-18T03:56:33.448Z pushedAt=2026-11-20T09:07:55.963Z nl=1 -->
 
 The **baseProfile** module provides common methods for basic Bluetooth [profiles](../../connectivity/bluetooth/terminology.md#profile), including setting and obtaining connection strategies. These methods are inherited by Bluetooth profile modules (such as [A2DP](../../connectivity/bluetooth/terminology.md#a2dp) and [HFP](../../connectivity/bluetooth/terminology.md#hfp)) to help you manage connection strategies for Bluetooth devices.
 
@@ -31,6 +31,8 @@ Enumerates the profile connection strategies.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                            | Value     | Description           |
 | -------------------------------- | ------ | --------------- |
 | CONNECTION_STRATEGY_UNSUPPORTED   | 0 | Default connection strategy to use when the device is not paired.<br>This API is a system API. |
@@ -51,7 +53,9 @@ Sets the profile connection strategy for this device. This API uses an asynchron
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Parameters**
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**:
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
@@ -82,7 +86,7 @@ import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     a2dpSrc.setConnectionStrategy('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
-        console.info('setConnectionStrategy, err: ' + JSON.stringify(err));
+        console.error('setConnectionStrategy, err: ' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -101,7 +105,9 @@ Sets the profile connection strategy for this device. This API uses a promise to
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Parameters**
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**:
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
@@ -158,7 +164,9 @@ Obtains the profile connection strategy. This API uses an asynchronous callback 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Parameters**
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**:
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
@@ -207,7 +215,9 @@ Obtains the profile connection strategy. This API uses a promise to return the r
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Parameters**
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**:
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |

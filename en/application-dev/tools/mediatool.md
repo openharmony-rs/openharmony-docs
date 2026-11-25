@@ -44,7 +44,7 @@ If **\<media-target>** specifies a file path, only the following paths are suppo
 
 * **/storage/media/\<uid\>/local/files/Photo** and lower file paths. **\<uid\>** must be the current user ID. Otherwise, an error message is displayed, indicating that the path is invalid.
 
-**\<dest-path>** is the path of the file to be created or the folder path. If it is set to a folder path, the file will be exported to the folder, and the file name remains the same as that in the media library. If it is set to a file path, do not use the path of an existing file. <!--Del-->The **<dest-path>** parameter must specify a path that can be accessed.<!--DelEnd--><!--RP1--><!--RP1End-->
+**\<dest-path>** is the path of the file to be created or the folder path. If it is set to a folder path, the file will be exported to the folder, and the file name remains the same as that in the media library. If it is set to a file path, do not use the path of an existing file. <!--Del-->The **\<dest-path>** parameter must specify a path that can be accessed.<!--DelEnd--><!--RP1--><!--RP1End-->
 
 After the file is exported successfully, the path of the exported file is displayed.
 

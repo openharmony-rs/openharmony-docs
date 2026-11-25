@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:54:49.405Z pushedAt=2026-09-15T13:38:25.345Z -->
+<!-- md-trans-meta sourceCommit=909527a23ab82dfa7ed9b8b3ecf78e6361edbb8a translatedAt=2026-11-05T00:59:45.681Z pushedAt=2026-09-15T13:38:25.345Z nl=2 -->
 
 ## Switching Call Output Devices
 
@@ -84,7 +84,7 @@ Currently, the system provides the default style and custom style for the **AVCa
 
    Alternatively, create the **AVCastPickerHelper** component.
 
-   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->   
+   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) --> 
 
    ``` TypeScript
    import { common } from '@kit.AbilityKit';
@@ -106,7 +106,7 @@ Currently, the system provides the default style and custom style for the **AVCa
        this.avCastPicker.select(avCastPickerOptions).then(() => {
          console.info('select successfully');
        }).catch((err: BusinessError) => {
-         console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+         console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
        });
      }
    }

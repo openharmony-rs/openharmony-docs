@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=17255d7a0dddb417fd2d6954587fa1dbda39c7eb translatedAt=2026-11-18T03:13:37.960Z pushedAt=2026-11-19T10:53:34.604Z nl=1 -->
 
 After calling [avMusicTemplate.createAVMusicTemplate](arkts-apis-avMusicTemplate-f.md#avmusictemplatecreateavmusictemplate) to obtain an instance, you can obtain the instance ID, start the audio template page, and configure the data obtaining method. Then, you can synchronize the data to the template controller to complete operations such as data interaction and UI update.
 
@@ -2569,10 +2570,118 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
   /**
-   * Unregister the listener.
+   * Unregister listening.
    */
   public unregisterListener() {
     this.template?.offPlayForSearch();
+  }
+}
+```
+
+## onCustomCommand
+
+onCustomCommand(callback: CustomCommandEvent): void
+
+Registers a listener for the custom control command. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**Parameters**
+
+| Name   | Type                                                         | Mandatory | Description                       |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| callback | [CustomCommandEvent](arkts-apis-avMusicTemplate-t.md#customcommandevent) | Yes   | Callback used to return the custom control command event. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Template Error Codes](errorcode-avmusictemplate.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onCustomCommand can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
+**Example**
+
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+  private customCommandEvent: avMusicTemplate.CustomCommandEvent = async (command: string, args: string) => {
+    return new Promise<avMusicTemplate.OperResult>(async (resolve, reject) => {
+      let operResult: avMusicTemplate.OperResult = await this.createOperResult();
+      resolve(operResult);
+    });
+  };
+
+  /**
+   * Register a listener.
+   */
+  private registerListener() {
+    this.template?.onCustomCommand(this.customCommandEvent);
+  }
+
+  /**
+   * Simulate the operation result.
+   *
+   * @returns Operation result.
+   */
+  private async createOperResult(): Promise<avMusicTemplate.OperResult> {
+    let operResult: avMusicTemplate.OperResult = {
+      errorCode: 0,
+    }
+    return operResult;
+  };
+}
+```
+
+## offCustomCommand
+
+offCustomCommand(callback?: CustomCommandEvent): void
+
+Unregisters the listener for the custom control command.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**Parameters**
+
+| Name     | Type                                                         | Mandatory | Description                                                        |
+| -------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------------ |
+| callback | [CustomCommandEvent](arkts-apis-avMusicTemplate-t.md#customcommandevent) | No       | Callback for unregistering the custom control command. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Template Error Codes](errorcode-avmusictemplate.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offCustomCommand can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
+**Example**
+
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * Unregister the listener.
+   */
+  public unregisterListener() {
+    this.template?.offCustomCommand();
   }
 }
 ```

@@ -5,21 +5,25 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1bef6f7b8f13f754ee70b4c162451bfd235cd8b6 translatedAt=2026-11-09T10:22:12.152Z pushedAt=2026-11-09T11:11:52.291Z nl=1 -->
 
 - ArkTS APIs<!--basic-services-arkts-->
   - Account Management<!--account-management-arkts-->
     - [@ohos.account.appAccount (Application Account Management)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
     - [@ohos.account.osAccount (OS Account Management)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount.authorization (System Account Authorization Management)](js-apis-osAccount-authorization.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
-    - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
+    - [@ohos.account.osAccount (OS Account Management) (System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
+    - [OS Account Privilege List](appendix-osAccount-authorization-privileges.md)
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
+    - [@ohos.boardInfo (Board Information)](js-apis-board-info.md)
     - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
-    - [@ohos.power (System Power Management)](js-apis-power.md)
+    - [@ohos.power (Power Management)](js-apis-power.md)
     - [@ohos.runningLock (RunningLock)](js-apis-runninglock.md)
     - [@ohos.thermal (Thermal Management)](js-apis-thermal.md)
     - [@ohos.usbManager (USB Manager)](js-apis-usbManager.md)
@@ -32,7 +36,7 @@
     - [@ohos.charger (Charging Type) (System API)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (Device Attestation) (System API)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (Power Management) (System API)](js-apis-power-sys.md)
-    - [@ohos.systemCapability (SystemCapability) (System API)](js-apis-system-capability-sys.md)
+    - [@ohos.systemCapability (System Capability) (System API)](js-apis-system-capability-sys.md)
     - [@ohos.systemParameterEnhance (System Parameter) (System API)](js-apis-system-parameterEnhance-sys.md)
     - [@ohos.screenLock (Screen Lock) (System API)](js-apis-screen-lock-sys.md)
     - [@ohos.usbManager (USB Manager) (System API)](js-apis-usbManager-sys.md)
@@ -122,6 +126,7 @@
     - [OH_Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
+    - [UsbManager](capi-usbmanager.md)
   - Header Files<!--basic-services-headerfile-->
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [ohbattery_info.h](capi-ohbattery-info-h.md)
@@ -134,6 +139,7 @@
     - [ohprint.h](capi-ohprint-h.md)
     - [ohscan.h](capi-ohscan-h.md)
     - [time_service.h](capi-time-service-h.md)
+    - [ohusb_manager.h](capi-ohusb-manager-h.md)
   - Structs<!--basic-services-struct-->
     - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
     - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
@@ -158,6 +164,11 @@
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
     - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
+    - [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)
+    - [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)
+    - [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md)
+    - [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)
+    - [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md)
 - Error Codes<!--basic-services-arkts-errcode-->
   - [USB Error Codes](errorcode-usb.md)
   - [Serial Port Management Error Codes](errorcode-busmanager-serial.md)

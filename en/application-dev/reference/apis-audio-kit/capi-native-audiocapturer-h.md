@@ -1,12 +1,11 @@
 # native_audiocapturer.h
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zyy0412-->
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a560ca455272b87c773fafec048564b7357cd71d translatedAt=2026-08-10T01:23:39.365Z pushedAt=2026-08-10T04:19:05.972Z -->
+<!-- md-trans-meta sourceCommit=5e5bc4ab7c8a2764e5680f4b6b16418c04da6f57 translatedAt=2026-11-09T10:26:16.528Z pushedAt=2026-11-09T11:27:57.933Z nl=1 -->
 
 ## Overview
 
@@ -52,8 +51,8 @@ The file declares the functions related to an audio capturer.
 | [typedef void (\*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error)](#oh_audiocapturer_onerrorcallback) | OH_AudioCapturer_OnErrorCallback | Defines the callback for error events of an audio capturer.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetFastStatus(OH_AudioCapturer* capturer, OH_AudioStream_FastStatus* status)](#oh_audiocapturer_getfaststatus) | - | Obtains the running status of an audio capturer to determine whether it is running in low-latency mode.|
 | [typedef void (\*OH_AudioCapturer_OnFastStatusChange)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_FastStatus status)](#oh_audiocapturer_onfaststatuschange) | OH_AudioCapturer_OnFastStatusChange | Defines a callback function for low-latency status changes during audio recording.|
-| [typedef void (\*OH_AudioCapturer_OnPlaybackCaptureStartCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_PlaybackCaptureStartState state)](#oh_audiocapturer_onplaybackcapturestartcallback) | OH_AudioCapturer_OnPlaybackCaptureStartCallback | Defines the callback function for the starting result of internal audio recording (capturing sound from the applications on the device) during audio recording. This API is currently not available for public use.|
-| [OH_AudioStream_Result OH_AudioCapturer_RequestPlaybackCaptureStart(OH_AudioCapturer* capturer, OH_AudioCapturer_OnPlaybackCaptureStartCallback callback, void* userData)](#oh_audiocapturer_requestplaybackcapturestart) | - | Asynchronously requests to start the internal recording stream. This API works in non-blocking mode, which means that the system continues to process user authorization and start the internal recording stream after receiving a start request.<br> The final result is returned through a callback. This API is currently not available for public use.|
+| [typedef void (\*OH_AudioCapturer_OnPlaybackCaptureStartCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_PlaybackCaptureStartState state)](#oh_audiocapturer_onplaybackcapturestartcallback) | OH_AudioCapturer_OnPlaybackCaptureStartCallback | Defines a pointer to the callback invoked to return the start result of playback capture (recording the sound of applications inside the device) during audio recording. This API is initially only for specific system applications, and supports any application use since API version 26.0.0. |
+| [OH_AudioStream_Result OH_AudioCapturer_RequestPlaybackCaptureStart(OH_AudioCapturer* capturer, OH_AudioCapturer_OnPlaybackCaptureStartCallback callback, void* userData)](#oh_audiocapturer_requestplaybackcapturestart) | - | Asynchronously requests to start the playback capture stream. This function is non-blocking, which means that after receiving the start request, the system continues to process user authorization and the start of the playback capture stream.<br>The final result will be returned through the callback function. This API is initially only for specific system applications, and supports any application use since API version 26.0.0. |
 | [OH_AudioStream_Result OH_AudioCapturer_SetIndependentAudioSessionStrategy(OH_AudioCapturer* capturer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)](#oh_audiocapturer_setindependentaudiosessionstrategy) | - | Sets the independent audio session policy and behavior parameters. If this API is called while an audio capturer is running, you must call the [OH_AudioCapturer_Start](capi-native-audiocapturer-h.md#oh_audiocapturer_start) API again for the settings to take effect.|
 | [OH_AudioStream_Result OH_AudioCapturer_SetNoiseReductionMode(OH_AudioCapturer* capturer, OH_AudioNoiseReductionMode noiseReductionMode)](#oh_audiocapturer_setnoisereductionmode) | - | Sets the noise reduction mode of the current recording stream. |
 | [OH_AudioStream_Result OH_AudioCapturer_GetNoiseReductionMode(OH_AudioCapturer* capturer, OH_AudioNoiseReductionMode* noiseReductionMode)](#oh_audiocapturer_getnoisereductionmode) | - | Obtains the noise reduction mode of the current recording stream. |
@@ -75,6 +74,7 @@ Releases an audio capturer.
 **Required permissions**: ohos.permission.MICROPHONE
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -102,6 +102,7 @@ Starts an audio capturer to start capturing audio data.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -127,6 +128,7 @@ Pauses the input audio stream. If you need to resume recording after pausing, it
 **Required permissions**: ohos.permission.MICROPHONE
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -154,6 +156,7 @@ Stops the audio capturer. If you need to completely end recording, it is recomme
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -178,6 +181,7 @@ Flushes audio data captured by an audio capturer.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -201,6 +205,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetCurrentState(OH_AudioCapturer* capture
 Obtains the state of an audio capturer.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -227,6 +232,7 @@ Obtains the latency mode of an audio capturer.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -251,6 +257,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetStreamId(OH_AudioCapturer* capturer, u
 Obtains the stream ID of an audio capturer.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -277,6 +284,7 @@ Obtains the sampling rate of an audio capturer.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -301,6 +309,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetChannelCount(OH_AudioCapturer* capture
 Obtains the number of channels for an audio capturer.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -327,6 +336,7 @@ Obtains the sampling format of an audio capturer.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -351,6 +361,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetEncodingType(OH_AudioCapturer* capture
 Obtains the encoding type of an audio capturer.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -377,6 +388,7 @@ Obtains the usage scenario of an audio capturer.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -402,6 +414,7 @@ Queries the callback frame count. **frameSize** indicates the number of sampling
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -426,6 +439,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, 
 Obtains the timestamp and current data frame position information of the input audio stream.<br> This API can obtain the actual recording position (**framePosition**) of the audio channel and the timestamp when the recording reaches that position. The timestamp is in nanoseconds.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -453,6 +467,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetFramesRead(OH_AudioCapturer* capturer,
 Obtains the number of frames that have been read since the stream was created.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -490,7 +505,7 @@ Reports the mute state of the current recording stream from the app to the syste
 
 | Type | Description |
 | -- | -- |
-| OH_AudioStream_Result | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: **capturer** is nullptr.<br>         **AUDIOSTREAM_ERROR_ILLEGAL_STATE**: The operation state is abnormal. The recording stream is not in the running state.<br>         **AUDIOSTREAM_ERROR_SYSTEM**: System exception, for example, the system service exits unexpectedly. |
+| OH_AudioStream_Result | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: The **capturer** parameter is nullptr.<br>         **AUDIOSTREAM_ERROR_ILLEGAL_STATE**: The function is called in an incorrect state. The recording stream is not in the running state. |
 
 ### OH_AudioCapturer_GetOverflowCount()
 
@@ -503,6 +518,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetOverflowCount(OH_AudioCapturer* captur
 Obtains the number of overloaded audio streams of an audio capturer.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -529,6 +545,7 @@ Defines the callback used to read audio data. To eliminate power-on noise caused
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -550,6 +567,7 @@ Defines the callback for audio capturer device change events.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -569,6 +587,7 @@ typedef void (*OH_AudioCapturer_OnInterruptCallback)(OH_AudioCapturer* capturer,
 Defines the callback for interruption events of an audio capturer.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -591,6 +610,7 @@ Defines the callback for error events of an audio capturer.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -610,6 +630,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetFastStatus(OH_AudioCapturer* capturer,
 Obtains the running status of an audio capturer to determine whether it is running in low-latency mode.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -636,6 +657,7 @@ Defines a callback function for low-latency status changes during audio recordin
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -652,7 +674,7 @@ typedef void (*OH_AudioCapturer_OnPlaybackCaptureStartCallback)(OH_AudioCapturer
 
 **Description**
 
-Defines the callback function for the starting result of internal audio recording (capturing sound from the applications on the device) during audio recording. This API is currently not available for public use.
+Defines a pointer to the callback invoked to return the start result of playback capture (recording the sound of applications inside the device) during audio recording. This API is initially only for specific system applications, and supports any application use since API version 26.0.0.
 
 **Since**: 23
 
@@ -672,7 +694,7 @@ OH_AudioStream_Result OH_AudioCapturer_RequestPlaybackCaptureStart(OH_AudioCaptu
 
 **Description**
 
-Asynchronously requests to start the internal recording stream. This API works in non-blocking mode, which means that the system continues to process user authorization and start the internal recording stream after receiving a start request.<br> The final result is returned through a callback. This API is currently not available for public use.
+Asynchronously requests to start the playback capture stream. This function is non-blocking, which means that after receiving the start request, the system continues to process user authorization and the start of the playback capture stream.<br>The final result will be returned through the callback function. This API is initially only for specific system applications, and supports any application use since API version 26.0.0.
 
 **Since**: 23
 
@@ -682,7 +704,7 @@ Asynchronously requests to start the internal recording stream. This API works i
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
 | [OH_AudioCapturer_OnPlaybackCaptureStartCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onplaybackcapturestartcallback) callback | Callback function used to receive the final result of the start request.|
-| void* userData | Pointer to the data storage region customized by an application. This struct will be passed to the callback function.|
+| void* userData | Pointer to the custom data storage area of the application, which is passed to the callback function. |
 
 **Returns**
 
@@ -818,3 +840,5 @@ Callback function invoked when the risk warning prompt finishes playing in the c
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to the audio stream instance created by [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer). |
 | void* userData | Pointer to the app-defined data storage area, passed through [OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setsensitiverecordpermitcallback). |
 | bool isPermitted | Whether the risk warning prompt has finished playing. The value **true** indicates that recording can be started, and **false** indicates that recording is not permitted. |
+
+

@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:31.223Z pushedAt=2026-06-22T11:21:11.398Z -->
+<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-11-04T03:46:21.557Z pushedAt=2026-11-04T10:12:49.991Z nl=1 -->
 
 ```c
 typedef struct ScsiPeripheral_BasicSenseInfo {...} ScsiPeripheral_BasicSenseInfo
@@ -13,7 +13,7 @@ typedef struct ScsiPeripheral_BasicSenseInfo {...} ScsiPeripheral_BasicSenseInfo
 
 ## Overview
 
-Defines the basic information about the sense data.
+Defines the basic information struct of SCSI Sense Data, which is used to encapsulate the sense data returned after a SCSI command is executed. This struct contains the response code, status flags, and various information fields, and is used by the driver to obtain and analyze the error status and command execution result of a SCSI device.
 
 **Since**: 18
 
@@ -27,9 +27,11 @@ Defines the basic information about the sense data.
 
 | Name| Description|
 | -- | -- |
-| uint8_t responseCode | Response code.|
-| bool valid | Information validity flag.|
-| uint64_t information | **Information** field.|
-| uint64_t commandSpecific | **Command-specific information** field.|
-| bool sksv | Flag of the **Sense key specific** field.|
-| uint32_t senseKeySpecific | **Sense key specific** field.|
+| uint8_t responseCode | Response code. It is automatically set by the driver layer when Sense Data is received. |
+| bool valid | Valid flag. When it is true, the information and commandSpecific fields are valid; when it is false, these fields should be ignored. Check this flag before use to avoid reading invalid data. |
+| uint64_t information | Information field. Its value follows the SCSI standard protocol. |
+| uint64_t commandSpecific | Command-specific information field. Its value follows the SCSI standard protocol. |
+| bool sksv | Flag of the sense key specific field. When it is true, the senseKeySpecific field is valid and contains sense key specific data; when it is false, the senseKeySpecific field should be ignored. Check this flag before use to avoid reading invalid data. |
+| uint32_t senseKeySpecific | Sense key specific field. Its value follows the SCSI standard protocol. |
+
+

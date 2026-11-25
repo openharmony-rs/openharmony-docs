@@ -1,16 +1,15 @@
 # OHIPCSkeleton
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ceec5d18179ba29b1eca79fa9240e27795b5216c translatedAt=2026-07-28T02:20:41.721Z pushedAt=2026-07-29T07:00:09.673Z -->
+<!-- md-trans-meta sourceCommit=98355c316452dae3a7c90b55e4a4861818921408 translatedAt=2026-11-04T03:45:45.469Z pushedAt=2026-11-04T10:13:14.861Z nl=1 -->
 
 ## Overview
 
-The OHIPCSkeleton module provides core C APIs of the IPC framework.
+The **ipc_cskeleton.h** module provides C APIs for managing the token IDs, credentials, process IDs (PIDs), user IDs (UIDs), and thread pool in the IPC framework. These APIs are mainly used for context and thread management in inter-process communication.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

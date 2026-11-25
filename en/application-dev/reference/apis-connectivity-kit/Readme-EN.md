@@ -42,7 +42,7 @@
   <!--Del-->
   - [@ohos.bluetooth.a2dp (Bluetooth A2DP Module) (System API)](js-apis-bluetooth-a2dp-sys.md)
   - [@ohos.bluetooth.access (Bluetooth Access Module) (System API)](js-apis-bluetooth-access-sys.md)
-  - [@ohos.bluetooth.bas (Bluetooth MAP Module) (System API)](js-apis-bluetooth-bas-sys.md)
+  - [@ohos.bluetooth.bas (Bluetooth BAS Module) (System API)](js-apis-bluetooth-bas-sys.md)
   - [@ohos.bluetooth.baseProfile (Bluetooth baseProfile Module) (System API)](js-apis-bluetooth-baseProfile-sys.md)
   - [@ohos.bluetooth.ble (Bluetooth BLE Module) (System API)](js-apis-bluetooth-ble-sys.md)
   - [@ohos.bluetooth.connection (Bluetooth Connection Module) (System API)](js-apis-bluetooth-connection-sys.md)
@@ -79,7 +79,7 @@
   - [Bluetooth Error Codes](errorcode-bluetoothManager.md)
   - [Wi-Fi Error Codes](errorcode-wifi.md)
   - [NFC Error Codes](errorcode-nfc.md)
-  - [SE Error Codes](errorcode-se.md)
+  - [SecureElement Error Codes](errorcode-se.md)
   - [Error Codes of the Converged Short-Range Service Subsystem](errorcode-fusionConnectivity.md)
   - [NearLink Error Codes](errorcode-nearlink-service.md)
 - APIs No Longer Maintained<!--connectivity-arkts-dep-->

@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7507bf7498175f9363f60d56ed8f750b80e8d09c translatedAt=2026-09-21T03:03:07.348Z pushedAt=2026-09-22T01:29:30.425Z -->
+<!-- md-trans-meta sourceCommit=42bb1d1cfb2c2a996a05066eb4307f1fcd2a7053 translatedAt=2026-11-04T04:06:29.995Z pushedAt=2026-11-04T08:04:44.616Z nl=1 -->
 
 The **faceAuth** module is an important part of the OpenHarmony user identity and access management (UserIAM) and is used to manage face enrollment. This module provides core APIs for face authentication management, enabling developers to enroll and manage face information within their applications.
 
@@ -129,6 +129,6 @@ try {
   console.info('set surface id successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`set surface id failed, Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to set surface id. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```

@@ -32,7 +32,7 @@ static setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 > **说明：**
 >
-> - 在调用本接口前，若尚未创建Web组件且未执行[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)方法，必须先调用该方法完成Web内核初始化，否则接口调用无效。
+> - 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)），必须先调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)完成初始化，否则接口调用无效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -82,7 +82,7 @@ struct WebComponent {
             this.controller.setDownloadDelegate(this.delegate);
             webview.WebDownloadManager.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -90,7 +90,7 @@ struct WebComponent {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resumeDownload')
@@ -98,7 +98,7 @@ struct WebComponent {
           try {
             webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('cancel')
@@ -106,7 +106,7 @@ struct WebComponent {
           try {
             this.download.cancel();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('pause')
@@ -114,7 +114,7 @@ struct WebComponent {
           try {
             this.download.pause();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resume')
@@ -122,7 +122,7 @@ struct WebComponent {
           try {
             this.download.resume();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -139,8 +139,9 @@ static resumeDownload(webDownloadItem: WebDownloadItem): void
 
 > **说明：**
 >
->- 在调用本接口前，若尚未创建Web组件且未执行initializeWebEngine方法完成Web内核初始化，必须先调用initializeWebEngine方法进行初始化，否则接口调用无效。
->- 必须先调用[setDownloadDelegate](#setdownloaddelegate11)设置下载委托，否则会抛出错误码17100018。
+> - 在调用本接口前，若Web内核尚未初始化（即未创建Web组件且未调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)），必须先调用[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)完成初始化，否则接口调用无效。
+>
+> - 必须先调用[setDownloadDelegate](#setdownloaddelegate11)设置下载委托，否则会抛出错误码17100018。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -198,7 +199,7 @@ struct WebComponent {
             this.controller.setDownloadDelegate(this.delegate);
             webview.WebDownloadManager.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('startDownload')
@@ -206,7 +207,7 @@ struct WebComponent {
           try {
             this.controller.startDownload('https://www.example.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resumeDownload')
@@ -214,7 +215,7 @@ struct WebComponent {
           try {
             webview.WebDownloadManager.resumeDownload(webview.WebDownloadItem.deserialize(this.failedData));
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('cancel')
@@ -222,7 +223,7 @@ struct WebComponent {
           try {
             this.download.cancel();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('pause')
@@ -230,7 +231,7 @@ struct WebComponent {
           try {
             this.download.pause();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Button('resume')
@@ -238,7 +239,7 @@ struct WebComponent {
           try {
             this.download.resume();
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })

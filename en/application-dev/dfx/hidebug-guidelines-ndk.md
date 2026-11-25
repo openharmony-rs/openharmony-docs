@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b87f49311c3d8e98e1ba42524f52aaa1b1e9ab42 translatedAt=2026-09-20T06:37:24.090Z pushedAt=2026-09-20T08:08:16.037Z -->
+<!-- md-trans-meta sourceCommit=ad8e057349873757a24c06f9fcc7d93b4beded74 translatedAt=2026-11-05T00:54:38.016Z pushedAt=2026-09-20T08:08:16.037Z nl=2 -->
 
 The HiDebug C/C++ APIs are independent. You can call them to obtain debugging information. For details, see the following examples.
 
@@ -189,9 +189,11 @@ Step 1: Create a project
 
 4. In the **CMakeLists.txt** file, add the dependencies.
 
-   ```cmake
+   <!-- @[TestHidebugNdk_CMakeLists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    # Add libohhidebug.so and libhilog_ndk.z.so (log output).
-   add_library(entry SHARED napi_init.cpp test_backtrace.cpp)
+   add_library(entry SHARED napi_init.cpp test_backtrace.cpp test_async_context.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhidebug.so)
    ```
 
@@ -204,6 +206,7 @@ Step 1: Create a project
    #include "hidebug/hidebug.h"
    #include "hilog/log.h"
    #include "test_backtrace.h"
+   #include "test_async_context.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -234,6 +237,12 @@ Step 1: Create a project
        OH_HiDebug_FreeThreadCpuUsage(&cpuUsage); // Release the memory to prevent memory leaks.
        return nullptr;
    }
+   
+   napi_value TestAsyncContext(napi_env env, napi_callback_info info)
+   {
+       TestAsyncContextChain();
+       return nullptr;
+   }
    ```
 
    Register **TestHiDebugNdk** as an ArkTS API and initialize the signal handling function of the main thread.
@@ -244,6 +253,7 @@ Step 1: Create a project
    napi_property_descriptor desc[] = {
        { "testGetThreadCpuUsage", nullptr, TestGetThreadCpuUsage, nullptr, nullptr, nullptr, napi_default, nullptr },
        { "testBackTrace", nullptr, TestBackTrace, nullptr, nullptr, nullptr, napi_default, nullptr },
+       { "testAsyncContext", nullptr, TestAsyncContext, nullptr, nullptr, nullptr, napi_default, nullptr },
    };
    ```
 
@@ -253,6 +263,7 @@ Step 1: Create a project
    ``` TypeScript
    export const testGetThreadCpuUsage: () => void;
    export const testBackTrace: () => void;
+   export const testAsyncContext: () => void;
    ```
 
 7. In the **Index.ets** file, add a button to trigger the API call. The sample code is as follows:
@@ -281,6 +292,10 @@ Step 1: Create a project
    function testGetThreadCpuUsage() : void {
      testNapi.testGetThreadCpuUsage();
    }
+   
+   function testAsyncContext() : void {
+     testNapi.testAsyncContext();
+   }
    ```
    Add a button to trigger the API call.
    <!-- @[TestHidebugNdk_Buttons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
@@ -307,6 +322,17 @@ Step 1: Create a project
      .height('5%')
      // Add a click event.
      .onClick(testBackTrace);
+
+   Button('testAsyncContext')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // Add a click event.
+     .onClick(testAsyncContext);
    ```
 
 Step 2: Run the project

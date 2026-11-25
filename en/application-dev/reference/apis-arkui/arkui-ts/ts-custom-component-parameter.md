@@ -1,18 +1,18 @@
 # Custom Component Parameters
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=a9c7224e91e63e46df3e2d778f9b21001bb35f6c translatedAt=2026-08-14T08:55:52.743Z pushedAt=2026-08-15T03:37:13.270Z -->
+<!-- md-trans-meta sourceCommit=ea404d2dcf5e3fd6c8bbea8249797221546c4bb2 translatedAt=2026-11-17T05:07:05.416Z pushedAt=2026-11-19T08:20:04.930Z nl=1 -->
 
 > **NOTE**
 > 
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
+
 
 ## ComponentOptions
 
@@ -59,6 +59,23 @@ Enumerates the memory optimization strategies of reusable custom components.
 | DEFAULT | 0 | No memory optimization strategy. |
 | ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | Automatic memory optimization strategy. It is recommended to use this strategy in scenarios where the memory usage of reusable custom components needs to be reduced.<br>All custom components of this type in the reuse pool are released when any of the following conditions is met:<br>- The app goes to the background.<br>- The component that owns the reuse pool becomes invisible (the [visibility](./ts-universal-attributes-visibility.md#visibility) attribute is set to a value other than [Visible](./ts-appendix-enums.md#visibility), or the component area is 0, regardless of occlusion).<br>- The device runs low on memory ([MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel) reaches **MEMORY_LEVEL_LOW** or **MEMORY_LEVEL_CRITICAL**).<br>When the number of custom components of this type with the same **ReuseId** in the reuse pool exceeds the reuse pool capacity limit and does not increase within 5 seconds, the components within the limit are retained and the rest are released. The reuse pool capacity limit is set as follows:<br>- When the device memory is greater than 8 GB, the limit is 48.<br>- When the device memory is greater than 6 GB and less than or equal to 8 GB, the limit is 4.<br>- When the device memory is less than or equal to 6 GB, the limit is 2.<br>When a node is released, the [custom component lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md) is triggered. |
 
+## ReusePoolOwnership
+
+type ReusePoolOwnership = 'shared' | 'perInstance'
+
+Defines the ownership type of the global reuse pool.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description |
+|-------------    | ------------------- |
+| 'shared' | All instances of the **@Component**/**@ComponentV2** class share the same reuse pool instance. It applies to scenarios where multiple component instances of the same type need to reuse the same resources, maximizing the reuse pool utilization and reducing memory usage. |
+| 'perInstance' | Each instance of **@Component**/**@ComponentV2** has an independent reuse pool instance. It applies to scenarios where the reuse resources of each component instance need to be isolated, preventing the reuse resources of different instances from affecting each other. |
+
 ## Examples
 
 ### Example 1: Using the Automatic Memory Optimization Strategy
@@ -68,7 +85,7 @@ In the following example, the reusable custom component **ReusableComponent** us
 The **ReusableOptions** API is added since API version 26.0.0.
 
 ```ts
-@Reusable({ memoryOptimizationStrategy: ReusableMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION }) // Use the automatic memory optimization strategy.
+@Reusable({ memoryOptimizationStrategy: ReusableMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION }) // Use the automatic memory optimization policy.
 @Component
 struct ReusableComponent {
   aboutToRecycle() {
@@ -88,7 +105,7 @@ struct MemoryOptimizeDemo {
   @State showReusableComponent: boolean = true;
   build() {
     Column() {
-      Button('Recycle').onClick(() => { // Tap the button to trigger component recycling.
+      Button('Recycle').onClick(() => { // Click the button to trigger component recycling.
         this.showReusableComponent = false;
       })
       if (this.showReusableComponent) {
@@ -98,20 +115,3 @@ struct MemoryOptimizeDemo {
   }
 }
 ```
-
-## ReusePoolOwnership
-
-type ReusePoolOwnership = 'shared' | 'perInstance'
-
-Defines the ownership type of the global reuse pool.
-
-**Since:** 26.0.0
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-| Type | Description |
-|-------------    | ------------------- |
-| 'shared' | All instances of the **@Component**/**@ComponentV2** class share the same reuse pool instance. It applies to scenarios where multiple component instances of the same type need to reuse the same resources, maximizing the reuse pool utilization and reducing memory usage. |
-| 'perInstance' | Each instance of **@Component**/**@ComponentV2** has an independent reuse pool instance. It applies to scenarios where the reuse resources of each component instance need to be isolated, preventing the reuse resources of different instances from affecting each other. |

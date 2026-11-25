@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:51:48.449Z pushedAt=2026-06-23T01:56:10.363Z -->
+<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-11-12T04:20:01.112Z pushedAt=2026-11-17T08:54:10.062Z nl=1 -->
 
 >  **NOTE**
 >
@@ -20,14 +20,14 @@ addColorStop(offset: number, color: string): void
 
 Adds a color stop for the **CanvasGradient** object based on the specified offset and gradient color.
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Description                          |
 | ------ | ------ | ---------------------------- |
 | offset | number | Relative position of the gradient stop along the gradient vector, represented by the ratio of the distance between the gradient stop and the start point to the total length. The value ranges from 0 to 1.|
 | color  | string | Gradient color to set.                    |
 
-**Example**
+**Example** 
 
 ```html
 <!-- xxx.hml -->
@@ -43,13 +43,13 @@ export default {
     const el = this.$refs.canvas;
     const ctx = el.getContext('2d');
     const gradient = ctx.createLinearGradient(50, 0, 300, 100);
-    gradient.addColorStop(0.0, '#ff0000')
-    gradient.addColorStop(0.5, '#ffffff')
-    gradient.addColorStop(1.0, '#00ff00')
-    ctx.fillStyle = gradient
-    ctx.fillRect(0, 0, 300, 300)
+    gradient.addColorStop(0.0, '#ff0000');
+    gradient.addColorStop(0.5, '#ffffff');
+    gradient.addColorStop(1.0, '#00ff00');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 300, 300);
   }
 }
 ```
 
-  ![addColorStop](figures/addColorStop.png)
+![addColorStop](figures/addColorStop.png)

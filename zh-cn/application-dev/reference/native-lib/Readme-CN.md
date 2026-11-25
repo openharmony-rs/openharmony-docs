@@ -8,7 +8,6 @@
 <!--Adviser: @fang-jinxu; @ge-yafang-->
 
 - [libc标准库](musl.md)
-- [group_ipc.h](capi-group-ipc-h.md)
 - [c++标准库](cpp.md)
 - [Node-API](napi.md)
 - [libuv](libuv.md)

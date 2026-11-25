@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4993cd92055a92eb775cd3d259b0753fd101fbc5 translatedAt=2026-11-23T01:51:00.316Z pushedAt=2026-11-23T12:17:10.871Z nl=1 -->
 
 This module provides APIs for printing-related operations, including file printing, print job event monitoring, printer discovery and management, and print job status update. It is applicable to scenarios where printing capabilities need to be integrated into an app.
 
@@ -1160,6 +1161,7 @@ Enumerates the print job substates.
 | PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | The file fails to be uploaded.|
 | PRINT_JOB_BLOCK_DRIVER_MISSING<sup>20+</sup> | 34 | The print driver is missing.|
 | PRINT_JOB_BLOCK_INTERRUPT<sup>20+</sup> | 35 | The print job is interrupted.|
+| PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED | 44 | Indicates that the print job is restricted by the EDM policy.<br>**Model restriction:** This API can be used only in the stage model.<br>**Since:** 26.0.1<br> |
 | PRINT_JOB_BLOCK_PRINTER_UNAVAILABLE<sup>20+</sup> | 98 | The printer is unavailable.|
 | PRINT_JOB_BLOCK_UNKNOWN | 99 | There is an unknown error with the printer.|
 
@@ -1178,13 +1180,14 @@ Enumerates the print error codes.
 | E_PRINT_RPC_FAILURE | 13100002 | RPC failure. Check the RPC communication status and try again.|
 | E_PRINT_SERVER_FAILURE | 13100003 | Print service failure. Check whether the print service is running properly and try again.|
 | E_PRINT_INVALID_EXTENSION | 13100004 | Invalid print extension. Check whether the extension capability is correctly implemented.|
-| E_PRINT_INVALID_PRINTER | 13100005 | Invalid printer. Check whether the printer ID and printer information are correct and try again.|
-| E_PRINT_INVALID_PRINT_JOB | 13100006 | Invalid print job. Check whether the job ID and status are correct.|
+| E_PRINT_INVALID_PRINTER | 13100005 | Invalid printer. Check whether the printer ID and printer information are correct and try again. |
+| E_PRINT_INVALID_PRINT_JOB | 13100006 | Invalid print job. Check whether the job ID and status are correct. |
 | E_PRINT_FILE_IO | 13100007 | File input/output error. Check whether the file path, file status, and operation are correct.|
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | Excessive files. Maximum number: 99.|
 | E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | The SMB-based shared printer account is locked due to multiple failed login attempts. Try again after the account is unlocked, or contact the administrator.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | The SMB-based shared printer fails to be connected (due to a network error, unreachable host, or blocked port).<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | The SMB-based shared printer account or password is incorrect.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| E_PRINT_EDM_POLICY_RESTRICTED | 13100015 | Indicates that the print operation is restricted by the EDM policy.<br>**Model restriction:** This API can be used only in the stage model.<br>**Since:** 26.0.1<br> |
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1508,7 +1511,7 @@ Defines the printer preferences.
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | No| Yes| Default duplex mode.|
 | defaultPrintQuality | [PrintQuality](#printquality14) | No| Yes| Default print quality.|
 | defaultMediaType | string | No| Yes| Default paper type.|
-| defaultPageSizeId | string | No| Yes| ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 × 254 mm.|
+| defaultPageSizeId | string | No | Yes | ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 × 254 mm. |
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | No| Yes| Default print orientation.|
 | borderless | boolean | No| Yes| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. The default value is **false**.|
 | defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | No| Yes| Default color mode. The default value is black and white.<br>**Model restriction**: This API can be used only in the stage model.<br>|

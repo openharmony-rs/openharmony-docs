@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e1f633171c2240b55e8295ef49da2b549225bb8f translatedAt=2026-09-21T03:14:20.461Z pushedAt=2026-09-22T01:29:30.432Z -->
+<!-- md-trans-meta sourceCommit=42bb1d1cfb2c2a996a05066eb4307f1fcd2a7053 translatedAt=2026-11-04T04:07:40.087Z pushedAt=2026-11-04T08:04:44.621Z nl=1 -->
 
 The **userAuthIcon** module is a UI component module of the OpenHarmony user identity and access management (UserIAM) system. It provides an out-of-the-box authentication icon component (**UserAuthIcon**). This component is used to display the face authentication or fingerprint authentication icon on the application UI. It supports custom icon colors and dimensions, and can directly launch the system authentication dialog box component when the icon is tapped.
 
@@ -68,7 +68,7 @@ UserAuthIcon({
   onIconClick: () => {
     // (Optional) Process the icon tap event.
   }
-})
+});
 ```
 
 ## Modules to Import
@@ -95,8 +95,8 @@ UserAuthIcon({
   widgetParam: userAuth.WidgetParam,
   iconHeight?: Dimension,
   iconColor?: ResourceColor,
-  onIconClick?: ()=>void,
-  onAuthResult: (result: userAuth.UserAuthResult)=>void
+  onIconClick?: () => void,
+  onAuthResult: (result: userAuth.UserAuthResult) => void
 })
 ```
 
@@ -108,14 +108,14 @@ UserAuthIcon({
 
 **Parameters**
 
-| Name           | Type                                                         | Read-only | Optional | Description                                                         |
+| Name           | Type                                                         | Read-Only | Optional | Description                                                         |
 | -------------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | authParam      | [userAuth.AuthParam](js-apis-useriam-userauth.md#authparam10)        | No  | No   | Parameters related to user authentication. Contains configurations such as the challenge value (challenge), authentication type list (authType), and authentication trust level (authTrustLevel). The challenge value is used to prevent replay attacks, the authentication type specifies the available authentication methods (such as face, fingerprint, and PIN), and the authentication trust level determines the security strength of the authentication. |
 | widgetParam    | [userAuth.WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | No  | No   | Parameters related to the user authentication UI configuration. Contains configurations such as the authentication UI title (title) and navigation button text (navigationButtonText), which are used to customize the display content of the authentication dialog box. |
-| iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | No  | Yes   | Icon height. Sets the height of the authentication icon. The aspect ratio is 1:1 (that is, the height and width are equal). Percentage strings are not supported. It is recommended that you select an appropriate size based on the UI layout.<br>**Default value:** 64fp |
+| iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | No | Yes   | Icon height. Sets the height of the authentication icon, with a width-to-height ratio of 1:1. Percentage strings are not supported. It is recommended that you select an appropriate size based on the UI layout.<br>**Default value:** 64fp |
 | iconColor      | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | No  | Yes   | Icon color. Sets the color of the authentication icon. Multiple formats such as color values and resource references are supported. The system activated color is used by default. Developers can customize the color based on the application theme, for example, by using Color.Blue or $r('app.color.primary').<br>**Default value:** $r('sys.color.ohos_id_color_activated') |
-| onIconClick    | ()=>void                                                      | No  | Yes   | Icon click callback. This callback is triggered when the user taps the authentication icon. You can perform preparations before the tap or record user behavior logs in the callback. If this callback is not set, the authentication process is directly triggered after the icon is tapped. |
-| onAuthResult   | (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void | No  | No   | Authentication result callback. This callback is triggered after the user completes authentication. The callback parameter contains information such as the authentication result code (result), authentication token (token), and authentication type (authType). The application needs to process the authentication result in this callback. For example, when authentication succeeds, obtain the token for subsequent secure operations; when authentication fails, prompt the user to try again.<br>**Note:** The application needs to apply for the `ohos.permission.ACCESS_BIOMETRIC` permission. Otherwise, the application only displays the icon and cannot properly launch the identity authentication component. |
+| onIconClick    | () => void                                             | No | Yes   | Icon tap callback. This callback is triggered when the user taps the authentication icon. You can perform preparations before the tap or record user behavior logs in this callback. If this callback is not set, the authentication process is triggered directly after the icon is tapped. |
+| onAuthResult   | (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10)) => void  | No  | No   | Authentication result callback. This callback is triggered after the user completes authentication. The callback parameter contains the authentication result code (result), authentication token (token), authentication type (authType), and other information. The application needs to process the authentication result in this callback, for example, obtaining the token for subsequent security operations when authentication succeeds, and prompting the user to retry when authentication fails.<br>**Note:** The application needs to apply for the `ohos.permission.ACCESS_BIOMETRIC` permission. Otherwise, the application only displays the icon and cannot properly bring up the identity authentication control. |
 
 ## Events
 
@@ -156,7 +156,7 @@ struct Index {
           onAuthResult: (result: userAuth.UserAuthResult) => {
             console.info(`Get user auth result, result = ${result.result}`);
           }
-        })
+        });
       }
     }
   }

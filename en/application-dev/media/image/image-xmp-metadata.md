@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2e8346d7d81ec4d3e0c3f3b74659b82257d07b17 translatedAt=2026-08-11T01:49:04.635Z pushedAt=2026-08-11T10:07:40.864Z -->
+<!-- md-trans-meta sourceCommit=aad831774b1da8de19dc0461cecd5eff8a4db830 translatedAt=2026-11-05T06:16:33.956Z pushedAt=2026-08-11T10:07:40.864Z nl=1 -->
 
 Extensible Metadata Platform (XMP) is a standard format for describing metadata of digital resources such as images, documents, and audio files. Based on XML, it allows rich descriptive information to be added to resources and supports custom namespaces and extensions. XMP metadata is typically embedded in images of formats such as JPEG, PNG, GIF, DNG, and TIFF.
 

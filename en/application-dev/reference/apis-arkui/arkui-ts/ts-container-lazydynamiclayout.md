@@ -6,21 +6,22 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-08-04T12:10:18.804Z pushedAt=2026-08-07T06:50:09.239Z -->
+<!-- md-trans-meta sourceCommit=057d01f6f3eda137deed36d7923522b51696942a translatedAt=2026-11-17T04:04:40.221Z pushedAt=2026-11-19T08:20:04.876Z nl=1 -->
 
 This component implements a dynamic layout container that supports lazy loading and allows developers to customize the layout algorithm. It is suitable for scenarios where a large number of child components need to be displayed in a scrollable component. By loading and laying out only the child components within the visible area on demand, it reduces the first frame rendering time and memory overhead.
 
-The parent components supported by this component include [List](ts-container-list.md), [WaterFlow](ts-container-waterflow.md), [FlowItem](ts-container-flowitem.md), [Scroll](ts-container-scroll.md), and [LazyColumnLayout](ts-container-lazycolumnlayout.md). It also supports being wrapped in a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) and then used in the above components.
+Its parent components are limited to [List](ts-container-list.md), [Scroll](ts-container-scroll.md), [WaterFlow](ts-container-waterflow.md), [FlowItem](ts-container-flowitem.md), or [LazyColumnLayout](ts-container-lazycolumnlayout.md), and it can be wrapped in a [custom component](../../../ui/state-management/arkts-create-custom-components.md) or [NodeContainer](ts-basic-components-nodecontainer.md) and then applied to the preceding components.
 
 > **NOTE**
 >
-> - This module's APIs can only be used in the stage model.
+> - The interfaces of this module can only be used under the Stage model.
 >
-> - The lazy loading support conditions for this component under different parent components are as follows:
->   1. Under the **WaterFlow** component, lazy loading is supported only when **WaterFlow** is in single-column mode or in a single-column segment within a segmented layout.
->   2. Under the **List** component, when [lanes](ts-container-list.md#lanes9) is greater than **1**, [chainAnimation](ts-container-list.md#chainanimation) is set to **true**, or [scrollSnapAlign](ts-container-list.md#scrollsnapalign10) is set to a value other than **ScrollSnapAlign.NONE**, **List** does not use the nested lazy loading measurement process. In this case, this component is measured as a regular child item, and the lazy loading feature becomes ineffective.
->   3. When used under the **Scroll**, **List**, or **WaterFlow** component, the scroll direction (horizontal or vertical) of **Scroll**, **List**, or **WaterFlow** must be the same as the layout direction of this component. If the layout directions differ, the app will crash.
-> - When wrapped in **FlowItem**, **LazyColumnLayout**, a custom component, or **NodeContainer**, the framework searches upward along the parent component chain for a **Scroll**, **List**, or **WaterFlow** component that matches the layout direction of this component. The lazy loading support conditions are determined based on the upper-level scrollable component found.
+> - The conditions under which this component supports lazy loading under different parent components are as follows:
+>   1. Under the **WaterFlow** component, lazy loading is supported only when this component is used in the single-column mode of the **WaterFlow** component or in a single-column segment scenario in segmented layout.
+>   2. Under the List component, when [lanes](ts-container-list.md#lanes9) is greater than 1, [chainAnimation](ts-container-list.md#chainanimation) is set to true, or [scrollSnapAlign](ts-container-list.md#scrollsnapalign10) is set to a value other than **ScrollSnapAlign.NONE**, the **List** does not use the nested lazy loading measurement process. This component is measured as a common child item, and the lazy loading function is invalidated.
+>   3. When this component is used under the **Scroll**, **List**, or **WaterFlow** component, the scroll direction (horizontal or vertical) of **Scroll**, **List**, or **WaterFlow** must be the same as the layout direction of this component. If the layout directions differ, the application crashes.
+>   4. When this component is encapsulated through **FlowItem**, **LazyColumnLayout**, a custom component, or **NodeContainer**, the lazy loading behavior depends on the configuration conditions of the upper-level scrollable component (such as **WaterFlow**, **Scroll**, or** **List).
+> - The parent component here refers to the upper-level scrollable component closest to the current component. For the specific meaning in other documents, refer to the corresponding content.
 
 **Since:** 26.0.0
 
@@ -55,6 +56,7 @@ The [universal attributes](ts-component-general-attributes.md) are supported.
 > **NOTE**
 >
 > When the layout algorithm is [LazyCustomLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm), the [setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12) method of the **LazyDynamicLayout** component's [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) takes precedence over the [size](ts-universal-attributes-size.md) and [border](ts-universal-attributes-border.md) attributes, and the [measure](../js-apis-arkui-frameNode.md#measure12) and [layout](../js-apis-arkui-frameNode.md#layout12) methods of the child component's [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) take precedence over the [ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20) attribute. After the custom algorithm completes measurement or layout, the framework no longer executes the default measurement or layout process, but instead adopts the size and position set by the custom algorithm.
+
 
 ## Events
 
@@ -346,7 +348,6 @@ export class LazyListLayout extends LazyCustomLayoutAlgorithm {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // MyDataSource.ets
 // Basic data source class that implements the IDataSource interface.
@@ -443,6 +444,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 }
 ```
-
 ![LazyDynamicLayout1.gif](figures/LazyDynamicLayout1.gif)
-<!--no_check-->

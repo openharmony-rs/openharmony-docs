@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:48:22.459Z pushedAt=2026-10-08T06:47:06.268Z -->
+<!-- md-trans-meta sourceCommit=d13608155981ddb4a909ac86f719d96a9e2b7178 translatedAt=2026-11-05T01:00:48.377Z pushedAt=2026-10-08T06:47:06.268Z nl=2 -->
 
 Since API version 20, you can clear repeated notifications across devices to prevent users from being disturbed by notifications published through different ways (for example, notifications sent from a mobile phone to the current device are the same as those published by Push Kit).
 

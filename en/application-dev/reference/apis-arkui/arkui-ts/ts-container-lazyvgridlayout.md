@@ -6,11 +6,11 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8d874d0ed3e2b14fedac21e9dc0520168c6abc51 translatedAt=2026-08-18T03:08:03.513Z pushedAt=2026-08-18T07:36:53.658Z -->
+<!-- md-trans-meta sourceCommit=057d01f6f3eda137deed36d7923522b51696942a translatedAt=2026-11-17T04:06:25.721Z pushedAt=2026-11-19T08:20:04.878Z nl=1 -->
 
 This component is used to implement a grid layout that supports lazy loading. It is suitable for scenarios where a large number of grid items need to be rendered on demand in a scroll container, reducing the initial frame rendering time and memory overhead.
 
-In versions earlier than API version 26.0.0, the parent component of the **LazyVGridLayout** component supports the [WaterFlow](ts-container-waterflow.md) and [FlowItem](ts-container-flowitem.md) components. You can also encapsulate the parent component using a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) component and use it in **WaterFlow** or **FlowItem**.
+Before API version 26.0.0, its parent component supported the [WaterFlow](ts-container-waterflow.md) and [FlowItem](ts-container-flowitem.md) components, and supports wrapping them with a [custom component](../../../ui/state-management/arkts-create-custom-components.md) or the [NodeContainer](ts-basic-components-nodecontainer.md) component before applying them in **WaterFlow** or **FlowItem**.
 
 Since API version 26.0.0, the parent component of this component also supports [List](ts-container-list.md), [Scroll](ts-container-scroll.md), or [LazyColumnLayout](ts-container-lazycolumnlayout.md). Additionally, custom components or [NodeContainer](ts-basic-components-nodecontainer.md) components can be encapsulated and then used in **List**, **Scroll**, or **LazyColumnLayout**.
 
@@ -64,6 +64,8 @@ For example, **'1fr&nbsp;1fr&nbsp;2fr'** means that the parent component is divi
 **repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in units of px, vp, %, or any valid numeric value. The default unit is vp. **track-size** must include at least one valid column width.<br/>
 The **auto-fit** and **auto-stretch** modes support only one valid column width value for **track-size**, and **track-size** in **auto-stretch** mode supports only px, vp, and valid numeric values, not %. The **auto-fill** mode supports one or more valid column widths, for example, **columnsTemplate('repeat(auto-fill, 20)')** and **columnsTemplate('repeat(auto-fill, 20 80px)')**.
 
+In a non-repeat template string, each item supports only the following three formats: 'number+fr', 'number+px', and 'number+%'. The vp unit is not supported (for example, columnsTemplate('100vp 100vp')). To automatically calculate the number of columns based on a fixed vp size, use **repeat(auto-fill, track-size)**.
+
 For usage effects, see [Example 3](#example-3-setting-adaptive-column-count).
 
 If this attribute is set to **'0fr'**, the column width is 0, and child components are not displayed. If this attribute is set to an invalid value, the child components are displayed in a fixed column.
@@ -74,7 +76,7 @@ If this attribute is set to **'0fr'**, the column width is 0, and child componen
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -92,7 +94,7 @@ Sets the gap between columns. The default value is **0vp**. If a value less than
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -116,7 +118,7 @@ Sets the gap between rows. The default value is **0vp**. If a value less than 0 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -275,7 +277,6 @@ This example uses [WaterFlow](ts-container-waterflow.md) and **LazyVGridLayout**
 The **onVisibleIndexesChange** event is added since API version 26.0.0.
 
 <!--code_no_check-->
-
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.
@@ -341,7 +342,6 @@ struct LazyVGridLayoutSample1 {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // MyDataSource.ets
 export class BasicDataSource<T> implements IDataSource {
@@ -441,7 +441,6 @@ This example nests **LazyVGridLayout** inside [WaterFlow](ts-container-waterflow
 Since API version 26.0.0, the **header**, **footer**, and **sticky** attributes are supported.
 
 <!--code_no_check-->
-
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.
@@ -513,7 +512,6 @@ struct LazyVGridLayoutStickyDemo {
   }
 }
 ```
-
 ![](figures/scroll_lazyvgridlayout_header_footer.gif)
 
 ### Example 3: Setting Adaptive Column Count
@@ -523,7 +521,6 @@ This example implements adaptive column count for the **LazyVGridLayout** compon
 Since API version 19, the [columnsTemplate](#columnstemplate) API is newly supported.
 
 <!--code_no_check-->
-
 ```ts
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.

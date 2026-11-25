@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-10T06:09:05.376Z pushedAt=2026-10-12T08:03:10.344Z -->
+<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-05T11:02:40.172Z pushedAt=2026-11-09T10:02:18.629Z nl=1 -->
 
 The **Progress** component is used to provide an indicator that shows the progress of an operation. For details, see [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md).
 
@@ -20,7 +20,9 @@ Progress(options: {value: number, total?: number, type?: ProgressType})
 
 In the API, **value** is used to set the current progress value, **total** is used to set the total progress length, and **type** is used to set the Progress style.
 
-```ts
+<!-- @[progress_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 Progress({ value: 24, total: 100, type: ProgressType.Linear }) // Create a linear progress indicator with a total progress of 100 and a current progress value of 24.
 ```
 
@@ -40,7 +42,7 @@ Progress provides five types. You can set the progress indicator style through [
 
 
   <!-- @[progress_style_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(200).height(50)
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(50).height(200)
@@ -51,7 +53,7 @@ Progress provides five types. You can set the progress indicator style through [
 - Ring-style progress indicator without scale marks
 
   <!-- @[progress_style_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // From left to right, ring progress indicator No. 1: the default foreground color is a blue gradient, and the default strokeWidth is 4.0 vp.
   Progress({ value: 40, total: 150, type: ProgressType.Ring }).width(100).height(100)
@@ -60,13 +62,13 @@ Progress provides five types. You can set the progress indicator style through [
     .color(Color.Grey)    // The progress indicator foreground color is gray.
     .style({ strokeWidth: 15})    // Set the strokeWidth progress indicator width to 15vp.
   ```
-
+    
   ![progress_ring](figures/progress_ring.png)
 
 - Ring-style progress indicator with scale marks
 
   <!-- @[progress_style_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
     .backgroundColor(Color.Black)
@@ -84,7 +86,7 @@ Progress provides five types. You can set the progress indicator style through [
 - Circular-style progress indicator
 
   <!-- @[progress_style_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // From left to right, circular progress indicator No. 1, with the default foreground color blue.
   Progress({ value: 10, total: 150, type: ProgressType.Eclipse }).width(100).height(100)
@@ -104,7 +106,7 @@ Progress provides five types. You can set the progress indicator style through [
 
 
     <!-- @[progress_style_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     Progress({ value: 10, total: 150, type: ProgressType.Capsule }).width(100).height(50)
     Progress({ value: 20, total: 150, type: ProgressType.Capsule }).width(50).height(100).color(Color.Grey)
@@ -143,7 +145,7 @@ struct ProgressCase1 {
   }
 }
 ```
-
+    
 ![progress](figures/progress.gif)
 
 ## Samples

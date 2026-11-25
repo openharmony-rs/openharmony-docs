@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:20:17.893Z pushedAt=2026-06-12T03:03:28.841Z -->
+<!-- md-trans-meta sourceCommit=29ec5e2798cba0f61c9ee386abf0db610c29644e translatedAt=2026-11-04T04:30:53.583Z pushedAt=2026-11-04T08:04:44.666Z nl=1 -->
 
 ```c
 typedef struct Input_KeyState Input_KeyState
@@ -26,5 +26,5 @@ Defines key information used to identify key behavior. For example, the "Ctrl" k
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CreateKeyState](capi-oh-input-manager-h.md#oh_input_createkeystate) | Creates a key status enum object. You can call [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#oh_input_destroykeystate) to destroy a key status enum object.|
-| [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#oh_input_destroykeystate) | Destroys a key status enum object.|
+| [OH_Input_CreateKeyState](capi-oh-input-manager-h.md#oh_input_createkeystate) | Creates a key state struct object. Destroys the key state struct object by calling [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#oh_input_destroykeystate). |
+| [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#oh_input_destroykeystate) | Destroys the key state struct object. |

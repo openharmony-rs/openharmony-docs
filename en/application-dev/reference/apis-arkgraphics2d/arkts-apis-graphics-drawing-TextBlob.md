@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=acc6fcbe5da6efbfc119eaf0b709cc4007100e03 translatedAt=2026-11-16T06:10:29.306Z pushedAt=2026-11-16T06:31:14.301Z nl=1 -->
 
-Defines a block consisting of one or more characters with the same font.
+TextBlob is a block of text composed of one or more characters with the same typeface. It supports creating a glyph collection through text, strings, RunBuffer, and other methods, and is suitable for scenarios that require batch rendering of text or obtaining the bounding box of text.
 
 > **NOTE**
 >
@@ -27,7 +28,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 static makeFromPosText(text: string, len: number, points: common2D.Point[], font: Font): TextBlob
 
-Creates a **TextBlob** object from the text. The coordinates of each font in the **TextBlob** object are determined by the coordinate information in the **points** array.
+Creates a TextBlob object using text, where the coordinates of each glyph are determined by the corresponding coordinate information in points.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -44,7 +45,7 @@ Creates a **TextBlob** object from the text. The coordinates of each font in the
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | **TextBlob** object.|
+| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | TextBlob object created from text and coordinate information, for subsequent glyph drawing. |
 
 
 **Error codes**
@@ -53,13 +54,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing,common2D} from '@kit.ArkGraphics2D';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
@@ -72,8 +73,68 @@ class DrawingRenderNode extends RenderNode {
     for (let i = 0; i !== length; ++i) {
       points.push({ x: i * 35, y: i * 35 });
     }
-    let textblob : drawing.TextBlob =drawing.TextBlob.makeFromPosText(text, points.length, points, font);
-    canvas.drawTextBlob(textblob, 100, 100);
+    let textBlob : drawing.TextBlob = drawing.TextBlob.makeFromPosText(text, points.length, points, font);
+    canvas.drawTextBlob(textBlob, 100, 100);
+  }
+}
+```
+
+## makeFromPosTextWithFallback
+
+static makeFromPosTextWithFallback(text: string, len: number, points: common2D.Point[], font: Font): Array\<TextBlob>
+
+Creates a group of TextBlob objects from text, with font fallback support. If the font of the current typeface does not support certain characters in the text (no corresponding glyphs), the system automatically searches for a fallback font that supports these characters and uses the glyph indices of the fallback font. If no fallback font is found, the notdef placeholder glyph of the current typeface font is still used. Each consecutive glyph segment that uses the same font (the current font or a fallback font) creates a corresponding TextBlob object. The coordinate of each glyph is determined by the corresponding coordinate information in points.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Content to be used for drawing the text blob. |
+| len | number | Yes | Number of glyphs, obtained by [countText](arkts-apis-graphics-drawing-Font.md#counttext12). This parameter is an integer. If a floating-point number is passed in, it is rounded down. |
+| points | [common2D.Point](js-apis-graphics-common2D.md#point12)[] | Yes | Array of points, which are used to specify the coordinates of each font. The array length must be the same as the value of **len**. |
+| font | [Font](arkts-apis-graphics-drawing-Font.md) | Yes | **Font** object. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | Returns an array of TextBlob objects created from the text and coordinate information. |
+
+**Error codes**
+
+For details about the following error code, see [Drawing and Display Error Codes](errorcode-drawing.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**Example**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let text : string = 'makeFromPosText';
+    let font : drawing.Font = new drawing.Font();
+    font.setSize(100);
+    let length = font.countText(text);
+    let points : common2D.Point[] = [];
+    for (let i = 0; i !== length; ++i) {
+      points.push({ x: i * 35, y: i * 35 });
+    }
+    let textBlobs : Array<drawing.TextBlob> = drawing.TextBlob.makeFromPosTextWithFallback(text, points.length, points, font);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 100, 100);
+    }
   }
 }
 ```
@@ -82,7 +143,7 @@ class DrawingRenderNode extends RenderNode {
 
 uniqueID(): number
 
-Obtains the unique, non-zero identifier of this **TextBlob** object.
+Obtains the unique non-zero identifier of this TextBlob object.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -95,21 +156,21 @@ Obtains the unique, non-zero identifier of this **TextBlob** object.
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let text : string = 'TextBlobUniqueId';
 let font : drawing.Font = new drawing.Font();
 font.setSize(100);
-let textBlob = drawing.TextBlob.makeFromString(text, font, 0);
+let textBlob = drawing.TextBlob.makeFromString(text, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
 let id = textBlob.uniqueID();
-console.info("uniqueID---------------" +id);
+console.info('uniqueID---------------' + id);
 ```
 
 ## makeFromString
 
 static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBlob
 
-Converts a value of the string type into a **TextBlob** object.
+Creates a TextBlob object using a string value based on the specified encoding type and font.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -125,7 +186,7 @@ Converts a value of the string type into a **TextBlob** object.
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | **TextBlob** object.|
+| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | TextBlob object for subsequent glyph drawing. |
 
 **Error codes**
 
@@ -133,24 +194,80 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     const brush = new drawing.Brush();
-    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
     const font = new drawing.Font();
     font.setSize(20);
     const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     canvas.attachBrush(brush);
     canvas.drawTextBlob(textBlob, 20, 20);
+    canvas.detachBrush();
+  }
+}
+```
+
+## makeFromStringWithFallback
+
+static makeFromStringWithFallback(text: string, font: Font): Array\<TextBlob>
+
+Creates a group of TextBlob objects from a string, with font fallback support. If the current typeface's font does not support certain characters in the text (no corresponding glyph), the system automatically searches for a fallback font that supports the character and uses the fallback font's glyph index. If no fallback font is found, the notdef placeholder glyph of the current typeface's font is still used. Each consecutive glyph segment that uses the same font (the current font or a fallback font) creates a corresponding TextBlob object.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Content to be used for drawing the text blob. |
+| font | [Font](arkts-apis-graphics-drawing-Font.md) | Yes | **Font** object. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | Returns the array of created TextBlob objects. |
+
+**Error codes**
+
+For details about the following error code, see [Drawing and Display Error Codes](errorcode-drawing.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**Example**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlobs = drawing.TextBlob.makeFromStringWithFallback("drawing", font);
+    canvas.attachBrush(brush);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 20, 20);
+    }
     canvas.detachBrush();
   }
 }
@@ -168,15 +285,15 @@ Creates a **TextBlob** object based on the **RunBuffer** information.
 
 | Name| Type                                              | Mandatory| Description                          |
 | ------ | -------------------------------------------------- | ---- | ------------------------------ |
-| pos    | Array\<[TextBlobRunBuffer](arkts-apis-graphics-drawing-i.md#textblobrunbuffer)>    | Yes  | **TextBlobRunBuffer** array.       |
+| pos    | Array\<[TextBlobRunBuffer](arkts-apis-graphics-drawing-i.md#textblobrunbuffer)>    | Yes   | Array of TextBlobRunBuffer objects, each containing glyph ID and position coordinate information.        |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md)                                      | Yes  | **Font** object.  |
-| bounds | [common2D.Rect](js-apis-graphics-common2D.md#rect) | No  | Bounding box. If this parameter is not set, there is no bounding box.|
+| bounds | [common2D.Rect](js-apis-graphics-common2D.md#rect) | No   | Rectangular area of the text bounding box. If not set, no bounding box is preset. |
 
 **Returns**
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | **TextBlob** object.|
+| [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | TextBlob object created based on RunBuffer, used for subsequent glyph drawing. |
 
 **Error codes**
 
@@ -184,12 +301,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -202,7 +319,7 @@ class DrawingRenderNode extends RenderNode {
       { glyph: 227, positionX: 14.9, positionY: 0 },
       { glyph: 283, positionX: 25.84, positionY: 0 },
       { glyph: 283, positionX: 30.62, positionY: 0 },
-      { glyph: 299, positionX: 35.4, positionY: 0}
+      { glyph: 299, positionX: 35.4, positionY: 0 }
     ];
     const textBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, null);
     const brush = new drawing.Brush();
@@ -226,7 +343,7 @@ Obtains the rectangular bounding box of the text blob.
 
 | Type                                              | Description                  |
 | -------------------------------------------------- | ---------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | Rectangular bounding box.|
+| [common2D.Rect](js-apis-graphics-common2D.md#rect) | The rectangular area of the text bounding box. Returns undefined if the acquisition fails. |
 
 **Example**
 

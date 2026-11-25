@@ -1,12 +1,11 @@
 # Location Kit Error Codes
-
 <!--Kit: Location Kit-->
 <!--Subsystem: Location-->
 <!--Owner: @liu-binjun-->
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=7fbd01821d37ae3a6a262f102830b415945a5304 translatedAt=2026-07-31T06:39:04.622Z pushedAt=2026-07-31T07:55:08.849Z -->
+<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-11-04T04:57:52.595Z pushedAt=2026-11-04T08:04:44.727Z nl=1 -->
 
 > **NOTE**
 >
@@ -22,9 +21,9 @@ The location service is unavailable.
 
 This error code is reported if the location service is unavailable and relevant APIs cannot be called.
 
-**Possible Cause**
+**Possible Causes**
 
-1. The location service fails to be started, leading to a communication failure between the application and the location service.
+1. The location service fails to be started, leading to a communication failure between the application and the location service subsystem, which makes the location service unavailable.
 
 2. The GNSS chip fails to be initialized, leading to a GNSS positioning failure.
 
@@ -44,7 +43,7 @@ The location switch is off.
 
 This error code is reported if positioning fails because the location switch is turned off.
 
-**Possible Cause**
+**Possible Causes**
 
 The location switch is turned off, which makes basic functions such as continuous positioning and immediate positioning unavailable.
 
@@ -64,7 +63,7 @@ The network locating is failed because the network cannot be accessed.
 
 This error code is reported if network positioning fails because network access is denied.
 
-**Possible Cause**
+**Possible Causes**
 
 The device cannot access the network.
 
@@ -82,7 +81,7 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 This error code is reported if positioning times out because the positioning result does not meet the requirement of **maxAccuracy**.
 
-**Possible Cause**
+**Possible Causes**
 
 The value of **maxAccuracy** in the positioning request parameters [LocationRequest](./js-apis-geoLocationManager.md#locationrequest) and [CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest) is too small.
 
@@ -104,7 +103,7 @@ The system does not have a cache location.
 
 This error code is reported if the application fails to obtain the previous location because the system has not cached the location information.
 
-**Possible Cause**
+**Possible Causes**
 
 If the system has not cached the location information, the application attempts to obtain the cached location information.
 
@@ -122,7 +121,7 @@ If the system has not cached the location information, call [getCurrentLocation]
 
  The current input sports type is not supported. As a result, the post-processing track cannot be obtained.
 
- **Possible Cause**
+ **Possible Causes**
 
  The input parameter is set incorrectly. Use a supported sports type.
 
@@ -140,7 +139,7 @@ Failed to obtain the geographical location.
 
 This error code is reported if the location service fails, leading to a failure to obtain the positioning result.
 
-**Possible Cause**
+**Possible Causes**
 
 - Positioning times out because of weak GNSS signals.
 
@@ -152,6 +151,7 @@ This error code is reported if the location service fails, leading to a failure 
 
 - Enable automatic setting on the **Time & Date** page.
 
+
 ## 3301300 Query Failed During Reverse Geocoding
 
 **Error Message**
@@ -162,17 +162,17 @@ Reverse geocoding query failed.
 
 This error code is reported if the query during reverse geocoding has failed.
 
-**Possible Cause**
+**Possible Causes**
 
-- Network connection is poor, which makes the request fail to be sent from the device or the result fail to be returned from the cloud to the device.
+1. The data network is congested, causing the request to fail to be sent from the device or the result to fail to be returned from the cloud to the device.
 
-- The x86 emulator does not support the reverse geocoding function. A reverse geocoding query fails if the x86 emulator is used for debugging.
+2. The X86 emulator does not support reverse geocoding, so the reverse geocoding query fails when debugging on the X86 emulator.
 
 **Procedure**
 
-- For the network problem, try the reverse geocoding query again after the network is resumed.
+1. For network issues, retry the reverse geocoding query.
 
-- For the x86 emulator problem, try the reverse geocoding query again on a real device.
+2. For X86 emulator issues, verify on a real device.
 
 ## 3301400 Query Failed During Geocoding
 
@@ -184,11 +184,11 @@ Geocoding query failed.
 
 This error code is reported if the query during geocoding has failed.
 
-**Possible Cause**
+**Possible Causes**
 
-- A certain request parameter is incorrect, or no result can be found based on the parameter.<br>
+1. A request parameter is incorrect, or no result can be found based on the parameter.</br>
 
-- Network connection is poor, which makes the request fail to be sent from the device or the result fail to be returned from the cloud to the device.
+2. The data network is congested, causing the request to fail to be sent from the device or the result to fail to be returned from the cloud to the device.
 
 **Procedure**
 
@@ -204,7 +204,7 @@ Failed to query the area information.
 
 This error code is reported if the query of the area information (including the country code) has failed.
 
-**Possible Cause**
+**Possible Causes**
 
 The correct area information is not found.
 
@@ -222,15 +222,15 @@ Failed to operate the geofence.
 
 This error code is reported if a geofence operation, for example, adding, deleting, pausing, or resuming a geofence, has failed.
 
-**Possible Cause**
+**Possible Causes**
 
 1. The GNSS chip does not support the geofence function.
 
-2. The bottom-layer service logic is abnormal.
+2. An exception in the underlying service logic causes the geofence operation to fail.
 
 **Procedure**
 
-1. Add the SysCap verification mechanism.
+1. Add SysCap verification.
 
 2. Add a retry mechanism.
 
@@ -244,7 +244,7 @@ The number of geofences exceeds the maximum.
 
 This error code is reported if the attempt to add a geofence fails because the number of geofences has reached the maximum.
 
-**Possible Cause**
+**Possible Causes**
 
 The number of geofences has reached the maximum (that is, 1,000).
 
@@ -262,7 +262,7 @@ Failed to delete a geofence due to an incorrect ID.
 
 This error code is reported if the ID of the geofence to be deleted is incorrect.
 
-**Possible Cause**
+**Possible Causes**
 
 The geofence ID passed to the geofence deletion API is incorrect.
 
@@ -280,9 +280,9 @@ No response to the request.
 
 This error code is reported if no response is received for an asynchronous request that requires a user to click a button for confirmation or requires a response from the GNSS chip or network server.
 
-**Possible Cause**
+**Possible Causes**
 
-1. The user does not click a button as required for confirmation.
+1. The user does not tap the button to confirm.
 
 2. The GNSS chip does not respond.
 
@@ -302,13 +302,13 @@ Failed to start Wi-Fi or Bluetooth scanning.
 
 This error code is reported if Wi-Fi or Bluetooth scanning fails to start.
 
-**Possible Cause**
+**Possible Causes**
 
-1. The Wi-Fi or Bluetooth service incurs an internal error.
+1. An internal error in the Wi-Fi or Bluetooth service causes the scanning to fail to start.
 
-2. Power consumption control is activated because of low battery level.
+2. In a low-battery scenario, power consumption control prevents scanning from being initiated.
 
-3. Wi-Fi or Bluetooth is disabled.
+3. The Wi-Fi or Bluetooth switch is not turned on.
 
 **Procedure**
 
@@ -324,17 +324,17 @@ Failed to obtain the hotspot MAC address because the Wi-Fi is not connected.
 
 This error code is reported if the attempt to obtain the MAC address of the Wi-Fi hotspot or router fails because the device is not connected to the Wi-Fi hotspot or router.
 
-**Possible Cause**
+**Possible Causes**
 
-1. Wi-Fi is disabled.
+1. The Wi-Fi switch is not turned on.
 
-2. Wi-Fi is enabled, but the device is not connected to a Wi-Fi hotspot or router.
+2. The Wi-Fi switch is turned on, but the device is not connected to a hotspot or router.
 
 **Procedure**
 
-1. Enable Wi-Fi.
+1. Turn on the Wi-Fi switch.
 
-2. Connect to a router or Wi-Fi hotspot.
+2. Connect to a router or hotspot.
 
 ## 3501100 Failed to Add a Beacon Fence Because the Location Switch Is Turned Off
 
@@ -346,7 +346,7 @@ Failed to add a beacon fence because the location switch is off.
 
 This error code is reported if the attempt to add a beacon fence fails because the location switch is turned off.
 
-**Possible Cause**
+**Possible Causes**
 
 The location switch is turned off.
 
@@ -364,7 +364,7 @@ Failed to add a beacon fence because the bluetooth switch is off.
 
 This error code is reported if the attempt to add a beacon fence fails because the Bluetooth is disabled.
 
-**Possible Cause**
+**Possible Causes**
 
 Bluetooth is disabled.
 
@@ -382,7 +382,7 @@ The number of beacon fence exceeds the maximum.
 
 This error code is reported if the attempt to add a beacon fence fails because the number of beacon fences has reached the maximum.
 
-**Possible Cause**
+**Possible Causes**
 
 The number of beacon fences has reached the maximum (that is, 16).
 
@@ -400,7 +400,7 @@ Failed to delete the fence due to incorrect beacon fence information.
 
 This error code is reported if the attempt to delete a beacon fence fails because the beacon fence information is incorrect.
 
-**Possible Cause**
+**Possible Causes**
 
 The information about the beacon fence to be deleted is incorrect.
 
@@ -418,7 +418,7 @@ Duplicate beacon fence information.
 
 This error code is reported if the attempt to add a beacon fence fails because the beacon fence already exists.
 
-**Possible Cause**
+**Possible Causes**
 
 The beacon fence already exists in the system.
 

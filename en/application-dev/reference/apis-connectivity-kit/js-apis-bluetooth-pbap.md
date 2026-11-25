@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b93d1c66c7c5d7a115863148e38e9b4d6f77aba7 translatedAt=2026-10-09T13:12:02.813Z pushedAt=2026-10-10T07:10:53.169Z -->
+<!-- md-trans-meta sourceCommit=8a0e36109bea79cc35522d2aee4c1b8ad683b256 translatedAt=2026-11-18T04:11:05.651Z pushedAt=2026-11-20T09:25:10.483Z nl=1 -->
 
 This module implements phone book access capabilities based on the [Phone Book Access Profile (PBAP)](../../connectivity/bluetooth/terminology.md#pbap). It allows you to create a [PSE](../../connectivity/bluetooth/terminology.md#pse) server instance and obtain the connection status of the Bluetooth phonebook service between devices. This module is applicable to scenarios where the local device functions as a PSE to provide phonebook access services for external devices. It helps you quickly implement Bluetooth phonebook sharing and connection management.
 
@@ -28,9 +28,9 @@ type BaseProfile = baseProfile.BaseProfile
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-| [baseProfile.BaseProfile](js-apis-bluetooth-baseProfile.md#baseprofile) | **BaseProfile** API definition.|
+| [baseProfile.BaseProfile](js-apis-bluetooth-baseProfile.md#baseprofile) | **BaseProfile** API definition. |
 
 ## pbap.createPbapServerProfile
 
@@ -42,15 +42,15 @@ Creates a [PSE](../../connectivity/bluetooth/terminology.md#pse) instance. Throu
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
 |PbapServerProfile | PSE instance.<br>- The **PbapServerProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.<br>- The counterpart of the PSE role is the [PCE](../../connectivity/bluetooth/terminology.md#pce) role. |
 
 **Error codes**
 
-For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -73,28 +73,27 @@ try {
 
 createPbapClientProfile(): PbapClientProfile
 
-Creates a [PCE](../../connectivity/bluetooth/terminology.md#pce) instance. Through this instance, you can use the local device as the PCE and implement functions such as obtaining the phone book synchronization state and subscribing to phone book synchronization state change events. Typical use scenarios include the Bluetooth car kit accessing the phone book of a mobile phone as the PCE and cross-device contacts synchronization.
+Creates a [PCE](../../connectivity/bluetooth/terminology.md#pce) instance in the Phone Book Access Protocol. Through this instance, the local device can act as a PCE device and use the APIs provided, such as obtaining the phone book synchronization status and subscribing to phone book synchronization status change events. Typical use scenarios include an in-vehicle Bluetooth system acting as a PCE to access the phone book on a mobile device, cross-device contact synchronization, etc.
 
 **Since:** 26.0.1
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
-| Type                           | Description        |
+| Type                            | Description         |
 | ----------------------------- | ---------- |
-|PbapClientProfile | PCE instance.<br>- The class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.<br>- The counterpart of the PCE role is the [PSE](../../connectivity/bluetooth/terminology.md#pse) role. |
+|PbapClientProfile | PCE instance.<br>- This class inherits from [BaseProfile](#baseprofile). Therefore, methods from its parent class can be used.<br>- The counterpart of the PCE role is the [PSE](../../connectivity/bluetooth/terminology.md#pse) role. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.        |
 
 **Example**
 

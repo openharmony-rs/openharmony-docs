@@ -1,10 +1,12 @@
 # buffer_handle.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c9742d4d4a757fbb6f0510281af0e732af135c64 translatedAt=2026-11-04T10:25:58.548Z pushedAt=2026-11-04T10:29:12.612Z nl=2 -->
+
 ## Overview
 
 This file declares the **BufferHandle** struct used by the **NativeWindow** module.
@@ -26,3 +28,4 @@ This file declares the **BufferHandle** struct used by the **NativeWindow** modu
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [BufferHandle](capi-nativewindow-bufferhandle.md) | BufferHandle | Describes the buffer handle, which is used to transfer and obtain buffer information. The handle contains the file descriptor, size, format, usage, virtual address, shared memory key, physical address, and custom data of the buffer.|
+

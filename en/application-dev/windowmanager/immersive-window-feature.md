@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=bf38585d2c0874f7407e508144966022c5b11931 translatedAt=2026-10-08T09:01:16.969Z pushedAt=2026-10-08T11:12:13.637Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:48:06.982Z pushedAt=2026-11-06T01:00:10.522Z nl=1 -->
 
 ## When to Use
 
@@ -57,7 +57,7 @@ The methods for implementing immersive layout differ between [freeform window](f
   > In the non-freeform window state, all window types except app subwindows are created in non-immersive layout by default, while subwindows are created in immersive layout by default.
 
   <!--@[HideDecorationBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/HideDecorationBar/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+  
   ``` TypeScript
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -157,7 +157,7 @@ You can implement an immersive effect by hiding system UI elements, which is sui
 2. Call [setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11) to hide the status bar.  
 
   <!--@[SystemBarEnabled_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SystemBarEnabled/entry/src/main/ets/entryability/EntryAbility.ets) --> 
-
+  
   ``` TypeScript
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -205,7 +205,7 @@ You can implement an immersive effect by hiding system UI elements, which is sui
      Common scenarios that trigger the avoid area callback include: switching an app window between full-screen mode, floating mode, and split-screen mode; rotating an app window; switching a multi-foldable device between the folded and unfolded screen states; and transferring an app window across multiple devices.
 
      <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+     
      ``` TypeScript
      import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
      import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -296,7 +296,7 @@ You can implement an immersive effect by hiding system UI elements, which is sui
      When the avoid area changes due to landscape/portrait switching, system bar visibility, window form changes, and other reasons, the @Env variable is automatically updated and triggers the refresh of related components, thereby implementing dynamic adaptation of the immersive layout. The sample code is as follows:
 
      <!--@[ImmersiveLayoutEnv_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      import { window } from '@kit.ArkUI';
      import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -332,7 +332,7 @@ You can implement an immersive effect by hiding system UI elements, which is sui
    - An example of avoiding the avoid area obtained using the **getWindowAvoidArea** API is as follows:
 
       <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/pages/Index.ets) -->
-
+      
       ``` TypeScript
       import { window } from '@kit.ArkUI';
       import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -447,7 +447,7 @@ You can implement an immersive effect by hiding system UI elements, which is sui
     - The sample code for avoiding the avoid area obtained using @Env(SystemProperties.WINDOW_AVOID_AREA) is as follows:
 
       <!--@[ImmersiveLayoutEnv3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
-
+      
       ``` TypeScript
        // ...
         build() {

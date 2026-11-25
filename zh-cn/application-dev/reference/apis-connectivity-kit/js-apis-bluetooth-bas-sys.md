@@ -100,11 +100,11 @@ getRemoteDeviceBatteryInfo(deviceId: BluetoothAddress): Promise&lt;BatteryInfo&g
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
 |2900001 | Service stopped.             |
 |2900003 | Bluetooth disabled.                |
 |2900004 | Remote device profile not supported.                |
-|2900099 | Operation failed. Possible causes: 1. Unregistered bas observer. 2. Bas observers exceeds the limit. 3. Bas request busy.                 |
+|2900099 | Operation failed.              |
 |2901003 | Connection not established.                |
 
 **示例**：

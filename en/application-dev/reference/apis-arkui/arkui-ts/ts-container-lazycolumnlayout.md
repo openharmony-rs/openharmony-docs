@@ -6,9 +6,9 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8d874d0ed3e2b14fedac21e9dc0520168c6abc51 translatedAt=2026-08-19T01:40:15.214Z pushedAt=2026-08-19T01:47:33.099Z -->
+<!-- md-trans-meta sourceCommit=057d01f6f3eda137deed36d7923522b51696942a translatedAt=2026-11-17T04:03:56.213Z pushedAt=2026-11-19T08:20:04.873Z nl=1 -->
 
-This component is used to implement a vertical linear layout that supports lazy loading. Its parent component can only be [List](ts-container-list.md), [Scroll](ts-container-scroll.md), [WaterFlow](ts-container-waterflow.md), or [FlowItem](ts-container-flowitem.md). It can also be encapsulated using custom components or [NodeContainer](ts-basic-components-nodecontainer.md) components and then applied to the preceding components.
+This component is used to implement a vertical linear layout that supports lazy loading. Its parent component is limited to [List](ts-container-list.md), [Scroll](ts-container-scroll.md), [WaterFlow](ts-container-waterflow.md), or [FlowItem](ts-container-flowitem.md). It also supports being wrapped by a [custom component](../../../ui/state-management/arkts-create-custom-components.md) or [NodeContainer](ts-basic-components-nodecontainer.md) component and then applied to the components above.
 
 This component supports the nested lazy-loading containers, including [LazyVGridLayout](ts-container-lazyvgridlayout.md), [LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md), and **LazyColumnLayout** itself.
 
@@ -337,7 +337,6 @@ struct LazyColumnLayoutSample1 {
   }
 }
 ```
-
 ![scroll_lazycolumnlayout.png](figures/scroll_lazycolumnlayout.png)
 
 ### Example 2: Setting Header or Footer Components and Sticky Styles
@@ -347,7 +346,6 @@ This example nests **LazyColumnLayout** in [Scroll](ts-container-scroll.md) and 
 Since API version 26.0.0, the **header**, **footer**, and **sticky** attributes are supported.
 
 <!--code_no_check-->
-
 ```ts
 import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource API required by LazyForEach.
@@ -420,7 +418,6 @@ struct LazyColumnLayoutStickyDemo {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // MyDataSource.ets
 export class BasicDataSource<T> implements IDataSource {
@@ -512,5 +509,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 }
 ```
-
 ![scroll_lazycolumnlayout_header_footer.gif](figures/scroll_lazycolumnlayout_header_footer.gif)

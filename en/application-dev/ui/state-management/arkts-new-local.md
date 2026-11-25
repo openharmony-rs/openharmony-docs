@@ -1,12 +1,11 @@
 # \@Local Decorator: Representing the Internal State of Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:57:05.799Z pushedAt=2026-07-25T09:21:44.734Z -->
+<!-- md-trans-meta sourceCommit=8917fa9a06fba0322d5ee6f97bf1bc1616272188 translatedAt=2026-11-04T05:26:44.574Z pushedAt=2026-11-04T07:17:36.143Z nl=1 -->
 
 To observe changes to variables in custom components decorated by @ComponentV2, developers can use the [@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local.md#local) decorator to decorate variables.
 
@@ -99,7 +98,7 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 - When the decorated variable is of boolean, string, or number type, value changes to the variable can be observed.
 
   <!-- @[Local_Observe_Changes_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesType.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @ComponentV2
@@ -129,7 +128,7 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 - When the decorated variable is of a class object type, only overall assignments to the class object can be observed. Changes to class member properties cannot be directly observed. Observing class member properties relies on the [@ObservedV2](arkts-new-observedV2-and-trace.md) and [@Trace](arkts-new-observedV2-and-trace.md) decorators, or you can use [makeObserved](./arkts-new-makeObserved.md) to turn the object into an observed object. Note: Before API version 19, @Local cannot be used together with class instance objects decorated by [@Observed](./arkts-observed-and-objectlink.md). Starting from API version 19, partial interoperability between state management V1 and V2 is supported, allowing @Local and @Observed to be used together. For details, see [Guidelines for Using State Management V1 and V2 Together (API Version 19 and Later)](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
     <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
-
+    
     ``` TypeScript
     class RawObject {
       public name: string;
@@ -179,7 +178,7 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 - When @Local is used to decorate an array of a primitive type, changes to both the entire array and individual array items can be observed.
 
     <!-- @[Local_Observe_Changes_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesArray.ets) -->
-
+    
     ``` TypeScript
     @Entry
     @ComponentV2
@@ -210,11 +209,11 @@ Variables decorated by \@Local are observable. When a decorated variable changes
       }
     }
     ```
-
+  
 - When \@Local is used to decorate a nested class or object array, changes of lower-level object properties cannot be observed. Observation of these lower-level object properties requires use of \@ObservedV2 and \@Trace decorators.
 
   <!-- @[Local_Observe_Changes_DeepObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDeepObject.ets) -->
-
+  
   ``` TypeScript
   @ObservedV2
   class Region {
@@ -382,7 +381,6 @@ struct Index {
   }
 }
 ```
-
 ![local-object](figures/local-object.gif)
 
 ### Decorating Variables of the Array Type
@@ -453,7 +451,7 @@ struct Index {
 
 ### Decorating Variables of the Date Type
 
-When the decorated object is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
+When the decorated object is of the Date type, the reassignment of the entire Date can be observed, and the data in the Date can be updated by calling the Date APIs `setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, and `setUTCMilliseconds`.
 
 <!-- @[Local_Use_Case_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseDate.ets) -->
 
@@ -571,7 +569,6 @@ struct MapSample {
   }
 }
 ```
-
 ![local-map](figures/local-map.gif)
 
 ### Decorating Variables of the Set Type
@@ -629,7 +626,6 @@ struct SetSample {
   }
 }
 ```
-
 ![local-set](figures/local-set.gif)
 
 ### Decorating Variables of the Union Type
@@ -669,7 +665,6 @@ struct Index {
   }
 }
 ```
-
 ![local-union](figures/local-union.gif)
 
 ## FAQs
@@ -767,5 +762,3 @@ struct Index {
 The principle is as follows: Use the **applySync** API to synchronously update the state variable changes in the closure function, and then execute the original animation to achieve the expected effect.
 
 ![arkts-new-local-animateTo-2](figures/arkts-new-local-animateTo-2.gif)
-
-<!--no_check-->

@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-11-05T11:55:49.038Z pushedAt=2026-11-09T10:02:19.010Z nl=1 -->
 
 The **\<grid-container>** component is the root container of the grid layout. Within the root container, you can use **\<grid-row>** and **\<grid-col>** for the grid layout. For details, see [grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md).
 
@@ -37,7 +38,7 @@ Create a **\<grid-container>** component in the .hml file under **pages/index** 
 
 ![grid-container-Component](figures/grid-container-Component.png)
 
-> **NOTE**
+> **NOTE** 
 >
 > **\<grid-container>** supports only **\<grid-row>** as a child component.
 
@@ -163,7 +164,7 @@ text{
 
 ![grid-col](figures/grid-col.png)
 
-> **NOTE**
+> **NOTE** 
 >
 > **\<grid-row>** supports only **\<grid-col>** as a child component. You can add content only to **\<grid-col>**.
 

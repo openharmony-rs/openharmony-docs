@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T05:11:20.477Z pushedAt=2026-11-04T08:04:44.754Z nl=1 -->
 
 This module provides device Bluetooth management capabilities, including setting Bluetooth switch states, querying Bluetooth information, and managing the Bluetooth device trustlist, Bluetooth device blocklist, and Bluetooth protocol blocklist. Through this module, enterprises can centrally manage Bluetooth functions on devices, enabling fine-grained control over Bluetooth device connections and enhancing enterprise information security. This is suitable for scenarios where enterprises need to regulate Bluetooth usage on employee devices.
 
@@ -14,9 +15,9 @@ This module provides device Bluetooth management capabilities, including setting
 >
 > The APIs of this module can be used only in the stage model.
 >
-> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module are open only to device management applications. Before calling the APIs, you must enable the device management application. For details, see [MDM Kit Development Guide](../../mdm/mdm-kit-guide.md).
 >
-> The global restriction policies are provided by **restrictions**. To disable Bluetooth globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
+> Global common restriction policies are provided by restrictions. To disable Bluetooth globally, see [@ohos.enterprise.restrictions (Restriction Policies)](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -93,13 +94,15 @@ A policy conflict is reported when this API is called in the following scenarios
 1. Bluetooth has been disabled via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated). In this case, you can call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) enable Bluetooth to solve the conflict.
 2. Disallowed Bluetooth devices have been added by calling [addDisallowedBluetoothDevices](#bluetoothmanageradddisallowedbluetoothdevices20). You can resolve the conflict by removing disallowed Bluetooth devices through [removeDisallowedBluetoothDevices](#bluetoothmanagerremovedisallowedbluetoothdevices20).
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -149,13 +152,15 @@ removeAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
 Removes allowed Bluetooth devices.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -321,13 +326,15 @@ A policy conflict is reported when this API is called in the following scenarios
 1. Bluetooth has been disabled via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated). In this case, you can call [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) enable Bluetooth to solve the conflict.
 2. Allowed Bluetooth devices have been added by calling [addAllowedBluetoothDevices](#bluetoothmanageraddallowedbluetoothdevices). You can resolve the conflict by removing allowed Bluetooth devices through [removeAllowedBluetoothDevices](#bluetoothmanagerremoveallowedbluetoothdevices).
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -376,13 +383,15 @@ removeDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): v
 
 Removes disallowed Bluetooth devices. If some Bluetooth devices are removed from the disallowed list, the current device cannot connect to the remaining ones; if all Bluetooth devices are removed, the current device can connect to any Bluetooth device.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -539,13 +548,15 @@ turnOnBluetooth(admin: Want): void
 
 Enables Bluetooth. After Bluetooth is enabled, the user can manually disable it.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -591,13 +602,15 @@ turnOffBluetooth(admin: Want): void
 
 Disables Bluetooth. After Bluetooth is disabled, the user can manually enable it.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -643,13 +656,15 @@ addDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array
 
 Adds disallowed Bluetooth protocols. Specified users cannot use the disallowed Bluetooth protocols to send files to other devices. This API is used to disable the GATT or SPP protocol, which does not take effect for system services and system applications. When the SPP protocol is passed, both the receiving and sending functions are disabled.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -700,13 +715,15 @@ removeDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Ar
 
 Removes disallowed Bluetooth protocols. After removing some protocols, the user is still restricted by the remaining disallowed protocols; after removing all protocols, the user can use any protocol; removing non-existent protocols results in a successful API call but no actual change.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -819,9 +836,10 @@ Adds disallowed Bluetooth protocols. After the setting, specified users cannot u
 
 > **NOTE**
 > 
-> 1. This API is used to disable the GATT or SPP protocol, which does not take effect for system services and system applications.
-> 2. When the SPP protocol is passed, the value of the **policy** parameter can only be **TransferPolicy.RECEIVE_SEND**. Otherwise, error code 9200012 will be returned.
-> 3. This API and [addDisallowedBluetoothProtocols<sup>20+</sup>](#bluetoothmanageradddisallowedbluetoothprotocols20) are overloaded APIs. This API adds the **policy** parameter to specify the transfer policy, enabling more fine-grained control over Bluetooth protocol disabling behavior (for example, blocking only sending, only receiving, or both sending and receiving). If both APIs are used to configure disabling policies, the policies will be combined and take effect.
+> 1. Disabling the GATT or SPP protocol through this API does not take effect on system services and system applications.
+> 2. When the SPP protocol is passed in, the policy parameter can only be set to TransferPolicy.RECEIVE_SEND. Otherwise, error code 9200012 is returned.
+> 3. This API is an overloaded API of [addDisallowedBluetoothProtocols<sup>20+</sup>](#bluetoothmanageradddisallowedbluetoothprotocols20). This API adds the policy parameter to specify the transfer policy, allowing finer-grained control over the disabling of Bluetooth protocols (for example, disabling only sending, only receiving, or both sending and receiving). If both APIs are used to configure disabling policies, the policies take effect after being merged.
+> 4. In scenarios with multiple MDM applications, the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule applies.
 
 **Since:** 26.0.0
 
@@ -831,8 +849,6 @@ Adds disallowed Bluetooth protocols. After the setting, specified users cannot u
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
@@ -840,7 +856,7 @@ Adds disallowed Bluetooth protocols. After the setting, specified users cannot u
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
 | accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | protocols | Array&lt;[Protocol](#protocol20)&gt; | Yes| Array of Bluetooth protocols to be added to the blocklist.|
-| policy | [TransferPolicy](#transferpolicy) | Yes| Transfer policy, which specifies the mode for disabling Bluetooth protocols. The options are **SEND_ONLY** (sending disabled), **RECEIVE_ONLY** (receiving disabled), and **RECEIVE_SEND** (sending and receiving disabled).|
+| policy | [TransferPolicy](#transferpolicy) | Yes | Transmission policy, used to specify the disabling method of the Bluetooth protocol. Optional values include: SEND_ONLY (sending disabled), RECEIVE_ONLY (receiving disabled), RECEIVE_SEND (sending and receiving disabled). |
 
 **Error codes**
 
@@ -893,8 +909,9 @@ Removes Bluetooth protocols from the blocklist. After the setting, specified use
 
 > **NOTE**
 > 
-> 1. When the SPP protocol is passed, the value of the **policy** parameter can only be **TransferPolicy.RECEIVE_SEND**. Otherwise, error code 9200012 will be returned.
-> 2. This API and [removeDisallowedBluetoothProtocols<sup>20+</sup>](#bluetoothmanagerremovedisallowedbluetoothprotocols20) are overloaded APIs. This API adds the **policy** parameter to remove the disallowing configuration based on the transfer policy. If the same protocol has been blocked under different policies via the two APIs, calling this API removes only the blocking configuration for the corresponding policy, while blocking configurations of other policies remain effective.
+> 1. When the SPP protocol is passed in, the policy parameter can only be set to TransferPolicy.RECEIVE_SEND. Otherwise, error code 9200012 is returned.
+> 2. This API is an overloaded API of [removeDisallowedBluetoothProtocols<sup>20+</sup>](#bluetoothmanagerremovedisallowedbluetoothprotocols20). This API adds the policy parameter to remove the disabling configuration based on the transfer policy. If the same protocol is configured with different disabling policies through the two APIs, calling this API removes only the disabling configuration of the corresponding policy, while the disabling configurations of other policies remain effective.
+> 3. In scenarios with multiple MDM applications, the [merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule applies.
 
 **Since:** 26.0.0
 
@@ -903,8 +920,6 @@ Removes Bluetooth protocols from the blocklist. After the setting, specified use
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 

@@ -31,7 +31,7 @@
 
 在确定的状态下执行不合适的方法会导致AVScreenCapture发生错误，开发者需要在调用状态转换的方法前进行状态检查，避免程序运行异常。
 
-**在 CMake 脚本中链接动态库**
+**在CMake脚本中链接动态库**
 
 ``` C
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runtime.so libnative_display_manager.so)

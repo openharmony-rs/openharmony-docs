@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a919c71f7c4adbe3502ca40ecdaaea98656bd2aa translatedAt=2026-11-18T03:29:05.592Z pushedAt=2026-11-19T11:49:39.425Z nl=1 -->
 
 ControlCenterQuery is used to check whether the camera controller is supported.
 
@@ -50,6 +51,8 @@ getSupportedEffectTypes(): Array\<ControlCenterEffectType\>
 
 Obtains the effect types supported by the camera controller.
 
+Before using this API, [isControlCenterSupported](#iscontrolcentersupported20) must be used to query whether the current session supports the camera controller.
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -65,7 +68,9 @@ Obtains the effect types supported by the camera controller.
 ```ts
 function getSupportedEffectTypes(videoSession: camera.VideoSession): Array<camera.ControlCenterEffectType> {
     let effectTypes: Array<camera.ControlCenterEffectType> = [];
-    effectTypes = videoSession.getSupportedEffectTypes();
+    if (videoSession.isControlCenterSupported()) {
+        effectTypes = videoSession.getSupportedEffectTypes();
+    }
     return effectTypes;
 }
 ```

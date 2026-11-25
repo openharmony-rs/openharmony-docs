@@ -841,7 +841,13 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 
 > **说明：**
 >
-> 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - onActive与[onInactive](#oninactive17)仅在NavDestination激活态与非激活态相互切换时触发，NavDestination保持同一状态时不会重复触发。
+>
+> - 页面跳转触发的激活态变化，仅根据NavDestination在路由栈中的位置判断，不会考虑上层特殊节点（半模态[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)、全模态[bindContentCover](ts-universal-attributes-modal-transition.md#bindcontentcover)、[Dialog](../arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[overlay](../arkts-apis-uicontext-overlaymanager.md)）。
+>
+> - 上层Overlay节点移除时，若NavDestination上方仍存在其他Overlay节点，则该NavDestination仍处于非激活态，不会触发onActive。
+>
+> - 从API版本22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -862,7 +868,13 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 
 > **说明：**
 >
-> 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - [onActive](#onactive17)与onInactive仅在NavDestination激活态与非激活态相互切换时触发，NavDestination保持同一状态时不会重复触发。
+>
+> - 页面跳转触发的激活态变化，仅根据NavDestination在路由栈中的位置判断，不会考虑上层特殊节点（半模态[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)、全模态[bindContentCover](ts-universal-attributes-modal-transition.md#bindcontentcover)、[Dialog](../arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[overlay](../arkts-apis-uicontext-overlaymanager.md)）。
+>
+> - OverlayManager场景下，仅调用[addComponentContent](../arkts-apis-uicontext-overlaymanager.md#addcomponentcontent12)添加节点，不会触发下层NavDestination的onInactive，需配合[showComponentContent](../arkts-apis-uicontext-overlaymanager.md#showcomponentcontent12)显示节点后才会触发。
+>
+> - 从API版本22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 

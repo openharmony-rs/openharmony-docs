@@ -1,10 +1,11 @@
 # @ohos.util.LinkedList (Linear Container LinkedList)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=58e0aac1ecb6b253638163c0254ed24f4d229ae6 translatedAt=2026-11-16T05:43:15.925Z pushedAt=2026-11-16T06:31:14.240Z nl=1 -->
 
 LinkedList is implemented based on the doubly linked list. Each node of the doubly linked list has references pointing to the previous element and the next element. When querying an element, the system traverses the list from the beginning or end. LinkedList offers efficient insertion and removal operations but supports low query efficiency. LinkedList allows null elements.
 
@@ -14,12 +15,12 @@ LinkedList is more efficient in data insertion than [ArrayList](js-apis-arraylis
 
 > **NOTE**
 >
-> Accessing elements in a LinkedList using the \[index\] syntax may lead to undefined results. You are advised to use **get()** instead.
+> Using \[index\] to obtain elements in LinkedList may lead to unpredictable results. It is recommended to use the get() method.
 
 **Recommended use case**: Use LinkedList for frequent insertion and removal operations when a doubly linked list is required.
 
-This topic uses the following to identify the use of generics:
-- T: Type
+Generics are used in this document. The following generic type parameters are involved:
+- T: Type, a generic type parameter, which can be of any type
 
 > **NOTE**
 >
@@ -51,7 +52,7 @@ import { LinkedList } from '@kit.ArkTS';
 
 constructor()
 
-A constructor used to create a **LinkedList** instance.
+Constructor of LinkedList. After being called, an empty LinkedList instance is created.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -108,17 +109,21 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 let linkedList = new LinkedList<string | number | boolean | object>();
 let result = linkedList.add("a");
+console.info("result = ", result); // result =  true
 let result1 = linkedList.add(1);
-let b = [1, 2, 3];
-let result2 = linkedList.add(b);
-class C {
-  name: string = ''
-  age: string = ''
+console.info("result = ", result1); // result =  true
+let numArray = [1, 2, 3];
+let result2 = linkedList.add(numArray);
+console.info("result = ", result2); // result =  true
+class PersonInfo {
+  name: string = '';
+  age: string = '';
 }
-let c: C = {name : "Dylan", age : "13"};
-let result3 = linkedList.add(c);
+let personInfo: PersonInfo = {name : "Dylan", age : "13"};
+let result3 = linkedList.add(personInfo);
+console.info("result = ", result3); // result =  true
 let result4 = linkedList.add(false);
-console.info("result = ", result4) // result =  true
+console.info("result = ", result4); // result =  true
 ```
 
 ### addFirst
@@ -151,14 +156,14 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let linkedList = new LinkedList<string | number | boolean | object>();
 linkedList.addFirst("a");
 linkedList.addFirst(1);
-let b = [1, 2, 3];
-linkedList.addFirst(b);
-class C {
-  name: string = ''
-  age: string = ''
+let numArray = [1, 2, 3];
+linkedList.addFirst(numArray);
+class PersonInfo {
+  name: string = '';
+  age: string = '';
 }
-let c: C = {name : "Dylan", age : "13"};
-linkedList.addFirst(c);
+let personInfo: PersonInfo = {name : "Dylan", age : "13"};
+linkedList.addFirst(personInfo);
 linkedList.addFirst(false);
 let result = linkedList.get(2);
 console.info("result:", result);  // result: 1,2,3
@@ -168,7 +173,7 @@ console.info("result:", result);  // result: 1,2,3
 
 insert(index: number, element: T): void
 
-Inserts an element at the specified position in this LinkedList.
+Inserts a specified element at any position within the length range. The insertable position range is [0, LinkedList.length]. Inserting at linkedList.length means adding the element to the end of linkedList.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -178,16 +183,15 @@ Inserts an element at the specified position in this LinkedList.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Index of the position where the element is to be inserted. The value must be less than or equal to int32_max, that is, 2147483647.|
-| element | T | Yes| Target element.|
+| index | number | Yes | Index of the insertion position. The valid insertion position range is [0, LinkedList.length], and it needs to be less than or equal to int32_max, that is, 2147483647. |
+| element | T | Yes | Element to insert. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
@@ -265,11 +269,10 @@ Obtains an element at the specified position in this LinkedList.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The get method cannot be bound. |
 
 **Example**
@@ -381,7 +384,7 @@ console.info("result:", result);  // result: 0
 
 removeByIndex(index: number): T
 
-Searches for an element based on its index and then removes it.
+Within the length range of LinkedList, finds an element based on its index value and removes it.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -391,21 +394,20 @@ Searches for an element based on its index and then removes it.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index value of the specified element, with a value range of [0, LinkedList.length-1], and needs to be less than or equal to int32_max, that is, 2147483647. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Element removed. If the element does not exist, **undefined** is returned.|
+| T | Return the deleted element. If the element is undefined, return undefined; if it is null, return null. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
@@ -544,7 +546,7 @@ console.info("result:", result);  // result: true
 
 removeFirstFound(element: T): boolean
 
-Removes the first occurrence of the specified element from this LinkedList.
+Removes the first occurrence of the specified element. If the specified element does not exist in LinkedList, an error is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -560,7 +562,7 @@ Removes the first occurrence of the specified element from this LinkedList.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Returns **true** if the element is removed; returns **false** if the element fails to be removed or does not exist.|
+| boolean | Returns true if deletion is successful, and returns false if deletion fails. |
 
 **Error codes**
 
@@ -588,7 +590,7 @@ console.info("result:", result);  // result: true
 
 removeLastFound(element: T): boolean
 
-Removes the last occurrence of the specified element from this LinkedList.
+Removes the last occurrence of the specified element. If the specified element does not exist in LinkedList, an error is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -604,7 +606,7 @@ Removes the last occurrence of the specified element from this LinkedList.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Returns **true** if the element is removed; returns **false** if the element fails to be removed or does not exist.|
+| boolean | Returns true if the deletion is successful, and false if the deletion fails. |
 
 **Error codes**
 
@@ -642,7 +644,7 @@ Clones an instance identical to this **LinkedList** and returns it. The modifica
 
 | Type| Description|
 | -------- | -------- |
-| LinkedList&lt;T&gt; | New **LinkedList** instance obtained.|
+| LinkedList&lt;T&gt; | Returns a cloned instance of the LinkedList object. |
 
 **Error codes**
 
@@ -691,11 +693,10 @@ callbackFn parameters
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
@@ -760,22 +761,21 @@ Replaces an element at the specified position in this LinkedList with a given el
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index value to find. Value range [0, LinkedList.length-1], and needs to be less than or equal to int32_max, that is, 2147483647. |
 | element | T | Yes| Element to be used for replacement.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | New element. If the element is empty, **undefined** is returned.|
+| T | Returns the replaced element. If the element is undefined, returns undefined; if it is null, returns null. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The set method cannot be bound. |
 
@@ -902,7 +902,7 @@ console.info("result:", result);  // result: 4
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator for traversing the elements in LinkedList.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

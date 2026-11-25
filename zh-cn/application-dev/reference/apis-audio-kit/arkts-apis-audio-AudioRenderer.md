@@ -1530,16 +1530,16 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
   if (err) {
     console.error(`getCurrentOutputDevices Fail: ${err}`);
   } else {
-    for (let i = 0; i < deviceInfo.length; i++) {
-      console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-      console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-      console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-      console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-      console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-      console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-      console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-      console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-    }
+    deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
   }
 });
 ```
@@ -1563,16 +1563,16 @@ getCurrentOutputDevices(): Promise&lt;AudioDeviceDescriptors&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getCurrentOutputDevices().then((deviceInfo: audio.AudioDeviceDescriptors) => {
-  for (let i = 0; i < deviceInfo.length; i++) {
-    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-  }
+  deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
 }).catch((err: BusinessError) => {
   console.error(`Get current output devices Fail: ${err}`);
 });
@@ -1599,16 +1599,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let deviceInfo: audio.AudioDeviceDescriptors = audioRenderer.getCurrentOutputDevicesSync();
-  for (let i = 0; i < deviceInfo.length; i++) {
-    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-  }
+  deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
 } catch (err) {
   let error = err as BusinessError;
   console.error(`Get current output devices Fail: ${error}`);
@@ -2703,7 +2703,7 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 > **说明：**
 >
 > - 该接口仅支持类型为[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)、[STREAM_USAGE_MOVIE](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或[STREAM_USAGE_AUDIOBOOK](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)的音频流。
-> - 该接口不支持高清通路的响度设置。
+> - 从API版本26.0.0开始，该接口支持高清通路的响度设置；低于该版本时不支持。
 > - 由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。
 > - 建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。
 

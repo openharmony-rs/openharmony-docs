@@ -6,11 +6,17 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=3a1f509b978baa6d112b8582f2ad37fb1f7fa306 translatedAt=2026-08-13T13:21:26.036Z pushedAt=2026-08-17T03:54:11.560Z -->
+<!-- md-trans-meta sourceCommit=27415df324fbfef3fba7ae1b59fc2bc2dafaaa17 translatedAt=2026-11-04T09:54:35.239Z pushedAt=2026-11-04T09:59:36.501Z nl=1 -->
 
 Rectangular area used for auto-fill.
 
 **Since**: 26.0.0
+
+## Modules to Import
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
 
 ## AutoFillRect
 

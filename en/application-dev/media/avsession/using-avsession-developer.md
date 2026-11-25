@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:53:04.565Z pushedAt=2026-09-15T13:38:19.820Z -->
+<!-- md-trans-meta sourceCommit=909527a23ab82dfa7ed9b8b3ecf78e6361edbb8a translatedAt=2026-11-05T00:59:45.680Z pushedAt=2026-09-15T13:38:19.820Z nl=2 -->
 
 An audio and video application needs to access the AVSession service as a provider in order to display media information in the controller (for example, Media Controller) and respond to playback control commands delivered by the controller.
 
@@ -94,7 +94,7 @@ To enable an audio and video application to access the AVSession service as a pr
 
    The controller will call an API in the **AVSessionController** class to obtain the information and display or process the information.
 
-   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) -->
+   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) --> 
 
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -124,7 +124,7 @@ To enable an audio and video application to access the AVSession service as a pr
                artist: 'ARTIST'
              };
              session.setAVMetadata(metadata).then(() => {
-               console.info(`SetAVMetadata successfully`);
+               console.info(`setAVMetadata successfully`);
                // ...
              }).catch((err: BusinessError) => {
                console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
@@ -140,7 +140,7 @@ To enable an audio and video application to access the AVSession service as a pr
                  console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
                  // ...
                } else {
-                 console.info(`SetAVPlaybackState successfully`);
+                 console.info(`setAVPlaybackState successfully`);
                  // ...
                }
              });
@@ -346,7 +346,7 @@ To enable an audio and video application to access the AVSession service as a pr
 
    Control scenarios include tapping the media control center, removing notifications from the media control center, wearing Bluetooth earphones, pressing buttons on Bluetooth or wired earphones, and using voice assistant controls.
 
-   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) -->
+   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) --> 
 
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -374,49 +374,49 @@ To enable an audio and video application to access the AVSession service as a pr
                console.info(`on play , do play task`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state.
+               // After the processing is complete, call setAVPlaybackState to report the playback state.
              });
              session.on('pause', () => {
                console.info(`on pause , do pause task`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state.
+               // After the processing is complete, call setAVPlaybackState to report the playback state.
              });
              session.on('stop', () => {
                console.info(`on stop , do stop task`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('stop') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state.
+               // After the processing is complete, call setAVPlaybackState to report the playback state.
              });
              session.on('playNext', () => {
                console.info(`on playNext , do playNext task`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('playNext') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state and call SetAVMetadata to report the media information.
+               // After the processing is complete, call setAVPlaybackState to report the playback state and call setAVMetadata to report the media information.
              });
              session.on('playPrevious', () => {
                console.info(`on playPrevious , do playPrevious task`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('playPrevious') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state and call SetAVMetadata to report the media information.
+               // After the processing is complete, call setAVPlaybackState to report the playback state and call setAVMetadata to report the media information.
              });
              session.on('fastForward', () => {
                console.info(`on fastForward , do fastForward task`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('fastForward') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state and position.
+               // After the processing is complete, call setAVPlaybackState to report the playback state and position.
              });
              session.on('rewind', () => {
                console.info(`on rewind , do rewind task`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('rewind') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state and position.
+               // After the processing is complete, call setAVPlaybackState to report the playback state and position.
              });
              session.on('seek', (time: number) => {
                console.info(`on seek , the time is ${time}`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('seek') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the playback state and position.
+               // After the processing is complete, call setAVPlaybackState to report the playback state and position.
              });
              session.on('setSpeed', (speed) => {
                console.info(`on setSpeed , the speed is ${speed}`);
@@ -427,13 +427,13 @@ To enable an audio and video application to access the AVSession service as a pr
                console.info(`on setLoopMode , the loop mode is ${mode}`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('setLoopMode') to cancel listening.
-               // The application determines the next loop mode. After the processing is complete, call SetAVPlaybackState to report the new loop mode.
+               // The application determines the next loop mode. After the processing is complete, call setAVPlaybackState to report the new loop mode.
              });
              session.on('toggleFavorite', (assetId) => {
                console.info(`on toggleFavorite , the target asset Id is ${assetId}`);
                // ...
                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('toggleFavorite') to cancel listening.
-               // After the processing is complete, call SetAVPlaybackState to report the value of isFavorite.
+               // After the processing is complete, call setAVPlaybackState to report the value of isFavorite.
              });
              // ...
            })

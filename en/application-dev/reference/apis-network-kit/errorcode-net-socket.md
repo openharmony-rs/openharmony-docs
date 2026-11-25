@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f03e919c6692e6b48d418d96a4de2e632d6407c3 translatedAt=2026-09-28T01:22:50.005Z pushedAt=2026-10-09T02:43:12.599Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-04T06:38:46.125Z pushedAt=2026-11-04T08:04:44.878Z nl=1 -->
 
 > **NOTE**
 >
@@ -107,15 +107,15 @@ This error code is reported if a system internal error occurs.
 
 **Possible Causes**
 
-1. The memory is abnormal.
+1. Memory exception.
 
-2. A null pointer is present.
+2. Null pointer.
 
 **Solution**
 
-1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+1. Check whether the memory space is sufficient, and clear the memory and try again.
 
-2. Check whether the system is normal. If not, try again later or restart the device.
+2. The system is abnormal. Try again later or restart the device.
 
 ## 2301206 Failed to Connect to the Proxy Server via SOCKS5
 

@@ -1,11 +1,11 @@
 # Publishing Common Events in C
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-11-16T04:25:52.552Z pushedAt=2026-11-16T06:31:14.033Z nl=1 -->
 
 ## When to Use
 
@@ -13,7 +13,7 @@ You can use the [OH_CommonEvent_Publish](../../reference/apis-basic-services-kit
 
 ## Available APIs
 
-For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
+For detailed API descriptions, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
 
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
@@ -33,8 +33,6 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
    ``` C
    #include <cstdint>
-   #include <cstdio>
-   #include <cwchar>
    #include <cstring>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"

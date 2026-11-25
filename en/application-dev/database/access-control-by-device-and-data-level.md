@@ -1,12 +1,11 @@
 # Access Control by Device and Data Level (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @widecode; @htt1997-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=21aa413cf1755b055fbf63fdc2c1e46117039e5c translatedAt=2026-08-15T01:42:10.350Z pushedAt=2026-08-15T06:11:38.029Z -->
+<!-- md-trans-meta sourceCommit=f08a2bc7585a47e3ee5a2e60edcdd8af21f269f1 translatedAt=2026-10-31T01:20:42.305Z pushedAt=2026-10-31T03:29:45.566Z nl=1 -->
 
 ## Basic Concepts
 
@@ -26,18 +25,13 @@ The data can be rated into four security levels as below.
 | Low| S1 | Data that may cause minor adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Gender, nationality, and user application records| 
 
 ### Device Security Levels
-
 <!--RP1-->
-
 Device security levels are classified into SL1 to SL5 based on devices' security capabilities, such as whether a Trusted Execution Environment (TEE) or a secure storage chip is available. For example, the development boards RK3568 and Hi3516 are SL1 (lower security) devices, and tablets are SL4 (higher security) devices.
 
 When devices are networked, you can run the `hidumper -s 3511` command to check the device security level. If no result is returned, run the `service_control start dslm_service` command to start the corresponding service, and then run the hidumper command again. The following figure shows the security level of an RK3568 device.
-
 <!--RP1End-->
 <!--Del-->
-
 ![Device-Security-Levels](figures/Device-Security-Levels.png)
-
 <!--DelEnd-->
 
 ## Access Control Mechanism in Cross-Device Sync
@@ -51,16 +45,14 @@ In cross-device data sync, data access is controlled based on the device securit
 |SL3|S1~S3|
 |SL4|S1~S4|
 |SL5|S1~S4|
-
 <!--RP2-->
-
 For example, the security level of development boards RK3568 and Hi3516 is SL1. The database with data security label S1 can be synced with RK3568 and Hi3516, but the databases with database labels S2-S4 cannot.
-
 <!--RP2End-->
 
 ## When to Use
 
 The access control mechanism ensures secure data storage and sync across devices. When creating a database, you need to correctly set the security level for the database.
+
 
 ## Setting the Security Level for a KV Store
 
@@ -93,9 +85,8 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    export class KvInterface {
    }
    ```
-
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -116,9 +107,8 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
      }
    })
    ```
-
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-
+   
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -181,25 +171,24 @@ When an RDB store is created, the **securityLevel** parameter specifies the secu
 
 For details about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 
+
 <!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
-import { UIContext } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 let store: relationalStore.RdbStore | undefined = undefined;
 
-export async function accessControlByDeviceAndDataLevel() {
+export async function accessControlByDeviceAndDataLevel(context: common.UIAbilityContext | undefined) {
   /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
-  const context = new UIContext().getHostContext() as common.UIAbilityContext;
   try {
     const STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       // Set the security level of the RDB store to S3.
       securityLevel: relationalStore.SecurityLevel.S3
     };
-    store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+    store = await relationalStore.getRdbStore(context!, STORE_CONFIG);
     console.info('Succeeded in getting RdbStore.')
   } catch (err) {
     console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);

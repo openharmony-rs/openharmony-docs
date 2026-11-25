@@ -1,11 +1,11 @@
 # Scan_PictureScanProgress
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=5e49d8f73938f6f5aa5c2a5c5930bcf03e74f210 translatedAt=2026-10-09T11:46:50.519Z pushedAt=2026-10-10T04:43:13.824Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-23T01:16:10.549Z pushedAt=2026-11-23T10:58:37.996Z nl=1 -->
 
 ```cpp
 typedef struct {...} Scan_PictureScanProgress

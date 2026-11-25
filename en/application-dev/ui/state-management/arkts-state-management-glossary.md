@@ -1,12 +1,11 @@
-# State Management Terms
-
+# State Management Glossary
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=62b5c3450a87bdc5e575e58aa760685da7a65e8a translatedAt=2026-07-01T11:08:28.009Z pushedAt=2026-07-02T02:48:11.229Z -->
+<!-- md-trans-meta sourceCommit=8917fa9a06fba0322d5ee6f97bf1bc1616272188 translatedAt=2026-11-09T11:08:34.688Z pushedAt=2026-11-10T01:45:06.015Z nl=1 -->
 
 ## A
 

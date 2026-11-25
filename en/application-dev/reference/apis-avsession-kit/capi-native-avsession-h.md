@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=9d00e85ff51cb70de18b56e95b79607bff2c7328 translatedAt=2026-11-18T03:22:17.121Z pushedAt=2026-11-19T11:34:18.156Z nl=1 -->
 
 ## Overview
 
@@ -86,6 +87,14 @@ Defines a callback for a common playback control command.
 
 **Since**: 13
 
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | Pointer to the **OH_AVSession** instance. |
+| [AVSession_ControlCommand](capi-native-avsession-base-h.md#avsession_controlcommand) command | Play command. |
+| void* userData | User data passed. |
+
 ### OH_AVSessionCallback_OnFastForward()
 
 ```c
@@ -97,6 +106,14 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 Defines a callback for the fast-forward operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
+
+**Parameters**
+ 
+| Name | Description |
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | Pointer to the **OH_AVSession** instance. |
+| uint32_t seekTime | Fast forward time, in milliseconds (ms). |
+| void* userData | User data passed. |
 
 ### OH_AVSessionCallback_OnRewind()
 
@@ -110,6 +127,14 @@ Defines a callback for the rewind operation. The unit of **seekTime** is millise
 
 **Since**: 13
 
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | Pointer to the **OH_AVSession** instance. |
+| uint32_t seekTime | Rewind time, in milliseconds (ms). |
+| void* userData | User data passed. |
+
 ### OH_AVSessionCallback_OnSeek()
 
 ```c
@@ -121,6 +146,14 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 Defines a callback for the seek operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | Pointer to the **OH_AVSession** instance. |
+| uint64_t seekTime | Position after the skip, in milliseconds (ms). |
+| void* userData | User data passed. |
 
 ### OH_AVSessionCallback_OnSetLoopMode()
 
@@ -134,6 +167,14 @@ Defines a callback for the operation of setting the loop mode.
 
 **Since**: 13
 
+**Parameters**
+ 
+| Name | Description |
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | Pointer to the **OH_AVSession** instance. |
+| [AVSession_LoopMode](capi-native-avsession-base-h.md#avsession_loopmode) curLoopMode | Current loop mode. |
+| void* userData | User data passed. |
+
 ### OH_AVSessionCallback_OnToggleFavorite()
 
 ```c
@@ -146,6 +187,14 @@ Defines a callback for the operation of favoriting a media asset.
 
 **Since**: 13
 
+**Parameters**
+ 
+| Name | Description |
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | Pointer to the **OH_AVSession** instance. |
+| const char* assetId | ID of the media asset whose favorite status is to be switched. |
+| void* userData | User data passed. |
+
 ### OH_AVSessionCallback_OutputDeviceChange()
 
 ```c
@@ -157,6 +206,12 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_A
 Defines a callback for the device changes.
 
 **Since:** 23
+
+| Name | Description |
+| -- | -- |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md)* session | Pointer to the **OH_AVSession** instance. |
+| [AVSession_ConnectionState](capi-native-avsession-base-h.md#avsession_connectionstate) state | Connection status of the output device. |
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)* outputDeviceInfo | Output device information. Do not release the outputDeviceInfo pointer separately. When it is no longer needed, release it by calling **OH_AVSession_ReleaseOutputDevice**. |
 
 ### OH_AVSession_Create()
 
@@ -941,3 +996,5 @@ Releases the output device object.
 | Type| Description|
 | -- | -- |
 | [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avsession** parameter is **nullptr**.<br>                                         2. The **outputDeviceInfo** parameter is **nullptr**.|
+
+

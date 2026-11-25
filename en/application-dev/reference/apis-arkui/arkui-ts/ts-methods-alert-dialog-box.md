@@ -1,12 +1,11 @@
 # Alert Dialog Box (AlertDialog)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c48e99653addcebc1ddb3fe176c39e9f27289a83 translatedAt=2026-08-24T06:57:05.333Z pushedAt=2026-08-25T07:34:46.486Z -->
+<!-- md-trans-meta sourceCommit=41ced39ef8dc45d6e20eb2df331d3c76fb446440 translatedAt=2026-11-17T08:01:05.247Z pushedAt=2026-11-17T08:07:48.611Z nl=1 -->
 
 You can set the text content and response callback for an alert dialog box.
 
@@ -831,9 +830,11 @@ struct AlertDialogExample {
 
 ![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
 
-### Example 9: Setting the System Material of the Dialog Box
+### Example 9: Setting the Immersive Light Effect of the Dialog Box
 
-This example implements the system material effect by configuring the **systemMaterial** attribute in [AlertDialogParam](#alertdialogparam).
+This example sets the system material of the component through the **systemMaterial** attribute in [AlertDialogParam](#alertdialogparam) to implement the immersive light effect. After the system material is set, nonlinear deformation and edge light flow occur during the pop-up of the **AlertDialog**.
+
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
 
 Since API version 26.0.0, the **systemMaterial** attribute is added to **AlertDialogParam**.
 
@@ -870,10 +871,17 @@ struct AlertDialogExample {
       }
       .height('100%')
       .width('100%')
-      .backgroundColor(Color.Gray)
+      // Replace with the actual resource file.
+      .backgroundImage($r("app.media.img"))
+      .backgroundImageSize({width: '100%', height: '100%'})
     }
   }
 }
 ```
+Menu without system material
+
+<!--Del--> <!--DelEnd-->
+
+Menu with system material
 
 <!--Del--> <!--DelEnd-->

@@ -6,7 +6,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=563f325fc4197af705064cb3a103e60b86e4aa4f translatedAt=2026-08-01T07:29:28.958Z pushedAt=2026-08-01T11:14:03.294Z -->
+<!-- md-trans-meta sourceCommit=2f92eb18f93a1300c309ec4c70975e5c136947d1 translatedAt=2026-11-05T00:54:18.360Z pushedAt=2026-08-01T11:14:03.294Z nl=2 -->
 
 When users need to share files or save user files such as images and videos, you can use the system's prebuilt [Picker](../reference/apis-core-file-kit/js-apis-file-picker.md) to implement this capability. Accessing files through Picker will launch the corresponding app and guide users through the UI operations. The API itself does not require any permission. The URI obtained by selecting a file or folder through Picker has only **temporary read/write permission**. To obtain persistent permission, use [FilePicker to set permanent authorization](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).
 
@@ -38,8 +38,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. Import the Picker module and the file management module.
 
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -121,8 +120,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. Import the Picker module and the file management module.
 
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T12:09:39.526Z pushedAt=2026-10-10T01:37:36.505Z -->
+<!-- md-trans-meta sourceCommit=87dbb7dccdd55553f9b008ef4d22fbd61da3fce1 translatedAt=2026-11-23T01:00:43.188Z pushedAt=2026-11-23T10:51:37.930Z nl=1 -->
 
 This topic provides a list of common events defined by the system.
 
@@ -45,7 +45,7 @@ When a new application starts to be installed by a specified user on the device,
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value**: "usual.event.PACKAGE_INSTALLATION_STARTED"
 
@@ -60,7 +60,7 @@ This common event is sent when the dynamic icon of the application changes.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "usual.event.DYNAMIC_ICON_CHANGED"
 
@@ -118,7 +118,7 @@ Indicates that the kiosk mode is enabled. When this mode is on, the common event
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.KIOSK_MODE_ON
 
@@ -131,7 +131,7 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.KIOSK_MODE_OFF
 
@@ -167,7 +167,7 @@ System applications can call JavaScript APIs to request removing resource usage 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value**: usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED
 
@@ -183,7 +183,7 @@ This common event is sent when the system updates the device configuration direc
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.CUSTOM_CONFIG_POLICY_UPDATED
 
@@ -198,7 +198,7 @@ When the attributes such as network injection, persistent connection, and GPS lo
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.CUSTOM_ROAMING_REGION_UPDATED
 
@@ -214,7 +214,7 @@ When the system charging type changes, the event notification service is trigger
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value**: usual.event.CHARGE_TYPE_CHANGED
 
@@ -344,7 +344,7 @@ When an OS account sub-profile is successfully created, the [common event servic
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED"
 
@@ -362,7 +362,7 @@ When an OS account sub-profile is deleted successfully, the common event service
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED"
 
@@ -380,7 +380,7 @@ When an OS account sub-profile is being switched, the common event service is tr
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING"
 
@@ -398,7 +398,7 @@ When an OS account sub-profile has been switched, the common event service is tr
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED"
 
@@ -416,7 +416,7 @@ When a distributed account is bound, the common event service is triggered to pu
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "usual.event.DISTRIBUTED_ACCOUNT_BOUND"
 
@@ -434,7 +434,7 @@ When a distributed account is unbound, the common event service is triggered to 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "usual.event.DISTRIBUTED_ACCOUNT_UNBOUND"
 
@@ -515,7 +515,7 @@ When a VPN is connected or disconnected, the common event service is triggered t
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.VPN_CONNECTION_STATUS_CHANGED
 
@@ -533,7 +533,7 @@ When a device receives an SMS message, the event notification service is trigger
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value:** usual.event.SMS_RECEIVED_COMPLETED
+**Value:** "usual.event.SMS_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
@@ -576,7 +576,7 @@ When the carrier configuration of the device is updated, the common event servic
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.OPERATOR_CONFIG_CHANGED
 
@@ -591,7 +591,7 @@ When the default primary SIM card for the SMS service is updated, the common eve
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED
 
@@ -606,7 +606,7 @@ When the default primary SIM card for the data service is updated, the common ev
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED
 
@@ -621,7 +621,7 @@ When the default primary SIM card of the device is updated, the common event ser
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED
 
@@ -636,7 +636,7 @@ When the status of the action for setting the primary SIM card changes (for exam
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.SET_PRIMARY_SLOT_STATUS
 
@@ -651,7 +651,7 @@ When the roaming status of the default primary SIM card changes, the common even
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.PRIMARY_SLOT_ROAMING
 
@@ -666,7 +666,7 @@ When the default primary SIM card for the voice service is updated, the common e
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED
 
@@ -681,7 +681,7 @@ When the cellular data state of the device is updated, the common event service 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.CELLULAR_DATA_STATE_CHANGED
 
@@ -711,7 +711,7 @@ When there is a change in the radio state of the device modem, the common event 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.RADIO_STATE_CHANGE
 
@@ -726,7 +726,7 @@ When a secret code is successfully sent on the device, the common event service 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** "common.event.SPECIAL_CODE"
 
@@ -741,7 +741,7 @@ When there is a change in the audio quality of the device, the common event serv
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.AUDIO_QUALITY_CHANGE
 
@@ -760,7 +760,7 @@ When an STK command is sent, the event notification service is triggered to publ
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.STK_COMMAND
 
@@ -775,7 +775,7 @@ When an STK session ends, the common event service is triggered to publish this 
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.STK_SESSION_END
 
@@ -790,7 +790,7 @@ When the STK card state is updated, the common event service is triggered to pub
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 
 **Value:** usual.event.STK_CARD_STATE_CHANGED
@@ -805,10 +805,23 @@ When an STK Alpha identifier is sent, the common event service is triggered to p
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Required Permissions:** none
+**Required permissions:** none
 
 **Value:** usual.event.STK_ALPHA_IDENTIFIER
 
+### COMMON_EVENT_DATA_VOLUME_STATUS_REPORT
+ 
+Indicates whether a specific volume is available when an extension data disk is available on a PC. A broadcast is sent after the startup extended disk is mounted or the user is unlocked.
+ 
+This event is supported only on PCs/2-in-1 devices.
+ 
+**Since**: 26.0.0
+ 
+**System capability**: SystemCapability.Notification.CommonEvent
+ 
+**Required permissions:** none
+ 
+**Value:** "usual.event.DATA_VOLUME_STATUS_REPORT"
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 

@@ -1,12 +1,11 @@
 # stack
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-08-11T01:54:44.377Z pushedAt=2026-08-11T02:10:38.833Z -->
+<!-- md-trans-meta sourceCommit=8817783065c9116803c935936bcc8c3459db7c1e translatedAt=2026-11-18T03:03:37.300Z pushedAt=2026-11-19T08:37:26.299Z nl=1 -->
 
 The **\<stack>** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
 
@@ -14,9 +13,11 @@ The **\<stack>** component provides a stack container where child components are
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
+
 ## Child Components
 
 Supported.
+
 
 ## Attributes
 
@@ -27,6 +28,7 @@ Supported.
 | class | string | -    | No   | Style class of the component, which is used to refer to a style table.                         |
 | ref   | string | -    | No   | Reference information of child elements, which is registered with the parent component on **$refs**.|
 
+
 ## Events
 
 | Name                | Parameter                               | Description         |
@@ -34,6 +36,7 @@ Supported.
 | click              | -                                 | Triggered when the component is clicked. |
 | longpress          | -                                 | Triggered when the component is long pressed. |
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component.|
+
 
 ## Styles
 
@@ -55,18 +58,21 @@ Supported.
 
 >  **NOTE**
 >
-> The absolute positioning does not support a percentage. Therefore, **margin** cannot be set for the child components of the **\<stack>** component.
+> The absolute positioning does not support a percentage. Therefore, **margin** cannot be set for the child components of the **\\<stack>** component.
+
 
 ## Example
 
+
 ```html
-<!-- xxx.hml -->
-<stack class="stack-parent">
-  <div class="back-child bd-radius"></div>
-  <div class="positioned-child bd-radius"></div>
-  <div class="front-child bd-radius"></div>
+</!-- xxx.hml -->
+</stack class="stack-parent">
+  </div class="back-child bd-radius"></div>
+  </div class="positioned-child bd-radius"></div>
+  </div class="front-child bd-radius"></div>
 </stack>
 ```
+
 
 ```css
 /* xxx.css */

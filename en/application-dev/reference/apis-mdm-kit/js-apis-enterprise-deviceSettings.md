@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4bf46a10ba62279a2fe0185b62cc7828850b9ba9 translatedAt=2026-11-04T05:28:32.944Z pushedAt=2026-11-04T08:04:44.778Z nl=1 -->
 
 This module provides enterprise device settings capabilities, including setting and obtaining the device screen-off time, system time, power policy, Eye Comfort mode, default input method, wallpaper, and hidden setting items.
 
@@ -28,13 +29,15 @@ setValue(admin: Want, item: string, value: string): void
 
 Sets the device policy.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -61,6 +64,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
+import { inputMethod } from '@kit.IMEKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -68,12 +72,58 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+// Set the device screen-off time to 3 seconds.
 try {
   // Replace with actual values.
   deviceSettings.setValue(wantTemp, 'screenOff', '3000');
   console.info(`Succeeded in setting screen off time.`);
 } catch (err) {
   console.error(`Failed to set screen off time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// Set the system time. The value is the system time to set (unit: millisecond).
+try {
+  // Replace with the actual value.
+  deviceSettings.setValue(wantTemp, 'dateTime', '1698768000000');
+  console.info(`Succeeded in setting date time.`);
+} catch (err) {
+  console.error(`Failed to set date time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// Set the device power policy. The device automatically enters sleep after the screen times out and turns off, with a delay of 60000 milliseconds. (This capability is supported only on PC/2-in-1 devices.)
+try {
+  // Replace with the actual value.
+  let powerPolicyString: string = JSON.stringify({
+    powerPolicyAction: 1,
+    delayTime: 60000
+  });
+  let value: string = JSON.stringify({
+    powerScene: 0,
+    powerPolicy: powerPolicyString
+  });
+  deviceSettings.setValue(wantTemp, 'powerPolicy', value);
+  console.info(`Succeeded in setting power policy.`);
+} catch (err) {
+  console.error(`Failed to set power policy. Code: ${err.code}, message: ${err.message}`);
+}
+
+// Set Eye Comfort Mode to be enabled all day. The value can be set to on or off.
+try {
+  // Replace with the actual value.
+  deviceSettings.setValue(wantTemp, 'eyeComfort', 'on');
+  console.info(`Succeeded in setting eye comfort.`);
+} catch (err) {
+  console.error(`Failed to set eye comfort. Code: ${err.code}, message: ${err.message}`);
+}
+
+// Set the default input method. The value is the bundle name of the input method application.
+try {
+  // Replace with the actual value.
+  let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+  deviceSettings.setValue(wantTemp, 'defaultInputMethod', currentInputMethod.name);
+  console.info(`Succeeded in setting default input method.`);
+} catch (err) {
+  console.error(`Failed to set default input method. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -100,7 +150,7 @@ Obtains a device setting policy.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| string | Policy type value.<br>If **item** is **screenOff**, the device screen-off time (in ms) is returned. For PCs/2-in-1 devices, the device screen-off time (in ms) in battery mode is returned.<br>If **item** is **powerPolicy**, the power policy is returned. For PCs/2-in-1 devices, the power policy in battery mode is returned. The power policy a JSON string in {"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}} format. **powerScene** indicates the power policy scenario, **delayTime** indicates the delay time (in milliseconds), and **powerPolicyAction** indicates the sleep policy.<br>The value of **powerScene** can be:<br>- **0**: timeout.<br>The value of **powerPolicyAction** can be:<br>- **0**: No action is performed.<br>- **1**: enter sleep mode automatically.<br>- **2**: forcibly enter sleep mode.<br>- **3**: enter sleep mode. This policy does not take effect currently.<br>- **4**: power off.<br>If **item** is **eyeComfort**, **value** is a string indicating the status of the eye comfort mode.<br>- **on**: The eye comfort mode is enabled all day.<br>- **off**: The eye comfort mode is disabled.<br>- **unknown**: other modes.|
+| string | Policy type value.<br/>When item is screenOff, returns the screen-off time of the device (in milliseconds). For PC/2-in-1 devices, returns the screen-off time of the device on battery power (in milliseconds).<br/>When item is powerPolicy, returns the power policy. For PC/2-in-1 devices, returns the power policy of the device on battery power, in the JSON string format: {"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}. powerScene indicates the power policy scenario; delayTime indicates the delay time (in milliseconds); powerPolicyAction indicates the sleep policy.<br/>Power policy scenario:<br/>- 0: timeout scenario.<br/>Sleep policy:<br/>- 0: no action.<br/>- 1: automatically enter sleep.<br/>- 2: forcibly enter sleep.<br/>- 3: enter hibernation. This policy is not effective yet.<br/>- 4: power off.<br/>When item is eyeComfort, the returned value is a string indicating the Eye Comfort Mode switch state.<br/>- on: Eye Comfort Mode is enabled all day.<br/>- off: Eye Comfort Mode is disabled.<br/>- unknown: other modes. |
 
 **Error codes**
 
@@ -125,6 +175,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+// Obtain the screen-off time of the device, and return the screen-off time of the device (unit: ms).
 try {
   // Replace parameters with actual values.
   let result: string = deviceSettings.getValue(wantTemp, 'screenOff');
@@ -132,19 +183,41 @@ try {
 } catch (err) {
   console.error(`Failed to get screen off time. Code: ${err.code}, message: ${err.message}`);
 }
+
+// Obtain the power policy of the device (supported only on PC/2-in-1 devices), and return the JSON string {"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}.
+try {
+  // Replace the parameters based on the actual situation.
+  let result: string = deviceSettings.getValue(wantTemp, 'powerPolicy');
+  console.info(`Succeeded in getting power policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
+}
+
+// Obtain the switch state of Eye Comfort Mode. The return value is on, off, or unknown.
+try {
+  // Replace the parameters based on the actual situation.
+  let result: string = deviceSettings.getValue(wantTemp, 'eyeComfort');
+  console.info(`Succeeded in getting eye comfort, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get eye comfort. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## deviceSettings.setHomeWallpaper<sup>20+</sup>
 
 setHomeWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 
-Sets the home screen wallpaper. This API uses a promise to return the result.
+Sets the home screen wallpaper. Foldable devices support setting only a single-screen wallpaper. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_WALLPAPER
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -177,7 +250,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 import { deviceSettings } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs }  from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -190,26 +263,30 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 // Replace parameters with actual values.
 let filename: string = "homewallpaper.jpg";
 let filePath: string = context.filesDir + '/' + filename;
-let fd: number = fs.openSync(filePath, fs.OpenMode.READ_WRITE).fd;
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE).fd;
 deviceSettings.setHomeWallpaper(wantTemp, fd).then(() => {
   console.info('Succeeded in setting home wallpaper');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set home wallpaper. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
-  fs.closeSync(fd);
+  fileIo.closeSync(fd);
 });
 ```
 ## deviceSettings.setUnlockWallpaper<sup>20+</sup>
 
 setUnlockWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 
-Sets the lock screen wallpaper. This API uses a promise to return the result. Enterprise device administrator applications can use this API to uniformly set the lock screen wallpaper for enterprise devices, for purposes such as corporate branding or security control.
+Sets the lock screen wallpaper. Foldable devices support setting only a single-screen wallpaper. This API uses a promise to return the result. Enterprise device administrator applications can use this API to uniformly set the lock screen wallpaper for enterprise devices for scenarios such as corporate image display or security control.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_WALLPAPER
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -242,7 +319,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 import { deviceSettings } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs }  from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -255,13 +332,13 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 // Replace parameters with actual values.
 let filename: string = "lockwallpaper.jpg";
 let filePath: string = context.filesDir + '/' + filename;
-let fd: number = fs.openSync(filePath, fs.OpenMode.READ_WRITE).fd;
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE).fd;
 deviceSettings.setUnlockWallpaper(wantTemp, fd).then(() => {
   console.info('Succeeded in setting lock wallpaper');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set lock wallpaper. Code: ${err.code}, message: ${err.message}`);
 }).finally(() => {
-  fs.closeSync(fd);
+  fileIo.closeSync(fd);
 });
 ```
 
@@ -313,7 +390,7 @@ let wantTemp: Want = {
 try {
   // Replace with actual values.
   let accountId = 100;
-  let deviceName: string = "deviceName"
+  let deviceName: string = "deviceName";
   deviceSettings.setValueForAccount(wantTemp, deviceSettings.SettingsItem.DEVICE_NAME, accountId, deviceName);
   console.info('Succeeded in setting device name.');
 } catch (err) {
@@ -430,8 +507,8 @@ let wantTemp: Want = {
 let menusToHidden: Array<deviceSettings.SettingsMenu> = [
   // Replace or add items as needed.
   deviceSettings.SettingsMenu.ACCOUNT_ID,
-  deviceSettings.SettingsMenu.WIFI,
-]
+  deviceSettings.SettingsMenu.WIFI
+];
 
 try {
   deviceSettings.addHiddenSettingsMenu(wantTemp, menusToHidden);
@@ -493,8 +570,8 @@ let wantTemp: Want = {
 let menusToHidden: Array<deviceSettings.SettingsMenu> = [
   // Replace or add items as needed.
   deviceSettings.SettingsMenu.ACCOUNT_ID,
-  deviceSettings.SettingsMenu.WIFI,
-]
+  deviceSettings.SettingsMenu.WIFI
+];
 
 try {
   deviceSettings.removeHiddenSettingsMenu(wantTemp, menusToHidden);
@@ -569,7 +646,11 @@ try {
 
 setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
-Sets the state of a switch. This API can enable or disable NearLink, Bluetooth, Wi-Fi, and NFC. After the setting is applied, users can manually enable or disable them. Bluetooth and NFC can be forced on. Once set, they cannot be manually turned on or off by the user. If a switch has been disabled through the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API, error code 203 will be reported when you attempt to set the state of the switch through this API. In this case, you need to use the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API to enable the switch. When multiple MDM applications are present on the device, there are no conflicts among the switch states set by different MDM applications. The policy set last takes effect. The three states, on (user can manually enable/disable), off (user can manually enable/disable), and forced on (user cannot manually disable), can be switched arbitrarily, and no conflict occurs.
+Sets the switch state. This API supports setting the state of NearLink, Bluetooth, Wi-Fi, and NFC to on or off. After the setting is complete, users can manually toggle the switch. This API also supports setting the state of Bluetooth and NFC to force enable. After the setting is complete, users cannot manually toggle the switch. If a switch has been disabled through the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API, setting the state of this switch through this API throws error code 203. In this case, you need to remove the switch disabling policy through the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) API. When a device has multiple MDM applications, the switch states set by different MDM applications do not conflict, and the last configured policy takes effect. The three states, on (users can manually turn on and off), off (users can manually turn on and off), and force enable (users cannot manually turn off), can be switched freely without conflicts.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [configuration](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence) rule.
 
 **Since**: 26.0.0
 
@@ -578,8 +659,6 @@ Sets the state of a switch. This API can enable or disable NearLink, Bluetooth, 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -632,17 +711,20 @@ Policy type.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Model restriction**: This API can be used only in the stage model.
 
 | Name| Value  | Description          |
 | ---- | ---- | -------------- |
 | DEVICE_NAME   | 0    | Device name.|
-| FLOATING_NAVIGATION<sup>24+</sup>   | 1   | Three-key navigation.|
+| FLOATING_NAVIGATION   | 1   | Three-Key Navigation. |
 
 ## SettingsMenu<sup>24+</sup>
 
 Describes the setting item list.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name  | Value| Description        |
 | ------ | ------ | ----------- |

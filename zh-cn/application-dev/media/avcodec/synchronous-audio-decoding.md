@@ -115,7 +115,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    添加头文件：
 
-   ```c++
+   <!-- @[AudioDecoder::IncludeDrmHeaders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    #include <multimedia/drm_framework/native_mediakeysystem.h>
    #include <multimedia/drm_framework/native_mediakeysession.h>
    #include <multimedia/drm_framework/native_drm_err.h>
@@ -128,32 +130,33 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
 
    使用示例：
-   ```c++
-   // 根据DRM信息创建指定的DRM系统, 以创建"com.clearplay.drm"为例。
-   MediaKeySystem *system = nullptr;
-   int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
-   if (system == nullptr) {
-       printf("create media key system failed");
-       return;
+   <!-- @[AudioDecoder::SetDecryptionConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   int32_t AudioDecoder::SetDecryptionConfig()
+   {
+       // 根据DRM信息创建指定的DRM系统，以创建“com.clearplay.drm”为例。
+       MediaKeySystem *system = nullptr;
+       int32_t ret = OH_MediaKeySystem_Create("com.clearplay.drm", &system);
+       CHECK_AND_RETURN_RET_LOG(ret == DRM_ERR_OK && system != nullptr, AVCODEC_SAMPLE_ERR_ERROR,
+           "Create media key system failed, ret: %{public}d", ret);
+       
+       // 创建解密会话。
+       MediaKeySession *session = nullptr;
+       DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
+       ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
+       CHECK_AND_RETURN_RET_LOG(ret == DRM_ERR_OK && session != nullptr, AVCODEC_SAMPLE_ERR_ERROR,
+           "Create media key session failed, ret: %{public}d", ret);
+       
+       // 获取许可证请求、设置许可证响应等。
+       // 设置解密配置，即将解密会话、安全通路标志（当前音频解密不支持安全通路，应设置为false）设置到解码器中。
+       bool secureAudio = false;
+       ret = OH_AudioCodec_SetDecryptionConfig(decoder_, session, secureAudio);
+       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+           "Set decryption config failed, ret: %{public}d", ret);
+   
+       return AVCODEC_SAMPLE_ERR_OK;
    }
-
-   // 创建解密会话。
-   MediaKeySession *session = nullptr;
-   DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-   ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-   if (ret != DRM_ERR_OK) {
-       // 如果创建失败，请查看DRM接口文档及日志信息。
-       printf("create media key session failed.");
-       return;
-   }
-   if (session == nullptr) {
-       printf("media key session is nullptr.");
-       return;
-   }
-   // 获取许可证请求、设置许可证响应等。
-   // 设置解密信息。将解密会话设置到解码器中。当前音频解密不支持安全解码器，设置为false。
-   bool secureAudio = false;
-   ret = OH_AudioCodec_SetDecryptionConfig(audioDec_, session, secureAudio);
    ```
 
 4. 调用OH_AudioCodec_Configure()配置解码器。
@@ -257,7 +260,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    添加头文件：
 
-   ```c++
+   <!-- @[AudioDecoder::IncludeCencHeaders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
    #include <multimedia/player_framework/native_cencinfo.h>
    ```
    在CMake脚本中链接动态库：
@@ -267,58 +272,62 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
 
    使用示例：
-   ```c++
-   OH_AVBuffer *buffer = ...; // 待解密的输入buffer，获取方式可参考步骤8。
-   uint32_t keyIdLen = DRM_KEY_ID_SIZE;
-   uint8_t keyId[] = {
-       0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
-       0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
-   uint32_t ivLen = DRM_KEY_IV_SIZE;
-   uint8_t iv[] = {
-       0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
-       0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
-   uint32_t encryptedBlockCount = 0;
-   uint32_t skippedBlockCount = 0;
-   uint32_t firstEncryptedOffset = 0;
-   uint32_t subsampleCount = 1;
-   DrmSubsample subsamples[1] = { {0x10, 0x16} };
-   // 创建CencInfo实例。
-   OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
-   if (cencInfo == nullptr) {
-       // 异常处理。
+   <!-- @[AudioDecoder::SetAVBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   
+   ``` C++
+   void AudioDecoder::SetAVBuffer(OH_AVBuffer *buffer)
+   {
+       uint32_t keyIdLen = DRM_KEY_ID_SIZE;
+       uint8_t keyId[] = {
+           0xd4, 0xb2, 0x01, 0xe4, 0x61, 0xc8, 0x98, 0x96,
+           0xcf, 0x05, 0x22, 0x39, 0x8d, 0x09, 0xe6, 0x28};
+       uint32_t ivLen = DRM_KEY_IV_SIZE;
+       uint8_t iv[] = {
+           0xbf, 0x77, 0xed, 0x51, 0x81, 0xde, 0x36, 0x3e,
+           0x52, 0xf7, 0x20, 0x4f, 0x72, 0x14, 0xa3, 0x95};
+       uint32_t encryptedBlockCount = 0;
+       uint32_t skippedBlockCount = 0;
+       uint32_t firstEncryptedOffset = 0;
+       uint32_t subsampleCount = 1;
+       DrmSubsample subsamples[1] = { { .clearHeaderLen = 0x10, .payLoadLen = 0x16 } };
+       // 创建CencInfo实例。
+       OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
+       if (cencInfo == nullptr) {
+           // 异常处理。
+       }
+       // 设置解密算法。
+       OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 设置KeyId和Iv。
+       errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 设置Sample信息。
+       errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
+           subsampleCount, subsamples);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 设置模式：KeyId、Iv和SubSamples已被设置。
+       errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 将CencInfo设置到AVBuffer中。
+       errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       // 销毁CencInfo实例。
+       errNo = OH_AVCencInfo_Destroy(cencInfo);
+       if (errNo != AV_ERR_OK) {
+           // 异常处理。
+       }
+       cencInfo = nullptr;
    }
-   // 设置解密算法。
-   OH_AVErrCode errNo = OH_AVCencInfo_SetAlgorithm(cencInfo, DRM_ALG_CENC_AES_CTR);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 设置KeyId和Iv。
-   errNo = OH_AVCencInfo_SetKeyIdAndIv(cencInfo, keyId, keyIdLen, iv, ivLen);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 设置Sample信息。
-   errNo = OH_AVCencInfo_SetSubsampleInfo(cencInfo, encryptedBlockCount, skippedBlockCount, firstEncryptedOffset,
-       subsampleCount, subsamples);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 设置模式：KeyId、Iv和SubSamples已被设置。
-   errNo = OH_AVCencInfo_SetMode(cencInfo, DRM_CENC_INFO_KEY_IV_SUBSAMPLES_SET);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 将CencInfo设置到AVBuffer中。
-   errNo = OH_AVCencInfo_SetAVBuffer(cencInfo, buffer);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   // 销毁CencInfo实例。
-   errNo = OH_AVCencInfo_Destroy(cencInfo);
-   if (errNo != AV_ERR_OK) {
-       // 异常处理。
-   }
-   cencInfo = nullptr;
    ```
 
 8. 同步模式调用，写入待解码的数据，获取解码的输出。

@@ -175,7 +175,11 @@ securityLabel.setSecurityLabelSync(filePath, "s0");
 
 getSecurityLabel(path:string):Promise&lt;string&gt;
 
-获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用Promise异步回调。
+获取文件或目录的数据安全等级。若未设置过数据安全等级或指定的文件或目录不存在则默认返回“s3”。使用Promise异步回调。
+
+> **说明：**
+>
+> 指定路径的文件或目录不存在时，本接口不会抛出异常。建议在[fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync)为真的条件语句内使用该函数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -222,7 +226,11 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
 
 getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
-获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。使用callback异步回调。
+获取文件或目录的数据安全等级。若未设置过数据安全等级或指定的文件或目录不存在则默认返回“s3”。使用callback异步回调。
+
+> **说明：**
+>
+> 指定路径的文件或目录不存在时，本接口不会抛出异常。建议在[fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync)为真的条件语句内使用该函数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -231,7 +239,7 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
   | 参数名   | 类型                        | 必填 | 说明                       |
   | -------- | --------------------------- | ---- | -------------------------- |
   | path     | string                      | 是   | 文件或目录的应用沙箱路径。                  |
-  | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回数据安全等级。 |
+  | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当获取文件或目录的数据安全等级，err为undefined，type为获取到的数据安全等级；否则为错误对象。 |
 
 **错误码：**
 
@@ -266,7 +274,11 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
 getSecurityLabelSync(path:string):string
 
-以同步方法获取文件或目录的数据安全等级。若未设置过数据安全等级则默认返回“s3”。
+以同步方法获取文件或目录的数据安全等级。若未设置过数据安全等级或指定的文件或目录不存在则默认返回“s3”。
+
+> **说明：**
+>
+> 指定路径的文件或目录不存在时，本接口不会抛出异常。建议在[fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync)为真的条件语句内使用该函数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

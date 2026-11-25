@@ -5,7 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-11-04T04:26:21.495Z pushedAt=2026-11-04T10:13:14.948Z nl=1 -->
 
 > **NOTE**
 >
@@ -27,7 +28,7 @@ The bundle name of the application cannot be obtained.
 
 **Solution**
 
-Run the **ps** command to check whether the application process exists. Ensure that the application process exists.
+Check whether the test application is properly installed and available, and ensure that the bundle name of the test application can be obtained.
 
 ## 32400002 Internal Error
 **Error Message**
@@ -46,7 +47,7 @@ An internal error occurs in the framework.
 **Solution**
 
 1. Retry the IPC transmission.
-2. Check whether the **PerfTest** object has been destroyed. If yes, create a **PerfTest** object again. For details, see the [create](js-apis-perftest.md#create) API.
+2. Check whether the **PerfTest** object has been destroyed. If so, create a new **PerfTest** object using [PerfTest.create](js-apis-perftest.md#create).
 
 ## 32400003 Parameter Verification Failed
 **Error Message**
@@ -59,11 +60,11 @@ Parameter verification failed.
 
 **Possible Causes**
 
-The parameter type is incorrect or the parameter value is out of the specified range.
+The parameter type is incorrect, or the parameter value is out of the specified range.
 
 **Solution**
 
-Check whether the input parameters of the API meet the requirements.
+Check whether the type and value range of the input parameter meet the API requirements.
 
 ## 32400004 Failed to Execute the Callback
 **Error Message**
@@ -72,7 +73,7 @@ Failed to execute the callback.
 
 **Description**
 
-Failed to execute the callback.
+The callback fails to be executed.
 
 **Possible Causes**
 
@@ -81,7 +82,7 @@ Failed to execute the callback.
 
 **Solution**
 
-Check the internal logic of the callback to ensure that no exception is thrown and that the callback execution does not time out.
+Check the internal logic of the callback, including the exception handling and timeout control mechanisms, to ensure that no exception is thrown and that the callback execution does not time out.
 
 ## 32400005 Failed to Collect Performance Data
 **Error Message**

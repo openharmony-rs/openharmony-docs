@@ -4,8 +4,9 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f6fecf5f724fa419302761d2bd634fd060f25f17 translatedAt=2026-11-23T01:39:01.382Z pushedAt=2026-11-23T12:05:15.800Z nl=1 -->
 
 The **osAccount** module provides basic capabilities for managing OS accounts, including adding, deleting, querying, setting, subscribing to, and enabling an OS account.
 
@@ -45,17 +46,17 @@ Activates an OS account. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>Applicable Version: 7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>Applicable Version: 12+ |
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>Applicable Version: 12+ |
 
 **Example**
 
@@ -102,21 +103,21 @@ Activates an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>Applicable Version: 7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>Applicable Version: 12+|
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>Applicable Version: 12+|
 
 **Example**
 
@@ -170,7 +171,7 @@ Currently, cross-logical-display activation is not supported. That is, you canno
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -227,11 +228,11 @@ Deactivates an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -288,7 +289,7 @@ Checks whether an OS account is activated. This API uses a promise to return the
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -344,7 +345,7 @@ Checks whether a constraint is enabled for an OS account. This API uses a promis
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -378,7 +379,7 @@ Check whether OS account 100 is forbidden to use Wi-Fi.
 
 isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
-Checks whether an OS account is unlocked. This API uses a promise to return the result.
+Checks whether the specified system account is unlocked. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -390,17 +391,17 @@ Checks whether an OS account is unlocked. This API uses a promise to return the 
 
 | Name | Type  | Mandatory| Description                                                             |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | number | Yes  | ID of the target OS account. If this parameter is not specified, this API checks whether the current OS account is unlocked.|
+| localId | number | Yes | System account ID. Used to specify the system account to check whether it is unlocked. |
 
 **Return value**
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account is unlocked; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. true indicates that the current account is unlocked; false indicates that the current account is locked. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -448,7 +449,7 @@ Removes an OS account. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -505,11 +506,11 @@ Removes an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -571,7 +572,7 @@ Removes a specified OS account based on the options. This API uses a promise to 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -626,12 +627,12 @@ Sets or removes constraints for an OS account. This API uses an asynchronous cal
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | number                    | Yes  | ID of the target OS account.              |
 | constraints | Array&lt;string&gt;       | Yes  | [Constraints](js-apis-osAccount.md#constraints) to set or remove.       |
-| enable      | boolean                   | Yes  | Whether to set or remove constraints. The value **true** means to set constraints, and **false** means to remove constraints.                         |
+| enable      | boolean                   | Yes   | Whether to set (true) or delete (false).                          |
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -687,13 +688,13 @@ Sets or removes constraints for an OS account. This API uses a promise to return
 
 **Return value**
 
-| Type               | Description                                |
-| :------------------ | :----------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                         |
+| ------------------- | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -738,15 +739,15 @@ Sets the name of an OS account. This API uses an asynchronous callback to return
 
 **Parameters**
 
-| Name   | Type                     | Mandatory| Description                                            |
-| :-------- | ------------------------- | ---- | ----------------------------------------------- |
-| localId   | number                    | Yes  | ID of the target OS account.              |
-| localName | string                    | Yes  | Account name to set. The value cannot exceed 1024 characters.                         |
-| callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
+| Name      | Type                      | Mandatory | Description                                             |
+| --------- | ------------------------- | -------- | ------------------------------------------------------- |
+| localId   | number                    | Yes      | ID of the target OS account.                                      |
+| localName | string                    | Yes      | Account name, with a maximum length of 1024 characters. |
+| callback  | AsyncCallback&lt;void&gt; | Yes      | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -803,11 +804,11 @@ Sets the name of an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -869,7 +870,7 @@ Sets the type of a specified OS account. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Not system application.                                      |
@@ -922,7 +923,7 @@ Queries the maximum number of OS accounts that can be created. This API uses an 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -966,7 +967,7 @@ Queries the maximum number of OS accounts that can be created. This API uses a p
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -1007,7 +1008,7 @@ Queries the maximum number of OS accounts allowed to log in to the system. This 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -1056,7 +1057,7 @@ Obtains all the enabled constraints of an OS account. This API uses a promise to
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1105,7 +1106,7 @@ Queries information about all the OS accounts created. This API uses an asynchro
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1152,7 +1153,7 @@ Queries information about all the OS accounts created. This API uses a promise t
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1190,15 +1191,15 @@ Creates an OS account. This API uses an asynchronous callback to return the resu
 
 **Parameters**
 
-| Name   | Type                                                | Mandatory| Description                                                                        |
-| :-------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
-| localName | string                                               | Yes  | Name of the OS account to create.                                                       |
-| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)                      | Yes  | Type of the OS account to create.                                                       |
-| callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the created OS account. Otherwise, **err** is an error object.|
+| Name      | Type                                                 | Mandatory | Description                                                                         |
+| --------- | ---------------------------------------------------- | -------- | ----------------------------------------------------------------------------------- |
+| localName | string                                               | Yes      | Name of the system account to create.                                                 |
+| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)  | Yes      | Type of the system account to create.                                                 |
+| callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Yes | Callback invoked to return the result. If the account is created successfully, err is null and data is the information about the newly created system account; otherwise, err is an error object. |
 
 **Error codes**
 
-| Error Code | Error Message                  |
+| ID | Error Message                  |
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1260,7 +1261,7 @@ Creates an OS account. This API uses a promise to return the result.
 
 **Error codes**
 
-| Error Code | Error Message                  |
+| ID | Error Message                  |
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1320,7 +1321,7 @@ Creates an OS account and associates it with the specified domain account. This 
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1385,7 +1386,7 @@ Creates an OS account and associates it with the specified domain account. This 
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1444,7 +1445,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1489,7 +1490,7 @@ Queries information about the OS account of the given ID. This API uses an async
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1547,7 +1548,7 @@ Queries information about the OS account of the given ID. This API uses a promis
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1598,7 +1599,7 @@ Obtains the profile photo of an OS account. This API uses an asynchronous callba
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1656,7 +1657,7 @@ Obtains the profile photo of an OS account. This API uses a promise to return th
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1708,7 +1709,7 @@ Sets a profile photo for an OS account. This API uses an asynchronous callback t
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1768,11 +1769,11 @@ Sets a profile photo for an OS account. This API uses a promise to return the re
 
 | Type               | Description                                |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1829,7 +1830,7 @@ Subscribes to the OS account activation states, including the states of the acco
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1878,7 +1879,7 @@ Unsubscribes from the OS account activation states, including the states of the 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1928,7 +1929,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1977,7 +1978,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2021,7 +2022,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2070,7 +2071,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2112,7 +2113,7 @@ Subscribes to one or more constraint change events of the OS account to which th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -2156,7 +2157,7 @@ Unsubscribes from constraint change events associated with the specified callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -2206,7 +2207,7 @@ Obtains the bundle ID based on the specified UID. This API uses an asynchronous 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2219,6 +2220,7 @@ Obtains the bundle ID based on the specified UID. This API uses an asynchronous 
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid is the process uid. Obtain it through the application information.
   let testUid: number = 1000000;
   try {
     accountManager.getBundleIdForUid(testUid, (err: BusinessError, bundleId: number) => {
@@ -2258,7 +2260,7 @@ Obtains the bundle ID based on the specified UID. This API uses a promise to ret
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2308,7 +2310,7 @@ Obtains the bundle ID based on the specified UID. The API returns the result syn
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2346,11 +2348,11 @@ Checks whether the current process belongs to the main OS account. This API uses
 
 | Name  | Type                         | Mandatory| Description                                                              |
 | -------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. If **true** is returned, the current process belongs to the main OS account. If **false** is returned, the current process does not belong to the main OS account.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback invoked to return whether the current account is the main account. |
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2393,11 +2395,11 @@ Checks whether the current process belongs to the main OS account. This API uses
 
 | Type                  | Description                                                                 |
 | ---------------------- | --------------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. If **true** is returned, the current process belongs to the main OS account. If **false** is returned, the current process does not belong to the main OS account.|
+| Promise&lt;boolean&gt; | Promise object. The value true indicates that the current account is the primary account, and the value false indicates that the current account is not the primary account. |
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2449,7 +2451,7 @@ Obtains the ID of the foreground OS account running on a specified logical displ
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2503,7 +2505,7 @@ Obtains the logical display ID of the specified foreground OS account. This API 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2551,7 +2553,7 @@ Obtains the constraint source information of an OS account. This API uses an asy
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2608,7 +2610,7 @@ Obtains the constraint source information of an OS account. This API uses a prom
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2662,7 +2664,7 @@ Obtains the type of a specified OS account. This API uses a promise to return th
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2705,7 +2707,7 @@ Binds a domain account to an OS account. This API uses a promise to return the r
 
 | Name | Type  | Mandatory| Description        |
 | ------- | ------ | ---- | ------------ |
-| localId     | number | Yes  |  ID of the target OS account.|
+| localId     | number | Yes   |  ID of the target OS account. |
 | domainAccountInfo | [DomainAccountInfo](#domainaccountinfo8) | Yes  | Domain account information.         |
 
 **Return value**
@@ -2718,7 +2720,7 @@ Binds a domain account to an OS account. This API uses a promise to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2748,7 +2750,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     });
   } catch (e) {
     const err = e as BusinessError;
-    console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
+    console.error(`bindDomainAccount error, errCode=${err.code}, errMsg=${err.message}`);
   }
   ```
 
@@ -2774,7 +2776,7 @@ Obtains the current OS account authorization manager.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -2825,7 +2827,7 @@ Acquires an authorization for the current process.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | --- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -2878,13 +2880,13 @@ Checks whether the current process has specified authorization.
 
 | Type| Description|
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the current process has specified authorization, and **false** indicates the opposite.|
+| Promise&lt;boolean&gt; | Promise object. The value true indicates that the specified privilege has been granted; the value false indicates that the specified privilege has not been granted. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | --- |
 | 202 | Not system application. |
 | 12300001 | The system service works abnormally. |
@@ -2939,7 +2941,7 @@ Releases the specified authorization for the current process.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | --- |
 | 202 | Not system application. |
 | 12300001 | The system service works abnormally. |
@@ -2979,7 +2981,7 @@ Defines the options for acquiring the authorization.
 | Name| Type| Read-Only| Optional| Description|
 | --- | --- | --- | --- | --- |
 | challenge | Uint8Array | No| Yes| Random challenge value, which prevents replay attacks. The value contains a maximum of 32 bytes. The default value is **undefined**.|
-| isReuseNeeded | boolean | No| Yes| Whether to reuse the previous authorization. The default value is **true**.<br>If the value is **true** and the authorization result is valid, the result will be reused. Otherwise, a new authorization will be executed.|
+| isReuseNeeded | boolean | No | Yes | Whether to reuse the previous authorization. The default value is true.<br/>If the value is true and a valid authorization result exists, the result is reused; otherwise, a new authorization is performed. |
 | isInteractionAllowed | boolean | No| Yes| Whether user interaction is allowed. The default value is **true**.<br>If the value is **true**, the authorization dialog box can be displayed in the interaction context. If the value is **false**, the authorization dialog box cannot be displayed.<br>Note: This option is valid only when the caller is in the foreground. If the caller is in the background, user interaction is not allowed.|
 | interactionContext | Context | No| Yes| User interaction context configuration. The default value is **undefined**.<br>- If no context is specified, the authorization dialog box is displayed in modal system mode.<br>- If [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md) is specified, the authorization dialog box is displayed in modal application mode.<br> - If no valid context is provided, the authorization dialog box cannot be displayed.<br>Note: This parameter is valid only when **isInteractionAllowed** is set to **true**.|
 ## AuthorizationResultCode<sup>24+</sup>
@@ -3042,7 +3044,7 @@ Obtains the OS account sub-profile manager.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -3087,7 +3089,7 @@ Subscribes to OS account sub-profile events. This API uses an asynchronous callb
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 12300001 | System service exception. |
@@ -3136,7 +3138,7 @@ Unsubscribes from OS account sub-profile events. This API uses an asynchronous c
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 12300001 | System service exception. |
@@ -3187,7 +3189,7 @@ Creates an OS account sub-profile. This API uses a promise to return the result.
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -3251,7 +3253,7 @@ Deletes an OS account sub-profile. This API uses a promise to return the result.
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -3316,7 +3318,7 @@ Switches to an OS account sub-profile. This API uses a promise to return the res
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -3372,7 +3374,7 @@ Obtains the foreground sub-profile ID of the OS account of the caller. This API 
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Not system application. |
 | 12300001 | System service exception. |
@@ -3426,7 +3428,7 @@ Obtains the foreground sub-profile ID of the specified OS account. This API uses
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Not system application. |
 | 12300001 | System service exception. |
@@ -3480,7 +3482,7 @@ Obtains the sub-profile IDs of the OS account of the caller. This API uses a pro
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -3536,7 +3538,7 @@ Obtains the sub-profile IDs of the specified OS account. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -3596,7 +3598,7 @@ Obtains the sub-profile of the OS account of the caller. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -3657,7 +3659,7 @@ Obtains the sub-profile of the specified OS account. This API uses a promise to 
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -3716,7 +3718,7 @@ Obtains the local ID of the OS account of a sub-profile. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](./errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Not system application. |
 | 12300001 | System service exception. |
@@ -3761,7 +3763,7 @@ A constructor used to create an instance for user authentication.
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -3783,13 +3785,13 @@ Obtains this version number.
 
 **Return value**
 
-| Type  | Description        |
-| :----- | :----------- |
-| number | Version number obtained.|
+| Type   | Description         |
+| ------ | ------------------- |
+| number | Obtains this version number. |
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -3828,7 +3830,7 @@ Obtains the available status of the authentication capability corresponding to t
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3875,7 +3877,7 @@ Obtains the executor property based on the request. This API uses an asynchronou
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3933,13 +3935,13 @@ Obtains the executor property based on the request. This API uses a promise to r
 
 **Return value**
 
-| Type                                                             | Description                                                |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
-| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor property.|
+| Type                                                              | Description                                                 |
+| ----------------------------------------------------------------- | ----------------------------------------------------------- |
+| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor property information. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3996,13 +3998,13 @@ Obtains the specified property information of the associated executor based on t
 
 **Return value**
 
-| Type                                                             | Description                                                |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
-| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor attributes.|
+| Type                                                              | Description                                                 |
+| ----------------------------------------------------------------- | ----------------------------------------------------------- |
+| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor property information. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4071,7 +4073,7 @@ Sets the property for the initialization algorithm. This API uses an asynchronou
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4124,13 +4126,13 @@ Sets the property for the initialization algorithm. This API uses a promise to r
 
 **Return value**
 
-| Type                 | Description                                                          |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                         |
+| ------------------- | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4181,13 +4183,13 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 **Return value**
 
-| Type                 | Description                                                          |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                         |
+| ------------------- | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4226,7 +4228,7 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
-Performs authentication of the current user. 
+Performs authentication of the current user.
 
 **System API**: This is a system API.
 
@@ -4251,7 +4253,7 @@ Performs authentication of the current user.
 
 **Error codes**
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4328,7 +4330,7 @@ Starts user authentication based on the specified challenge value, authenticatio
 
 **Error codes**
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4405,11 +4407,11 @@ Authenticates a specified user. This API uses an asynchronous callback to return
 
 | Type       | Description              |
 | ---------- | ------------------ |
-| Uint8Array | ID of the context for canceling the authentication.|
+| Uint8Array | Authentication context ID, which can be used to cancel the authentication operation. |
 
 **Error codes**
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4474,11 +4476,11 @@ Cancels an authentication.
 
 | Name   | Type      | Mandatory | Description                                       |
 | ----------| ---------- | ---- | ------------------------------------------ |
-| contextID | Uint8Array | Yes  | ID of the authentication context. The context ID is dynamically generated.|
+| contextID | Uint8Array | Yes | Authentication context ID, which is dynamically generated by the authentication process to identify the authentication operation. |
 
 **Error codes**
 
-| Error Code| Error Message           |
+| ID| Error Message           |
 | -------- | ------------------ |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4526,7 +4528,7 @@ Creates a PIN authentication instance.
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -4556,7 +4558,7 @@ Registers a PIN inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4599,7 +4601,7 @@ Unregisters this PIN inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4636,7 +4638,7 @@ Registers a credential inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4686,7 +4688,7 @@ Unregisters a credential inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5233,11 +5235,10 @@ Registers a domain plug-in.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300201 | The domain plugin has been registered. |
 
@@ -5287,7 +5288,7 @@ Unregisters this domain plug-in.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5329,7 +5330,7 @@ Authenticates a domain account.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5396,7 +5397,7 @@ Authenticates a specified domain account. You can specify authentication options
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5468,10 +5469,9 @@ API version 10: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | No domain account is bound. |
@@ -5523,15 +5523,14 @@ API version 10: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | Name     | Type                                   | Mandatory| Description            |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| localId   | number  | Yes  | Local ID of the OS account bound to the domain account.|
+| localId   | number  | Yes   | ID of the system account bound to the domain account. |
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | Yes  | Callback used to return the authentication result.|
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
@@ -5585,7 +5584,7 @@ Checks whether a domain account exists. This API uses an asynchronous callback t
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5642,13 +5641,13 @@ Checks whether a domain account exists. This API uses a promise to return the re
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the specified domain account exists; the value **false** means the opposite.|
+| Type                   | Description                     |
+| ---------------------- | ------------------------------- |
+| Promise&lt;boolean&gt; | Promise object. The value **true** indicates that the specified domain account exists; the value **false** indicates that the specified domain account does not exist. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5705,7 +5704,7 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5760,13 +5759,13 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                         |
+| ------------------- | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5819,7 +5818,7 @@ Obtains information about a specified domain account. This API uses an asynchron
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5877,13 +5876,13 @@ Obtains information about a specified domain account. This API uses a promise to
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;DomainAccountInfo&gt; | Promise used to return the domain account information obtained.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;DomainAccountInfo&gt; | Promise object used to return the specified domain account information. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5938,7 +5937,7 @@ Obtains the business access token of a domain account. This API uses an asynchro
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -5994,13 +5993,13 @@ Obtains the business access token of a domain account. This API uses a promise t
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the business access token obtained.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;Uint8Array&gt; | Promise object used to return the service access token. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -6056,13 +6055,13 @@ Checks whether the authentication of a domain account has expired. This API uses
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the specified domain account has expired; the value **false** means the opposite.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;boolean&gt; | Promise object. The value **true** indicates that the specified domain account has expired; the value **false** indicates that the specified domain account has not expired. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6108,7 +6107,7 @@ A **constructor()** used to create an instance for managing the user identity.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 
@@ -6138,7 +6137,7 @@ Opens a session to obtain the challenge value. This API uses an asynchronous cal
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6185,17 +6184,16 @@ Opens a session. This API returns a challenge value, which can be used to determ
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the challenge value obtained.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;Uint8Array&gt; | Promise object used to return the challenge value. |
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -6240,7 +6238,7 @@ Adds credentials of specified types, including the credential type, subtype, and
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6313,11 +6311,10 @@ Updates credentials. This API uses an asynchronous callback to return the result
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -6392,7 +6389,7 @@ Closes this session to terminate IDM.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6429,7 +6426,7 @@ Cancels an entry based on the challenge value.
 
 **Error codes**
 
-| Error Code| Error Message           |
+| ID| Error Message           |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6473,7 +6470,7 @@ Deletes a user with an authentication token. This API uses an asynchronous callb
 
 **Error codes**
 
-| Error Code| Error Message       |
+| ID| Error Message       |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6523,7 +6520,7 @@ Deletes user credentials.
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6574,7 +6571,7 @@ Obtains authentication information. This API uses an asynchronous callback to re
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6622,7 +6619,7 @@ Obtains authentication information of the specified type. This API uses an async
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6671,13 +6668,13 @@ Obtains authentication information. This API uses a promise to return the result
 
 **Return value**
 
-| Type                                        | Description                                                                    |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
-| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise used to return the information about all the enrolled credentials of the specified type.|
+| Type                                         | Description                                                                     |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
+| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise object used to return all enrolled credential information of the specified type for the current user.|
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6723,13 +6720,13 @@ Obtains authentication information. This API uses a promise to return the result
 
 **Return value**
 
-| Type                                        | Description                                                                    |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
-| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise used to return the information about all the enrolled credentials of the specified type.|
+| Type                                         | Description                                                                     |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
+| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise object used to return all enrolled credential information of the specified type for the current user.|
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6781,13 +6778,13 @@ Obtains the ID of the enrolled credential based on the credential type and accou
 
 **Return value**
 
-| Type                      | Description                                                                    |
-| :------------------------ | :----------------------------------------------------------------------- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the credential ID obtained.|
+| Type                       | Description                                                                     |
+| ------------------------ | ----------------------------------------------------------------------- |
+| Promise&lt;Uint8Array&gt; | Promise object used to return the enrolled credential ID.|
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6841,7 +6838,7 @@ Subscribes to one or more types of credential change events. This API uses a cal
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6896,7 +6893,7 @@ Unsubscribes from credential change events. If no callback is not specified, thi
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6961,7 +6958,7 @@ Called to notify the caller the data is set.
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -7319,6 +7316,7 @@ Enumerates the authentication credential types.
 | RECOVERY_KEY<sup>12+</sup> | 8 | Key recovery type.|
 | PRIVATE_PIN<sup>14+</sup> | 16 | Private PIN type.|
 | COMPANION_DEVICE<sup>23+</sup> | 64 | Companion device authentication.|
+| CUSTOM | 128 | Custom authentication type.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | DOMAIN<sup>9+</sup>  | 1024     | Domain authentication.|
 
 ## AuthSubType<sup>8+</sup>
@@ -7476,7 +7474,7 @@ Defines the constraint source type.
 
 | Name     | Type  | Read-Only | Optional | Description      |
 | ----------- | ------ | ---- | ---- | ---------- |
-| localId      | number | No| No | ID of the target OS account.    |
+| localId      | number | No | No  | ID of the target OS account.     |
 | type | [ConstraintSourceType](#constraintsourcetype9) | No| No | Type of the constraint source.|
 
 ## ConstraintSourceType<sup>9+</sup>
@@ -7678,6 +7676,7 @@ Represents a set of optional parameters for [auth](#auth12).
 | accountId          | number | No| Yes | OS account ID, which is **undefined** by default.|
 | authIntent         | [AuthIntent](#authintent12) | No| Yes | Authentication intent, which is **undefined** by default.|
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | No| Yes | Remote authentication options, which is **undefined** by default.|
+| additionalInfo     | string | No | Yes  | Additional information for identity authentication. The default value is undefined.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.  |
 
 ## GetInputDataOptions<sup>12+</sup>
 

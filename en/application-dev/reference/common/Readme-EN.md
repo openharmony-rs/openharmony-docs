@@ -6,7 +6,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=6ce9f53bfdc29948084a9354352a99d0bb18dba9 translatedAt=2026-09-24T06:21:15.018Z pushedAt=2026-09-24T06:21:35.867Z -->
+<!-- md-trans-meta sourceCommit=5c4924867c7e2a92c69d0a20fb6d806ba3ddb1bb translatedAt=2026-11-04T04:26:38.980Z pushedAt=2026-11-04T08:04:44.659Z nl=1 -->
 
 - ArkTS API<!--common-basic-arkts-->
   - [Class (Console)](js-apis-logs.md)
@@ -15,7 +15,7 @@
   - [Timer](js-apis-timer.md)
 - C API<!--common-basic-c-->
   - Modules<!--common-basic-module-->
-    - [Init](init.md)
+    - [SyscapNdk](capi-syscap-ndk.md)
     - [memory](capi-memory.md)
     - [JSVM](capi-jsvm.md)
   - Header Files<!--common-basic-headerfile-->

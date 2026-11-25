@@ -5,6 +5,7 @@
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=9f59ea9bdaff058dcbf98d5bd7f6a638f47c70a3 translatedAt=2026-11-16T04:29:18.321Z pushedAt=2026-11-16T06:31:14.060Z nl=1 -->
 
 ## When to Use
 
@@ -83,22 +84,30 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 // ...
   export async function setPlainData(content: string): Promise<void> {
-    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
-    await systemPasteboard.setData(pasteData);
-  }
-  export async function getPlainData(): Promise<string> {
-    // Read data from the system pasteboard.
-    let data = await systemPasteboard.getData();
-    // Obtain the number of records from the pasteboard.
-    let recordCount = data.getRecordCount();
-    // Obtain the corresponding record information from the pasteboard data.
-    let result = '';
-    for (let i = 0; i < recordCount; i++) {
-      let record = data.getRecord(i).toPlainText();
-      hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
-      result += record;
+    try {
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
+      await systemPasteboard.setData(pasteData);
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Set data to pasteboard successfully');
+    } catch (error) {
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set data to pasteboard, error: ${error}`);
     }
-    return result;
+  }
+  export async function getPlainData(type: string): Promise<string> {
+    // Read data from the system clipboard.
+    try {
+      let data = await systemPasteboard.getData();
+      let recordCount = data.getRecordCount();
+      let result = '';
+      for (let i = 0; i < recordCount; i++) {
+        let record = data.getRecord(i).toPlainText();
+        hilog.info(0xFF00, '[Sample_pasteboard]', `Get data success, record: ${record}`);
+        result = record;
+      }
+      return result;
+    } catch (error) {
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get data from pasteboard, error: ${error}`);
+      return '';
+    }
   }
 ```
 
@@ -140,26 +149,28 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     let data = new unifiedDataChannel.UnifiedData();
     data.addRecord(record);
     // 2. Write a piece of PlainText data to the system pasteboard.
-    systemPasteboard.setUnifiedData(data).then((data: void) => {
+    try {
+      await systemPasteboard.setUnifiedData(data);
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
       // The data is successfully written, which is a normal case.
-    }).catch((err: BusinessError) => {
+    } catch (err) {
       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set UnifiedData. Cause: ' + err.message);
       // Error case
-    });
+    };
     // 3. Read the PlainText data from the system pasteboard.
-    systemPasteboard.getUnifiedData().then((data) => {
-      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+    try {
+      let pasteData = await systemPasteboard.getUnifiedData();
+      let records: unifiedDataChannel.UnifiedRecord[] = pasteData.getRecords();
       for (let j = 0; j < records.length; j++) {
         if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
           let text = records[j].getValue() as uniformDataStruct.PlainText;
           hilog.info(0xFF00, '[Sample_pasteboard]', `${j + 1}.${text.textContent}`);
         }
       }
-    }).catch((err: BusinessError) => {
+    } catch (err) {
       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get UnifiedData. Cause: ' + err.message);
       // Error case
-    });
+    };
   }
 ```
 

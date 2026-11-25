@@ -1,12 +1,11 @@
 # Enums
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:59:05.208Z pushedAt=2026-08-11T09:51:38.381Z -->
+<!-- md-trans-meta sourceCommit=7d9c58075228c9c94409f48962fb6cac16de161f translatedAt=2026-11-18T03:30:12.410Z pushedAt=2026-11-19T11:50:30.712Z nl=1 -->
 
 > **NOTE**
 >
@@ -61,15 +60,14 @@ Enumerates the camera connection types.
 
 Enumerates the remote camera types.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                         | Value      | Description     |
 | ---------------------------- | ----     |---------|
-| UNKNOWN_TYPE                 | 0        | Unknown type.|
-| PHONE                        | 0x0E     | Mobile phone.  |
-| TABLET                       | 0x11     | Tablet.  |
+| UNKNOWN_TYPE                 | 0        | Unknown device type.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| PHONE                        | 0x0E     | Phone device.<br>**Atomic service API**: This API can be used in atomic services since API version 19.   |
+| TABLET                       | 0x11     | Tablet device.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| GLASSES                      | 0xA31    | Glasses device.<br>**Since:** 26.0.1<br> **Model restriction:** This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.1. |
 
 ## CameraStatus
 
@@ -134,6 +132,8 @@ which are returned when an API call is incorrect or the **on()** API is used to 
 | DEVICE_DISABLED            | 7400108    | The camera is disabled for security reasons.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
 | DEVICE_PREEMPTED           | 7400109    | The camera is preempted.<br> **Atomic service API**: This API can be used in atomic services since API version 19. |
 | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
+| UNSUPPORTED_MULTI_CAMERA_COMBINATION | 7400113 | Unsupported multi-camera combination.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model.<br> **Atomic service API:** This API can be used in atomic services since API version 26.0.1. |
+| PARAM_OUT_OF_RANGE | 7400115 | Parameter out of range.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model.<br> **Atomic service API:** This API can be used in atomic services since API version 26.0.1. |
 | SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.<br> **Atomic service API**: This API can be used in atomic services since API version 19.   |
 
 ## TorchMode<sup>11+</sup>
@@ -568,3 +568,20 @@ Enumerates the camera positions on a car.
 | AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT  | 12    | Left camera in the third row inside the car.     |
 | AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER  | 13    | Central camera in the third row inside the car.    |
 | AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT  | 14    | Right camera in the third row inside the car.     |
+
+## CameraAuxiliaryPhotoType
+
+Enumerates the auxiliary photo types.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                       | Value  | Description       |
+| ------------------------- | ---- | ------------    |
+| OXYGEN                    | 0    | Blood oxygen image.     |
+| PIGMENTATION              | 1    | Pigmentation image.     |

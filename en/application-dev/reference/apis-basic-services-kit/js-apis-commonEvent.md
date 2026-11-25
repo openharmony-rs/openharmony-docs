@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=8b332ba8e6e72c2d885a38003986f27dfb7e99d3 translatedAt=2026-10-09T12:14:03.114Z pushedAt=2026-10-10T06:00:49.050Z -->
+<!-- md-trans-meta sourceCommit=87dbb7dccdd55553f9b008ef4d22fbd61da3fce1 translatedAt=2026-11-23T01:32:36.968Z pushedAt=2026-11-23T11:51:34.492Z nl=1 -->
 
 The **CommonEvent** module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
 

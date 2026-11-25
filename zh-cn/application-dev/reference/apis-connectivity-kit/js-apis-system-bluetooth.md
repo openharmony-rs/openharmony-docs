@@ -125,7 +125,7 @@ import bluetooth from '@system.bluetooth';
       console.info('call bluetooth.subscribeBLEFound success, data: ${data}.');
     },
     fail(data, code) {
-      console.info('call bluetooth.startBLEScan failed, code:' + code + ', data:' + data);
+      console.info('call bluetooth.subscribeBLEFound failed, code:' + code + ', data:' + data);
     }
   });
   ```

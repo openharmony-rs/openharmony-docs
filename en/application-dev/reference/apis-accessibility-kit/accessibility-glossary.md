@@ -5,8 +5,8 @@
 <!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
-<!--Adviser: @wwwyyyhhhh-->
-<!-- md-trans-meta sourceCommit=00d24489ef514bbc5e681253b4adc1e3b44eb1ff translatedAt=2026-08-31T12:45:35.190Z pushedAt=2026-08-31T14:38:52.020Z -->
+<!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b694783163486a092c911bbc0cbe5fa1e69674a3 translatedAt=2026-11-04T10:02:31.163Z pushedAt=2026-11-04T10:13:31.834Z nl=1 -->
 
 ## A
 
@@ -46,11 +46,13 @@ The capability of an application to proactively broadcast content to users throu
 
 The capability of an application to actively move the accessibility focus to a specified element through the accessibility service, as opposed to focusing through manual user navigation. It is used to guide users to pay attention to specific interface elements.
 
+
 ## C
 
 ### Color inversion
 
 An accessibility assistance feature. After enabling, the system inverts the screen display colors, used to help users with specific visual impairments read interface content more comfortably in inverted color mode.
+
 
 ## D
 
@@ -62,11 +64,13 @@ One of the accessibility assistance functions. It applies corresponding color fi
 
 The element that an accessibility service prioritizes for focus when a window opens. An application can customize a list of default focus element IDs to help the accessibility service quickly locate the most critical element after the UI loads, improving interaction efficiency for users with special needs.
 
+
 ## F
 
 ### Flash alerts
 
 One of the accessibility assistance modes. After enabling, the system alerts the user to events such as alarms, notifications, and incoming calls by flashing the screen or the flashlight, used to help users with hearing impairments perceive audible reminders.
+
 
 ## G
 
@@ -74,11 +78,13 @@ One of the accessibility assistance modes. After enabling, the system alerts the
 
 The capability of an assistive extension application to simulate user touch gestures (such as tap and swipe) to perform touch interactions, used to help assistive function applications complete UI operations on behalf of the user.
 
+
 ## H
 
 ### High-contrast text
 
 One of the accessibility assistance features. After enabling, the system renders text with higher contrast, enhancing the visual difference between text and background, used to help low-vision users read text more clearly.
+
 
 ## M
 
@@ -90,6 +96,7 @@ One of the accessibility assistance features. After enabling, it magnifies the o
 
 One of the accessibility assistance modes. After enabling, it merges the left and right channel audio into mono output, used to help users with single-ear hearing impairment obtain complete audio information.
 
+
 ## S
 
 ### Screen reader
@@ -99,6 +106,7 @@ One of the accessibility assistance modes. After enabling, the system reads the 
 ### Senior mode
 
 A care mode for elderly users. After enabling, it simplifies interface interactions to suit the usage habits of elderly users. It can be configured at the system level and the application level respectively. The system care mode is managed through the config module, and the application's own senior mode is managed through application interfaces.
+
 
 ## T
 

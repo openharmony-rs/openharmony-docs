@@ -1,17 +1,18 @@
 # @ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=b2b40ad27b0a04a8c75aa3540e06525fdca8ac20 translatedAt=2026-11-04T03:53:58.245Z pushedAt=2026-11-04T10:12:33.445Z nl=1 -->
 
-The **BackupExtensionAbility** module provides extended backup and restore capabilities for applications.
+The BackupExtensionAbility module provides the system extension capability for backup and restore services. During the backup and restore phases, an application can return custom backup information and compatibility information to the caller, which is used to support the backup and restore framework in querying application capabilities, determining compatibility, and performing subsequent processing, thereby reducing the integration cost of capability negotiation and version compatibility determination before backup and restore.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)](js-apis-application-backupExtensionAbility-sys.md).
+> - This topic describes only the system APIs of this module. For details about other public APIs, see [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)](js-apis-application-backupExtensionAbility.md).
 > - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
@@ -24,7 +25,7 @@ import { BackupExtensionAbility } from '@kit.CoreFileKit';
 
 getBackupInfo(): string
 
-Obtains backup information. This API is called when the caller queries application data. You need to implement the operation for querying application data.
+Executed when the caller queries application data, and the application returns custom backup information. This API is applicable to scenarios where the application needs to provide the caller with application data description, backup scope, or other custom information before backup.
 
 **System API**: This is a system API.
 
@@ -34,7 +35,7 @@ Obtains backup information. This API is called when the caller queries applicati
 
 | Type                  | Description   |
 | --------------------- | :---- |
-| string | Backup information customized by the application.|
+| string | Application-defined backup information. The specific format and fields are defined by the application, and the caller parses them as agreed.|
 
 **Example**
 
@@ -42,7 +43,7 @@ Obtains backup information. This API is called when the caller queries applicati
   class BackupExt extends BackupExtensionAbility {
     getBackupInfo(): string {
       console.info('getBackupInfo ok');
-      let info = "app diy info";
+      let info = 'app diy info';
       return info;
     }
   }
@@ -52,7 +53,9 @@ Obtains backup information. This API is called when the caller queries applicati
 
 getBackupCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
 
-Obtains the backup compatibility information. This API is called when the caller obtains application's custom capabilities during backup. The operation is implemented by the application. This API uses a promise to return the result.
+Executed during the application backup phase when the caller obtains the application's custom compatibility information, and implemented and returned by the application. A Promise is used for asynchronous callback.
+
+This API is applicable to scenarios where the caller needs to be provided with compatibility information such as the database version, service capability switch, or whether backup is supported before backup. The specific format and fields of the compatibility information are defined by the application, and the caller parses them as agreed.
 
 **System API**: This is a system API.
 
@@ -63,16 +66,17 @@ Obtains the backup compatibility information. This API is called when the caller
 | Name       | Type                           | Mandatory| Description                          |
 | ------------- | ------------------------------- | ---- | ------------------------------ |
 | extInfo | string | Yes  | Extra information passed to the application. The implementation is determined by the application.|
-
 **Returns**
 
 | Type                  | Description   |
 | --------------------- | :---- |
-| Promise&lt;string&gt; | Promise that describes the application's custom capabilities during backup.|
+| Promise&lt;string&gt; | Promise object, which returns the application-defined compatibility information during the backup process.|
 
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   class BackupExt extends BackupExtensionAbility {
     async getBackupCompatibilityInfo(extInfo: string): Promise<string> {
       let ret: string = '';
@@ -89,9 +93,10 @@ Obtains the backup compatibility information. This API is called when the caller
           }
         }
       } catch (error) {
-        console.error(`getBackupCompatibilityInfo failed with error. Code: ${error.code}, message: ${error.message}`);
+        let err: BusinessError = error as BusinessError;
+        console.error(`getBackupCompatibilityInfo failed with error. Code: ${err.code}, message: ${err.message}`);
       }
-      return JSON.stringify(ret);
+      return ret;
     }
   }
   ```
@@ -100,7 +105,7 @@ Obtains the backup compatibility information. This API is called when the caller
 
 getRestoreCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
 
-Obtains the restore compatibility information. This API is called when the caller obtains application's custom capabilities during restore. The operation is implemented by the application. This API uses a promise to return the result.
+Executed during the application restore phase when the caller obtains the application's custom compatibility information, and implemented and returned by the application. This API is applicable to scenarios where the caller needs to be provided with compatibility information such as the database version, service capability switch, or whether restore is supported before restore. The specific format and fields of the compatibility information are defined by the application, and the caller parses them as agreed. A Promise is used for asynchronous callback.
 
 **System API**: This is a system API.
 
@@ -111,16 +116,17 @@ Obtains the restore compatibility information. This API is called when the calle
 | Name       | Type                           | Mandatory| Description                          |
 | ------------- | ------------------------------- | ---- | ------------------------------ |
 | extInfo | string | Yes  | Extra information passed to the application. The implementation is determined by the application.|
-
 **Returns**
 
 | Type                  | Description   |
 | --------------------- | :---- |
-| Promise&lt;string&gt; | Promise that describes the application's custom capabilities during restore.|
+| Promise&lt;string&gt; | Promise object, returns the compatibility information customized by the application during the restore process.|
 
 **Example**
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   class BackupExt extends BackupExtensionAbility {
     async getRestoreCompatibilityInfo(extInfo: string): Promise<string> {
       let ret: string = '';
@@ -137,9 +143,10 @@ Obtains the restore compatibility information. This API is called when the calle
           }
         }
       } catch (error) {
-        console.error(`getRestoreCompatibilityInfo failed with error. Code: ${error.code}, message: ${error.message}`);
+        let err: BusinessError = error as BusinessError;
+        console.error(`getRestoreCompatibilityInfo failed with error. Code: ${err.code}, message: ${err.message}`);
       }
-      return JSON.stringify(ret);
+      return ret;
     }
   }
   ```

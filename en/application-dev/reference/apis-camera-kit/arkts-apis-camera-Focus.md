@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:02:06.455Z pushedAt=2026-10-12T11:38:05.623Z -->
+<!-- md-trans-meta sourceCommit=9d1d87a3ef3f9949118b31bd3e2b709546fa32a8 translatedAt=2026-11-18T03:30:15.497Z pushedAt=2026-11-19T11:51:20.875Z nl=1 -->
 
 **Focus** inherits from [FocusQuery](arkts-apis-camera-FocusQuery.md).
 
@@ -55,7 +55,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setFocusMode(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+    if (photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_AUTO)) {
+      photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -112,7 +114,7 @@ setFocusPoint(point: Point): void
 
 Sets the focal point. The focal point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the bottom-right corner is {1, 1}.
 
-The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
+The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an app is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -240,6 +242,8 @@ lockFocusTracking(focusPoint: Point): void
 
 Locks focus tracking to continuously track a specified object. The tracking object is specified by the **focusPoint** parameter.
 
+Before setting locked focus tracking, query whether locked focus tracking is supported through the [isLockFocusTrackingSupported](arkts-apis-camera-FocusQuery.md#islockfocustrackingsupported) API.
+
 **Since**: 26.0.0
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
@@ -268,10 +272,11 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function lockFocusTracking(photoSession: camera.PhotoSession): void {
+function lockFocusTracking(focusPoint: camera.Point, photoSession: camera.PhotoSession): void {
   try {
-    const focusPoint: camera.Point = {x: 0, y: 0};
-    photoSession.lockFocusTracking(focusPoint);
+    if (photoSession.isLockFocusTrackingSupported()) {
+      photoSession.lockFocusTracking(focusPoint);
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -285,6 +290,8 @@ function lockFocusTracking(photoSession: camera.PhotoSession): void {
 unlockFocusTracking(): void
 
 Unlocks focus tracking.
+
+Whether locked focus tracking is supported can be queried through the [isLockFocusTrackingSupported](arkts-apis-camera-FocusQuery.md#islockfocustrackingsupported) API.
 
 **Since**: 26.0.0
 
@@ -310,7 +317,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function unlockFocusTracking(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.unlockFocusTracking();
+    if (photoSession.isLockFocusTrackingSupported()) {
+      photoSession.unlockFocusTracking();
+    }
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;

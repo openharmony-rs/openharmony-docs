@@ -1,12 +1,11 @@
 # Copying Files Across Devices
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @yangwei_814916-->
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=78d33fd06d475876659e551e83466b50b3f5df38 translatedAt=2026-08-01T07:26:13.603Z pushedAt=2026-08-01T09:17:26.673Z -->
+<!-- md-trans-meta sourceCommit=6aff4dfcb0e7efeb420d151a72b801366c68b70a translatedAt=2026-11-04T08:41:33.453Z pushedAt=2026-11-04T09:32:46.066Z nl=1 -->
 
 The distributed file system provides apps with cross-device file copy capabilities. You can use [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md) to copy files across devices. For example, in a multi-device data transfer scenario, after devices are networked and interconnected, the app on device A can copy sandbox files to the distributed directory of device A. When pasting on device B, the files are copied from the distributed directory of device B to the corresponding sandbox files.
 
@@ -24,7 +23,6 @@ The distributed file system provides apps with cross-device file copy capabiliti
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-
    <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
 
    ``` TypeScript
@@ -42,6 +40,7 @@ The distributed file system provides apps with cross-device file copy capabiliti
    }
    ```
 
+
 3. Copy files across devices.
 
    Place the files in the **distributedfiles/** directory of the application sandbox directory to implement file copy across difference devices.
@@ -49,12 +48,10 @@ The distributed file system provides apps with cross-device file copy capabiliti
    Copy the file of device A from the sandbox directory to the **distributedfiles/** directory of device A.
 
    ```ts
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileIo, fileUri } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileUri } from '@kit.CoreFileKit';
    ```
-
    <!--@[copy_sand_to_distributed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
    ``` TypeScript
@@ -89,18 +86,17 @@ The distributed file system provides apps with cross-device file copy capabiliti
    }
    ```
 
+
    Device B copies the file from the distributed file directory of device B.
 
    ```ts
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileIo, fileUri } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileUri } from '@kit.CoreFileKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-
    <!--@[copy_distributed_to_sand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    // ...
    try {
@@ -110,12 +106,12 @@ The distributed file system provides apps with cross-device file copy capabiliti
      let destPath: string = pathDir + '/dest.txt';
      // Obtain the target path URI.
      let destUri = fileUri.getUriFromPath(destPath);
- 
+     
      // Source file path for copying (distributed directory).
      let srcPath = distributedPathDir + '/src.txt';
      // Obtain the source path URI.
      let srcUri: string = fileUri.getUriFromPath(srcPath);
-   
+     
      // Define the copy callback.
      let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
        console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
@@ -160,6 +156,7 @@ The distributed file system provides apps with cross-device file copy capabiliti
    }
    ```
 
+
 4. Disconnect the link for device B.
 
    ```ts
@@ -167,9 +164,8 @@ The distributed file system provides apps with cross-device file copy capabiliti
    import { distributedDeviceManager } from '@kit.DistributedServiceKit'
    import { fileIo } from '@kit.CoreFileKit';
    ```
-
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    // Obtain the network ID of device A.
    // ...
@@ -190,3 +186,4 @@ The distributed file system provides apps with cross-device file copy capabiliti
      console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
    }
    ```
+

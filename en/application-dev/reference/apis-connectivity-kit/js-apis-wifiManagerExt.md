@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=d06ef92503ddf1ae094571d4eeefc1087fd8cbdb translatedAt=2026-10-09T13:33:53.230Z pushedAt=2026-10-10T07:21:24.152Z -->
+<!-- md-trans-meta sourceCommit=6e4f06766702757ac76aee8ad41e870897bbc4b0 translatedAt=2026-11-23T02:47:04.132Z pushedAt=2026-11-24T12:07:34.418Z nl=2 -->
 
 This module provides Wi-Fi extension APIs for non-universal products.
 
@@ -241,17 +241,12 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
   wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
       if (err) {
-          console.error("Failed to get linked information");
+          console.error("get power mode info failed");
           return;
       }
       console.info("get power mode info: " + JSON.stringify(data));
   });
 
-  wifiManagerExt.getPowerMode().then(data => {
-      console.info("get power mode info: " + JSON.stringify(data));
-  }).catch((error:number) => {
-      console.error("get power mode error");
-  });
 ```
 
 ## wifiManagerExt.setPowerMode<sup>(deprecated)</sup>

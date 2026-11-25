@@ -1,16 +1,15 @@
 # IPCKit
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ceec5d18179ba29b1eca79fa9240e27795b5216c translatedAt=2026-07-28T02:18:15.361Z pushedAt=2026-07-29T07:11:56.966Z -->
+<!-- md-trans-meta sourceCommit=98355c316452dae3a7c90b55e4a4861818921408 translatedAt=2026-11-04T03:41:54.951Z pushedAt=2026-11-04T10:13:14.847Z nl=1 -->
 
 ## Overview
 
-IPC Kit provides inter-process communication capabilities, supporting cross-process data transmission, method invocation, and other features, helping you quickly build stable and reliable inter-process communication capabilities. You can use the APIs provided by IPC Kit for inter-process communication development by including the **ipc_kit.h** header file. Typical use cases include multi-process collaboration, inter-service communication, and cross-process data sharing.
+Provides an entry to the IPC header files for you to reference. IPC stands for inter-process communication. IPC Kit provides the inter-process communication capability, supporting cross-process data transmission and method calling, helping you quickly build stable and reliable inter-process communication capabilities. You can reference the **ipc_kit.h** header file and use the APIs provided by IPC Kit to develop inter-process communication. Typical use scenarios include multi-process collaboration, inter-service communication, and cross-process data sharing.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

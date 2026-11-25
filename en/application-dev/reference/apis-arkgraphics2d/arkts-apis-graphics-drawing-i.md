@@ -2,10 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8ce668ad94101a68cd0e3c33de2da76aa75a68f0 translatedAt=2026-11-16T06:08:15.848Z pushedAt=2026-11-16T06:31:14.299Z nl=1 -->
+
+Provides other interfaces related to graphics drawing.
 
 > **NOTE**
 >
@@ -23,9 +26,9 @@ Describes a series of consecutive glyphs with the same attributes in a text blob
 
 | Name     | Type  | Read-Only| Optional| Description                     |
 | --------- | ------ | ---- | ---- | ------------------------- |
-| glyph     | number | No  | No  | Index of the glyph. The value is an integer. If a floating point number is passed in, the value is rounded down.|
-| positionX | number | No  | No  | X coordinate of the start point of the text blob. The value is a floating point number.|
-| positionY | number | No  | No  | Y coordinate of the start point of the text blob. The value is a floating point number.|
+| glyph     | number | No   | No   | Stores the glyph index. This parameter is an integer. If a floating-point number is passed in, it is rounded down. |
+| positionX | number | No   | No   | X-axis coordinate of the text start point. This parameter is a floating-point number. The unit is physical pixel px. |
+| positionY | number | No   | No   | Y-axis coordinate of the text start point. This parameter is a floating-point number. The unit is physical pixel px. |
 
 ## FontMetrics
 
@@ -38,21 +41,21 @@ Describes the attributes that describe the font size and layout. A typeface has 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | flags<sup>12+</sup>   | [FontMetricsFlags](arkts-apis-graphics-drawing-e.md#fontmetricsflags12) | No  | Yes  | Font measurement flags that are valid.       |
-| top     | number | No  | No  | Maximum distance from the baseline to the highest coordinate of the text. The value is a floating point number.                        |
-| ascent  | number | No  | No  | Distance from the baseline to the highest coordinate of the text. The value is a floating point number.                            |
-| descent | number | No  | No  | Distance from the baseline to the lowest coordinate of the text. The value is a floating point number.                            |
-| bottom  | number | No  | No  | Maximum distance from the baseline to the lowest coordinate of the text. The value is a floating point number.                        |
-| leading | number | No  | No  | Interline spacing, that is, the distance from the descent of one line of text to the ascent of the next line. The value is a floating point number.|
-| avgCharWidth<sup>12+</sup> | number | No  | Yes  | Average character width.                            |
-| maxCharWidth<sup>12+</sup> | number | No  | Yes  | Maximum character width.                            |
-| xMin<sup>12+</sup> | number | No   | Yes  | Horizontal distance from the leftmost edge of any glyph bounding box to the origin. This value is usually less than 0, indicating the minimum horizontal coordinate across all glyph bounding boxes.               |
-| xMax<sup>12+</sup> | number | No  | Yes  | Horizontal distance from the rightmost edge of any glyph bounding box to the origin. The value is a positive number, indicating the maximum horizontal coordinate across all glyph bounding boxes.       |
-| xHeight<sup>12+</sup> | number | No  | Yes  | Height of the lowercase letter x. The value is usually a negative value.                    |
-| capHeight<sup>12+</sup> | number | No  | Yes  | Height of a capital letter. The value is usually a negative value.                     |
-| underlineThickness<sup>12+</sup> | number | No  | Yes  | Thickness of the underline.                                         |
-| underlinePosition<sup>12+</sup>  | number | No  | Yes  | Vertical distance from the baseline to the top of the underline. The value is usually a positive number.            |
-| strikethroughThickness<sup>12+</sup>  | number | No  | Yes  | Thickness of the strikethrough.   |
-| strikethroughPosition<sup>12+</sup>  | number | No  | Yes  | Vertical distance from the baseline to the bottom of the strikethrough. The value is usually a negative value.        |
+| top     | number | No   | No   | Maximum distance above the baseline that the bounding box of any glyph in the font extends, a floating-point number. The unit is physical pixel px. |
+| ascent  | number | No   | No   | Distance from the highest point of the text to the baseline, a floating-point number. The unit is physical pixel px.                             |
+| descent | number | No   | No   | Distance from the baseline to the lowest point of the text, a floating-point number. The unit is physical pixel px.                             |
+| bottom  | number | No   | No   | Maximum distance below the baseline that the bounding box of any glyph in the font extends, a floating-point number. The unit is physical pixel px. |
+| leading | number | No   | No   | Line spacing, the distance from the descent of the previous line of text to the ascent of the next line of text, a floating-point number. The unit is physical pixel px. |
+| avgCharWidth<sup>12+</sup> | number | No | Yes | Average character width, a floating-point number. The unit is physical pixel px. |
+| maxCharWidth<sup>12+</sup> | number | No | Yes | Maximum character width, a floating-point number. The unit is physical pixel px. |
+| xMin<sup>12+</sup> | number | No   | Yes   | Horizontal distance from the leftmost edge of the bounding box of any glyph in the font to the origin. This value is often less than zero, indicating the minimum horizontal boundary of the glyph. The unit is physical pixel px.                |
+| xMax<sup>12+</sup> | number | No   | Yes   | Horizontal distance from the rightmost edge of the bounding box of any glyph in the font to the origin, a floating-point number. This value is mostly positive, indicating the maximum horizontal extent of the glyph. The unit is physical pixel px.        |
+| xHeight<sup>12+</sup> | number | No   | Yes   | Vertical offset of the top of the lowercase letter x relative to the baseline, a floating-point number, usually a negative value. The unit is physical pixel px. |
+| capHeight<sup>12+</sup> | number | No   | Yes   | Vertical offset of the top of uppercase letters relative to the baseline, a floating-point number, usually a negative value. The unit is physical pixel px. |
+| underlineThickness<sup>12+</sup> | number | No   | Yes   | Thickness of the underline, a floating-point number. The unit is physical pixel px.                                          |
+| underlinePosition<sup>12+</sup>  | number | No   | Yes   | Vertical distance from the text baseline to the top of the underline, a floating-point number, usually a positive value. The unit is physical pixel px.             |
+| strikethroughThickness<sup>12+</sup>  | number | No   | Yes   | Thickness of the text strikethrough, that is, the width of the horizontal line through the text characters, a floating-point number. The unit is physical pixel px.    |
+| strikethroughPosition<sup>12+</sup>  | number | No | Yes | Vertical distance from the text baseline to the strikethrough line, a floating-point number, usually a negative value. The unit is physical pixel px. |
 
 ## FontFeature<sup>20+</sup>
 
@@ -64,5 +67,29 @@ Defines font features, which are typesetting rules within a font that determine 
 
 | Name   | Type  | Read-Only| Optional| Description  |
 | ------- | ------ | ---- | ---- | ------------------ |
-| name   | string | No  | No  | Name of a font feature. Common font feature names include **liga**, **frac**, and **case**. A font feature needs a TTF file to work.|
-| value | number | No| No| Value of a font feature, which is a floating point number. You are advised to determine the valid value range by using a font viewing tool or referring to the font document.|
+| name   | string | No   | No   | Name of the font feature. It is usually a tag consisting of four ASCII characters (for example, liga, frac, and case), and it takes effect only when the corresponding TTF file supports it. You are advised to use a font viewer tool or refer to the font documentation to determine a valid name.|
+| value | number | No | No | Value of the font feature, which is a floating-point number. It takes effect only when the corresponding TTF file supports it. You are advised to use a font viewer tool or refer to the font documentation to determine the specific valid value range.|
+
+## RecordCmd
+
+Describes a set of recorded draw commands. This object is immutable. It is created by [RecordCmdUtils.finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording) and can be passed to [Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd) for command playback, thereby reproducing the recorded draw operations.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since:** 26.0.1
+## TypefaceFallbackInfo
+
+Defines the structure for font fallback information, which indicates a set of glyph fragments that use the same fallback font.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since:** 26.0.1
+
+| Name    | Type   | Read-Only | Optional | Description   |
+| ------- | ------ | ---- | ---- | ------------------ |
+| glyphIds   | Array\<number> | No   | No   | Glyph ID array of the glyph fragment. |
+| typeface | [Typeface](arkts-apis-graphics-drawing-Typeface.md) | No | No | Font object matched by the glyph fragment. |

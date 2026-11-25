@@ -1,11 +1,11 @@
-# FAQs About Immersive Light Sense
+# FAQs About Immersive Lighting
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=30a0d7c059dff847820cd3847015731fe24ef1b1 translatedAt=2026-10-12T09:18:50.105Z pushedAt=2026-10-13T03:34:51.913Z -->
+<!-- md-trans-meta sourceCommit=ff4f4a914d59e7916579dee23beb73f2abee5b30 translatedAt=2026-11-09T10:57:18.253Z pushedAt=2026-11-09T11:12:59.182Z nl=1 -->
 
 This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md).
 
@@ -90,7 +90,11 @@ struct MaterialScopeAdaptExample {
           Row() {
             // Replace $r('app.string.content_area') with the actual resource file. In this example, the value of the resource file is "Content Area".
             Text($r('app.string.content_area'))
-
+                .fontColor('#182431')
+                .fontSize(30)
+                .lineHeight(41)
+                .fontWeight(700)
+                
             Blank()
 
             Column() {
@@ -110,7 +114,6 @@ struct MaterialScopeAdaptExample {
             }))
           }
           .width('100%')
-          .padding(16)
           .borderRadius(16)
         }
         .width('100%')
@@ -232,6 +235,48 @@ This is a normal optical behavior of immersive system materials. The immersive l
 - Use thicker material styles (such as REGULAR, THICK, or ULTRA_THICK) to reduce material transparency and thereby minimize the refraction effect.
 - Add a [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) overlay to the material layer to reduce the visibility of refraction by blending in a semi‑transparent color.
 
+**Code Example**
+
+```ts
+// Obvious refraction scenario: thin material has high transparency, and the border shows the color of the surrounding background.
+Column() {
+  Text('ULTRA_THIN')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+}))
+
+// Recommended approach 1: use a thicker material style to reduce material transparency and thus reduce the refraction effect.
+Column() {
+  Text('THICK')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.THICK,
+}))
+
+// Recommended approach 2: overlay a semi-transparent color through materialColor to reduce the visibility of refraction.
+// Note that the color must have transparency; a fully opaque color will block the material effect.
+Column() {
+  Text('materialColor')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+  materialColor: '#80FFFFFF', // White with 50% transparency.
+}))
+```
+
 ## Material Effect Disappears After an Opaque Color Is Passed to materialColor
 
 **Symptom**
@@ -293,13 +338,46 @@ For automatic color inversion to take effect, the following conditions must be m
 - The device computing power tier must be high or medium. On low computing power devices, automatic color inversion does not produce a visual difference.
 - The material style must be THIN or ULTRA_THIN. It does not take effect under REGULAR, THICK, or ULTRA_THICK styles.
 - The system's immersive light sense intensity configuration affects the inversion trigger threshold. The thinner the immersive system material and the stronger the system's immersive light sense setting, the more likely automatic color inversion is triggered.
-- Automatic color inversion takes effect only for color values set through resource interfaces, including the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor) attribute of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor) attribute of the [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) attribute of the [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) component, the [fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor) attribute of the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component, and the color attributes of components such as TextInput, TextArea, Chip, ChipGroup, SegmentButton, and Swiper. For the complete list of attributes that take effect, see the [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) parameter description. Hardcoded color values in the code (such as `Color.White` and `'#FFFFFFFF'`) do not trigger automatic color inversion.
+- Ensure that the material style is THIN or ULTRA_THIN.
 
 **Solution**
 
 1. Ensure that the material style is THIN or ULTRA_THIN.
-2. Ensure that the text color is set via resource interfaces (such as `$r('app.color.xxx')`), rather than hard‑coded color values.
+2. ## Shadow Effect Does Not Behave as Expected When Both shadow Attribute and Immersive System Material Are Set
 3. Increase the system's immersive light sense configuration and observe the effect.
+
+**Code Example**
+
+```ts
+// Incorrect approach: automatic color inversion does not take effect in the REGULAR style, and a hard-coded color value does not trigger automatic color inversion.
+Column() {
+  Text('Automatic Color Inversion')
+    .fontColor(Color.White) // Hard-coded color, which does not participate in automatic color inversion.
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.REGULAR, // Automatic color inversion takes effect only in the THIN or ULTRA_THIN style.
+  colorInvert: true,
+}))
+
+// Recommended approach: use the THIN material style and set the text color through the resource API.
+Column() {
+  Text('Automatic Color Inversion')
+    // The text color must use a system color resource that supports automatic color inversion; custom resources and hard-coded colors do not take effect.
+    .fontColor($r('sys.color.font_primary'))
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.THIN,
+  colorInvert: true,
+}))
+```
 
 ## Shadow Effect Does Not Behave as Expected When Both shadow Attribute and Immersive System Material Are Set
 

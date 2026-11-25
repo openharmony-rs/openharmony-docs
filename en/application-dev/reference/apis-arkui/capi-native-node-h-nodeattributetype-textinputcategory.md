@@ -853,7 +853,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether preview text is enabled. The value **1** indicates preview text is enabled, **0** indicates the opposite. | |
+| .value[0].i32 | Whether preview text is enabled. The value **1** indicates preview text is enabled, **0** indicates the opposite. |
 
 ## NODE_TEXT_INPUT_HALF_LEADING
 

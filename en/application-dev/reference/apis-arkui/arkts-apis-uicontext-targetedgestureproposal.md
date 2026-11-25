@@ -1,12 +1,11 @@
 # Class (TargetedGestureProposal)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:54:30.200Z pushedAt=2026-08-11T06:05:04.811Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-29T09:12:44.986Z pushedAt=2026-10-30T07:06:53.701Z nl=1 -->
 
 Base class for smart gesture handling with a target node.
 

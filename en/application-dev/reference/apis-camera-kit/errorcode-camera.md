@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=cfbdf7078f905314893a0975124c4a78ff4672a0 translatedAt=2026-11-18T03:44:57.748Z pushedAt=2026-11-20T08:20:03.673Z nl=1 -->
 
 > **NOTE**
 >
@@ -189,6 +190,42 @@ The frame rate of the preview stream exceeds that supported by the device.
 **Solution**
 
 Check whether the committed configuration is supported by the device.
+
+## 7400113 Unsupported Multi-Camera Combination
+
+**Error Message**
+
+Unsupported multiple camera combination.
+
+**Description**
+
+The multi-camera combination is unsupported.
+
+**Possible Causes**
+
+An attempt is made to use an unsupported multi-camera combination due to hardware limitations or driver constraints.
+
+**Solution**
+
+Use another camera combination, or check the camera configurations supported by the device.
+
+## 7400115 Parameter Out of Range
+
+**Error Message**
+
+Parameter out of range.
+
+**Description**
+
+The parameter is out of range.
+
+**Possible Causes**
+
+The parameter value exceeds the valid range, for example, the ISO, exposure time, or focus distance.
+
+**Solution**
+
+Ensure that the value is within the range supported by the current camera configuration.
 
 ## 7400201 Camera Service Error
 

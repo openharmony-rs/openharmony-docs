@@ -1,12 +1,11 @@
 # Starting a Camera and Microphone
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @qq_42700029-->
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=653d7ca392c1878e92f7acb2b5a9b04b5870a0ef translatedAt=2026-08-14T03:50:29.565Z pushedAt=2026-08-14T10:17:39.496Z -->
+<!-- md-trans-meta sourceCommit=f14c4580312ed7656e3ee3c7b6c82ba07a34279b translatedAt=2026-11-05T10:44:32.885Z pushedAt=2026-11-06T00:54:55.325Z nl=1 -->
 
 WebRTC (Web Real-Time Communications) is a real-time communication technology that allows web applications or sites to establish peer-to-peer connections between browsers without an intermediary, enabling the transmission of video streams, audio streams, or any other data. The standards included in WebRTC allow users to create peer-to-peer data sharing and audio/video conferencing without installing any plug-ins or third-party software. WebRTC applies to all modern browsers and native clients on major platforms. The underlying technology is implemented as an open web standard and is provided as a regular JavaScript API in all major browsers.
 
@@ -15,7 +14,6 @@ WebRTC (Web Real-Time Communications) is a real-time communication technology th
 The **Web** component can access the camera and microphone through W3C standard protocol APIs, and receive permission request notifications through the [onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9) API. You need to declare the corresponding audio and video permissions in the configuration file and perform system-side authorization and app-side authorization.
 
 ### Configuring Permissions in module.json5
-
 - Before using the camera and microphone, add the audio and video permissions in **module.json5**. For details about how to add permissions, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
   ```json5
@@ -61,17 +59,15 @@ The **Web** component can access the camera and microphone through W3C standard 
 Call the W3C standard protocol API **navigator.mediaDevices.getUserMedia()** in JavaScript to open the camera and microphone. The **constraints** parameter is a **MediaStreamConstraints** object that contains two members, **video** and **audio**, and specifies the requested media types.
 
 ### System-Side Authorization
-
-In the [Complete Example Code](../web/web-rtc.md#complete-example), **requestPermissionsFromUser** is called so that after the app is opened, a dialog box asking whether to allow the app to access the camera and microphone is displayed. Click **Always allow** or **Ask every time** to authorize the app to access the camera and microphone.
+In the [Complete Example Code](../web/web-rtc.md#complete-example), `requestPermissionsFromUser()` is called so that after the app is opened, a dialog box asking whether to allow the app to access the camera and microphone is displayed. Click **Always allow** or **Ask every time** to authorize the app to access the camera and microphone.
 
 ### App-Side Authorization
-
 In the [Complete Example](../web/web-rtc.md#complete-example), after you click the **Enable Camera** button on the frontend page, a permission request is triggered through **onPermissionRequest**. After you click the **onConfirm** button in the dialog box, the camera and microphone are opened.
 
 ## Complete Example
 
   <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) --> 
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -115,7 +111,9 @@ In the [Complete Example](../web/web-rtc.md#complete-example), after you click t
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.request.grant(event.request.getAccessibleResource());
+                    let resources = event.request.getAccessibleResource();
+                    console.info('Granting permissions for resources: ' + JSON.stringify(resources));
+                    event.request.grant(resources);
                   }
                 },
                 cancel: () => {
@@ -159,7 +157,7 @@ In the [Complete Example](../web/web-rtc.md#complete-example), after you click t
         video.srcObject = MediaStream;
         video.play();
       }).catch(function(err) {
-          console.info(err.name + ": " + err.message);
+          console.error(err.name + ": " + err.message);
       });
     }
   </script>

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:40:19.896Z pushedAt=2026-10-10T02:10:31.968Z -->
+<!-- md-trans-meta sourceCommit=2abb6d40560bb8e1a9913751e42e44a0192e5f14 translatedAt=2026-11-10T01:02:12.782Z pushedAt=2026-11-10T02:43:58.302Z nl=1 -->
 
 This topic uses 3DES and HMAC as an example to describe how to convert binary data into a symmetric key (**SymKey**). That is, convert a piece of external or internal binary data into a key object for subsequent operations, such as encryption and decryption.
 
@@ -25,7 +25,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 - Example: Convert binary data into a 192-bit 3DES key (using callback-based APIs).
 
   <!-- @[generate_3des_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Callback.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -67,7 +67,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 - Example using synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12):
 
   <!-- @[generate_3des_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -115,21 +115,27 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 - Example using **await** to generate a HMAC key:
 
   <!-- @[generate_hmac_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Await.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function testConvertHmacKey() {
-    // The symmetric key length is 64 bytes, that is, 512 bits.
-    let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
-    let keyBlob: cryptoFramework.DataBlob = {
-      data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+    try {
+      // The symmetric key length is 64 bytes, 512 bits.
+      let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
+      let keyBlob: cryptoFramework.DataBlob = {
+        data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+      }
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let key = await symKeyGenerator.convertKey(keyBlob);
+      let encodedKey = key.getEncoded();
+      console.info('key encoded data: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-    let key = await symKeyGenerator.convertKey(keyBlob);
-    let encodedKey = key.getEncoded();
-    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 
@@ -137,21 +143,27 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
 - Example using synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12):
 
   <!-- @[generate_hmac_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function testConvertKeySync() {
-    // The symmetric key length is 64 bytes, that is, 512 bits.
-    let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
-    let keyBlob: cryptoFramework.DataBlob = {
-      data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+    try {
+      // The symmetric key length is 64 bytes, 512 bits.
+      let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
+      let keyBlob: cryptoFramework.DataBlob = {
+        data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+      }
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let key = symKeyGenerator.convertKeySync(keyBlob);
+      let encodedKey = key.getEncoded();
+      console.info('key encoded data: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-    let key = symKeyGenerator.convertKeySync(keyBlob);
-    let encodedKey = key.getEncoded();
-    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 

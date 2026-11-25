@@ -5,20 +5,15 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=6537bb99ea3084554b976340d2f07296ebe62ba7 translatedAt=2026-11-13T04:12:09.457Z pushedAt=2026-11-13T10:52:25.968Z nl=1 -->
 
-The **@system.sensor** module is a sensor data subscription module for lite wearables. It provides the data subscription and subscription cancellation capabilities for the acceleration, compass, distance, ambient light, pedometer, barometric pressure, heart rate, device wearing status, device orientation, and gyroscope sensors.
-
-This module helps apps obtain sensor data change notifications in real time to implement functions such as fitness monitoring, health tracking, environment sensing, direction identification, and screen adaptation. Each sensor provides subscription and unsubscription APIs. The wearing status sensor additionally provides the **getOnBodyState** API for a single query.
-
-For devices other than lightweight wearables, this module is no longer maintained since API version 8. You are advised to use the [@ohos.sensor](js-apis-sensor.md) module instead. If an app calls the subscription API for the same sensor multiple times, only the last call takes effect.
-
-This module uses the subscription-unsubscription mode. You can call **sensor.on** to subscribe to sensor data, and the system will report the data at the specified interval. When the subscription is no longer needed, you can call **sensor.off** to cancel the subscription. **on** and **off** must be used in pairs. Subscription must be performed before unsubscription. If an app subscribes to the same sensor multiple times, only the last subscription takes effect. Since API version 19, the **sensorInfoParam** parameter has been added to **sensor.off**. This parameter allows you to cancel the sensor callback on a specified device based on **deviceId** and **sensorIndex**. If this parameter is not passed, the callback of the local device is canceled by default. In API version 10, **sensor.off** does not contain this parameter and can only cancel the callback of the local device.
+The **@ohos.sensor** module is a sensor service module provided by HarmonyOS in Sensor Service Kit. This page describes the system APIs of this module, which support subscribing to and unsubscribing from color sensor and SAR sensor data.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> This page contains only the system APIs of this module. For other public APIs, see [@ohos.sensor (Sensor)](js-apis-sensor.md).
 
 ## Modules to Import
 
@@ -52,9 +47,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable versions: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -102,9 +97,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable versions: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -152,8 +147,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable version: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -210,8 +205,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -298,8 +293,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable versions: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -356,8 +351,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                                                                                                   |
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------|
-| 202      | Permission check failed. A non-system application uses the system API.                                                                  |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API.                                                                  |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 

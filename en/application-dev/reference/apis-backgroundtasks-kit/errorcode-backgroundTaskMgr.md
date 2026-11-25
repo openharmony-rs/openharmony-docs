@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0c11aa331867afbe5ffa78e3e803931b50da91a6 translatedAt=2026-11-17T07:25:03.380Z pushedAt=2026-11-17T07:54:41.989Z nl=1 -->
 
 > **NOTE**
 >
@@ -120,10 +121,10 @@ This error code is reported when continuous task verification fails.
 
 **Solution**
 
-1. Check the application code.
-2. Check whether the application has the system permissions.
-3. Check the type of the device where the application is located.
-4. Check the value of **backgroundModes**.
+1. Check the application code and logs to determine whether a duplicate request operation exists.
+2. Check the application code and logs to determine whether a duplicate cancellation operation exists.
+3. Check whether the application configuration property backgroundModes has the requested long-running task type configured, and whether it is configured in the UIAbility configuration item to which the requested long-running task belongs.
+4. Check the type of the device where the app is located.
 5. Check whether the main type and subtype of the continuous task are configured.
 6. Check whether the main type and subtype of the continuous task are of the same length or whether their types match.
 7. Check whether the main type and subtype of the continuous task are out of range.
@@ -151,11 +152,17 @@ This error code is reported when notification verification in a continuous task 
 
 1. The continuous task resources cached in the resource subsystem fail to be loaded.
 2. The notification subsystem functions abnormally.
+3. When updating the continuous task notification, the continuous task ID or notification progress information is incorrect.
+4. When updating the continuous task notification, the continuous task does not include the data transfer type.
+5. Use the [ProgressInfo](./js-apis-resourceschedule-backgroundTaskManager.md#progressinfo) attribute in the [updateBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatebackgroundrunning21) API.
 
 **Solution**
 
 1. Check whether the continuous task resource **ohos.backgroundtaskmgr.resources** exists.
 2. Try again later or restart the device.
+3. Check whether the continuous task ID and notification progress information are correct when updating the continuous task notification, and pass in the correct parameters again.
+4. Check whether the continuous task includes the data transfer type when updating the continuous task notification. If not, request or update the continuous task again.
+5. Use the [startBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21) API to request a continuous task.
 
 ## 9800007 Continuous Task Storage Failure
 
@@ -165,7 +172,7 @@ Continuous task storage failed.
 
 **Description**
 
-This error code is reported when information storage in a continuous task fails. 
+This error code is reported when information storage in a continuous task fails.
 
 **Possible Causes**
 
@@ -177,6 +184,24 @@ This error code is reported when information storage in a continuous task fails.
 
 1. Check the **/data/service/el1/public/background_task_mgr/running_task** file.
 2. Try again later or restart the device.
+
+## 9800008 The Requested Continuous Task Is Not Supported on This Device Type
+ 
+**Error Message**
+ 
+The requested continuous task is not supported on this device type.
+ 
+**Description**
+ 
+The requested continuous task is not supported on this device type.
+ 
+**Possible Causes**
+ 
+The requested continuous task type is not supported on the current device.
+ 
+**Handling Procedure**
+ 
+Modify the requested continuous task type.
 
 ## 9900001 Caller Information Verification Failure for a Transient Task
 

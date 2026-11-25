@@ -1,13 +1,14 @@
 # Binding Gesture Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:39:59.197Z pushedAt=2026-11-09T10:02:18.814Z nl=1 -->
 
 
-The ArkUI development framework provides tap, pan, swipe, long press, pinch, and rotation gestures through its NDK APIs. By binding different gestures to specified components and setting corresponding callbacks, you can achieve the desired gesture interaction capabilities.
+The ArkUI development framework provides the following gestures in its NDK APIs: tap, pan, fling, long press, pinch, and rotation. By binding different gestures to specified components and setting the corresponding callbacks, you can implement the desired gesture interaction capabilities.
 
 
 The following is a simple example to illustrate how to implement gesture binding.
@@ -644,7 +645,7 @@ For details about the complete example, see<!--RP3-->[Sample Project](https://gi
 
 ### Custom Gesture Judgment
 
-Custom gesture judgment allows you to dynamically decide whether a gesture recognizer should be considered successful by the system when a user's action matches a gesture recognizer and the gesture recognizer is about to be triggered successfully. This is achieved by binding a callback to the target component using the **setGestureInterrupterToNode** API. When a gesture on that component is about to be successfully recognized, the callback returns **CONTINUE** or **REJECT** to whether to allow other gesture recognizers to take over the success opportunity.
+When a user's operation matches a gesture recognizer and the recognizer is about to succeed, you can use the custom gesture judgment capability to dynamically decide whether the recognizer should be recognized as successful by the system. Through the `setGestureInterrupterToNode` API, bind a callback to the component. When a gesture on the component is about to be recognized successfully, return `CONTINUE` or `REJECT` to decide whether to yield the success opportunity to other gesture recognizers.
 
 To implement custom gesture judgment, adjust the example of binding gesture events as follows:
 

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e4860fc95c8d8b95b77255afd3be962b586518ba translatedAt=2026-08-14T10:24:43.185Z pushedAt=2026-08-17T08:57:35.011Z -->
+<!-- md-trans-meta sourceCommit=7cd2f817688c245414ad83d771260e8515966ace translatedAt=2026-11-04T06:30:11.084Z pushedAt=2026-11-04T08:04:44.847Z nl=1 -->
 
 ```c
 typedef struct OH_TrafficFilter_ConnectionInfo {...} OH_TrafficFilter_ConnectionInfo
@@ -32,9 +32,11 @@ Binary compatibility rule (ABI, that is, Application Binary Interface, which ens
 
 | Name | Description |
 | -- | -- |
-| uint32_t size | Actual size of the structure allocated by the caller.<br>**Since:** 26.0.0 |
-| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) srcIp | Source IP address, which supports IPv4 and IPv6.<br>**Since:** 26.0.0 |
-| uint16_t srcPort | Source port. The value 0 indicates any source port.<br>**Since:** 26.0.0 |
-| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) dstIp | Destination IP address, which supports IPv4 and IPv6 and must use the same address family as the source IP address.<br>**Since:** 26.0.0 |
-| uint16_t dstPort | Destination port. The value **0** indicates any destination port.<br>**Since:** 26.0.0 |
-| uint8_t protocol | Protocol type. Supported values: - OH_TRAFFICFILTER_PROTO_TCP (6)- OH_TRAFFICFILTER_PROTO_UDP (17)<br>**Since:** 26.0.0 |
+| uint32_t size | Actual size of the structure allocated by the caller. |
+| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) srcIp | Source IP address, which supports IPv4 and IPv6. |
+| uint16_t srcPort | Source port. 0 indicates any source port. |
+| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) dstIp | Destination IP address, which supports IPv4 and IPv6 and must use the same address family as the source IP address. |
+| uint16_t dstPort | Destination port. 0 indicates any destination port. |
+| uint8_t protocol | Protocol type. Supported values: - OH_TRAFFICFILTER_PROTO_TCP (6) - OH_TRAFFICFILTER_PROTO_UDP (17) |
+
+

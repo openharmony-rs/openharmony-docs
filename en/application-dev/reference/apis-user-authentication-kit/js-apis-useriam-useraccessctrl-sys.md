@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7507bf7498175f9363f60d56ed8f750b80e8d09c translatedAt=2026-09-21T03:05:31.355Z pushedAt=2026-09-22T01:29:30.426Z -->
+<!-- md-trans-meta sourceCommit=42bb1d1cfb2c2a996a05066eb4307f1fcd2a7053 translatedAt=2026-11-04T04:06:35.674Z pushedAt=2026-11-04T08:04:44.619Z nl=1 -->
 
 The **userAccessCtrl** module is a core component of the OpenHarmony user identity and access management (UserIAM) system. It is dedicated to the verification and management of authentication tokens. This module provides APIs for verifying authentication tokens (**AuthToken**). It can parse and verify user authentication results and return detailed authentication information.
 
@@ -176,26 +176,27 @@ try {
   console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult() only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
-    onResult (result) {
-        if (!result.token) {
-            console.error('userAuthInstance callback result.token is null');
-            return;
-        }
-        try {
-          // Initiate a request for verifying the AuthToken.
-          userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
-              .then((retAuthToken: userAccessCtrl.AuthToken) => {
-                  Object.keys(retAuthToken).forEach((key) => {
-                      // Process the service logic.
-                      console.info(`retAuthToken key:${key}`);
-                  })
-              }).catch ((error: BusinessError) => {
-                  console.error(`verify authToken failed. Code is ${error?.code}, message is ${error?.message}`);
-              })
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          console.error(`verify authToken failed. Code is ${err?.code}, message is ${err?.message}`);
-        }
+    onResult: (result) => {
+      if (!result.token) {
+        console.error('Failed to get auth token.');
+        return;
+      }
+      try {
+        // Initiate an AuthToken verification request.
+        userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
+          .then((retAuthToken: userAccessCtrl.AuthToken) => {
+            Object.keys(retAuthToken).forEach((key) => {
+              // Process the business logic.
+              console.info(`retAuthToken key: ${key}`);
+            });
+          })
+          .catch((error: BusinessError) => {
+            console.error(`Failed to verify authToken. Code: ${error?.code}, message: ${error?.message}`);
+          });
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to verify authToken. Code: ${err?.code}, message: ${err?.message}`);
+      }
     }
   });
   console.info('auth on successfully.');
@@ -204,6 +205,6 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```

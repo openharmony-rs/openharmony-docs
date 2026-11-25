@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=a200f12b3c07f37fb080224a65f9be5397544a01 translatedAt=2026-09-20T06:42:08.756Z pushedAt=2026-09-20T08:12:33.617Z -->
+<!-- md-trans-meta sourceCommit=e5521e4e68d4358f2c99dbebfb237c12bb0173c0 translatedAt=2026-11-05T01:00:48.370Z pushedAt=2026-09-20T08:12:33.617Z nl=2 -->
 
 Animation: An important resource type in a 3D scene, used to control the movement of various elements in the scene. For example, to make a character in the scene walk, it is difficult to calculate and set the rotation angle of each joint of the character frame by frame. Therefore, for such complex animation requirements, the creators of 3D scene resources prepare the animation in advance and save the keyframe data of the animation and the interpolator type between keyframes in the model file.
 

@@ -2,11 +2,12 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-11-04T10:48:36.337Z pushedAt=2026-11-04T10:51:58.819Z nl=1 -->
 
-Defines the backforward list of the current WebView.
+BackForwardList is an interface in the ArkWeb framework for accessing the browsing history list of a Web component. It is obtained through the [getBackForwardEntries](./arkts-apis-webview-WebviewController.md#getbackforwardentries) method. This interface provides read-only access to the page navigation history. Developers can obtain basic information about the current history list (the current index and the total number of history entries), as well as detailed information about a specific history item by index.
 
 > **NOTE**
 >
@@ -29,13 +30,13 @@ import { webview } from '@kit.ArkWeb';
 | Name        | Type  | Read-Only| Optional| Description                                                        |
 | ------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | currentIndex | number | No  | No  | Index of the current page in the backforward list.                                |
-| size         | number | No  | No  | Number of indexes in the backforward list. A maximum of 50 indexes can be stored. If this limit is exceeded, the start records will be overwritten.|
+| size         | number | No   | No   | Number of history entries in the history list. Up to 50 entries are saved, and when exceeded, the earliest entries are overwritten. |
 
 ## getItemAtIndex
 
 getItemAtIndex(index: number): HistoryItem
 
-Obtains information about a history item with a specified index in the backforward list.
+Obtains the information of the history item at the specified index in the history list. A BackForwardList instance must be obtained first through the [getBackForwardEntries](./arkts-apis-webview-WebviewController.md#getbackforwardentries) method.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

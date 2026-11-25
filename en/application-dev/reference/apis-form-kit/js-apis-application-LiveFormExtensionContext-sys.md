@@ -5,30 +5,31 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=e51968c7c56d4fd4ec628eff339eeb09ceb3837b translatedAt=2026-11-04T04:36:02.250Z pushedAt=2026-11-04T10:12:50.136Z nl=1 -->
 
-LiveFormExtensionContext, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), is the context of [LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md).
+**LiveFormExtensionContext** is the context of [LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md), which is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md).
+> This page contains only the system APIs of this module. For other public APIs, see [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md).
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 ```ts
 import { common } from '@kit.AbilityKit';
 ```
 
->  **NOTE**
+> **NOTE**
 >
-> - In versions earlier than API version 22, you need to import LiveFormExtensionContext with `import LiveFormExtensionContext from 'application/LiveFormExtensionContext';`. This import mode is marked in red in DevEco Studio, but does not affect compilation and running. You can use LiveFormExtensionContext directly.
+> - Before API version 22, you need to import LiveFormExtensionContext through `import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; `. This import method is marked in red in DevEco Studio, but it does not affect compilation and running. You can use LiveFormExtensionContext directly.
 >
-> - In API version 22 and later versions, you can import LiveFormExtensionContext with `import { common } from '@kit.AbilityKit';` and use it in the form of **common.LiveFormExtensionContext**.
+> - Since API version 22, you can import LiveFormExtensionContext through `import { common } from '@kit.AbilityKit'; ` and use it in the form of common.LiveFormExtensionContext.
 
 ## How to Use
-LiveFormExtensionContext is used to query information about its associated LiveFormExtensionAbility and access resources of the LiveFormExtensionAbility.
+**LiveFormExtensionContext** is mainly used to query the information of the LiveFormExtensionAbility to which it belongs, and provides the capability to access the resources of a specific LiveFormExtensionAbility.
 ```ts
 import { LiveFormInfo, LiveFormExtensionAbility } from '@kit.FormKit';
 import { UIExtensionContentSession } from '@kit.AbilityKit';
@@ -46,47 +47,48 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 
 ## LiveFormExtensionContext
 
-Context of the LiveFormExtensionAbility.
+LiveFormExtensionContext is the context environment of LiveFormExtensionAbility.
 
-### connectServiceExtensionAbility<sup>21+<sup>
+### connectServiceExtensionAbility<sup>21+</sup>
 
 connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 
 Connects the current LiveFormExtensionAbility client to a [ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md) server.
 
-Before calling this API, you must implement the [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) API.
+Before calling this API, you must implement the [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) interface.
 
-Upon successful connection, the LiveFormExtensionAbility can communicate with the ServiceExtensionAbility through the [IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) returned by **ConnectOptions**, allowing access to capabilities exposed by the ServiceExtensionAbility.
+After the connection is established through this API, the LiveFormExtensionAbility can communicate with the ServiceExtensionAbility through the [IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) returned by ConnectOptions, so as to use the capabilities provided by the ServiceExtensionAbility.
 
-ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to deliver background services for specific scenarios and does not support developer customization.
+ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) component. This type of component is provided by the system and is usually used to provide background service capabilities in specified scenarios. It does not support customization by developers.
 
-ServiceExtensionAbility enables applications to run in the background and provide services. Third-party applications can connect to and communicate with this ExtensionAbility.
-A successful connection via this API will start the ServiceExtensionAbility. For details, see [Component Startup Rules](../../application-models/component-startup-rules.md).
+ServiceExtensionAbility provides background service extension capabilities, supports running in the background, and provides corresponding capabilities externally. Third-party applications can connect to this ExtensionAbility and communicate with it.
 
-**Model restriction**: This API can be used only in the stage model.
+After the connection is established through this API, the ServiceExtensionAbility component is started. For details, see [Component Startup Rules](../../application-models/component-startup-rules.md).
 
-**System API**: This is a system API.
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Want information required for connecting to the ServiceExtensionAbility, including the ability name and bundle name.|
-| connection | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | Yes| Callback used to return the information indicating connection success, failure, or disconnection. If the connection is successful, the [IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) instance will be returned.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Want information for connecting to the ServiceExtensionAbility, including the ability name and bundle name. |
+| connection | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | Yes | Callback of the ConnectOptions type, which returns the information about successful connection, failed connection, and disconnection. If the connection is successful, an [IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) instance is returned. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| number | Connection ID. The client can call [disconnectServiceExtensionAbility](#disconnectserviceextensionability21) with this ID for disconnection.|
+| number | Connection ID returned. The client can pass this connection ID to [disconnectServiceExtensionAbility](#disconnectserviceextensionability21) to disconnect the connection. |
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
 | 16500100 | Failed to obtain the configuration information.              |
@@ -102,7 +104,7 @@ import { UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility {
   onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
-    // 1. Pass LiveFormExtensionContext to the widget page component.
+    // 1. Pass the LiveFormExtensionContext to the page component of the interactive card.
     let storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('context', this.context);
     session.loadContent('pages/MyLiveFormPage', storage);
@@ -123,7 +125,7 @@ struct MyLiveFormPage {
   private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
-    // 2. Obtain LiveFormExtensionContext.
+    // 2. Obtain the LiveFormExtensionContext.
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
     this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
     if (!this.liveFormContext) {
@@ -134,7 +136,7 @@ struct MyLiveFormPage {
   }
 
   private connectServiceExtensionAbility(): void {
-    // Replace the Want information with the actual one.
+    // Replace it with the actual want.
     let want: Want = {
       deviceId: '',
       bundleName: 'com.example.myapplication',
@@ -157,7 +159,7 @@ struct MyLiveFormPage {
     try {
       connection = this.liveFormContext?.connectServiceExtensionAbility(want, options);
     } catch (err) {
-      // Process input parameter errors.
+      // Handle the input parameter error.
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
       console.error(`connectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
@@ -166,43 +168,43 @@ struct MyLiveFormPage {
 
   build() {
     Stack() {
-      // Replace the page with the actual one.
+      // Replace it with the actual page.
     }
   }
 }
 ```
 
-### disconnectServiceExtensionAbility<sup>21+<sup>
+### disconnectServiceExtensionAbility<sup>21+</sup>
 
 disconnectServiceExtensionAbility(connectionId: number): Promise\<void>
 
-Disconnects from a [ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md). Once the connection is terminated, set the **IRemoteObject**, which is returned when the connection is established, to null. This API uses a promise to return the result.
+Disconnects from the [ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md). After the disconnection, the developer needs to set the IRemoteObject object returned upon successful connection to null. This API uses a promise to return the result asynchronously.
 
-ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to deliver background services for specific scenarios and does not support developer customization. ServiceExtensionAbility enables applications to run in the background and provide services. Third-party applications can connect to and communicate with this ExtensionAbility.
+ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) component. This type of component is provided by the system and is usually used to provide background service capabilities in specified scenarios. It does not support customization by developers. ServiceExtensionAbility provides background service extension capabilities, supports running in the background, and provides corresponding capabilities externally. Third-party applications can connect to this ExtensionAbility and communicate with it.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **System capability**: SystemCapability.Ability.Form
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| connectionId | number | Yes| Connection ID of the ServiceExtensionAbility, that is, the **connectionId** returned by [connectServiceExtensionAbility](#connectserviceextensionability21).|
+| connectionId | number | Yes | Connection ID of the connected ServiceExtensionAbility, that is, the connectionId returned by [connectServiceExtensionAbility](#connectserviceextensionability21). |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 16501000 | An internal functional error occurred.                       |
@@ -216,7 +218,7 @@ import { UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility {
   onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
-    // 1. Pass LiveFormExtensionContext to the widget page component.
+    // 1. Pass LiveFormExtensionContext to the page component of the interactive card.
     let storage: LocalStorage = new LocalStorage();
     storage.setOrCreate('context', this.context);
     session.loadContent('pages/MyLiveFormPage', storage);
@@ -248,27 +250,26 @@ struct MyLiveFormPage {
   }
 
   private async disconnectServiceExtensionAbility(): Promise<void> {
-    // connection is the connection ID, which is usually the return value of the connectServiceExtensionAbility API. Replace it with the actual ID of the connection to be canceled.
+    // connection is the connection ID, usually the return value of the connectServiceExtensionAbility API. Replace it with the actual ID of the connection to be disconnected.
     let connection = 1;
-    let commRemote: rpc.IRemoteObject | null;
-
+    // Note: Save the IRemoteObject object when the connection to connectServiceExtensionAbility is successful.
+    // Set the saved IRemoteObject object to null after the connection is disconnected.
     try {
       await this.liveFormContext?.disconnectServiceExtensionAbility(connection);
-      // Carry out normal service processing.
+      // Execute normal services.
       console.info('disconnectServiceExtensionAbility succeed');
+      // Set the IRemoteObject object saved when the connection is successful to null, for example: this.savedRemoteObject = null;
     } catch (err) {
-      // Process the error.
+      // Handle errors and exceptions.
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
       console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
-    } finally {
-      commRemote = null;
     }
   }
 
   build() {
     Stack() {
-      // Replace the page with the actual one.
+      // Replace it with the actual page.
     }
   }
 }

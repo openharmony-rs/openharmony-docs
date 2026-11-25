@@ -1,12 +1,11 @@
 # Universal Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:42.542Z pushedAt=2026-06-23T03:20:40.266Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T06:12:36.998Z pushedAt=2026-11-23T06:27:08.002Z nl=1 -->
 
 >  **NOTE**
 >  Universal events are supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -17,7 +16,9 @@
 
 - The event callback can carry additional information through parameters, such as the [dataset](#target6) on the component and event-specific callback parameters.
 
+
 Different from private events, universal events can be bound to most components.
+
 
 | Name                     | Parameter       | Description                                                         | Bubbling Supported                                          | Capturing Supported    |
 | ------------------------ | ---------- | ------------------------------------------------------------ | ----------------------------------------------------- | --------------- |
@@ -28,7 +29,7 @@ Different from private events, universal events can be bound to most components.
 | click                    | BaseEvent  | Triggered when a component is clicked.                                         | Yes<sup>6+</sup>                                       | No              |
 | doubleclick<sup>7+</sup> | BaseEvent  | Triggered when a component is double-clicked.                                           | No<br/>Bubbling is supported since API version 9. | No              |
 | longpress                | BaseEvent  | Triggered when a component is long pressed.                                         | No<br/>Bubbling is supported since API version 9.  | No              |
-| swipe<sup>5+</sup>       | SwipeEvent | Triggered when a user quickly swipes on a component. For details about **SwipeEvent**, see Table 4.      | No<br/>Bubbling is supported since API version 9.  | No              |
+| swipe<sup>5+</sup>       | SwipeEvent | Triggered when the user quickly swipes on the component. For details about **SwipeEvent**, see Table 4.      | No<br/>Bubbling is supported since API version 9.  | No              |
 | attached<sup>6+</sup>    | -          | Triggered after the current component node is mounted to the render tree.                             | No                                                    | No              |
 | detached<sup>6+</sup>    | -          | Triggered when the current component node is removed from the render tree.                           | No                                                    | No              |
 | pinchstart<sup>7+</sup>  | PinchEvent | Triggered when a pinch operation is started.<br/>For details about **PinchEvent**, see Table 5. | No                                                    | No              |
@@ -42,6 +43,7 @@ Different from private events, universal events can be bound to most components.
 | dragover<sup>7+</sup>    | DragEvent  | Triggered when the dragged component is being dragged over a drop target.                                     | No                                                    | No              |
 | dragleave<sup>7+</sup>   | DragEvent  | Triggered when the dragged component leaves a drop target.                                     | No                                                    | No              |
 | drop<sup>7+</sup>        | DragEvent  | Triggered when the dragged component is dropped on a drop target.                               | No                                                    | No              |
+
 
 >  **NOTE**
 >  Events not listed in the preceding table do not support bubbling, such as the [input change event](js-components-basic-input.md#events). For details, see the description of the specific component.
@@ -102,6 +104,8 @@ Different from private events, universal events can be bound to most components.
 
 When a component triggers an event, the event callback receives an event object by default. You can obtain the corresponding information through the event object.
 
+
+
 | Name                   | Type     | Description                                       |
 | -------------------- | ------ | ---------------------------------------- |
 | dataSet<sup>6+</sup> | Object | Custom attribute set defined through [data-*](js-components-common-attributes.md#common-attributes). |
@@ -136,20 +140,20 @@ setData(key: string, value: object): boolean
 
 Sets the data associated with the specified key. If there is no data associated with the key, the data will be appended. If there is already data associated with the key, the data will replace the existing data in the same position.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type | Mandatory | Description |
 | ----- | ------ | ---- | ------- |
 | key | string | Yes | Data key value. |
 | value | object | Yes | Data to be stored. |
 
-**Return value**
+**Return value** 
 
 | Type | Description |
 | ------- | ------------------------ |
 | boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite. |
 
-**Example**
+**Example** 
 
 ```js
 // value in setData can be of a primitive type.
@@ -164,7 +168,6 @@ dragStart(e) {
     var isSetOK = e.dataTransfer.setData('person', person);
 }
 ```
-
 ### getData<sup>9+</sup>
 
 getData(key: string): object
@@ -177,13 +180,13 @@ Obtains the data associated with the specified key. If no data is associated wit
 | ---- | ------ | ---- | ----- |
 | key | string | Yes | Data key value. |
 
-**Return value**
+**Return value** 
 
 | Type | Description |
 | ------ | ------ |
 | object | Obtained data. |
 
-**Example**
+**Example** 
 
 ```js
 dragStart(e) {
@@ -196,7 +199,6 @@ dragEnd(e){
     var person = e.dataTransfer.getData('person');
 },
 ```
-
 ### clearData<sup>9+</sup>
 
 clearData(key?: string): boolean
@@ -205,33 +207,32 @@ Clears data associated with the specified key. If there is no data associated wi
 
 If the key is null, all data will be cleared.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type | Mandatory | Description |
 | ---- | ------ | ---- | ----- |
-| key | string | No | Data key. |
+| key | string | No | Data key value. |
 
-**Return value**
+**Return value** 
 
 | Type    | Description                                      |
 | ------- | ------------------------------------------------ |
 | boolean | Operation result. The value **true** means that the operation is successful, and **false** means the opposite. |
 
-**Example**
+**Example** 
 
 ```js
 dragEnd(e) {
     var isSuccess = e.dataTransfer.clearData('name');
 }
 ```
-
 ### setDragImage<sup>9+</sup>
 
 setDragImage(pixelMap: PixelMap, offsetX: number,offsetY: number): boolean
 
 Sets a custom drag image.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                                         | Mandatory | Description                                      |
 | -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------ |
@@ -239,7 +240,7 @@ Sets a custom drag image.
 | offsetX  | number                                                       | Yes       | Horizontal offset relative to the image.         |
 | offsetY  | number                                                       | Yes       | Vertical offset relative to the image.           |
 
-**Return value**
+**Return value** 
 
 | Type    | Description                                      |
 | ------- | ------------------------------------------------ |

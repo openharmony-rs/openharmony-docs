@@ -73,10 +73,14 @@
 
 在模块的module.json5文件中，申请权限[ohos.permission.ASSESSMENT_CONFIGURATION](../security/AccessToken/restricted-permissions.md#ohospermissionassessment_configuration)。该权限为system_basic级别的系统授权（system_grant）受限权限，需先按[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)完成申请，声明后在应用安装时自动授予。声明权限的详细说明参见[声明权限](../security/AccessToken/declare-permissions.md)。示例如下：
 
-```json5
+<!-- @[assessment_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+    // ...
     "requestPermissions": [
+      // ...
       {
         "name": "ohos.permission.ASSESSMENT_CONFIGURATION"
       }
@@ -89,7 +93,9 @@
 
 导入assessment模块后即可调用评估管理接口。
 
-```ts
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 ```
 
@@ -99,7 +105,9 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 调用begin后，系统会弹出确认弹窗，需用户确认后方可开始评估，评估结果及评估过程中的中断、结束事件均通过回调通知。context的获取方式参见[Context的获取方式](../application-models/application-context-stage.md#context的获取方式)。示例代码如下：
 
-```ts
+<!-- @[assessment_begin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/BeginAssessment.ets) -->
+
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -133,7 +141,7 @@ const assessmentCallback: assessment.IAssessmentCallback = {
 @Component
 struct Index {
   build() {
-    Button('开始评估')
+    Button($r('app.string.begin_button'))
       .onClick(() => {
         this.beginAssessment();
       })
@@ -168,7 +176,9 @@ struct Index {
 
 在评估过程中，调用isActive接口查询当前评估状态，调用getConfiguration接口获取当前评估配置。示例代码如下：
 
-```ts
+<!-- @[assessment_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/QueryAssessment.ets) -->
+
+``` TypeScript
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -194,7 +204,9 @@ try {
 
 评估完成后，由开启评估的应用调用end接口结束评估，系统解除评估模式下对系统能力的限制，并触发onEnd回调。示例代码如下：
 
-```ts
+<!-- @[assessment_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/EndAssessment.ets) -->
+
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -207,7 +219,7 @@ const TAG: string = '[Sample_Assessment]';
 @Component
 struct Index {
   build() {
-    Button('交卷')
+    Button($r('app.string.exam_submit'))
       .onClick(() => {
         this.endAssessment();
       })
@@ -235,20 +247,27 @@ struct Index {
 
 ## 应用侧加固建议
 
-评估模式由系统统一管控部分系统能力，但应用窗口形态、应用窗口的截屏录屏、剪切板与输入法面板不在系统管控范围内，需由应用自行加固，防止评估内容外泄或借助外部输入作弊。建议在进入评估页面时统一启用，退出评估页面时恢复。
+评估模式由系统统一管控部分系统能力，但应用窗口形态、应用窗口的截屏录屏、剪贴板与输入法面板不在系统管控范围内，需由应用自行加固，防止评估内容外泄或借助外部输入作弊。建议在进入评估页面时统一启用，退出评估页面时恢复。
 
 **表3** 应用侧加固措施
 
 | 加固措施 | 接口 | 作用 |
 | -------- | -------- | -------- |
 | 窗口沉浸式 | setWindowLayoutFullScreen | 内容延伸至状态栏与导航栏区域，减少评估页面外的系统入口暴露 |
+| PC全屏 | maximize | 主窗口进入全屏，且鼠标悬停热区不显示窗口标题栏与dock栏，减少借系统入口切出评估页面的可能 |
 | 隐私模式 | setWindowPrivacyMode | 窗口无法被截屏与录屏，退至后台时在多任务视图中显示为隐私遮罩 |
-| 清空剪切板 | clearData | 清除残留的剪切板数据，避免借助剪切板传入答案 |
-| 简单键盘模式 | setSimpleKeyboardEnabled | 输入法面板仅保留基础按键，收起候选栏与扩展功能入口 |
+| 清空剪贴板 | clearData | 清除残留的剪贴板数据，避免借助剪贴板传入答案 |
+| 简单键盘模式 | setSimpleKeyboardEnabled | 输入法面板仅保留基础按键，收起候选栏与扩展功能入口，AI帮写功能随之不可用 |
+
+PC全屏通过maximize接口实现，需传入MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER（从API version 14开始支持），使主窗口进入全屏且鼠标悬停热区不显示窗口标题栏与dock栏；退出评估页面时调用recover接口，将窗口还原为进入全屏前的大小与位置。该接口仅在支持并处于[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用，在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上调用不生效也不报错，因此无需区分设备类型即可直接调用。
+
+简单键盘模式通过inputMethod.setSimpleKeyboardEnabled接口开启，开启后输入法面板仅保留基础按键，候选栏与扩展功能入口被收起，AI帮写功能随之不可用，避免评估期间借助AI帮写生成答案。该设置对原生文本框组件在下次点击获焦时生效，对自绘控件在下次调用attach绑定输入法时生效，因此建议在进入评估页面后、考生开始作答前完成设置，并在退出评估页面时传入false恢复。
 
 隐私模式需申请权限ohos.permission.PRIVACY_WINDOW，该权限为normal级别的系统授权（system_grant）权限，声明方式与[申请权限](#申请权限)一致。窗口类接口需先获取当前窗口，加固与恢复的关键实现如下：
 
-```ts
+<!-- @[assessment_hardening](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/AssessmentHardening.ets) -->
+
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -266,7 +285,7 @@ export class ExamHardeningUtil {
     await ExamHardeningUtil.clearPasteboard();
   }
 
-  // 退出评估页面时恢复窗口形态与输入法，并再次清空剪切板
+  // 退出评估页面时恢复窗口形态与输入法，并再次清空剪贴板
   public static async releaseHardening(context: common.UIAbilityContext): Promise<void> {
     await ExamHardeningUtil.setWindowHardening(context, false);
     ExamHardeningUtil.setSimpleKeyboard(false);
@@ -301,15 +320,34 @@ export class ExamHardeningUtil {
     }
   }
 
-  // setSimpleKeyboard调用inputMethod.setSimpleKeyboardEnabled，
-  // clearPasteboard调用pasteboard.getSystemPasteboard().clearData，两者同样单独捕获异常
-  // ...
+  // 输入法面板切换为简单键盘，仅保留基础按键，收起候选栏与扩展功能入口
+  private static setSimpleKeyboard(enable: boolean): void {
+    try {
+      inputMethod.setSimpleKeyboardEnabled(enable);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, '%{public}s',
+        `setSimpleKeyboardEnabled failed, code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  // 清空剪贴板，避免残留数据被粘贴进评估页面
+  private static async clearPasteboard(): Promise<void> {
+    try {
+      await pasteboard.getSystemPasteboard().clearData();
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, '%{public}s', `clearData failed, code: ${err.code}, message: ${err.message}`);
+    }
+  }
 }
 ```
 
 在评估页面的生命周期中调用加固与恢复，示例代码如下：
 
-```ts
+<!-- @[assessment_page_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/ExamPageLifecycle.ets) -->
+
+``` TypeScript
 aboutToAppear(): void {
   this.applyHardening();
 }
@@ -348,6 +386,7 @@ private applyHardening(): void {
 allowedApps用于指定评估期间允许运行的应用包名，白名单之外的应用在评估期间无法运行。设计白名单时建议遵循以下原则：
 
 - 将评估过程中必须使用的应用加入白名单，如答题应用依赖的输入法、无障碍辅助应用，以及听力评估所需的音频播放应用。
+- 必须将地震预警类应用加入白名单。评估期间白名单之外应用的启动与页面弹出会被系统拦截，若地震预警类应用未加入allowedApps，评估期间收到地震预警时预警页面无法弹出，存在安全风险。该类应用的包名因设备预置情况而异，请向设备厂商确认后填写。
 - 必须将发起评估的应用自身包名加入allowedApps。调用begin时该应用处于前台，若不在白名单内，开始评估前的环境校验不通过，评估无法开始。
 
 白名单的具体规格限制参见[约束与限制](#约束与限制)，配置方式参见[开始评估](#开始评估)。

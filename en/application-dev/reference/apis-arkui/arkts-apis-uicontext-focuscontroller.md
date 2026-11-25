@@ -1,18 +1,21 @@
 # Class (FocusController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-10-29T09:04:12.725Z pushedAt=2026-10-30T01:40:24.742Z nl=1 -->
 
-Provides capabilities to control focus, including features such as clearing, moving, and activating focus.
+Provides the capability to control focus, including clearing, moving, and activating focus. This is suitable for scenarios where you need to manage the focus state of a page or component and control focus navigation. It helps you optimize focus interaction experiences with input methods such as keyboards.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 12.
+>
+> - The APIs of this module can be used only in the stage model.
 >
 > - In the following API examples, you must first use [getFocusController()](arkts-apis-uicontext-uicontext.md#getfocuscontroller12) in **UIContext** to obtain a **FocusController** instance, and then call the APIs using the obtained instance.
 
@@ -34,8 +37,7 @@ In this example, **button2** receives initial focus by default. After **clearFoc
 @Entry
 @Component
 struct ClearFocusExample {
-  @State inputValue: string = '';
-  @State btColor: Color = Color.Blue;
+  @State buttonColor: Color = Color.Blue;
 
   build() {
     Column({ space: 20 }) {
@@ -51,13 +53,13 @@ struct ClearFocusExample {
           .height(70)
           .fontColor(Color.White)
           .focusOnTouch(true)
-          .backgroundColor(this.btColor)
+          .backgroundColor(this.buttonColor)
           .defaultFocus(true)
           .onFocus(() => {
-            this.btColor = Color.Red;
+            this.buttonColor = Color.Red;
           })
           .onBlur(() => {
-            this.btColor = Color.Blue;
+            this.buttonColor = Color.Blue;
           })
         Button('clearFocus')
           .width(200)
@@ -126,11 +128,11 @@ struct RequestExample {
           .onBlur(() => {
             this.btColor = Color.Blue;
           })
-          .id("testButton")
+          .id('testButton')
 
         Divider()
           .vertical(false)
-          .width("80%")
+          .width('80%')
           .backgroundColor(Color.Black)
           .height(10)
 
@@ -138,7 +140,7 @@ struct RequestExample {
           .width(200)
           .height(70)
           .onClick(() => {
-            this.getUIContext().getFocusController().requestFocus("testButton");
+            this.getUIContext().getFocusController().requestFocus('testButton');
           })
 
         Button('requestFocus fail')
@@ -146,7 +148,7 @@ struct RequestExample {
           .height(70)
           .onClick(() => {
             try {
-              this.getUIContext().getFocusController().requestFocus("eee");
+              this.getUIContext().getFocusController().requestFocus('eee');
             } catch (error) {
               console.error(`requestFocus failed code is ${error.code} message is ${error.message}`);
             }
@@ -173,8 +175,8 @@ Sets the [focus activation state](../../ui/arkts-common-events-focus-event.md) o
 
 | Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
-| isActive| boolean| Yes| Whether to enter or exit the focus activation state.<br>The value **true** means to enter the focus activation state, and **false** means to exit the focus activation state.|
-| autoInactive | boolean | No| Logic for exiting the focus activation state.<br>The value **true** means the focus activation state will be exited automatically when touch or mouse events are triggered, and **false** means the state is controlled solely by API calls.<br>Default value: **true**|
+| isActive| boolean| Yes | Whether to enter or exit the focus activation state.<br>The value **true** means to enter the focus activation state, and **false** means to exit the focus activation state. |
+| autoInactive | boolean | No | Logic for exiting the focus activation state.<br>The value **true** means the focus activation state will be exited automatically when touch or mouse events are triggered, and **false** means the state is controlled solely by API calls.<br>Default value: **true** |
 
 **Example**
 
@@ -239,7 +241,6 @@ The following example verifies that **isActive()** returns the focus activation 
 @Entry
 @Component
 struct ClearFocusExample {
-  @State inputValue: string = '';
   @State btColor: Color = Color.Blue;
 
   build() {
@@ -252,7 +253,7 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
           .onClick(() => {
-            console.info("button1 onClick");
+            console.info('button1 onClick');
             this.getUIContext().getFocusController().activate(true);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -264,7 +265,7 @@ struct ClearFocusExample {
           .backgroundColor(this.btColor)
           .defaultFocus(true)
           .onClick(() => {
-            console.info("button2 onClick");
+            console.info('button2 onClick');
             this.getUIContext().getFocusController().activate(false);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -310,7 +311,7 @@ struct CustomDialogExample {
       Text('This is a custom dialog box')
         .fontSize(30)
         .height(100)
-      Text('The dialog box should not automatically acquire focus')
+      Text('The dialog box should not automatically obtain focus')
         .fontSize(20)
         .height(100)
       Button('Close Dialog Box')
@@ -370,7 +371,7 @@ Sets the mode for processing key events.
 
 ```ts
 
-// This example demonstrates how to set the focus behavior after the page is loaded.
+// This example demonstrates how to set the key event processing priority after the page is loaded.
 @Entry
 @Component
 struct Index {
@@ -382,11 +383,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.info("Button1");
+          console.info('Button1');
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.info("Button2");
+          console.info('Button2');
           return true;
         })
       }

@@ -17,7 +17,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
 
 ## 概述
 
-- 状态管理框架已提供[@ObservedV2/@Trace](./arkts-new-observedV2-and-trace.md)用于观察类属性变化，makeObserved接口提供主要应用于@ObservedV2/@Trace无法涵盖的场景：
+- 状态管理框架已提供[@ObservedV2/@Trace](./arkts-new-observedV2-and-trace.md)用于观察类属性变化，makeObserved接口主要应用于@ObservedV2/@Trace无法涵盖的场景：
 
   - class的定义在三方包中：开发者无法手动对class中需要观察的属性加上@Trace标签，可以使用makeObserved使得当前对象可以被观察。
 
@@ -634,7 +634,7 @@ struct Page7 {
 ![makeobserved-sync-3](figures/makeobserved-sync-3.gif)
 
 ### makeObserved和V2装饰器配合使用
-makeObserved可以和V2的装饰器一起使用。对于[@Monitor](./arkts-new-monitor.md)和[@Computed](./arkts-new-computed.md)，因为makeObserved传入@Observed或ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
+makeObserved可以和V2的装饰器一起使用。对于[@Monitor](./arkts-new-monitor.md)和[@Computed](./arkts-new-computed.md)，因为makeObserved传入@Observed或@ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
 
 例子如下：
 <!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) -->  
@@ -697,7 +697,7 @@ struct Page8 {
         .fontSize(30)
         .margin(5)
         .onClick(() => {
-          // 返回类实例本身，并赋值给message，触发@Computed和@Monitor
+          // 返回可观察对象，并赋值给message，触发@Computed和@Monitor
           this.message = UIUtils.makeObserved(new Info(200));
         })
       Child({ message: this.message })

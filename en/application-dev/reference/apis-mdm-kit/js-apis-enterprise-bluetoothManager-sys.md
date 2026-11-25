@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T05:08:23.795Z pushedAt=2026-11-04T08:04:44.748Z nl=1 -->
 
 This module provides Bluetooth management capabilities, including querying whether Bluetooth is disabled and disabling Bluetooth.
 

@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=51871fad202ca89cea4824e5e1f6eae94c62de6c translatedAt=2026-08-11T01:46:17.587Z pushedAt=2026-08-11T08:28:50.459Z -->
+<!-- md-trans-meta sourceCommit=99170cd098d394aca06fa01cb6bc53938313bd82 translatedAt=2026-11-05T06:16:33.955Z pushedAt=2026-08-11T08:28:50.459Z nl=1 -->
 
 Image RAW data is the raw data directly obtained from the image sensor, which fully retains all sensor information without any compression loss. By using RAW data, you can obtain the highest quality image information and customize image processing algorithms based on specific requirements, enabling more flexible image processing and optimization.
 
@@ -171,18 +171,10 @@ For details about the APIs for obtaining image RAW data, see [createImageRawData
 
    After confirming that the asynchronous method of `imageSource` has completed execution and the variable is no longer in use, you can manually call the following method to release it as needed.
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->  
 
    ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
-   
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {

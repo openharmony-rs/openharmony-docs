@@ -6,7 +6,7 @@
 
 ## 准备工作
 
-1. 注册gitcode帐号。
+1. 注册gitcode账号。
 
 2. 注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)。
 
@@ -91,9 +91,9 @@
   ```
 
 
-## 执行prebuilts
+## 执行prebuilts_download.sh脚本
 
-  在源码根目录下执行prebuilts脚本，安装编译器及二进制工具。
+  在源码根目录下执行prebuilts_download.sh脚本，安装编译器及二进制工具。
 
 ```shell
 bash build/prebuilts_download.sh

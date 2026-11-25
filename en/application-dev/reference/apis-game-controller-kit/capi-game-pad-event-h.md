@@ -1,12 +1,11 @@
 # game_pad_event.h
-
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
-<!-- md-trans-meta sourceCommit=77c72b42e08d6a4d9b4548171e0024968c7d2a99 translatedAt=2026-07-30T08:27:46.078Z pushedAt=2026-07-30T08:57:31.549Z -->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=233eb431f8ea7c656c5b56931386bbeb010828c6 translatedAt=2026-11-13T03:53:35.725Z pushedAt=2026-11-13T09:16:56.823Z nl=1 -->
 
 ## Overview
 
@@ -110,6 +109,7 @@ Defines action types of gamepad button events.
 | DOWN = 0 | The button is pressed.<br>**Since:** 21|
 | UP = 1 | The button is released.<br>**Since:** 21|
 
+
 ## Function Description
 
 ### GamePad_ButtonInputMonitorCallback()
@@ -130,7 +130,7 @@ Defines the callback function used by the button event listener registration API
 
 | Name| Description|
 | -- | -- |
-| (const struct GamePad_ButtonEvent\* buttonEvent | Output parameter. Gamepad button event [GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md).|
+| const struct GamePad_ButtonEvent* buttonEvent | Input parameter. Pointer to the gamepad key event [GamePad_ButtonEvent](capi-gamecontroller-gamepad-buttonevent.md). |
 
 ### GamePad_AxisInputMonitorCallback()
 
@@ -150,7 +150,7 @@ Defines the callback function used by the axis event listener registration API. 
 
 | Name| Description|
 | -- | -- |
-| (const struct GamePad_AxisEvent\* axisEvent | Output parameter. Gamepad axis event [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md).|
+| const struct GamePad_AxisEvent* axisEvent | Input parameter. Pointer to the gamepad axis event [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md). |
 
 ### OH_GamePad_ButtonEvent_GetDeviceId()
 
@@ -495,7 +495,7 @@ Obtains the X-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -522,7 +522,7 @@ Obtains the Y-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -549,7 +549,7 @@ Obtains the Z-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -576,7 +576,7 @@ Obtains the RZ-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -603,7 +603,7 @@ Obtains the HatX-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -630,7 +630,7 @@ Obtains the HatY-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -657,7 +657,7 @@ Obtains the Brake-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -684,7 +684,7 @@ Obtains the Gas-axis value from an axis event.
 | Name| Description|
 | -- | -- |
 | [const struct GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md)* axisEvent | Pointer to the [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) instance. The pointer cannot be null.|
-| double* axisValue | Output parameter. Axis value. The value range is [-1.0, 1.0].|
+| double* axisValue | Output parameter. Pointer to the axis value. Value range: [-1.0, 1.0]. |
 
 **Return value**
 
@@ -718,3 +718,5 @@ Obtains the action time from an axis event.
 | Type| Description|
 | -- | -- |
 | [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the **axisEvent** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+
+

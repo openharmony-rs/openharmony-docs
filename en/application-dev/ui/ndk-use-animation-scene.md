@@ -1,12 +1,11 @@
 # Animation Development
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=27d0fa5fed547f5e93e0b56b8ad3e27d447b6bbd translatedAt=2026-08-05T10:08:21.570Z pushedAt=2026-08-06T06:17:03.625Z -->
+<!-- md-trans-meta sourceCommit=151d8ffe7a2a76b5ef03532bc58b4ee3ccbda9cb translatedAt=2026-11-05T11:48:49.537Z pushedAt=2026-11-09T10:02:18.983Z nl=1 -->
 
 All examples in this document only provide the calling methods of core APIs. For the complete sample project, refer to <!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->.
 
@@ -23,7 +22,7 @@ This example mainly demonstrates how to add a property animation through the glo
 1. Create a [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) in the **.ets** file and pass the **NodeContent** as a parameter to the native method.
 
    <!-- @[get_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/ets/pages/UseFrameAnimation.ets) -->
-
+   
    ``` TypeScript
    // Initialize the NodeContent object.
    private rootSlot = new NodeContent();
@@ -43,7 +42,7 @@ This example mainly demonstrates how to add a property animation through the glo
 2. Parse the **NodeContent** and convert it to an [ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md) object in C.
 
    <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/NativeEntry.cpp) -->
-
+   
    ``` C++
    // Get NodeContent.
    ArkUI_NodeContentHandle contentHandle;
@@ -53,7 +52,7 @@ This example mainly demonstrates how to add a property animation through the glo
 3. Obtain the [ArkUI_NativeAnimateAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) object.
 
    <!-- @[get_Api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
-
+   
    ``` C
    // Obtain the ArkUI_NativeAnimateAPI_1 API.
    ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
@@ -63,7 +62,7 @@ This example mainly demonstrates how to add a property animation through the glo
 4. Set the [ArkUI_AnimateOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-animateoption.md) parameters, and configure the corresponding parameters using the provided C methods.
 
    <!-- @[set_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
-
+   
    ``` C
    // Set the animation parameters.
    ArkUI_AnimateOption *option = OH_ArkUI_AnimateOption_Create();
@@ -85,8 +84,8 @@ This example mainly demonstrates how to add a property animation through the glo
 
 5. Set the callback parameters.
 
-   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
-
+   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
+   
    ``` C
    // Set the completion callback.
    ArkUI_AnimateCompleteCallback *completeCallback = new ArkUI_AnimateCompleteCallback;
@@ -103,12 +102,12 @@ This example mainly demonstrates how to add a property animation through the glo
            ArkUI_CurveHandle curve = data->curve;
            if (option) {
                OH_ArkUI_AnimateOption_Dispose(option);
-               OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                    "Init", "CXX OH_ArkUI_AnimateOption_Dispose  success!");
            }
            if (curve) {
                OH_ArkUI_Curve_DisposeCurve(curve);
-               OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+               OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                    "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
            }
            delete data; // Release the struct.
@@ -144,7 +143,7 @@ This example primarily demonstrates how to set transition parameters using the *
 1. Create an interactive UI that includes a **Button** component. Tapping it controls the addition and removal of transition nodes. For details on obtaining and using nodes of the [ArkUI_NodeContentHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodecontent8h.md) type, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
    <!-- @[main_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
-
+   
    ``` C
    constexpr int32_t BUTTON_CLICK_ID = 1;
    constexpr int32_t STACK_CLICK_ID = 2;
@@ -212,7 +211,7 @@ This example primarily demonstrates how to set transition parameters using the *
 2. Create a node with the **NODE_ROTATE_TRANSITION** and **NODE_SCALE_TRANSITION** attributes from [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) set. A transition animation is played when the target node is attached to or detached from the node tree.
 
    <!-- @[create_child_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
-
+   
    ``` C
    ArkUI_NodeHandle CreateChildNode()
    {
@@ -255,7 +254,7 @@ This example primarily demonstrates how to set transition parameters using the *
 3. Add the logic for attaching and detaching transition nodes in the **Button**'s listener callback to control the entry and exit of the transition nodes.
 
    <!-- @[button_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
-
+   
    ``` C
    void OnButtonShowClicked(ArkUI_NodeEvent *event)
    {
@@ -283,6 +282,7 @@ This example primarily demonstrates how to set transition parameters using the *
 
    ![en-us_image_0000001903284256](figures/Appearance-Disappearance-Transitions.gif)
 
+
 ## Shared Element Transition
 
 This example demonstrates how to implement a shared element transition using the **NODE_GEOMETRY_TRANSITION** attribute in [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype). For the complete workflow of mounting a UI developed with NDK APIs to an ArkTS main page, refer to [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
@@ -290,7 +290,7 @@ This example demonstrates how to implement a shared element transition using the
 1. Create an image node with the **NODE_GEOMETRY_TRANSITION** attribute in [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) set. Also set the width, height, and position of this node to distinguish it from another image node. Then mount the current image node to a parent node, which is a stack in this example.
 
    <!-- @[imageTransition_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
-
+   
    ``` C
    void imageTransitionViewMethod()
    {
@@ -345,7 +345,7 @@ This example demonstrates how to implement a shared element transition using the
 2. Create another image node with the **NODE_GEOMETRY_TRANSITION** attribute in [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) set, using the same attribute value as the first image node. Set different width, height, and position for this node.
 
    <!-- @[create_Image_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
-
+   
    ``` C
    ArkUI_NodeHandle CreateImageNode()
    {
@@ -388,7 +388,7 @@ This example demonstrates how to implement a shared element transition using the
 3. In the **OnImageTransitionClicked** listener callback of the stack, add the logic for adding and removing the two nodes to control their attachment and detachment, ensuring that only one node exists at a time. When one node is mounted to the parent node, reset the **NODE_GEOMETRY_TRANSITION** attribute in [ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype) and then set it back to its original value.
 
    <!-- @[imageTransition_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
-
+   
    ``` C
    void OnImageTransitionClicked(ArkUI_NodeEvent *event)
    {
@@ -443,8 +443,8 @@ This example demonstrates how to implement a shared element transition using the
 
 This example mainly demonstrates how to set keyframe animation through [keyframeAnimateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#keyframeanimateto). For the complete workflow of mounting a UI developed with NDK APIs to the ArkTS main page, refer to [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
-   <!-- @[get_keyframeAnimateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
-
+   <!-- @[get_keyframeAnimateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
+   
    ``` C
    // ArkUIColumnNode is a node type encapsulated within the project.
    auto column = std::make_shared<ArkUIColumnNode>();
@@ -518,12 +518,12 @@ This example mainly demonstrates how to set keyframe animation through [keyframe
                    ArkUI_CurveHandle curve = data->curve;
                    if (option) {
                        OH_ArkUI_KeyframeAnimateOption_Dispose(option);
-                       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                            "Init", "CXX OH_ArkUI_KeyframeAnimateOption_Dispose  success!");
                    }
                    if (curve) {
                        OH_ArkUI_Curve_DisposeCurve(curve);
-                       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
+                       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN,
                            "Init", "CXX OH_ArkUI_Curve_DisposeCurve  success!");
                    }
                    delete data; // Release the struct.
@@ -560,8 +560,8 @@ This example mainly demonstrates how to set keyframe animation through [keyframe
 
 This example mainly demonstrates how to set up frame animation through [createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator).
 
-   <!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
-
+   <!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
+   
    ``` C
    std::shared_ptr<ArkUIBaseNode> CreateAnimator()
    {
@@ -620,7 +620,7 @@ This example mainly demonstrates how to set up frame animation through [createAn
                {
                    OH_ArkUI_AnimatorOnFrameEvent_GetUserData(event); // Get the user-defined object from the animation event object.
                    auto value = OH_ArkUI_AnimatorOnFrameEvent_GetValue(event); // Get the current progress in the animation event object.
-                   OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init",
+                   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Init",
                        "CXX OH_ArkUI_AnimatorOption_RegisterOnFrameCallback  %{public}f", value);
                    g_animator_button->SetWidth(value);
                });
@@ -658,9 +658,9 @@ This example mainly demonstrates how to set up frame animation through [createAn
        createButton->RegisterNodeEventReceiver(onTouch);
        createButton->SetButtonLabel("create");
        // Create a container to hold the Button keys
-       auto buttoColumn = std::make_shared<ArkUIColumnNode>();
-       buttoColumn->SetPadding(NUM_30, false); // Set the layout format and adjust the component inner spacing: NUM_30 = 30
-       buttoColumn->SetWidth(NUM_300); // NUM_300 = 300
+       auto buttonColumn = std::make_shared<ArkUIColumnNode>();
+       buttonColumn->SetPadding(NUM_30, false); // Set the layout format and adjust the component padding. NUM_30 = 30.
+       buttonColumn->SetWidth(NUM_300); // NUM_300 = 300
        // Create a container to hold the playButton key
        auto playButtonColumn = std::make_shared<ArkUIColumnNode>();
        playButtonColumn->SetPadding(NUM_10, false); // Set the layout format and adjust the component inner spacing: NUM_10 = 10
@@ -759,17 +759,17 @@ This example mainly demonstrates how to set up frame animation through [createAn
        column->AddChild(g_animator_text);
        column->AddChild(textNode);
        column->AddChild(button);
-       buttoColumn->AddChild(createButton);
+       buttonColumn->AddChild(createButton);
        playButtonColumn->AddChild(playButton);
-       buttoColumn->AddChild(playButtonColumn);
-       buttoColumn->AddChild(finishButton);
+       buttonColumn->AddChild(playButtonColumn);
+       buttonColumn->AddChild(finishButton);
        resetButtonColumn->AddChild(resetButton);
-       buttoColumn->AddChild(resetButtonColumn);
-       buttoColumn->AddChild(pauseButton);
+       buttonColumn->AddChild(resetButtonColumn);
+       buttonColumn->AddChild(pauseButton);
        cancelButtonColumn->AddChild(cancelButton);
-       buttoColumn->AddChild(cancelButtonColumn);
-       buttoColumn->AddChild(reverseButton);
-       column->AddChild(buttoColumn);
+       buttonColumn->AddChild(cancelButtonColumn);
+       buttonColumn->AddChild(reverseButton);
+       column->AddChild(buttonColumn);
        return column;
    }
    ```

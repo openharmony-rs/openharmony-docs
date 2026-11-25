@@ -5,10 +5,11 @@
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=0230fb63b7eea57f56d993ad46c52eaf723d74c3 translatedAt=2026-11-13T04:31:16.656Z pushedAt=2026-11-13T11:06:39.440Z nl=1 -->
 
 The **sim** module provides basic SIM card management functions. With the APIs provided by this module, you can obtain the ISO country code, home PLMN number, service provider name, status, and type of a SIM card in a specified card slot, as well as whether a card is inserted, whether a card is activated, SIM card account information, carrier permissions, **OpKey**/**OpName**, default voice service card information, number of card slots, and SIM card label. This module is applicable to scenarios where basic SIM card information and status need to be queried and managed.
 
-> **NOTE**
+> **NOTE** 
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
@@ -23,7 +24,7 @@ import { sim } from '@kit.TelephonyKit';
 
 isSimActive\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
-Checks whether the SIM card in the specified slot is activated. This API uses an asynchronous callback to return the result.
+Checks whether the SIM card in a specified slot is activated. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slot ID. The correspondence between the slot ID and the eSIM number must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -31,7 +32,7 @@ Checks whether the SIM card in the specified slot is activated. This API uses an
 
 | Name  | Type                       | Mandatory| Description                                  |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| slotId   | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                      | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result, which indicates whether the SIM card in the specified slot is activated.<br>- **true**: activated.<br>**false**: not activated.                              |
 
 **Example**
@@ -54,7 +55,7 @@ sim.isSimActive(0, (err: BusinessError, data: boolean) => {
 
 isSimActive\(slotId: number\): Promise\<boolean\>
 
-Checks whether the SIM card in the specified slot is activated. This API uses a promise to return the result.
+Checks whether the SIM card in a specified slot is activated. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slot ID. The correspondence between the slot ID and the eSIM number must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -62,7 +63,7 @@ Checks whether the SIM card in the specified slot is activated. This API uses a 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -87,7 +88,7 @@ sim.isSimActive(0).then((data: boolean) => {
 
 isSimActiveSync\(slotId: number\): boolean
 
-Checks whether the SIM card in the specified slot is activated.
+Checks whether the SIM card in a specified slot is activated. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slot ID. The correspondence between the slot ID and the eSIM number must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20).
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -95,7 +96,7 @@ Checks whether the SIM card in the specified slot is activated.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -117,7 +118,7 @@ console.info(`the sim is active:` + isSimActive);
 
 getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
 
-Obtains the default slot ID of the SIM card that provides voice services. This API uses an asynchronous callback to return the result.
+Obtains the slot ID of the default voice service. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slot ID. The correspondence between the slot ID and the eSIM number must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -146,7 +147,7 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 
 getDefaultVoiceSlotId\(\): Promise\<number\>
 
-Obtains the default slot ID of the SIM card that provides voice services. This API uses a promise to return the result.
+Obtains the slot ID of the default voice service. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slot ID. The correspondence between the slot ID and the eSIM number must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -181,7 +182,7 @@ Checks whether the app (caller) has been granted the operator permission. This A
 
 | Name  | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId   | number                   | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                   | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result, which indicates whether the application (caller) has been granted the operator permission.<br>- **true**: The application (caller) has been granted the operator permission.<br>- **false**: The application (caller) has not been granted the operator permission (no SIM card inserted or the SIM card is invalid).  |
 
 **Error codes**
@@ -223,7 +224,7 @@ Checks whether the app (caller) has been granted the operator permission. This A
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -260,7 +261,7 @@ sim.hasOperatorPrivileges(0).then((data: boolean) => {
 
 getISOCountryCodeForSim\(slotId: number, callback: AsyncCallback\<string\>\): void
 
-Obtains the ISO country code of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the ISO country code of the SIM card in a specified slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slot ID. The correspondence between the slot ID and the eSIM number must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -268,7 +269,7 @@ Obtains the ISO country code of the SIM card in the specified slot. This API use
 
 | Name  | Type                   | Mandatory| Description                                    |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
-| slotId   | number                  | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2  |
+| slotId   | number                  | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2.   |
 | callback | AsyncCallback\<string\> | Yes  | Callback used to return the result, which is an ISO country code, for example, **CN** (China).|
 
 **Error codes**
@@ -304,7 +305,7 @@ sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
 
 getISOCountryCodeForSim\(slotId: number\): Promise\<string\>
 
-Obtains the ISO country code of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the ISO country code of the SIM card in a specified slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slot ID. The correspondence between the slot ID and the eSIM number must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -312,7 +313,7 @@ Obtains the ISO country code of the SIM card in the specified slot. This API use
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -350,7 +351,7 @@ sim.getISOCountryCodeForSim(0).then((data: string) => {
 
 getISOCountryCodeForSimSync\(slotId: number\): string
 
-Obtains the ISO country code of the SIM card in the specified slot.
+Obtains the ISO country code of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -358,7 +359,7 @@ Obtains the ISO country code of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -381,7 +382,7 @@ console.info(`the country ISO is:` + countryCode);
 
 getSimOperatorNumeric\(slotId: number, callback: AsyncCallback\<string\>\): void
 
-Obtains the home public land mobile network (PLMN) ID of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the PLMN (Public Land Mobile Network) number of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -389,7 +390,7 @@ Obtains the home public land mobile network (PLMN) ID of the SIM card in the spe
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| slotId   | number                  | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                  | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback\<string\> | Yes  | Callback used to return the result, which is the home PLMN ID of the SIM card in the specified slot.                         |
 
 **Error codes**
@@ -425,7 +426,7 @@ sim.getSimOperatorNumeric(0, (err: BusinessError, data: string) => {
 
 getSimOperatorNumeric\(slotId: number\): Promise\<string\>
 
-Obtains the home PLMN ID of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the PLMN (Public Land Mobile Network) number of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -433,7 +434,7 @@ Obtains the home PLMN ID of the SIM card in the specified slot. This API uses a 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -471,7 +472,7 @@ sim.getSimOperatorNumeric(0).then((data: string) => {
 
 getSimOperatorNumericSync\(slotId: number\): string
 
-Obtains the home PLMN ID of the SIM card in the specified slot.
+Obtains the PLMN (Public Land Mobile Network) number of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -479,7 +480,7 @@ Obtains the home PLMN ID of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -502,7 +503,7 @@ console.info(`the sim operator numeric is:` + numeric);
 
 getSimSpn\(slotId: number, callback: AsyncCallback\<string\>\): void
 
-Obtains the service provider name (SPN) of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the service provider name (SPN) of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -510,7 +511,7 @@ Obtains the service provider name (SPN) of the SIM card in the specified slot. T
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| slotId   | number                  | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                  | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback\<string\> | Yes  | Callback used to return the result, which is the SPN of the SIM card in the specified slot.                            |
 
 **Error codes**
@@ -546,7 +547,7 @@ sim.getSimSpn(0, (err: BusinessError, data: string) => {
 
 getSimSpn\(slotId: number\): Promise\<string\>
 
-Obtains the SPN of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the service provider name (SPN) of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -554,7 +555,7 @@ Obtains the SPN of the SIM card in the specified slot. This API uses a promise t
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -592,7 +593,7 @@ sim.getSimSpn(0).then((data: string) => {
 
 getSimSpnSync\(slotId: number\): string
 
-Obtains the SPN of the SIM card in the specified slot.
+Obtains the service provider name (SPN) of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20).
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -600,7 +601,7 @@ Obtains the SPN of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -623,7 +624,7 @@ console.info(`the sim card spn is:` + spn);
 
 getSimState\(slotId: number, callback: AsyncCallback\<SimState\>\): void
 
-Obtains the state of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the state of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -631,7 +632,7 @@ Obtains the state of the SIM card in the specified slot. This API uses an asynch
 
 | Name  | Type                                  | Mandatory| Description                                  |
 | -------- | -------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                 | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                                 | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback\<[SimState](#simstate)\> | Yes  | Callback used to return the result, which is the state of the SIM card in the specified slot. For details, see [SimState](#simstate). |
 
 **Error codes**
@@ -666,7 +667,7 @@ sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
 
 getSimState\(slotId: number\): Promise\<SimState\>
 
-Obtains the state of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the state of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -674,7 +675,7 @@ Obtains the state of the SIM card in the specified slot. This API uses a promise
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -711,7 +712,7 @@ sim.getSimState(0).then((data: sim.SimState) => {
 
 getSimStateSync\(slotId: number\): SimState
 
-Obtains the state of the SIM card in the specified slot.
+Obtains the state of the SIM card in the specified SIM slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -719,7 +720,7 @@ Obtains the state of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -741,7 +742,7 @@ console.info(`The sim state is:` + simState);
 
 getCardType\(slotId: number, callback: AsyncCallback\<CardType\>\): void
 
-Obtains the type of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the SIM card type of the specified SIM slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -749,7 +750,7 @@ Obtains the type of the SIM card in the specified slot. This API uses an asynchr
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| slotId   | number                  | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                  | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback\<[CardType](#cardtype7)\> | Yes  | Callback used to return the result.                            |
 
 **Error codes**
@@ -785,7 +786,7 @@ sim.getCardType(0, (err: BusinessError, data: sim.CardType) => {
 
 getCardType\(slotId: number\): Promise\<CardType\>
 
-Obtains the type of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the SIM card type of the specified SIM slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -793,7 +794,7 @@ Obtains the type of the SIM card in the specified slot. This API uses a promise 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -831,7 +832,7 @@ sim.getCardType(0).then((data: sim.CardType) => {
 
 getCardTypeSync\(slotId: number\): CardType
 
-Obtains the type of the SIM card in the specified slot. 
+Obtains the SIM card type of the specified SIM slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20).
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -839,7 +840,7 @@ Obtains the type of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -862,7 +863,7 @@ console.info(`the card type is:` + cardType);
 
 hasSimCard\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
-Checks whether the SIM card in the specified slot is installed. This API uses an asynchronous callback to return the result.
+Checks whether a SIM card is inserted in the specified SIM slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -870,7 +871,7 @@ Checks whether the SIM card in the specified slot is installed. This API uses an
 
 | Name  | Type                       | Mandatory| Description                                  |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| slotId   | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                      | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result.<br>- **true**: installed.<br>- **false**: not installed.                          |
 
 **Error codes**
@@ -905,7 +906,7 @@ sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
 
 hasSimCard\(slotId: number\): Promise\<boolean\>
 
-Checks whether the SIM card in the specified slot is installed. This API uses a promise to return the result.
+Checks whether a SIM card is inserted in the specified SIM slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -913,7 +914,7 @@ Checks whether the SIM card in the specified slot is installed. This API uses a 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -950,7 +951,7 @@ sim.hasSimCard(0).then((data: boolean) => {
 
 hasSimCardSync\(slotId: number\): boolean
 
-Checks whether the SIM card in the specified slot is installed.
+Checks whether a SIM card is inserted in the specified SIM slot. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20).
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -958,7 +959,7 @@ Checks whether the SIM card in the specified slot is installed.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -979,7 +980,7 @@ console.info(`has sim card: ` + hasSimCard);
 
 getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): void
 
-Obtains SIM card account information. This API uses an asynchronous callback to return the result.
+Obtains the SIM account information. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 
@@ -993,7 +994,7 @@ Obtains SIM card account information. This API uses an asynchronous callback to 
 
 | Name  | Type                                               | Mandatory| Description                                  |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                              | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                                              | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback&lt;[IccAccountInfo](#iccaccountinfo10)&gt; | Yes  | Callback used to return the result, which is the account information of the SIM card in the specified slot.                            |
 
 **Error codes**
@@ -1002,6 +1003,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.  <br/> Applicable versions: 10 to 22           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
@@ -1030,7 +1032,7 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 
 getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
-Obtains SIM card account information. This API uses a promise to return the result.
+Obtains the SIM account information. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 
@@ -1044,7 +1046,7 @@ Obtains SIM card account information. This API uses a promise to return the resu
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes  | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -1058,6 +1060,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.  <br/> Applicable versions: 10 to 22           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
@@ -1083,7 +1086,7 @@ sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
 
 getActiveSimAccountInfoList\(callback: AsyncCallback\<Array\<IccAccountInfo\>\>\): void
 
-Obtains the list of activated SIM card accounts. This API uses an asynchronous callback to return the result.
+Obtains the list of active SIM account information. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20). This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 
@@ -1131,7 +1134,7 @@ sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountI
 
 getMaxSimCount\(\): number
 
-Obtains the number of card slots.
+Obtains the number of SIM slots. For devices that support eSIM, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20).
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1154,7 +1157,7 @@ console.info('Result: '+ sim.getMaxSimCount());
 
 getActiveSimAccountInfoList\(\): Promise\<Array\<IccAccountInfo\>\>
 
-Obtains the list of activated SIM card accounts. This API uses a promise to return the result.
+Obtains the list of activated SIM account information. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_TELEPHONY_STATE
 
@@ -1199,7 +1202,7 @@ sim.getActiveSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
 
 getOpKey\(slotId: number, callback: AsyncCallback\<string\>): void
 
-Obtains the OpKey of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the OpKey of the SIM card in the specified SIM slot. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1207,7 +1210,7 @@ Obtains the OpKey of the SIM card in the specified slot. This API uses an asynch
 
 | Name  | Type                  | Mandatory| Description                                  |
 | -------- | ---------------------- | ---- | -------------------------------------- |
-| slotId   | number                 | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                 | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback<string\> | Yes  | Callback used to return the result, OpKey of the SIM card in the specified slot. |
 
 **Error codes**
@@ -1247,7 +1250,7 @@ try {
 
 getOpKey\(slotId: number\): Promise\<string\>
 
-Obtains the OpKey of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the OpKey of the SIM card in the specified SIM slot. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1255,7 +1258,7 @@ Obtains the OpKey of the SIM card in the specified slot. This API uses a promise
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -1293,7 +1296,7 @@ sim.getOpKey(0).then((data: string) => {
 
 getOpKeySync\(slotId: number\): string
 
-Obtains the OpKey of the SIM card in the specified slot.
+Obtains the OpKey of the SIM card in the specified SIM slot. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1301,7 +1304,7 @@ Obtains the OpKey of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -1323,7 +1326,7 @@ console.info(`getOpKey success, data->${JSON.stringify(data)}`);
 
 getOpName\(slotId: number, callback: AsyncCallback\<string\>\): void
 
-Obtains the OpName (carrier name) of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the OpName (operator name) of the SIM card in the specified SIM slot. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1331,7 +1334,7 @@ Obtains the OpName (carrier name) of the SIM card in the specified slot. This AP
 
 | Name  | Type                  | Mandatory| Description                                  |
 | -------- | ---------------------- | ---- | -------------------------------------- |
-| slotId   | number                 | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId   | number                 | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback<string\> | Yes  | Callback used to return the result, OpName of the SIM card in the specified slot.                              |
 
 **Error codes**
@@ -1371,7 +1374,7 @@ try {
 
 getOpName\(slotId: number\): Promise\<string\>
 
-Obtains the OpName of the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the OpName of the SIM card in the specified SIM slot. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1379,7 +1382,7 @@ Obtains the OpName of the SIM card in the specified slot. This API uses a promis
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -1417,7 +1420,7 @@ sim.getOpName(0).then((data: string) => {
 
 getOpNameSync\(slotId: number\): string
 
-Obtains the OpName of the SIM card in the specified slot.
+Obtains the OpName of the SIM card in the specified SIM slot. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1425,7 +1428,7 @@ Obtains the OpName of the SIM card in the specified slot.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number | Yes | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -1447,7 +1450,7 @@ console.info(`getOpName success, data->${JSON.stringify(data)}`);
 
 getDefaultVoiceSimId\(callback: AsyncCallback\<number\>\): void
 
-Obtains the default slot ID of the SIM card that provides voice services. This API uses an asynchronous callback to return the result.
+Obtains the SIM card ID of the default voice service. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1490,7 +1493,7 @@ sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
 
 getDefaultVoiceSimId\(\): Promise\<number\>
 
-Obtains the default slot ID of the SIM card that provides voice services. This API uses a promise to return the result.
+Obtains the SIM card ID of the default voice service. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1531,7 +1534,7 @@ promise.then((data: number) => {
 
 getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 
-Obtains the SIM card label. This API uses an asynchronous callback to return the result.
+Obtains the label information of the SIM card. For devices that support eSIM, the activation status of the eSIM corresponding to the specified slotID can be obtained. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1539,7 +1542,7 @@ Obtains the SIM card label. This API uses an asynchronous callback to return the
 
 | Name  | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number                      | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 | callback | AsyncCallback\<[SimLabel](#simlabel20)\> | Yes  | Callback used to return the result, which is the SIM card label.|
 
 **Error codes**
@@ -1573,7 +1576,7 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 
 getSimLabel(slotId: number): Promise\<SimLabel\>
 
-Obtains the SIM card label. This API uses a promise to return the result.
+Obtains the label information of the SIM card. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1582,7 +1585,7 @@ Obtains the SIM card label. This API uses a promise to return the result.
 
 | Name  | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number                      | Yes   | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -1619,7 +1622,7 @@ sim.getSimLabel(0).then((data: sim.SimLabel) => {
 
 getSimLabelSync(slotId: number): SimLabel
 
-Obtains the SIM card label based on the specified SIM card slot ID.
+Obtains the label of the corresponding SIM card by passing in the ID of the SIM card slot. For supported eSIM devices, this API can obtain the activation status of the eSIM corresponding to the specified slotID. The correspondence between slotID and eSIM numbers must be dynamically queried by calling the [sim.getSimLabel](js-apis-sim.md#simgetsimlabel20) API.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1627,7 +1630,7 @@ Obtains the SIM card label based on the specified SIM card slot ID.
 
 | Name  | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| slotId | number                      | Yes  | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID.<br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2. |
 
 **Return value**
 
@@ -1711,7 +1714,7 @@ Defines the ICC account information.
 | Name      | Type   | Read-Only|Optional| Description            |
 | ---------- | ------- | ---- |--- |---------------- |
 | simId      | number  |  No|No| SIM card ID. The return value is bound to the SIM card and increases from 1.         |
-| slotIndex  | number  |  No |No| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2          |
+| slotIndex  | number  |  No  | No | SIM slot ID. For devices that support eSIM, this value indicates the logical SIM slot ID. <br/>- **0**: SIM slot 1.<br/>- **1**: SIM slot 2.           |
 | isEsim     | boolean |  No| No| Whether the SIM card is an eSIM.<br>- **true**: The SIM card is an eSIM.<br>- **false**: The SIM card is not an eSIM.|
 | isActive   | boolean |  No| No| Whether the card is activated.<br>- **true**: activated.<br>**false**: not activated. |
 | iccId      | string  |  No| No| ICCID number.       |

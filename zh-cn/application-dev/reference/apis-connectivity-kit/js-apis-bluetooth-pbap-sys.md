@@ -143,7 +143,7 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -244,7 +244,7 @@ getShareType(deviceId: string): Promise&lt;ShareType&gt;
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[ShareType](#sharetype)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;[ShareType](#sharetype)&gt; | Promise对象，返回电话簿信息的共享类型。 |
 
 **错误码**：
 
@@ -348,7 +348,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -449,7 +449,7 @@ getPhoneBookAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorizatio
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise对象，返回电话簿信息的访问权限。 |
 
 **错误码**：
 
@@ -522,7 +522,7 @@ connect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
@@ -536,12 +536,12 @@ connect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|801 | Capability not supported. |
+|801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 |2900003 | Bluetooth disabled. |
 |2900004 | Profile not supported. |
 |2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -570,7 +570,7 @@ disconnect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
@@ -584,12 +584,12 @@ disconnect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|801 | Capability not supported. |
+|801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 |2900003 | Bluetooth disabled. |
 |2900004 | Profile not supported. |
 |2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -5,7 +5,8 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfc4b4cbbfd636b15b323266c14e73471edab887 translatedAt=2026-10-10T06:07:07.745Z pushedAt=2026-10-12T07:41:23.259Z -->
+<!-- md-trans-meta sourceCommit=7e8235b0dc708a3dc818264b2e0246d5ba0758b6 translatedAt=2026-11-05T11:01:40.987Z pushedAt=2026-11-09T10:02:18.623Z nl=1 -->
+
 
 The **Button** component is usually activated by user clicks to perform a specific action. It comes in four types: capsule, circle, normal, and rounded rectangle. When used as a container, the **Button** component accepts child components such as text and images. For details, see [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md).
 
@@ -24,7 +25,7 @@ You can create a button using the following methods:
   In this API, **label** indicates the button text, **type** indicates the button type, and **stateEffect** specifies whether to enable the click effect.
 
   <!-- @[create_button_by_label2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
-
+  
   ``` TypeScript
   Button('Ok', { type: ButtonType.Normal, stateEffect: true })
     .borderRadius(8)
@@ -45,7 +46,7 @@ You can create a button using the following methods:
   Only one child component is supported, which can be either a basic component or a container component.
 
   <!-- @[create_button_by_button_options2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
-
+  
   ``` TypeScript
   Button({ type: ButtonType.Normal, stateEffect: true }) {
     Row() {
@@ -69,7 +70,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   Buttons of this type have rounded corners whose radius is automatically set to half of the button height. The rounded corners cannot be reset through the **borderRadius** attribute.
 
   <!-- @[create_capsule_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
-
+  
   ``` TypeScript
   Button('Disable', { type: ButtonType.Capsule, stateEffect: false })
     .backgroundColor(0x317aff)
@@ -85,7 +86,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   Buttons of this type are round. The rounded corners cannot be reset through the **borderRadius** attribute.
 
   <!-- @[create_circle_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
-
+  
   ``` TypeScript
   Button('Circle', { type: ButtonType.Circle, stateEffect: false })
     .backgroundColor(0x317aff)
@@ -100,7 +101,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   Buttons of this type have a default corner radius of **0**. The rounded corners can be reset through the **borderRadius** attribute.
 
   <!-- @[create_normal_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
-
+  
   ``` TypeScript
   Button('Ok', { type: ButtonType.Normal, stateEffect: true })
     .borderRadius(8)
@@ -116,7 +117,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   The rounded rectangle button has a default corner radius of 20 vp when [controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11) is **NORMAL**, and 14 vp when [controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11) is **SMALL**. You can define custom corner radius settings through **borderRadius**.
 
   <!-- @[create_rounded_rectangle_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
-
+  
   ``` TypeScript
   Button('Disable', { type: ButtonType.ROUNDED_RECTANGLE, stateEffect: true })
     .backgroundColor(0x317aff)
@@ -133,7 +134,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   You can use universal attributes to define the button styles. For example, you can use the **borderRadius** attribute to set the border radius.
 
   <!-- @[custom_button_border_radius2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
-
+  
   ``` TypeScript
   Button('circle border', { type: ButtonType.Normal })
     .borderRadius(20)
@@ -148,7 +149,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   Add text style attributes for the button.
 
   <!-- @[custom_font_style2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
-
+  
   ``` TypeScript
   Button('font style', { type: ButtonType.Normal })
     .fontSize(20)
@@ -164,7 +165,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
   Add the **backgroundColor** attribute for the button.
 
   <!-- @[custom_background_color2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
-
+  
   ``` TypeScript
   Button('background color').backgroundColor(0xF55A42)
   ```
@@ -176,7 +177,7 @@ Buttons come in four types, set using the **type** parameter: Capsule, Circle, N
 
   For example, to create a delete button:
   <!-- @[custom_create_function_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
-
+  
   ``` TypeScript
   Button({ type: ButtonType.Circle, stateEffect: true }) {
     // Replace $r('app.media.ic_public_delete_filled') with the actual resource file.
@@ -208,7 +209,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   You can use the button for any UI element that requires user-initiated actions. The button triggers the predefined event based on user interactions. For example, you can use a button in the **List** container to navigate to another page.
 
   <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) -->
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -341,7 +342,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   On the user login/registration page, you can use a button to submit a login or registration request.
   <!-- @[button_case_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   const DOMAIN = 0x0000;
@@ -370,8 +371,8 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   The button can remain floating when the user swipes on the screen.
 
-  <!-- @[hover_button_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/HoverButtonExample.ets) -->
-
+  <!-- @[hover_button_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/HoverButtonExample.ets) -->  
+  
   ``` TypeScript
   // xxx.ets
   @Entry
@@ -398,8 +399,8 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
           Button() {
             // Replace $r('app.media.ic_public_add') with the actual resource file.
             Image($r('app.media.ic_public_add'))
-             .width(50)
-             .height(50)
+              .width(50)
+              .height(50)
           }
           .width(60)
           .height(60)

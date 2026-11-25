@@ -371,7 +371,7 @@ cachedCount(count: number, show: boolean)
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | count  | number | 是   | 预加载的GridItem的数量。<br/>默认值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br/>通过状态变量单独更新count值时，Grid组件不会触发布局更新，缓存节点数量仅会在下次布局时更新。 |
-| show  | boolean | 是   | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。 <br/> 默认值：false |
+| show  | boolean | 是   | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。 <br/> 默认值：false<br/>当show设置为true时，首行完全越过可视区域底部（即首行完全移出可视区域）后，Grid会在预加载数量的基础上额外多显示1行。 |
 
 
 ### editMode<sup>8+</sup>
@@ -783,6 +783,8 @@ onItemDragStart(event: OnItemDragStartCallback)
 拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
 不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
+
+使用onMove实现拖拽排序时，不建议在onMove回调中新增数据。onMove上报的起始索引号与目标索引号基于拖拽开始时的数据源，框架按同一批数据仅发生顺序变化的前提完成落位与布局推演；若在回调中增加数据条数，应用侧索引会与框架内部的拖拽顺序不一致，可能导致排序结果错位或落位动画异常。如确需新增数据，建议在拖拽流程结束、onMove回调执行完成后再进行。数据源修改的通用约束参考[onMove](./ts-universal-attributes-drag-sorting.md#onmove)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

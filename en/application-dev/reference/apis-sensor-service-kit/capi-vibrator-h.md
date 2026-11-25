@@ -42,10 +42,6 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 Configures the vibrator to vibrate continuously for a given duration. After the API is successfully called, the vibrator starts to vibrate immediately and automatically stops after the specified duration. This method is applicable to scenarios where the vibrator needs to vibrate for a fixed duration, such as alarm clock, timing reminder, game feedback, and message notification.
 
-**Related methods**
-- **OH_Vibrator_Cancel()**: Stops the ongoing vibration.
-- **OH_Vibrator_PlayVibrationCustom()**: Configures the vibrator to vibrate with the custom sequence.
-
 **Required permissions**: ohos.permission.VIBRATE
 
 **Since**: 11
@@ -63,6 +59,12 @@ Configures the vibrator to vibrate continuously for a given duration. After the 
 | -- | -- |
 | int32_t | If the operation is successful, **0** is returned. Otherwise, an error code in [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) is returned. Common error codes include: **201**: **PERMISSION_DENIED** (The permission verification failed); **401**: **PARAMETER_ERROR** (The parameter check fails); **801**: **UNSUPPORTED** (It is not supported on the device).|
 
+**Reference**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) Stops the ongoing vibration.
+
+[OH_Vibrator_PlayVibrationCustom](capi-vibrator-h.md#oh_vibrator_playvibrationcustom) Configures the vibrator to vibrate with the custom sequence.
+
 ### OH_Vibrator_PlayVibrationCustom()
 
 ```c
@@ -72,9 +74,6 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 **Description**
 
 Configures the vibrator to vibrate with the custom sequence. After the API is successfully called, the system plays the vibration effect based on the custom vibration sequence. This method is applicable to scenarios that require complex vibration patterns, such as notification reminders, games, and tactile feedback, to provide personalized vibration experiences and enhance user immersion.
-
-**Related methods**
-- **OH_Vibrator_Cancel()**: Stops the ongoing vibration.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -92,6 +91,10 @@ Configures the vibrator to vibrate with the custom sequence. After the API is su
 | Type| Description|
 | -- | -- |
 | int32_t | If the operation is successful, **0** is returned. Otherwise, an error code in [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) is returned. If the parameters are incorrect, check whether the values of **fileDescription** and **vibrateAttribute** are valid. If the device does not support vibration, check the device capability. For details about the error codes, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode).|
+
+**Reference**
+
+[OH_Vibrator_Cancel](capi-vibrator-h.md#oh_vibrator_cancel) Stops the ongoing vibration.
 
 ### OH_Vibrator_Cancel()
 

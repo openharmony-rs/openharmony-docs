@@ -320,7 +320,7 @@ const values = sendableRelationalStore.toSendableValues(array);
 
 ## Asset
 
-Represents the asset (such as a document, image, or video). **Asset** inherits from [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable) and is used to implement cross-thread transfer of asset data. The asset data does not support **Datashare** APIs. Use [sendableRelationalStore.toSendableAsset](#sendablerelationalstoretosendableasset) to create an **Asset** instance.
+Represents the asset (such as a document, image, or video). **Asset** inherits from [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable) and is used to implement cross-thread transfer of asset data. The asset data does not support **Datashare** APIs. Use [sendableRelationalStore.toSendableAsset](#sendablerelationalstoretosendableasset) to create an **Asset** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

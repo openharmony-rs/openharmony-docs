@@ -1,10 +1,11 @@
 # FileShare_PolicyInfo
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie; @hongjin-li_admin-->
-<!--Designer: @chenxi0605; @JerryH1011-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=964ba2fe843e635fddbb5c77469931c1eeee9833 translatedAt=2026-11-23T02:47:44.702Z pushedAt=2026-11-24T12:08:18.322Z nl=1 -->
 
 ```c
 typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
@@ -12,7 +13,7 @@ typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
 
 ## Overview
 
-Represents the permission policy information.
+Policy information for granting or activating URI access permissions, used to describe the target URI and access mode in cross-application file sharing scenarios.
 
 **Since**: 12
 
@@ -26,6 +27,6 @@ Represents the permission policy information.
 
 | Name| Description|
 | -- | -- |
-| char *uri | Pointer to the URI, on which the permission is to be granted or activated.|
-| unsigned int length | Length of the URI, in bytes.|
-| unsigned int operationMode | URI operation mode.<br> Example:<br>FileShare_OperationMode.READ_MODE<br>FileShare_OperationMode.WRITE_MODE<br> Or FileShare_OperationMode.READ_MODE\|FileShare_OperationMode.WRITE_MODE| |
+| char *uri | URI for which access permission needs to be granted or activated. It must comply with the system URI format specification. |
+| unsigned int length | Byte length of the string pointed to by uri, excluding the string terminator '\0'. |
+| unsigned int operationMode | URI access mode for granting or activating permissions. **READ_MODE** indicates read permission, and **WRITE_MODE** indicates write permission.<br> Example: **FileShare_OperationMode.READ_MODE**<br> or **FileShare_OperationMode.READ_MODE\|FileShare_OperationMode.WRITE_MODE**. |

@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=e60b98a2b832134bbadcf6ba4fb4d752a20ed966 translatedAt=2026-11-04T04:34:33.212Z pushedAt=2026-11-04T10:12:50.131Z nl=1 -->
 
 The **formError** module provides error codes for widgets.
 
@@ -26,7 +27,7 @@ None.
 
 ## FormError
 
-Enumerates the widget types.
+Enumerates the form error codes.
 
 **System capability**: SystemCapability.Ability.Form
 

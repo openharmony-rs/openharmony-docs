@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @JUGaaab-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=3bd46a1d3614ecae7d45fa7b3b78285ce9f7a1da translatedAt=2026-10-08T09:03:40.451Z pushedAt=2026-10-08T11:31:17.831Z -->
+<!-- md-trans-meta sourceCommit=0afe452e603bfead1a3f4dee1688f24b1fb6467f translatedAt=2026-11-16T09:27:53.918Z pushedAt=2026-11-16T11:06:52.691Z nl=1 -->
 
 ## How to Launch Application B During the Startup of Application A
 
@@ -273,30 +273,30 @@ To make the window background transparent, call [setWindowBackgroundColor](../re
 The example code is as follows:
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ColorMetrics } from '@kit.ArkUI';
-import { window } from '@kit.ArkUI';
+import { ColorMetrics, window } from '@kit.ArkUI';
 
-let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
-  let errCode: number = err.code;
-  if (errCode) {
-  console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-  return;
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent("pages/Index", (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      const windowClass = windowStage.getMainWindowSync();
+      try {
+        // Use the ARGB method.
+        windowClass.setWindowBackgroundColor('#0000FF33');
+        // Use the ColorMetrics method.
+        windowClass.setWindowBackgroundColor(ColorMetrics.numeric(0x00112233));
+      } catch (exception) {
+        console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
+      };
+    });
   }
-  console.info('Succeeded in loading the content.');
-  // Use the ARGB mode.
-  let color1: string = '#0000FF33'; 
-  // Use the ColorMetrics mode.
-  let color2: ColorMetrics = ColorMetrics.numeric(0x00112233);  
-  try {
-    windowClass?.setWindowBackgroundColor(color1);
-    windowClass?.setWindowBackgroundColor(color2);
-  } catch (exception) {
-    console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
-  };
-});
+}
 ```
 
 ## How to Implement Landscape/Portrait Switching
@@ -837,3 +837,18 @@ windowClass.on('avoidAreaChange', (data) => {
   }
 });
 ```
+
+## Brief Window Size and App Layout Desynchronization During Rapid Resizing in Free Windows Mode
+
+**Symptom**
+
+On devices that support [free windows mode](window-terminology.md#free-windows), when the window border is dragged rapidly, the window border follows the mouse in real time, but the layout refresh of the application content inside the window is delayed, resulting in a brief out-of-sync between the window size and the application layout. After the drag ends, the application layout becomes consistent with the window size.
+
+**Possible Causes**
+
+This behavior is a system specification. Window management adopts a client-server architecture. During the dragging of the window border, the window size update and the application layout refresh are handled by independent links in two processes:
+
+- The window border is rendered directly by the window management service process and follows the mouse position in real time, thereby ensuring rendering continuity and low-latency tracking during the drag.
+- The refresh management of the application content layout runs in the application process and can be completed only after cross-process size notification, application-side calculation, and re-layout.
+
+Based on the preceding design, the brief out-of-sync between the window frame and the application layout during rapid dragging of the window border is by design. After the drag ends, the system synchronizes the final window size to the application process, and the two become consistent after the application side completes the layout re-layout.

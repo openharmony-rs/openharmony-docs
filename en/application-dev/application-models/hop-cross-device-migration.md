@@ -5,6 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=512bdb3c2bbcd6723882ef0371295811a0bb9485 translatedAt=2026-11-16T03:39:47.619Z pushedAt=2026-11-16T06:31:13.945Z nl=1 -->
 
 ## Overview
 
@@ -46,18 +47,19 @@ The following figure shows the cross-device migration process when a migration r
 
 For better user experience, the data to be transmitted via the **wantParam** parameter must be less than 100 KB.
 
+<!--RP1-->
+<!--RP1End-->
+
 ## How to Develop
 
 1. Configure the **continuable** tag under **abilities** in the [module.json5 file](../quick-start/module-configuration-file.md).
 
-   ```json
+   ```json5
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
-           "continuable": true, // Configure the UIAbility to support migration.
+           "continuable": true
          }
        ]
      }
@@ -82,7 +84,7 @@ For better user experience, the data to be transmitted via the **wantParam** par
     
     3. Returning the migration result: You can determine whether migration is supported based on the return value of **onContinue()**. For details about the return values, see [AbilityConstant.OnContinueResult](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#oncontinueresult).
     
-    Certain fields (listed in the table below) in **wantParam** passed in to **onContinue()** are preconfigured in the system. You can use these fields for service processing. When defining custom `wantParam` data, do not use the same keys as the preconfigured ones to prevent data exceptions due to system overwrites.  
+    Certain fields (listed in the table below) in **wantParam** passed in to **onContinue()** are preconfigured in the system. You can use these fields for service processing. When defining custom `wantParam` data, do not use the same keys as the preconfigured ones to prevent data exceptions due to system overwrites.
     
     | Field|Description|
     | ---- | ---- |
@@ -259,11 +261,11 @@ To implement special scenarios, for example, where migration is required only fo
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 // When the button is clicked, set the migration state to ACTIVE.
@@ -275,11 +277,11 @@ To implement special scenarios, for example, where migration is required only fo
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -377,35 +379,36 @@ The values of the **continueType** tag of the two abilities must be the same. Th
    >
    > The **continueType** tag is a string array. If multiple fields are configured, only the first field takes effect.
 
-```json
-   // Device A
+   ```json5
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
-           "name": "Ability-deviceA",
-           "continueType": ['continueType1'], // Configuration of the continueType tag.
+           "name": "EntryAbility",
+           "continueType": ["continueType"],
+           "continueBundleName": ["com.demo.example2"]
          }
        ]
+       
      }
    }
-
-   // Device B
+   ```
+   
+   ```json5
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
-           "name": "Ability-deviceB",
-           "continueType": ['continueType1'], // Same as the value of continueType on device A.
+           "name": "EntryAbility",
+           "continueType": ["continueType"],
+           "continueBundleName": ["com.demo.example1"]
          }
        ]
+       
      }
    }
-```
+   
+   ```
 
 ### Migrating Abilities with Different Bundle Names in the Same Application Across Devices
 An application may use different bundle names on different devices. To support migration in this scenario, configure **abilities** in the **module.json5** file of the application as follows:
@@ -423,18 +426,14 @@ An example is as follows:
 
    An application with different bundle names is migrated between device A and device B. The bundle name of the application on device A is com.demo.example1, and that on device B is com.demo.example2.
 
-```JSON
-// In the configuration file for device A, set continueBundleName to the bundle name of the application on device B.
+```json5
 {
   "module": {
-    // ···
     "abilities": [
       {
         "name": "EntryAbility",
-        // ···
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example2"], // continueBundleName is set to com.demo.example2, which is the bundle name of the application on device B.
-       
+        "continueBundleName": ["com.demo.example2"]
       }
     ]
     
@@ -442,18 +441,14 @@ An example is as follows:
 }
 ```
 
-```JSON
-// In the configuration file for device B, set continueBundleName to the bundle name of the application on device A.
+```json5
 {
   "module": {
-    // ···
     "abilities": [
       {
         "name": "EntryAbility",
-        // ···
         "continueType": ["continueType"],
-        "continueBundleName": ["com.demo.example1"], // continueBundleName is set to com.demo.example1, which is the bundle name of the application on device A.
-       
+        "continueBundleName": ["com.demo.example1"]
       }
     ]
     
@@ -465,15 +460,13 @@ An example is as follows:
 ### Quickly Starting a Target Application
 By default, the target application on the peer device is not started immediately when the migration is initiated. It waits until the data to migrate is synchronized from the source device to the peer device. To start the target application immediately upon the initiation of a migration, you can add the **_ContinueQuickStart** suffix to the value of **continueType**. In this way, only the migrated data is restored after the data synchronization, delivering an even better migration experience.
 
-   ```json
+   ```json5
    {
      "module": {
-       // ...
        "abilities": [
          {
-           // ...
-           "name": "EntryAbility"
-           "continueType": ['EntryAbility_ContinueQuickStart'], // If the continueType tag is configured, add the suffix '_ContinueQuickStart' to its value. If the continueType tag is not configured, you can use AbilityName + '_ContinueQuickStart' as the value of continueType to implement quick startup of the target application.
+           "name": "EntryAbility",
+           "continueType": ["EntryAbility_ContinueQuickStart"]
          }
        ]
      }
@@ -481,7 +474,7 @@ By default, the target application on the peer device is not started immediately
    ```
 With quick start, the target application starts while waiting for the data to migration, minimizing the duration that users wait for the migration to complete. Note that, for the first migration with quick start enabled, the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) callback is triggered, in which **launchReason** is **PREPARE_CONTINUATION**. The introduction of the **launchReason** parameter solves problems related to redirection and timing. It also provides a loading screen during quick startup.
 
-Starting from API version 18, an application that displays a loading page during quick launch can [obtain the quick startup result during cross-device migration](../reference/apis-ability-kit/js-apis-app-ability-continueManager.md#continuemanageron). Depending on this result, the application can take appropriate actions. For example, if the quick startup is successful, the application can dismiss the loading page and proceed to the continuation page.
+Starting from API version 18, applications with a loading UI during quick launch support [continueManager.on](../reference/apis-ability-kit/js-apis-app-ability-continueManager.md#continuemanageron). Based on the quick launch result, the application can perform corresponding operations, for example, exit the loading UI and enter the continuation page when the quick launch succeeds.
 
 The following figure shows the quick start process.
 
@@ -517,8 +510,8 @@ export default class MigrationAbility extends UIAbility {
 
     // 1. Quick start is configured. Trigger the lifecycle callback when the application is launched immediately.
     if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
-      // If the application data to migrate is large, add a loading screen here (for example, displaying "loading" on the screen).
-      // Handle issues related to custom redirection and timing.
+      // If the application migration data is large, can add loading page here (display loading on the page).
+      // Can handle application custom jumps, timing issues.
       // ...
     }
   }
@@ -528,8 +521,8 @@ export default class MigrationAbility extends UIAbility {
       
     // 1. Quick start is configured. Trigger the lifecycle callback when the application is launched immediately.
     if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
-      // If the application data to migrate is large, add a loading screen here (for example, displaying "loading" on the screen).
-      // Handle issues related to custom redirection and timing.
+      // If the application migration data is large, can add loading page here (display loading on the page).
+      // Can handle application custom jumps, timing issues.
       // ...
     }
       
@@ -548,7 +541,7 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-When the target application is quickly started, the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) and [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) callbacks are triggered in sequence. Generally, in **onWindowStageCreate()**, you call [loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) to load the page. This API throws an asynchronous task to load the home page. This asynchronous task is not synchronous with **onWindowStageRestore()**. If UI-related APIs (such as route APIs) are used in **onWindowStageRestore()**, the invoking time may be earlier than the home page loading time. To ensure the normal loading sequence, you can use [setTimeout()](../reference/common/js-apis-timer.md#settimeout) to throw an asynchronous task for related operations.  
+When the target application is quickly started, the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) and [onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore) callbacks are triggered in sequence. Generally, in **onWindowStageCreate()**, you call [loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) to load the page. This API throws an asynchronous task to load the home page. This asynchronous task is not synchronous with **onWindowStageRestore()**. If UI-related APIs (such as route APIs) are used in **onWindowStageRestore()**, the invoking time may be earlier than the home page loading time. To ensure the normal loading sequence, you can use [setTimeout()](../reference/common/js-apis-timer.md#settimeout) to throw an asynchronous task for related operations.
 
 The sample code is as follows:
 
@@ -664,7 +657,7 @@ If the size of the data to migrate is greater than 100 KB or a file needs to be 
 
 To use a distributed data object, you must save data in the [onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue) API on the source device and restore data in the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) API of the target device.
 
-On the source device, save the data to migrate to a distributed [data object](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject).
+On the source device, save the data to be migrated to the distributed data object [DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject9).
 
 - Use [create()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectcreate9) in **onContinue()** to create a distributed data object and add the data to migrate to the object.
 - Use [genSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectgensessionid) to generate a data object network ID, use the ID to call [setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9) to add the data object to the network, and activate the distributed data object.
@@ -826,7 +819,7 @@ export default class MigrationAbility extends UIAbility {
 
 A file, such as an image or document, must be converted to the [commonType.Asset](../reference/apis-arkdata/js-apis-data-commonType.md#asset) type before being encapsulated into a distributed data objects for migration. The migration implementation is similar to that of a common distributed data object. The following describes only the differences.
 
-On the source device, save the file asset to migrate to a distributed [data object](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject).
+On the source device, save the file assets to be migrated to the distributed data object [DataObject](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject9).
 
 - Copy the file asset to the [distributed file directory](application-context-stage.md#obtaining-application-file-paths). For details about related APIs and usage, see [basic file APIs](../file-management/app-file-access.md).
 - Use the file in the distributed file directory to create an asset object.
@@ -842,7 +835,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 import { distributedDataObject, commonType } from '@kit.ArkData';
 import { fileIo, fileUri } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -1012,7 +1005,7 @@ export default class MigrationAbility extends UIAbility {
 If you want to synchronize multiple assets, use either of the following methods:
 
 1. Method 1: Implement each asset as a root attribute of the distributed data object. This applies to scenarios where the number of assets to migrate is fixed.
-2. Method 2: Transfer the asset array as an object. This applies to scenarios where the number of assets to migrate changes dynamically (for example, a user selects a variable number of images). Currently, the asset array cannot be directly transferred as the root attribute.
+2. The asset array can be converted to an `Object` and passed, which applies to scenarios where the number of assets to be migrated changes dynamically (for example, the user selects an indefinite number of images). Currently, passing an asset array directly as a root attribute is not supported.
 
 To implement method 1, you can add more assets by referring to the method of adding an asset. To implement method 2, refer to the code snippet below:
 
@@ -1104,16 +1097,18 @@ A mission center demo is provided for you to verify the migration capability of 
             ![hop-cross-device-migration](figures/hop-cross-device-migration1.png)
 
         2. Complete the signature, build, and installation.
-        ​The default signature permission provided by the automatic signature template of DevEco Studio is normal. The mission center demo requires the ohos.permission.MANAGE_MISSIONS permission, which is at the system_core level. Therefore, you must escalate the permission to the system_core level.
-            1. Change **"apl":"normal"** to **"apl":"system_core"** in the **UnsignedReleasedProfileTemplate.json** file in **openharmony\*apiVersion*\toolchains\lib**, where ***apiVersion*** is a digit, for example, **10**.
 
-            2. Choose **File > Project Structure**.
+           ​The default signature permission of the DevEco automatic signature template is `normal`. However, the `ohos.permission.MANAGE_MISSIONS` permission required by this application is at the `system_core` level. The automatically generated signature cannot obtain sufficient permissions, so the permission must be upgraded to the `system_core` level before signing.
+        
+           a. Change `"apl":"normal"` to `"apl":"system_core"` in the `openharmony\api version (for example, the 10)\toolchains\lib\UnsignedReleasedProfileTemplate.json` file) under the SDK directory.
 
-                ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
+           b. Click **file->Project Structure**.
 
-            3. Click **Signing Configs** and click **OK**.
+              ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
 
-                ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
+           c. Click **Signing Configs** and click **OK**.
+
+              ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
 
         3. Connect to the developer board and run the demo.
 

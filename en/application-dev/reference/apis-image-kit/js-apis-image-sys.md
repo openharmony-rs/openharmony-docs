@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=23a12558b10702b09c66bf2ed8d3141d9d476772 translatedAt=2026-11-13T03:49:42.681Z pushedAt=2026-11-13T10:47:50.195Z nl=1 -->
 
 The module provides APIs for image processing. You can use the APIs to create a PixelMap object with specified properties or read image pixel data (even in an area).
 
@@ -315,6 +316,58 @@ async function DecomposeToPictureTest(context: Context) {
     console.error('Decompose to picture with options failed');
   }
 }
+
+```
+## SourceOptions<sup>9+</sup>
+ 
+Defines image source initialization options.
+ 
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+ 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**System API**: This is a system API.
+ 
+**System capability**: SystemCapability.Multimedia.Image.Core
+ 
+| Name              | Type                               | Read-Only | Optional | Description               |
+| ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
+| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | No   | Yes   | Resource limit used when parsing and drawing Scalable Vector Graphics (SVG) images. This limit does not apply to non-SVG images. It takes effect before SVG metadata parsing, and therefore also applies to image information retrieval.<br>The default value is **NONE**, which uses the system-defined default resource limit and does not disable SVG resource protection.<br>**Since:** 26.0.1 |
+ 
+## SVGResourceLimitLevel
+ 
+Enumerates the SVG resource limit levels.
+ 
+A higher level allows fewer resources to be used when parsing and drawing SVG images. Regardless of the specified level, the system resource limit is always enforced.
+ 
+**Since:** 26.0.1
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**System API**: This is a system API.
+ 
+**System capability**: SystemCapability.Multimedia.Image.Core
+ 
+| Name                         | Value      | Description       |
+| ---------------------------- | ------ | ---------- |
+| NONE    | 0     | Default SVG resource limit of the system. This level does not disable SVG resource protection.|
+| LOW     | 1     | Low-level limit, allowing a larger SVG resource budget. This level is suitable for complex SVG images.|
+| MEDIUM  | 2     | Medium-level limit, allowing a moderate SVG resource budget. This level balances SVG compatibility and resource consumption, and is suitable for most SVG images.|
+| HIGH    | 3     | High-level limit, allowing a smaller SVG resource budget. This level is suitable for simple SVG images, such as icons and basic UI resources.|
+ 
+**Example**
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+ 
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120, svgResourceLimitLevel: image.SVGResourceLimitLevel.MEDIUM};
+  // Here 'test.jpg' is for example purposes only, and developers need to replace it themselves. Otherwise, the failure to create the imageSource will cause subsequent execution to fail.
+  const filePath: string = context.filesDir + "/test.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
+}
 ```
 
 ## ImageSource
@@ -418,8 +471,8 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 | Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Bad source.|
-| 7600202      | Unsupported MIME type.|
+| 7700101    | Bad source.|
+| 7700102    | Unsupported MIME type.|
 
 **Example**
 ```ts

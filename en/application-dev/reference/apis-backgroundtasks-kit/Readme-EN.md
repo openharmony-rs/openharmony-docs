@@ -6,10 +6,11 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=cf3ca438c3a041772b96126d64d22ae9483904fa translatedAt=2026-11-17T07:32:58.073Z pushedAt=2026-11-17T08:12:03.246Z nl=1 -->
 
 - ArkTS APIs<!--background-tasks-arkts-->
   - [@ohos.reminderAgentManager (Agent-powered Reminder)](js-apis-reminderAgentManager.md)
-  - [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](js-apis-resourceschedule-backgroundTaskManager.md)
+  - [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](js-apis-resourceschedule-backgroundTaskManager.md) 
   - [@ohos.resourceschedule.workScheduler (Deferred Task Scheduling)](js-apis-resourceschedule-workScheduler.md)
   - [@ohos.WorkSchedulerExtensionAbility (Deferred Task Scheduling Callbacks)](js-apis-WorkSchedulerExtensionAbility.md)
   - [@ohos.resourceschedule.backgroundProcessManager (Background Child Process Management)](js-apis-backgroundProcessManager.md)
@@ -21,9 +22,9 @@
   - [@ohos.resourceschedule.workScheduler (Deferred Task Scheduling) (System API)](js-apis-resourceschedule-workScheduler-sys.md)
   <!--DelEnd-->
   - Application<!--background-tasks-arkts-application-->
-    - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)
+    - [WorkSchedulerExtensionContext (Work Scheduler Callback Context)](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext (System API)](js-apis-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext (Work Scheduler Callback Context) (System API)](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (Background Task Management)](js-apis-backgroundTaskManager.md)

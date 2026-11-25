@@ -1,11 +1,11 @@
 # Handling Crown Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2dada4ccfcf5209ad3a03618f9ef1e13f0b077ba translatedAt=2026-10-10T06:10:56.268Z pushedAt=2026-10-12T08:19:58.438Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:03:28.015Z pushedAt=2026-11-09T10:02:18.630Z nl=1 -->
 
 The crown event, supported since API version 18, is triggered by the rotation of the watch crown and reports changes in the rotation angle based on the hardware sampling frequency.
 
@@ -30,9 +30,9 @@ To enable a component to obtain information such as the rotation angle, use the 
 1. Ensure the component gains focus.
 
     Ensure that the component receiving the event gains focus. This can be achieved by using methods such as [focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable), [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9), and [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9). For more detailed information about focus control, see the [focus control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md) document.
-
+    
     <!-- @[text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     Text(this.message)
       .fontSize(20)
@@ -48,7 +48,7 @@ To enable a component to obtain information such as the rotation angle, use the 
     To receive a crown event, you need to register a crown event callback. When a crown event is triggered, the callback function is executed.
 
     <!-- @[onDigitalCrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     .onDigitalCrown((event: CrownEvent) => {
     // ···
@@ -59,7 +59,7 @@ To enable a component to obtain information such as the rotation angle, use the 
     The crown event provides the timestamp, rotation angular velocity, rotation angle, and crown action. To prevent the event from bubbling up, use [stopPropagation](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#crownevent).
 
     <!-- @[stopPropagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     event.stopPropagation();
     this.message = "CrownEvent\n\n" + JSON.stringify(event);
@@ -71,7 +71,7 @@ To enable a component to obtain information such as the rotation angle, use the 
 **Complete Example**
 
  <!-- [crown_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
-
+ 
  ``` TypeScript
  // xxx.ets
  import { hilog } from '@kit.PerformanceAnalysisKit';

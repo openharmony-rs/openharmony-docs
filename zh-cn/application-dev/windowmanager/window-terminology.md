@@ -16,7 +16,7 @@
 
   一般用于在已有全屏任务运行的基础上，临时处理另一个任务，或短时间多任务并行使用。如浏览网页的同时回复消息。
 
-  相关参考：[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)、[智慧多窗最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-window-practice)。
+  相关参考：[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
 
 - 全局悬浮窗是指一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
 
@@ -87,6 +87,12 @@
 
 让应用可布局区域拓展至整个窗口显示区域的状态。沉浸式布局下，应用内的可用布局区域延伸到整个窗口大小，此时应用界面的布局内容可与系统UI界面重叠显示，但系统界面元素层级始终高于应用界面内容。
 
+## L
+
+### Level-1 Subwindow；一级子窗
+
+以主窗口为直接父级的子窗口，不包含其他二级及更深层次的子窗口。
+
 ## M
 
 ### Multi-Window；智慧多窗
@@ -104,12 +110,6 @@
 ### Starting Window；启动页
 
 应用冷启动时显示的首个页面，在应用进程没有运行或者应用内容没有加载完成前都将显示启动页。启动页承载了应用展示品牌特性的功能，应用可以根据自己的设计配置资源，用于展示产品独特的标识。
-
-## L
-
-### Level-1 Subwindow；一级子窗
-
-以主窗口为直接父级的子窗口，不包含其他二级及更深层次的子窗口。
 
 ## W
 

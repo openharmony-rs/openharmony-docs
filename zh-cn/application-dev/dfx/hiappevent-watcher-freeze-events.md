@@ -44,13 +44,21 @@
 
 **参数设置示例**
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+导入头文件。
 
+<!-- @[AppfreezeConfig_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+<!-- @[SetAppfreeze_Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 let policy: hiAppEvent.EventPolicy = {
-    "appFreezePolicy" : {
-      "pageSwitchLogEnable": true // 启用页面切换日志
+    'appFreezePolicy' : {
+        'pageSwitchLogEnable': true // 启用页面切换日志
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {

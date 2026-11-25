@@ -66,12 +66,15 @@ HUKS提供以下PIN码认证状态管理能力：
 
 **ArkTS接口**
 
-```ts
+<!-- @[query_auth_state_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/QueryAuthState.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPinAuthState> {
-  let ret: huksExternalCrypto.HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
+  let ret: huksExternalCrypto.HuksExternalPinAuthState =
+    huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
   try {
     /* 1.构造查询PIN码状态参数 */
     const testResourceId = JSON.stringify({
@@ -82,15 +85,14 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
         key: 'testKey'
       } as ESObject
     });
-
-    const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+    const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [];
 
     /* 2.调用getUkeyPinAuthState */
     await huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
       .then((data) => {
-        console.info(`promise: getUkeyPinAuthState success , data: ${data}`);
+        console.info(`promise: getUkeyPinAuthState success , data : ${data}`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: getUkeyPinAuthState failed, errCode: ${error.code}, errMsg: ${error.message}`);
+        console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
     console.error('promise: getUkeyPinAuthState input arg invalid.');
@@ -111,43 +113,22 @@ async function testGetUkeyPinAuthState() {
 
 **C++接口**
 
+<!-- @[query_auth_state_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-#include "huks/native_huks_external_crypto_api.h"
-#include "huks/native_huks_param.h"
-#include "napi/native_api.h"
-#include <string.h>
-
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ExternalCryptoParamSet **paramSet,
-    const struct OH_Huks_ExternalCryptoParam *params,
-    uint32_t paramCount)
-{
-    OH_Huks_Result ret = OH_Huks_InitExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        return ret;
-    }
-    ret = OH_Huks_AddExternalCryptoParams(*paramSet, params, paramCount);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
-    }
-    ret = OH_Huks_BuildExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
-    }
-    return ret;
-}
-
-static const char *resourceId = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+static const char *QUERY_RESOURCE_ID =
+    "{\"providerName\":\"testProviderName\","
+    "\"abilityName\":\"CryptoExtension\","
+    "\"bundleName\":\"com.example.cryptoapplication\","
+    "\"index\":{\"key\":\"testKey\"}}";
 
 static struct OH_Huks_ExternalCryptoParam g_getPinStateParamsTest[] = {};
 
-static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info) 
+static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
 {
     struct OH_Huks_Blob g_resourceId = {
-        (uint32_t)strlen(resourceId),
-        (uint8_t *)resourceId
+        (uint32_t)strlen(QUERY_RESOURCE_ID),
+        (uint8_t *)QUERY_RESOURCE_ID
     };
     struct OH_Huks_ExternalCryptoParamSet *pinStateParamSet = nullptr;
     OH_Huks_ExternalPinAuthState authState = OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH;
@@ -164,7 +145,7 @@ static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
         }
     } while (0);
     OH_Huks_FreeExternalCryptoParamSet(&pinStateParamSet);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;
@@ -193,7 +174,9 @@ static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info)
 
 ### 开发示例
 
-```ts
+<!-- @[clear_pin_auth_state_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/ClearPinAuthState.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -204,7 +187,7 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
       .then(() => {
         console.info('promise: clearUkeyPinAuthState success.');
       }).catch((error: BusinessError) => {
-        console.error(`promise: clearUkeyPinAuthState failed, errCode: ${error.code}, errMsg: ${error.message}`);
+        console.error(`promise: clearUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
     console.error('promise: clearUkeyPinAuthState input arg invalid.');
@@ -230,7 +213,7 @@ async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
 
 ### 开发示例
 
-```ts
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 

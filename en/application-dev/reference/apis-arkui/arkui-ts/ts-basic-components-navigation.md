@@ -2166,7 +2166,7 @@ Defines the title bar options.
 
 > **systemMaterial attribute description**
 >
-> The title bar material takes effect on the background of the back button, the background of the menu button, and the background of the **More** dialog box of the menu. When the application-level system material switch is set to **disable**, the title bar material effect does not take effect regardless of the value of **systemMaterial**. For details about the application-level system material switch, see [MaterialState]../arkts-apis-uimaterial.md#materialstate). The effects of different values for the system material of the title bar are as follows:
+> The title bar material takes effect on the background of the back button, the background of the menu button, and the background of the **More** dialog box of the menu. When the application-level system material switch is set to **disable**, the title bar material effect does not take effect regardless of the value of **systemMaterial**. For details about the application-level system material switch, see [MaterialState](../arkts-apis-uimaterial.md#materialstate). The effects of different values for the system material of the title bar are as follows:
 >
 > - **undefined** (default value): When the application-level system material switch is set to **default**, the title bar has no material effect. When the application-level system material switch is set to **enable**, the default immersive material effect takes effect on the title bar.
 >
@@ -5640,7 +5640,7 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 >
 > 2. Swipe up the application to return to the background and open the CLI.
 >
-> 3. Run **hdc shell**, and then run **pidof <package_name>** to query the value of **pid**.
+> 3. Run **hdc shell**, and then run **pidof Package name** to query the value of **pid**.
 >
 > 4. Run the **aa force-stop *Project name* -p *Value of pid* -r RESOURCE_CONTROL** command to simulate the scenario where the app exits due to improper resource usage.
 >

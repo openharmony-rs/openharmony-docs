@@ -3,10 +3,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=0d56cd17ee73deede8fc63cfd49a705ef680e337 translatedAt=2026-08-22T02:10:32.775Z pushedAt=2026-08-22T06:48:49.292Z -->
+<!-- md-trans-meta sourceCommit=e35c23b7f5660acf8693fd1aa9993259c5c6881f translatedAt=2026-11-05T06:16:33.957Z pushedAt=2026-08-22T06:48:49.292Z nl=1 -->
 
 This topic describes how to use [AVPlayer](media-kit-intro.md#avplayer) for streaming live broadcasts and video-on-demand. The examples demonstrate how to play streaming videos in an end-to-end manner.
 
@@ -74,13 +74,13 @@ When the download rate is lower than the bitrate of the media source, playback s
 
 Sample code for listening for the bufferingUpdate event:
 
-<!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
-})
-```
+   <!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+     console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
+   })
+   ```
 
 ### HLS Bit Rate Switching
 
@@ -89,20 +89,20 @@ HLS streams currently support playback at multiple bit rates. By default, the AV
 1. Use [on('availableBitrates')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onavailablebitrates9) to listen for the available bit rates for an HLS stream. If the bit rate list has a length of 0, setting a specific bit rate is not supported.
 
    <!-- @[availableBitrates](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
+   this.avPlayer?.on('availableBitrates', (bitrates: Array<number>) => {
      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
-     this.bitrate = bitrates[0]; // Save the bitrate to be switched.
+     this.bitrate = bitrates[0]; // Save the target bit rate.
    })
    ```
 
 2. Use [setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9) to set the playback bit rate. If the bit rate is not among the available bit rates, the AVPlayer selects the minimum and closest bit rate from the available ones. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can listen for the [bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9) event to check whether the setting takes effect.
 
    <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   // Set playback bitrate.
+   // Set the playback bit rate.
    try {
      this.avPlayer.setBitrate(bitrate);
    } catch (error) {
@@ -116,13 +116,15 @@ To maintain a smooth playback experience in environments with poor network conne
 
 The sample code below demonstrates setting the video to start at a width of 1920 px and a height of 1080 px. The AVPlayer selects a video stream with a resolution of 1920 x 1080 from the MPD resources for playback.
 
-```ts
-import { media } from '@kit.MediaKit';
-
-let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://example/abc.mpd",  {"User-Agent" : "User-Agent-Value"});
-let playbackStrategy : media.PlaybackStrategy = {preferredWidth: 1920, preferredHeight: 1080};
-this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
-```
+   <!-- @[setMediaSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let mediaSource : media.MediaSource = media.createMediaSourceWithUrl('http://example/abc.mpd',  {'User-Agent' : 'User-Agent-Value'});
+   // Start playback with a video width of 1920 pixels and height of 1080 pixels.
+   let playbackStrategy : media.PlaybackStrategy = {preferredWidth: 1920, preferredHeight: 1080};
+   // Set the media source and playback strategy for avPlayer.
+   this.avPlayer?.setMediaSource(mediaSource, playbackStrategy);
+   ```
 
 ### DASH Audio and Video Track Switching
 
@@ -131,19 +133,19 @@ DASH streaming media includes multiple audio, video, and subtitle tracks, each w
 1. Set the [trackChange](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#ontrackchange12) event.
 
    <!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
-   console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
+     console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
    })
    ```
 
 2. Call [getTrackDescription](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#gettrackdescription9) to obtain the list of all audio and video tracks. You can determine the index of the target track based on actual requirements and information about each field in [MediaDescription](../../reference/apis-media-kit/arkts-apis-media-i.md#mediadescription8).
 
    <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
-   this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+   this.avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
      if (arrList != null) {
        for (let i = 0; i < arrList.length; i++) {
          let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
@@ -155,7 +157,7 @@ DASH streaming media includes multiple audio, video, and subtitle tracks, each w
          }
        }
      } else {
-       console.error(`getTrackDescription fail, error:${error}`);
+       console.error(`getTrackDescription failed, error:${error}`);
      }
    });
    ```
@@ -163,7 +165,7 @@ DASH streaming media includes multiple audio, video, and subtitle tracks, each w
 3. During audio and video playback, call [selectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#selecttrack12) to select audio and video tracks, or call [deselectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#deselecttrack12) to deselect them.
 
    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // Switch to the target video track.
    try {

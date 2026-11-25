@@ -29,13 +29,13 @@
 设置[wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11)属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
 
 示例代码如下：
-  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
+  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakExample.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  struct WordBreakd {
+  struct WordBreakExample {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -424,14 +424,14 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
 上述方法会导致部分文本被裁剪掉，如果需要保留全部文本，可以把Text组件放在滚动容器[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)内，再通过手势滑动来浏览全部文本，具体示例如下：
 
-  <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
+  <!-- @[Text_Long_Two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTwo.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
   @Entry
   @Component
-  struct TextLongTow {
+  struct TextLongTwo {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -540,26 +540,31 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
 想要使长按手势对文本不生效，可以设置触发时间小于系统菜单触发时间（500ms）的自定义长按手势。
 
-```ts
-// xxx.ets
+<!-- @[How_To_Disable_Text_Long_Press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToDisableTextLongPress.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TextExample8 {
+export struct HowToDisableTextLongPressExample {
   build() {
-    Column() {
-      Text("TextTextTextText")
-        .copyOption(CopyOptions.InApp)
-        .gesture(LongPressGesture({ repeat: false, duration: 400 })
-          .onAction(() => {
-          }))
-        .margin({
-          top: 100,
-          bottom: 100,
-          left: 100,
-          right: 100
-        })
+    NavDestination() {
+      Column() {
+        Text('TextTextTextText')
+          .copyOption(CopyOptions.InApp)
+          .gesture(LongPressGesture({ repeat: false, duration: 400 })
+            .onAction(() => {
+            }))
+          .margin({
+            top: 100,
+            bottom: 100,
+            left: 100,
+            right: 100
+          })
+      }
+      .height('100%')
     }
-    .height('100%')
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.How_To_Disable_Text_Long_Press'))
   }
 }
 ```

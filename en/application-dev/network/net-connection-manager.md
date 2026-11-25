@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d5586429eae1a0e5f1577e7d7d390bb13247ac14 translatedAt=2026-11-05T00:50:31.272Z nl=1 -->
 
 ## Introduction
 
@@ -398,7 +399,9 @@ If an application needs to check whether the current network supports Internet a
    
    Call [getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9) to obtain **netHandle** of the default network. If **netHandle** is valid, call [getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10) to obtain the capability information of the corresponding network via **networkCap** and determine whether Internet access is supported.
    
-   **NET_CAPABILITY_CHECKING_CONNECTIVITY** indicates that a network connectivity check is in progress. The network connectivity verification is successful if the network connectivity check is complete and **NET_CAPABILITY_VALIDATED** is contained in **networkCap**.
+   **NET_CAPABILITY_CHECKING_CONNECTIVITY** indicates that the system is checking connectivity and network availability is not yet determined.
+   
+   **NET_CAPABILITY_VALIDATED** indicates that connectivity verification has passed. The network is available and can access the Internet only when **networkCap** does not contain **NET_CAPABILITY_CHECKING_CONNECTIVITY** (no connectivity check is in progress) and contains **NET_CAPABILITY_VALIDATED**.
 
     <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
     

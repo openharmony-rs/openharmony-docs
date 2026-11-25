@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @liangryan-->
 <!--Designer: @liangryan-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d3892b2d07408e5d546efbe3172eb29f03f427d8 translatedAt=2026-10-08T09:04:43.040Z pushedAt=2026-10-09T00:29:43.099Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:53:55.231Z pushedAt=2026-11-06T01:45:02.900Z nl=1 -->
 
 ## Using the hidumper Window Command to View Window Information for Troubleshooting
 

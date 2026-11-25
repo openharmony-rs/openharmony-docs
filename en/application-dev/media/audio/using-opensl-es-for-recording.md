@@ -6,7 +6,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-08-06T01:54:54.828Z pushedAt=2026-08-06T10:10:19.443Z -->
+<!-- md-trans-meta sourceCommit=fd25e7e3403e18a9f1848b020cc38d66d8df720d translatedAt=2026-11-05T00:59:45.668Z pushedAt=2026-08-06T10:10:19.443Z nl=2 -->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform audio processing library that is free of charge. It provides high-performance and low-latency APIs for you to develop applications running on embedded mobile multimedia devices. OpenHarmony has implemented certain native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications developed by the [Khronos Group](https://www.khronos.org/). You can use these APIs through &lt;OpenSLES.h&gt; and &lt;OpenSLES_OpenHarmony.h&gt;.
 
@@ -90,7 +90,7 @@ Refer to the sample code below to record an audio file.
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. Use the **slCreateEngine** API to create and instantiate an engine object.
+2. Use the **slCreateEngine()** API to create and instantiate an engine object.
 
    ```cpp
    SLObjectItf engineObject = nullptr;
@@ -98,7 +98,7 @@ Refer to the sample code below to record an audio file.
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. Obtain the engineEngine instance of the **SL_IID_ENGINE** API.
+3. Obtain the engine interface handle corresponding to **SL_IID_ENGINE**.
 
    ```cpp
    SLEngineItf engineItf = nullptr;
@@ -143,7 +143,7 @@ Refer to the sample code below to record an audio file.
    (*pcmCapturerObject)->Realize(pcmCapturerObject, SL_BOOLEAN_FALSE);
    ```
 
-5. Obtain the recordItf instance of the **SL_IID_RECORD** API.
+5. Obtain the recording interface handle corresponding to **SL_IID_RECORD**.
 
    ```cpp
    SLRecordItf  recordItf;

@@ -1,10 +1,11 @@
 # Global Configuration
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=404e8f67bcb9eb1f1bc6bc4c58c9e48ab651c853 translatedAt=2026-11-04T09:18:11.371Z pushedAt=2026-11-04T09:36:17.413Z nl=1 -->
 
 In cases where a process-wide singleton is necessary, for example, for maintaining data consistency across multiple concurrent instances for global configuration services, a [shared module](arkts-sendable-module.md) can be used.
 
@@ -12,19 +13,19 @@ The following example illustrates the service logic where downloads are permitte
 
 1. Create a global configuration file.
 
-   ```ts
-   // Config.ets
+   <!-- @[global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Config.ets) -->
    
+   ``` TypeScript
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   "use shared"
+   'use shared'
    
    @Sendable
    class Config {
-     lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
-     isLogin: boolean = false;
-     loginUser?: string;
-     wifiOn: boolean = false;
+     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+     public isLogin: boolean = false;
+     public loginUser?: string;
+     public wifiOn: boolean = false;
    
      async login(user: string) {
        return this.lock.lockAsync(() => {
@@ -33,10 +34,10 @@ The following example illustrates the service logic where downloads are permitte
        }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE)
      }
    
-     async logout(user?: string) {
+     async logout() {
        return this.lock.lockAsync(() => {
          this.isLogin = false;
-         this.loginUser = "";
+         this.loginUser = '';
        }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE)
      }
    
@@ -67,23 +68,23 @@ The following example illustrates the service logic where downloads are permitte
    
    export let config = new Config();
    ```
-   <!-- @[global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Config.ets) -->
 
 2. Enable both the UI main thread and child threads to access the global configuration.
 
-   ```ts
-   // Index.ets
+   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) --> 
+   
+   ``` TypeScript
    import { config } from './Config';
    import { taskpool } from '@kit.ArkTS';
    
    @Concurrent
    async function download() {
      if (!await config.isWifiOn()) {
-       console.info("wifi is off");
+       console.info('wifi is off');
        return false;
      }
      if (!await config.getIsLogin()) {
-       console.info("not login");
+       console.info('not login');
        return false;
      }
      console.info(`User[${await config.getUser()}] start download ...`);
@@ -94,9 +95,9 @@ The following example illustrates the service logic where downloads are permitte
    @Component
    struct Index {
      @State message: string = 'not login';
-     @State wifiState: string = "wifi off";
-     @State downloadResult: string = "";
-     input: string = ""
+     @State wifiState: string = 'wifi off';
+     @State downloadResult: string = '';
+     input: string = '';
    
      build() {
        Row() {
@@ -108,7 +109,8 @@ The following example illustrates the service logic where downloads are permitte
                center: { anchor: '__container__', align: VerticalAlign.Center },
                middle: { anchor: '__container__', align: HorizontalAlign.Center }
              })
-           TextInput({ placeholder: "Enter user name" })
+           TextInput({ placeholder: 'Enter username' })
+             .id('textInput')
              .fontSize(20)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -118,7 +120,7 @@ The following example illustrates the service logic where downloads are permitte
              .onChange((value) => {
                this.input = value;
              })
-           Text("login")
+           Text('login')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -127,12 +129,16 @@ The following example illustrates the service logic where downloads are permitte
              })
              .onClick(async () => {
                if (!await config.getIsLogin() && this.input) {
-                 this.message = "login: " + this.input;
-                 config.login(this.input);
+                 try {
+                   await config.login(this.input);
+                   this.message = 'login: ' + this.input;
+                 } catch (e) {
+                   console.error('login failed');
+                 }
                }
              })
-             .backgroundColor(0xcccccc)
-           Text("logout")
+             .backgroundColor('#cccccc')
+           Text('logout')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -141,11 +147,15 @@ The following example illustrates the service logic where downloads are permitte
              })
              .onClick(async () => {
                if (await config.getIsLogin()) {
-                 this.message = "not login";
-                 config.logout();
+                 try {
+                   await config.logout();
+                   this.message = 'not login';
+                 } catch (e) {
+                   console.error('logout failed');
+                 }
                }
              })
-             .backgroundColor(0xcccccc)
+             .backgroundColor('#cccccc')
            Text(this.wifiState)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
@@ -155,10 +165,10 @@ The following example illustrates the service logic where downloads are permitte
              })
            Toggle({ type: ToggleType.Switch })
              .onChange(async (isOn: boolean) => {
-               await config.setWifiState(isOn);
-               this.wifiState = isOn ? "wifi on" : "wifi off";
+               await config.setWifiState(isOn)
+               this.wifiState = isOn ? 'wifi on' : 'wifi off';
              })
-           Text("download")
+           Text('download')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .alignRules({
@@ -167,7 +177,7 @@ The following example illustrates the service logic where downloads are permitte
              })
              .onClick(async () => {
                let ret = await taskpool.execute(download);
-               this.downloadResult = ret ? "download success" : "download fail";
+               this.downloadResult = ret ? 'download success' : 'download fail';
              })
            Text(this.downloadResult)
              .fontSize(20)
@@ -183,4 +193,3 @@ The following example illustrates the service logic where downloads are permitte
      }
    }
    ```
-   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) -->

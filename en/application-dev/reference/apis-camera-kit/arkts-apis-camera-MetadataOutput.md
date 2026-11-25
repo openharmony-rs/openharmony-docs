@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:32:44.445Z pushedAt=2026-11-20T04:41:27.974Z nl=1 -->
 
 MetadataOutput implements metadata streams. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -38,7 +39,7 @@ Starts to output metadata. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
@@ -79,7 +80,7 @@ Starts to output metadata. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
@@ -284,7 +285,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 }
 ```
 
-## addMetadataObjectTypes<sup>23+</sup> 
+## addMetadataObjectTypes<sup>23+</sup>
 
 addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
@@ -298,13 +299,13 @@ Adds the types of metadata objects to be detected.
 
 | Name                 | Type                                              | Mandatory| Description                         |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | Yes  | Metadata stream type information, which is obtained through [getSupportedOutputCapability](./arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -315,9 +316,16 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalid metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.addMetadataObjectTypes(types);
+    metadataOutput.addMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -326,7 +334,7 @@ function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Ar
 }
 ```
 
-## removeMetadataObjectTypes<sup>23+</sup> 
+## removeMetadataObjectTypes<sup>23+</sup>
 
 removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
@@ -346,7 +354,7 @@ Removes the types of metadata objects to be detected.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.                                   |
 | 7400103                |  Session not config.                                   |
@@ -357,9 +365,16 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager,
+  cameraDevice: camera.CameraDevice, metadataObjectTypes: Array<camera.MetadataObjectType>): void {
+  let cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+  let types: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+  if (!metadataObjectTypes.every(type => types.includes(type))) {
+    console.error(`invalid metadataObjectTypes.`);
+    return;
+  }
   try {
-    metadataOutput.removeMetadataObjectTypes(types);
+    metadataOutput.removeMetadataObjectTypes(metadataObjectTypes);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
@@ -426,7 +441,7 @@ Locks a metadata object (such as a cat or dog face) for tracking.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -464,7 +479,7 @@ Unlocks the metadata object (such as a cat or dog face) for tracking.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.                                   |
 | 7400201                |  Camera service fatal error.                           |
