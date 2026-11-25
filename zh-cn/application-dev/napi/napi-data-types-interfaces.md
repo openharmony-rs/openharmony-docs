@@ -597,6 +597,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_global_handle_count | 遍历并获取global handle数量。 |
 | napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 |
 | napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 |
+| napi_shared_module_register | 注册Sendable共享NAPI模块，init在进程内只执行一次，导出对象跨Worker共享。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -974,6 +975,12 @@ napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)
 
 ```c
 napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope);
+```
+
+**napi_shared_module_register**
+
+```c
+void napi_shared_module_register(napi_module* mod);
 ```
 
 ### 其他实用工具
