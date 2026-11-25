@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "汇总JSVM-API支持的数据类型与接口，包括JSVM_Value、JSVM_Status等类型定义，以及引擎生命周期、JS编译执行、属性函数操作、内存管理、Promise、JSON等场景接口说明，供开发时查阅。"
 keywords: [JSVM_Value, JSVM_Status, JSVM_Env, 数据类型, 接口说明, 内存管理, Promise操作, JSON操作, 任务队列]
 doctype: guide

@@ -16,7 +16,7 @@ typedef struct JSVM_BackingStore__* JSVM_BackingStore
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **相关模块：** [JSVM](capi-jsvm.md)
 
