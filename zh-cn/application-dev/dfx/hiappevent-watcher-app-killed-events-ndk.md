@@ -219,7 +219,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
    编辑工程中的“entry > src > main > cpp > types > libentry > Index.d.ts”文件，定义ArkTS接口：
 
-   <!-- @[AppKillEvent_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @[AppKillEvent_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
    
    ``` TypeScript
    export const registerAppKillWatcher: () => void;
