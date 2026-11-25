@@ -9962,20 +9962,6 @@ Allowing an application to initiate virus scanning for freely distributable appl
  
 **Valid since**: 26.1.0
 
-## ohos.permission.ACCESS_SECURE_AIGATEWAY
- 
-Allowing the app to access the AI gateway.
- 
-**Permission level**: system_basic
- 
-**Authorization mode**: system_grant
- 
-**Certificate-based authorization**: true
- 
-**Supported devices**: PCs/2-in-1 devices | tablets
- 
-**Valid since**: 26.1.0
-
 ## ohos.permission.RESOURCE_SCHEDULE_PERF_HINT
  
 Allows a system application to report performance-sensitive scenario information.
