@@ -2843,6 +2843,24 @@ struct GridEts {
    ArkTS-Sta示例：
 
    <!-- @[virtual_drag_sta_drop_result](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Udmf/VirtualFileDrag-Sta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private receive(event: DragEvent): void {
+     try {
+       this.handleUris(getDroppedFileUris(event));
+       event.setResult(DragResult.DRAG_SUCCESSFUL);
+     } catch (error) {
+       event.setResult(DragResult.DRAG_FAILED);
+       logSampleError('Get dropped URIs', error);
+       this.getUIContext().getPromptAction().showToast({ message: $r('app.string.receive_failed') });
+     }
+   }
+   
+   private handleUris(uris: string[]): void {
+     // 业务可在此根据URI读取、复制或打开文件，示例仅提示已接收。
+     this.getUIContext().getPromptAction().showToast({ message: $r('app.string.uris_received', uris.length) });
+   }
+   ```
 
 ## 支持悬停检测
 Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的一项增强功能，允许用户在拖动过程中通过悬停在目标上自动触发视图跳转，提供了使用的便利性。建议在所有支持页面切换的区域均实现该功能。
