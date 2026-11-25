@@ -2787,6 +2787,32 @@ struct GridEts {
    ArkTS-Sta示例：
 
    <!-- @[virtual_drag_sta_receive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Udmf/VirtualFileDrag-Sta/entry/src/main/ets/model/DropReceiver.ets) -->
+   
+   ``` TypeScript
+   // 获取落入数据中的文件URI，不读取文件内容。
+   export function getDroppedFileUris(event: DragEvent): string[] {
+     const uris: string[] = [];
+     const data: unifiedDataChannel.UnifiedData | undefined = event.getData();
+     if (data === undefined) {
+       throw new Error('No dropped data received');
+     }
+     const records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+     for (const record of records) {
+       if (!record.getTypes().includes(uniformTypeDescriptor.UniformDataType.FILE_URI)) {
+         continue;
+       }
+       const entry: uniformDataStruct.FileUri =
+         record.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+       if (entry.oriUri.length > 0) {
+         uris.push(entry.oriUri);
+       }
+     }
+     if (uris.length === 0) {
+       throw new Error('No file URI received');
+     }
+     return uris;
+   }
+   ```
 
 6. 处理文件URI。
 
