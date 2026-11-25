@@ -10,7 +10,7 @@
 
 ## 概述
 
-Agent输入管控用于设置组件对Agent生成输入事件的管控级别。应用还可以通过敏感节点输入监听，获取节点在输入事件分发前的通知。例如，应用可允许Agent操作普通按钮，阻止Agent操作需要用户亲自确认的按钮，并通过监听记录被阻止的输入事件。
+Agent输入管控用于设置组件对Agent生成输入事件的管控级别。应用还可以通过敏感节点输入监听，在输入事件分发到节点前获取通知。例如，应用可允许Agent操作普通按钮，阻止Agent操作需要用户亲自确认的按钮，并通过监听记录被阻止的输入事件。
 
 Agent生成的事件包括系统Agent生成的事件，以及具有[ohos.permission.CONTROL_COMPONENT](../security/AccessToken/restricted-permissions.md#ohospermissioncontrol_component)权限的应用注入的事件。管控设置不影响用户生成的输入事件或其他注入事件。
 
