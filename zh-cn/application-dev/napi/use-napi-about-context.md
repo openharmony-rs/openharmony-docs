@@ -216,6 +216,7 @@ status: active
 |napi_get_global_handle_count | 否 |
 |napi_open_microtask_scope | 否 |
 |napi_close_microtask_scope | 否 |
+|napi_shared_module_register | 否 |
 |napi_throw_business_error | 是 |
 
 ## 不支持多运行时上下文环境调用的NAPI接口
