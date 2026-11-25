@@ -79,6 +79,171 @@
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
     <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+    
+    ``` TypeScript
+    
+    // 定义输入法的两个子类型
+    export enum CustomInputMethodSubtype {
+      english = 0,
+      chinese = 1
+    };
+    
+    class KeyboardController {
+      private keyCodes: Array<number> = [];
+      private mContext: InputMethodExtensionContext | undefined;
+      private panel: inputMethodEngine.Panel | undefined;
+      private isSpecialKeyPress: boolean = false;
+      private isKeyboardShow: boolean = false;
+      private inputHandle: InputHandler = InputHandler.getInstance();
+      private mKeyboardDelegate: inputMethodEngine.KeyboardDelegate | undefined;
+    
+      constructor() {
+        this.mContext = undefined;
+        this.panel = undefined;
+        this.mKeyboardDelegate = undefined;
+      }
+    
+      public onCreate(context: InputMethodExtensionContext): void {
+        this.mContext = context;
+        this.inputHandle.addLog('onCreate');
+        this.initWindow();
+        this.registerListener();
+      }
+    
+      public onDestroy(): void {
+        this.inputHandle.addLog('onDestroy');
+        this.unRegisterListener();
+        this.destroyPanel();
+      }
+    
+      private initWindow(): void {
+        if (this.mContext === undefined) {
+          return;
+        }
+        this.inputHandle.addLog('initWindow');
+        let dis: display.Display | undefined = undefined;
+        try {
+          dis = display.getDefaultDisplaySync();
+        } catch (err) {
+          let error = err as BusinessError;
+          Log.showError(TAG, `getDefaultDisplaySync catch error: ${error.code} ${error.message}`);
+          return;
+        }
+        if (dis == undefined) {
+          return;
+        }
+        this.inputHandle.addLog("initWindow-oncall display");
+        let dWidth = dis.width;
+        let dHeight = dis.height;
+        let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
+        AppStorage.setOrCreate('windowWidth', dis.width);
+        AppStorage.setOrCreate('windowHeight', dis.height);
+        let isLandscape = false;
+        let isRkDevice = false;
+        if (dis.width > dis.height) {
+          isLandscape = true;
+          AppStorage.setOrCreate('isLandscape', true);
+        } else {
+          AppStorage.setOrCreate('isLandscape', false);
+        }
+        if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
+        } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
+        } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
+          AppStorage.setOrCreate('isRkDevice', true);
+          isRkDevice = true;
+        } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
+        } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
+        }
+        let keyHeight = dHeight * keyHeightRate;
+        this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};navibar height = navigationBar_height`);
+        this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
+        let panelInfo: inputMethodEngine.PanelInfo = {
+          type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+          flag: inputMethodEngine.PanelFlag.FLG_FIXED
+        }
+        let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
+        AppStorage.setOrCreate('inputStyle', inputStyle);
+        inputMethodAbility.createPanel(this.mContext, panelInfo).then((panel: inputMethodEngine.Panel) => {
+          this.panel = panel;
+          panel.resize(dWidth, keyHeight).then(() => {
+            panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
+              this.inputHandle.addLog('loadContent finished');
+            }).catch((err: BusinessError) => {
+              Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+            });
+          }).catch((err: BusinessError) => {
+            Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
+          });
+        }).catch((err: BusinessError) => {
+          Log.showError(TAG, `Failed to createPanel: ${err.code} ${err.message}`);
+        });
+      }
+    
+      private destroyPanel(): void {
+        this.inputHandle.addLog('destroyPanel');
+        if (this.panel) {
+          inputMethodAbility.destroyPanel(this.panel).then(() => {
+            this.inputHandle.addLog('Succeeded in destroyPanel.');
+          }).catch((err: BusinessError) => {
+            Log.showError(TAG, `Failed to destroyPanel: ${err.code} ${err.message}`);
+          });
+        }
+      }
+    
+      private resizePanel(): void {
+        this.inputHandle.addLog('resizeWindow');
+        let dis: display.Display | undefined = undefined;
+        try {
+          dis = display.getDefaultDisplaySync();
+        } catch (err) {
+          let error = err as BusinessError;
+          Log.showError(TAG, `getDefaultDisplaySync catch error: ${error.code} ${error.message}`);
+          return;
+        }
+        if (dis == undefined) {
+          return;
+        }
+        this.inputHandle.addLog('resizeWindow-oncall display');
+        let dWidth = dis.width;
+        let dHeight = dis.height;
+        let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
+        AppStorage.setOrCreate<number>('windowWidth', dis.width);
+        AppStorage.setOrCreate<number>('windowHeight', dis.height);
+        let isLandscape = false;
+        let isRkDevice = false;
+        if (dis.width > dis.height) {
+          isLandscape = true;
+          AppStorage.setOrCreate('isLandscape', true);
+        } else {
+          AppStorage.setOrCreate('isLandscape', false);
+        }
+        if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
+        } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
+        } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
+          AppStorage.setOrCreate('isRkDevice', true);
+          isRkDevice = true;
+        } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
+        } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
+          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
+        }
+        let keyHeight = dHeight * keyHeightRate;
+        let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
+        AppStorage.setOrCreate('inputStyle', inputStyle);
+        if (this.panel) {
+          this.panel.resize(dWidth, keyHeight).then(() => {
+          }).catch((err: BusinessError) => {
+            this.inputHandle.addLog(`resizePanel err = ${err.code} ${err.message}`);
+          })
+        }
+      }
+    ```
 
     <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
