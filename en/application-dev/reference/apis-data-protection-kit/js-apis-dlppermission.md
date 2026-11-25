@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=1329268b35b162fd1d73b5adc97910b9c14d19e7 translatedAt=2026-11-24T08:20:31.358Z pushedAt=2026-11-24T10:43:14.512Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f27abfdde73a3dcb6e35cf1962a9dae7df9324cb translatedAt=2026-11-25T06:13:57.508Z pushedAt=2026-11-25T07:03:06.002Z nl=1 -->
 
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. This module provides APIs for cross-device file access management, encrypted storage, and access authorization. DLP protects sensitive files through encryption and generates encrypted files in .dlp format. When opening a DLP file, the system automatically creates an isolated DLP sandbox environment to ensure that the file content is not leaked to unauthorized environments. Fine-grained permission control is supported for enterprise DLP files, including management of permissions to view, edit, copy, print, and screen-record files.
 
@@ -1109,9 +1109,9 @@ window.createWindow(config).then((windowClass) => {
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
 setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
-Sets the sandbox app configuration. The configuration information is a string in JSON format and can be set by the app. After the API is successfully called, the sandbox app runs based on the configuration information. This API uses a promise to return the result. This API can be called only in non-DLP sandbox apps.
+Sets the configuration information of the sandbox application. The configuration information is in JSON string format and can be set by the application. After the API is successfully called, the sandbox application runs based on the configuration information. This API uses a promise to return the result. This API can be called only in non-DLP sandbox applications.
 
-This API is used to set the configuration information of the sandbox app so that the app can pass custom parameters as needed.
+This API sets the sandbox application configuration so that the application can pass custom parameters as required.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -1119,7 +1119,7 @@ This API is used to set the configuration information of the sandbox app so that
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| configInfo | string | Yes | Sandbox application configuration information. The length cannot exceed 2<sup>22</sup>-1 bytes. If the length is out of range, error code 401 is thrown. |
+| configInfo | string | Yes | Sandbox application configuration. The value contains a maximum of 4,194,303 bytes. If the value is out of range, error code 401 is thrown. |
 
 **Return value**
 
