@@ -265,6 +265,28 @@
    ArkTS-Sta示例：
 
    <!-- @[input_case_input_shift_focus_in_not_focusable_window](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/SubWindowIndex.ets) -->
+   
+   ``` TypeScript
+   async shiftFocusToSubWindow(): Promise<void> {
+     try {
+       let windowStage: window.WindowStage | undefined = AppStorage.get<window.WindowStage>('windowStage');
+       if (windowStage === undefined) {
+         Log.showError(TAG, 'Failed to get the windowStage.');
+         return;
+       }
+       let subWindowList: window.Window[] = await windowStage.getSubWindow();
+       let subWindow: window.Window = subWindowList[0];
+       await subWindow.setWindowFocusable(true);
+       const mainWindowId: int = AppStorage.get<int>('mainWindowId') ?? 0;
+       const subWindowId: int = AppStorage.get<int>('subWindowId') ?? 0;
+       await window.shiftAppWindowFocus(mainWindowId, subWindowId);
+       Log.showInfo(TAG, 'Succeeded in shifting focus to subWindow.');
+     } catch (exception) {
+       let err = exception as BusinessError;
+       Log.showError(TAG, `Failed to shift focus to subWindow. Cause code: ${err.code}, message: ${err.message}`);
+     }
+   }
+   ```
 
 
 3. 当用户重新点击子窗中的非输入框组件时，可以通过[setWindowFocusable](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)将子窗重新设置为不可获焦，焦点窗口即可恢复至主窗。
