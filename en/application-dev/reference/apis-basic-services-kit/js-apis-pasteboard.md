@@ -1322,7 +1322,7 @@ let count: number = pasteData.getRecordCount();
 
 getTag(): string
 
-Obtains the custom tag from the pasteboard. If no custom tag is set, null is returned.
+Obtains the custom tag from the pasteboard. If no custom tag is set, empty string is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1332,7 +1332,7 @@ Obtains the custom tag from the pasteboard. If no custom tag is set, null is ret
 
 | Type| Description|
 | -------- | -------- |
-| string | Custom tag. If no custom tag is set, null is returned.|
+| string | Custom tag. If no custom tag is set, empty string is returned.|
 
 **Example**
 
