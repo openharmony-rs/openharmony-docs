@@ -151,7 +151,6 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
 | uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| certStoreInfo         | [CertStoreInfo](js-apis-certManager-sys.md#certstoreinfo)    | 否  | 是   | 表示证书库信息。<br>**起始版本：** 26.1.0<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CMHandle
 
