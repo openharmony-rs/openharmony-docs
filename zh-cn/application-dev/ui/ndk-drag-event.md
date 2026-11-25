@@ -480,6 +480,41 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    注册[NODE_ON_DRAG_START](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)和[NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，通过[OH_ArkUI_DragEvent_SetData](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_dragevent_setdata)设置起拖数据。完整节点初始化见示例中的`napi_init.cpp`。
 
    <!-- @[virtual_drag_c_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   void OnNodeEvent(ArkUI_NodeEvent* event)
+   {
+       if (event == nullptr) {
+           return;
+       }
+       const auto type = OH_ArkUI_NodeEvent_GetEventType(event);
+       if (type == NODE_ON_DROP) {
+           OnDrop(OH_ArkUI_NodeEvent_GetDragEvent(event));
+           return;
+       }
+       if (type == NODE_ON_DRAG_END) {
+           OH_UdmfData_Destroy(g_dragData);
+           g_dragData = nullptr;
+           return;
+       }
+       if (type != NODE_ON_DRAG_START || g_dragData != nullptr) {
+           return;
+       }
+       auto* drag = OH_ArkUI_NodeEvent_GetDragEvent(event);
+       auto* data = CreateVirtualDragData(g_directory, g_compressed);
+       if (drag == nullptr || data == nullptr) {
+           OH_UdmfData_Destroy(data);
+           return;
+       }
+       const int result = OH_ArkUI_DragEvent_SetData(drag, data);
+       // ArkUI暂存此指针，必须保留到拖拽结束；随后会话中的回调引用由UDMF管理。
+       if (result == 0) {
+           g_dragData = data;
+       } else {
+           OH_UdmfData_Destroy(data);
+       }
+   }
+   ```
 
 4. 配置落入节点。
 
