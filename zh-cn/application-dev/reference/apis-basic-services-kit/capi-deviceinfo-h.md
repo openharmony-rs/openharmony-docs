@@ -364,7 +364,7 @@ int OH_GetSdkMinorApiVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 0 ~ 99 - 系统次版本号，取值范围为整数。<br>-1 - 未查询到系统次版本号，或调用内部接口失败。|
+| int | 0 ~ 99 - 系统次版本号，取值范围为整数。<br>-1 - 未查询到系统次版本号，或调用内部接口失败。<br>例如系统软件的API版本为26.0.1，则sdkMinorApiVersion为0。例如系统软件的API版本为26.1.0，则sdkMinorApiVersion为1。|
 
 ### OH_GetSdkPatchApiVersion()
 
@@ -382,7 +382,7 @@ int OH_GetSdkPatchApiVersion(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 0 ~ 99 - 系统修订版本号，取值范围为整数。<br>-1 - 未查询到系统修订版本号，或调用内部接口失败。|
+| int | 0 ~ 99 - 系统修订版本号，取值范围为整数。<br>-1 - 未查询到系统修订版本号，或调用内部接口失败。<br>例如系统软件的API版本为26.0.1，则sdkMinorApiVersion为0。例如系统软件的API版本为26.1.0，则sdkMinorApiVersion为1。 |
 
 ### OH_GetFirstApiVersion()
 
