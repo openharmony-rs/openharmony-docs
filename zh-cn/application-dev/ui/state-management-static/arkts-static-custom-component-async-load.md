@@ -45,7 +45,7 @@
 - **构造期外调用无效**：其余时机（含[aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#abouttoappear)、build执行中、组件已显示后）调用时无异步效果：调用正常返回、不抛异常，也无错误日志等可观测的失败信号，组件按既有同步方式完成加载显示。
 - **仅首次生效**：同一组件重复调用enableAsyncLoad无效，仅首次调用生效；重复调用会记录维测告警日志（可观察于hilog）。
 - **嵌套规则**：祖先自定义组件异步构建过程中创建的子组件，其enableAsyncLoad调用不生效——子组件随父组件同步构建，父组件的异步加载预算与超时兜底已覆盖其构建。
-- **占位模板要求**：占位模板须先通过[getPlaceholderRegister()](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册，且builder须为全局、无参的[\@Builder](../state-management/arkts-builder.md)({ isPlaceholder: true })函数，受限Builder要求详见[\@ohos.arkui.placeholderRegister (滚动占位注册)](../../reference/apis-arkui/arkts-apis-placeholderregister.md)；占位模板注册表按UI实例隔离，注册结果对其他UI实例不可见。
+- **占位模板要求**：占位模板须先通过[getPlaceholderRegister()](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册，且builder须为全局、无参、只读静态渲染的[\@Builder](../state-management/arkts-builder.md)({ isPlaceholder: true })函数（不得访问响应式状态、注册手势/动画/回调；动画组件如LoadingProgress不可用于占位模板），受限Builder要求详见[\@ohos.arkui.placeholderRegister (滚动占位注册)](../../reference/apis-arkui/arkts-apis-placeholderregister.md)；占位模板注册表按UI实例隔离，注册结果对其他UI实例不可见。
 - **生命周期时序变化**：启用异步加载后，aboutToAppear/[\@ComponentAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentappear)不在首个渲染帧触发，推迟至实际内容构建所在的帧（先于该帧内内容构建）触发；[\@ComponentBuilt](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentbuilt)、[onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#ondidbuild)、[onWillApplyTheme](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)的触发时机与顺序为：onWillApplyTheme → \@ComponentBuilt → onDidBuild（onWillApplyTheme 先于内容构建，后两者在构建完成后依次触发，与同步加载场景一致）；每个回调仍恰好触发一次。
 - **测量回调**：[onMeasureSize](../../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onmeasuresize10)/[onPlaceChildren](../../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onplacechildren10)首次触发于加载完成后，占位期间不触发，占位子树不作为LayoutChild暴露。
 - **失败处理**：当前版本不处理异步加载失败场景，由超时强制加载机制兜底。
@@ -101,15 +101,14 @@ struct Index {
 
 ```ts
 import { UIUtils, ComponentInit, ComponentV2, Entry, Column, Text, Builder, wrapBuilder,
-  LoadingProgress, FlexAlign } from '@kit.ArkUI';
+  FlexAlign } from '@kit.ArkUI';
 
-// 占位模板须为全局、无参、只读静态渲染的受限Builder
+// 占位模板须为全局、无参、只读静态渲染的受限Builder：
+// 只能包含静态渲染内容，不得访问响应式状态、注册手势/动画/回调——
+// 动画组件（如LoadingProgress）不可用，违反约束的模板无法注册成功
 @Builder({ isPlaceholder: true })
 function HeavyPlaceholder() {
   Column() {
-    LoadingProgress()
-      .width(32)
-      .height(32)
     Text('加载中...')
       .fontSize(14)
       .fontColor(0x999999)

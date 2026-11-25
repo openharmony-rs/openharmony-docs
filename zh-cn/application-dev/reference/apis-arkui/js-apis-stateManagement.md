@@ -2361,7 +2361,7 @@ enableAsyncLoad(options?: CustomComponentAsyncLoadOptions): void
 
 <!--code_no_check-->
 ```ts
-import { UIUtils } from '@kit.ArkUI';
+import { UIUtils, ComponentInit } from '@kit.ArkUI';
 
 @ComponentV2
 struct HeavyComponent {
@@ -2402,7 +2402,7 @@ struct HeavyComponent {
 
 <!--code_no_check-->
 ```ts
-import { UIUtils } from '@kit.ArkUI';
+import { UIUtils, ComponentInit } from '@kit.ArkUI';
 
 @ComponentV2
 struct HeavyComponent {
