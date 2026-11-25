@@ -234,6 +234,7 @@
    
 
 2. 当用户点击子窗中的输入框组件时，可以先通过[setWindowFocusable](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)将子窗设置为可获焦，然后通过[shiftAppWindowFocus](../reference/apis-arkui/arkts-apis-window-f.md#windowshiftappwindowfocus11)将焦点窗口从主窗切换为子窗，即可在子窗的输入框中正常使用输入法。
+
    ArkTS-Dyn示例：
 
    <!-- @[input_case_input_shift_focus_in_not_focusable_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/SubWindowIndex.ets) -->
@@ -290,6 +291,7 @@
 
 
 3. 当用户重新点击子窗中的非输入框组件时，可以通过[setWindowFocusable](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)将子窗重新设置为不可获焦，焦点窗口即可恢复至主窗。
+
    ArkTS-Dyn示例：
 
    <!-- @[input_case_input_shift_focus_to_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/SubWindowIndex.ets) -->
@@ -314,7 +316,7 @@
    }
    ```
 
-ArkTS-Sta示例：
+   ArkTS-Sta示例：
 
    <!-- @[input_case_input_shift_focus_to_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/SubWindowIndex.ets) -->
    
