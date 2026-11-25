@@ -286,7 +286,7 @@
           根据代码可知，只有处理到所连接总线类型为platform时的设备才会创建对应软链接，这一软链接所在的目录是：
           ```text
           /dev/block/platform/soc/10100000.himci.eMMC/by-name
-         ```
+          ```
          而只有匹配到设备目录为bootDevice中路径的设备时，才会创建平台无关目录的软链接。
 
           对于system分区设备来说，其所在目录如下：

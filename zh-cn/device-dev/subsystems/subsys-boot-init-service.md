@@ -93,7 +93,7 @@
       "services" : [{
         "name" : "serviceName",
         "path" : ["/system/bin/serviceName"],
-        "ondemand" : true,
+        "ondemand" : true
     }]
     ```
   - SA进程按需启动
@@ -120,10 +120,10 @@
     - init提供修改\*.cfg配置文件，为服务提供抑制机制。
 
     服务进程启动&回收能力增强配置，如下：
-      ```json
+      ```json5
       "services" : [{
           "name" : "serviceName",
-          "path" : ["/system/bin/serviceName"]
+          "path" : ["/system/bin/serviceName"],
           "importance" : 1,                  // 服务进程提供优先级设置
           "cpucore" : [0],                   // 服务进程提供CPU绑核功能
           "critical" : [1, 5, 10],           // 服务提供抑制机制
@@ -175,7 +175,7 @@
                   "//base/startup/init/ueventd:startup_ueventd",
                   "//base/startup/init/services/etc:ueventd.cfg"
               ]
-            },
+          }
       }
   ```
 ### 配置服务进程的DAC权限
@@ -226,7 +226,7 @@
 
   - 若gid,uid设置为root或system，则需要在对应产品目录下的security_config/high_privilege_process_list.json文件中添加白名单，例如：
 
-  ```json
+  ```text
     {
         "high_privilege_process_list": [
             {
