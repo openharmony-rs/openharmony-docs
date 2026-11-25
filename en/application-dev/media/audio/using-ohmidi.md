@@ -1,8 +1,8 @@
 # Using OH_MIDI for MIDI Development (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=88f287e47beec862be42bfd7ca8f0205a07cd4c0 translatedAt=2026-09-28T02:37:23.690Z pushedAt=2026-09-29T06:54:32.858Z -->
