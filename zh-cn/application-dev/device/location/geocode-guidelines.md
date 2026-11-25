@@ -39,41 +39,49 @@
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 
-2. 查询正地理编码与逆地理编码服务是否可用。
+2. 定义地理编码参数。
+
+   ``` TypeScript
+   let latitude: number = 31.12;
+   let longitude: number = 121.11;
+   let description: string = '上海市浦东新区张江路';
+   ```
+
+3. 查询正地理编码与逆地理编码服务是否可用。
    - 调用isGeocoderAvailable查询正地理编码与逆地理编码服务是否可用，如果服务可用再继续进行步骤3。如果服务不可用，说明该设备不具备地理编码与逆地理编码能力，请勿使用相关接口。
 
      <!-- @[geocode_is_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
       ``` TypeScript
       try {
-          let isAvailable = geoLocationManager.isGeocoderAvailable();
-          if (!isAvailable) {
-              console.error('current device do not support geocoder');
-          }
+        let isAvailable = geoLocationManager.isGeocoderAvailable();
+        if (!isAvailable) {
+            console.error('current device do not support geocoder');
+        }
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+        console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
-3. 获取转化结果。
+4. 获取转化结果。
    - 调用getAddressesFromLocation，把经纬度坐标转化为与此坐标匹配的[GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress)（地理编码地址信息）列表。
      
      <!-- @[geocode_reverse_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
       ``` TypeScript
-      let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
+      let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {'latitude': latitude, 'longitude': longitude, 'maxItems': 1};
       try {
-          if (geoLocationManager.isGeocoderAvailable()) {
-            geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
-              if (err) {
-                console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
-              } else {
-                console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
-              }
-            });
-          }
+        if (geoLocationManager.isGeocoderAvailable()) {
+          geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
+            if (err) {
+              console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
+            } else {
+              console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
+            }
+          });
+        }
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+        console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
@@ -82,17 +90,17 @@
      <!-- @[geocode_forward_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
 
       ``` TypeScript
-      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "上海市浦东新区张江路", "maxItems": 1};
+      let geocodeRequest:geoLocationManager.GeoCodeRequest = {'description': description, 'maxItems': 1};
       try {
-          if (geoLocationManager.isGeocoderAvailable()) {
-            geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
-              if (err) {
-                console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
-              } else {
-                console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
-              }
-            });
-          }
+        if (geoLocationManager.isGeocoderAvailable()) {
+          geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+            if (err) {
+              console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
+            } else {
+              console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
+            }
+          });
+        }
       } catch (err) {
           console.error("errCode:" + err.code + ", message:"  + err.message);
       }

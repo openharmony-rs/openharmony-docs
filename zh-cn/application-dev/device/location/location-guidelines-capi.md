@@ -55,7 +55,7 @@
    #include "LocationKit/oh_location.h"
    #include "LocationKit/oh_location_type.h"
    #include "hilog/log.h"
-   #include <stdlib.h>
+   #include <cstdlib>
    #include <string>
    ```
 

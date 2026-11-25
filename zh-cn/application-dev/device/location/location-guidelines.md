@@ -48,7 +48,7 @@
    try {
        let locationEnabled = geoLocationManager.isLocationEnabled();
    } catch (err) {
-       console.error("errCode:" + err.code + ", message:"  + err.message);
+       console.error('errCode:' + err.code + ', message:' + err.message);
    }
    ```
    如果位置开关未开启，可以拉起全局开关设置弹框，引导用户打开位置开关，具体可参考[requestGlobalSwitch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12)。

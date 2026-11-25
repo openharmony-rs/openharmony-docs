@@ -44,7 +44,7 @@
    ``` TypeScript
    let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
    if (!isGnssGeoFeceSupported) {
-       console.error('Current Device Do not Support GnssGeofence');
+     console.error('Current Device Do not Support GnssGeofence');
    }
    ```
 
@@ -63,9 +63,9 @@
    <!-- @[geofence_transition_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
 
    ``` TypeScript
-   let transitionStatusList: Array<geoLocationManager.GeofenceTransitionEvent> = [
-       geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
-       geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
+   let transitionStatusList: geoLocationManager.GeofenceTransitionEvent[] = [
+     geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
+     geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_EXIT,
    ];
    ```
 
@@ -76,15 +76,15 @@
    ``` TypeScript
    // GEOFENCE_TRANSITION_EVENT_ENTER事件
    let notificationRequest1: notificationManager.NotificationRequest = {
-       id: 1,
-       content: {
-         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-         normal: {
-         title: "围栏通知",
-           text: "围栏进入",
-           additionalText: ""
-         }
-        }
+     id: 1,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+          title: '围栏通知',
+          text: '围栏进入',
+          additionalText: ''
+       }
+     }
    };
    // 创建GEOFENCE_TRANSITION_EVENT_EXIT事件对应的通知对象
    let notificationRequest2: notificationManager.NotificationRequest = {
@@ -94,7 +94,7 @@
        normal: {
          title: '围栏通知',
          text: '围栏退出',
-         additionalText: ""
+         additionalText: ''
        }
      }
    };
@@ -106,7 +106,7 @@
 
    ``` TypeScript
    // 把创建的通知对象存入Array中，存入顺序与transitionStatusList一致
-   let notificationRequestList: Array<notificationManager.NotificationRequest> =
+   let notificationRequestList: notificationManager.NotificationRequest[] =
      [notificationRequest1, notificationRequest2];
    // 构造GNSS地理围栏请求对象gnssGeofenceRequest
    let gnssGeofenceRequest: geoLocationManager.GnssGeofenceRequest = {
@@ -123,23 +123,23 @@
        }
        if (transition) {
          console.info("GeofenceTransition: " + JSON.stringify(transition));
-     }
+       }
      }
    }
    try {
      // 添加围栏
      if (geoLocationManager.isGnssFenceServiceSupported()) {
         geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
-           // 围栏添加成功后返回围栏ID
-           console.info("addGnssGeofence success, fence id: " + id);
-           let fenceId = id;
+          // 围栏添加成功后返回围栏ID
+          console.info('addGnssGeofence success, fence id: ' + id);
+          let fenceId = id;
         }).catch((err: BusinessError) => {
-           console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code + 
-             ",errMessage:" + (err as BusinessError).message);
+           console.error('addGnssGeofence failed, promise errCode:' + (err as BusinessError).code +
+            ',errMessage:' + (err as BusinessError).message);
         });
      }
    } catch(error) {
-       console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
+       console.error('addGnssGeofence failed, err:' + JSON.stringify(error));
    }
    ```
 
@@ -153,12 +153,12 @@
    try {
      if (geoLocationManager.isGnssFenceServiceSupported()) {
         geoLocationManager.removeGnssGeofence(fenceId).then(() => {
-           console.info("removeGnssGeofence success fenceId:" + fenceId);
+           console.info('removeGnssGeofence success fenceId:' + fenceId);
         }).catch((error : BusinessError) => {
-           console.error("removeGnssGeofence: error=" + JSON.stringify(error));
+           console.error('removeGnssGeofence: error=' + JSON.stringify(error));
         });
      }
    } catch(error) {
-     console.error("removeGnssGeofence: error=" + JSON.stringify(error));
+     console.error('removeGnssGeofence: error=' + JSON.stringify(error));
    }
    ```
