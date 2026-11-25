@@ -124,6 +124,114 @@
 
    <!-- @[input_case_input_create_not_focusable_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/NotFocusableWindowDemo.ets) -->
    
+   ``` TypeScript
+   // NotFocusableWindowDemo.ets实现主窗的布局内容
+   import {
+     Entry,
+     Component,
+     Flex,
+     Text,
+     TextInput,
+     Button,
+     FlexOptions,
+     FlexDirection,
+     ItemAlign,
+     FlexAlign,
+     window,
+     AppStorage,
+     $r
+   } from '@kit.ArkUI';
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@ohos.base';
+   import { common } from '@kit.AbilityKit';
+   import Log from '../model/Log';
+   
+   const TAG: string = 'NotFocusableWindowDemo->';
+   
+   @Entry
+   @Component
+   struct NotFocusableWindowDemo {
+     private subWindow: window.Window | null = null;
+   
+     async createSubWindow(): Promise<void> {
+       try {
+         if (this.subWindow !== null) {
+           await this.subWindow!.showWindow();
+           return;
+         }
+         let windowStage: window.WindowStage | undefined = AppStorage.get<window.WindowStage>('windowStage');
+         if (windowStage === undefined) {
+           Log.showError(TAG, 'Failed to get windowStage');
+           return;
+         }
+         let title: string | undefined =
+           this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.subwindow_title').id);
+         let options: window.SubWindowOptions = { title: title ? title : '', decorEnabled: true };
+         let subWindow: window.Window = await windowStage.createSubWindowWithOptions('mySubWindow', options);
+         this.subWindow = subWindow;
+         const subWindowId: number = subWindow.getWindowProperties().id;
+         AppStorage.setOrCreate('subWindowId', subWindowId);
+         await subWindow.resize(500, 500);
+         await subWindow.setUIContent('pages/SubWindowIndex');
+         await subWindow.setWindowFocusable(false);
+         await subWindow.showWindow();
+         Log.showInfo(TAG, 'Succeeded in creating and showing the subWindow.');
+       } catch (exception) {
+         let error: BusinessError = exception as BusinessError;
+         Log.showError(TAG, `Failed to create the subWindow. Cause code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   
+     async destroySubWindow(): Promise<void> {
+       try {
+         if (this.subWindow === null) {
+           return;
+         }
+         await this.subWindow!.destroyWindow();
+         this.subWindow = null;
+         Log.showInfo(TAG, 'Succeeded in destroying the subWindow.');
+       } catch (exception) {
+         let error: BusinessError = exception as BusinessError;
+         Log.showError(TAG, `Failed to destroy the subWindow. Cause code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   
+     aboutToDisappear(): void {
+       this.destroySubWindow();
+     }
+   
+     build(): void {
+       Flex({
+         direction: FlexDirection.Column,
+         alignItems: ItemAlign.Center,
+         justifyContent: FlexAlign.Center
+       } as FlexOptions) {
+         Text($r('app.string.not_focusable_window_title'))
+           .fontSize(18)
+           .fontWeight(500)
+           .margin(20)
+         TextInput({ placeholder: $r('app.string.subwindow_placeholder') })
+           .width('90%')
+           .height(48)
+           .margin(10)
+           .onClick(() => {
+             this.createSubWindow();
+           })
+         Button($r('app.string.subwindow_destroy'))
+           .width('90%')
+           .height(48)
+           .margin(10)
+           .onClick(() => {
+             this.destroySubWindow();
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
+   
 
 2. 当用户点击子窗中的输入框组件时，可以先通过[setWindowFocusable](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)将子窗设置为可获焦，然后通过[shiftAppWindowFocus](../reference/apis-arkui/arkts-apis-window-f.md#windowshiftappwindowfocus11)将焦点窗口从主窗切换为子窗，即可在子窗的输入框中正常使用输入法。
    ArkTS-Dyn示例：
