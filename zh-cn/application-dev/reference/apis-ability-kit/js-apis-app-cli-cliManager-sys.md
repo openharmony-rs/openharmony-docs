@@ -62,7 +62,7 @@ import { cliManager } from '@kit.AbilityKit';
 
 queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
-查询CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。从API版本26.0.1开始，持ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
+查询CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。从API版本26.0.1开始，持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
 **起始版本：** 26.0.0
 
@@ -119,7 +119,7 @@ try {
 
 queryTools(): Promise\<Array\<ToolInfo\>\>
 
-查询CLI工具的详细信息，使用Promise异步回调。从API版本26.0.1开始，持ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
+查询CLI工具的详细信息，使用Promise异步回调。从API版本26.0.1开始，持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
 **起始版本：** 26.0.0
 
@@ -176,7 +176,7 @@ try {
 
 getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
-根据工具名称获取单个工具的详细信息，使用Promise异步回调。从API版本26.0.1开始，持ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具，查询private工具时返回错误码35600030。
+根据工具名称获取单个工具的详细信息，使用Promise异步回调。从API版本26.0.1开始，持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具，查询private工具时返回错误码35600030。
 
 **起始版本：** 26.0.0
 
