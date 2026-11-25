@@ -9176,7 +9176,7 @@
 
 **支持设备**：PC/2-in-1 | Car | Phone | Tablet | TV | Wearable
 
-**起始版本**：26.0.1
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
