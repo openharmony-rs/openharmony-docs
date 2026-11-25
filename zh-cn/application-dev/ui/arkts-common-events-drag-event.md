@@ -2745,6 +2745,14 @@ struct GridEts {
    ArkTS-Sta示例：
 
    <!-- @[virtual_drag_sta_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Udmf/VirtualFileDrag-Sta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Text($r('app.string.drop_hint'))
+     .width('100%').height(120)
+     .backgroundColor($r('app.color.drag_drop_background'))
+     .allowDrop(DROP_TYPES)
+     .onDrop((event: DragEvent) => { this.receive(event); })
+   ```
 
 5. 获取文件URI。
 
