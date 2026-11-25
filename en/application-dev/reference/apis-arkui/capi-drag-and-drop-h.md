@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c119a607299eb566bbbf97b6a6dc6968be6b0ef2 translatedAt=2026-11-23T07:10:29.666Z pushedAt=2026-11-25T02:43:23.144Z nl=1 -->
+<!-- md-trans-meta sourceCommit=c119a607299eb566bbbf97b6a6dc6968be6b0ef2 translatedAt=2026-11-23T07:10:29.666Z pushedAt=2026-11-25T07:21:35.686Z nl=1 -->
 
 ## Overview
 
@@ -40,7 +40,7 @@ Declares the APIs of **NativeDrag**.
 | -- | -- | -- |
 | [ArkUI_DragResult](#arkui_dragresult) | ArkUI_DragResult | Enumerates drag results, which are set by the data receiver and transferred by the system to the drag source so that the drag source is aware of the data processing result of the receiver.|
 | [ArkUI_DropOperation](#arkui_dropoperation) | ArkUI_DropOperation | Enumerates data processing modes used when data is dropped, which affects the display of the badge.|
-| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus | Enumerates interaction states prior to a drop and drop operation.|
+| [ArkUI_PreDragStatus](#arkui_predragstatus) | ArkUI_PreDragStatus | Enumerates interaction states prior to a drag and drop operation.|
 | [ArkUI_DragPreviewScaleMode](#arkui_dragpreviewscalemode) | ArkUI_DragPreviewScaleMode | Enumerates drag preview scale modes.|
 | [ArkUI_DragStatus](#arkui_dragstatus) | ArkUI_DragStatus | Enumerates drag operation states.|
 
@@ -49,7 +49,7 @@ Declares the APIs of **NativeDrag**.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DragEvent* OH_ArkUI_NodeEvent_GetDragEvent(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_getdragevent) | Obtains a **DragEvent** object from the specified **NodeEvent** object.|
-| [ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_getpredragstatus) | Obtains the state prior to a drop and drop operation.|
+| [ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_getpredragstatus) | Obtains the state prior to a drag and drop operation.|
 | [int32_t OH_ArkUI_DragEvent_DisableDefaultDropAnimation(ArkUI_DragEvent* event, bool disable)](#oh_arkui_dragevent_disabledefaultdropanimation) | Sets whether to disable the default drop animation, which is enabled by default. Use this API to apply a custom drop animation.|
 | [int32_t OH_ArkUI_DragEvent_SetSuggestedDropOperation(ArkUI_DragEvent* event, ArkUI_DropOperation dropOperation)](#oh_arkui_dragevent_setsuggesteddropoperation) | Sets the data processing mode.|
 | [int32_t OH_ArkUI_DragEvent_SetDragResult(ArkUI_DragEvent* event, ArkUI_DragResult result)](#oh_arkui_dragevent_setdragresult) | Sets the result for a drag event.|
@@ -167,7 +167,7 @@ enum ArkUI_PreDragStatus
 **Description**
 
 
-Enumerates interaction states prior to a drop and drop operation.
+Enumerates interaction states prior to a drag and drop operation.
 
 **Since**: 12
 
@@ -257,7 +257,7 @@ ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEve
 **Description**
 
 
-Obtains the state prior to a drop and drop operation.
+Obtains the state prior to a drag and drop operation.
 
 **Since**: 12
 
@@ -272,7 +272,7 @@ Obtains the state prior to a drop and drop operation.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_PreDragStatus](#arkui_predragstatus) | State prior to the drop and drop operation.|
+| [ArkUI_PreDragStatus](#arkui_predragstatus) | State prior to the drag and drop operation.|
 
 ### OH_ArkUI_DragEvent_DisableDefaultDropAnimation()
 
@@ -2066,3 +2066,4 @@ Checks whether the current drag operation is a cross-device drag.
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
+<!--no_check-->

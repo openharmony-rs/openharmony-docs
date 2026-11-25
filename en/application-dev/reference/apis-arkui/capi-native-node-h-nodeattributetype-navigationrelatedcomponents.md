@@ -1171,3 +1171,5 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type | Description |
 | -- | -- |
 | .value[0].i32 | Whether the transition animation is disabled. |
+
+<!--no_check-->
