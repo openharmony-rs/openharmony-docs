@@ -606,7 +606,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 | 类型 | 说明                                                                              |
 | -- |---------------------------------------------------------------------------------|
-| int32_t | <ul><li>如果操作成功，则返回0。</li><li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li></ul> |
+| int32_t | <ul><li>如果操作成功，则返回0。</li><li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li><li>401如果调用者传入的入参非法。</li></ul> |
 
 ### OH_GetOdid()
 
