@@ -72563,23 +72563,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets",
-				"functions":[
-					{
-						"end_line":102,
-						"name":"preview_style_js_receive",
-						"start_line":68
-					},
-					{
-						"end_line":141,
-						"name":"preview_style_js_subscribe",
-						"start_line":127
-					},
-					{
-						"end_line":167,
-						"name":"preview_style_js_attach",
-						"start_line":143
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp",
@@ -75712,6 +75696,31 @@
 						"end_line":1367,
 						"name":"assertion_runtime_check",
 						"start_line":1347
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/inputmethod/preview-text-style-guide-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets",
+				"functions":[
+					{
+						"end_line":102,
+						"name":"preview_style_js_receive",
+						"start_line":68
+					},
+					{
+						"end_line":141,
+						"name":"preview_style_js_subscribe",
+						"start_line":127
+					},
+					{
+						"end_line":167,
+						"name":"preview_style_js_attach",
+						"start_line":143
 					}
 				]
 			}
