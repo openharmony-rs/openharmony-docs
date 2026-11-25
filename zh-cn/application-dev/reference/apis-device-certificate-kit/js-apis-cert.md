@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -28,19 +28,19 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
-| INVALID_PARAMS                        | 401      | 非法入参。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| NOT_SUPPORT                           | 801      | 操作不支持。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| ERR_OUT_OF_MEMORY                     | 19020001 | 内存错误。   <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| ERR_RUNTIME_ERROR                     | 19020002 | 运行时错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | 参数检查失败。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
-| ERR_CRYPTO_OPERATION                  | 19030001 | 调用三方算法库API出错。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书验签错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| ERR_CERT_NOT_YET_VALID                | 19030003 | 证书尚未生效。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
-| ERR_CERT_HAS_EXPIRED                  | 19030004 | 证书过期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | 无法获取证书的颁发者。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | 证书的密钥用途不含证书签名。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  证书的密钥用途不含数字签名。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | 私钥密码可能不正确。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| INVALID_PARAMS                        | 401      | 非法入参。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。                     |
+| NOT_SUPPORT                           | 801      | 操作不支持。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。                 |
+| ERR_OUT_OF_MEMORY                     | 19020001 | 内存错误。   <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。                 |
+| ERR_RUNTIME_ERROR                     | 19020002 | 运行时错误。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。              |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | 参数检查失败。 <br> **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。               |
+| ERR_CRYPTO_OPERATION                  | 19030001 | 调用三方算法库API出错。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。      |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书验签错误。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。           |
+| ERR_CERT_NOT_YET_VALID                | 19030003 | 证书尚未生效。  <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。              |
+| ERR_CERT_HAS_EXPIRED                  | 19030004 | 证书过期。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。                  |
+| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | 无法获取证书的颁发者。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。       |
+| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | 证书的密钥用途不含证书签名。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。  |
+| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  证书的密钥用途不含数字签名。<br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。  |
+| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | 私钥密码可能不正确。 <br> **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。        |
 | ERR_CERT_UNTRUSTED               | 19030009 | 证书不受信任。 <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_CERT_HAS_REVOKED             | 19030010 | 证书已被吊销。 <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_UNKNOWN_CRITICAL_EXTENSION   | 19030011 | 未知的关键扩展。 <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
@@ -62,7 +62,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 二进制数据的封装接口，核心字段data为Uint8Array类型。
 
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 | 名称           | 类型           | 只读 | 可选 | 说明              |
@@ -73,7 +73,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 数据数组的列表。
 
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 | 名称           | 类型           | 只读 | 可选 | 说明               |
@@ -84,7 +84,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
  表示证书编码格式的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -98,7 +98,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
  表示生成证书相关数据的编码格式的枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -113,7 +113,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 CSR属性字段，当前仅支持字符串类型的属性字段，属性值添加到CSR中编码为utf-8。常见的type为challengePassword。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -126,7 +126,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
 用于生成CSR的配置参数，包含主体名称、扩展、摘要算法、输出格式等。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -151,7 +151,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
  表示获取证书字段的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -167,7 +167,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
  证书扩展OID类型的枚举。
 
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -181,7 +181,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
  证书扩展项类型的枚举。
 
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -195,7 +195,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
  表示获取编码格式的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -207,7 +207,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
 表示一个编码后的二进制数据块。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -221,7 +221,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
 证书链数据，在证书链校验时，作为入参传入。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -235,7 +235,7 @@ CSR属性字段，当前仅支持字符串类型的属性字段，属性值添�
 
 X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用者备用名称”（Subject Alternative Name）及其他扩展项中。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -255,7 +255,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示X.509 GeneralName，定义在RFC 5280中，可出现在Subject Alternative Name等扩展中。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -272,30 +272,30 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 | 名称           | 类型                              | 只读 | 可选 | 说明               |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
-| x509Cert | [X509Cert](#x509cert)    | 否 | 是 | 指定具体的证书对象。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| validDate | string    | 否  |  是 |指定证书有效期，例如：20231121074700Z。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| issuer | Uint8Array | 否  | 是 |指定证书颁发者，为DER编码格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| keyUsage | Array\<boolean> | 否  | 是 |指定是否需要匹配密钥用途。true为需要，false为不需要。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| serialNumber | bigint    | 否  |  是 |指定证书的序列号。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| subject | Uint8Array | 否  | 是 |指定证书主体名称，DER编码格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| publicKey | [DataBlob](#datablob) | 否  | 是 |指定证书公钥，DER编码格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| publicKeyAlgID | string | 否  | 是 |指定证书公钥的算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | 否  | 是 |指定证书主体备用名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| matchAllSubjectAltNames<sup>12+</sup> | boolean | 否  | 是 |指定是否需要匹配证书主体备用名称。true为需要，false为不需要。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书颁发机构密钥。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| minPathLenConstraint<sup>12+</sup> | number | 否  | 是 |指定证书CA路径长度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| extendedKeyUsage<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书扩展用途。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定待匹配名称约束条目，与证书nameConstraints扩展中任一名称约束条目的类型与值进行匹配。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| certPolicy<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书策略。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| privateKeyValid<sup>12+</sup> | string | 否  | 是 |指定证书私钥有效期。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书主体公钥标识符（Subject Key Identifier扩展）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| x509Cert | [X509Cert](#x509cert)    | 否 | 是 | 指定具体的证书对象。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| validDate | string    | 否  |  是 |指定证书有效期，例如：20231121074700Z。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| issuer | Uint8Array | 否  | 是 |指定证书颁发者，为DER编码格式。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| keyUsage | Array\<boolean> | 否  | 是 |指定是否需要匹配密钥用途。true为需要，false为不需要。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| serialNumber | bigint    | 否  |  是 |指定证书的序列号。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| subject | Uint8Array | 否  | 是 |指定证书主体名称，DER编码格式。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| publicKey | [DataBlob](#datablob) | 否  | 是 |指定证书公钥，DER编码格式。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| publicKeyAlgID | string | 否  | 是 |指定证书公钥的算法。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | 否  | 是 |指定证书主体备用名称。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| matchAllSubjectAltNames<sup>12+</sup> | boolean | 否  | 是 |指定是否需要匹配证书主体备用名称。true为需要，false为不需要。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书颁发机构密钥。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| minPathLenConstraint<sup>12+</sup> | number | 否  | 是 |指定证书CA路径长度。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| extendedKeyUsage<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书扩展用途。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定待匹配名称约束条目，与证书nameConstraints扩展中任一名称约束条目的类型与值进行匹配。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| certPolicy<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书策略。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| privateKeyValid<sup>12+</sup> | string | 否  | 是 |指定证书私钥有效期。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书主体公钥标识符（Subject Key Identifier扩展）。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
 | privateKey | string \| Uint8Array | 否  | 是 |指定证书私钥，string表示PEM格式私钥，Uint8Array表示DER格式私钥。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## X509CRLMatchParameters<sup>11+</sup>
 
 用于匹配证书吊销列表的过滤参数。如果参数中任一项都未指定，则匹配所有证书吊销列表。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -311,7 +311,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 证书链创建参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -325,7 +325,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示证书链创建结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -338,7 +338,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示X.509信任锚，用于校验证书链。使用信任锚中的证书或者公钥作为可信根，对证书链进行校验。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -357,19 +357,19 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
-| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持通过证书中的CDP扩展中获取首个CRL分发点地址以检查证书吊销状态，或通过AIA扩展获取首个OCSP服务器地址以进行吊销状态验证，且仅支持http协议。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验成功，则会继续校验中间证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
-| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE不能同时开启。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
-| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | 如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达可能导致证书链校验失败。<br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持通过证书中的CDP扩展中获取首个CRL分发点地址以检查证书吊销状态，或通过AIA扩展获取首个OCSP服务器地址以进行吊销状态验证，且仅支持http协议。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验成功，则会继续校验中间证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。<br> **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。  |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE不能同时开启。<br> **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。  |
+| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | 如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达可能导致证书链校验失败。<br> **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。 |
 
 ## ValidationPolicyType<sup>12+</sup>
 
  表示证书链在线校验策略的枚举。
 
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -382,7 +382,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
  表示证书中密钥用途的枚举。
  
- **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.Security.Cert
 
@@ -506,7 +506,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 表示证书链校验证书吊销状态的参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -528,22 +528,22 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 | 名称         | 类型                                              | 只读 | 可选 |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| date         | string                                            | 否   | 是  |用于检查证书有效性的日期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
-| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | 否   | 否   |表示信任锚列表。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |是否信任系统CA。默认值为false。true表示使用系统预置的CA证书库作为信任锚；false表示不使用系统预置的CA证书库作为信任锚。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| allowDownloadIntermediateCa<sup>23+</sup>| boolean | 否   | 是  |表示是否允许尝试从网络下载缺失的中间CA证书。<br>true表示允许；false表示不允许。默认值为false。<br>下载地址将从证书AIA扩展中获取，仅支持http，如需使用网络下载，需申请ohos.permission.INTERNET权限。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。<br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | 否   | 是  |用于检查证书是否被吊销的CRL集合。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | 否   | 是  |表示需要校验证书吊销状态的参数对象。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | 否   | 是  |表示需要校验证书的策略类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| sslHostname<sup>12+</sup> | string | 否   | 是  |表示需要校验证书中主机名，与policy配合使用。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | 否   | 是  |表示需要校验证书中的密钥用途。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| date         | string                                            | 否   | 是  |用于检查证书有效性的日期。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。            |
+| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | 否   | 否   |表示信任锚列表。  <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。                     |
+| trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |是否信任系统CA。默认值为false。true表示使用系统预置的CA证书库作为信任锚；false表示不使用系统预置的CA证书库作为信任锚。<br> **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。 |
+| allowDownloadIntermediateCa<sup>23+</sup>| boolean | 否   | 是  |表示是否允许尝试从网络下载缺失的中间CA证书。<br>true表示允许；false表示不允许。默认值为false。<br>下载地址将从证书AIA扩展中获取，仅支持http，如需使用网络下载，需申请ohos.permission.INTERNET权限。配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。<br> **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。 |
+| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | 否   | 是  |用于检查证书是否被吊销的CRL集合。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
+| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | 否   | 是  |表示需要校验证书吊销状态的参数对象。<br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | 否   | 是  |表示需要校验证书的策略类型。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
+| sslHostname<sup>12+</sup> | string | 否   | 是  |表示需要校验证书中主机名，与policy配合使用。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
+| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | 否   | 是  |表示需要校验证书中的密钥用途。 <br> **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
 
 
 ## CertChainValidationResult<sup>11+</sup>
 
 表示证书链校验的返回值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -556,7 +556,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 
 P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -570,7 +570,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 表示解析PKCS #12的配置。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -586,7 +586,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 表示基于密码的加密算法枚举。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -600,7 +600,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 表示基于密码的加密算法参数，当前仅支持PBES2。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -614,7 +614,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 表示PKCS #12的MAC摘要算法枚举。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -628,7 +628,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 表示创建PKCS #12的配置。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -650,14 +650,14 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
-| SIGNED_DATA | 0 | 签名数据。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| ENVELOPED_DATA<sup>22+</sup>  | 1 | 封装数据，包含带认证的封装数据。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| SIGNED_DATA | 0 | 签名数据。<br> **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。 |
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | 封装数据，包含带认证的封装数据。<br> **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。 |
 
 ## CmsContentDataFormat<sup>18+</sup>
 
 表示Cms内容数据格式的枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -670,7 +670,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 表示CMS编码格式的枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -683,7 +683,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 表示RSA类型CMS签名填充方式的枚举。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -696,7 +696,7 @@ P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 CMS KeyAgree类型接收者摘要算法的枚举。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -710,7 +710,7 @@ CMS KeyAgree类型接收者摘要算法的枚举。
 
 CMS封装数据的内容加密算法的枚举。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -727,7 +727,7 @@ CMS封装数据的内容加密算法的枚举。
 
 从CMS中获取证书不同类型的枚举。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -740,7 +740,7 @@ CMS封装数据的内容加密算法的枚举。
 
 表示私钥信息。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -757,17 +757,17 @@ CMS封装数据的内容加密算法的枚举。
 
 | 名称         | 类型                                                  |  只读  |  可选  |说明                                   |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| mdName                | string             | 否  | 否  |消息摘要算法的名称，例如 "SHA384"，当前支持"SHA1"、"SHA256"、"SHA384"、"SHA512"。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                |
-| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | 否  | 是  |RSA签名填充方式。默认值为：PKCS1_PADDING。<br>当设置为 PKCS1_PSS_PADDING 时，mdName 必须为 "SHA256"、"SHA384" 或 "SHA512"。<br> **说明**：仅当签名者私钥类型为RSA时有效。  <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。             |
-| addCert               | boolean            | 否   | 是  |是否添加证书。默认为true。true为需要，false为不需要。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                            |
-| addAttr               | boolean            | 否   | 是 |是否添加签名属性。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
-| addSmimeCapAttr       | boolean            | 否   | 是  |是否将SMIME能力添加到Cms对象。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。            |
+| mdName                | string             | 否  | 否  |消息摘要算法的名称，例如 "SHA384"，当前支持"SHA1"、"SHA256"、"SHA384"、"SHA512"。 <br> **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。                |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | 否  | 是  |RSA签名填充方式。默认值为：PKCS1_PADDING。<br>当设置为 PKCS1_PSS_PADDING 时，mdName 必须为 "SHA256"、"SHA384" 或 "SHA512"。<br> **说明**：仅当签名者私钥类型为RSA时有效。  <br> **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。             |
+| addCert               | boolean            | 否   | 是  |是否添加证书。默认为true。true为需要，false为不需要。 <br> **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。                            |
+| addAttr               | boolean            | 否   | 是 |是否添加签名属性。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。           |
+| addSmimeCapAttr       | boolean            | 否   | 是  |是否将SMIME能力添加到Cms对象。默认为true。true为需要，false为不需要。<br> **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。            |
 
 ## CmsKeyTransRecipientInfo<sup>22+</sup>
 
 CMS封装数据的KeyTrans接收方信息。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -779,7 +779,7 @@ CMS封装数据的KeyTrans接收方信息。
 
 CMS封装数据的KeyAgree接收方信息。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -796,7 +796,7 @@ CMS封装数据的接收者信息。
 >
 > 至少需要设置一个接收者。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -809,7 +809,7 @@ CMS封装数据的接收者信息。
 
 表示生成CMS消息的配置选项。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -823,7 +823,7 @@ CMS封装数据的接收者信息。
 
 CMS验签的配置。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -838,7 +838,7 @@ CMS验签的配置。
 
 CMS解封装的配置。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -855,7 +855,7 @@ createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : v
 
 表示创建X.509证书对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -923,7 +923,7 @@ createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
 表示创建X.509证书对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -999,7 +999,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 表示对证书验签。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1083,7 +1083,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 表示对证书验签。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1166,7 +1166,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 表示获取X.509证书序列化数据。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1240,7 +1240,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 表示获取X.509证书序列化数据。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1311,7 +1311,7 @@ getPublicKey() : cryptoFramework.PubKey
 
 表示获取X.509证书公钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1383,7 +1383,7 @@ checkValidityWithDate(date: string) : void
 
 表示检查X.509证书有效期。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1461,7 +1461,7 @@ getVersion() : number
 
 表示获取X.509证书版本。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1520,7 +1520,7 @@ getSerialNumber() : number
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[getCertSerialNumber](#getcertserialnumber10)替代。
+> 从API版本9开始支持，从API版本10开始废弃，建议使用[getCertSerialNumber](#getcertserialnumber10)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1578,7 +1578,7 @@ getCertSerialNumber() : bigint
 
 表示获取X.509证书序列号。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1656,7 +1656,7 @@ getIssuerName() : DataBlob
 >
 > 获取的证书颁发者名称为ASCII编码，转换为字符串后，是以斜杠（/）开始，以斜杠（/）分隔相对可分辨名称的可分辨名称字符串。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1730,7 +1730,7 @@ getIssuerName(encodingType: EncodingType): string
 
 根据编码类型获取X.509证书颁发者名称。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1831,7 +1831,7 @@ getSubjectName(encodingType?: EncodingType) : DataBlob
 > 
 > 建议设置encodingType参数为EncodingType.ENCODING_UTF8，获取的证书主体名称是以逗号（,）分隔相对可分辨名称的可分辨名称字符串。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1919,7 +1919,7 @@ getNotBeforeTime() : string
 
 表示获取X.509证书有效期起始时间。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -1993,7 +1993,7 @@ getNotAfterTime() : string
 
 表示获取X.509证书有效期截止时间。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2067,7 +2067,7 @@ getSignature() : DataBlob
 
 表示获取X.509证书签名数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2141,7 +2141,7 @@ getSignatureAlgName() : string
 
 表示获取X.509证书签名算法名称。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2215,7 +2215,7 @@ getSignatureAlgOid() : string
 
 表示获取X.509证书签名算法的对象标识符OID(Object Identifier)。OID是由国际标准组织(ISO)的名称注册机构分配。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2289,7 +2289,7 @@ getSignatureAlgParams() : DataBlob
 
 表示获取X.509证书签名算法参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2379,7 +2379,7 @@ getKeyUsage() : DataBlob
 
 表示获取X.509证书密钥用途。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2462,7 +2462,7 @@ getExtKeyUsage() : DataArray
 
 表示获取X.509证书扩展密钥用途。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2547,7 +2547,7 @@ getBasicConstraints() : number
 
 表示获取X.509证书基本约束。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2609,7 +2609,7 @@ getSubjectAltNames() : DataArray
 >
 > 获取到的X.509证书主体可选名称数据带字符串结束符。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2698,7 +2698,7 @@ getIssuerAltNames() : DataArray
 >
 > 获取到的X.509证书颁发者可选名称数据带字符串结束符。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2781,7 +2781,7 @@ getItem(itemType: CertItemType) : DataBlob
 
 表示获取X.509证书对应的字段。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2863,7 +2863,7 @@ match(param: X509CertMatchParameters): boolean
 
 判断证书是否与输入参数匹配。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -2968,7 +2968,7 @@ getCRLDistributionPoint(): DataArray
 
 获取X.509证书CRL的分发点统一资源标识符。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3044,7 +3044,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 获取X.509证书颁发者的X.500可分辨名称。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3129,7 +3129,7 @@ getSubjectX500DistinguishedName(): X500DistinguishedName
 
 获取X.509证书主体的X.500可分辨名称。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3214,7 +3214,7 @@ toString(): string
 
 获取对象的字符串类型数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3299,7 +3299,7 @@ toString(encodingType: EncodingType): string
 
 根据编码类型获取对象的字符串类型数据。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3389,7 +3389,7 @@ hashCode(): Uint8Array
 
 获取DER格式数据的哈希值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3474,7 +3474,7 @@ getExtensionsObject(): CertExtension
 
 获取证书扩展对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3559,7 +3559,7 @@ createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExten
 
 创建一个证书扩展对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3620,7 +3620,7 @@ createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
 创建一个证书扩展对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3689,7 +3689,7 @@ getEncoded() : EncodingBlob
 
 获取证书扩展的序列化数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3756,7 +3756,7 @@ getOidList(valueType : ExtensionOidType) : DataArray
 
 获取证书扩展的OID列表。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3830,7 +3830,7 @@ getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
 根据OID获取证书扩展项的值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3910,7 +3910,7 @@ checkCA() : number
 
 检查证书是否为CA证书。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3976,7 +3976,7 @@ hasUnsupportedCriticalExtension(): boolean
 
 判断是否存在不支持的关键扩展。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4035,7 +4035,7 @@ createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : voi
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4103,7 +4103,7 @@ createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11-1)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4173,7 +4173,7 @@ createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : voi
 
 表示创建X.509证书吊销列表对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4239,7 +4239,7 @@ createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
 表示创建X.509证书吊销列表对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4309,7 +4309,7 @@ cert.createX509CRL(encodingBlob).then(_X509CRL => {
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL](#x509crl11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL](#x509crl11)替代。
 
 ### isRevoked<sup>(deprecated)</sup>
 
@@ -4319,7 +4319,7 @@ isRevoked(cert : X509Cert) : boolean
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.isRevoked](#isrevoked11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.isRevoked](#isrevoked11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4421,7 +4421,7 @@ getType() : string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getType](#gettype11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getType](#gettype11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4480,7 +4480,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4555,7 +4555,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11-1)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4627,7 +4627,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.verify](#verify11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.verify](#verify11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4780,7 +4780,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.verify](#verify11-1)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.verify](#verify11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4934,7 +4934,7 @@ getVersion() : number
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getVersion](#getversion11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getVersion](#getversion11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4993,7 +4993,7 @@ getIssuerName() : DataBlob
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getIssuerName](#getissuername11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getIssuerName](#getissuername11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5068,7 +5068,7 @@ getLastUpdate() : string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getLastUpdate](#getlastupdate11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getLastUpdate](#getlastupdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5143,7 +5143,7 @@ getNextUpdate() : string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getNextUpdate](#getnextupdate11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getNextUpdate](#getnextupdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5218,7 +5218,7 @@ getRevokedCert(serialNumber : number) : X509CrlEntry
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCert](#getrevokedcert11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getRevokedCert](#getrevokedcert11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5299,7 +5299,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5416,7 +5416,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5490,7 +5490,7 @@ getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11-1)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5561,7 +5561,7 @@ getTbsInfo() : DataBlob
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getTBSInfo](#gettbsinfo11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getTBSInfo](#gettbsinfo11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5636,7 +5636,7 @@ getSignature() : DataBlob
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignature](#getsignature11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getSignature](#getsignature11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5711,7 +5711,7 @@ getSignatureAlgName() : string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgName](#getsignaturealgname11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getSignatureAlgName](#getsignaturealgname11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5786,7 +5786,7 @@ getSignatureAlgOid() : string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgOid](#getsignaturealgoid11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getSignatureAlgOid](#getsignaturealgoid11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5861,7 +5861,7 @@ getSignatureAlgParams() : DataBlob
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgParams](#getsignaturealgparams11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRL.getSignatureAlgParams](#getsignaturealgparams11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5938,7 +5938,7 @@ isRevoked(cert : X509Cert) : boolean
 
 表示检查证书是否吊销。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6038,7 +6038,7 @@ getType() : string
 
 表示获取证书吊销列表类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6095,7 +6095,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 表示获取X.509证书吊销列表的序列化数据。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6168,7 +6168,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 表示获取X.509证书吊销列表的序列化数据。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6238,7 +6238,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 表示对X.509证书吊销列表进行验签。使用callback异步回调。验签支持RSA算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6389,7 +6389,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 表示对X.509证书吊销列表进行验签。使用Promise异步回调。验签支持RSA算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6541,7 +6541,7 @@ getVersion() : number
 
 表示获取X.509证书吊销列表的版本号。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6602,7 +6602,7 @@ getIssuerName() : DataBlob
 >
 > 获取到的X.509证书吊销列表颁发者名称数据带字符串结束符。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6675,7 +6675,7 @@ getIssuerName(encodingType: EncodingType): string
 
 根据编码类型获取X.509证书吊销列表颁发者名称。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6758,7 +6758,7 @@ getLastUpdate() : string
 
 表示获取X.509证书吊销列表最后一次更新日期。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6831,7 +6831,7 @@ getNextUpdate() : string
 
 表示获取证书吊销列表下一次更新的日期。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6904,7 +6904,7 @@ getRevokedCert(serialNumber : bigint) : X509CRLEntry
 
 表示通过指定证书序列号获取证书吊销条目。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -6983,7 +6983,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 
 表示通过指定证书对象获取证书吊销条目。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7098,7 +7098,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
 表示获取证书吊销条目列表。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7170,7 +7170,7 @@ getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
 表示获取证书吊销条目列表。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7239,7 +7239,7 @@ getSignature() : DataBlob
 
 表示获取X.509证书吊销列表的签名数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7312,7 +7312,7 @@ getSignatureAlgName() : string
 
 表示获取X.509证书吊销列表签名的算法名称。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7385,7 +7385,7 @@ getSignatureAlgOid() : string
 
 表示获取X.509证书吊销列表签名算法的对象标识符OID（Object Identifier）。OID是由国际标准化组织（ISO）的名称注册机构分配。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7458,7 +7458,7 @@ getSignatureAlgParams() : DataBlob
 
 表示获取X.509证书吊销列表签名的算法参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7532,7 +7532,7 @@ getTBSInfo() : DataBlob
 
 表示获取证书吊销列表的tbsCertList信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7605,7 +7605,7 @@ getExtensions(): DataBlob
 
 表示获取CRL扩展的DER格式数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7681,7 +7681,7 @@ match(param: X509CRLMatchParameters): boolean
 
 判断证书吊销列表是否与输入参数匹配。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7803,7 +7803,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 获取CRL颁发者的X.500可分辨名称对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7873,7 +7873,7 @@ toString(): string
 
 获取对象的字符串类型数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -7943,7 +7943,7 @@ toString(encodingType: EncodingType): string
 
 根据编码类型获取对象的字符串类型数据。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8023,7 +8023,7 @@ hashCode(): Uint8Array
 
 获取DER格式数据的哈希值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8093,7 +8093,7 @@ getExtensionsObject(): CertExtension
 
 获取CRL扩展对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8168,7 +8168,7 @@ createCertChainValidator(algorithm :string) : CertChainValidator
 
 表示创建证书链校验器对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8215,7 +8215,7 @@ try {
 证书链校验器对象。
 
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8232,7 +8232,7 @@ validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
 由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8361,7 +8361,7 @@ validate(certChain : CertChainData) : Promise\<void>
 
 由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8674,7 +8674,7 @@ validateCert();
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry](#x509crlentry11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRLEntry](#x509crlentry11)替代。
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8684,7 +8684,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-2)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-2)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8767,7 +8767,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-3)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-3)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8848,7 +8848,7 @@ getSerialNumber() : number
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getSerialNumber](#getserialnumber11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRLEntry.getSerialNumber](#getserialnumber11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8915,7 +8915,7 @@ getCertIssuer() : DataBlob
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getCertIssuer](#getcertissuer11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRLEntry.getCertIssuer](#getcertissuer11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8992,7 +8992,7 @@ getRevocationDate() : string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getRevocationDate](#getrevocationdate11)替代。
+> 从API版本9开始支持，从API版本11开始废弃，建议使用[X509CRLEntry.getRevocationDate](#getrevocationdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9071,7 +9071,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 表示获取证书吊销条目的序列化数据。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9152,7 +9152,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 表示获取证书吊销条目的序列化数据。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9231,7 +9231,7 @@ getSerialNumber() : bigint
 
 表示获取被吊销的证书的序列号。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9310,7 +9310,7 @@ getCertIssuer(): DataBlob
 >
 > 获取到的被吊销证书的颁发者名称数据带字符串结束符。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9386,7 +9386,7 @@ getCertIssuer(encodingType: EncodingType): string
 
 根据编码类型获取被吊销证书的颁发者名称。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9470,7 +9470,7 @@ getRevocationDate(): string
 
 表示获取证书被吊销的日期。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9545,7 +9545,7 @@ getExtensions(): DataBlob
 
 表示获取DER格式的CRL条目的扩展数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9623,7 +9623,7 @@ hasExtensions(): boolean
 
 表示判断CRL条目是否有扩展。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9698,7 +9698,7 @@ getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
 获取被吊销证书的颁发者的X.500可分辨名称对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9767,7 +9767,7 @@ toString(): string
 
 获取对象的字符串类型数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9836,7 +9836,7 @@ hashCode(): Uint8Array
 
 获取DER格式数据的哈希值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -9905,7 +9905,7 @@ getExtensionsObject(): CertExtension
 
 获取CRL条目的扩展对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10041,7 +10041,7 @@ createCertCRLCollection(certs: Array\<X509Cert>, crls?: Array\<X509CRL>): CertCR
 
 表示创建证书和证书吊销列表集合对象，并返回相应的结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10158,7 +10158,7 @@ selectCerts(param: X509CertMatchParameters): Promise\<Array\<X509Cert>>
 
 查找证书和证书吊销列表集合中所有与参数匹配的证书对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10255,7 +10255,7 @@ selectCerts(param: X509CertMatchParameters, callback: AsyncCallback\<Array\<X509
 
 查找证书和证书吊销列表集合中所有与参数匹配的证书对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10347,7 +10347,7 @@ selectCRLs(param: X509CRLMatchParameters): Promise\<Array\<X509CRL>>
 
 查找证书和证书吊销列表集合中所有与参数匹配的证书吊销列表对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10478,7 +10478,7 @@ selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback\<Array\<X509CR
 
 查找证书和证书吊销列表集合中所有与参数匹配的证书吊销列表对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10604,7 +10604,7 @@ createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
 表示创建X.509证书链对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10726,7 +10726,7 @@ createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertCha
 
 表示创建X.509证书链对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10838,7 +10838,7 @@ createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
 表示使用X509Cert数组方式创建X.509证书链对象，并同步返回结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -10928,7 +10928,7 @@ buildX509CertChain(param: CertChainBuildParameters): Promise\<CertChainBuildResu
 
 表示使用CertChainBuildParameters对象方式创建X.509证书链对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -11068,7 +11068,7 @@ parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 解析PKCS #12。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -11282,7 +11282,7 @@ parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
 解析PKCS #12。使用Promise方式返回结果。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -11500,7 +11500,7 @@ createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Arra
 
 表示创建PKCS #12。使用Promise异步回调。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -11681,7 +11681,7 @@ createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
 表示创建PKCS #12，同步返回结果。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -11862,7 +11862,7 @@ createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array
 
 表示从PKCS #12中读取ca证书来构造[X509TrustAnchor](#x509trustanchor11)对象数组。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12026,7 +12026,7 @@ getCertList(): Array\<X509Cert>
 
 获取X.509证书列表。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12144,7 +12144,7 @@ validate(param: CertChainValidationParameters): Promise\<CertChainValidationResu
 
 校验证书链。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12299,7 +12299,7 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChai
 
 使用校验参数校验证书链。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12441,7 +12441,7 @@ toString(): string
 
 获取对象的字符串类型数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12568,7 +12568,7 @@ hashCode(): Uint8Array
 
 获取DER格式数据的哈希值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12696,7 +12696,7 @@ generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint
 
 表示使用指定的私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12796,7 +12796,7 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 表示使用字符串格式的名称创建X500DistinguishedName对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12867,7 +12867,7 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 
 表示使用DER格式的名称创建X500DistinguishedName对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12935,7 +12935,7 @@ getName(): string
 
 获取可分辨名的字符串。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -12988,7 +12988,7 @@ getName(type: string): Array\<string>
 
 按指定类型获取相对可分辨名称的字符串。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13045,7 +13045,7 @@ getName(encodingType: EncodingType): string
 
 根据指定编码格式获取可分辨名称的字符串。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13164,7 +13164,7 @@ getEncoded(): EncodingBlob
 
 获取X.500可分辨名称的DER编码数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13215,7 +13215,7 @@ createCmsGenerator(contentType: CmsContentType): CmsGenerator
 
 表示创建CmsGenerator对象。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13315,7 +13315,7 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 >
 > 由于OpenSSL不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13433,7 +13433,7 @@ addCert(cert: X509Cert): void
 
 如果未调用addSigner接口，并且仅添加证书后，生成的CMS签名数据将只包含证书。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13519,7 +13519,7 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 该方法应在创建ENVELOPED_DATA类型的CmsGenerator后立即调用。如果未调用此方法，则默认使用AES_256_GCM作为加密算法。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13569,7 +13569,7 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
 该方法至少需要设置一个接收者。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13687,7 +13687,7 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。使用Promise异步回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13820,7 +13820,7 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 用于获取CMS消息，例如CMS签名数据或CMS封装数据。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -13952,7 +13952,7 @@ getEncryptedContentData(): Promise\<Uint8Array>
 
 如果创建了类型为ENVELOPED_DATA的CmsGenerator并使用了数据分离来生成CMS封装数据，使用此方法来获取加密的内容数据。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14077,7 +14077,7 @@ createCmsParser(): CmsParser
 
 表示创建CmsParser对象。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14229,7 +14229,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 >
 > 支持PEM和DER格式的CMS消息。string对应PEM格式；Uint8Array对应DER格式数据。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14379,7 +14379,7 @@ getContentType(): CmsContentType
 
 用于获取CMS内容类型。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14523,7 +14523,7 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 用于验证签名数据类型的CMS消息。使用Promise方式返回结果。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14674,7 +14674,7 @@ getContentData(): Promise\<Uint8Array>
 
 用于从签名数据类型的CMS消息中获取内容数据。使用Promise异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14817,7 +14817,7 @@ getCerts(type: CmsCertType): Promise<Array\<X509Cert>>
 
 传入枚举值，用于从签名数据类型的CMS消息中获取证书。当前支持获取签名者证书或全部证书。使用Promise异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14969,7 +14969,7 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
 用于解密封装数据类型的CMS消息。使用Promise异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Cert
 
