@@ -317,3 +317,22 @@
 ArkTS-Sta示例：
 
    <!-- @[input_case_input_shift_focus_to_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/SubWindowIndex.ets) -->
+   
+   ``` TypeScript
+   async shiftFocusToMainWindow(): Promise<void> {
+     try {
+       let windowStage: window.WindowStage | undefined = AppStorage.get<window.WindowStage>('windowStage');
+       if (windowStage === undefined) {
+         Log.showError(TAG, 'Failed to get the windowStage.');
+         return;
+       }
+       let subWindowList: window.Window[] = await windowStage.getSubWindow();
+       let subWindow: window.Window = subWindowList[0];
+       await subWindow.setWindowFocusable(false);
+       Log.showInfo(TAG, 'Succeeded in shifting focus to main window.');
+     } catch (exception) {
+       let err = exception as BusinessError;
+       Log.showError(TAG, `Failed to shift focus to main window. Cause code: ${err.code}, message: ${err.message}`);
+     }
+   }
+   ```
