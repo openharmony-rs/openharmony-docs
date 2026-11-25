@@ -40,7 +40,7 @@
 
    <!-- @[location_capi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/CMakeLists.txt) -->
 
-   ``` c
+   ``` Text
    target_link_libraries(entry PUBLIC libace_napi.z.so)
    target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    target_link_libraries(entry PUBLIC liblocation_ndk.so)
@@ -50,7 +50,7 @@
 
    <!-- @[location_capi_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` c
+   ``` C++
    #include "napi/native_api.h"
    #include "LocationKit/oh_location.h"
    #include "LocationKit/oh_location_type.h"
@@ -182,7 +182,7 @@
 
    <!-- @[location_capi_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` c
+   ``` C++
     EXTERN_C_START
     static napi_value Init(napi_env env, napi_value exports)
     {
