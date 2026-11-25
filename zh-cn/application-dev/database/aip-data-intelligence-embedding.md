@@ -1,8 +1,8 @@
 # 应用数据向量化 (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @my-2024; @cuile44; @pancodax-->
-<!--Designer: @fysun17; @AnruiWang; @xd_94-->
+<!--Owner: @my-2024-->
+<!--Designer: @cuile44; @fysun17; @AnruiWang-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
