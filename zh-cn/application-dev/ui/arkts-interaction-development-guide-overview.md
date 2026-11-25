@@ -12,7 +12,7 @@ ArkUI框架提供了丰富的接口，用于处理用户通过不同外设生成
 
 [交互基础机制说明](arkts-interaction-basic-principles.md)：交互处理的基本概念和原理。
 
-[交互事件Agent输入管控](arkts-interaction-agent-input-control.md)：了解如何管控Agent输入，以及如何监听节点交互事件。
+[管控Agent输入的交互事件](arkts-interaction-agent-input-control.md)：了解如何管控Agent输入，以及如何监听节点交互事件。
 
 [输入设备与事件](arkts-interaction-development-guide-raw-input-event.md)：不同的输入设备会产生哪些基础输入事件，以及如何处理它们。
 
