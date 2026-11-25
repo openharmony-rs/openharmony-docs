@@ -443,7 +443,7 @@ ArkTS-Sta: getCellularTxBytes(): Promise\<long>
 > **说明：**
 >
 > - 在API版本26.1.0之前，请在蜂窝网络处于连接状态时调用本接口，否则将抛出错误码2103012。
-> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的下行蜂窝网络流量数据。
+> - 从API版本26.1.0开始，蜂窝网络未连接时也可调用本接口，查询已消耗的上行蜂窝网络流量数据。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
