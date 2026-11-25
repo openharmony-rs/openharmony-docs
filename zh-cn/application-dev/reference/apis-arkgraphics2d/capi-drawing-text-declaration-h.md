@@ -42,3 +42,4 @@
 | [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md) | OH_Drawing_FontFullDescriptor | 用于描述字体的详细信息。 |
 | [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md) | OH_Drawing_FontVariationAxis | 用于描述字体可变轴。 |
 | [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md) | OH_Drawing_FontVariationInstance | 用于描述字体可变实例，存放预设的可变字体样式信息。 |
+| [OH_Drawing_FontFamilyMapping](capi-drawing-oh-drawing-fontfamilymapping.md) | OH_Drawing_FontFamilyMapping | 字体家族映射对象，用于描述字体家族映射关系。 |

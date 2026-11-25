@@ -184,6 +184,7 @@
     - [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)
     - [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)
     - [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)
+    - [OH_Drawing_FontFamilyMapping](capi-drawing-oh-drawing-fontfamilymapping.md)
     - [OH_Drawing_FontVariationInstanceCoordinate](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md)
     - [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)
     - [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)
