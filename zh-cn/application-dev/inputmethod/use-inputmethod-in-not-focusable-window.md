@@ -237,6 +237,30 @@
    ArkTS-Dyn示例：
 
    <!-- @[input_case_input_shift_focus_in_not_focusable_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/SubWindowIndex.ets) -->
+   
+   ``` TypeScript
+   async shiftFocusToSubWindow(): Promise<void> {
+     try {
+       let windowStage: window.WindowStage | undefined = AppStorage.get<window.WindowStage>('windowStage');
+       if (windowStage === undefined) {
+         Log.showError(TAG, 'Failed to get the windowStage.');
+         return;
+       }
+       let subWindowList: window.Window[] = await windowStage.getSubWindow();
+       let subWindow: window.Window = subWindowList[0];
+       // 1.将子窗口设置为可获焦
+       await subWindow.setWindowFocusable(true);
+       // 2.将焦点切换到子窗口
+       const mainWindowId: number = AppStorage.get<number>('mainWindowId') ?? 0;
+       const subWindowId: number = AppStorage.get<number>('subWindowId') ?? 0;
+       await window.shiftAppWindowFocus(mainWindowId, subWindowId);
+       Log.showInfo(TAG, 'Succeeded in shifting focus to subWindow.');
+     } catch (exception) {
+       const err = exception as BusinessError;
+       Log.showError(TAG, `Failed to shift focus to subWindow. Cause code: ${err.code}, message: ${err.message}`);
+     }
+   }
+   ```
 
    ArkTS-Sta示例：
 
