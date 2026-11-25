@@ -590,7 +590,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 **描述**
 
-获取磁盘序列号。
+获取磁盘序列号。参数缓冲区容量不能低于65字节。
 
 **需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
 
