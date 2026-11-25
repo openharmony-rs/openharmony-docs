@@ -357,123 +357,11 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
    <!-- @[virtual_drag_c_callbacks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_provider.cpp) -->
 
-   ``` C++
-   OH_UDMF_VirtualItem* OnStat(void* opaque, const char* id)
-   {
-       if (opaque == nullptr || id == nullptr) {
-           return nullptr;
-       }
-       auto* context = static_cast<ProviderContext*>(opaque);
-       std::lock_guard<std::mutex> lock(context->mutex);
-       auto source = context->files.find(id);
-       // 返回独立节点，返回后由UDMF接管，不能再次销毁该节点。
-       return source == context->files.end() ? nullptr : CreateFileItem(source->second);
-   }
-
-   int OnRead(void* opaque, const char* id, int64_t offset, uint32_t length,
-       uint8_t* data, uint32_t* bytesRead)
-   {
-       if (opaque == nullptr || id == nullptr || data == nullptr || bytesRead == nullptr ||
-           offset < 0 || length == 0 || length > MAX_READ) {
-           return UDMF_ERR;
-       }
-       *bytesRead = 0; // 返回值表示成功或失败，实际读取长度通过bytesRead输出。
-       auto* context = static_cast<ProviderContext*>(opaque);
-       std::lock_guard<std::mutex> lock(context->mutex);
-       auto source = context->files.find(id);
-       if (source == context->files.end()) {
-           return UDMF_ERR;
-       }
-       SourceFile& file = source->second;
-       if (offset >= file.size) {
-           return UDMF_E_OK; // 成功且bytesRead为 0，表示已到文件末尾。
-       }
-       if (!PrepareFileContent(file)) {
-           return UDMF_ERR;
-       }
-       const auto count = static_cast<uint32_t>(std::min<int64_t>(length, file.size - offset));
-       if (static_cast<uint64_t>(offset) + count > file.content.size()) {
-           return UDMF_ERR;
-       }
-       // data由UDMF提供，本回调只填充数据，不释放、不保存该地址。
-       std::copy_n(file.content.data() + offset, count, data);
-       *bytesRead = count;
-       return UDMF_E_OK;
-   }
-
-   int OnCancel(void* opaque, const char* const* idList, uint32_t count)
-   {
-       // 此示例无异步读取任务；真实提供方可在此停止对应id的待处理任务。
-       if (opaque == nullptr || (count > 0 && idList == nullptr)) {
-           return UDMF_ERR;
-       }
-       return UDMF_E_OK;
-   }
-
-   void Finalize(void* opaque)
-   {
-       // UDMF最后一个相关引用释放后才调用此函数。
-       delete static_cast<ProviderContext*>(opaque);
-   }
-   ```
-
 2. 创建拖拽数据。
 
    通过[OH_UDMF_CreateVirtualFileInfo](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_createvirtualfileinfo)关联节点和回调，再通过[OH_UDMF_SetFileUriVirtualEntry](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_setfileurivirtualentry)构造拖拽数据。目录节点的构造参见[OH_UDMF_CreateVirtualDirectoryItem](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_createvirtualdirectoryitem)和[OH_UDMF_AddVirtualItemChild](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_addvirtualitemchild)。
 
    <!-- @[virtual_drag_c_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_provider.cpp) -->
-
-   ``` C++
-   OH_UdmfData* CreateVirtualDragData(bool directory, bool compressed)
-   {
-       auto context = std::make_unique<ProviderContext>();
-       for (int index = 0; index < (directory ? DIRECTORY_FILE_COUNT : 1); ++index) {
-           if (!AddFile(*context, index, compressed)) {
-               return nullptr;
-           }
-       }
-       // 1. 声明根文件或目录；每个文件都必须设置准确大小。
-       auto* root = CreateRoot(*context, directory);
-       // 2. 将文件信息、回调和业务上下文组合为VirtualFileInfo。
-       OH_UDMF_VirtualFileCallbacks callbacks {};
-       callbacks.structSize = sizeof(callbacks);
-       callbacks.onStat = OnStat;
-       callbacks.onRead = OnRead;
-       callbacks.onCancel = OnCancel;
-       auto* info = OH_UDMF_CreateVirtualFileInfo(root, &callbacks, context.get(), Finalize);
-       OH_UDMF_DestroyVirtualItem(root);
-       if (info == nullptr) {
-           return nullptr; // context仍由调用方管理。
-       }
-       context.release(); // 创建成功，交由UDMF在最后一个引用释放后调用Finalize。
-       // 3. 附加到FileUri，再放入Record和UnifiedData，供起拖事件使用。
-       auto* uri = OH_UdsFileUri_Create();
-       auto* record = OH_UdmfRecord_Create();
-       auto* data = OH_UdmfData_Create();
-       bool ok = uri != nullptr && record != nullptr && data != nullptr;
-       if (ok) {
-           ok = OH_UdsFileUri_SetFileUri(uri, directory ? "file:///virtual/exported-documents" :
-               "file:///virtual/document-1.txt") == UDMF_E_OK &&
-               OH_UdsFileUri_SetFileType(uri, directory ? "general.directory" : "general.file") == UDMF_E_OK &&
-               OH_UDMF_SetFileUriVirtualEntry(uri, info) == UDMF_E_OK &&
-               OH_UdmfRecord_AddFileUri(record, uri) == UDMF_E_OK &&
-               OH_UdmfData_AddRecord(data, record) == UDMF_E_OK;
-       }
-       // 4. Record已持有独立引用，可释放临时包装对象。
-       // Clear只解除此临时FileUri的附加关系，不清除Record中已有的引用。
-       if (uri != nullptr) {
-           OH_UDMF_ClearFileUriVirtualEntry(uri);
-       }
-       OH_UDMF_DestroyVirtualFileInfo(info);
-       OH_UdsFileUri_Destroy(uri);
-       OH_UdmfRecord_Destroy(record);
-       if (!ok) {
-           OH_UdmfData_Destroy(data);
-           return nullptr;
-       }
-       return data;
-   }
-   ```
 
 3. 设置起拖数据。
 
@@ -481,63 +369,11 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
    <!-- @[virtual_drag_c_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
-   void OnNodeEvent(ArkUI_NodeEvent* event)
-   {
-       if (event == nullptr) {
-           return;
-       }
-       const auto type = OH_ArkUI_NodeEvent_GetEventType(event);
-       if (type == NODE_ON_DROP) {
-           OnDrop(OH_ArkUI_NodeEvent_GetDragEvent(event));
-           return;
-       }
-       if (type == NODE_ON_DRAG_END) {
-           OH_UdmfData_Destroy(g_dragData);
-           g_dragData = nullptr;
-           return;
-       }
-       if (type != NODE_ON_DRAG_START || g_dragData != nullptr) {
-           return;
-       }
-       auto* drag = OH_ArkUI_NodeEvent_GetDragEvent(event);
-       auto* data = CreateVirtualDragData(g_directory, g_compressed);
-       if (drag == nullptr || data == nullptr) {
-           OH_UdmfData_Destroy(data);
-           return;
-       }
-       const int result = OH_ArkUI_DragEvent_SetData(drag, data);
-       // ArkUI暂存此指针，必须保留到拖拽结束；随后会话中的回调引用由UDMF管理。
-       if (result == 0) {
-           g_dragData = data;
-       } else {
-           OH_UdmfData_Destroy(data);
-       }
-   }
-   ```
-
 4. 配置落入节点。
 
    通过[OH_ArkUI_SetNodeAllowedDropDataTypes](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodealloweddropdatatypes)配置接收节点，并注册[NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
 
    <!-- @[virtual_drag_c_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
-
-   ``` C++
-   bool ConfigureDropTarget(std::string& error)
-   {
-       ArkUI_AttributeItem text {};
-       // 本地化文字由ArkTS资源传入，原生节点不硬编码界面文字。
-       text.string = g_dropText.c_str();
-       if (!CheckNodeResult(g_nodeApi->setAttribute(g_drop, NODE_TEXT_CONTENT, &text), "Set drop text", error)) {
-           return false;
-       }
-       SetAreaLayout(g_drop, 0xFFDCF2DF);
-       const char* types[] = {"general.file-uri"};
-       return CheckNodeResult(OH_ArkUI_SetNodeAllowedDropDataTypes(g_drop, types, 1), "Set drop types", error) &&
-           CheckNodeResult(g_nodeApi->registerNodeEvent(g_drop, NODE_ON_DROP, 1, nullptr), "Register drop", error) &&
-           CheckNodeResult(g_nodeApi->addNodeEventReceiver(g_drop, OnNodeEvent), "Add drop receiver", error);
-   }
-   ```
 
 5. 获取文件URI。
 
@@ -545,55 +381,11 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
    <!-- @[virtual_drag_c_receive_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/virtual_file_receiver.cpp) -->
 
-   ``` C++
-   bool GetDroppedFileUris(ArkUI_DragEvent* event, std::vector<std::string>& uris)
-   {
-       std::unique_ptr<OH_UdmfData, decltype(&OH_UdmfData_Destroy)> data(
-           OH_UdmfData_Create(), OH_UdmfData_Destroy);
-       if (!data || OH_ArkUI_DragEvent_GetUdmfData(event, data.get()) != 0) {
-           return false;
-       }
-       unsigned int count = 0;
-       // records及各record由data持有，不能单独销毁。
-       OH_UdmfRecord** records = OH_UdmfData_GetRecords(data.get(), &count);
-       if (records == nullptr) {
-           return false;
-       }
-       for (unsigned int index = 0; index < count; ++index) {
-           std::unique_ptr<OH_UdsFileUri, decltype(&OH_UdsFileUri_Destroy)> fileUri(
-               OH_UdsFileUri_Create(), OH_UdsFileUri_Destroy);
-           if (!fileUri || OH_UdmfRecord_GetFileUri(records[index], fileUri.get()) != UDMF_E_OK) {
-               continue;
-           }
-           const char* uri = OH_UdsFileUri_GetFileUri(fileUri.get());
-           if (uri != nullptr && uri[0] != '\0') {
-               // 复制字符串后交给业务使用，不保留临时对象中的指针。
-               uris.emplace_back(uri);
-           }
-       }
-       return !uris.empty();
-   }
-   ```
-
 6. 处理文件URI。
 
    将获取到的URI列表交给业务处理。获取URI不代表文件内容已经读取或下载完成；需要验证按需提供内容时，可将文件拖到文件管理器等实际读取文件的应用。
 
    <!-- @[virtual_drag_c_drop_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
-
-   ``` C++
-   void OnDrop(ArkUI_DragEvent* event)
-   {
-       if (event == nullptr) {
-           return;
-       }
-       std::vector<std::string> uris;
-       const bool received = GetDroppedFileUris(event, uris);
-       const bool delivered = NotifyUris(uris); // 将URI列表交给业务回调。
-       OH_ArkUI_DragEvent_SetDragResult(event,
-           received && delivered ? ARKUI_DRAG_RESULT_SUCCESSFUL : ARKUI_DRAG_RESULT_FAILED);
-   }
-   ```
 
 
 回调参数、返回值及资源释放要求参见[OH_UDMF_VirtualFileOnRead](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileonread)、[OH_UDMF_VirtualFileOnCancel](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileoncancel)和[OH_UDMF_VirtualFileFinalize](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfilefinalize)。
