@@ -27,11 +27,11 @@ status: active
 | WMV1 <br>**起始版本：** 26.1.0| [OH_AVCODEC_MIMETYPE_VIDEO_WMV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MJPEG<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG2<sup>17+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG4 Part2<sup>17+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| H.263<sup>17+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AVC(H.264)<sup>9+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| HEVC(H.265)<sup>10+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | AV1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_AV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | VP9<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP9](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | VP8<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP8](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
@@ -56,8 +56,8 @@ status: active
 当前支持的编码能力如下：
 | 视频编码类型       | 视频编码格式的MIME类型    |
 | --------------------- | ---------------- |
-| HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
-| AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| HEVC(H.265)<sup>10+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AVC(H.264)<sup>9+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 
 如果系统平台无对应编码能力，会创建编码器实例失败。
 
