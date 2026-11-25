@@ -46,9 +46,9 @@ status: active
 
 | 术语 | 说明 |
 |:-----|:-----|
-| 共享模块 | 通过`napi_shared_module_register`注册的Node-API模块，区别于HAR/HSP共享包（后者是ArkTS源码/字节码共享，不涉及native init） |
-| 导出根对象 | init回调返回的Sendable对象，作为所有Worker共享的导出根，其上的属性和方法对所有线程可见 |
-| init回调 | `napi_module`的`nm_register_func`字段，在模块首次被import时执行一次 |
+| 共享模块 | 通过`napi_shared_module_register`注册的Node-API模块，区别于HAR/HSP共享包（后者是ArkTS源码/字节码共享，不涉及native init）。 |
+| 导出根对象 | init回调返回的Sendable对象，作为所有Worker共享的导出根，其上的属性和方法对所有线程可见。 |
+| init回调 | `napi_module`的`nm_register_func`字段，在模块首次被import时执行一次。 |
 
 ### 能力选型对比
 
@@ -107,7 +107,7 @@ void napi_shared_module_register(napi_module* mod);
 
 | 参数 | 说明 |
 |:-----|:-----|
-| mod | 指向`napi_module`结构体的指针，描述模块信息 |
+| mod | 指向`napi_module`结构体的指针，描述模块信息。 |
 
 与`napi_module_register`的核心差异：模块的`nm_register_func`回调将在首次被任一线程（主线程或Worker）import时执行一次，返回的Sendable导出根对象将被缓存并共享给所有Worker。
 
@@ -249,9 +249,9 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 | 现象 | 原因 | 修复 |
 |:-----|:-----|:-----|
-| Worker中import返回`undefined` | init回调返回了非Sendable对象 | 确保回调返回`napi_create_sendable_object_with_properties`创建的对象 |
-| init回调执行多次 | 使用了`napi_module_register`而非`napi_shared_module_register` | 改用`napi_shared_module_register` |
-| 跨线程调用方法崩溃 | 缓存了`napi_env`跨线程使用 | 每个回调使用传入的`env`，不缓存 |
+| Worker中import返回`undefined` | init回调返回了非Sendable对象 | 确保回调返回`napi_create_sendable_object_with_properties`创建的对象。 |
+| init回调执行多次 | 使用了`napi_module_register`而非`napi_shared_module_register` | 改用`napi_shared_module_register`。 |
+| 跨线程调用方法崩溃 | 缓存了`napi_env`跨线程使用 | 每个回调使用传入的`env`，不缓存。 |
 
 ## 调测验证
 
