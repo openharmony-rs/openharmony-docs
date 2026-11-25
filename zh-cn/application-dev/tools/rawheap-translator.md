@@ -272,6 +272,12 @@ rawheap 文件的大小和生成耗时与当前 ArkTS 堆内存大小及存活�
 
 **原因与处理**：工具版本过低可能导致转换失败。可使用[DevEco Studio 6.1.1 Release][deveco-studio]及以上版本配套的工具重试，并核对输入快照的格式版本。若升级后仍失败，请检查输入文件是否完整。
 
+### 快照中对象的 distance 显示为横杠
+
+**问题现象**：rawheap_translator已完成转换并生成`.heapsnapshot`文件，但将该文件导入内存分析工具后，部分对象到GC Root的距离（distance）显示为“-”。该现象与“工具版本不匹配”中因rawheap格式版本不兼容而转换失败的情况不同。
+
+**原因与处理**：该问题常见于设备系统升级后，仍使用旧版rawheap_translator工具转换该设备生成的`.rawheap`文件。设备系统版本与rawheap文件的格式版本是不同的版本信息。请将工具升级至最新版本，重新转换原始`.rawheap`文件，再导入新生成的`.heapsnapshot`文件，即可解决该问题。
+
 [dump-js-rawheap]: ../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugdumpjsrawheapdata18
 
 [hidumper]: ../dfx/hidumper.md#查询虚拟机堆内存
