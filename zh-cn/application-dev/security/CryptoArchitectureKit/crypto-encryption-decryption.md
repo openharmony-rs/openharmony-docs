@@ -183,7 +183,7 @@
 
 从API版本22开始，算法库支持该算法。
 
-算法库当前提供了[ChaCha20](crypto-key-generation-conversion.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+算法库当前提供了[ChaCha20](crypto-key-generation-conversion.md#chacha20)加解密，默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
 常用的加密模式：Poly1305。Poly1305模式适用的加解密参数为[Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22)。
 

@@ -30,7 +30,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
    生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
 
-2. 调用[OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)，传入二进制密钥数据，生成非对称密钥对象（OH_CryptoKeyPair）。
+2. 调用[OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)，传入二进制密钥数据，生成非对称密钥对对象（OH_CryptoKeyPair）。
 3. 调用[OH_CryptoPubKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_encode)，将非对称密钥对象中的公钥转换成PKCS #1或X.509格式。
 
 - 以下以生成RSA密钥对为例：

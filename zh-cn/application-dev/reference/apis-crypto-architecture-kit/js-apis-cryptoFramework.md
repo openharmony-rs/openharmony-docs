@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API版本9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,19 +27,19 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 | 名称                                  |    值   |   说明                         |
 | ------------------------------------- | -------- | ---------------------------- |
-| INVALID_PARAMS                        | 401      | 非法入参。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                |
-| NOT_SUPPORT                           | 801      | 操作不支持。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                 |
-| ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                   |
-| ERR_RUNTIME_ERROR                     | 17620002 | 获取Native对象失败或参数转换失败。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。          |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。            |
+| INVALID_PARAMS                        | 401      | 非法入参。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。<br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                |
+| NOT_SUPPORT                           | 801      | 操作不支持。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。<br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                 |
+| ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。<br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                   |
+| ERR_RUNTIME_ERROR                     | 17620002 | 获取Native对象失败或参数转换失败。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。          |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。            |
 | ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。          |
-| ERR_CRYPTO_OPERATION                  | 17630001 | 密码操作错误。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。   |
+| ERR_CRYPTO_OPERATION                  | 17630001 | 密码操作错误。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。  <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。   |
 
 ## DataBlob
 
 二进制数据的封装接口，核心字段data为Uint8Array类型。
 
- **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
  **模型约束：**
  - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -65,7 +65,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 >
 > iv（Initialization Vector，初始化向量）是用于对称加密模式（如 CBC/CTR/OFB/CFB/GCM/CCM/ChaCha20-Poly1305）中引入随机性或唯一性的字节序列，保证相同明文在相同密钥下产生不同密文。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -85,7 +85,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 适用于CBC、CTR、OFB、CFB这些需要iv作为参数的加解密模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -105,7 +105,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 适用于GCM模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -128,7 +128,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 适用于CCM模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -150,7 +150,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20)Poly1305模式。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -199,7 +199,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 枚举加密和解密的密码操作模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -214,7 +214,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 表示密钥参数的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
@@ -279,7 +279,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 表示密钥参数类型的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -298,7 +298,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 当前只支持RSA算法和SM2算法，详细规格请参考[加解密规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
@@ -316,12 +316,12 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要算法。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>根据FIPS 186-4标准，sLen应大于等于0且小于等于哈希长度。<br>默认值：对于签名操作，自动计算最大盐值长度；对于验证操作，自动计算盐值长度。<br>特殊值：对于签名操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；或设置为-2或-3，以自动计算最大盐值长度。推荐使用-1；对于验证操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；设置为-2，以自动计算盐值长度；或设置为-3，以使用最大盐值长度。推荐使用-2。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要算法。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>根据FIPS 186-4标准，sLen应大于等于0且小于等于哈希长度。<br>默认值：对于签名操作，自动计算最大盐值长度；对于验证操作，自动计算盐值长度。<br>特殊值：对于签名操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；或设置为-2或-3，以自动计算最大盐值长度。推荐使用-1；对于验证操作，也可以将值设置为-1，以使用摘要长度作为盐值长度；设置为-2，以自动计算盐值长度；或设置为-3，以使用最大盐值长度。推荐使用-2。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本11：SystemCapability.Security.CryptoFramework <br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
 | ML_DSA_DETERMINISTIC_BOOL | 106 | 表示ML-DSA签名和验证过程中是否使用确定性签名。不设置时默认值为false。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | ML_DSA_MU_BOOL | 107 | 表示ML-DSA签名和验证过程中的mu参数值。不设置时默认值为false，设置为true时，待签名数据需是64字节的哈希。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | ML_DSA_CONTEXT_UINT8ARR | 108 | 表示ML-DSA签名和验证过程中的上下文数据。最大长度为255字节，用于标识签名验签场景，该参数在设置ML_DSA_MU_BOOL为true时无效，不设置时默认值为空字符串。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
@@ -330,7 +330,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 指定非对称密钥参数的基本接口，用于创建密钥生成器。在指定非对称密钥参数时需要构造其子类对象，并将子类对象传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。构造子类对象时，除了RSA密钥采用小端写法外，其他bigint类型的密钥参数均采用大端写法，并使用正数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -347,7 +347,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -365,7 +365,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -382,7 +382,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -398,7 +398,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 指定椭圆曲线的域类型。当前只支持Fp域。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -412,7 +412,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 指定椭圆曲线的素数域。是[ECField](#ecfield10)的子类。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -426,7 +426,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 指定椭圆曲线上的一个点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -443,7 +443,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -464,7 +464,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -481,7 +481,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -498,7 +498,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -516,7 +516,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -532,7 +532,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -549,7 +549,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -567,7 +567,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -583,7 +583,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -599,7 +599,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -616,7 +616,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -632,7 +632,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -648,7 +648,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -665,7 +665,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -683,7 +683,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -700,7 +700,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -717,7 +717,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -733,7 +733,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 密钥派生函数参数，使用密钥派生函数进行密钥派生时，需要构建其子类对象并作为输入。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Kdf
@@ -747,7 +747,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为PBKDF2密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Kdf
@@ -768,7 +768,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为HKDF密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -791,7 +791,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为SCRYPT密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -813,7 +813,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为X963KDF密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -831,7 +831,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需要用到此对象。可以通过指定此参数，生成符合国密标准的ASN.1格式的SM2密文，反之，也可以从ASN.1格式的SM2密文中获取具体参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -853,7 +853,7 @@ SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需�
 ## KeyEncodingConfig<sup>18+</sup>
 RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数，生成指定算法、密码的编码后的私钥字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -871,7 +871,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 ## MacSpec<sup>18+</sup>
 消息认证码参数，计算HMAC或CMAC时，需要构建子类对象并作为输入参数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
@@ -886,7 +886,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 ## HmacSpec<sup>18+</sup>
 消息认证码参数[MacSpec](#macspec18)的子类，作为HMAC计算的输入。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
@@ -901,7 +901,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 ## CmacSpec<sup>18+</sup>
 消息认证码参数[MacSpec](#macspec18)的子类，作为CMAC计算的输入。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
@@ -921,7 +921,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 >
 > r和s的长度各为256位。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -938,7 +938,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key
@@ -959,7 +959,7 @@ getEncoded(): DataBlob
 >
 > RSA算法使用密钥参数生成私钥时，私钥对象支持getEncoded。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key
@@ -1061,7 +1061,7 @@ clearMem(): void
 
 同步方法，将系统底层内存中的密钥数据清零。建议在不再使用对称密钥实例时调用此函数，避免密钥数据在内存中存留过久。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
@@ -1101,7 +1101,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 同步方法，获取密钥参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -1187,7 +1187,7 @@ getEncodedDer(format: string): DataBlob
 > 1. 本接口可根据入参决定数据的输出格式。
 > 2. [Key.getEncoded()](#getencoded)接口，不支持指定获取密钥数据的格式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -1241,7 +1241,7 @@ getEncodedPem(format: string): string
 
 获取PEM编码的密钥数据。此API以同步方式返回结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -1418,7 +1418,7 @@ clearMem(): void
 
 同步方法，清零系统底层内存中的密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -1451,7 +1451,7 @@ getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
 
 同步方法，获取密钥参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -1534,7 +1534,7 @@ getEncodedDer(format: string): DataBlob
 > 1. 本接口可根据入参决定数据的输出格式。
 > 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -1586,7 +1586,7 @@ getEncodedPem(format: string): string
 
 获取PEM编码的私钥数据。此API以同步方式返回结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -1656,7 +1656,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 获取PEM编码的加密的私钥数据。此API以同步方式返回结果。目前仅支持RSA密钥。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -1731,7 +1731,7 @@ getPubKey(): Promise\<PubKey>
 
 从私钥对象中获取公钥对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -1829,7 +1829,7 @@ getPubKeySync(): PubKey
 
 以同步方式，从私钥对象中获取公钥对象。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -2047,7 +2047,7 @@ function eccGetKeyDataTest() {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2066,7 +2066,7 @@ createSymKeyGenerator(algName: string): SymKeyGenerator
 
 支持的规格详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
@@ -2113,7 +2113,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
@@ -2135,7 +2135,7 @@ generateSymKey(callback: AsyncCallback\<SymKey>): void
 >
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥数据（如256位的密钥数据）。如果未指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过[convertKey](#convertkey)方式生成对称密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
@@ -2179,7 +2179,7 @@ generateSymKey(): Promise\<SymKey>
 
 目前使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
@@ -2227,7 +2227,7 @@ generateSymKeySync(): SymKey
 >
 > 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥数据（如指定"HMAC|SHA256"会随机生成256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过[convertKeySync](#convertkeysync12)方式生成对称密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -2277,7 +2277,7 @@ convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 >
 > 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则需要传入与哈希长度一致的二进制密钥数据（如传入SHA256对应256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定"HMAC"，则支持传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
@@ -2332,7 +2332,7 @@ convertKey(key: DataBlob): Promise\<SymKey>
 
 将指定数据转换为对称密钥。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
@@ -2397,7 +2397,7 @@ convertKeySync(key: DataBlob): SymKey
 >
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则需要传入与哈希长度一致的二进制密钥数据（如SHA256对应的256位密钥数据）。如果在创建对称密钥生成器时未指定具体哈希算法，如仅指定"HMAC"，则支持传入长度在1到4096字节范围内的任意二进制密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -2456,7 +2456,7 @@ createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
 支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2504,7 +2504,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2520,7 +2520,7 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 获取非对称密钥生成器随机生成的密钥。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2563,7 +2563,7 @@ generateKeyPair(): Promise\<KeyPair>
 
 获取非对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2606,7 +2606,7 @@ generateKeyPairSync(): KeyPair
 
 同步获取非对称密钥生成器随机生成的密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -2652,7 +2652,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob, callback: AsyncCallback\<KeyPair\
 
 转换密钥数据为非对称密钥对对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2683,7 +2683,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCall
 
 解析密钥数据，生成非对称密钥对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2739,7 +2739,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob): Promise\<KeyPair\>
 
 转换密钥数据为非对称密钥对对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2775,7 +2775,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
 解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -2836,7 +2836,7 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 解析密钥数据，生成非对称密钥对象。使用同步方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -2905,7 +2905,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 > 2. convertPemKey方法中，公钥和私钥字符串数据为非必选项，可单独传入公钥或私钥的数据，生成对应只包含公钥或私钥的KeyPair对象。
 > 3. convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，不会校验生成的密钥对象的规格与创建非对称密钥生成器时指定的密钥规格是否一致。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -2985,7 +2985,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 > 3. convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，不会校验生成的密钥对象的规格与创建非对称密钥生成器时指定的密钥规格是否一致。
 > 4. password为口令，传入后可以解密加密后的私钥。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -3058,7 +3058,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey12)接口说明。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -3140,7 +3140,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey18)接口说明。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -3215,7 +3215,7 @@ createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 创建指定密钥规格的非对称密钥生成器实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3289,7 +3289,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3307,7 +3307,7 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3380,7 +3380,7 @@ generateKeyPair(): Promise\<KeyPair>
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3453,7 +3453,7 @@ generateKeyPairSync(): KeyPair
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -3529,7 +3529,7 @@ generatePriKey(callback: AsyncCallback\<PriKey>): void
 
 使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，生成指定私钥。使用[KEY_PAIR_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，从生成的密钥对中获取指定私钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3602,7 +3602,7 @@ generatePriKey(): Promise\<PriKey>
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3675,7 +3675,7 @@ generatePriKeySync(): PriKey
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -3751,7 +3751,7 @@ generatePubKey(callback: AsyncCallback\<PubKey>): void
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3824,7 +3824,7 @@ generatePubKey(): Promise\<PubKey>
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -3897,7 +3897,7 @@ generatePubKeySync(): PubKey
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数时，可以从生成的密钥对中获取指定的公钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -3975,7 +3975,7 @@ static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
 根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#sm2)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -4029,7 +4029,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 > 1. 非压缩的点数据，表示为：前缀0x04\|x坐标\|y坐标；
 > 2. 压缩的点数据，对于Fp素数域上的点（当前暂不支持F2m域），表示为：前缀0x03\|x坐标（坐标y是奇数时），前缀0x02\|x坐标（坐标y是偶数时）。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -4082,7 +4082,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 根据椭圆曲线的曲线名，即相应的NID（Name Identifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -4148,7 +4148,7 @@ static genDHCommonParamsSpec(pLen: number, skLen?: number): DHCommonParamsSpec
 
 根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。详见[DH密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#dh)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -4202,7 +4202,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 
 根据指定的SM2密文参数，生成符合国密标准的ASN.1格式SM2密文。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -4257,7 +4257,7 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 
 从符合国密标准的ASN.1格式的SM2密文中，获取具体的SM2密文参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -4312,7 +4312,7 @@ createCipher(transformation: string): Cipher
 
 创建加解密实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4374,7 +4374,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4392,7 +4392,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec, callback: AsyncCallback\<
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4427,7 +4427,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4462,7 +4462,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise\<void>
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4502,7 +4502,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4542,7 +4542,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -4594,7 +4594,7 @@ update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 > 3. RSA、SM2非对称加解密不支持update操作。
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次update接口加密数据并调用doFinal接口获取tag，或直接调用doFinal接口加密数据并获取tag，解密时只能调用1次update接口或调用1次doFinal接口解密数据并验证tag。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4637,7 +4637,7 @@ update(data: DataBlob): Promise\<DataBlob>
 > 3. RSA、SM2非对称加解密不支持update操作。
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次update接口加密数据并调用doFinal接口获取tag，或直接调用doFinal接口加密数据并获取tag，解密时只能调用1次update接口或调用1次doFinal接口解密数据并验证tag。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4677,7 +4677,7 @@ updateSync(data: DataBlob): DataBlob
 
 其他注意事项同上异步接口说明。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -4711,7 +4711,7 @@ doFinal(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
 完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4757,7 +4757,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 >    对于解密，GCM、CCM、CFB、OFB和CTR模式，如果doFinal传null，则返回结果为null；对于解密，其他模式，如果明文是加密块大小的整倍数，调用update传入所有密文，调用doFinal传null, 则返回结果为null。<br/>
 >  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)，SM2和RSA的操作类似。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4862,7 +4862,7 @@ doFinal(data: DataBlob): Promise\<DataBlob>
 
 完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -4916,7 +4916,7 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 >     对于解密，GCM、CCM、CFB、OFB和CTR模式，如果doFinal传null，则返回结果为null；对于其他模式，如果明文是加密块大小的整倍数，调用update传入所有密文，调用doFinal传null, 则返回结果为null。
 >  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)，SM2和RSA的操作类似。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -5023,7 +5023,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 其他注意事项同接口[doFinal()](#dofinal)说明。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -5115,7 +5115,7 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
 设置加解密参数。常用的加解密参数直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数通过本接口指定。当前只支持RSA算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -5162,9 +5162,9 @@ function testSetCipherSpec() {
 
 getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 
-获取加解密参数。当前只支持RSA算法和SM2算法，从API version 11开始，支持SM2算法获取加解密参数。
+获取加解密参数。当前只支持RSA算法和SM2算法，从API版本11开始，支持SM2算法获取加解密参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Cipher
@@ -5218,7 +5218,7 @@ createSign(algName: string): Sign
 
 创建签名实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5281,7 +5281,7 @@ Sign实例不支持重复初始化，当业务方需要使用新密钥签名时�
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5299,7 +5299,7 @@ init(priKey: PriKey, callback: AsyncCallback\<void>): void
 
 Sign实例不支持重复初始化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5332,7 +5332,7 @@ init(priKey: PriKey): Promise\<void>
 
 Sign实例不支持重复初始化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5370,7 +5370,7 @@ initSync(priKey: PriKey): void
 
 Sign实例不支持重复调用initSync。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -5408,7 +5408,7 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5449,7 +5449,7 @@ update(data: DataBlob): Promise\<void>
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5495,7 +5495,7 @@ updateSync(data: DataBlob): void
 > OnlySign模式下，不支持updateSync操作，需要直接使用signSync传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -5523,7 +5523,7 @@ sign(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
 对数据进行签名，返回签名结果。使用callback异步回调。Sign类不支持重复调用sign。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5554,7 +5554,7 @@ sign(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
 对数据进行签名。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5585,7 +5585,7 @@ sign(data: DataBlob): Promise\<DataBlob>
 
 对数据进行签名，返回签名结果。使用Promise异步回调。Sign类不支持重复调用sign。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5621,7 +5621,7 @@ sign(data: DataBlob | null): Promise\<DataBlob>
 
 对数据进行签名。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5657,7 +5657,7 @@ signSync(data: DataBlob | null): DataBlob
 
 对数据进行签名，通过同步方式返回签名结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -5915,9 +5915,9 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
 设置签名参数。常用签名参数可通过 [createSign](#cryptoframeworkcreatesign) 指定，其他参数则通过本接口设置。
 
-当前仅支持RSA算法、SM2算法，从API version 11开始，支持SM2算法设置签名参数。
+当前仅支持RSA算法、SM2算法，从API版本11开始，支持SM2算法设置签名参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -5949,9 +5949,9 @@ setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 设置签名参数。常用签名参数可通过 [createSign](#cryptoframeworkcreatesign) 指定，其他参数则通过本接口设置。
 
 
-当前仅支持RSA算法、SM2算法，从API version 11开始，支持SM2算法设置签名参数。
+当前仅支持RSA算法、SM2算法，从API版本11开始，支持SM2算法设置签名参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6052,7 +6052,7 @@ getSignSpec(itemType: SignSpecItem): string | number
 
 获取签名参数。当前仅支持RSA算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6107,7 +6107,7 @@ createVerify(algName: string): Verify
 
 创建验签实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6167,7 +6167,7 @@ Verify实例不支持重复初始化，当业务方需要使用新密钥验签�
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6183,7 +6183,7 @@ init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 
 传入公钥初始化Verify实例。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6214,7 +6214,7 @@ init(pubKey: PubKey): Promise\<void>
 
 传入公钥初始化Verify实例。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6250,7 +6250,7 @@ initSync(pubKey: PubKey): void
 
 传入公钥初始化Verify对象，通过同步方式获取结果。initSync、updateSync、verifySync为三段式接口，需要成组使用。其中initSync和verifySync必选，updateSync可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -6288,7 +6288,7 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6329,7 +6329,7 @@ update(data: DataBlob): Promise\<void>
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6375,7 +6375,7 @@ updateSync(data: DataBlob): void
 > OnlyVerify模式下，不支持updateSync操作，需要直接使用verifySync传入数据。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -6403,7 +6403,7 @@ verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback\<boolean
 
 对数据进行验签，返回验签结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6435,7 +6435,7 @@ verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback\<
 
 对数据进行验签。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6467,7 +6467,7 @@ verify(data: DataBlob, signatureData: DataBlob): Promise\<boolean>
 
 对数据进行验签，返回验签结果。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6504,7 +6504,7 @@ verify(data: DataBlob | null, signatureData: DataBlob): Promise\<boolean>
 
 对数据进行验签。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -6541,7 +6541,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 对数据进行验签，通过同步方式返回验签结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -6834,7 +6834,7 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 >
 > - 目前仅RSA支持。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -6950,7 +6950,7 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 >
 > - 目前仅RSA支持。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -6984,11 +6984,11 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 设置验签参数。常用的验签参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
 
-支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
+支持RSA算法和SM2算法，从API版本11开始，支持SM2算法设置验签参数。
 
 验签的参数应当与签名的参数保持一致。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -7019,11 +7019,11 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 设置验签参数。常用的验签参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
 
-支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
+支持RSA算法和SM2算法，从API版本11开始，支持SM2算法设置验签参数。
 
 验签的参数应当与签名的参数保持一致。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -7126,7 +7126,7 @@ getVerifySpec(itemType: SignSpecItem): string | number
 
 获取验签参数。当前只支持RSA算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Signature
@@ -7180,7 +7180,7 @@ createKeyAgreement(algName: string): KeyAgreement
 
 创建密钥协商实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
@@ -7190,7 +7190,7 @@ createKeyAgreement(algName: string): KeyAgreement
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定密钥协商算法：目前仅支持ECDH，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
+| algName | string | 是   | 指定密钥协商算法：目前仅支持ECDH，从API版本11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
 
 **返回值**：
 
@@ -7228,7 +7228,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
@@ -7244,7 +7244,7 @@ generateSecret(priKey: PriKey, pubKey: PubKey, callback: AsyncCallback\<DataBlob
 
 基于传入的私钥与公钥进行密钥协商。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
@@ -7275,7 +7275,7 @@ generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 
 基于传入的私钥与公钥进行密钥协商。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
@@ -7311,7 +7311,7 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 
 基于传入的私钥与公钥进行密钥协商，通过同步返回共享密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
 
@@ -7415,7 +7415,7 @@ createMd(algName: string): Md
 
 支持的规格详见[MD消息摘要算法规格](../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -7466,7 +7466,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7488,7 +7488,7 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 >
 > Md算法多次调用update更新的代码示例详见开发指导[分段摘要算法](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -7525,7 +7525,7 @@ update(input: DataBlob): Promise\<void>
 >
 > Md算法多次调用update更新的代码示例详见开发指导[分段摘要算法](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7567,7 +7567,7 @@ updateSync(input: DataBlob): void
 >
 > Md算法多次调用updateSync更新的代码示例详见开发指导[分段摘要算法](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -7595,7 +7595,7 @@ digest(callback: AsyncCallback\<DataBlob>): void
 
 返回Md的计算结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -7652,7 +7652,7 @@ digest(): Promise\<DataBlob>
 
 返回Md的计算结果。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7790,7 +7790,7 @@ digestSync(): DataBlob
 
 通过同步方式返回Md的计算结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -7917,7 +7917,7 @@ getMdLength(): number
 
 获取Md消息摘要的字节长度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -7966,7 +7966,7 @@ createMac(algName: string): Mac
 
 支持的规格详见[HMAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8016,7 +8016,7 @@ createMac(macSpec: MacSpec): Mac
 
 支持的规格详见[MAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
@@ -8068,7 +8068,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8088,7 +8088,7 @@ init(key: SymKey, callback: AsyncCallback\<void>): void
   >
   > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8117,7 +8117,7 @@ init(key: SymKey): Promise\<void>
 
 使用对称密钥初始化Mac计算。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8151,7 +8151,7 @@ initSync(key: SymKey): void
 
 使用对称密钥初始化Mac计算，通过同步方式获取结果。initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其中initSync和doFinalSync必选，updateSync可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
@@ -8181,7 +8181,7 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 >
 > HMAC算法多次调用update更新的代码示例详见[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8214,7 +8214,7 @@ update(input: DataBlob): Promise\<void>
 >
 > HMAC算法多次调用update更新的代码示例详见[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8252,7 +8252,7 @@ updateSync(input: DataBlob): void
 >
 > HMAC算法多次调用updateSync更新的代码示例详见[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
@@ -8279,7 +8279,7 @@ doFinal(callback: AsyncCallback\<DataBlob>): void
 
 完成MAC计算并获取MAC计算结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8347,7 +8347,7 @@ doFinal(): Promise\<DataBlob>
 
 完成MAC计算并获取MAC计算结果。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8401,7 +8401,7 @@ doFinalSync(): DataBlob
 
 通过同步方式完成MAC计算并获取MAC计算结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
@@ -8455,7 +8455,7 @@ getMacLength(): number
 
 获取Mac消息认证码的长度（字节数）。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Mac
@@ -8518,7 +8518,7 @@ createRandom(): Random
 
 创建随机数实例。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -8562,7 +8562,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8580,7 +8580,7 @@ generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
 
 生成指定长度的随机数。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -8628,7 +8628,7 @@ generateRandom(len: number): Promise\<DataBlob>
 
 生成指定长度的随机数。使用promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8749,7 +8749,7 @@ generateRandomSync(len: number): DataBlob
 
 同步生成指定长度的随机数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -8876,7 +8876,7 @@ enableHardwareEntropy(): void
 
 开启硬件熵源。将从TEE中获取安全随机数作为该随机数实例的熵源。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8922,7 +8922,7 @@ setSeed(seed: DataBlob): void
 
 设置指定的种子。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **模型约束：**
 - API版本12+：此接口可在Stage模型和FA模型下使用。
@@ -8974,7 +8974,7 @@ createKdf(algName: string): Kdf
 
 创建密钥派生函数实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Kdf
@@ -9022,7 +9022,7 @@ try {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Kdf
@@ -9038,7 +9038,7 @@ generateSecret(params: KdfSpec, callback: AsyncCallback\<DataBlob>): void
 
 基于传入的密钥派生参数进行密钥派生。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Kdf
@@ -9112,7 +9112,7 @@ generateSecret(params: KdfSpec): Promise\<DataBlob>
 
 基于传入的密钥派生参数进行密钥派生。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**
 - API版本12+：SystemCapability.Security.CryptoFramework.Kdf
@@ -9191,7 +9191,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 基于传入的密钥派生参数进行密钥派生，通过同步方式返回派生得到的密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
 
@@ -9263,7 +9263,7 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 从ASN.1 DER编码的ECC/SM2签名数据获取r和s。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
@@ -9318,7 +9318,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 将（r、s）的ECC/SM2签名数据转换为ASN.1 DER编码。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 

@@ -93,7 +93,7 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] KDF参数算法名称，不能为NULL。取值如下：<br>- 从API version 20开始支持"HKDF"、"PBKDF2"、"SCRYPT"。<br>- 从API version 22开始支持"X963KDF"。 |
+| const char *algoName | [in] KDF参数算法名称，不能为NULL。取值如下：<br>- 从API版本20开始支持"HKDF"、"PBKDF2"、"SCRYPT"。<br>- 从API版本22开始支持"X963KDF"。 |
 | [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) **params | [out] 指向KDF参数指针的指针。params不能为NULL，*params必须为NULL。 |
 
 **返回：**
@@ -169,7 +169,7 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] KDF算法名称。不能为NULL。格式为"KDF类型\|摘要算法"，取值如下：<br>- 从API version 20开始支持"PBKDF2\|SHA1"、"PBKDF2\|SHA224"、"PBKDF2\|SHA256"、"PBKDF2\|SHA384"、"PBKDF2\|SHA512"、"PBKDF2\|SM3"。从API version 26.0.0开始支持"PBKDF2\|SHA3-256"、"PBKDF2\|SHA3-384"、"PBKDF2\|SHA3-512"。<br>- 从API version 20开始支持"HKDF\|SHA1"、"HKDF\|SHA224"、"HKDF\|SHA256"、"HKDF\|SHA384"、"HKDF\|SHA512"、"HKDF\|SM3"。HKDF支持可选的第三个参数指定模式："EXTRACT_AND_EXPAND"（默认）、"EXTRACT_ONLY"、"EXPAND_ONLY"，示例："HKDF\|SHA256\|EXTRACT_ONLY"。从API version 26.0.0开始支持"HKDF\|SHA3-256"、"HKDF\|SHA3-384"、"HKDF\|SHA3-512"。<br>- 从API version 20开始支持"SCRYPT"。<br>- 从API version 22开始支持"X963KDF\|SHA1"、"X963KDF\|SHA224"、"X963KDF\|SHA256"、"X963KDF\|SHA384"、"X963KDF\|SHA512"。从API version 26.0.0开始支持"X963KDF\|SHA3-256"、"X963KDF\|SHA3-384"、"X963KDF\|SHA3-512"。 |
+| const char *algoName | [in] KDF算法名称。不能为NULL。格式为"KDF类型\|摘要算法"，取值如下：<br>- 从API版本20开始支持"PBKDF2\|SHA1"、"PBKDF2\|SHA224"、"PBKDF2\|SHA256"、"PBKDF2\|SHA384"、"PBKDF2\|SHA512"、"PBKDF2\|SM3"。从API版本26.0.0开始支持"PBKDF2\|SHA3-256"、"PBKDF2\|SHA3-384"、"PBKDF2\|SHA3-512"。<br>- 从API版本20开始支持"HKDF\|SHA1"、"HKDF\|SHA224"、"HKDF\|SHA256"、"HKDF\|SHA384"、"HKDF\|SHA512"、"HKDF\|SM3"。HKDF支持可选的第三个参数指定模式："EXTRACT_AND_EXPAND"（默认）、"EXTRACT_ONLY"、"EXPAND_ONLY"，示例："HKDF\|SHA256\|EXTRACT_ONLY"。从API版本26.0.0开始支持"HKDF\|SHA3-256"、"HKDF\|SHA3-384"、"HKDF\|SHA3-512"。<br>- 从API版本20开始支持"SCRYPT"。<br>- 从API版本22开始支持"X963KDF\|SHA1"、"X963KDF\|SHA224"、"X963KDF\|SHA256"、"X963KDF\|SHA384"、"X963KDF\|SHA512"。从API版本26.0.0开始支持"X963KDF\|SHA3-256"、"X963KDF\|SHA3-384"、"X963KDF\|SHA3-512"。 |
 | [OH_CryptoKdf](capi-cryptokdfapi-oh-cryptokdf.md) **ctx | [out] 指向KDF上下文指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**
