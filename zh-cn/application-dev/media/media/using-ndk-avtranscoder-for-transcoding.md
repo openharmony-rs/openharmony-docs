@@ -98,7 +98,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libavtrans
    
    void NdkAVTransCoderUser::OnErrorCb(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg)
    {
-       LOG("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public}s", errorCode,
+       LOGE("NdkAVTransCoderUser OnErrorCb errorCode: %{public}d ,errorMsg: %{public}s", errorCode,
            errorMsg == nullptr ? "unknown" : errorMsg);
        this->errorCode = errorCode;
        AvTranscoderRelease(transcoder);
