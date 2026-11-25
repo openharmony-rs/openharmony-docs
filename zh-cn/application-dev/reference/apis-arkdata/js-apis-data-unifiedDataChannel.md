@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
-<!--Designer: @junathuawei1; @zph000-->
+<!--Designer: @xuexuexuehc-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -2725,11 +2725,12 @@ let options1: unifiedDataChannel.Options = {
 };
 
 try {
-  unifiedDataChannel.queryData(options1, (err, ret) => {
-    if (ret !== undefined) {
-      ret.forEach((dataItem: unifiedDataChannel.UnifiedData, index: number) => {
+  unifiedDataChannel.queryData(options1, (err, data) => {
+    if (data !== undefined) {
+      console.info(`Succeeded in querying data. size = ${data.length}`);
+      data.forEach((dataItem, index) => {
         let records = dataItem.getRecords();
-        records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+        records.forEach((record) => {
           if (record.getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
             let text =
               record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
@@ -2909,9 +2910,10 @@ let options1: unifiedDataChannel.Options = {
 try {
   unifiedDataChannel.deleteData(options1, (err, ret) => {
     if (ret !== undefined) {
-      ret.forEach((dataItem: unifiedDataChannel.UnifiedData, index: number) => {
+      console.info(`Succeeded in deleting data. size = ${ret.length}`);
+      ret.forEach((dataItem, index) => {
         let records = dataItem.getRecords();
-        records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
+        records.forEach((record) => {
           if (record.getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
             let text =
               record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
