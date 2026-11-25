@@ -2595,6 +2595,11 @@
 						"end_line":92,
 						"name":"input_case_input_switchInputMethod",
 						"start_line":75
+					},
+					{
+						"end_line":121,
+						"name":"input_case_input_switchInputMethodAndSubtype",
+						"start_line":108
 					}
 				]
 			},
@@ -75721,6 +75726,36 @@
 						"end_line":167,
 						"name":"preview_style_js_attach",
 						"start_line":143
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/inputmethod/use-inputmethod-in-not-focusable-window.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/NotFocusableWindowDemo.ets",
+				"functions":[
+					{
+						"end_line":105,
+						"name":"input_case_input_create_not_focusable_subwindow",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/SubWindowIndex.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"input_case_input_shift_focus_in_not_focusable_window",
+						"start_line":26
+					},
+					{
+						"end_line":67,
+						"name":"input_case_input_shift_focus_to_main_window",
+						"start_line":49
 					}
 				]
 			}
