@@ -13,8 +13,13 @@ Kernel Enhance Kit（内核增强套件）提供系统内核级别的增强能�
 - C API<!--kernel-c-->
   - 模块<!--kernel-module-->
     - [QoS](capi-qos.md)
+    - [memory](capi-memory.md)
   - 头文件<!--kernel-headerfile-->
     - [qos.h](capi-qos-h.md)
+    - [purgeable_memory.h](capi-purgeable-memory-h.md)
   - 结构体<!--kernel-struct-->
     - [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md)
     - [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md)
+    - [PurgMem](capi-memory-purgmem.md)
+    
+    
