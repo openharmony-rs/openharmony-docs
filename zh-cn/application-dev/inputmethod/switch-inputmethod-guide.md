@@ -146,7 +146,7 @@
    ArkTS-Dyn示例：
 
    <!-- @[input_case_input_switchInputMethodAndSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
-
+   
    ``` TypeScript
    async switchInputMethodAndSubtype(targetProperty: inputMethod.InputMethodProperty, subtype: InputMethodSubtype) {
      try {
@@ -165,7 +165,7 @@
    ArkTS-Sta示例：
 
    <!-- @[input_case_input_switchInputMethodAndSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
-
+   
    ``` TypeScript
    async switchInputMethodAndSubtype(targetProperty: inputMethod.InputMethodProperty, subtype: InputMethodSubtype) {
      try {
