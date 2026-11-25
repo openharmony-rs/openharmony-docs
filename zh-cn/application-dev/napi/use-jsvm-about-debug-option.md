@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用OH_JSVM_SetDebugOption启用或禁用JSVM_SCOPE_CHECK等调试选项，校验JSVM_Value是否越出HandleScope作用域，辅助定位作用域误用崩溃。"
 keywords: [OH_JSVM_SetDebugOption, JSVM_SCOPE_CHECK, JSVM_DebugOption, debug选项, 作用域校验, HandleScope]
 doctype: guide

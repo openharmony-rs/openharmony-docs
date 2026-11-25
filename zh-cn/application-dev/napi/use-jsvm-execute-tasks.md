@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用JSVM-API启动任务队列、执行微任务检查点并设置微任务执行策略，适用于在C/C++侧驱动JS事件循环与异步任务调度。"
 keywords: [OH_JSVM_PumpMessageLoop, OH_JSVM_PerformMicrotaskCheckpoint, OH_JSVM_SetMicrotaskPolicy, 任务队列, 微任务, 事件循环, 异步任务调度]
 doctype: guide

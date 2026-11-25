@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用JSVM-API设置、获取、查询和删除JavaScript对象属性，支持按名称操作、批量定义属性及枚举可枚举属性名。"
 keywords: [OH_JSVM_SetProperty, OH_JSVM_GetProperty, OH_JSVM_HasProperty, OH_JSVM_DeleteProperty, OH_JSVM_SetNamedProperty, OH_JSVM_DefineProperties, OH_JSVM_GetPropertyNames, OH_JSVM_HasOwnProperty, 可枚举属性]
 doctype: guide
