@@ -85,7 +85,7 @@
 
 ### 快捷方式
 
-快捷方式是指长按应用图标弹出的快捷菜单项，允许用户直接跳转到应用的特定功能页面。开发者可以在[module.json5配置文件](../quick-start/module-configuration-file.md#shortcuts标签)的`shortcuts`标签中声明静态快捷方式，或通过[shortcutManager](../reference/apis-ability-kit/js-apis-shortcutManager.md)接口动态发布快捷方式。
+快捷方式是指长按应用图标弹出的快捷菜单项，允许用户直接跳转到应用的特定功能页面。该能力从API版本20开始支持。开发者可以在[module.json5配置文件](../quick-start/module-configuration-file.md#shortcuts标签)的`shortcuts`标签中声明静态快捷方式，或通过[shortcutManager](../reference/apis-ability-kit/js-apis-shortcutManager.md)接口动态发布快捷方式。
 
 - 用户点击快捷方式后，系统会以携带特定`parameters`或`uri`的Want启动对应UIAbility。
 - 开发者可在UIAbility的`onCreate()`或`onNewWant()`中解析Want参数，直接加载目标功能页，减少用户操作层级。
