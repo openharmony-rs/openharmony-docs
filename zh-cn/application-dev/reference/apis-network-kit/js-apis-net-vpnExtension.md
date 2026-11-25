@@ -771,6 +771,7 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 | isBlocking          | boolean                                                        | 否  | 是 | 是否阻塞模式。true表示阻塞模式，false表示非阻塞模式，默认值为false。       |
 | trustedApplications | Array\<string\>                                                | 否  | 是 | 受信任的应用信息列表，string类型表示的包名。当配置该列表后，仅该列表中的应用数据才能根据routes被VPN代理。API version 23前最多可配置64个受信任的应用包名；从API version 23开始最多可配置256个受信任的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
 | blockedApplications | Array\<string\>                                                 | 否  | 是 | 被阻止的应用信息列表，string类型表示的包名。当配置该列表后，该列表中的应用数据不会被VPN代理，其他应用可以根据routes配置被VPN代理。API version 23前最多可配置64个被阻止的应用包名；从API version 23开始最多可配置256个被阻止的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
+| isLocalNetworkRouted | boolean                                      | 否  | 是 | 是否将局域网流量路由到VPN。true表示允许局域网流量通过VPN转发，false表示局域网流量绕过VPN并直接通过物理网卡发送，默认值为false。<br>**注意**：设置为true时，VPN应用需要在routes中配置覆盖局域网网段（例如10.0.0.0/8、172.16.0.0/12、192.168.0.0/16、fc00::/7）的路由，否则局域网流量仍会通过物理网络发送。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **示例：**
 
