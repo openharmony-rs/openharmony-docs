@@ -69,28 +69,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 2. 定义全局变量（仅作示例，具体参数值，请根据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
-   struct CodecUserData {
-   public:
-       bool isDecFirstFrame = false;
-
-       int32_t width = 0;
-       int32_t height = 0;
-       int32_t widthStride = 0;
-       int32_t heightStride = 0;
-
-       std::shared_mutex codecMutex;
-       uint32_t inputFrameCount = 0;
-       std::mutex inputMutex;
-       uint32_t outputFrameCount = 0;
-       std::mutex outputMutex;
-
-       void ClearQueue()
-       {
-           inputBufferQueue.Flush();
-           outputBufferQueue.Flush();
-       }
-   };
-
    struct VideoSampleInfo {
        // 解码器MIME类型。
        std::string videoCodecMime;
@@ -121,7 +99,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    OH_AVCodec *decoder_ = nullptr;
    // 输出保存文件。
    std::unique_ptr<std::ofstream> outputFile_ = nullptr;
-   std::unique_ptr<CodecUserData> videoDecContext_ = nullptr;
    std::unique_ptr<VideoDecoder> videoDecoder_ = nullptr;
    ```
 
@@ -399,7 +376,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        if (!isStarted_) {
-           // 停止或Seek结束本轮输出，Buffer由后续Destroy或Flush统一回收。
+           if (ret == AVCODEC_SAMPLE_ERR_OK &&
+               videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+           }
            break;
        }
        CHECK_AND_CONTINUE_LOG(ret != AVCODEC_SAMPLE_ERR_AGAIN, "Get output buffer timeout, retry");
@@ -410,7 +390,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
            break;
        }
        if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-           // EOS结束本轮输出，Buffer由后续Destroy或Seek时的Flush统一回收。
+           if (videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+               isStarted_ = false;
+           }
            AVCODEC_SAMPLE_LOGI("Catch EOS, video output thread out");
            break;
        }
@@ -531,18 +514,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    }
    ```
 
-   输入、输出buffer清理：
-
-   <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
-
-   ```c++
-   void ClearQueue()
-   {
-       inputBufferQueue.Flush();
-       outputBufferQueue.Flush();
-   }
-   ```
-
    若需重新开始解码，可参考上述[Surface模式](#surface模式)-步骤5启动解码器，[Surface模式](#surface模式)-步骤6重新推送视频帧PPS/SPS数据。
 
 9. （可选）调用OH_VideoDecoder_Reset()重置解码器。
@@ -560,18 +531,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        const int32_t ret = OH_VideoDecoder_Reset(decoder_);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Reset failed, ret: %{public}d", ret);
        return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
-
-   输入、输出buffer清理：
-
-   <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
-
-   ```c++
-   void ClearQueue()
-   {
-       inputBufferQueue.Flush();
-       outputBufferQueue.Flush();
    }
    ```
 
@@ -598,18 +557,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     }
     ```
 
-    输入、输出buffer清理：
-
-    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
-
-    ```c++
-    void ClearQueue()
-    {
-        inputBufferQueue.Flush();
-        outputBufferQueue.Flush();
-    }
-    ```
-
     若需重新开始解码，可参考上述[Surface模式](#surface模式)-步骤5启动解码器。
 
 11. 调用OH_VideoDecoder_Destroy()销毁解码器实例，释放资源。
@@ -617,15 +564,12 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     <!-- @[player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp)-->
 
     ```c++
-    void Player::ReleaseVideoDecoder(bool trackCleanup)
+    void Player::ReleaseVideoDecoder()
     {
         OHNativeWindow *decoderWindow = decoderWindowLease_.GetWindow();
         if (videoDecoder_ != nullptr) {
             // ...
-            if (trackCleanup) {
-                cleanupProgress_.Enter("codec.video.destroy");
-            }
-            RecordCleanup("video.decoder.destroy", videoDecoder_->Release());
+            videoDecoder_->Release();
             videoDecoder_.reset();
         }
         if (sampleInfo_.video.window == decoderWindow) {
@@ -871,7 +815,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        CodecBufferInfo bufferInfo;
        const int32_t ret = videoDecoder_->GetOutputBuffer(bufferInfo, CODEC_BUFFER_TIMEOUT_US);
        if (!isStarted_) {
-           // 停止或Seek结束本轮输出，Buffer由后续Destroy或Flush统一回收。
+           if (ret == AVCODEC_SAMPLE_ERR_OK &&
+               videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+           }
            break;
        }
        CHECK_AND_CONTINUE_LOG(ret != AVCODEC_SAMPLE_ERR_AGAIN, "Get output buffer timeout, retry");
@@ -882,7 +829,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
            break;
        }
        if (bufferInfo.attr.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-           // EOS结束本轮输出，Buffer由后续Destroy或Seek时的Flush统一回收。
+           if (videoDecoder_->FreeOutputBuffer(bufferInfo, false) != AVCODEC_SAMPLE_ERR_OK) {
+               playbackFailed_ = true;
+               isStarted_ = false;
+           }
            AVCODEC_SAMPLE_LOGI("Catch EOS, video output thread out");
            break;
        }
