@@ -214,3 +214,17 @@ Allows an application to start the HiShell command-line terminal to execute comm
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 26.1.0
+
+## ohos.permission.GET_SUSPEND_STATE
+
+Allows a system application to obtain changes in suspended state.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: false
+
+**Supported devices**:  phones | TVs | PCs/2-in-1 devices | tablets | cars | wearables
+
+**Since**: 26.1.0

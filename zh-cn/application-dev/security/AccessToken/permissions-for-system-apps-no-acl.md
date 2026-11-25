@@ -214,3 +214,17 @@
 **支持设备**：PC/2in1 | Tablet
 
 **起始版本**：26.1.0
+
+## ohos.permission.GET_SUSPEND_STATE
+
+允许系统应用获取应用冻结状态变化信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：false
+
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car | Wearable
+
+**起始版本**：26.1.0
