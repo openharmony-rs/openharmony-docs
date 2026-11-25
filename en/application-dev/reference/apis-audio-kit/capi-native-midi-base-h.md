@@ -1,8 +1,8 @@
 # native_midi_base.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=95cf2173728c090a7b1a03298d8b54813e64c777 translatedAt=2026-11-03T04:12:38.005Z pushedAt=2026-11-04T03:11:46.970Z nl=1 -->

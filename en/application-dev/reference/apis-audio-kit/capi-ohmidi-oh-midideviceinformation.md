@@ -1,8 +1,8 @@
 # OH_MIDIDeviceInformation
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=ca4435ead45844d29c63def33172deb3db227ea2 translatedAt=2026-11-03T04:31:00.062Z pushedAt=2026-11-04T03:11:47.051Z nl=1 -->

@@ -1,8 +1,8 @@
 # OHMIDI
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=0578931480203da834b543b8c823f3ce7e94473d translatedAt=2026-11-03T04:32:46.026Z pushedAt=2026-11-04T03:11:47.057Z nl=1 -->
