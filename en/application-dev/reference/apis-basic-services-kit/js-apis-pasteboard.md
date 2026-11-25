@@ -1280,7 +1280,7 @@ let count: number = pasteData.getRecordCount();
 
 getTag(): string
 
-Obtains the custom tag from the pasteboard. If no custom tag is set, null is returned.
+Obtains the custom tag from the pasteboard. If no custom tag is set, empty string is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1290,7 +1290,7 @@ Obtains the custom tag from the pasteboard. If no custom tag is set, null is ret
 
 | Type| Description|
 | -------- | -------- |
-| string | Custom tag. If no custom tag is set, null is returned.|
+| string | Custom tag. If no custom tag is set, empty string is returned.|
 
 **Example**
 
@@ -1359,7 +1359,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1392,7 +1392,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1978,7 +1978,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 getData(): Promise&lt;PasteData&gt;
 
-Obtains a **PasteData** object from the pasteboard. This API uses a promise to return the result.
+Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses a promise to return the result. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked.
 
 **Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -2855,7 +2855,7 @@ Sets pasteable range of pasteboard data for applications.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](#shareoption9) | Yes| Pasteable range. Only **pasteboard.ShareOption.INAPP** is allowed.|
+| shareOptions | [ShareOption](#shareoption9) | Yes| Pasteable range. Only the enumeretion values defined in **pasteboard.ShareOption** are allowed. If other values are passed, error code 401 is returned.|
 
 **Error codes**
 
@@ -2948,7 +2948,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
