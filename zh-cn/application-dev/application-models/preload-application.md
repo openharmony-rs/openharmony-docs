@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "系统在资源充足时根据用户习惯提前加载应用至特定阶段，缩短冷启动耗时，适用于资源加载较重的应用场景。"
+keywords: [应用预加载, 启动加速, AbilityStage, appPreloadPhase, 冷启动, 预加载阶段, getAppPreloadType]
+doctype: guide
+status: active
+---
+
 # 应用预加载
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

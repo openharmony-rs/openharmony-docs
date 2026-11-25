@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用启动框架AppStartup的运行机制与开发流程，通过配置文件统一管理启动任务的异步执行与依赖关系，支持自动与手动模式、任务匹配规则及so预加载，提升应用启动效率。"
+keywords: [AppStartup, 启动框架, 启动任务, 异步启动, 依赖关系, startupManager, StartupTask, so预加载, matchRules]
+doctype: guide
+status: active
+---
+
 # 应用启动框架AppStartup
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

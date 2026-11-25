@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用进程隔离机制的开发方法，涵盖静态指定进程、动态指定进程和模块独立进程三种方式的配置与使用场景，提升应用稳定性与安全性。"
+keywords: [进程隔离, 独立进程, 静态指定进程, 动态指定进程, 模块独立进程, UIAbility, module.json5]
+doctype: guide
+status: active
+---
+
 # 独立进程开发指导
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

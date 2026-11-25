@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "说明FA模型下PageAbility、ServiceAbility等同进程运行及WebView独立渲染进程的进程结构，并介绍进程间公共事件通信机制。"
+keywords: [FA模型, 进程模型, PageAbility, ServiceAbility, DataAbility, FormAbility, 渲染进程, 公共事件]
+doctype: guide
+status: not_recommended
+---
+
 # FA模型的进程模型
 
 <!--Kit: Ability Kit-->
