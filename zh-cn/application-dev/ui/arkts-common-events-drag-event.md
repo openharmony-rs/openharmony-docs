@@ -2669,6 +2669,27 @@ struct GridEts {
    ArkTS-Sta示例：
 
    <!-- @[virtual_drag_sta_data](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Udmf/VirtualFileDrag-Sta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private createDragData(): unifiedDataChannel.UnifiedData {
+     const provider: VirtualFileProvider | undefined = this.provider;
+     if (!provider) {
+       throw new Error('Prepare a file before dragging');
+     }
+     const entry: uniformDataStruct.VirtualFileInfo = provider.createVirtualEntry();
+     const root: uniformDataStruct.VirtualBaseItem = entry.itemInfo;
+     // oriUri是非空占位URI，不要求文件已存在；落入方使用实际获取的URI。
+     const fileUri: uniformDataStruct.FileUri = {
+       uniformDataType: 'general.file-uri',
+       oriUri: `file:///virtual/${encodeURIComponent(root.name)}`,
+       fileType: this.scenario === ExportScenario.DIRECTORY ? 'general.directory' : 'general.file',
+       virtualEntry: entry
+     };
+     const record: unifiedDataChannel.UnifiedRecord = new unifiedDataChannel.UnifiedRecord(
+       uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
+     return new unifiedDataChannel.UnifiedData(record);
+   }
+   ```
 
 3. 设置起拖数据。
 
