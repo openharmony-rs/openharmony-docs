@@ -580,6 +580,20 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    将获取到的URI列表交给业务处理。获取URI不代表文件内容已经读取或下载完成；需要验证按需提供内容时，可将文件拖到文件管理器等实际读取文件的应用。
 
    <!-- @[virtual_drag_c_drop_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   void OnDrop(ArkUI_DragEvent* event)
+   {
+       if (event == nullptr) {
+           return;
+       }
+       std::vector<std::string> uris;
+       const bool received = GetDroppedFileUris(event, uris);
+       const bool delivered = NotifyUris(uris); // 将URI列表交给业务回调。
+       OH_ArkUI_DragEvent_SetDragResult(event,
+           received && delivered ? ARKUI_DRAG_RESULT_SUCCESSFUL : ARKUI_DRAG_RESULT_FAILED);
+   }
+   ```
 
 
 回调参数、返回值及资源释放要求参见[OH_UDMF_VirtualFileOnRead](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileonread)、[OH_UDMF_VirtualFileOnCancel](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfileoncancel)和[OH_UDMF_VirtualFileFinalize](../reference/apis-arkdata/capi-uds-h.md#oh_udmf_virtualfilefinalize)。
