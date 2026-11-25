@@ -2761,6 +2761,28 @@ struct GridEts {
    ArkTS-Dyn示例：
 
    <!-- @[virtual_drag_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/model/DropReceiver.ets) -->
+   
+   ``` TypeScript
+   // 获取落入数据中的文件URI，不读取文件内容。
+   export function getDroppedFileUris(event: DragEvent): string[] {
+     const uris: string[] = [];
+     const records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+     for (const record of records) {
+       if (!record.getTypes().includes(uniformTypeDescriptor.UniformDataType.FILE_URI)) {
+         continue;
+       }
+       const entry: uniformDataStruct.FileUri =
+         record.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+       if (entry.oriUri.length > 0) {
+         uris.push(entry.oriUri);
+       }
+     }
+     if (uris.length === 0) {
+       throw new Error('No file URI received');
+     }
+     return uris;
+   }
+   ```
 
    ArkTS-Sta示例：
 
