@@ -26,18 +26,18 @@
    | uid           | 必选 | 小型系统和标准系统 | 当前服务进程的uid值。 | 类型：int、字符串。 |
    | gid           | 必选 | 小型系统和标准系统 | 当前服务进程的gid值。 | 类型：int、int[]、字符串、字符串数组。 |
    | once          | 可选 | 小型系统和标准系统 | 当前服务进程是否为一次性进程。 | 1：一次性进程，当该进程退出时，init不会重新启动该服务进程。 <br>0 : 常驻进程，当该进程退出时，init收到SIGCHLD信号并重新启动该服务进程。 |
-   | importance    | 可选 | 小型系统和标准系统 | 标准系统：当前服务优先级<br>小型系统：标记服务重要性或者服务优先级。 | 标准系统中：服务优先级取值范围 [-20， 19]，数值越小优先级越高，超出为无效设置。<br>小型系统中：默认标记服务重要性。0 ：非重要服务，不重启系统；非0 ：重要服务，重启系统。如需切换为服务优先级配置，可配置init_feature_enable_lite_process_priority特性宏为true，服务优先级配置方法同标准系统。 |
+   | importance    | 可选 | 小型系统和标准系统 | 标准系统：当前服务优先级<br>小型系统：标记服务重要性或者服务优先级。 | 标准系统中：服务优先级取值范围 [-20, 19]，数值越小优先级越高，超出为无效设置。<br>小型系统中：默认标记服务重要性。0 ：非重要服务，不重启系统；非0 ：重要服务，重启系统。如需切换为服务优先级配置，可配置init_feature_enable_lite_process_priority特性宏为true，服务优先级配置方法同标准系统。 |
    | caps          | 可选 | 小型系统和标准系统 | 当前服务所需的capability值，根据安全子系统已支持的capability，评估所需的capability，遵循最小权限原则配置。| 类型：数字或者字符串数组，在配置数字时，按linux标准的capability进行配置。字符串时，使用标准定义的宏的名字进行配置。 |
-   | critical      | 可选 | 小型系统和标准系统 | 为服务提供抑制机制，服务在配置时间 T 内，频繁重启次数超过设置次数 N 重启系统。 | <br> 类型：int[]，如："critical" : [M, N, T]，<br>其中M：使能标志位（0：不使能；1：使能）， N：频繁拉起服务次数， T：时间(单位：秒)。 默认拉起服务次数：4次， 时间：240秒 。|
+   | critical      | 可选 | 小型系统和标准系统 | 为服务提供抑制机制，服务在配置时间 T 内，频繁重启次数超过设置次数 N 重启系统。 | <br> 类型：int[]，如："critical" : [M, N, T]，<br>其中M：使能标志位（0：不使能；1：使能）， N：频繁拉起服务次数， T：时间(单位：秒)。 默认拉起服务次数：4次， 时间：240秒。|
    | cpucore      | 可选 | 标准系统 | 服务需要的绑定的CPU核心数。 | 类型：int型数组， 如"cpucore" : [N1, N2, ...], N1， N2均为需要绑定的cpu核索引， 如单核设备 cpucore : [0]。 |
    | d-caps       | 可选 | 标准系统 | 服务分布式能力。| 类型：字符串数组， 如 "d-caps" : ["OHOS_DMS"]。 |
    | apl          | 可选 | 标准系统 | 服务能力特权级别。 | 类型：字符串， 如 "apl" : "system_core"。<br> 目前支持"system_core"（默认值）, "normal", "system_basic"。 |
    | start-mode   | 可选 | 标准系统 | 服务的启动模式。 | 类型：字符串， 如 "start-mode" : "condition"。<br>目前支持"boot", "normal", "condition"。具体说明参考：init服务启动控制。 |
-   | ondemand     | 可选 | 小型系统和标准系统 | 按需启动服务的标志。 | 类型：bool，如"ondemand" : true，小型系统只在Linux内核上支持。<br>具体说明参考：[init服务按需启动](#section56901555920)。|
+   | ondemand     | 可选 | 小型系统和标准系统 | 按需启动服务的标志。 | 类型：bool，如"ondemand" : true，小型系统只在Linux内核上支持。<br>具体说明参考：init服务按需启动。|
    | disabled | 可选 | 小型系统和标准系统 | 预留字段，无实际意义。 | 无。 |
    | sandbox | 可选 | 标准系统 | 沙盒功能是否打开。 | 1：打开服务的沙盒功能 （默认值）。<br>0：关闭服务的沙盒功能。 |
    | socket | 可选 | 标准系统 | 配置socket属性相关设置。 | 由socket创建流程的服务需配置此项。 |
-   | env | 可选 | 标准系统 | 配置服务的环境变量。 | 类型：键值对型数组。 <br>支持同时配置多个环境变量，如：<br>"env" : [{<br> "name" : "SERVICE_NALE", <br>"value" : "ueventd"},{<br> "name" : "TEST",<br> "value" : "test_value" <br>}]。|
+   | env | 可选 | 标准系统 | 配置服务的环境变量。 | 类型：键值对型数组。 <br>支持同时配置多个环境变量，如：<br>"env" : [{<br> "name" : "SERVICE_NAME", <br>"value" : "ueventd"},{<br> "name" : "TEST",<br> "value" : "test_value" <br>}]。|
    | period | 可选 | 标准系统 | 配置服务退出后的定时启动。 | 类型：int型，表示定时启动周期，单位：秒。<br>使能后，服务退出后，会启动定时器，定时拉起服务,如："period" : 60，表示服务退出后，60s后定时拉起。|
    | cgroup | 可选 | 标准系统 | 按需配置cgroup的标志。    | 类型：bool，如"cgroup" : true。<br>使能后，服务退出后，会管控服务进程的子进程，同步销毁。|
 
@@ -47,7 +47,7 @@
    | name | 当前socket的命名，不要求必须与服务同名，与服务名同样须满足非空且长度<=32字节。|
    | family | socket所属的地址族，目前支持的为服务创建的socket有AF_UNIX和AF_NETLINK族。|
    | type | socket的类型，目前支持的类型有基于连接的SOCK_SEQPACKET和SOCK_STREAM，还有基于UDP无连接的SOCK_DGRAM。|
-   | protocol | socket通信遵循的协议类型，在无特殊需求的情况下，该值可配置为default缺省值，因为socket接口会自动根据socket地址族和类型选择合适的协议。此处除了default，并且支持NETLINK_KOBJECT_UEVENT协议类型。|
+   | protocol | socket通信遵循的协议类型，在无特殊需求的情况下，该值可配置为default缺省值，因为socket接口会自动根据socket地址族和类型选择合适的协议。此处除了default外，还支持NETLINK_KOBJECT_UEVENT协议类型。|
    | permissions | socket节点文件的权限。此项配置仅对如AF_UNIX地址族等有实体节点文件的socket类型有效。|
    | uid | socket节点文件的用户ID。此项配置仅对如AF_UNIX地址族等有实体节点文件的socket类型有效。|
    | gid | socket节点文件的组ID。此项配置仅对如AF_UNIX地址族等有实体节点文件的socket类型有效。|
@@ -58,7 +58,7 @@
     init会根据用户的服务配置，把服务分成三类，在不同的阶段并行启动。
 
     - “boot”类型：对应系统中需要优先启动的服务，该类服务在“init”阶段启动。
-    - “normal”类型：默认配置，对应系统中的普通服务，该类服务在“post-init"阶段启动。
+    - “normal”类型：默认配置，对应系统中的普通服务，该类服务在"post-init"阶段启动。
     - “condition”类型：必须通过启动命令启动，通过在jobs中添加“start xxxx”来启动对应服务。
 
   - init服务支持命令执行(仅标准系统以上提供)
@@ -70,29 +70,29 @@
     - "on-restart"：在服务重启时执行，在init进程中执行。
 
     参考配置如下：
-    ```
+    ```json
     "services" : [{
           "name" : "serviceName",
-          "path" : ["/system/bin/serviceName"]
+          "path" : ["/system/bin/serviceName"],
           "jobs" : {
               "on-start" : "services:serviceName_start",
               "on-stop" : "services:serviceName_stop",
               "on-restart" : "services:serviceName_restart"
         }
-    },
+    }]
     ```
 
   通过并行启动和命令执行能力，可以实现进程的并行启动。
 
-  - init按需启动(仅标准系统以上提供) <a name="section56901555920">
+  - init按需启动(仅标准系统以上提供)
 
     配置按需启动后，init进程不会启动对应的服务，只有服务被需要时才会被拉起。通过"ondemand"标记来控制服务是否被拉起。
 
     “ondemand”参考配置如下：
-    ```
+    ```json
       "services" : [{
         "name" : "serviceName",
-        "path" : ["/system/bin/serviceName"]
+        "path" : ["/system/bin/serviceName"],
         "ondemand" : true
     }]
     ```
@@ -109,7 +109,7 @@
 
     进程可根据系统参数的变化进行热插拔事件按需启动处理。
 
-  - init进程启动&amp;回收能力增强
+  - init进程启动&回收能力增强
 
     进程启动时，支持在配置文件中配置服务进程的绑核、优先级、MAC信息以及AccessToken信息。
 
@@ -120,23 +120,23 @@
     - init提供修改\*.cfg配置文件，为服务提供抑制机制。
 
     服务进程启动&回收能力增强配置，如下：
-      ```
+      ```json5
       "services" : [{
           "name" : "serviceName",
-          "path" : ["/system/bin/serviceName"]
+          "path" : ["/system/bin/serviceName"],
           "importance" : 1,                  // 服务进程提供优先级设置
           "cpucore" : [0],                   // 服务进程提供CPU绑核功能
           "critical" : [1, 5, 10],           // 服务提供抑制机制
           "apl" : "normal",                  // 系统服务进程设置其分布式Capability能力
           "d-caps" : ["OHOS_DMS"],           // 系统服务进程设置其分布式Capability能力
           "secon" : "u:r:distributedsche:s0" // 服务的SELinux标签， "u:r:distributedsche:s0"为要设置的SELinux标签信息
-      }
+      }]
       ```
 
   - 定时启动
 
     通过约定时间拉起服务， 若服务已拉起， 则不再重新拉起服务。具体命令参考： **[begetctl命令说明](subsys-boot-init-plugin.md)** 。
-    ```
+    ```shell
     timer_start servicename timeout
     ```
 ## 服务进程创建基本流程
@@ -147,7 +147,7 @@
 
   配置文件完成后，需要安装到对应目录，init中在/base/startup/init/services/etc/BUILD.gn文件配置如下：
 
-  ```
+  ```text
   ohos_prebuilt_etc("watchdog.cfg") {
     source = "//base/startup/init/services/etc/watchdog.cfg"
     relative_install_dir = "init"
@@ -166,7 +166,7 @@
 
   服务进程及其配置文件创建完成后，需要在对应模块的bundle.json文件中添加其build路径,例如：
 
-  ```
+  ```json
       "build": {
           "group_type": {
               "base_group": [],
@@ -175,7 +175,7 @@
                   "//base/startup/init/ueventd:startup_ueventd",
                   "//base/startup/init/services/etc:ueventd.cfg"
               ]
-            },
+          }
       }
   ```
 ### 配置服务进程的DAC权限
@@ -203,7 +203,7 @@
   | 第四个字段 | GID       | 表示初始组组ID号，指用户登陆时就拥有这个用户组的相关权限。每个用户的初始组只能有一个，通常将和此用户的用户名相同的组名作为该用户的初始组。 |
   | 第五个字段 | 描述信息  | 表示此用户的意义，多数情况为空。                                               |
   | 第六个字段 | 主目录    | 通常称为用户的主(家)目录，如root的主目录为/root，多数情况为空                          |
-  | 第七个字段 | 默认shell | shell是linux的命令解释器，用户和Linux内核之间沟通的桥梁shell命令解释器用于将用户输入的命令转换成系统可识别的机器语言通常情况下，Linux系统默认使用的命令解释器是/bin/bash |
+  | 第七个字段 | 默认shell | shell是linux的命令解释器，用户和Linux内核之间沟通的桥梁，shell命令解释器用于将用户输入的命令转换成系统可识别的机器语言，通常情况下，Linux系统默认使用的命令解释器是/bin/bash |
 
   - group 文件说明：
 
@@ -220,13 +220,13 @@
   |    序号    | 字段      |                         含义                       |
   | ---------- | --------- | -------------------------------------------------- |
   | 第一个字段 | 组名 | 用户组的名称，例如：servicectrl就表示组名为servicectrl |
-  | 第二个字段 | 组密码标志 | 和/etc/passwd文件一样，这里的“x”仅仅是密码标志，真正的加密之后的组密码保在/etc/gshdow文件中 |
+  | 第二个字段 | 组密码标志 | 和/etc/passwd文件一样，这里的“x”仅仅是密码标志，真正的加密之后的组密码保存在/etc/gshadow文件中 |
   | 第三个字段 | GID | 通过GID来区别不同的用户组的 |
   | 第四个字段 | 组中的用户 | 表示的就是这个用户组中到底包含了哪些用户，例如：servicectrl 组的成员有root,shell,system,samgr,hdf_devmgr,foundation,update |
 
-  - 若gid,uid设置为root或system，则需要在对应产品目录下的security_config/high_privilege_process_list.json文件种添加白名单，例如：
+  - 若gid,uid设置为root或system，则需要在对应产品目录下的security_config/high_privilege_process_list.json文件中添加白名单，例如：
 
-  ```
+  ```text
     {
         "high_privilege_process_list": [
             {
@@ -260,22 +260,22 @@
 
 - 配置服务进程的SELinux权限
 
-  1、首先可以先不配置selinux 标签，确认服务进程是否可以在permissive时可以启动起来，若可以启动，则无需配置。
+  1. 首先可以先不配置selinux 标签，确认服务进程是否可以在permissive时可以启动起来，若可以启动，则无需配置。
 
-  2、若需要配置selinux规则，首先要在服务进程的配置文件中通过“secon”项设置selinux 标签。
+  2. 若需要配置selinux规则，首先要在服务进程的配置文件中通过“secon”项设置selinux 标签。
 
-  3、在selinux模块对服务进程的标签进行定义。具体如下：
+  3. 在selinux模块对服务进程的标签进行定义。具体如下：
 
   在base/security/selinux_adapter/sepolicy/base/system/file_contexts文件定义执行程序的标签，如：
 
-  ```
+  ```text
     /system/bin/watchdog_service        u:object_r:watchdog_service_exec:s0
     /system/bin/hdcd        u:object_r:hdcd_exec:s0
   ```
 
   在base/security/selinux_adapter/sepolicy/base/public/type.te文件定义标签的作用域，如：
 
-  ```
+  ```text
     type watchdog_service, sadomain, domain;
     type watchdog_service_exec, exec_attr, file_attr, system_file_attr;
   ```
@@ -286,7 +286,7 @@
 
 | 枚举               | 枚举值 | 错误信息                 | 说明                    |
 | ------------------ | ------ | ------------------------ | ----------------------- |
-| INIT_OK            | 0      |                          | 执行成功                |
+| INIT_OK            | 0      | -                        | 执行成功                |
 | INIT_EPARAMETER    | 1      | parameter                | 接口参数无效            |
 | INIT_EFORMAT       | 2      | Format string fail       | 字符串格式化错误        |
 | INIT_ECFG          | 3      | cfg error                | cfg解析错误             |
@@ -310,16 +310,10 @@
 | INIT_EEXEC_CONTENT | 21     | Set exec content fail    | 设置selinux标签失败     |
 | INIT_EEXEC         | 22     | Exec fail                | 执行exec失败            |
 
-## 服务进程配置实例：
-
-### 服务示例代码展示
-
-### 服务示例配置展示
-
 ## 接口说明
 
   **表3**  服务控制接口介绍
-| 函数名 | 函数解释 | 参数解释 |
+| 函数名 | 函数解释 | 返回值与参数说明 |
 | :----------  |  :----------  |:--------|
 | int ServiceControlWithExtra(const char *serviceName, int action, const char *extArgv[], int extArgc) | 配置服务参数 | 返回值：成功返回0，失败返回-1 <br> 参数: <br> serviceName: 服务名 <br> action: 服务行为（"start", "stop", "restart"） <br> extArgv: 参数数组 <br> extArgc: 参数个数 |
 | int ServiceControl(const char *serviceName, int action)  | 控制服务行为 | 返回值：成功返回0，失败返回-1 <br> 参数：<br> serviceName: 服务名 <br> action: 服务行为（"start"， "stop", "restart") |
@@ -330,9 +324,9 @@
 
   - 服务控制接口为特权接口，因此需要配置DAC和selinux权限，具体如下：
 
-   - 服务控制接口配置DAC，需要修改/base/startup/init/services/etc/group文件，在组servicectrl中添加对应的用户id，例如：
+  - 服务控制接口配置DAC，需要修改/base/startup/init/services/etc/group文件，在组servicectrl中添加对应的用户id，例如：
 
-    ```
+    ```text
     servicectrl:x:1050:root,shell,system,samgr,hdf_devmgr
     ```
 
