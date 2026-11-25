@@ -59,6 +59,7 @@
 <!-- @[AsyncLoadBasicSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AsyncLoad/entry/src/main/ets/pages/AsyncLoadBasic.ets) -->
 
 ```ts
+'use static'
 import { UIUtils, ComponentInit, ComponentV2, Entry, Column, Text } from '@kit.ArkUI';
 
 // 构建耗时较长的自定义组件
@@ -100,6 +101,7 @@ struct Index {
 <!-- @[AsyncLoadPlaceholderSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AsyncLoad/entry/src/main/ets/pages/AsyncLoadPlaceholder.ets) -->
 
 ```ts
+'use static'
 import { UIUtils, ComponentInit, ComponentV2, Entry, Column, Text, Builder, wrapBuilder,
   FlexAlign } from '@kit.ArkUI';
 
@@ -176,6 +178,7 @@ struct Index {
 <!-- @[AsyncLoadTimeoutSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AsyncLoad/entry/src/main/ets/pages/AsyncLoadTimeout.ets) -->
 
 ```ts
+'use static'
 import { UIUtils, ComponentInit, ComponentV2, Entry, Column, Text } from '@kit.ArkUI';
 
 @ComponentV2
