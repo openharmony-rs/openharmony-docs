@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍ExtensionAbility组件的分类、系统管理机制及各类扩展能力的适用场景，帮助开发者选择合适的扩展组件丰富应用功能。"
+keywords: [ExtensionAbility, 扩展能力, 应用组件, FormExtensionAbility, InputMethodExtensionAbility, 系统服务管理, 卡片扩展, 延时任务扩展]
+doctype: guide
+status: active
+---
+
 # ExtensionAbility组件
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

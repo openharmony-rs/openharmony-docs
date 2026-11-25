@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "从全局视角阐述OpenHarmony以组件为中心的进程模型，介绍主进程、ExtensionAbility进程、Render进程及子进程等类型与独立进程配置方式。"
+keywords: [进程模型, 主进程, ExtensionAbility进程, Render进程, 子进程, 独立进程配置, isolationMode, UIAbility]
+doctype: guide
+status: active
+---
+
 # 进程模型概述
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

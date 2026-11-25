@@ -9,6 +9,7 @@
 
 
 - [Ability Kit简介](abilitykit-overview.md)
+- [Ability Kit指南配套示例代码](ability-kit-samples.md)
 - 应用模型<!--application-models-->
   - [应用模型概述](stage-model-development-overview.md)
   - 应用组件<!--stage-model-application-components-->
