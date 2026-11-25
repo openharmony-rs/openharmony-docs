@@ -963,7 +963,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    /**
     * // 示例：读取输入文件数据，将数据写入buffer，设置属性后送入编码器。
     * // 输入文件配置。
-    * std::string_view inputFilePath = "/data/storage/el2/base/files/input.yuv";
+    * std::string_view inputFilePath = "/*yourpath*.yuv";
     * std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
     * if (inputFile != nullptr) {
     *     inputFile->open(inputFilePath.data(), std::ios::in | std::ios::binary);
