@@ -98,6 +98,21 @@ ArkTS-Dyn示例：
 
 <!-- @[input_case_input_switchInputMethodAndSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
 
+``` TypeScript
+async switchInputMethodAndSubtype(targetProperty: inputMethod.InputMethodProperty, subtype: InputMethodSubtype) {
+  try {
+    let isSuccess = await inputMethod.switchCurrentInputMethodAndSubtype(targetProperty, subtype); // 切换到目标输入法的指定子类型
+    if (isSuccess) {
+      this.currentInputMethodName = inputMethod.getCurrentInputMethod().name; // 更新当前输入法
+      this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id; // 更新当前子类型
+    }
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error(`Failed to switchInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
 ArkTS-Sta示例：
 
 <!-- @[input_case_input_switchInputMethodAndSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
