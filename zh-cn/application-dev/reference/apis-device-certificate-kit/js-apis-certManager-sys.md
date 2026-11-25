@@ -351,24 +351,23 @@ getSystemTrustedCertificateList(certAlg: CertAlgorithm): Promise\<CMResult>
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let certAlg: certificateManager.CertAlgorithm = certificateManager.CertAlgorithm.INTERNATIONAL;
-try {
-  certificateManager.getSystemTrustedCertificateList(certAlg).then((cmResult: certificateManager.CMResult) => {
-    if (cmResult === undefined) { // 系统信任CA证书个数为0时，返回cmResult为undefined。
-      console.info('The count of system trusted certificates is 0.');
-    } else if (cmResult.certList == undefined) {
-      console.info('The result of getting system trusted certificates is undefined.');
-    } else {
-      let list: Array<certificateManager.CertAbstract> = cmResult.certList;
-      console.info('Succeeded in getting system trusted certificates.');
+const certAlg: certificateManager.CertAlgorithm = certificateManager.CertAlgorithm.INTERNATIONAL;
+certificateManager.getSystemTrustedCertificateList(certAlg)
+  .then((cmResult: certificateManager.CMResult) => {
+    if (cmResult.certList === undefined) {
+      console.info('certList is undefined.');
+      return;
     }
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to get system trusted certificates. Code: ${err.code}, message: ${err.message}`);
+    const list: Array<certificateManager.CertAbstract> = cmResult.certList;
+    console.info(`Succeeded, count: ${list.length}`);
+    if (cmResult.certStoreInfo !== undefined) {
+      console.info(`certStoreVersion: ${cmResult.certStoreInfo.certStoreVersion}`);
+      console.info(`smCertStoreVersion: ${cmResult.certStoreInfo.smCertStoreVersion}`);
+    }
   })
-} catch (error) {
-  console.error(`Failed to get system trusted certificates. Code: ${error.code}, message: ${error.message}`);
-}
+  .catch((error: BusinessError) => {
+    console.error(`Failed to get system trusted certificates. Code: ${error.code}, message: ${error.message}`);
+  });
 ```
 
 ## certificateManager.setCertificateStatus
