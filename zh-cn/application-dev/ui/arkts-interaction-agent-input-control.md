@@ -58,7 +58,7 @@ Agent输入事件包括系统Agent生成的输入事件，以及具有[ohos.perm
 
 ### 设置Agent输入管控策略
 
-在目标组件上设置[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)，通过[AgentControlMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#agentcontrolmode)选择允许或阻止Agent输入：
+声明权限后，可以在目标组件上通过[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)接口，设置允许或阻止Agent输入事件。
 
 - ALLOW：允许Agent生成的输入操作，无需用户确认。
 - DENY：阻止Agent生成的输入操作。
