@@ -1,11 +1,11 @@
 # ArkUI_NativeGestureAPI_2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-20T09:16:57.047Z pushedAt=2026-09-21T12:14:47.284Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T07:06:07.414Z pushedAt=2026-11-25T01:13:10.114Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_NativeGestureAPI_2
@@ -34,7 +34,7 @@ Defines a collection of gesture APIs. Based on [ArkUI_NativeGestureAPI_1](capi-a
 
 | Name| Description|
 | -- | -- |
-| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | Sets the callback function for the gesture interrupt event. |
+| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | Sets the callback function for the gesture interruption event. |
 
 ## Member Function Description
 

@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8bb2e2d78797956c202751e6bd8016beefbaaaef translatedAt=2026-09-20T08:46:05.953Z pushedAt=2026-09-20T08:55:48.645Z -->
+<!-- md-trans-meta sourceCommit=2ef784f0bdab28245033ef8be92f653a500e646d translatedAt=2026-11-23T06:59:51.853Z pushedAt=2026-11-24T09:22:49.946Z nl=1 -->
 
 ```c
 typedef struct ArkUI_DrawContext ArkUI_DrawContext
@@ -19,5 +19,4 @@ Defines component drawing context, which is used to provide drawing context info
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
-
+**Header file**: [common_type.h](capi-common-type-h.md)

@@ -1,11 +1,11 @@
 # ArkUI_TouchTestInfoItem
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-22T09:17:05.218Z pushedAt=2026-09-22T11:36:31.779Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T07:08:59.112Z pushedAt=2026-11-25T01:18:06.339Z nl=1 -->
 
 ```c++
 typedef struct ArkUI_TouchTestInfoItem ArkUI_TouchTestInfoItem

@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0d4ac1555b3ca92ffea2816e20e6d10e842db464 translatedAt=2026-10-10T09:42:59.570Z pushedAt=2026-10-12T03:18:01.319Z -->
+<!-- md-trans-meta sourceCommit=5f98b74c69b1d8bd760c1096c00fda47e88e36e7 translatedAt=2026-11-23T07:21:50.359Z pushedAt=2026-11-25T04:05:43.031Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -1413,3 +1413,28 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .object | System material object. The parameter type is [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md). The **ArkUI_ImmersiveMaterialHandle** object in the return value is a pointer to a static member. Therefore, you do not need to and are not allowed to release the returned object using [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy). |
+
+## NODE_TRANSFORM_3D
+
+```c
+NODE_TRANSFORM_3D = 128
+```
+
+3D transform attribute, which is used to set the 3D transform matrix of a component. When a 3D transform with a perspective effect is involved, the display effect of [NODE_TRANSFORM](#node_transform) may be incorrect, in which case this attribute is recommended. This attribute can be set, reset, and obtained as required through APIs. If this attribute is reset, the component restores to the identity matrix (no transform).
+
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0...15].f32 | 16 floating-point numbers, indicating a 4 x 4 transform matrix. The array length must be 16. |
+| .object | Pointer to the [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) object, indicating a 4 x 4 transform matrix. Use either **.value** or **.object** to set the matrix. If both are set, **.value** takes precedence. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0...15].f32 | 16 floating-point numbers, indicating the current 3D transform matrix. |

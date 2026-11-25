@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b5d07443c629fc3cb39d28cdcd1858d2f47dbab3 translatedAt=2026-10-10T09:44:50.941Z pushedAt=2026-10-13T01:28:01.799Z -->
+<!-- md-trans-meta sourceCommit=354168186e23ba43e61c6a088e90afc8304b8ea2 translatedAt=2026-11-23T07:32:48.870Z pushedAt=2026-11-25T06:24:44.480Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -13,7 +13,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the attribute types that can be set by ArkUI on the native side for navigation components including **Swiper**.
+Enumerates the attribute types that can be set by ArkUI on the native side for navigation components including **Swiper**, **ArcSwiper**, and **ArcAlphabetIndexer** components.
 
 **Since**: 12
 
@@ -77,7 +77,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_SWIPER_SHOW_INDICATOR = 1001002
 ```
 
-Whether to show the navigation indicator for the **Swiper** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to show the navigation dot indicator for the **Swiper** component. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -87,13 +87,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to show the navigation indicator. The value **1** means to show the navigation indicator, and **0** means the opposite. The default value is **1**.|
+| .value[0].i32 | Whether to show the navigation dot indicator. The value **1** means to show the navigation dot indicator, and **0** means the opposite. The default value is **1**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the navigation indicator is shown. The value **1** means that the navigation indicator is shown, and **0** means the opposite. The default value is **1**.|
+| .value[0].i32 | Whether the navigation dot indicator is shown. The value **1** means that the navigation dot indicator is shown, and **0** means the opposite. The default value is **1**.|
 
 ## NODE_SWIPER_INTERVAL
 
@@ -297,7 +297,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_SWIPER_SHOW_DISPLAY_ARROW = 1001011
 ```
 
-Whether to show the arrow when the mouse pointer hovers over the navigation indicator in the **Swiper** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to show the arrow when the mouse pointer hovers over the navigation dot indicator in the **Swiper** component. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -307,15 +307,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to show the arrow when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow). The default value is **ARKUI_SWIPER_ARROW_HIDE**.|
-| .?object | Style of the arrow displayed when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md). This parameter is supported since API version 19.|
+| .value[0].i32 | Whether to show the arrow when the mouse pointer hovers over the navigation dot indicator. The parameter type is [ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow). The default value is **ARKUI_SWIPER_ARROW_HIDE**.|
+| .?object | Style of the arrow displayed when the mouse pointer hovers over the navigation dot indicator. The parameter type is [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md). This parameter is supported since API version 19.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the arrow is shown when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow).|
-| .object | Style of the arrow displayed when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md). This parameter is supported since API version 19.|
+| .value[0].i32 | Whether the arrow is shown when the mouse pointer hovers over the navigation dot indicator. The parameter type is [ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow).|
+| .object | Style of the arrow displayed when the mouse pointer hovers over the navigation dot indicator. The parameter type is [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md). This parameter is supported since API version 19.|
 
 ## NODE_SWIPER_EDGE_EFFECT_MODE
 
@@ -520,7 +520,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_SWIPER_INDICATOR_INTERACTIVE = 1001020
 ```
 
-Whether the navigation indicator is interactive.<br>
+Whether the navigation dot indicator is interactive.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -530,13 +530,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the navigation indicator is interactive. The value **true** means that the navigation indicator is interactive, and **false** means the opposite. The default value is true.|
+| .value[0].i32 | Whether the navigation dot indicator is interactive. The value **true** means that the navigation dot indicator is interactive, and **false** means the opposite. The default value is true.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the navigation indicator is interactive.|
+| .value[0].i32 | Whether the navigation dot indicator is interactive.|
 
 ## NODE_SWIPER_PAGE_FLIP_MODE
 
@@ -637,3 +637,537 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Number of columns at different breakpoint specifications. The parameter type is [ArkUI_ItemFillPolicy](capi-native-type-h.md#arkui_itemfillpolicy).|
 | .value[1].i32 | Whether pagination by group is enabled.|
+
+## NODE_ARC_ALPHABET_INDEXER_ARRAY
+
+```c
+NODE_ARC_ALPHABET_INDEXER_ARRAY = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_ALPHABET_INDEXER = 23000
+```
+
+Index string array. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .object | Index string array. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .object | Index string array. |
+
+## NODE_ARC_ALPHABET_INDEXER_COLOR
+
+```c
+NODE_ARC_ALPHABET_INDEXER_COLOR = 23001
+```
+
+Text color of the index item in the unselected state. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFFFFFFFF**, which indicates white. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].u32 | Text color, in 0xARGB format. |
+
+## NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR
+
+```c
+NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR = 23002
+```
+
+Text color of the index item in the selected state. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFFFFFFFF**, which indicates white. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].u32 | Text color, in 0xARGB format. |
+
+## NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR
+
+```c
+NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR = 23003
+```
+
+Text color of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFFFFFFFF**, which indicates white. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].u32 | Text color, in 0xARGB format. |
+
+## NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR
+
+```c
+NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR = 23004
+```
+
+Background color of the index item in the selected state. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].u32 | Background color, in 0xARGB format. The default value is **0xFF1F71FF**, which indicates blue. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].u32 | Background color, in 0xARGB format. |
+
+## NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR
+
+```c
+NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR = 23005
+```
+
+Background color of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].u32 | Background color, in 0xARGB format. The default value is **0xD8404040**, which indicates dark gray. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].u32 | Background color, in 0xARGB format. |
+
+## NODE_ARC_ALPHABET_INDEXER_USE_POPUP
+
+```c
+NODE_ARC_ALPHABET_INDEXER_USE_POPUP = 23006
+```
+
+Whether to use the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to use the popup. The value **1** indicates to use the popup, and **0** indicates the opposite. The default value is **0**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the popup is used. |
+
+## NODE_ARC_ALPHABET_SELECTED_FONT
+
+```c
+NODE_ARC_ALPHABET_SELECTED_FONT = 23007
+```
+
+Font style of the selected index item. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .string | Font family. Multiple fonts are separated by comma (,). This is an optional parameter. The default value is **"HarmonyOS Sans"**. |
+| .value[0].f32 | Font size, in fp. This is an optional parameter. Default value is **13**. |
+| .value[1].i32 | Font weight. This is an optional parameter. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W500**. |
+| .value[2].i32 | Font style. This is an optional parameter. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .string | Font family. Multiple fonts are separated by comma (,). |
+| .value[0].f32 | Font size, in fp. |
+| .value[1].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
+| .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). |
+
+## NODE_ARC_ALPHABET_INDEXER_POPUP_FONT
+
+```c
+NODE_ARC_ALPHABET_INDEXER_POPUP_FONT = 23008
+```
+
+Font style of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .string | Font family. Multiple fonts are separated by comma (,). This is an optional parameter. The default value is **"HarmonyOS Sans"**. |
+| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is **19**. |
+| .value[1].i32 | Font weight. This is an optional parameter. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W500**. |
+| .value[2].i32 | Font style. This is an optional parameter. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .string | Font family. Multiple fonts are separated by comma (,). |
+| .value[0].f32 | Font size, in fp. |
+| .value[1].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
+| .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). |
+
+## NODE_ARC_ALPHABET_FONT
+
+```c
+NODE_ARC_ALPHABET_FONT = 23009
+```
+
+Default font style of the index item. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .string | Font family. Multiple fonts are separated by comma (,). This is an optional parameter. The default value is **"HarmonyOS Sans"**. |
+| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is **13**. |
+| .value[1].i32 | Font weight. This is an optional parameter. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W500**. |
+| .value[2].i32 | Font style. This is an optional parameter. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .string | Font family. Multiple fonts are separated by comma (,). |
+| .value[0].f32 | Font size, in fp. |
+| .value[1].i32 | Font weight. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
+| .value[2].i32 | Font style. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). |
+
+## NODE_ARC_ALPHABET_INDEXER_ITEM_SIZE
+
+```c
+NODE_ARC_ALPHABET_INDEXER_ITEM_SIZE = 23010
+```
+
+Size of the letter area of the alphabet index bar. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Diameter of the circle when the letter area is circular, in vp. The default value is **24**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].f32 | Diameter of the circle when the letter area is circular, in vp. |
+
+## NODE_ARC_ALPHABET_INDEXER_SELECTED
+
+```c
+NODE_ARC_ALPHABET_INDEXER_SELECTED = 23011
+```
+
+Index of the selected item. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Index of the selected item. The default value is **0**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Index of the selected item. |
+
+## NODE_ARC_ALPHABET_AUTO_COLLAPSE
+
+```c
+NODE_ARC_ALPHABET_AUTO_COLLAPSE = 23012
+```
+
+Whether to collapse the characters when the space of the index bar is insufficient to display all characters. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to collapse the characters when the space of the index bar is insufficient to display all characters. The value **1** indicates to collapse the characters, and **0** indicates the opposite. The default value is **1**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the characters are collapsed when the space of the index bar is insufficient to display all characters. |
+
+## NODE_ARC_ALPHABET_POPUP_BACKGROUND_BLUR_STYLE
+
+```c
+NODE_ARC_ALPHABET_POPUP_BACKGROUND_BLUR_STYLE = 23013
+```
+
+Background blur style of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Background blur style of the popup. The parameter type is [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle). The default value is **ARKUI_BLUR_STYLE_NONE**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Background blur style of the popup. |
+
+## NODE_ARC_SWIPER_INDEX
+
+```c
+NODE_ARC_SWIPER_INDEX = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SWIPER = 1022000
+```
+
+Index of the child component currently displayed in the **ArcSwiper** container. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Index of the child component. The default value is **0**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Index of the child component. |
+
+## NODE_ARC_SWIPER_INDICATOR
+
+```c
+NODE_ARC_SWIPER_INDICATOR = 1022001
+```
+
+Navigation dot indicator of the **ArcSwiper** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to display the navigation dot indicator. The value **1** indicates to display, and **0** indicates the opposite. The default value is **1**. |
+| .value[1].i32 | Direction of the **ArcSwiper** navigation dot indicator. The parameter type is [OH_ArkUI_ArcDirection](capi-native-type-h.md#oh_arkui_arcdirection). The default value is **OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION**. This is an optional parameter. |
+| .value[2].i32 | Color of the unselected dot, in 0xARGB format. The default value is **0xA9FFFFFF**, which indicates white. This is an optional parameter. |
+| .value[3].i32 | Color of the selected dot, in 0xARGB format. The default value is **0xFF5EA1FF**, which indicates blue. This is an optional parameter. |
+| .value[4].i32 | Background color of the **ArcSwiper** navigation dot indicator after a long press, in 0xARGB format. The default value is **0xFF5EA1FF**, which indicates blue. This is an optional parameter. |
+| .object | Gradient color of the mask. This is an optional parameter. In a color stop array, each color stop consists of a color and its stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). Invalid colors are automatically skipped. **colors**: color of the color stop. **stops**: stop of the color. **size**: number of colors. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the navigation dot indicator is displayed. |
+| .value[1].i32 | Direction of the **ArcSwiper** navigation dot indicator. |
+| .value[2].u32 | Color of the unselected dot. |
+| .value[3].u32 | Color of the selected dot. |
+| .value[4].u32 | Background color of the **ArcSwiper** navigation dot indicator after a long press. |
+| .object | Gradient color of the mask. |
+
+## NODE_ARC_SWIPER_DURATION
+
+```c
+NODE_ARC_SWIPER_DURATION = 1022002
+```
+
+Animation duration for child component switching. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Duration of the animation for switching child components, in milliseconds. The default value is **400**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Duration of the animation for switching child components, in milliseconds. |
+
+## NODE_ARC_SWIPER_VERTICAL
+
+```c
+NODE_ARC_SWIPER_VERTICAL = 1022003
+```
+
+Whether to use vertical swiping. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to use vertical swiping. The value **1** indicates to use vertical swiping, and **0** indicates to use horizontal swiping. The default value is **0**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether vertical swiping is used. |
+
+## NODE_ARC_SWIPER_DISABLE_SWIPE
+
+```c
+NODE_ARC_SWIPER_DISABLE_SWIPE = 1022004
+```
+
+Whether to disable swiping. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to disable swiping. The value **1** indicates to disable, and **0** indicates the opposite. The default value is **0**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether swiping is disabled. |
+
+## NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY
+
+```c
+NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY = 1022005
+```
+
+Sensitivity of rotating the digital crown. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Sensitivity of rotating the digital crown. The parameter type is [ArkUI_CrownSensitivity](capi-native-type-h.md#arkui_crownsensitivity). The default value is **ARKUI_CROWN_SENSITIVITY_MEDIUM**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Sensitivity of rotating the digital crown. |
+
+## NODE_ARC_SWIPER_EFFECT_MODE
+
+```c
+NODE_ARC_SWIPER_EFFECT_MODE = 1022006
+```
+
+Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect). The default value is **ARKUI_EDGE_EFFECT_SPRING**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect). |
+
+## NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION
+
+```c
+NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION = 1022007
+```
+
+Whether to disable the transition animation. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Whether to disable the transition animation. The value **1** indicates to disable, and **0** indicates the opposite. The default value is **0**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Whether the transition animation is disabled. |

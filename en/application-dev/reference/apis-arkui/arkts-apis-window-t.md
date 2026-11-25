@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-23T06:48:58.196Z pushedAt=2026-11-24T08:06:46.128Z nl=1 -->
 
 > **NOTE**
 >
@@ -94,7 +95,7 @@ In this callback function, the parameter type is [RotationChangeInfo](arkts-apis
 
 | Type| Description|
 | -------------------------------- | ------------------------------------ |
-| U | A value of the [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) or void type, which is used to specify the window position after rotation. When void is returned, the system does not change the window position.|
+| U | Value of the [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void type, which is used to specify the window position after rotation. When void is returned, the system does not change the window position. |
 
 ## WindowEventListener
 

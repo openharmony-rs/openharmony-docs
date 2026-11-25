@@ -1,11 +1,11 @@
 # ArkUI_DragAction
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-18T11:33:44.611Z pushedAt=2026-09-20T08:37:34.685Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T06:58:58.861Z pushedAt=2026-11-24T09:22:27.089Z nl=1 -->
 
 ```c
 typedef struct ArkUI_DragAction ArkUI_DragAction

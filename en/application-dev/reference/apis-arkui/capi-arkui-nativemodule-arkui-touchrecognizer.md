@@ -1,11 +1,11 @@
 # ArkUI_TouchRecognizer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-22T09:15:33.613Z pushedAt=2026-09-22T11:19:08.376Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T07:08:26.775Z pushedAt=2026-11-25T01:17:25.534Z nl=1 -->
 
 ```c
 typedef struct ArkUI_TouchRecognizer ArkUI_TouchRecognizer

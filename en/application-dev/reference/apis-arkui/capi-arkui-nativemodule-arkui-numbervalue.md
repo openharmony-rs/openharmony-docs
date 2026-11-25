@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b716ee352b9e655afb79b3f046265840f2170607 translatedAt=2026-09-20T09:22:28.521Z pushedAt=2026-09-21T12:33:30.520Z -->
+<!-- md-trans-meta sourceCommit=40f125e411d86aec90278a3bd36a99ed8142a85d translatedAt=2026-11-23T07:07:42.656Z pushedAt=2026-11-25T01:16:37.507Z nl=1 -->
 
 ```c
 typedef union {...} ArkUI_NumberValue
@@ -19,7 +19,7 @@ Defines a numeric type used by ArkUI on the native side, including floating-poin
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [common_type.h](capi-common-type-h.md)
 
 ## Summary
 

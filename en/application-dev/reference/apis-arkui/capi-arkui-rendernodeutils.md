@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7500b4301146dab74bed775cf3b583be7f9324bc translatedAt=2026-09-22T09:31:01.433Z pushedAt=2026-09-23T08:08:07.296Z -->
+<!-- md-trans-meta sourceCommit=aee094d4e8cc0990f28b92b876c920b318da73ba translatedAt=2026-11-23T07:09:36.717Z pushedAt=2026-11-25T01:22:05.641Z nl=1 -->
 
 ## Overview
 

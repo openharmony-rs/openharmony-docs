@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=071d93cc8564bac8be36085c202bcc7e941e1a57 translatedAt=2026-09-20T09:18:07.097Z pushedAt=2026-09-21T12:24:54.275Z -->
+<!-- md-trans-meta sourceCommit=19120743b82efd0372f7bac59a73209fe866bd15 translatedAt=2026-11-23T07:06:51.280Z pushedAt=2026-11-25T01:14:05.548Z nl=1 -->
 
 ```c
 typedef struct ArkUI_Node* ArkUI_NodeHandle
@@ -19,4 +19,4 @@ Defines the pointer to an ArkUI native component object, which is used to identi
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [common_type.h](capi-common-type-h.md)

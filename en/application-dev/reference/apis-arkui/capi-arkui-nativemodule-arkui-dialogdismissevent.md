@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d0611b26974cd3320fc5c6f33fb63f1a56638307 translatedAt=2026-09-18T11:33:16.323Z pushedAt=2026-09-20T08:33:34.141Z -->
+<!-- md-trans-meta sourceCommit=e9a97a68d126c7235376425c6dd78a98d1147512 translatedAt=2026-11-23T06:58:14.231Z pushedAt=2026-11-24T09:22:22.786Z nl=1 -->
 
 ```c
 typedef struct ArkUI_DialogDismissEvent ArkUI_DialogDismissEvent
@@ -13,7 +13,7 @@ typedef struct ArkUI_DialogDismissEvent ArkUI_DialogDismissEvent
 
 ## Overview
 
-Defines a dialog box dismiss event object, which is used to notify you when a dialog box is dismissed and is applicable to scenarios that require listening for dialog box dismiss events. This event object adopts a callback mechanism: when a dialog box triggers a dismiss operation, the system creates and passes this event object to the callback function you registered. Through this object, you can obtain the dismiss reason, set whether to block the dismissal, or pass custom data. This event object does not expose internal members, and relevant information needs to be obtained or set through the corresponding APIs (such as **OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss**, **OH_ArkUI_DialogDismissEvent_GetUserData**, and **OH_ArkUI_DialogDismissEvent_GetDismissReason**).
+Defines a dialog box dismissal event object, which is used to notify you when a dialog box is dismissed and is suitable for scenarios where the dialog box dismissal event needs to be listened for. This event object uses a callback mechanism. When a dialog box triggers a dismissal operation, the system creates and passes this event object to the callback function you register. Through this object, you can obtain the dismissal reason, set whether to intercept the dismissal, or pass custom data. This event object does not expose its internal members. You need to use the corresponding APIs (such as [OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss](./capi-native-dialog-h.md#oh_arkui_dialogdismissevent_setshouldblockdismiss), [OH_ArkUI_DialogDismissEvent_GetUserData](./capi-native-dialog-h.md#oh_arkui_dialogdismissevent_getuserdata), and [OH_ArkUI_DialogDismissEvent_GetDismissReason](./capi-native-dialog-h.md#oh_arkui_dialogdismissevent_getdismissreason)) to obtain or set the related information.
 
 **Since**: 12
 

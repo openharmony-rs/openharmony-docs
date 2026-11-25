@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=40e7918df96067d113472401a39fcad6e6407d4c translatedAt=2026-09-18T11:29:25.028Z pushedAt=2026-09-20T08:09:59.322Z -->
+<!-- md-trans-meta sourceCommit=2ef784f0bdab28245033ef8be92f653a500e646d translatedAt=2026-11-23T06:58:04.362Z pushedAt=2026-11-24T09:21:16.935Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_ContextCallback
@@ -19,7 +19,7 @@ Defines an event callback type, which is used to define the callback function an
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [common_type.h](capi-common-type-h.md)
 
 ## Summary
 
