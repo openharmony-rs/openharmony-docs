@@ -59,7 +59,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
    - 从API version 23开始，提供globalConnect接口，支持[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)和[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
 
-   如下是新增接口globalConnect支持collections.Array的示例代码:
+   如下是新增接口globalConnect支持collections.Array的示例代码：
     
     <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
      

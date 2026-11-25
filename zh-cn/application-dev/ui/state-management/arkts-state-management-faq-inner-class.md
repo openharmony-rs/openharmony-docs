@@ -1244,7 +1244,7 @@ struct Page {
 
 ![properly-use-state-management-to-develop-5](figures/properly-use-state-management-to-develop-5.gif)
 
-上述代码维护了一个ChildList类型的数据源，点击"X"按钮删除一些数据后再点击Recover进行恢复ChildList，发现再次点击"X"按钮进行删除时，UI并没有刷新，同时也没有打印出“CompList ChildList change”的日志。
+上述代码维护了一个ChildList类型的数据源，点击“X”按钮删除一些数据后再点击Recover进行恢复ChildList，发现再次点击“X”按钮进行删除时，UI并没有刷新，同时也没有打印出“CompList ChildList change”的日志。
 
 代码中对数据源childList重新赋值时，是通过Ancestor对象的方法loadData。
 
