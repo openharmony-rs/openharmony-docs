@@ -41,19 +41,17 @@ ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称                   | 类型                                                               | 必填 | 装饰器类型               | 说明                                                           |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
-| toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | 是  | @Param<br/>@Require | 工具栏子项列表，最多显示5个子项，超过则收纳至"更多"子项中。                                                       |
-| activatedIndex    | number                                                           | 否  | @Param              | 被激活的子项索引。<br />默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
-| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。设置后在工具栏顶部显示指定样式的分割线。<br />默认不生效。                         |
-| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。设置后工具栏将按指定样式自定义外观。<br />默认不生效。 |
-| advancedToolBarModifier | [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | 否 | @Param | 高级工具栏属性，将布局属性、样式配置和溢出菜单样式合并至单个modifier中，可设置工具栏主轴长度、交叉轴长度、布局方向。其中，主轴指沿布局方向的长度（水平布局时即宽度），交叉轴指垂直于布局方向的长度（水平布局时即高度）；溢出菜单指工具栏空间不足时收纳剩余子项的菜单；溢出菜单按钮由[AdvancedToolBarV2Item](#advancedtoolbarv2item)的isShowOverflowMenu为true的子项承载，菜单样式可通过[overflowMenuStyle](#overflowmenustyle)设置。设置后工具栏将按指定样式自定义外观，并可使用高级工具栏功能（如配置[AdvancedToolBarV2Item](#advancedtoolbarv2item)、溢出菜单、子项分组等）。<br />默认不生效。<br />**起始版本：** 26.1.0<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
+| toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | 是  | @Param<br/>@Require | 工具栏子项列表，最多显示5个子项，超过则收纳至"更多"子项中。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| activatedIndex    | number                                                           | 否  | @Param              | 被激活的子项索引。<br />默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。设置后在工具栏顶部显示指定样式的分割线。<br />默认不生效。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。设置后工具栏将按指定样式自定义外观。<br />默认不生效。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| advancedToolBarModifier | [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | 否 | @Param | 高级工具栏属性，将布局属性、样式配置和溢出菜单样式合并至单个modifier中，可设置工具栏主轴长度、交叉轴长度、布局方向。其中，主轴指沿布局方向的长度（水平布局时即宽度），交叉轴指垂直于布局方向的长度（水平布局时即高度）；溢出菜单指工具栏空间不足时收纳剩余子项的菜单；溢出菜单按钮由[AdvancedToolBarV2Item](#advancedtoolbarv2item)的isShowOverflowMenu为true的子项承载，菜单样式可通过[overflowMenuStyle](#overflowmenustyle)设置。设置后工具栏将按指定样式自定义外观，并可使用高级工具栏功能（如配置[AdvancedToolBarV2Item](#advancedtoolbarv2item)、溢出菜单、子项分组等）。<br />默认不生效。<br />**起始版本：** 26.1.0<br />**模型约束：** 此接口仅可在Stage模型下使用。<br />**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ToolBarV2Item
 
@@ -596,7 +594,7 @@ AdvancedToolBarV2Item的构造函数。
 
 | 参数名   | 类型                                                            | 必填 | 说明         |
 | :------- | :-------------------------------------------------------------- | :--- | :----------- |
-| options  | [AdvancedToolBarV2ItemParams](#advancedtoolbarv2itemparams) | 是   | 工具栏子项信息。 |
+| params  | [AdvancedToolBarV2ItemParams](#advancedtoolbarv2itemparams) | 是   | 工具栏子项信息。 |
 
 **示例：**
 
@@ -749,7 +747,7 @@ struct Index {
 | 名称      | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                        |
 | :-------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | content   | [ResourceStr](ts-types.md#resourcestr)            | 否   | 否   | 工具栏标题的文本内容。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不渲染标题。<br />装饰器类型：@Trace                                                                                                        |
-| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。<br />默认值：undefined。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不显示副标题，标题回落为单行布局。<br />装饰器类型：@Trace |
+| subTitleContent | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 标题下方显示的副标题文本内容。<br />默认值：undefined。<br />值为undefined、空字符串、纯空白字符串或资源解析失败时，不显示副标题，标题回落为单行布局。|
 | placement | [ToolBarV2ItemPlacement](#toolbarv2itemplacement) | 否   | 是   | 标题所在的区域。<br />默认值：ToolBarV2ItemPlacement.LEADING。<br />装饰器类型：@Trace |
 | visible   | boolean                                           | 否   | 是   | 是否显示标题。true表示显示；false表示不显示，且不占用布局空间。<br />默认值：true。<br />装饰器类型：@Trace                                                                    |
 | style     | [ToolBarV2TitleStyle](#toolbarv2titlestyle)       | 否   | 是   | 标题样式。<br />默认值：undefined。<br />值为undefined时，使用默认样式。<br />装饰器类型：@Trace                                                                              |
