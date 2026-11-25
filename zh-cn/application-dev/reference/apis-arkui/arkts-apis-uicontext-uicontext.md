@@ -4733,6 +4733,46 @@ struct Index {
 }
 ```
 
+## enableTouchPadEvent
+
+static enableTouchPadEvent(enabled: boolean): void
+
+设置应用级是否上报原始触控板事件。未通过该接口设置时，默认不上报原始触控板事件。启用后，应用可通过[onTouchPadEvent](./arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接收触控板原始事件。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                    |
+| --------- | ------------------- | ---- | --------------------------------------- |
+| enabled   | boolean             | 是   |是否启用应用级原始触控板事件上报。true表示启用，false表示禁用。       |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+        .onClick(() => {
+          UIContext.enableTouchPadEvent(true);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## addLocalInputEventMonitor
 
 addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): InputEventMonitor

@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供ArkUI在Native侧的输入事件定义，支持触摸、鼠标、轴和按键事件，以及事件属性获取、事件冒泡控制和事件克隆处理，用于Native组件识别和处理用户输入。
+提供ArkUI在Native侧的输入事件定义，支持触摸、鼠标、轴、按键、表冠和触控板事件，以及事件属性获取、事件冒泡控制和事件克隆处理，用于Native组件识别和处理用户输入。
 
 **引用文件：** <arkui/ui_input_event.h>
 
@@ -55,6 +55,7 @@
 | [ArkUI_CompetitionStrategy](#arkui_competitionstrategy) | ArkUI_CompetitionStrategy | 事件的注入方和被注入方间手势识别结果是否为竞争场景的策略。该策略决定了事件的注入方如何与被注入方的手势处理逻辑交互，非竞争场景会同时触发手势，竞争场景只触发其中一个。 |
 | [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) | ArkUI_TouchTestStrategy | 定义触摸测试策略。 |
 | [ArkUI_CrownEvent_Action](#arkui_crownevent_action) | ArkUI_CrownEvent_Action | 定义表冠事件的阶段。 |
+| [OH_ArkUI_TouchPadEventPhase](#oh_arkui_touchpadeventphase) | OH_ArkUI_TouchPadEventPhase | 定义触控板事件的阶段。 |
 
 ### 函数
 
@@ -209,6 +210,12 @@
 | [double OH_ArkUI_DigitalCrownEvent_GetDegree(const ArkUI_UIInputEvent* event)](#oh_arkui_digitalcrownevent_getdegree) | 获取表冠事件发生的旋转角度。单位为°。仅适用于入参event里存储的是表冠事件对象的场景。 |
 | [ArkUI_CrownEvent_Action OH_ArkUI_DigitalCrownEvent_GetAction(const ArkUI_UIInputEvent* event)](#oh_arkui_digitalcrownevent_getaction) | 获取表冠事件发生的阶段。仅适用于入参event里存储的是表冠事件对象的场景。 |
 | [ArkUI_ErrorCode OH_ArkUI_DigitalCrownEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_digitalcrownevent_setstoppropagation) | 设置是否阻止事件冒泡，适用于当前组件已处理表冠事件且不希望该事件继续传递给父组件或其他祖先组件的场景。仅适用于入参event里存储的是表冠事件对象的场景。 |
+| [int32_t OH_ArkUI_TouchPadEvent_GetIdByIndex(const ArkUI_UIInputEvent* event, uint32_t index)](#oh_arkui_touchpadevent_getidbyindex) | 根据索引获取触控板事件中的触点ID。 |
+| [int32_t OH_ArkUI_TouchPadEvent_GetPhaseByIndex(const ArkUI_UIInputEvent* event, uint32_t index)](#oh_arkui_touchpadevent_getphasebyindex) | 根据索引获取触控板事件中的触点阶段。 |
+| [double OH_ArkUI_TouchPadEvent_GetNormalizedPositionXByIndex(const ArkUI_UIInputEvent* event, uint32_t index)](#oh_arkui_touchpadevent_getnormalizedpositionxbyindex) | 根据索引获取触控板事件中触点归一化后的X轴位置。 |
+| [double OH_ArkUI_TouchPadEvent_GetNormalizedPositionYByIndex(const ArkUI_UIInputEvent* event, uint32_t index)](#oh_arkui_touchpadevent_getnormalizedpositionybyindex) | 根据索引获取触控板事件中触点归一化后的Y轴位置。 |
+| [double OH_ArkUI_TouchPadEvent_GetDeviceWidth(const ArkUI_UIInputEvent* event)](#oh_arkui_touchpadevent_getdevicewidth) | 根据触控板事件获取触控板的宽度。 |
+| [double OH_ArkUI_TouchPadEvent_GetDeviceHeight(const ArkUI_UIInputEvent* event)](#oh_arkui_touchpadevent_getdeviceheight) | 根据触控板事件获取触控板的高度。 |
 
 ## 枚举类型说明
 
@@ -233,6 +240,7 @@ UI输入事件类型定义。
 | ARKUI_UIINPUTEVENT_TYPE_MOUSE = 3 | 鼠标事件。|
 | ARKUI_UIINPUTEVENT_TYPE_KEY = 4 | 按键事件。<br>**起始版本：** 20 |
 | ARKUI_UIINPUTEVENT_TYPE_DIGITAL_CROWN = 5 | 表冠事件。<br>**起始版本：** 24 |
+| ARKUI_UIINPUTEVENT_TYPE_TOUCHPAD = 6 | 触控板事件。<br>**起始版本：** 26.1.0 |
 
 ### anonymous1
 
@@ -296,6 +304,7 @@ enum anonymous3
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 22 |
 | UI_INPUT_EVENT_SOURCE_TYPE_JOYSTICK = 5 | 手柄。<br>**起始版本：** 22 |
+| UI_INPUT_EVENT_SOURCE_TYPE_TOUCHPAD_TOUCH = 6 | 触控板原始触点。<br>**起始版本：** 26.1.0 |
 
 ### HitTestMode
 
@@ -551,6 +560,26 @@ enum ArkUI_CrownEvent_Action
 | ARKUI_CROWNEVENT_ACTION_UNKNOWN = 0 | 未知的表冠事件阶段。  |
 | ARKUI_CROWNEVENT_ACTION_UPDATE = 1 | 表冠事件更新。  |
 | ARKUI_CROWNEVENT_ACTION_END = 2 | 表冠事件结束。  |
+
+### OH_ArkUI_TouchPadEventPhase
+
+```c
+enum OH_ArkUI_TouchPadEventPhase
+```
+
+**描述：**
+
+
+定义触控板事件的阶段。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TOUCH_PAD_EVENT_PHASE_BEGIN = 0 | 触点开始接触。  |
+| OH_ARKUI_TOUCH_PAD_EVENT_PHASE_MOVE = 1 | 触点移动。  |
+| OH_ARKUI_TOUCH_PAD_EVENT_PHASE_END = 2 | 触点结束接触。  |
+| OH_ARKUI_TOUCH_PAD_EVENT_PHASE_CANCEL = 3 | 触点事件取消。  |
 
 ## 函数说明
 
@@ -4539,3 +4568,151 @@ ArkUI_ErrorCode OH_ArkUI_DigitalCrownEvent_SetStopPropagation(const ArkUI_UIInpu
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数异常，可能是事件指针或stopPropagation参数无效；请检查参数并重试。<br>|
+
+### OH_ArkUI_TouchPadEvent_GetIdByIndex()
+
+```c
+int32_t OH_ArkUI_TouchPadEvent_GetIdByIndex(const ArkUI_UIInputEvent* event, uint32_t index)
+```
+
+**描述：**
+
+根据索引获取触控板事件中的触点ID。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | [入参] 指向UI输入事件的指针，不能为空。 |
+| uint32_t index | [入参] 触点在触点列表中的索引，取值范围为[0, [OH_ArkUI_PointerEvent_GetPointerCount](#oh_arkui_pointerevent_getpointercount)() - 1]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 触点ID。参数异常、索引越界或事件不是触控板事件时返回-1。 |
+
+### OH_ArkUI_TouchPadEvent_GetPhaseByIndex()
+
+```c
+int32_t OH_ArkUI_TouchPadEvent_GetPhaseByIndex(const ArkUI_UIInputEvent* event, uint32_t index)
+```
+
+**描述：**
+
+根据索引获取触控板事件中的触点阶段。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | [入参] 指向UI输入事件的指针，不能为空。 |
+| uint32_t index | [入参] 触点在触点列表中的索引，取值范围为[0, [OH_ArkUI_PointerEvent_GetPointerCount](#oh_arkui_pointerevent_getpointercount)() - 1]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 触点阶段，取值由[OH_ArkUI_TouchPadEventPhase](#oh_arkui_touchpadeventphase)定义。参数异常、索引越界或事件不是触控板事件时返回-1。 |
+
+### OH_ArkUI_TouchPadEvent_GetNormalizedPositionXByIndex()
+
+```c
+double OH_ArkUI_TouchPadEvent_GetNormalizedPositionXByIndex(const ArkUI_UIInputEvent* event, uint32_t index)
+```
+
+**描述：**
+
+根据索引获取触控板事件中触点归一化后的X轴位置。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | [入参] 指向UI输入事件的指针，不能为空。 |
+| uint32_t index | [入参] 触点在触点列表中的索引，取值范围为[0, [OH_ArkUI_PointerEvent_GetPointerCount](#oh_arkui_pointerevent_getpointercount)() - 1]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| double | 触点归一化后的X轴位置，取值范围为[0, 1]。参数异常、索引越界或事件不是触控板事件时返回0.0。 |
+
+### OH_ArkUI_TouchPadEvent_GetNormalizedPositionYByIndex()
+
+```c
+double OH_ArkUI_TouchPadEvent_GetNormalizedPositionYByIndex(const ArkUI_UIInputEvent* event, uint32_t index)
+```
+
+**描述：**
+
+根据索引获取触控板事件中触点归一化后的Y轴位置。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | [入参] 指向UI输入事件的指针，不能为空。 |
+| uint32_t index | [入参] 触点在触点列表中的索引，取值范围为[0, [OH_ArkUI_PointerEvent_GetPointerCount](#oh_arkui_pointerevent_getpointercount)() - 1]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| double | 触点归一化后的Y轴位置，取值范围为[0, 1]。参数异常、索引越界或事件不是触控板事件时返回0.0。 |
+
+### OH_ArkUI_TouchPadEvent_GetDeviceWidth()
+
+```c
+double OH_ArkUI_TouchPadEvent_GetDeviceWidth(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+根据触控板事件获取触控板的宽度。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | [入参] 指向UI输入事件的指针，不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| double | 触控板的宽度，单位为mm。参数异常或事件不是触控板事件时返回0.0。 |
+
+### OH_ArkUI_TouchPadEvent_GetDeviceHeight()
+
+```c
+double OH_ArkUI_TouchPadEvent_GetDeviceHeight(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+根据触控板事件获取触控板的高度。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | [入参] 指向UI输入事件的指针，不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| double | 触控板的高度，单位为mm。参数异常或事件不是触控板事件时返回0.0。 |

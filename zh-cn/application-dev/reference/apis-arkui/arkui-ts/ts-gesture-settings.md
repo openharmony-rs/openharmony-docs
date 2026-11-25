@@ -112,6 +112,7 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 | TouchScreen | 2 | 触摸屏。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | KEY<sup>22+</sup> | 4 | 按键。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | JOYSTICK<sup>22+</sup> | 5 | 手柄。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TOUCHPAD_TOUCH | 6 | 触控板原始触点输入。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SourceTool枚举说明<sup>9+</sup>
 
