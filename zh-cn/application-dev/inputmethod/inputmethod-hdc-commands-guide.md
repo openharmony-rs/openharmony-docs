@@ -17,7 +17,6 @@ Ime为开发者提供在开发者模式下管理系统输入法应用的能力�
 
 在使用本工具前，开发者需要先获取hdc工具，执行hdc shell。
 
-
 **工具用法**<br/>
 
 hdc shell ime [选项] [参数]
@@ -39,7 +38,7 @@ hdc shell ime [选项] [参数]
 
    ```shell
     # 输入：hdc命令启用输入法。
-    # 处理：检查为shell调用后，将调用系统输入法管理接口。
+    # 处理：检查为shell调用后，将调用启用输入法的接口。
     # 输出：效果等同于启用API调用。
     # 基础访问模式
     hdc shell ime -e com.xxx.yyy 
@@ -51,7 +50,7 @@ hdc shell ime [选项] [参数]
 
    ```shell
     # 输入：hdc命令禁用输入法。
-    # 处理：检查为shell调用后，将接到禁用输入法的接口。
+    # 处理：检查为shell调用后，将调用禁用输入法的接口。
     # 输出：效果等同于禁用API调用。
     hdc shell ime -d com.xxx.yyy
    ```
@@ -60,7 +59,7 @@ hdc shell ime [选项] [参数]
 
    ```shell
     # 输入：hdc命令切换输入法。
-    # 处理：检查为shell调用后，将接到切换输入法接口。
+    # 处理：检查为shell调用后，将调用切换输入法的接口。
     # 输出：效果等同于切换输入法API调用。
     hdc shell ime -s com.xxx.yyy
    ```
@@ -69,7 +68,7 @@ hdc shell ime [选项] [参数]
 
    ```shell
     # 输入：hdc命令获取当前输入法。
-    # 处理：检查为shell调用后，将接到获取当前输入法接口。
+    # 处理：检查为shell调用后，将调用获取当前输入法的接口。
     # 输出：效果等同于获取当前输入法API调用。
     hdc shell ime -g
    ```
@@ -78,7 +77,7 @@ hdc shell ime [选项] [参数]
 
    ```shell
     # 输入：hdc命令列出所有输入法。
-    # 处理：检查为shell调用后，将接到列出所有输入法接口。
+    # 处理：检查为shell调用后，将调用列出所有输入法的接口。
     # 输出：效果等同于列出所有输入法API调用。
     hdc shell ime -l
    ```

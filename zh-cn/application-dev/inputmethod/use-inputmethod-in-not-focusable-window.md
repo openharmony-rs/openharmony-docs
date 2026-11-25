@@ -24,151 +24,145 @@
 1. 在主窗中创建一个子窗，设置其初始为不可获焦窗口。
 
    实现效果：点击主窗输入组件，弹出子窗，焦点仍然在主窗的输入框上。
-
-   ```ts
-   // Index.ets实现主窗的布局内容
+   <!-- @[input_case_input_create_not_focusable_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/NotFocusableWindowDemo.ets) -->
+   
+   ``` TypeScript
+   // NotFocusableWindowDemo.ets实现主窗的布局内容
    import { window } from '@kit.ArkUI';
+   import { BusinessError } from '@ohos.base';
+   import Log from '../model/Log';
+   
+   const TAG: string = 'NotFocusableWindowDemo->';
    
    @Entry
    @Component
-   struct Index {
-     async createSubWindow() {
+   struct NotFocusableWindowDemo {
+     private subWindow: window.Window | null = null;
+   
+     async createSubWindow(): Promise<void> {
        try {
-         // 1.创建子窗并设置子窗id
-         let windowStage: window.WindowStage | undefined = AppStorage.get('windowStage');
-         if (windowStage == null) {
-           console.error('Failed to get windowStage');
+         // 已创建过子窗时，直接再次显示
+         if (this.subWindow !== null) {
+           await this.subWindow.showWindow();
            return;
          }
-         let options: window.SubWindowOptions = { title: 'title', decorEnabled: true };
-         let subWindow = await windowStage?.createSubWindowWithOptions('mySubWindow', options);
-         if (!subWindow) {
-          console.error('Failed to create subWindow');
-          return;
+         // 1.创建子窗并设置子窗id
+         let windowStage: window.WindowStage | undefined = AppStorage.get<window.WindowStage>('windowStage');
+         if (windowStage === undefined) {
+           Log.showError(TAG, 'Failed to get windowStage');
+           return;
          }
-         const subWindowId: number | undefined = subWindow?.getWindowProperties().id;
+         let title: string | undefined = this.getUIContext().getHostContext()?.resourceManager.getStringSync($r('app.string.subwindow_title').id);
+         let options: window.SubWindowOptions = { title: title ? title : '', decorEnabled: true };
+         let subWindow: window.Window = await windowStage.createSubWindowWithOptions('mySubWindow', options);
+         this.subWindow = subWindow;
+         const subWindowId: number = subWindow.getWindowProperties().id;
          AppStorage.setOrCreate('subWindowId', subWindowId);
          // 2.设置子窗为不可获焦，true表示允许获取焦点，false表示不允许
-         subWindow?.resize(500, 500);
-         subWindow?.setUIContent("pages/SubWindowIndex");
-         subWindow?.setWindowFocusable(false);
+         await subWindow.resize(500, 500);
+         await subWindow.setUIContent('pages/SubWindowIndex');
+         await subWindow.setWindowFocusable(false);
          // 3.显示子窗
-         subWindow?.showWindow();
+         await subWindow.showWindow();
+         Log.showInfo(TAG, 'Succeeded in creating and showing the subWindow.');
        } catch (exception) {
-         console.error(`Failed to create the subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
+         const err = exception as BusinessError;
+         Log.showError(TAG, `Failed to create the subWindow. Cause code: ${err.code}, message: ${err.message}`);
        }
+     }
+   
+     async destroySubWindow(): Promise<void> {
+       try {
+         if (this.subWindow === null) {
+           return;
+         }
+         await this.subWindow.destroyWindow();
+         this.subWindow = null;
+         Log.showInfo(TAG, 'Succeeded in destroying the subWindow.');
+       } catch (exception) {
+         const err = exception as BusinessError;
+         Log.showError(TAG, `Failed to destroy the subWindow. Cause code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+     aboutToDisappear(): void {
+       // 离开页面时销毁子窗，避免残留
+       this.destroySubWindow();
      }
    
      build() {
        Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-         TextInput({ placeholder: '点击创建并显示子窗' })
+         Text($r('app.string.not_focusable_window_title'))
+           .fontSize(18)
+           .fontWeight(500)
+           .margin(20)
+         TextInput({ placeholder: $r('app.string.subwindow_placeholder') })
+           .width('90%')
+           .height(48)
+           .margin(10)
            .onClick(() => {
              this.createSubWindow();
            })
+         Button($r('app.string.subwindow_destroy'))
+           .width('90%')
+           .height(48)
+           .margin(10)
+           .onClick(() => {
+             this.destroySubWindow();
+           })
        }
+       .width('100%')
+       .height('100%')
      }
    }
    ```
 
 2. 当用户点击子窗中的输入框组件时，可以先通过[setWindowFocusable](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)将子窗设置为可获焦，然后通过[shiftAppWindowFocus](../reference/apis-arkui/arkts-apis-window-f.md#windowshiftappwindowfocus11)将焦点窗口从主窗切换为子窗，即可在子窗的输入框中正常使用输入法。
-
-   ```ts
-   // SubWindowIndex.ets实现子窗的布局内容
-   import { window } from '@kit.ArkUI';
+   <!-- @[input_case_input_shift_focus_in_not_focusable_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/SubWindowIndex.ets) -->
    
-   @Entry
-   @Component
-   struct SubWindowIndex {
-     async shiftFocusToSubWindow() {
-       try {
-         let windowStage: window.WindowStage | undefined = AppStorage.get('windowStage');
-         if (windowStage == null) {
-           console.error('Failed to get the subwindow. Cause: windowStage is undefined');
-           return;
-         }
-         let subWindowList: window.Window[] = await windowStage?.getSubWindow();
-         let subWindow: window.Window = subWindowList[0];
-         // 1.将子窗口设置为可获焦
-         subWindow?.setWindowFocusable(true);
-         // 2.将焦点切换到子窗口
-         const mainWindowId: number = AppStorage.get('mainWindowId') || 0;
-         const subWindowId: number = AppStorage.get('subWindowId') || 0;
-         await window.shiftAppWindowFocus(mainWindowId, subWindowId);
-       } catch (exception) {
-         console.error(`Failed to shift focus to subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
+   ``` TypeScript
+   async shiftFocusToSubWindow(): Promise<void> {
+     try {
+       let windowStage: window.WindowStage | undefined = AppStorage.get<window.WindowStage>('windowStage');
+       if (windowStage === undefined) {
+         Log.showError(TAG, 'Failed to get the windowStage.');
+         return;
        }
-     }
-   
-     build() {
-       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-         TextInput({ placeholder: '这是一个输入组件' })
-           .onClick(() => {
-             // 用户点击子窗的输入组件，切换焦点至子窗
-             this.shiftFocusToSubWindow();
-           })
-       }
+       let subWindowList: window.Window[] = await windowStage.getSubWindow();
+       let subWindow: window.Window = subWindowList[0];
+       // 1.将子窗口设置为可获焦
+       await subWindow.setWindowFocusable(true);
+       // 2.将焦点切换到子窗口
+       const mainWindowId: number = AppStorage.get<number>('mainWindowId') ?? 0;
+       const subWindowId: number = AppStorage.get<number>('subWindowId') ?? 0;
+       await window.shiftAppWindowFocus(mainWindowId, subWindowId);
+       Log.showInfo(TAG, 'Succeeded in shifting focus to subWindow.');
+     } catch (exception) {
+       const err = exception as BusinessError;
+       Log.showError(TAG, `Failed to shift focus to subWindow. Cause code: ${err.code}, message: ${err.message}`);
      }
    }
    ```
 
 3. 当用户重新点击子窗中的非输入框组件时，可以通过[setWindowFocusable](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)将子窗重新设置为不可获焦，焦点窗口即可恢复至主窗。
-
-   ```ts
-   // SubWindowIndex.ets实现子窗的布局内容
-   import { window } from '@kit.ArkUI';
+   <!-- @[input_case_input_shift_focus_to_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/SubWindowIndex.ets) -->
    
-   @Entry
-   @Component
-   struct SubWindowIndex {
-     async shiftFocusToSubWindow() {
-       try {
-         let windowStage: window.WindowStage | undefined = AppStorage.get('windowStage');
-         if (windowStage == null) {
-           console.error('Failed to get the subwindow. Cause: windowStage is undefined');
-           return;
-         }
-         let subWindowList: window.Window[] = await windowStage?.getSubWindow();
-         let subWindow: window.Window = subWindowList[0];
-         // 1.将子窗口设置为可获焦
-         subWindow?.setWindowFocusable(true);
-         // 2.将焦点切换到子窗口
-         const mainWindowId: number = AppStorage.get('mainWindowId') || 0;
-         const subWindowId: number = AppStorage.get('subWindowId') || 0;
-         await window.shiftAppWindowFocus(mainWindowId, subWindowId);
-       } catch (exception) {
-         console.error(`Failed to shift focus to subWindow. Cause code: ${exception.code}, message: ${exception.message}`);
+   ``` TypeScript
+   async shiftFocusToMainWindow(): Promise<void> {
+     try {
+       let windowStage: window.WindowStage | undefined = AppStorage.get<window.WindowStage>('windowStage');
+       if (windowStage === undefined) {
+         Log.showError(TAG, 'Failed to get the windowStage.');
+         return;
        }
-     }
-   
-     async shiftFocusToMainWindow() {
-       try {
-         let windowStage: window.WindowStage | undefined = AppStorage.get('windowStage');
-         if (windowStage == null) {
-           console.error('Failed to get the subwindow. Cause: windowStage is undefined');
-           return;
-         }
-         let subWindowList: window.Window[] = await windowStage?.getSubWindow();
-         let subWindow: window.Window = subWindowList[0];
-         // 将子窗口设置为不可获焦，true表示允许获取焦点，false表示不允许
-         subWindow?.setWindowFocusable(false);
-       } catch (exception) {
-         console.error(`Failed to shift focus to main window. Cause code: ${exception.code}, message: ${exception.message}`);
-       }
-     }
-   
-     build() {
-       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-         TextInput({ placeholder: '这是一个输入组件' })
-           .onClick(() => {
-             // 点击子窗输入组件时，切换焦点至子窗口
-             this.shiftFocusToSubWindow();
-           })
-         Button('这是一个普通组件')
-           .onClick(() => {
-             // 点击子窗非输入组件时，可切换焦点回主窗口
-             this.shiftFocusToMainWindow();
-           })
-       }
+       let subWindowList: window.Window[] = await windowStage.getSubWindow();
+       let subWindow: window.Window = subWindowList[0];
+       // 将子窗口设置为不可获焦，true表示允许获取焦点，false表示不允许
+       await subWindow.setWindowFocusable(false);
+       Log.showInfo(TAG, 'Succeeded in shifting focus to main window.');
+     } catch (exception) {
+       const err = exception as BusinessError;
+       Log.showError(TAG, `Failed to shift focus to main window. Cause code: ${err.code}, message: ${err.message}`);
      }
    }
    ```
