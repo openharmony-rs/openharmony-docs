@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-从API版本26.1.0开始，支持Agent输入管控和敏感节点输入监听。以下两个示例可分别作为独立页面使用。
+从API版本26.1.0开始，支持Agent输入管控和敏感节点输入监听。
 
 ## 概述
 
