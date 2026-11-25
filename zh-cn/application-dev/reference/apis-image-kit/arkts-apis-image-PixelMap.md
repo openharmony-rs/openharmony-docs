@@ -57,7 +57,7 @@ readAllPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小可通过[getPixelBytesNumber()](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -135,7 +135,7 @@ readAllPixelsToBufferSync(dst: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber()](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -192,7 +192,7 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[readAllPixelsToBuffer](#readallpixelstobuffer)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[readAllPixelsToBuffer()](#readallpixelstobuffer)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -208,7 +208,7 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 | 参数名 | 类型        | 必填 | 说明                                                                                                  |
 | ------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst    | ArrayBuffer | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst    | ArrayBuffer | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber()](#getpixelbytesnumber7)接口获取。 |
 
 **返回值：**
 
@@ -254,7 +254,7 @@ readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[readAllPixelsToBuffer](#readallpixelstobuffer)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[readAllPixelsToBuffer()](#readallpixelstobuffer)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -270,7 +270,7 @@ readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber()](#getpixelbytesnumber7)接口获取。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当读取像素数据到ArrayBuffer成功，err为undefined，否则为错误对象。  |
 
 **示例：**
@@ -298,7 +298,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[readAllPixelsToBufferSync](#readallpixelstobuffersync)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[readAllPixelsToBufferSync()](#readallpixelstobuffersync)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -314,7 +314,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber](#getpixelbytesnumber7)接口获取。 |
+| dst      | ArrayBuffer          | 是   | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。缓冲区的大小由[getPixelBytesNumber()](#getpixelbytesnumber7)接口获取。 |
 
 **错误码：**
 
@@ -672,7 +672,7 @@ readPixels(area: PositionArea): Promise\<void>
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[readPixelsToArea](#readpixelstoarea)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[readPixelsToArea()](#readpixelstoarea)代替，以获得更完善的异常处理能力。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -791,7 +791,7 @@ readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[readPixelsToArea](#readpixelstoarea)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[readPixelsToArea()](#readpixelstoarea)代替，以获得更完善的异常处理能力。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -873,7 +873,7 @@ readPixelsSync(area: PositionArea): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[readPixelsToAreaSync](#readpixelstoareasync)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[readPixelsToAreaSync()](#readpixelstoareasync)代替，以获得更完善的异常处理能力。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -964,7 +964,7 @@ writePixelsFromArea(area: PositionArea): Promise\<void>
 
 > **说明：**
 >
-> 如需指定源像素数据的格式，请使用[writePixelsFromArea](#writepixelsfromarea-1)。
+> 如需指定源像素数据的格式，请使用[writePixelsFromArea()](#writepixelsfromarea-1)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1154,7 +1154,7 @@ writePixelsFromAreaSync(area: PositionArea): void
 
 > **说明：**
 >
-> 如需指定源像素数据的格式，请使用[writePixelsFromAreaSync](#writepixelsfromareasync-1)。
+> 如需指定源像素数据的格式，请使用[writePixelsFromAreaSync()](#writepixelsfromareasync-1)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1337,7 +1337,7 @@ writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Prom
 > **说明：**
 >
 > - 本接口仅支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
-> - 如需向[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的PixelMap中写入相同格式的像素数据，请使用[writePixelsFromArea](#writepixelsfromarea)。
+> - 如需向[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的PixelMap中写入相同格式的像素数据，请使用[writePixelsFromArea()](#writepixelsfromarea)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1465,7 +1465,7 @@ writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): 
 > **说明：**
 >
 > - 本接口仅支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
-> - 如需向[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的PixelMap中写入相同格式的像素数据，请使用[writePixelsFromAreaSync](#writepixelsfromareasync)。
+> - 如需向[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的PixelMap中写入相同格式的像素数据，请使用[writePixelsFromAreaSync()](#writepixelsfromareasync)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1585,7 +1585,7 @@ writePixels(area: PositionArea): Promise\<void>
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[writePixelsFromArea](#writepixelsfromarea)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[writePixelsFromArea()](#writepixelsfromarea)代替，以获得更完善的异常处理能力。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1716,7 +1716,7 @@ writePixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[writePixelsFromArea](#writepixelsfromarea)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[writePixelsFromArea()](#writepixelsfromarea)代替，以获得更完善的异常处理能力。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1804,7 +1804,7 @@ writePixelsSync(area: PositionArea): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[writePixelsFromAreaSync](#writepixelsfromareasync)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[writePixelsFromAreaSync()](#writepixelsfromareasync)代替，以获得更完善的异常处理能力。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1905,7 +1905,7 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
 > **说明：**
 >
-> 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromArea](#writepixelsfromarea)。
+> 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromArea()](#writepixelsfromarea)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1923,7 +1923,7 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber()](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
 
 **返回值：**
 
@@ -2004,7 +2004,7 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 > **说明：**
 >
-> 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromAreaSync](#writepixelsfromareasync)。
+> 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromAreaSync()](#writepixelsfromareasync)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2022,7 +2022,7 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                 |
 | -------- | -------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber()](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
 
 **错误码：**
 
@@ -2097,8 +2097,8 @@ writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): P
 > **说明：**
 >
 > - 本接口仅支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
-> - 如需写入与当前PixelMap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[writeAllPixelsFromBuffer](#writeallpixelsfrombuffer)。
-> - 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromArea](#writepixelsfromarea-1)。
+> - 如需写入与当前PixelMap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[writeAllPixelsFromBuffer()](#writeallpixelsfrombuffer)。
+> - 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromArea()](#writepixelsfromarea-1)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -2200,8 +2200,8 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat
 > **说明：**
 >
 > - 本接口仅支持被以下像素格式的PixelMap调用：BGRA_8888、RGBA_8888、ARGB_8888、RGB_888、RGB_565、RGBA_F16、RGBA_1010102。
-> - 如需写入与当前PixelMap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[writeAllPixelsFromBufferSync](#writeallpixelsfrombuffersync)。
-> - 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromAreaSync](#writepixelsfromareasync-1)。
+> - 如需写入与当前PixelMap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[writeAllPixelsFromBufferSync()](#writeallpixelsfrombuffersync)。
+> - 如需写入指定区域的像素数据，或源数据具有自定义行跨距或偏移量，请使用[writePixelsFromAreaSync()](#writepixelsfromareasync-1)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -2295,7 +2295,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[writeAllPixelsFromBuffer](#writeallpixelsfrombuffer)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[writeAllPixelsFromBuffer()](#writeallpixelsfrombuffer)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2311,7 +2311,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
+| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber()](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
 
 **返回值：**
 
@@ -2365,7 +2365,7 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[writeAllPixelsFromBuffer](#writeallpixelsfrombuffer)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[writeAllPixelsFromBuffer()](#writeallpixelsfrombuffer)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2381,7 +2381,7 @@ writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | -------- | -------------------- | ---- | ------------------------------ |
-| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
+| src      | ArrayBuffer          | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber()](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当缓冲区中的图像像素数据写入PixelMap成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -2413,7 +2413,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[writeAllPixelsFromBufferSync](#writeallpixelsfrombuffersync)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[writeAllPixelsFromBufferSync()](#writeallpixelsfrombuffersync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2427,7 +2427,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
+| src    | ArrayBuffer | 是   | 源像素数据的缓冲区，其数据会被拷贝并覆盖写入整个PixelMap。<br>数据按PixelMap自身的像素格式紧密排列，不含行末填充字节。缓冲区大小必须大于等于整个PixelMap的像素字节数，即[getPixelBytesNumber()](#getpixelbytesnumber7)接口的返回值，超出部分不会被写入。 |
 
 **错误码：**
 
@@ -2924,7 +2924,7 @@ ArkTS-Sta: opacity(rate: double, callback: AsyncCallback\<void>): void
 > **说明：**
 >
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的图像不支持设置不透明度。
-> - 从API版本26.0.0开始，建议使用[setOpacity](#setopacity)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[setOpacity()](#setopacity)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -2990,7 +2990,7 @@ ArkTS-Sta: opacity(rate: double): Promise\<void>
 > **说明：**
 >
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的图像不支持设置不透明度。
-> - 从API版本26.0.0开始，建议使用[setOpacity](#setopacity)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[setOpacity()](#setopacity)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3055,7 +3055,7 @@ ArkTS-Sta: opacitySync(rate: double): void
 > **说明：**
 >
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的图像不支持设置不透明度。
-> - 从API版本26.0.0开始，建议使用[setOpacitySync](#setopacitysync)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[setOpacitySync()](#setopacitysync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3268,7 +3268,7 @@ createAlphaPixelmap(): Promise\<PixelMap>
 >
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式不支持此接口。
 > - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
-> - 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[extractAlphaPixelMap()](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3324,7 +3324,7 @@ createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 >
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式不支持此接口。
 > - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
-> - 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[extractAlphaPixelMap()](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3368,7 +3368,7 @@ createAlphaPixelmapSync(): PixelMap
 >
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式不支持此接口。
 > - 如果原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
-> - 从API版本26.0.0开始，建议使用[extractAlphaPixelMapSync](#extractalphapixelmapsync)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[extractAlphaPixelMapSync()](#extractalphapixelmapsync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3606,7 +3606,7 @@ ArkTS-Sta: scale(x: double, y: double, callback: AsyncCallback\<void>): void
 > **说明：**
 >
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
-> - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyScale()](#applyscale)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3675,7 +3675,7 @@ ArkTS-Sta: scale(x: double, y: double): Promise\<void>
 > **说明：**
 >
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
-> - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyScale()](#applyscale)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3743,7 +3743,7 @@ ArkTS-Sta: scaleSync(x: double, y: double): void
 > **说明：**
 >
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
-> - 从API版本26.0.0开始，建议使用[applyScaleSync](#applyscalesync)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyScaleSync()](#applyscalesync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3815,7 +3815,7 @@ ArkTS-Sta: scale(x: double, y: double, level: AntiAliasingLevel): Promise\<void>
 > **说明：**
 >
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
-> - 从API版本26.0.0开始，建议使用[applyScale](#applyscale)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyScale()](#applyscale)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -3893,7 +3893,7 @@ ArkTS-Sta: scaleSync(x: double, y: double, level: AntiAliasingLevel): void
 > **说明：**
 >
 > - 宽高的缩放倍数 = 缩放后的图片宽高 / 缩放前的图片宽高。
-> - 从API版本26.0.0开始，建议使用[applyScaleSync](#applyscalesync)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyScaleSync()](#applyscalesync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4593,7 +4593,7 @@ ArkTS-Sta: translate(x: double, y: double, callback: AsyncCallback\<void>): void
 >
 > - 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 > - 如果平移造成图像尺寸扩大，新增的区域（原图范围之外）以空白填充：非[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式填充为透明黑色（所有分量为0），YUV格式填充为白色（Y分量为255、UV分量为128）。
-> - 从API版本26.0.0开始，建议使用[applyTranslate](#applytranslate)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyTranslate()](#applytranslate)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -4663,7 +4663,7 @@ ArkTS-Sta: translate(x: double, y: double): Promise\<void>
 >
 > - 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 > - 如果平移造成图像尺寸扩大，新增的区域（原图范围之外）以空白填充：非[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式填充为透明黑色（所有分量为0），YUV格式填充为白色（Y分量为255、UV分量为128）。
-> - 从API版本26.0.0开始，建议使用[applyTranslate](#applytranslate)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyTranslate()](#applytranslate)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -4732,7 +4732,7 @@ ArkTS-Sta: translateSync(x: double, y: double): void
 >
 > - 平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
 > - 如果平移造成图像尺寸扩大，新增的区域（原图范围之外）以空白填充：非[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式填充为透明黑色（所有分量为0），YUV格式填充为白色（Y分量为255、UV分量为128）。
-> - 从API版本26.0.0开始，建议使用[applyTranslateSync](#applytranslatesync)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyTranslateSync()](#applytranslatesync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4966,7 +4966,7 @@ ArkTS-Sta: rotate(angle: double, callback: AsyncCallback\<void>): void
 >
 > - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式仅支持90°倍数的旋转角。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
-> - 从API版本26.0.0开始，建议使用[applyRotate](#applyrotate)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyRotate()](#applyrotate)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -5033,7 +5033,7 @@ ArkTS-Sta: rotate(angle: double): Promise\<void>
 >
 > - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式仅支持90°倍数的旋转角。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
-> - 从API版本26.0.0开始，建议使用[applyRotate](#applyrotate)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyRotate()](#applyrotate)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -5099,7 +5099,7 @@ ArkTS-Sta: rotateSync(angle: double): void
 >
 > - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式仅支持90°倍数的旋转角。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
-> - 从API版本26.0.0开始，建议使用[applyRotateSync](#applyrotatesync)代替，以获得更完善的异常处理能力。
+> - 从API版本26.0.0开始，建议使用[applyRotateSync()](#applyrotatesync)代替，以获得更完善的异常处理能力。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5318,7 +5318,7 @@ flip(horizontal: boolean, vertical: boolean, callback: AsyncCallback\<void>): vo
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[applyFlip](#applyflip)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[applyFlip()](#applyflip)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -5364,7 +5364,7 @@ flip(horizontal: boolean, vertical: boolean): Promise\<void>
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[applyFlip](#applyflip)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[applyFlip()](#applyflip)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -5681,7 +5681,7 @@ crop(region: Region, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[applyCrop](#applycrop)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[applyCrop()](#applycrop)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -5725,7 +5725,7 @@ crop(region: Region): Promise\<void>
 
 > **说明：**
 >
-> 从API版本26.0.0开始，建议使用[applyCrop](#applycrop)代替，以获得更完善的异常处理能力。
+> 从API版本26.0.0开始，建议使用[applyCrop()](#applycrop)代替，以获得更完善的异常处理能力。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
