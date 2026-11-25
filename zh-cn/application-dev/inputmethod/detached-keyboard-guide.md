@@ -1,4 +1,4 @@
-# 分离键盘开发指南
+# 适配分离键盘
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

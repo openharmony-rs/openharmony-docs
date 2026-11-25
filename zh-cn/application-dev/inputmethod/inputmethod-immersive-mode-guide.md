@@ -1,4 +1,4 @@
-# 输入法应用沉浸模式
+# 适配输入法沉浸模式
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
