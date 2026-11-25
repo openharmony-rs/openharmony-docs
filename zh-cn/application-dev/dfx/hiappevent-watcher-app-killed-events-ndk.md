@@ -52,6 +52,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 3. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件和动态库。
 
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
    ``` Text
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
@@ -91,10 +93,10 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
    编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，定义onReceive类型观察者相关方法，并且新增Native内存泄漏方法：
 
-   <!-- @[AppKillEvent_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[AppKillEvent_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
-   // 定义一变量，用来缓存创建的观察者的指针。
+   // 定义一个变量，用来缓存创建的观察者的指针。
    static HiAppEvent_Watcher *appKillWatcherR;
    
    static void HandleAppKillEventInfo(const struct HiAppEvent_AppEventInfo &appEventInfos)
@@ -219,7 +221,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
    编辑工程中的“entry > src > main > cpp > types > libentry > Index.d.ts”文件，定义ArkTS接口：
 
-   <!-- @[AppKillEvent_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+   <!-- @[AppKillEvent_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
    ``` TypeScript
    export const registerAppKillWatcher: () => void;
