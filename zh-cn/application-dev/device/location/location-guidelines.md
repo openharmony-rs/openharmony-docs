@@ -46,9 +46,10 @@
 
    ``` TypeScript
    try {
-       let locationEnabled = geoLocationManager.isLocationEnabled();
+      let locationEnabled = geoLocationManager.isLocationEnabled();
+      // ...
    } catch (err) {
-       console.error('errCode:' + err.code + ', message:' + err.message);
+      console.error('errCode:' + err.code + ', message:' + err.message);
    }
    ```
    如果位置开关未开启，可以拉起全局开关设置弹框，引导用户打开位置开关，具体可参考[requestGlobalSwitch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12)。
@@ -63,9 +64,11 @@
 
       ``` TypeScript
       try {
-          let location = geoLocationManager.getLastLocation();
+         let location = geoLocationManager.getLastLocation();
+         // ...
       } catch (err) {
-          console.error('errCode:' + err.code + ', message:'  + err.message);
+         console.error('errCode:' + err.code + ', message:'  + err.message);
+         // ...
       }
       ```
 
@@ -90,13 +93,16 @@
       try {
          geoLocationManager.getCurrentLocation(request).then((result) => { // 调用getCurrentLocation获取当前设备位置，通过promise接收上报的位置
             console.info('current location: ' + JSON.stringify(result));
+            // ...
          })
          .catch((error:BusinessError) => { // 接收上报的错误码
             console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
+            // ...
          });
-       } catch (err) {
+      } catch (err) {
          console.error('errCode:' + err.code + ', message:'  + err.message);
-       }
+         // ...
+      }
       ```
    通过本模块获取到的坐标均为WGS-84坐标系坐标点，如需使用其它坐标系类型的坐标点，请进行坐标系转换后再使用。
 
@@ -120,11 +126,15 @@
    }
    let locationCallback = (location:geoLocationManager.Location):void => {
       console.info('locationCallback: data: ' + JSON.stringify(location));
+      // ...
    };
+   // ...
    try {
       geoLocationManager.on('locationChange', request, locationCallback);
+      // ...
    } catch (err) {
       console.error('errCode:' + err.code + ', message:'  + err.message);
+      // ...
    }
    ```
    如果不主动结束定位可能导致设备功耗高，耗电快；建议在不需要获取定位信息时及时结束定位。
@@ -137,5 +147,6 @@
       geoLocationManager.off('locationChange', locationCallback);
    } catch (err) {
       console.error('errCode:' + err.code + ', message:'  + err.message);
+      // ...
    }
    ```

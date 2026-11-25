@@ -48,13 +48,12 @@
    }
    ```
 
-4. 创建围栏。
-
-   <!-- @[geofence_create_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
+4. 定义围栏相关参数。
 
    ``` TypeScript
+   let fenceId: number = 1;
    let geofence: geoLocationManager.Geofence = {
-       "latitude": 34.12, "longitude": 124.11, "radius": 10000.0, "expiration": 10000.0
+     "latitude": 34.12, "longitude": 124.11, "radius": 10000.0, "expiration": 10000.0
    }
    ```
 
@@ -80,9 +79,9 @@
      content: {
        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
        normal: {
-          title: '围栏通知',
-          text: '围栏进入',
-          additionalText: ''
+         title: '围栏通知',
+         text: '围栏进入',
+         additionalText: ''
        }
      }
    };
@@ -125,21 +124,25 @@
          console.info('GeofenceTransition: ' + JSON.stringify(transition));
        }
      }
+     // ...
    }
    try {
      // 添加围栏
      if (geoLocationManager.isGnssFenceServiceSupported()) {
-        geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
-          // 围栏添加成功后返回围栏ID
-          console.info('addGnssGeofence success, fence id: ' + id);
-          let fenceId = id;
-        }).catch((err: BusinessError) => {
-           console.error('addGnssGeofence failed, promise errCode:' + (err as BusinessError).code +
-            ',errMessage:' + (err as BusinessError).message);
-        });
+       geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
+         // 围栏添加成功后返回围栏ID
+         console.info('addGnssGeofence success, fence id: ' + id);
+         // ... 
+         fenceId = id;
+       }).catch((err: BusinessError) => {
+         console.error('addGnssGeofence failed, promise errCode:' + (err as BusinessError).code +
+           ',errMessage:' + (err as BusinessError).message);
+         // ... 
+       });
      }
    } catch(error) {
-       console.error('addGnssGeofence failed, err:' + JSON.stringify(error));
+     console.error('addGnssGeofence failed, err:' + JSON.stringify(error));
+     // ...
    }
    ```
 
@@ -149,16 +152,18 @@
 
    ``` TypeScript
    // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
-   let fenceId = 1;
    try {
      if (geoLocationManager.isGnssFenceServiceSupported()) {
-        geoLocationManager.removeGnssGeofence(fenceId).then(() => {
-           console.info('removeGnssGeofence success fenceId:' + fenceId);
-        }).catch((error : BusinessError) => {
-           console.error('removeGnssGeofence: error=' + JSON.stringify(error));
-        });
+       geoLocationManager.removeGnssGeofence(fenceId).then(() => {
+         console.info('removeGnssGeofence success fenceId:' + fenceId);
+         // ...
+       }).catch((error : BusinessError) => {
+         console.error('removeGnssGeofence: error=' + JSON.stringify(error));
+         // ...
+       });
      }
    } catch(error) {
      console.error('removeGnssGeofence: error=' + JSON.stringify(error));
+     // ...
    }
    ```

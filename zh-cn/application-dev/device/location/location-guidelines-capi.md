@@ -67,38 +67,40 @@
    <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
-    std::string GetErrorMsgFromErrorCode(int errorCode)
-    {
-        switch(errorCode) {
-           case LOCATION_PERMISSION_DENIED:
-              return "Permission verification failed. The application does not have the permission required to call the API.";
-           case LOCATION_INVALID_PARAM:
-              return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.";
-           case LOCATION_NOT_SUPPORTED:
-              return "Capability not supported. Failed to call this API due to limited device capabilities.";
-           case LOCATION_SERVICE_UNAVAILABLE:
-              return "The location service is unavailable.";
-           case LOCATION_SWITCH_OFF:
-              return "The location switch is off.";
-           default:
-              return "Unknown error. error code: " + std::to_string(errorCode);
-        }
-    }
+   std::string GetErrorMsgFromErrorCode(int errorCode)
+   {
+      switch (errorCode) {
+         case LOCATION_PERMISSION_DENIED:
+            return "Permission verification failed. The application does not have the permission"
+               " required to call the API.";
+         case LOCATION_INVALID_PARAM:
+            return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; "
+               "2. Incorrect parameter types; 3. Parameter verification failed.";
+         case LOCATION_NOT_SUPPORTED:
+            return "Capability not supported. Failed to call this API due to limited device capabilities.";
+         case LOCATION_SERVICE_UNAVAILABLE:
+            return "The location service is unavailable.";
+         case LOCATION_SWITCH_OFF:
+            return "The location switch is off.";
+         default:
+            return "Unknown error. error code: " + std::to_string(errorCode);
+      }  
+   }
 
-    static napi_value OhLocationIsEnabled(napi_env env, napi_callback_info info)
-    {
-        bool isEnabled = false;
-        int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
-        napi_value result = nullptr;
-        if (resultCode != LOCATION_SUCCESS) {
-           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
-           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
-           napi_get_undefined(env, &result);
-           return result;
-        }
-        napi_get_boolean(env, isEnabled, &result);
-        return result;
-    }
+   static napi_value OhLocationIsEnabled(napi_env env, napi_callback_info info)
+   {
+      bool isEnabled = false;
+      int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
+      napi_value result = nullptr;
+      if (resultCode != LOCATION_SUCCESS) {
+         std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+         napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
+      napi_get_boolean(env, isEnabled, &result);
+      return result;
+   }
    ```
 
 6. 定位位置变化。
@@ -113,68 +115,69 @@
    // 定义一个回调函数用来接收位置信息
    void reportLocation(Location_Info* location, void* userData)
    {
-       Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
-       char additionalInfo[1024] = "";
-       Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
-       // 此处接收传回的userData与mydata做对比，判断是否为携带mydata字段的位置请求回调
-       if (g_mydata == userData) {
-           OH_LOG_INFO(LOG_APP, "userData is g_mydata");
-       }
-       return;
+      Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
+      char additionalInfo[1024] = "";
+      Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
+      // 此处接收传回的userData与mydata做对比，判断是否为携带mydata字段的位置请求回调
+      if (g_mydata == userData) {
+         OH_LOG_INFO(LOG_APP, "userData is g_mydata");
+      }
+      // ...
+      return;
    }
 
    // 订阅位置信息
    static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
    {
-       if (g_requestConfig == nullptr) {
-          g_requestConfig = OH_Location_CreateRequestConfig();
-       }
-       OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
-       OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
-       // g_mydata:用户自定义任意类型，触发reportLocation回调时会传回该字段，用于区分是否为携带mydata字段的位置请求回调
-       g_mydata = static_cast<void *>(malloc(sizeof("g_mydata")));
-       napi_value result = nullptr;
-       if (g_mydata == nullptr) {
-          int errCode = LOCATION_INVALID_PARAM;
-          std::string errorMsg = GetErrorMsgFromErrorCode(errCode);
-          napi_throw_error(env, std::to_string(errCode).c_str(), errorMsg.c_str());
-          napi_get_undefined(env, &result);
-          return result;
-       }
+      if (g_requestConfig == nullptr) {
+         g_requestConfig = OH_Location_CreateRequestConfig();
+      }
+      OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
+      OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
+      // g_mydata:用户自定义任意类型，触发reportLocation回调时会传回该字段，用于区分是否为携带mydata字段的位置请求回调
+      g_mydata = static_cast<void *>(malloc(sizeof("g_mydata")));
+      napi_value result = nullptr;
+      if (g_mydata == nullptr) {
+         int errCode = LOCATION_INVALID_PARAM;
+         std::string errorMsg = GetErrorMsgFromErrorCode(errCode);
+         napi_throw_error(env, std::to_string(errCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
 
-       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, g_mydata);
-       int resultCode = OH_Location_StartLocating(g_requestConfig);
-       if (resultCode != LOCATION_SUCCESS) {
-           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
-           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
-           napi_get_undefined(env, &result);
-           return result;
-       }
-       napi_create_int32(env, resultCode, &result);
-       return result;
+      OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, g_mydata);
+      int resultCode = OH_Location_StartLocating(g_requestConfig);
+      if (resultCode != LOCATION_SUCCESS) {
+         std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+         napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
+      napi_create_int32(env, resultCode, &result);
+      return result;
    }
 
    // 取消订阅位置信息， g_requestConfig要和订阅时传入的对象保持一致
    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
    {
-       int32_t resultCode = OH_Location_StopLocating(g_requestConfig);
-       if (g_requestConfig != nullptr) {
-           OH_Location_DestroyRequestConfig(g_requestConfig);
-           g_requestConfig = nullptr;
-       }
-       if (g_mydata != nullptr) {
-           free(g_mydata);
-           g_mydata = nullptr;
-       }
-       napi_value result = nullptr;
-       if (resultCode != LOCATION_SUCCESS) {
-           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
-           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
-           napi_get_undefined(env, &result);
-           return result;
-       }
-       napi_create_int32(env, resultCode, &result);
-       return result;
+      int32_t resultCode = OH_Location_StopLocating(g_requestConfig);
+      if (g_requestConfig != nullptr) {
+         OH_Location_DestroyRequestConfig(g_requestConfig);
+         g_requestConfig = nullptr;
+      }
+      if (g_mydata != nullptr) {
+         free(g_mydata);
+         g_mydata = nullptr;
+      }
+      napi_value result = nullptr;
+      if (resultCode != LOCATION_SUCCESS) {
+         std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+         napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
+      napi_create_int32(env, resultCode, &result);
+      return result;
    }
    ```
 
@@ -183,18 +186,19 @@
    <!-- @[location_capi_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        napi_property_descriptor desc[] = {
-           {"ohLocationIsEnabled", nullptr, OhLocationIsEnabled, nullptr, nullptr, nullptr, napi_default, nullptr},
-           {"ohLocationStartLocating", nullptr, OhLocationStartLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
-           {"ohLocationStopLocating", nullptr, OhLocationStopLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
-        };
-        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-        return exports;
-    }
-    EXTERN_C_END
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+      napi_property_descriptor desc[] = {
+         {"ohLocationIsEnabled", nullptr, OhLocationIsEnabled, nullptr, nullptr, nullptr, napi_default, nullptr},
+         {"ohLocationStartLocating", nullptr, OhLocationStartLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
+         {"ohLocationStopLocating", nullptr, OhLocationStopLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
+         // ...
+      };
+      napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+      return exports;
+   }
+   EXTERN_C_END
    ```
 
 8. 在types/libentry路径下index.d.ts文件中引入Napi接口。
@@ -211,6 +215,6 @@
 
    ```js
    .onClick(() => {
-       hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
+      hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
    })
    ```
