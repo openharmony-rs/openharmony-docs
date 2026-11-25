@@ -3099,9 +3099,9 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets",
 				"functions":[
 					{
-						"end_line":598,
+						"end_line":600,
 						"name":"input_case_input_KeyboardController358",
-						"start_line":430
+						"start_line":431
 					},
 					{
 						"end_line":685,
@@ -3179,9 +3179,9 @@
 						"start_line":90
 					},
 					{
-						"end_line":88,
+						"end_line":102,
 						"name":"input_case_input_switchInputMethod",
-						"start_line":72
+						"start_line":84
 					}
 				]
 			},
