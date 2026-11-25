@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:13:48.049Z pushedAt=2026-11-24T09:05:27.046Z nl=1 -->
 
 | API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API in the Stage Model| 
 | -------- | -------- | -------- |
@@ -20,3 +21,4 @@
 | [connectAbility(request:&nbsp;Want,&nbsp;options:ConnectOptions&nbsp;):&nbsp;number;](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7) | application\UIAbilityContext.d.ts | [connectServiceExtensionAbility(want:&nbsp;Want,&nbsp;options:&nbsp;ConnectOptions):&nbsp;number;](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) |
 | [disconnectAbility(connection:&nbsp;number,&nbsp;callback:AsyncCallback&lt;void&gt;):&nbsp;void;](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitydisconnectability7)<br>[disconnectAbility(connection:&nbsp;number):&nbsp;Promise&lt;void&gt;;](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitydisconnectability7-1) | application\UIAbilityContext.d.ts | [disconnectAbility(connection:&nbsp;number,&nbsp;callback:AsyncCallback&lt;void&gt;):&nbsp;void;](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability-1)<br>[disconnectAbility(connection:&nbsp;number):&nbsp;Promise&lt;void&gt;;](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability) |
 | [getWindow(callback:&nbsp;AsyncCallback&lt;window.Window&gt;):&nbsp;void;](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitygetwindow7)<br>[getWindow():&nbsp;Promise&lt;window.Window&gt;;](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitygetwindow7-1) | \@ohos.window.d.ts | [getLastWindow(ctx:&nbsp;BaseContext,&nbsp;callback:&nbsp;AsyncCallback&lt;Window&gt;):&nbsp;void;](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)<br>[getLastWindow(ctx:&nbsp;BaseContext):&nbsp;Promise&lt;Window&gt;;](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1) |
+<!--no_check-->

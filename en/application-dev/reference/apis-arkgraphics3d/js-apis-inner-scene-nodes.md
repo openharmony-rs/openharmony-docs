@@ -1,12 +1,11 @@
 # SceneNode
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4d7e02a7df2a06122e229dcfa39cff42326177c0 translatedAt=2026-08-20T12:26:57.125Z pushedAt=2026-08-21T08:43:10.144Z -->
+<!-- md-trans-meta sourceCommit=c79157bd5aeeda44615faa13342eb874a6383d31 translatedAt=2026-11-23T09:04:34.714Z pushedAt=2026-11-24T12:34:43.127Z nl=1 -->
 
 This module provides the types and operation methods of scene resource nodes in ArkGraphics 3D. SceneNode is the basic building unit of a 3D scene. It allows developers to manage objects in a scene through a hierarchical structure, implementing efficient scene organization and interaction control.
 
@@ -442,6 +441,8 @@ Enumerates the light types.
 | ---- | ---- | ---- |
 | DIRECTIONAL | 1 | Directional light.|
 | SPOT | 2 | Spot light type. |
+| POINT | 3 | Point light type.<br>**Starting version:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model. |
+| RECT | 4 | Rectangular area light type. <br>**Starting version:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## Light
 
@@ -457,6 +458,10 @@ Light node, which inherits from [Node](#node).
 | shadowEnabled | boolean | No| No| Whether the shadow effect is enabled. **true** if enabled, **false** otherwise.|
 | enabled | boolean | No| No| Whether the light is used. **true** if used, **false** otherwise.|
 
+> **Description:**
+>
+> The maximum number of enabled light sources in a single scene is 64. Light sources added after the quantity exceeds the limit are directly discarded and do not participate in scene rendering.
+
 ## SpotLight
 
 Spotlight, which inherits from [Light](#light).
@@ -470,7 +475,7 @@ A spotlight emits a conical beam of light in a specific direction, with the inte
 | innerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. The unit is radian (rad), and the default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
 | outerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. The unit is radian (rad), and the default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
 
-> **NOTE**
+> **NOTE** 
 > 
 > Ensure that the **innerAngle** and **outerAngle** values are proper. If the value set for **outerAngle** is greater than **PI/2**, it is forcibly set to **PI/2** internally. If the value set for **outerAngle** is less than **innerAngle**, it is forcibly set to **innerAngle** internally.
 
@@ -480,9 +485,58 @@ Directional light, which inherits from [Light](#light).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
+## PointLight
+
+Point light type, which inherits from [Light](#light). Point lights do not support shadow casting, and setting the shadowEnabled attribute of [Light](#light) does not take effect.
+
+A point light emits light uniformly in all directions from a single point in space, and its intensity attenuates as the distance from the light source position increases.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| range | number | No | Yes | Maximum distance affected by the point light. Beyond this range, the light intensity is 0. The unit is the scene unit in the world coordinate system (for example, cm, m, km, etc.), and the value is greater than 0. If this parameter is not set or the value is less than or equal to 0, the system calculates an empirical value as range based on the set intensity value. |
+
+## RectLight
+
+Rectangular area light type, which inherits from [Light](#light). The rectangular area light does not support shadow casting, and setting the shadowEnabled attribute of [Light](#light) does not take effect.
+
+The rectangular area light emits light from a rectangular face, simulating a soft area lighting effect, with intensity attenuating as distance increases. The rectangular area light has high power consumption and large performance overhead. It is recommended to use other light source types such as [DirectionalLight](#directionallight) to approximate the desired rendering effect.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| width | number | No | Yes | Width of the rectangular area light. The unit is the scene unit in the world coordinate system (for example, cm, m, km). The value is greater than 0. If not set, the default value is 1. |
+| height | number | No | Yes | Height of the rectangular area light. The unit is the scene unit in the world coordinate system (for example, cm, m, km). The value is greater than 0. If not set, the default value is 1. |
+| twoSided | boolean | No | Yes | Whether the rectangular area light emits light from both sides of the rectangular face. true indicates that the rectangular area light emits light from both sides, and false indicates that the rectangular area light emits light from a single side. The default value is false. |
+
 ## Camera
 
 Camera node, which inherits from [Node](#node).
+
+A scene can contain multiple cameras, where the camera responsible for rendering the scene to the screen (that is, the Component3D control) is called the main camera. When the engine traverses the cameras in the scene, it uses the first camera whose enabled attribute is true as the main camera. The rendering result of the main camera is directly presented to the user, and the other cameras can be used for purposes such as offscreen rendering.
+
+The engine supports a maximum of 16 camera slots, shared by all cameras in the scene. The slot occupancy rules for each type of camera are as follows:
+
+- Main camera: occupies 1 slot during on-screen rendering.
+- Offscreen rendering camera: each camera occupies 1 slot.
+- Shadow camera: each light with shadows enabled occupies 1 slot, used to generate shadow maps.
+- Transmission material pre-pass camera: when the scene contains transmission materials, the main camera and each offscreen camera each occupy 1 additional slot.
+
+When there is no offscreen rendering camera, if the total occupancy of the main camera, shadow cameras, and transmission material pre-pass cameras exceeds 16, the shadow camera has the lowest priority and is discarded first, causing the shadow of the corresponding light source to disappear.
+
+When an offscreen rendering camera exists, if the total camera occupancy exceeds 16, the system directly throws error code 25603001.
+
+It is recommended to reasonably control the number of shadow light sources and offscreen rendering cameras in the scene to avoid exhausting the slots.
 
 ### Properties
 

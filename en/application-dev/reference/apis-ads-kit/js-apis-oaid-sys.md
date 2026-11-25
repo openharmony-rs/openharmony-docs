@@ -2,10 +2,11 @@
 
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=6493b14494a6c6b34e36a2da0a181b6e9e0f901d translatedAt=2026-11-23T09:12:29.670Z pushedAt=2026-11-24T11:55:17.141Z nl=1 -->
 
 This module provides the capability of resetting open anonymous device identifiers (OAIDs).
 

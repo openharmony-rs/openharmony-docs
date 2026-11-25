@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:02:56.580Z pushedAt=2026-11-24T09:04:30.649Z nl=1 -->
 
 
 This topic describes how the two application components of the [stage model](ability-terminology.md#stage-model) connect to the ServiceAbility component of the [FA model](ability-terminology.md#fa-model).
@@ -127,3 +128,4 @@ struct Page_StartFAModel {
   }
 }
 ```
+<!--no_check-->

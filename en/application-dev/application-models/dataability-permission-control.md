@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:08:39.721Z pushedAt=2026-11-24T09:05:14.058Z nl=1 -->
 
 
 The DataAbility uses permission control to determine whether an ability can access the data service it provides. There are static and dynamic permission controls.
@@ -34,7 +35,7 @@ The DataAbility functions as the server. When being started, the DataAbility ver
 ]
 ```
 
- The client permission is configured in **reqPermissions** under **module** in the **config.json** file. The following is an example:
+The client permission is configured in **reqPermissions** under **module** in the **config.json** file. The following is an example:
 
 
 ```json5

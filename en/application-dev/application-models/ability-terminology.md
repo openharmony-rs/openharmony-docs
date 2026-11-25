@@ -6,7 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=401e07b441128df94228166c78738543a33d077b translatedAt=2026-11-02T13:27:11.572Z pushedAt=2026-11-03T03:14:42.309Z nl=1 -->
+<!-- md-trans-meta sourceCommit=abb6ae7cb66fc80c01749116fe82834fcb704072 translatedAt=2026-11-23T07:44:46.990Z pushedAt=2026-11-24T08:03:53.504Z nl=1 -->
 
 ## A
 
@@ -85,7 +85,7 @@ Cross-device migration refers to migrating a UIAbility running on device A to de
 
 When an application has multiple processes and you need to dynamically assign different ability instances to specific processes, the system automatically designates a process to handle overall coordination and allocation at application startup. This designated process is the master process. By default, the system designates the first process launched by the application as the master process.
 
-You can set the return value of [onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11) to allow the master process to determine which process will run the new ability instance based on the callback information received through this API.
+You can set the return value of [onNewProcessRequest()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11) to allow the master process to determine which process will run the new ability instance based on the callback information received through this API.
 
 
 ## N
@@ -134,7 +134,7 @@ The UIAbility lifecycle refers to the complete process from creation to destruct
 
 ### UIAbility Cold Start
 
-A cold start occurs when a UIAbility instance is launched from a completely closed state. This means the system needs to fully load and initialize all the code and resources for that UIAbility. Subsequently, its lifecycle callbacks are triggered in the following order: **onCreate**, **onWindowStageCreate**, and **onForeground**.
+A cold start occurs when a UIAbility instance is launched from a completely closed state. This means the system needs to fully load and initialize all the code and resources for that UIAbility. Subsequently, its lifecycle callbacks are triggered in the following order: onCreate(), onWindowStageCreate(), and onForeground().
 
 ### UIAbility Hot Start
 

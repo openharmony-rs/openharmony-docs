@@ -6,7 +6,7 @@
 <!--Designer: @weredust-->
 <!--Tester: @weredust-->
 <!--Adviser: @weredust-->
-<!-- md-trans-meta sourceCommit=3194fdbc42d6357f420eb498f6d963c04a35b419 translatedAt=2026-11-06T12:35:54.128Z pushedAt=2026-11-09T12:10:00.564Z nl=1 -->
+<!-- md-trans-meta sourceCommit=cac96f1b6830b52c905da38671f60414f79e7073 translatedAt=2026-11-23T09:02:10.251Z pushedAt=2026-11-24T11:21:32.949Z nl=1 -->
 
 ## Introduction
 
@@ -74,10 +74,14 @@ The key APIs of assessment management are shown in the following table. For deta
 
 In the module.json5 file of the module, request the permission [ohos.permission.ASSESSMENT_CONFIGURATION](../security/AccessToken/restricted-permissions.md#ohospermissionassessment_configuration). This permission is a system_basic-level system_grant restricted permission. You must first complete the application by following [Request Restricted Permission](../security/AccessToken/declare-permissions-in-acl.md). After declaration, it is automatically granted when the application is installed. For details about declaring permissions, see [Declare Permission](../security/AccessToken/declare-permissions.md). The example is as follows:
 
-```json5
+<!-- @[assessment_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+    // ...
     "requestPermissions": [
+      // ...
       {
         "name": "ohos.permission.ASSESSMENT_CONFIGURATION"
       }
@@ -90,7 +94,9 @@ In the module.json5 file of the module, request the permission [ohos.permission.
 
 After importing the assessment module, you can call the Assessment Management APIs.
 
-```ts
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 ```
 
@@ -100,7 +106,9 @@ Configure the assessment parameters, call the begin API to start the assessment,
 
 After begin is called, the system displays a confirmation dialog. The assessment can start only after the user confirms. The assessment result and the interruption and end events during the assessment are all notified through the callback. For how to obtain the context, see [Context Acquisition Method](../application-models/application-context-stage.md#acquisition-of-context). The sample code is as follows:
 
-```ts
+<!-- @[assessment_begin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/BeginAssessment.ets) -->
+
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -134,7 +142,7 @@ const assessmentCallback: assessment.IAssessmentCallback = {
 @Component
 struct Index {
   build() {
-    Button('Start Assessment')
+    Button($r('app.string.begin_button'))
       .onClick(() => {
         this.beginAssessment();
       })
@@ -169,7 +177,9 @@ struct Index {
 
 During assessment, call the isActive API to query the current assessment status, and call the getConfiguration API to obtain the current assessment configuration. The sample code is as follows:
 
-```ts
+<!-- @[assessment_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/QueryAssessment.ets) -->
+
+``` TypeScript
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -195,7 +205,9 @@ try {
 
 After the assessment is complete, the application that started the assessment calls the end API to end the assessment. The system releases the restrictions on system capabilities in assessment mode and triggers the onEnd callback. The sample code is as follows:
 
-```ts
+<!-- @[assessment_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/EndAssessment.ets) -->
+
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -208,7 +220,7 @@ const TAG: string = '[Sample_Assessment]';
 @Component
 struct Index {
   build() {
-    Button('Submit')
+    Button($r('app.string.exam_submit'))
       .onClick(() => {
         this.endAssessment();
       })
@@ -243,13 +255,20 @@ The assessment mode centrally manages some system capabilities, but the applicat
 | Hardening Measure | API | Description |
 | -------- | -------- | -------- |
 | Immersive window | setWindowLayoutFullScreen | Extends content to the status bar and navigation bar areas, reducing exposure of system entries outside the assessment page |
+| PC full screen | maximize | The main window enters full screen, and the mouse hover hot zone does not show the window title bar and dock bar, reducing the possibility of switching out of the assessment page through system entries |
 | Privacy mode | setWindowPrivacyMode | Prevents the window from being captured or recorded, and displays a privacy mask in the recent tasks view when the app goes to the background |
-| Clear clipboard | clearData | Clears residual clipboard data to prevent answers from being passed in through the clipboard |
-| Simple keyboard mode | setSimpleKeyboardEnabled | Keeps only basic keys in the input method panel and collapses the candidate bar and extended function entries |
+| Clear the clipboard | clearData | Clears residual clipboard data to prevent answers from being passed in through the clipboard |
+| Simple keyboard mode | setSimpleKeyboardEnabled | The input method panel only retains basic keys, collapses the candidate bar and extended function entry, and the AI assistive writing feature becomes unavailable |
+
+PC full screen is implemented through the maximize interface. MaximizePresentation.ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER (supported from API version 14) must be passed in to make the main window enter full screen and prevent the mouse hover hot zone from showing the window title bar and dock bar. When exiting the assessment page, call the recover interface to restore the window to its size and position before entering full screen. This interface can be called normally only on devices that support and are in the [freeform window](../windowmanager/window-terminology.md#freeform-window) state. On devices that support but are not in the freeform window state, and on devices that do not support the freeform window state, calling it neither takes effect nor reports an error. Therefore, it can be called directly without distinguishing device types.
+
+The simple keyboard mode is enabled through the inputMethod.setSimpleKeyboardEnabled interface. After it is enabled, the input method panel only retains basic keys, the candidate bar and extended function entry are collapsed, and the AI assistive writing feature becomes unavailable, preventing answers from being generated through AI assistive writing during assessment. This setting takes effect for native text box components the next time they are clicked to gain focus, and for self-drawn controls the next time attach is called to bind the input method. Therefore, it is recommended to complete the setting after entering the assessment page and before the examinee starts answering, and to pass in false to restore it when exiting the assessment page.
 
 Privacy mode requires the permission ohos.permission.PRIVACY_WINDOW, which is a normal-level system_grant permission. Its declaration method is the same as that in [Request Permission](#request-permission). Window-related APIs require obtaining the current window first. The key implementation of hardening and restoration is as follows:
 
-```ts
+<!-- @[assessment_hardening](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/AssessmentHardening.ets) -->
+
+``` TypeScript
 import { common } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -267,7 +286,7 @@ export class ExamHardeningUtil {
     await ExamHardeningUtil.clearPasteboard();
   }
 
-  // Restore the window form and input method when exiting the assessment page, and clear the clipboard again.
+  // Restore the window form and input method when exiting assessment page, and clear the clipboard again.
   public static async releaseHardening(context: common.UIAbilityContext): Promise<void> {
     await ExamHardeningUtil.setWindowHardening(context, false);
     ExamHardeningUtil.setSimpleKeyboard(false);
@@ -302,15 +321,34 @@ export class ExamHardeningUtil {
     }
   }
 
-  // setSimpleKeyboard calls inputMethod.setSimpleKeyboardEnabled,
-  // clearPasteboard calls pasteboard.getSystemPasteboard().clearData, and both also catch exceptions separately.
-  // ...
+  // Switch the input method panel to a simple keyboard, keep only basic keys, and collapse the candidate bar and extension function entry.
+  private static setSimpleKeyboard(enable: boolean): void {
+    try {
+      inputMethod.setSimpleKeyboardEnabled(enable);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, '%{public}s',
+        `setSimpleKeyboardEnabled failed, code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  // Clear the clipboard to avoid residue data being pasted into the assessment page.
+  private static async clearPasteboard(): Promise<void> {
+    try {
+      await pasteboard.getSystemPasteboard().clearData();
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, '%{public}s', `clearData failed, code: ${err.code}, message: ${err.message}`);
+    }
+  }
 }
 ```
 
 Call the hardening and restoration APIs in the lifecycle of the assessment page. The sample code is as follows:
 
-```ts
+<!-- @[assessment_page_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/AutomaticSceneConfigurationKit/Assessment/entry/src/main/ets/pages/ExamPageLifecycle.ets) -->
+
+``` TypeScript
 aboutToAppear(): void {
   this.applyHardening();
 }
@@ -349,6 +387,7 @@ For the complete implementation, see [Samples](#samples).
 allowedApps is used to specify the package names of applications allowed to run during assessment. Applications not in the trustlist cannot run during assessment. The following principles are recommended when designing the trustlist:
 
 - Add applications that must be used during the assessment to the trustlist, such as the input method and accessibility assistance applications that an exam application depends on, as well as the audio playback application required for listening assessment.
+- The earthquake early warning application must be added to the trustlist. During assessment, the startup and page pop-up of applications outside the trustlist are intercepted by the system. If the earthquake early warning application is not added to allowedApps, the warning page cannot pop up when an earthquake early warning is received during assessment, posing a safety risk. The package name of this type of application varies depending on the device preconfiguration. Confirm it with the device manufacturer before filling it in.
 - The package name of the application that initiates the assessment must be added to allowedApps. When begin is called, the application is in the foreground. If it is not in the trustlist, the environment check before starting the assessment fails, and the assessment cannot start.
 
 For the specific specification restrictions of the trustlist, see [Constraints](#constraints). For the configuration method, see [Start Assessment](#start-assessment).

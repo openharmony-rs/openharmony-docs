@@ -5,6 +5,7 @@
 <!--Designer: @GbuzhidaoR-->
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5a8aa9333246a30d476d365c6b20704ec9d9a20a translatedAt=2026-11-23T09:00:55.571Z pushedAt=2026-11-24T07:19:48.647Z nl=1 -->
 
 ## Usage Scenario
 Neural Network Runtime (NNRt) functions as a bridge to connect the upper-layer AI inference framework and underlying acceleration chips, implementing cross-chip inference computing for AI models.
@@ -26,8 +27,8 @@ As shown in Figure 1, in addition to native APIs, NNRt logically consists of the
 6. **Model cache**: Save the built model objects into a file or a segment of memory in the cache. During next model build, model objects can be directly loaded from the file or segment of memory in the cache, greatly improving the build speed.
 7. **Offline model inference**: Directly use model files (offline models for short) dedicated to the AI hardware for inference. Specifically, use the model converter provided by the AI hardware vendor to convert the original training model into the offline model file corresponding to the AI hardware, deploy the offline model file in the application, and pass the model file to the NNRt offline model build API for inference. Offline models can be used only for build and inference on the corresponding AI hardware. That is, inference across AI hardware is not supported. The offline models are specific to the AI hardware and therefore, the build speed is usually fast.
 
-** Figure 1** NNRt architecture
-!["NNRt architecture"](figures/neural-network-runtime-intro.jpg)
+**Figure 1** Neural Network Runtime architecture
+!["neural-network-runtime-intro"](figures/neural-network-runtime-intro.jpg)
 
 ## Features
 
@@ -56,9 +57,8 @@ Image composition is not required for interconnection between MindSpore Lite and
 In addition, MindSpore Lite supports heterogeneous model inference between general-purpose computing hardware (CPUs/GPUs) and dedicated AI acceleration hardware.
 <!--RP1End-->
 
+<!--RP2-->
 ## Constraint
 
 NNRt strongly depends on hardware and applies only to devices that support NPUs.
-
-## Supported Emulators
-This kit does not support emulators.
+<!--RP2End-->

@@ -3,9 +3,10 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:07:22.279Z pushedAt=2026-11-24T09:04:52.120Z nl=1 -->
 
 To meet the basic requirements of the database storage service, implement the **Insert**, **Query**, **Update**, and **Delete** methods for a DataAbility. The **BatchInsert** and **ExecuteBatch** methods have already implemented the traversal logic, but not batch data processing.
 

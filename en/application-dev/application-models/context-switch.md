@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:07:06.629Z pushedAt=2026-11-24T09:04:46.588Z nl=1 -->
 
 | API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API or Field in the Stage Model| 
 | -------- | -------- | -------- |
@@ -32,3 +33,4 @@
 | [getAbilityInfo(callback:AsyncCallback&lt;AbilityInfo&gt;):void;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetabilityinfo7)<br>[getAbilityInfo():Promise&lt;AbilityInfo&gt;;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetabilityinfo7-1) | application\UIAbilityContext.d.ts | [abilityInfo: AbilityInfo;](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1) |
 | [isUpdatingConfigurations(callback:AsyncCallback&lt;boolean&gt;):void;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextisupdatingconfigurations7)<br>[isUpdatingConfigurations():Promise&lt;boolean&gt;;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextisupdatingconfigurations7-1) | There is no corresponding API in the stage model.| Applications do not restart when the system environment changes. The **onConfigurationUpdated** callback is invoked to notify the applications of the changes. This API provides an empty implementation in the FA model, and the stage model does not provide a corresponding API.|
 | [printDrawnCompleted(callback:AsyncCallback&lt;void&gt;):void;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextprintdrawncompleted7)<br>[printDrawnCompleted():Promise&lt;void&gt;;](../reference/apis-ability-kit/js-apis-inner-app-context.md#contextprintdrawncompleted7-1) | There is no corresponding API in the stage model.| This API provides an empty implementation in the FA model. The stage model does not provide a corresponding API.|
+<!--no_check-->

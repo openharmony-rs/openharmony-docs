@@ -1,11 +1,11 @@
 # @ohos.advertising.AutoAdComponent (Carousel Ad Component)
-
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=3be691bf73bee527113c7ef6168ff4e2f7d57541 translatedAt=2026-11-23T09:12:46.529Z pushedAt=2026-11-24T09:09:27.614Z nl=1 -->
 
 
 The AutoAdComponent module provides the capability of displaying carousel ads.
@@ -43,14 +43,24 @@ Component used to display carousel ads.
 
 **Parameters**
 
-| **Name**| **Type**| Mandatory| **Decorator**| Description| 
+| **Name** | **Type** | Mandatory | **Decorator** | Description | 
 | -------- | -------- | -------- | -------- | -------- |
-| adParam | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams) | Yes| - | Ad request parameters.| 
-| adOptions | advertising.[AdOptions](js-apis-advertising.md#adoptions) | Yes| - | Ad configuration options.| 
-| displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes| - | Ad display parameters.| 
-| interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes| - | Ad status change callback.| 
+| adParam | advertising.[AdRequestParams](js-apis-advertising.md#adrequestparams) | Yes | - | Ad request parameters. | 
+| adOptions | advertising.[AdOptions](js-apis-advertising.md#adoptions) | Yes | - | Ad configuration parameters. | 
+| displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes | - | Ad display parameters. | 
+| interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes | - | Callback for ad status changes. |
 
-**Example:**
+### build
+
+build(): void
+
+A constructor used to create an **AutoAdComponent** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Advertising.Ads
+
+## Example
 
 ```typescript
 import { advertising, AutoAdComponent } from '@kit.AdsKit';
@@ -59,22 +69,22 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Entry
 @Component
 struct Index {
-  // Ad request parameters.
+  // Ad request parameter.
   private adRequestParams: advertising.AdRequestParams = {
-    // Ad ID.
+    // Ad slot ID.
     adId: 'h5xkz3mbr2',
     // Ad type.
     adType: 8,
-    // Ad slot width, in vp.
+    // Ad slot width, unit vp.
     adWidth: 360,
-    // Ad slot height, in vp.
+    // Ad slot height, unit vp.
     adHeight: 57
   };
-  // Ad configuration options.
+  // Ad configuration parameter.
   private adOptions: advertising.AdOptions = {};
-  // Ad display parameters.
+  // Ad display parameter.
   private adDisplayOptions: advertising.AdDisplayOptions = {
-    // Interval at which the carousel items rotate, in ms. The value range is [30000, 120000].
+    // Ad carousel time interval, unit ms, value range [30000, 120000].
     refreshTime: 30000
   };
   private ratio: number = -1;
@@ -115,18 +125,3 @@ struct Index {
   }
 }
 ```
-
-
-### build
-
-
-build(): void
-
-
-A constructor used to create an **AutoAdComponent** object.
-
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-
-**System capability**: SystemCapability.Advertising.Ads

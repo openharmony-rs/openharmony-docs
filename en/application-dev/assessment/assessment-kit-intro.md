@@ -6,9 +6,9 @@
 <!--Designer: @weredust-->
 <!--Tester: @weredust-->
 <!--Adviser: @weredust-->
-<!-- md-trans-meta sourceCommit=3194fdbc42d6357f420eb498f6d963c04a35b419 translatedAt=2026-11-06T12:37:54.319Z pushedAt=2026-11-09T13:24:48.706Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e08b782e047bc74d72cd4a65f028995738f89576 translatedAt=2026-11-23T09:02:32.682Z pushedAt=2026-11-24T11:23:55.428Z nl=1 -->
 
-Starting from API version 26.1.0, Automatic Scene Configuration Kit (Scene Configuration Service) provides applications with scenario-based system capability configuration and control. The system implements the configuration and control on the system side, so applications do not need to implement interception logic themselves, nor can they bypass or remove the restrictions on their own. This Kit currently delivers the preceding capabilities through the Assessment Management (assessment) module, targeting business scenarios such as online exams and training assessments that require process fairness. The entire control process requires user confirmation or can be perceived by the user.
+Starting from API version 26.0.1, Automatic Scene Configuration Kit (scenario configuration service) provides applications with scenario-based system capability configuration and control. The configuration and control are implemented by the system on the system side. Applications do not need to implement interception logic themselves, and they also cannot bypass or self-lift the restrictions. This Kit currently carries the above capabilities through the Assessment Management (assessment) module, targeting business scenarios such as online exams and training assessment that require guaranteeing process fairness. The entire control process requires user confirmation or is perceivable by the user.
 
 ## Use Scenarios
 

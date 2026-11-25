@@ -3,9 +3,10 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T07:46:10.901Z pushedAt=2026-11-24T08:09:08.760Z nl=1 -->
 
 To access a DataAbility, import the basic dependency packages and obtain the URI string for communicating with the DataAbility.
 

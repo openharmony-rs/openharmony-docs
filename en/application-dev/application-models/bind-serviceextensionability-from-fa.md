@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:03:26.922Z pushedAt=2026-11-24T09:04:35.517Z nl=1 -->
 
 
 This topic describes how the three application components of the [FA model](ability-terminology.md#fa-model) connect to the ServiceExtensionAbility component of the [stage model](ability-terminology.md#stage-model).

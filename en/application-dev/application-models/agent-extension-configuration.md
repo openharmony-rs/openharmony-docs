@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / Program Framework Service"]
+description: "Describes in detail the meaning and examples of each label field in the agent_config.json configuration file of AgentExtensionAbility, covering configuration items such as AgentCard capability description, skill list, and input and output mode."
+keywords: [AgentExtensionAbility, agent_config.json, AgentCard, AgentSkill, intelligent agent card, configuration file]
+doctype: guide
+status: active
+---
 # AgentExtensionAbility Configuration File Description
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -5,7 +12,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=a7527b1bdb02bfea835e9bc50c20bb3d2f59d798 translatedAt=2026-11-02T13:37:24.854Z pushedAt=2026-11-03T06:53:00.482Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f92d5a4fab1366fe913ccd9c81db56ab439390df translatedAt=2026-11-23T07:48:04.617Z pushedAt=2026-11-24T08:25:06.726Z nl=1 -->
 
 [AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md) serves as the "business card" of an Agent and is mainly used to describe the Agent's capabilities. The detailed configuration of an AgentCard is carried by the agent_config.json configuration file.
 

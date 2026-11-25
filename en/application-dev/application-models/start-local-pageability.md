@@ -4,12 +4,14 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=adac32ca89d9bd332aa4865feec176933267fbd9 translatedAt=2026-11-23T08:39:44.697Z pushedAt=2026-11-24T09:07:24.523Z nl=1 -->
 
 The capabilities related to the PageAbility are provided through the **featureAbility** class. For example, **startAbility()** in **featureAbility** is used to start the PageAbility.
 
-**Table 1** featureAbility APIs
+
+  **Table 1** featureAbility APIs
 
 | API| Description|
 | -------- | -------- |
@@ -36,8 +38,12 @@ const domain: number = 0xFF00;
       moduleName: 'entry',
       abilityName: 'com.samples.famodelabilitydevelop.PageAbilitySingleton'
     };
-    await featureAbility.startAbility({ want: want });
-    hilog.info(domain, TAG, `Start ability succeed`);
+    let code: number = await featureAbility.startAbility({ want: want });
+    if (code === 0) {
+      hilog.info(domain, TAG, `Start ability succeed`);
+    } else {
+      hilog.error(domain, TAG, `Start ability failed with code ${code}`);
+    }
   }
   catch (error) {
     hilog.error(domain, TAG, 'Start ability failed with ' + error);

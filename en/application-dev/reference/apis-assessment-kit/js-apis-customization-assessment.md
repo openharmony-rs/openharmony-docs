@@ -6,11 +6,11 @@
 <!--Designer: @weredust-->
 <!--Tester: @weredust-->
 <!--Adviser: @weredust-->
-<!-- md-trans-meta sourceCommit=3194fdbc42d6357f420eb498f6d963c04a35b419 translatedAt=2026-11-03T13:37:17.201Z pushedAt=2026-11-04T07:01:29.891Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e08b782e047bc74d72cd4a65f028995738f89576 translatedAt=2026-11-23T09:02:50.499Z pushedAt=2026-11-24T12:54:27.299Z nl=1 -->
 
 The Assessment Management module provides assessment scenario management capabilities, including starting an assessment, ending an assessment, querying the assessment status, obtaining the assessment configuration, and callbacks during the assessment process. When an application needs to enter an exam scenario, it can call the begin API to start the assessment. The system then displays a dialog to remind the user. After the user confirms entering the assessment mode, some system capabilities are restricted to prevent exam cheating or information leakage. After the assessment ends or is interrupted, the end API can be called to exit the assessment mode, ensuring exam fairness while protecting user rights.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 ## Modules to Import
 
@@ -22,7 +22,7 @@ import { assessment } from '@kit.AutomaticSceneConfigurationKit';
 
 Assessment scenario configuration information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -37,7 +37,7 @@ Assessment scenario configuration information.
 
 Enumerates the assessment error codes.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -55,7 +55,7 @@ Enumerates the assessment error codes.
 
 Assessment error information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +70,7 @@ Assessment error information.
 
 Assessment interruption information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -85,7 +85,7 @@ Assessment interruption information.
 
 Assessment process callback interface, used to receive callbacks for assessment start, interrupt, and end events.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -97,7 +97,7 @@ onBegin(error: AssessmentError): void
 
 Callback invoked when the assessment starts.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -115,7 +115,7 @@ onInterrupted(info: AssessmentInterruptInfo): void
 
 Callback invoked when the assessment is interrupted. It is triggered when the assessment process is interrupted due to user cancellation, timeout exit, system error, security violation, or other reasons.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -133,7 +133,7 @@ onEnd(): void
 
 Callback when the assessment ends.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -145,7 +145,7 @@ begin(context: UIAbilityContext, config: AssessmentConfig, callback: IAssessment
 
 Starts an assessment. After this API is called, a confirmation dialog box is displayed, and the assessment starts only after the user confirms. The assessment result and the interruption and end events during the assessment are notified through the callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -246,7 +246,7 @@ end(context: UIAbilityContext): void
 
 Ends the assessment and removes the restrictions on system capabilities in assessment mode.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -319,7 +319,7 @@ isActive(): boolean
 
 Queries whether the device is currently in the assessment state.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -372,7 +372,7 @@ getConfiguration(): AssessmentConfig
 
 Obtains the current assessment configuration.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

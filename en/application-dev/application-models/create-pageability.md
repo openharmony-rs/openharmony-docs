@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:08:12.260Z pushedAt=2026-11-24T09:04:57.146Z nl=1 -->
 
 When you create a PageAbility in DevEco Studio, DevEco Studio automatically generates the **onCreate()** and **onDestroy()** callbacks in **app.js** and **app.ets**. You need to implement the other lifecycle callbacks in **app.js** and **app.ets**. For details about the callbacks, see [PageAbility Lifecycle](pageability-lifecycle.md). The following code snippet shows how to create a PageAbility:
 
@@ -59,9 +60,7 @@ After the PageAbility is created, its abilities-related configuration items are 
 
 ```json
 {
-  ...
   "module": {
-    ...
     "abilities": [
       {
         "skills": [
@@ -86,9 +85,7 @@ After the PageAbility is created, its abilities-related configuration items are 
         "visible": true,
         "launchType": "singleton"
       },
-      ...
     ]
-    ...
   }
 }
 ```
@@ -108,7 +105,7 @@ The following code snippet shows how to use **getContext()** to obtain the appli
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
-import fs from '@ohos.file.fs';
+import fileIo from '@ohos.file.fs';
 import promptAction from '@ohos.promptAction';
 import hilog from '@ohos.hilog';
 
@@ -127,8 +124,8 @@ const domain: number = 0xFF00;
     hilog.info(domain, TAG, 'distribute dir is ' + dir);
     let fd: number;
     let path = dir + '/a.txt';
-    fd = fs.openSync(path, fs.OpenMode.READ_WRITE).fd;
-    fs.close(fd);
+    fd = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE).fd;
+    fileIo.close(fd);
   } catch (error) {
     hilog.error(domain, TAG, 'getOrCreateDistributedDir failed with : ' + error);
   }

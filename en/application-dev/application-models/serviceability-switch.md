@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:34:49.341Z pushedAt=2026-11-24T09:06:37.108Z nl=1 -->
 
-The ServiceAbility component in the [FA model](ability-terminology.md#fa-model) corresponds to the ServiceExtensionAbility component in the [stage model](ability-terminology.md#stage-model). The ServiceExtensionAbility class provides system APIs. Only system applications can create ServiceExtensionAbility instances. Therefore, ServiceAbility switching adopts different policies for system applications and third-party applications.  
+The ServiceAbility component in the [FA model](ability-terminology.md#fa-model) corresponds to the ServiceExtensionAbility component in the [stage model](ability-terminology.md#stage-model). The ServiceExtensionAbility class provides system APIs. Only system applications can create ServiceExtensionAbility instances. Therefore, ServiceAbility switching adopts different policies for system applications and third-party applications.
 
 
 ## Switching a ServiceAbility for a System Application
@@ -39,3 +40,4 @@ In the stage model, third-party applications cannot provide services for other t
 | Providing services for other third-party applications| Match a scenario-specific [ExtensionAbility](extensionability-overview.md).| 
 | In-application: providing public use when it is running in the foreground| Extract the component code as a common module for other components to use.| 
 | In-application: continuing running when it switches to the background| Switch the service to a [background service](serviceextensionability-sys.md).| 
+<!--no_check-->

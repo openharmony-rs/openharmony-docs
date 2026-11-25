@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-11-23T08:41:01.742Z pushedAt=2026-11-24T09:07:52.945Z nl=1 -->
 
 The **terminateSelf()** method in the **featureAbility** class is used to stop a PageAbility.
 
