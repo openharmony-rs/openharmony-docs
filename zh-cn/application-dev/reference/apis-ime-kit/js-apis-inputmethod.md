@@ -1692,7 +1692,7 @@ requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
-| 12800010 | Not the preconfigured default input method. |
+| 12800010 | current ime application is not the system-configured default input method. |
 | 12800029 | the input type is not supported. |
 
 **示例：**
