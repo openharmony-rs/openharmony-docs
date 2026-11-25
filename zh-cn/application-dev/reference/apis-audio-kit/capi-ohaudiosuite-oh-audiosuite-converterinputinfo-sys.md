@@ -32,3 +32,5 @@ typedef struct OH_AudioSuite_ConverterInputInfo {...} OH_AudioSuite_ConverterInp
 | -- | -- |
 | const void *data | 输入音频数据缓冲区指针，指向音频原始数据，由调用者分配，具体数据类型由采样格式[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat)决定。调用[OH_AudioSuite_ConverterDirectProcess](capi-native-audio-converter-h.md#oh_audiosuite_converterdirectprocess)期间必须保持有效。不能为NULL。<br>**起始版本：** 26.1.0 |
 | uint32_t size | 输入音频数据字节数，即本次传入的有效数据长度。必须大于0，且必须是最小输入字节数的整数倍。<br>**起始版本：** 26.1.0 |
+
+
