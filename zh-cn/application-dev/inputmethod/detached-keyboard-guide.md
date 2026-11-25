@@ -100,6 +100,62 @@ ArkTS-Sta示例：
 
 <!-- @[input_case_detached_switchToDetachedPanel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/DetachedKeyboardSta/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
+``` TypeScript
+public switchToDetachedPanel(): void {
+  if (this.mPanel === undefined) {
+    this.addLog('switchToDetachedPanel panel is undefined');
+    return;
+  }
+  let dis: display.Display | undefined = undefined;
+  try {
+    dis = display.getDefaultDisplaySync();
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`switchToDetachedPanel get display catch error: ${error.code} ${error.message}`);
+    return;
+  }
+  if (dis === undefined) {
+    this.addLog('switchToDetachedPanel display is undefined');
+    return;
+  }
+  let screenWidth = Double.toInt(dis.width);
+  let screenHeight = Double.toInt(dis.height);
+  if (dis.width > dis.height) {
+    screenWidth = Double.toInt(dis.height);
+    screenHeight = Double.toInt(dis.width);
+  }
+  let detachedHeight: int = Double.toInt(screenHeight * KEYBOARD_DETACHED_HEIGHT_RATE);
+  let landHeight: int = Double.toInt(screenWidth * KEYBOARD_DETACHED_HEIGHT_RATE);
+  let landscapeRect: window.Rect = {
+    left: 0,
+    top: screenWidth - landHeight,
+    width: screenHeight,
+    height: landHeight
+  };
+  let portraitRect: window.Rect = {
+    left: 0,
+    top: screenHeight - detachedHeight,
+    width: screenWidth,
+    height: detachedHeight
+  };
+  let panelRect: inputMethodEngine.PanelRect = {
+    landscapeRect: landscapeRect,
+    portraitRect: portraitRect
+  };
+  try {
+    this.mPanel!.updatePanelRectSync(inputMethodEngine.PanelFlag.FLAG_DETACHED, panelRect);
+    this.mPanelWidth = screenWidth;
+    this.mPanelHeight = dis.width > dis.height ? landHeight : detachedHeight;
+    this.addLog(`switchToDetachedPanel success, width = ${dis.width}, height = ${detachedHeight}`);
+  } catch (err) {
+    let error = err as BusinessError;
+    this.addLog(`switchToDetachedPanel catch error: ${error.code} ${error.message}`);
+  }
+  // 将左右两半键盘区域设置为热区，中间透明区域不接收输入事件
+  this.refreshSplitHotZone(this.mPanelWidth, detachedHeight);
+}
+```
+
 ### 设置分离态UI布局
 
 分离态下，键盘UI需要根据`isSplitKeyboard`状态切换布局：左右两半键盘区域+中间透明镂空区域。键盘根组件背景在分离态下设为透明，使中间镂空区域可穿透显示下层应用内容。
@@ -107,6 +163,216 @@ ArkTS-Sta示例：
 ArkTS-Dyn示例：
 
 <!-- @[input_case_detached_detached_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/DetachedKeyboard/entry/src/main/ets/components/KeyMenu.ets) -->
+
+``` TypeScript
+// 分体键盘左半部分
+@Builder
+splitLeft() {
+  Column({ space: this.inputStyle.keyGap }) {
+    Row({ space: this.inputStyle.keyGap }) {
+      ForEach(this.keyList.slice(0, 5), (item: keySourceListType) => {
+        KeyItemNumber({ keyValue: item })
+      }, (item: keySourceListType) => item.content)
+    }
+    .width('100%')
+    .layoutWeight(1)
+
+    Row({ space: this.inputStyle.keyGap }) {
+      ForEach(this.keyList.slice(10, 15), (item: keySourceListType) => {
+        KeyItemNumber({ keyValue: item })
+      }, (item: keySourceListType) => item.content)
+    }
+    .width('100%')
+    .layoutWeight(1)
+
+    Row({ space: this.inputStyle.keyGap }) {
+      Stack() {
+        Image($rawfile(this.keyState === KeyState.ONCE_UPPER_CASE ? 'shift light.svg' : this.keyState === KeyState.UPPER_CASE ? 'shift light long.svg' : 'shift.svg'))
+          .width(this.inputStyle.featurePicSize)
+          .height(this.inputStyle.featurePicSize)
+      }
+      .backgroundColor($r('app.color.key_item_gray'))
+      .borderRadius(4)
+      .onClick(() => {
+        if (this.keyState === KeyState.LOWER_CASE) {
+          this.keyState = KeyState.ONCE_UPPER_CASE;
+        } else if (this.keyState === KeyState.ONCE_UPPER_CASE) {
+          this.keyState = KeyState.UPPER_CASE;
+        } else if (this.keyState === KeyState.UPPER_CASE) {
+          this.keyState = KeyState.LOWER_CASE;
+        }
+      })
+      .height('100%')
+      .layoutWeight(1.5)
+      .shadow({ radius: 1, color: $r('app.color.shadow'), offsetY: 3 })
+      .stateStyles({
+        normal: normalStyles, pressed: pressedStyles
+      })
+
+      ForEach(this.keyList.slice(19, 23), (item: keySourceListType) => {
+        KeyItemNumber({ keyValue: item })
+      }, (item: keySourceListType) => item.content)
+    }
+    .width('100%')
+    .layoutWeight(1)
+
+    Row({ space: this.inputStyle.keyGap }) {
+      KeyItem({ keyValue: { content: ',', title: ',', upperContent: ',' } })
+      SpaceItem({ spaceWeight: 2.5 })
+    }
+    .width('100%')
+    .layoutWeight(1)
+  }
+  .width('40%')
+  .height('100%')
+  .backgroundColor(this.styleMode === 1 ? '#D5D8DD' : '#ffffff')
+  .borderRadius(16)
+  .padding(this.inputStyle.keyGap)
+}
+
+// 分体键盘右半部分
+@Builder
+splitRight() {
+  Column({ space: this.inputStyle.keyGap }) {
+    Row({ space: this.inputStyle.keyGap }) {
+      ForEach(this.keyList.slice(5, 10), (item: keySourceListType) => {
+        KeyItemNumber({ keyValue: item })
+      }, (item: keySourceListType) => item.content)
+    }
+    .width('100%')
+    .layoutWeight(1)
+
+    Row({ space: this.inputStyle.keyGap }) {
+      ForEach(this.keyList.slice(15, 19), (item: keySourceListType) => {
+        KeyItemNumber({ keyValue: item })
+      }, (item: keySourceListType) => item.content)
+    }
+    .width('100%')
+    .layoutWeight(1)
+
+    Row({ space: this.inputStyle.keyGap }) {
+      ForEach(this.keyList.slice(23), (item: keySourceListType) => {
+        KeyItemNumber({ keyValue: item })
+      }, (item: keySourceListType) => item.content)
+      DeleteItem()
+    }
+    .width('100%')
+    .layoutWeight(1)
+
+    Row({ space: this.inputStyle.keyGap }) {
+      KeyItem({ keyValue: { content: '.', title: '.', upperContent: '.' } })
+      ReturnItem({ returnWeight: 2 })
+    }
+    .width('100%')
+    .layoutWeight(1)
+  }
+  .width('40%')
+  .height('100%')
+  .backgroundColor(this.styleMode === 1 ? '#D5D8DD' : '#ffffff')
+  .borderRadius(16)
+  .padding(this.inputStyle.keyGap)
+}
+
+build() {
+  if (this.isSplitKeyboard) {
+    Column() {
+      Row() {
+        this.splitLeft()
+        Column()
+          .layoutWeight(1)
+          .height('100%')
+        this.splitRight()
+      }
+      .width('100%')
+      .layoutWeight(1)
+      .padding({
+        left: this.inputStyle.paddingLeftRight,
+        right: this.inputStyle.paddingLeftRight
+      })
+    }
+    .width('100%')
+    .height('100%')
+  } else {
+    Column() {
+      Column({ space: this.inputStyle.keyGap }) {
+      Row({ space: this.inputStyle.keyGap }) {
+        ForEach(this.keyList.slice(0, 10), (item: keySourceListType) => {
+          KeyItemNumber({ keyValue: item })
+        }, (item: keySourceListType) => item.content)
+      }
+      .width('100%')
+      .layoutWeight(1)
+
+      Row({ space: this.inputStyle.keyGap }) {
+        Stack() {
+        }.layoutWeight(0.5)
+
+        ForEach(this.keyList.slice(10, 19), (item: keySourceListType) => {
+          KeyItemNumber({ keyValue: item })
+        }, (item: keySourceListType) => item.content)
+        Stack() {
+        }.layoutWeight(0.5)
+      }
+      .width('100%')
+      .layoutWeight(1)
+
+      Row({ space: this.inputStyle.keyGap }) {
+        Stack() {
+          Image($rawfile(this.keyState === KeyState.ONCE_UPPER_CASE ? 'shift light.svg' : this.keyState === KeyState.UPPER_CASE ? 'shift light long.svg' : 'shift.svg'))
+            .width(this.inputStyle.featurePicSize)
+            .height(this.inputStyle.featurePicSize)
+        }
+        .backgroundColor($r('app.color.key_item_gray'))
+        .borderRadius(4)
+        .onClick(() => {
+          if (this.keyState === KeyState.LOWER_CASE) {
+            this.keyState = KeyState.ONCE_UPPER_CASE;
+          } else if (this.keyState === KeyState.ONCE_UPPER_CASE) {
+            this.keyState = KeyState.UPPER_CASE;
+          } else if (this.keyState === KeyState.UPPER_CASE) {
+            this.keyState = KeyState.LOWER_CASE;
+          }
+        })
+        .height('100%')
+        .layoutWeight(1.5)
+        .shadow({ radius: 1, color: $r('app.color.shadow'), offsetY: 3 })
+        .stateStyles({
+          normal: normalStyles, pressed: pressedStyles
+        })
+
+        ForEach(this.keyList.slice(19), (item: keySourceListType) => {
+          KeyItemNumber({ keyValue: item })
+        }, (item: keySourceListType) => item.content)
+        DeleteItem()
+      }
+      .width('100%')
+      .layoutWeight(1)
+
+      Row({ space: this.inputStyle.keyGap }) {
+        KeyItem({ keyValue: { content: ',', title: ',', upperContent: ',' } })
+        SpaceItem({ spaceWeight: 5 })
+        KeyItem({ keyValue: { content: '.', title: '.', upperContent: '.' } })
+        ReturnItem({ returnWeight: 2.5 })
+      }
+      .width('100%')
+      .layoutWeight(1)
+
+    }
+    .width('100%')
+    .layoutWeight(1)
+    .padding({
+      left: this.inputStyle.paddingLeftRight,
+      right: this.inputStyle.paddingLeftRight,
+      top: this.inputStyle.keyGap,
+      bottom: this.inputStyle.keyGap
+    })
+    .backgroundColor(this.styleMode === 1 ? '' : '#ffffff')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ArkTS-Sta示例：
 
