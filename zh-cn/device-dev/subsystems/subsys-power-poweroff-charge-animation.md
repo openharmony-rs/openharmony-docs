@@ -230,7 +230,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     void ReadConfig(void)
     {
         // parse cfg
-        char buffer[32] = {0}; // 32 reason max leb
+        char buffer[32] = {0}; // 32 reason max len
         uint32_t len = sizeof(buffer);
         SystemReadParam("ohos.boot.mode", buffer, &len);
         INIT_LOGI("ohos.boot.mode %s", buffer);
