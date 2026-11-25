@@ -2821,6 +2821,24 @@ struct GridEts {
    ArkTS-Dyn示例：
 
    <!-- @[virtual_drag_js_drop_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private receive(event: DragEvent): void {
+     try {
+       this.handleUris(getDroppedFileUris(event));
+       event.setResult(DragResult.DRAG_SUCCESSFUL);
+     } catch (error) {
+       event.setResult(DragResult.DRAG_FAILED);
+       logSampleError('Get dropped URIs', error as Error);
+       this.getUIContext().getPromptAction().showToast({ message: $r('app.string.receive_failed') });
+     }
+   }
+   
+   private handleUris(uris: string[]): void {
+     // 业务可在此根据URI读取、复制或打开文件，示例仅提示已接收。
+     this.getUIContext().getPromptAction().showToast({ message: $r('app.string.uris_received', uris.length) });
+   }
+   ```
 
    ArkTS-Sta示例：
 
