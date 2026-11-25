@@ -55029,6 +55029,21 @@
 						"end_line":584,
 						"name":"content_embed_client_handle_proxy",
 						"start_line":539
+					},
+					{
+						"end_line":1235,
+						"name":"content_embed_client_create_document_by_oeid",
+						"start_line":1223
+					},
+					{
+						"end_line":600,
+						"name":"content_embed_client_create_document_by_file",
+						"start_line":586
+					},
+					{
+						"end_line":615,
+						"name":"content_embed_client_load_document_from_file",
+						"start_line":602
 					}
 				]
 			},
