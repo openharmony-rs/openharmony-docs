@@ -40,6 +40,7 @@ import { relationalStore } from '@kit.ArkData';
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。<br/> |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 12开始，支持此可选参数。<br/> |
 | autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本地设备是否自动清理远端设备删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| dumpStackOnFileDeletion | boolean | 否 | 是 | 是否启用数据库文件删除时的调用栈打印功能，用于定位数据库文件被意外删除的问题。<br>true表示打开数据库后，直接通过文件接口删除数据库文件（db、wal、shm）时打印调用栈信息；false表示不启用，保持文件已设置的调用栈打印开关不变。默认值为false。<br>仅对主数据库和副本数据库的db、wal、shm文件生效，不包括journal、binlog等数据库辅助文件。<br>该参数依赖设备文件系统的文件删除调用栈打印能力，文件系统不支持时不生效，且不影响打开数据库。<br>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## HAMode<sup>12+</sup>
 
@@ -68,6 +69,16 @@ import { relationalStore } from '@kit.ArkData';
 | targetTable | string | 否 | 否 | 关联的父表名称。   |
 | refFields   | Record<string, string> | 否 | 否 |表示关联表的关联字段。键值数据中键为子表字段，值为父表字段。       |
 
+## Asset<sup>10+</sup>
+
+记录资产附件（文件、图片、视频等类型文件）的相关信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| extension | string | 否 | 是 | 资产的扩展信息，由业务侧自定义。端侧不限制长度；云侧长度上限为512字节，超出时截断保留前512字节。默认值为空字符串。<br/>**起始版本：** 26.1.0<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 ## DistributedConfig<sup>10+</sup>
 
 记录表的分布式配置信息。
@@ -93,6 +104,7 @@ import { relationalStore } from '@kit.ArkData';
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                         |
 |------|------|------|------|----------------------------------------------------------------------------|
 | downloadOnly | boolean | 否 | 是 | 是否仅下行云端数据到本地。true表示仅下行云端数据到本地，false表示先下行云端数据到本地，再上行本地数据到云侧的同步流程。默认值为false。 |
+| fullSync | boolean | 否 | 是 | 是否进行全量同步。true表示将云端全量数据同步到本地，false表示仅同步自上次端云同步以来的增量数据。默认值为false。<br/>**起始版本：** 26.1.0<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## RdbStore
 
@@ -129,7 +141,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -226,7 +238,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -316,7 +328,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callb
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -387,7 +399,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates):Promi
 
 | **错误码ID** | **错误信息**      |
 |-----------| --------------------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -452,7 +464,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 | **错误码ID** | **错误信息**           |
 |-----------| ------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+ |
@@ -513,7 +525,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | **错误码ID** | **错误信息**      |
 |-----------| --------------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+ |
@@ -579,7 +591,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | **错误码ID** | **错误信息**         |
 |-----------| ----------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+ |
@@ -643,9 +655,9 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 | **错误码ID** | **错误信息**     |
 |-----------|--------------|
-| 202       | if permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
@@ -729,9 +741,9 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 | **错误码ID** | **错误信息**            |
 |-----------|---------------------------|
-| 202       | if permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
@@ -808,8 +820,9 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 | **错误码ID** | **错误信息**           |
 |-----------|-------------|
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.                      |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+           |
 | 14800014  | The target instance is already closed.<br>适用版本：12+                        |
@@ -876,8 +889,9 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;Resul
 
 | **错误码ID** | **错误信息**      |
 |-----------|------|
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
-| 801       | Capability not supported.                 |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.          |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+       |
 | 14800014  | The target instance is already closed.<br>适用版本：12+      |
@@ -946,8 +960,9 @@ querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, ca
 
 | **错误码ID** | **错误信息**       |
 |-----------|--------------|
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.            |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+         |
 | 14800014  | The target instance is already closed.<br>适用版本：12+          |
@@ -1019,7 +1034,7 @@ lockCloudContainer(): Promise&lt;number&gt;
 
 | **错误码ID** | **错误信息**            |
 |-----------|---------------------------|
-| 202       | Permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -1057,7 +1072,7 @@ unlockCloudContainer(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**            |
 |-----------|---------------------------|
-| 202       | Permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -1095,7 +1110,7 @@ restore(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -1173,7 +1188,7 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 
 | **错误码ID** | **错误信息**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
@@ -1221,7 +1236,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 要更新数据越多，执行所需的时间越长。
 
 > **说明：**
->
+> 
 > 入参info中若要传入设备id信息，则设备id必须是已与当前设备建立网络连接的设备id。
 >
 > 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedfield24)，则只允许使用等于空或不等于空。
@@ -1249,7 +1264,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 
 | **错误码ID** | **错误信息**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
@@ -1305,6 +1320,65 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
     }
   }
 }
+
+```
+### requestFullDataDonation
+
+requestFullDataDonation(tables: Array&lt;string&gt;): Promise&lt;void&gt;
+
+请求指定分布式表的全量数据捐赠，使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                              | 必填  | 说明              |
+| -------- | ----------------------------------- | --- |-----------------|
+| tables   | Array&lt;string&gt;                 | 是   | 需要全量捐赠的分布式表名列表，列表最大长度为20且不为空。  |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed. A non-system application calls a system API.|
+| 14800001     | Invalid arguments. Parameter out of range or empty table list.  |
+| 14800014     | The target instance is already closed.                            |
+| 14800043     | The database does not support this scenario.|
+
+**示例：**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+
+let store: relationalStore.RdbStore | null = null;
+async function requestFullDataDonationExample() 
+{
+  if (store === null) {
+    console.error('RdbStore is null.');
+    return;
+  }
+  try {
+    const tables: Array<string> = ['EMPLOYEE'];
+    await store.requestFullDataDonation(tables);
+    console.info('Full data donation request submitted successfully.');
+  } catch (e) {
+    console.error(`Failed to request full data donation, code: ${e.code}`);
+  }
+}
 ```
 
 ## cleanDeviceDirtyData
@@ -1340,14 +1414,14 @@ cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**     |
 |-----------|---------------|
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. |
 | 14800024  | SQLite: The database file is locked. |
-| 14800043  | The database does not support this scenario. Possible causes: 1. The database type is not support;2. The table type is not supported; 3. This is a read-only database.|
+| 14800043  | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
 
 **示例：**
 
@@ -1396,7 +1470,7 @@ getFloat32Array(columnIndex: number): Float32Array
 | **错误码ID** | **错误信息**          |
 |-----------| ------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | The capability is not supported because the database is not a vector DB. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The database is not a vector DB. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |

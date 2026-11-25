@@ -5,7 +5,7 @@
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c066f5124ef720a50174e3224b1ec8b8036dfa24 translatedAt=2026-09-14T01:56:28.158Z pushedAt=2026-09-14T02:46:24.545Z -->
+<!-- md-trans-meta sourceCommit=afa76cacf51573fed26d81042471733bdd190e1f translatedAt=2026-11-03T04:21:56.116Z pushedAt=2026-11-03T12:08:25.479Z nl=1 -->
 
 The **@ohos.InputMethodSubtype** module provides data definitions for input method subtype properties. It supports describing subtype information of an input method for different languages or modes.
 
@@ -63,7 +63,7 @@ Input method subtype attribute. Used to describe a specific language or mode for
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | label | string | Yes | Yes | Label of the input method subtype. Used to display the subtype name in the UI, such as "Chinese (Simplified)" and "English". |
 | labelId<sup>10+</sup> | number | Yes | Yes | Label resource ID of the input method subtype. Used to load the label text through the resource ID, supporting internationalized label display in multi-language scenarios. |
@@ -72,7 +72,7 @@ Input method subtype attribute. Used to describe a specific language or mode for
 | mode | 'upper' \| 'lower' | Yes | Yes | Mode of the input method subtype, including upper (uppercase) and lower (lowercase). Used to describe the uppercase/lowercase state mode of the keyboard. |
 | locale | string | Yes | No | Locale of the input method subtype. It follows the ICU Locale format (underscore-separated, such as 'zh_CN') and is also compatible with the POSIX style (hyphen-separated, such as 'zh-CN'). Used to identify the language and region of the subtype. |
 | language | string | Yes | No | Language of the input method subtype, such as 'zh' (Chinese) and 'en' (English). Used to identify the language of the subtype, and is a subset of locale. |
-| icon | string | Yes | Yes | Icon of the input method subtype, which can be obtained by querying iconId. |
+| icon | string | Yes | Yes | Icon of the input method subtype. Specification constraints: the subtype icon cannot be obtained or displayed through this parameter currently. |
 | iconId | number | Yes | Yes | Icon ID of the input method subtype. Used to load the subtype icon through the resource ID. |
 | extra | object | No | Yes | Other information about the input method subtype.<br/>Description:<br/>- This parameter is optional since API version 10.|
 

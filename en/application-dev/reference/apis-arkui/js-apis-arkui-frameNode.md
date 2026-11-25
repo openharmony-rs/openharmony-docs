@@ -5,7 +5,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e81239e2f38865e1e733a04fa60a7878bf413bbf translatedAt=2026-08-29T09:31:11.056Z pushedAt=2026-09-01T03:55:48.759Z -->
+<!-- md-trans-meta sourceCommit=7b156f24b91bbd7fe044191ff04a57b5763c5765 translatedAt=2026-11-18T09:37:40.158Z pushedAt=2026-11-23T02:26:24.656Z nl=1 -->
 
 **FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.
 
@@ -255,6 +255,67 @@ Checks whether this FrameNode is modifiable.
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
+
+### dispatchInputEvent
+
+dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+
+Dispatches an input event to the current FrameNode, with a specified competition policy. This API supports [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent), and [AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent). For **KeyEvent**, use [dispatchKeyEvent](#dispatchkeyevent) to dispatch.
+
+**Since**: 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | ---- | -------- |
+| event | [InputEventType](./js-apis-arkui-builderNode.md#inputeventtype20) | Yes | Input event to dispatch.|
+| competitionStrategy | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | No | Gesture competition policy for dispatching the event. **CompetitionStrategy.DEFAULT** indicates the non-competition mode (the gestures of the target component and the current component do not compete), applicable to scenarios where the current component and the target component handle gestures independently without competing for the same event. **CompetitionStrategy.COMPETITION** indicates the competition mode (the gestures of the target component and the current component participate in competition), applicable to scenarios where the current component and the target component need to compete for the same gesture event. If not passed, the default value is **CompetitionStrategy.DEFAULT** (non-competition).|
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| boolean | Whether the event is dispatched successfully. The value **true** indicates that the event is dispatched successfully, and **false** indicates that the event is not dispatched successfully.|
+
+**Example**
+
+For details, see [Example of Node Operations](#example-of-node-operations).
+
+### dispatchKeyEvent
+
+dispatchKeyEvent(event: KeyEvent): boolean
+
+Dispatches a key event to the current FrameNode. [onKeyPreIme](./arkui-ts/ts-universal-events-key.md#onkeypreime12) does not trigger this event.
+
+**Since**: 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | ---- | -------- |
+| event | [KeyEvent](./arkui-ts/ts-universal-events-key.md#keyevent) | Yes | Key event to be dispatched. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| boolean | Whether the key event is consumed. The value **true** indicates that the key event is consumed and will not be passed on; the value **false** indicates that the key event is not consumed and can be passed on.|
+
+**Example**
+
+For details, see [Example of Node Operations](#example-of-node-operations).
 
 ### appendChild<sup>12+</sup>
 
@@ -1710,7 +1771,7 @@ Queries whether the current **FrameNode** object has been released from the refe
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
+| boolean | Whether the reference to the backend entity node is released. The value **true** means that the reference to backend entity node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -1779,7 +1840,7 @@ Obtains the component's custom property by its name.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -2570,7 +2631,7 @@ Adds the polymorphic style states supported by the component.
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
 | uiStates    | number | Yes   | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                                       |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | Yes  | Callback invoked when the state changes.                                          |
-| excludeInner  | boolean | No   | Whether to disable internal default state style processing. The default value is **false**. Internal default state style processing refers to the built-in state style response of a component (for example, the default visual feedback when a button is pressed).<br>The value **true** means to disable internal default state style processing, and **false** means not to disable it. |
+| excludeInner  | boolean | No   | Whether to disable internal default state style processing. The default value is **false**. Internal default state style processing refers to the built-in state style response of a component (for example, the default visual feedback when a button is pressed).<br>The value **true** means to disable internal default state style processing, and **false** means the opposite. |
 
 **Example**
 
@@ -2610,7 +2671,7 @@ Creates a property animation for the FrameNode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 12%; 20%; 8%; 60%-->
 | Name | Type| Mandatory| Description                                                    |
@@ -2643,7 +2704,7 @@ Cancels all animations for specified properties on the FrameNode. This API execu
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
@@ -2703,10 +2764,10 @@ This API ensures rendering synchronization by triggering immediate property upda
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Example**
+**Example** 
 
 Starting from API version 21, when dynamically switching between nodes using **if/else** statements, you can call **invalidateAttributes** during node creation to trigger immediate attribute updates, preventing visual flickering during component switching.
-
+ 
 ```ts
 // index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
@@ -3150,7 +3211,7 @@ class MyNodeController extends NodeController {
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
-      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      console.error(`${TEST_TAG} getchild at index {${index}} : fail`);
       return;
     }
     this.rootNode!.removeChild(childNode);
@@ -3173,29 +3234,29 @@ class MyNodeController extends NodeController {
     if (this.rootNode!.getFirstChild() === this.frameNode) {
       console.info(`${TEST_TAG} getFirstChild result: success. The first child of the rootNode is equals to frameNode.`);
     } else {
-      console.info(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
+      console.error(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
     }
     if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
       console.info(`${TEST_TAG} getNextSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getNextSibling result: fail.`);
+      console.error(`${TEST_TAG} getNextSibling result: fail.`);
     }
     if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
       console.info(`${TEST_TAG} getPreviousSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getPreviousSibling result: fail.`);
+      console.error(`${TEST_TAG} getPreviousSibling result: fail.`);
     }
     if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
       console.info(`${TEST_TAG} getParent result: success.`);
     } else {
-      console.info(`${TEST_TAG} getParent result: fail.`);
+      console.error(`${TEST_TAG} getParent result: fail.`);
     }
     if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
     } else {
-      console.info(`${TEST_TAG} get ArkTsNode fail.`);
+      console.error(`${TEST_TAG} get ArkTsNode fail.`);
     }
   }
 
@@ -3206,7 +3267,7 @@ class MyNodeController extends NodeController {
       if (this.rootNode!.getChild(0) === currentNode) {
         console.info(`${TEST_TAG} moveTo result: success.`);
       } else {
-        console.info(`${TEST_TAG} moveTo result: fail.`);
+        console.error(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
       console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
@@ -3912,14 +3973,12 @@ Extends [FrameNode](#framenode-1) to define a FrameNode with specific type const
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Type| Read-Only| Optional| Description                                                        |
 | ---------- | ---- | ---- | ---- | ------------------------------------------------------------ |
-| initialize | C    | No   | No   | Passes construction parameters for creating a component, used to set or update the component's initial values. |
-| attribute  | T    | Yes   | No   | Obtains the attribute setting object of the corresponding component to set or update its common and private attributes. |
+| initialize | C    | No   | No   | Construction parameter that this API passes to the corresponding component to set/update the initial value of the component.<br/> **Model restriction:** This API can only be used in the stage model.|
+| attribute  | T    | Yes   | No   | Object that is used by this API to obtain the attribute settings of the corresponding component to set/update the universal and private attributes of the component.<br/> **Model restriction:** This API can only be used in the stage model.|
 
 > **NOTE**
 >
@@ -5368,7 +5427,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>Applicable versions: 15-24|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be thrown above API version 24. <br>Applicable versions: 15-24 |
 
 **Example**
 
@@ -6012,7 +6071,7 @@ Obtains the attributes of an **Image** node. If the node is not created using Ar
 | ------------------ | ------------------ |
 | ImageAttribute&nbsp;\|&nbsp;undefined | Properties of the **Image** node, or **undefined** if they fail to be obtained.|
 
-**Example**
+**Example** 
 
 
 ```ts
@@ -6243,7 +6302,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>Applicable versions: 20-24 |
 
 **Example**
 
@@ -6322,7 +6381,7 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 | ------------------ | ------------------ |
 | ListItemAttribute&nbsp;\|&nbsp;undefined | Attributes of the **ListItem** node, or **undefined** if they fail to be obtained.|
 
-**Example**
+**Example** 
 
 See the example for [createNode('List')](#createnodelist12).
 
@@ -6572,7 +6631,7 @@ Creates a FrameNode of the **Button** type.
 | ------------------ | ------------------ |
 | [Button](#button12) | FrameNode of the **Button** type.|
 
-**Example**
+**Example** 
 
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
@@ -6948,9 +7007,9 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>Applicable versions: 20-24 |
 
-**Example**
+**Example** 
 
 <!--code_no_check-->
 
@@ -7274,7 +7333,7 @@ Obtain the attributes of an **XComponent** node. If the node is not created usin
 | ------------------ | ------------------ |
 | XComponentAttribute&nbsp;\|&nbsp;undefined | Properties of the **XComponent** node, or **undefined** if they fail to be obtained.|
 
-**Example**
+**Example** 
 
 <!--code_no_check-->
 
@@ -7420,7 +7479,7 @@ Creates a FrameNode of the **Grid** type.
 | ------------------ | ------------------ |
 | [Grid](#grid14) | FrameNode of the **Grid** type.|
 
-**Example**
+**Example** 
 
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
@@ -7503,7 +7562,7 @@ Obtains the **UIGridEvent** object held by the **Grid** node, which is used to s
 | ------------------ | ------------------ |
 | [UIGridEvent](./arkui-ts/ts-container-grid.md#uigridevent19)&nbsp;\|&nbsp;undefined | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained.|
 
-**Example**
+**Example** 
 
 See [Scroll Event Example](#scroll-event-example).
 
@@ -7532,7 +7591,7 @@ Obtains the attributes of a **Grid** node. If the node is not created using ArkT
 | ------------------ | ------------------ |
 | GridAttribute&nbsp;\|&nbsp;undefined | Properties of the **Grid** node, or **undefined** if they fail to be obtained.|
 
-**Example**
+**Example** 
 
 See the example for [createNode('Grid')](#createnodegrid14).
 
@@ -7563,9 +7622,9 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>Applicable versions: 20-24|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>Applicable versions: 20-24 |
 
-**Example**
+**Example** 
 
 <!--code_no_check-->
 
@@ -7614,7 +7673,7 @@ Creates a FrameNode of the **GridItem** type.
 | ------------------ | ------------------ |
 | [GridItem](#griditem14) | FrameNode of the **GridItem** type.|
 
-**Example**
+**Example** 
 
 See the example for [createNode('Grid')](#createnodegrid14).
 
@@ -7643,7 +7702,7 @@ Obtains the attributes of a **GridItem** node. If the node is not created using 
 | ------------------ | ------------------ |
 | GridItemAttribute&nbsp;\|&nbsp;undefined | Properties of the **GridItem** node, or **undefined** if they fail to be obtained.|
 
-**Example**
+**Example** 
 
 See the example for [createNode('Grid')](#createnodegrid14).
 
@@ -7737,7 +7796,7 @@ Creates a FrameNode of the **TextTimer** type.
 | ------------------ | ------------------ |
 | [TextTimer](#texttimer14) | FrameNode of the **TextTimer** type.|
 
-**Example**
+**Example** 
 
 <!--code_no_check-->
 
@@ -7923,7 +7982,7 @@ Obtains the attributes of a **TextArea** node. If the node is not created using 
 | ------------------ | ------------------ |
 | TextAreaAttribute&nbsp;\|&nbsp;undefined | Properties of the **TextArea** node, or **undefined** if they fail to be obtained.|
 
-**Example**
+**Example** 
 
 ```ts
 import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
@@ -7989,7 +8048,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
 | 100021   | The FrameNode is not modifiable. |
 
-**Example**
+**Example** 
 
 ```ts
 import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
@@ -9307,7 +9366,7 @@ Queries whether the current **NodeAdapter** object has been released from the re
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
+| boolean | Whether the reference to the backend entity node is released. The value **true** means that the reference to backend entity node is released, and **false** means the opposite.|
 
 **Example**
 
@@ -9356,6 +9415,11 @@ struct FrameNodeTypeTest {
 ![FrameNodeTextTest](figures/FrameNodeTextTest.png)
 
 ## Example of Node Operations
+
+This example shows how to dispatch a touch event to a child node through [dispatchInputEvent](#dispatchinputevent), and dispatch a key event to a child node through [dispatchKeyEvent](#dispatchkeyevent).
+
+Since API version 26.1.0, the [dispatchInputEvent](#dispatchinputevent) and [dispatchKeyEvent](#dispatchkeyevent) APIs are added.
+
 ```ts
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9381,7 +9445,7 @@ class MyNodeController extends NodeController {
     this.rootNode.appendChild(this.frameNode);
     this.childrenCount = this.childrenCount + 1;
 
-    // Create 10 child nodes in batches and mount them to the parent node.
+    // Create 10 child nodes in a batch and mount them to the parent node.
     for (let i = 0; i < 10; i++) {
       let childNode = new FrameNode(uiContext);
       this.childList.push(childNode);
@@ -9429,7 +9493,7 @@ class MyNodeController extends NodeController {
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
-      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      console.error(`${TEST_TAG} getchild at index {${index}} : fail`);
       return;
     }
     this.rootNode!.removeChild(childNode);
@@ -9455,29 +9519,29 @@ class MyNodeController extends NodeController {
     if (this.rootNode!.getFirstChild() === this.frameNode) {
       console.info(`${TEST_TAG} getFirstChild result: success. The first child of the rootNode is equals to frameNode.`);
     } else {
-      console.info(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
+      console.error(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
     }
     if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
       console.info(`${TEST_TAG} getNextSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getNextSibling result: fail.`);
+      console.error(`${TEST_TAG} getNextSibling result: fail.`);
     }
     if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
       console.info(`${TEST_TAG} getPreviousSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getPreviousSibling result: fail.`);
+      console.error(`${TEST_TAG} getPreviousSibling result: fail.`);
     }
     if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
       console.info(`${TEST_TAG} getParent result: success.`);
     } else {
-      console.info(`${TEST_TAG} getParent result: fail.`);
+      console.error(`${TEST_TAG} getParent result: fail.`);
     }
     if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
     } else {
-      console.info(`${TEST_TAG} get ArkTsNode fail.`);
+      console.error(`${TEST_TAG} get ArkTsNode fail.`);
     }
   }
 
@@ -9489,7 +9553,7 @@ class MyNodeController extends NodeController {
       if (this.rootNode!.getChild(0) === currentNode) {
         console.info(`${TEST_TAG} moveTo result: success.`);
       } else {
-        console.info(`${TEST_TAG} moveTo result: fail.`);
+        console.error(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
       console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
@@ -9602,7 +9666,7 @@ class MyNodeController extends NodeController {
     console.info(`${TEST_TAG}${JSON.stringify(inspectorInfo)}`);
   }
 
-  // Set the cross-language interaction option.
+  // Set the cross-language interaction options.
   setCrossLanguageOptions() {
     console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions())}`);
     try {
@@ -9624,6 +9688,30 @@ class MyNodeController extends NodeController {
     console.info(`${TEST_TAG}${bindingInfo?.nativeEventRegistered}`);
     console.info(`${TEST_TAG}${bindingInfo?.builtInEventRegistered}`);
     console.info(`${TEST_TAG}${JSON.stringify(bindingInfo)}`);
+  }
+
+  // Dispatch the touch event to the child node.
+  dispatchInputEvent() {
+    this.frameNode!.commonEvent.setOnTouch((event: TouchEvent) => {
+      let childNode = this.frameNode!.getChild(0);
+      if (childNode) {
+        let result = childNode.dispatchInputEvent(event, CompetitionStrategy.DEFAULT);
+        console.info(`${TEST_TAG} dispatchInputEvent result: ${result}`);
+      }
+    })
+    console.info(`${TEST_TAG} dispatchInputEvent registered`);
+  }
+
+  // Dispatch the key event to the child node.
+  dispatchKeyEvent() {
+    this.frameNode!.commonEvent.setOnKeyEvent((event: KeyEvent) => {
+      let childNode = this.frameNode!.getChild(0);
+      if (childNode) {
+        let result = childNode.dispatchKeyEvent(event);
+        console.info(`${TEST_TAG} dispatchKeyEvent result: ${result}`);
+      }
+    })
+    console.info(`${TEST_TAG} dispatchKeyEvent registered`);
   }
 
   throwError() {
@@ -9869,6 +9957,16 @@ struct Index {
           .onClick(() => {
             this.myNodeController.getInteractionEventBindingInfo();
           })
+        Button('dispatchInputEvent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.dispatchInputEvent();
+          })
+        Button('dispatchKeyEvent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.dispatchKeyEvent();
+          })
         Button('throwError')
           .width(300)
           .onClick(() => {
@@ -10064,7 +10162,7 @@ class MyNodeController extends NodeController {
     if (childNode!.getId() === 'N9') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: fail.`);
     }
   }
 
@@ -10074,7 +10172,7 @@ class MyNodeController extends NodeController {
     if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: fail.`);
     }
   }
 
@@ -10084,7 +10182,7 @@ class MyNodeController extends NodeController {
     if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: fail.`);
     }
   }
 }
@@ -10227,7 +10325,7 @@ struct Index {
     Column() {
       Button('add CommonEvent to Text')
         .onClick(() => {
-          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
         })
       Text('this is a Text')
         .fontSize(16)
@@ -10442,6 +10540,7 @@ export struct TrackNode {
   trackShadow: TrackShadow = new TrackShadow()
 
   @Builder defaultBuilder() {
+    // Empty function, used only to demonstrate the usage.
   }
 
   build() {
@@ -10511,6 +10610,7 @@ export class Track {
   private trackId: number = 0
 
   constructor() {
+    // Empty function, used only to demonstrate the usage.
   }
 
   tag(newTag: string): Track {
@@ -11262,7 +11362,7 @@ class MyNodeController extends NodeController {
     if (this.rootNode && !this.isRunning) {
       let currentProperty: number[] =
         this.rootNode.getNodePropertyValue(AnimationPropertyType.ROTATION); // Obtain the current node's final rotation property value.
-      if (currentProperty.length == 3) { // The rotation attribute is acquired successfully; the 3-element array represents rotation angles on the x, y, and z axes respectively.
+      if (currentProperty.length == 3) { // The rotation property is acquired successfully; the 3-element array represents rotation angles on the x, y, and z axes respectively.
         let endValue: number[];
         let startValue: number[] | undefined = undefined;
         if (currentProperty[2] >= 360) {

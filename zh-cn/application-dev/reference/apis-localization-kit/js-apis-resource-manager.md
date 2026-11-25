@@ -292,8 +292,8 @@ try {
 | DEVICE_TYPE_TABLET   | 0x01 | 平板。   |
 | DEVICE_TYPE_CAR      | 0x02 | 车机。   |
 | DEVICE_TYPE_TV       | 0x04 | 智慧屏。  |
-| DEVICE_TYPE_WEARABLE | 0x06 | 智能手表。   |
-| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | PC/2in1。   |
+| DEVICE_TYPE_WEARABLE | 0x06 | 智能穿戴。   |
+| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | 2in1。   |
 <!--RP1End-->
 
 ## ScreenDensity
@@ -6633,7 +6633,7 @@ try {
   // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为other的字符串
   let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
   console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
-  // 打印输出结果: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+  // 打印输出结果: getDoublePluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
 } catch (error) {
   let code = (error as BusinessError).code;
   let message = (error as BusinessError).message;
@@ -7514,7 +7514,7 @@ getNumber(resource: Resource): number
 
 | 类型     | 说明              |
 | ------ | --------------- |
-| number | resource对象对应的数值。<br>integer类型资源返回资源文件中定义的原始数值。<br>float类型资源不带单位时返回资源文件中定义的原始数值，带"vp"或"fp"单位时返回转换后的像素(px)值。转换公式：像素值 = 原始数值 × densityPixels。 |
+| number | resource对象对应的数值。integer类型或者float类型均返回资源文件中定义的原始数值。|
 
 **错误码：**
 

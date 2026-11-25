@@ -1,14 +1,15 @@
 # FAQs About Dynamic Attribute Setting
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=dbda7514fc4d743a6408faca2950d6a1c0cb2262 translatedAt=2026-11-03T08:15:18.523Z pushedAt=2026-11-03T08:22:13.203Z nl=1 -->
 
 This topic addresses common issues related to dynamic attribute setting.
 
-## JS Crash Occurs When AttributeModifier Is Used to Set Dynamic Attributes for a Component
+## Using AttributeModifier to Set Component Dynamic Attributes Causes JS Crash
 
 **Symptom**
 
@@ -20,11 +21,11 @@ A [JS crash](../dfx/jscrash-guidelines.md) occurs after **AttributeModifier** is
 
 **Solution**
 
-Go to the error log as prompted, view the error cause, and rectify the fault. For details, see the code example below.
+Go to the error log as prompted, view the error cause, and rectify the fault. For details, see the code example below. 
 
 **Code Example**
 
-In this example, a button is bound to **AttributeModifier** to demonstrate the scenario where an exception is thrown when an unsupported attribute is set. After the code is executed, a JS crash error is reported. In this example, deleting the code related to **reuseId** will allow the application to run normally.
+This example binds **AttributeModifier** to a **Button** to demonstrate a scenario where **AttributeModifier** throws an exception when setting an unsupported attribute. After running the sample code, a JS Crash error occurs. Refer to the animation below to jump to the specific error scenario. In this example, deleting the **reuseId**-related code allows it to run normally.
 
 ```ts
 // xxx.ets
@@ -39,7 +40,7 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {

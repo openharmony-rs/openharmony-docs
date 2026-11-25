@@ -1,9 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "详细说明方舟字节码文件的数据类型与组成结构，涵盖Header、Class、Method、Code、IndexSection等各部分的字段定义和存储方式，用于指导字节码文件的分析与修改。"
+keywords: [方舟字节码, 字节码文件格式, abc文件]
+doctype: guide
+status: active
+---
+
 # 方舟字节码文件格式
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @jokerxd-liu; @zmw1-->
-<!--Designer: @huyunhui1; @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @oatuwwutao; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

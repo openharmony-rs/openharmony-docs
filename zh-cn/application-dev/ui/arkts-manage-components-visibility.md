@@ -1,7 +1,7 @@
 # 感知组件可见性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -18,7 +18,7 @@
 |----- |---- |--- |
 |[组件曝光统计与分析](#组件曝光统计与分析) | onVisibleAreaApproximateChange |要监控的组件数量多，需要低频计算降低开销。 |
 |[资源按需加载与释放](#资源按需加载与释放) | onVisibleAreaChange |要监控的组件数量少，希望每帧检测确保状态及时更新。 |
-|[感知复杂视图切换](#感知复杂视图切换) | nodeRenderState监听 | 适合感知页面或页切换导致的可见性变化。 |
+|[感知复杂视图切换](#感知复杂视图切换) | nodeRenderState监听 | 适合感知页面切换导致的可见性变化。 |
 
 应用也可自行遍历计算组件可见性，但由于组件存在复杂的层次关系，自行计算涉及大量运算，通常不被推荐。
 
@@ -536,7 +536,7 @@ export function PageTwoBuilder(name: string) {
 }
 ```
 
-在resources/base/profile中创建route_map.json文件，并添加以下配置信息。
+在resources/base/profile中创建router_map.json文件，并添加以下配置信息。
 
 ```json
 {
@@ -553,10 +553,10 @@ export function PageTwoBuilder(name: string) {
 }
 ```
 
-在module.json5配置文件的module标签中定义routerMap字段，指向路由表配置文件route_map.json。
+在module.json5配置文件的module标签中定义routerMap字段，指向路由表配置文件router_map.json。
 
 ```json
-"routerMap": "$profile:route_map"
+"routerMap": "$profile:router_map"
 ```
 
 ## 常见问题

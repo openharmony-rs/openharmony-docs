@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "对比OpenSL ES与OHAudio的功能差异和开发模式差异，指导开发者从OpenSL ES平滑迁移到OHAudio开发音频业务。"
+keywords: [OpenSL ES, 接口迁移, OHAudio]
+doctype: guide
+status: active
+---
 # 从OpenSL ES切换到OHAudio(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

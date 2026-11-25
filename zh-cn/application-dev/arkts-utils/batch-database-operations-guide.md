@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "提供批量数据写数据库场景的开发指导：频繁数据库操作使用TaskPool处理，大容量数据操作借助Sendable对象引用传递避免序列化开销，并覆盖复杂类实例对象的Sendable改造与批量落库实现。"
+keywords: [批量数据库操作, TaskPool, Sendable, 大容量数据, 数据库写入, relationalStore, 引用传递, 序列化开销]
+doctype: guide
+status: active
+---
+
 # 批量数据写数据库场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -34,12 +42,12 @@ async function create(context: Context) {
   console.info(`Get Store.db successfully!`);
 
   // 创建表
-  const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-    'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-    'name TEXT NOT NULL, ' +
-    'age INTEGER, ' +
-    'salary REAL, ' +
-    'blobType BLOB)';
+  const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER,
+    salary REAL,
+    blobType BLOB)`;
   await store.executeSql(CREATE_TABLE_SQL);
   console.info(`Create table test successfully!`);
 }
@@ -201,12 +209,12 @@ struct Index {
      console.info(`Get Store.db successfully!`);
    
      // 创建表
-     const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-       'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-       'name TEXT NOT NULL, ' +
-       'age INTEGER, ' +
-       'salary REAL, ' +
-       'blobType BLOB)';
+     const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       name TEXT NOT NULL,
+       age INTEGER,
+       salary REAL,
+       blobType BLOB)`;
      await store.executeSql(CREATE_TABLE_SQL);
      console.info(`Create table test successfully!`);
    }
@@ -227,7 +235,7 @@ struct Index {
    }
    
    @Concurrent
-   async function query(context: Context): Promise<Array<relationalStore.ValuesBucket>> {
+   async function query(context: Context): Promise<collections.Array<SharedValuesBucket | undefined>> {
      const CONFIG: relationalStore.StoreConfig = {
        name: 'Store.db',
        securityLevel: relationalStore.SecurityLevel.S1,
@@ -241,11 +249,21 @@ struct Index {
      let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');
      let resultSet = await store.query(predicates); // 查询所有数据
      console.info(`Query data successfully! row count:${resultSet.rowCount}`);
+   
+     // 使用 collections.Array 作为 Sendable 容器存储结果
      let index = 0;
-     let result = new Array<relationalStore.ValuesBucket>(resultSet.rowCount);
+     let result = collections.Array.create<SharedValuesBucket | undefined>(resultSet.rowCount, undefined);
      resultSet.goToFirstRow();
      do {
-       result[index++] = resultSet.getRow();
+       // 逐字段从 ResultSet 读取数据，封装为 IValueBucket
+       let v: IValueBucket = {
+         id: resultSet.getLong(resultSet.getColumnIndex('id')),
+         name: resultSet.getString(resultSet.getColumnIndex('name')),
+         age: resultSet.getLong(resultSet.getColumnIndex('age')),
+         salary: resultSet.getDouble(resultSet.getColumnIndex('salary'))
+       };
+       // 包装为 @Sendable 类实例，支持跨线程引用传递
+       result[index++] = new SharedValuesBucket(v);
      } while (resultSet.goToNextRow());
      resultSet.close();
      return result;
@@ -403,12 +421,12 @@ struct Index {
        console.info('Get Store.db successfully!');
    
        // 创建表
-       const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-         'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-         'name TEXT NOT NULL, ' +
-         'age INTEGER, ' +
-         'salary REAL, ' +
-         'blobType BLOB)';
+       const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+         id INTEGER PRIMARY KEY AUTOINCREMENT,
+         name TEXT NOT NULL,
+         age INTEGER,
+         salary REAL,
+         blobType BLOB)`;
        await store.executeSql(CREATE_TABLE_SQL);
        console.info('Create table test successfully!');
        return true;

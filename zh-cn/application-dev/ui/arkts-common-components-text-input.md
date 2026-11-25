@@ -188,6 +188,7 @@ TextInput({
 ### 设置输入框自动填充类型
 
 输入框可以通过[contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12)属性设置自动填充类型。支持的类型请参考[ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12枚举说明)。
+
 <!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
 ``` TypeScript
@@ -199,6 +200,31 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   .contentType(ContentType.EMAIL_ADDRESS)
 ```
 
+TextArea组件可以通过[contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#contenttype12)和[enableAutoFill](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enableautofill12)属性设置自动填充类型，示例如下：
+
+<!-- @[auto_fill_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
+
+``` TypeScript
+// 邮箱地址自动填充类型
+// 请将$r('app.string.Auto_Fill_Email_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"input your email..."
+TextArea({ placeholder: $r('app.string.Auto_Fill_Email_PlaceHolder') })
+  .width('95%')
+  .height(40)
+  .margin(20)
+  .contentType(ContentType.EMAIL_ADDRESS)
+  .enableAutoFill(true)
+  .maxLength(20)
+// 街道地址自动填充类型
+// 请将$r('app.string.Auto_Fill_Street_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"input your street address..."
+TextArea({ placeholder: $r('app.string.Auto_Fill_Street_PlaceHolder') })
+  .width('95%')
+  .height(40)
+  .margin(20)
+  .contentType(ContentType.FULL_STREET_ADDRESS)
+  .enableAutoFill(true)
+  .maxLength(20)
+```
+<!--RP3--><!--RP3End-->
 
 ## 绑定文本输入框事件
 
@@ -311,27 +337,27 @@ TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、
 
 输入框中的文字被选中时会弹出包含剪切、复制、翻译、分享的菜单。
 
-TextInput:
+- TextInput
 
-<!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+  <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
-``` TypeScript
-// 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
-TextInput({ text: $r('app.string.show_selected_menu') })
-```
+  ``` TypeScript
+  // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+  TextInput({ text: $r('app.string.show_selected_menu') })
+  ```
 
-![TextInput_select_menu](figures/TexInput_select_menu.jpg)
+  ![TextInput_select_menu](figures/TexInput_select_menu.jpg)
 
-TextArea:
+- TextArea
 
-<!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+  <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
-``` TypeScript
-// 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
-TextArea({ text: $r('app.string.show_selected_menu') })
-```
+  ``` TypeScript
+  // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+  TextArea({ text: $r('app.string.show_selected_menu') })
+  ```
 
-![TextArea_select_menu](figures/TextArea_select_menu.jpg)
+  ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ### 系统菜单中自定义菜单项
 从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调中，进行菜单数据的设置。
@@ -532,11 +558,54 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
   .margin({ top: 100 })
   .copyOption(CopyOptions.InApp)
 ```
-
-
-
-
 ![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)
+
+### 设置文本选择的AI菜单
+
+从API version 22开始，TextInput、TextArea和Search组件支持通过[enableSelectedDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#enableselecteddatadetector22)属性配置文本选择AI菜单功能。开启后，选中文本时文本选择菜单中将显示AI实体识别选项，例如选中网址时菜单中显示“打开链接”选项。
+
+- TextInput
+
+  <!-- @[selectedDataDetector_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectedDataDetector.ets) -->
+
+  ``` TypeScript
+  // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
+  TextInput({ text: $r('app.string.SelectedDataDetector_Text_One') })
+    .copyOption(CopyOptions.LocalDevice)
+    .enableSelectedDataDetector(true)
+    .border({ width: 1, color: Color.Black })
+    .height(100)
+    .margin(10)
+  ```
+
+- TextArea
+
+  <!-- @[selectedDataDetector_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectedDataDetector.ets) -->
+
+  ``` TypeScript
+  // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
+  TextArea({ text: $r('app.string.SelectedDataDetector_Text_One') })
+    .copyOption(CopyOptions.LocalDevice)
+    .enableSelectedDataDetector(true)
+    .border({ width: 1, color: Color.Black })
+    .height(100)
+    .margin(10)
+  ```
+
+- Search
+
+  <!-- @[selectedDataDetector_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectedDataDetector.ets) -->
+
+  ``` TypeScript
+  // 请将$r('app.string.SelectedDataDetector_Text_One')替换为实际资源文件，在本示例中该资源文件的value值为"示例网址：www.example.com"
+  Search({ value: $r('app.string.SelectedDataDetector_Text_One') })
+    .copyOption(CopyOptions.LocalDevice)
+    .enableSelectedDataDetector(true)
+    .border({ width: 1, color: Color.Black })
+    .height(100)
+    .margin(10)
+  ```
+<!--RP2--><!--RP2End-->
 
 ## 设置输入框避让
 
@@ -590,9 +659,9 @@ import { KeyboardAvoidMode } from '@kit.ArkUI';
 <!-- @[cursor_avoid_part2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-// Used in UIAbility
+// 在UIAbility中使用
 onWindowStageCreate(windowStage: window.WindowStage): void {
-  // Main window is created, set main page for this ability
+  // 已创建主窗口，为该Ability设置主页面
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何通过App Linking实现安全的跨应用跳转，涵盖域名声明、网站关联配置、链接处理代码及拉起方调用openLink接口的开发步骤。"
+keywords: [App Linking, 应用间跳转, openLink, 域名校验, domainVerify, 应用链接]
+doctype: guide
+status: active
+---
 # 使用App Linking实现应用间跳转
 
 <!--Kit: Ability Kit-->
@@ -105,7 +112,7 @@
 
 1. 创建域名配置文件applinking.json。
 
-   内容为如下：
+   内容如下：
 
    ```json
    {
@@ -152,11 +159,15 @@ export default class AppLinkEntryAbility extends UIAbility {
     let uri = want?.uri;
     if (uri) {
       // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action');
-      // 例如，当action为showall时，展示所有的节目。
-      if (action === 'showall') {
-        // ...
+      try {
+        let urlObject = url.URL.parseURL(want?.uri);
+        let action = urlObject.params.get('action');
+        // 例如，当action为showall时，展示所有的节目。
+        if (action === 'showall') {
+          // ...
+        }
+      } catch (error) {
+        hilog.error(DOMAIN_NUMBER, TAG, 'Failed to parse URL: %{public}s', JSON.stringify(error));
       }
     }
   }
@@ -203,10 +214,10 @@ struct Index {
         // 仅以App Linking的方式打开应用
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
           })
           .catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
@@ -219,7 +230,7 @@ struct Index {
 ## FAQ
 
 
-1. 应用的Modules.json5文件skills设置不正确。
+1. 应用的module.json5文件skills设置不正确。
 
    检查"host"字段中是否是应用所对应的域名。
 

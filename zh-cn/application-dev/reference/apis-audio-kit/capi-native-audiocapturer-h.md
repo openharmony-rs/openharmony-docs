@@ -70,7 +70,10 @@ OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)
 
 释放输入音频流。
 
-**需要权限：** ohos.permission.MICROPHONE
+**需要权限：** 
+
+- API版本26.0.1+：N/A
+- API版本10-26.0.1：ohos.permission.MICROPHONE
 
 **起始版本：** 10
 
@@ -124,7 +127,10 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 暂停输入音频流。在暂停音频后，后续需要恢复录音的场景，建议使用pause。
 
-**需要权限：** ohos.permission.MICROPHONE
+**需要权限：** 
+
+- API版本26.0.1+：N/A
+- API版本10-26.0.1：ohos.permission.MICROPHONE
 
 **起始版本：** 10
 
@@ -151,7 +157,10 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 停止音频采集器，停止输入音频流后，如果需要彻底结束录音，建议使用stop。
 
-**需要权限：** ohos.permission.MICROPHONE
+**需要权限：** 
+
+- API版本26.0.1+：N/A
+- API版本10-26.0.1：ohos.permission.MICROPHONE
 
 **起始版本：** 10
 
@@ -504,7 +513,7 @@ OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, b
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数capturer为nullptr。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：操作状态异常，录音流未处于running状态。<br>         AUDIOSTREAM_ERROR_SYSTEM：系统异常，例如系统服务异常退出等。 |
+| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数capturer为nullptr。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：操作状态异常，录音流未处于running状态。 |
 
 ### OH_AudioCapturer_GetOverflowCount()
 

@@ -5,7 +5,7 @@
 <!--Designer: @cuile44; @fysun17; @AnruiWang-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=a92c62906a53dbb211f0a7456ddb51494343703a translatedAt=2026-09-04T03:37:35.922Z pushedAt=2026-09-09T09:11:03.721Z -->
+<!-- md-trans-meta sourceCommit=40f32de22bf3844030801fd151c8e4d2131d6ca7 translatedAt=2026-11-16T02:08:27.991Z pushedAt=2026-11-20T07:27:49.460Z nl=1 -->
 
 The ArkData Intelligence Platform (AIP) provides on-device intelligent data construction, enabling application data vectorization. It uses embedding models to convert multi-modal data such as unstructured text and images into semantic vectors. It applies to scenarios such as intelligent retrieval, content understanding, and similarity matching, helping developers solve the problem that unstructured data is difficult to compute and compare, and improving the processing efficiency and accuracy of applications in scenarios such as recommendation systems, intelligent Q&A, and image recognition.
 
@@ -41,7 +41,7 @@ Obtains a text embedding model. This API uses a promise to return the result.
 
 | Type                         | Description                                |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;[TextEmbedding](#textembedding)&gt; | Promise object that returns the text embedding model for text vectorization. |
+| Promise&lt;[TextEmbedding](#textembedding)&gt; | Promise used to return the text embedding model for text vectorization. |
 
 **Error codes**
 
@@ -49,8 +49,8 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -130,7 +130,7 @@ Obtains an image embedding model. This API uses a promise to return the result.
 
 | Type                         | Description                                |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;[ImageEmbedding](#imageembedding)&gt; | Promise object that returns the image embedding model for image vectorization. |
+| Promise&lt;[ImageEmbedding](#imageembedding)&gt; | Promise used to return the image embedding model for image vectorization. |
 
 **Error codes**
 
@@ -138,8 +138,8 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -194,8 +194,8 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -229,8 +229,8 @@ Represents the configuration an embedded model.
 | version    | [ModelVersion](#modelversion)           | No| No  |Version of the model.|
 | isNpuAvailable | boolean                | No| No  | Whether to use the NPU to accelerate the vectorization process. The value **true** means to use the NPU, and the value **false** means the opposite. If this parameter is set to **true** but the device does not support NPUs, loading an embedding model will trigger error 31300000.|
 | cachePath | string                | No  | Yes  | If NPU is used for acceleration, a local path is required for model caching. The format is /xxx/xxx/xxx, where xxx is the path address, for example, "/data". The maximum length is 512 characters. The default value is "". An exception is thrown when the length exceeds the limit. |
-| modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | No | Yes   |Type and version information of the cloud-side model. Configure this parameter when a text embedding model is used. The supported model information is obtained through the [getSupportedCloudModel](#intelligencegetsupportedcloudmodel) API. The default value is empty.<br/>**Since:** 26.0.0<br/>**Model Constraint:** This API can be used only in the stage model. |
-| networkPolicy | [NetworkPolicy](#networkpolicy) | No | Yes |Network policy used when downloading the cloud-side model. The default value is WIFI_ONLY. This parameter takes effect only when a text embedding model is used, and does not take effect when an image embedding model is used.<br/>**Since:** 26.0.0<br/>**Model Constraint:** This API can be used only in the stage model. |
+| modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | No | Yes   |Type and version information of the cloud-side model. Configure this parameter when a text embedding model is used. The supported model information is obtained through the [getSupportedCloudModel](#intelligencegetsupportedcloudmodel) API. The default value is empty.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model. |
+| networkPolicy | [NetworkPolicy](#networkpolicy) | No | Yes |Network policy used when downloading the cloud-side model. The default value is WIFI_ONLY. This parameter takes effect only when a text embedding model is used, and does not take effect when an image embedding model is used.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model. |
 
 ## ModelVersion
 
@@ -333,7 +333,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -373,7 +373,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -421,8 +421,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -476,8 +475,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -536,7 +534,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -576,7 +574,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**
@@ -624,8 +622,7 @@ For details about the error codes, see [Common Error Codes](../errorcode-univers
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **Example**

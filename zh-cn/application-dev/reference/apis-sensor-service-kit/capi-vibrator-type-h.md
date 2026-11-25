@@ -2,7 +2,7 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @LiuChao-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -80,5 +80,6 @@ enum Vibrator_Usage
 | VIBRATOR_USAGE_MEDIA = 6 | 媒体。用于音乐、视频等媒体应用场景，振动与媒体内容同步，增强沉浸体验。 |
 | VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | 物理反馈。用于游戏、模拟等需要物理反馈的场景，提供物理按键反馈、触觉力反馈等物理交互体验，振动模式可自定义，模拟真实触感。 |
 | VIBRATOR_USAGE_SIMULATED_REALITY = 8 | 模拟现实。用于VR/AR等沉浸式场景的触觉反馈，振动强度和模式精确可控，提供逼真的环境反馈。 |
+| VIBRATOR_USAGE_MAX | 最大值，无实际意义。 |
 
 

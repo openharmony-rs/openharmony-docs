@@ -17,7 +17,7 @@
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
 
@@ -27,8 +27,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AbilityRuntime_ChildProcessInfoHandle](capi-nativechildprocess-info.md) | OH_AbilityRuntime_ChildProcessInfoHandle | 指向子进程信息的句柄。 |
-| [OH_AbilityRuntime_ChildProcessInfosHandle](capi-nativechildprocess-infos.md) | OH_AbilityRuntime_ChildProcessInfosHandle |  指向子进程信息集合的句柄。 |
+| [OH_AbilityRuntime_ChildProcessInfo](capi-nativechildprocess-info.md) | OH_AbilityRuntime_ChildProcessInfoHandle | 指向子进程信息的句柄。 |
+| [OH_AbilityRuntime_ChildProcessInfos](capi-nativechildprocess-infos.md) | OH_AbilityRuntime_ChildProcessInfosHandle |  指向子进程信息集合的句柄。 |
 
 ### 函数
 
@@ -52,7 +52,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 按索引从子进程信息集合中获取特定子进程信息句柄。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -78,7 +78,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 
 获取子进程的PID。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -103,7 +103,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 
 获取子进程的父进程PID。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -128,7 +128,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 
 获取子进程的进程名。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -155,7 +155,7 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 
 释放子进程信息集合。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

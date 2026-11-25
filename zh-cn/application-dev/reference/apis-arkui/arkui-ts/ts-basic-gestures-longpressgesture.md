@@ -1,7 +1,7 @@
 # LongPressGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -28,6 +28,10 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。
 
 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
+
+> **说明：**
+>
+> 当长按过程中触发应用窗口退后台/销毁，手指/手写笔输入源切换（手写笔输入源切换包括手写笔悬浮状态场景），屏幕旋转时，长按手势会被取消。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -68,7 +72,7 @@ LongPressGesture(options?: LongPressGestureHandlerOptions)
 
 >  **说明：**
 >
-> - 在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
+> - 在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为undefined。建议优先使用fingerInfos。
 >
 > - 长按手势触发后，[GestureEvent](ts-gesture-common.md#gestureevent对象说明)中fingerList和fingerInfos的信息仅在有手指按下时才会更新，手指抬起时不会更新。
 
@@ -152,7 +156,7 @@ struct LongPressGestureExample {
   build() {
     Column() {
       Text('LongPress onAction:' + this.count).fontSize(28)
-        // 单指长按文本触发该手势事件。
+        // 至少一指长按文本触发该手势事件。
         .gesture(
         // 设置长按手势识别器识别的手势的最大移动距离为200px。
         LongPressGesture({ repeat: true, allowableMovement: 200 })

@@ -36,7 +36,7 @@
   - [@ohos.nearlink.advertising (星闪广播能力)](js-apis-nearlink-advertising.md)
   - [@ohos.nearlink.scan (星闪扫描能力)](js-apis-nearlink-scan.md)
   - [@ohos.nearlink.ssap (星闪SSAP连接能力)](js-apis-nearlink-ssap.md)
-  - [@ohos.nearlink.dataTransfer (星闪数传能力)](js-apis-nearlink-data-transfer-api.md)
+  - [@ohos.nearlink.dataTransfer (星闪数据传输能力)](js-apis-nearlink-data-transfer-api.md)
   - [@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](js-apis-nearlink-cdsm.md)
   - [@ohos.nearlink.constant (星闪公共常量定义)](js-apis-nearlink-constant.md)
   <!--Del-->

@@ -1,0 +1,441 @@
+# @ohos.multimodalAwareness.carAwareness (Car Awareness)
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @ultimate_lin-->
+<!--Designer: @charlie3wx-->
+<!--Tester: @fhzs-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=24b4df4dc27495886e9363f251875137a29942b4 translatedAt=2026-11-03T05:58:04.565Z pushedAt=2026-11-03T12:08:25.578Z nl=1 -->
+
+This module provides car awareness capabilities, including spatial motion interaction, real-time weather recognition, and refueling status recognition.
+
+**Since:** 26.0.1
+
+## Modules to Import
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+```
+
+## Capability
+
+Enumerates the capability types supported by car awareness.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+| Name | Value | Description |
+| ---- | ---- | ---- |
+| SPATIAL_MOTION | 'SpatialMotion' | Air gesture awareness capability. Supports recognition of the user's air gestures for operating the screen. |
+| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather awareness capability. Supports recognition of the weather status of the environment where the vehicle is currently located. |
+| REFUELING | 'Refueling' | Recharge recognition capability. Supports recognition of the start and end status of vehicle refueling. |
+
+## SpatialMotionInfo
+
+Interface for spatial motion response info.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| pointX | number | No | No | X-axis coordinate of the hand on the screen. |
+| pointY | number | No | No | Y-axis coordinate of the hand on the screen. |
+| event | number | No | No | Gesture event type.<br>-1: invalid<br>0: ready<br>1: move<br>2: tap |
+
+## carAwareness.onSpatialMotion
+
+onSpatialMotion(callback: Callback\<SpatialMotionInfo\>): void
+
+Subscribes to spatial motion awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. The data is returned asynchronously via callback.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permission:** ohos.permission.vehicle.MMA_SPATIALACTION
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| callback | Callback\<SpatialMotionInfo\> | Yes | Callback invoked to return the spatial motion awareness data. |
+
+**Error codes**
+
+For details about the error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+
+| Error Code ID | Error Message |
+| ---- | ---- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 34000001 | Service exception. |
+| 34000002 | Specific capability not supported. |
+
+**Example**:
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'CarAwareness';
+
+try {
+  carAwareness.onSpatialMotion((data) => {
+    hilog.info(DOMAIN, TAG, 'Spatial motion event: %{public}d', data.event);
+    hilog.info(DOMAIN, TAG, 'Point coordinate: (%{public}d, %{public}d)', data.pointX, data.pointY);
+  });
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  hilog.error(DOMAIN, TAG, 'Subscribe spatial motion failed, error code: %{public}d', e.code);
+}
+```
+
+## carAwareness.offSpatialMotion
+
+offSpatialMotion(callback?: Callback\<SpatialMotionInfo\>): void
+
+Unsubscribes from spatial motion results.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required Permission:** ohos.permission.vehicle.MMA_SPATIALACTION
+
+**System Capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| callback | Callback\<SpatialMotionInfo\> | No | Callback for spatial motion event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
+
+**Error Codes**
+
+For details about the error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+
+| Error Code ID | Error Message |
+| ---- | ---- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 34000001 | Service exception. |
+
+**Example**:
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'CarAwareness';
+
+// Unsubscribe the specified listener.
+let motionCallback = (motionInfo : carAwareness.SpatialMotionInfo) => {
+  hilog.info(DOMAIN, TAG, 'Spatial motion data received');
+};
+
+try {
+  carAwareness.offSpatialMotion(motionCallback);
+  hilog.info(DOMAIN, TAG, 'Unsubscribe spatial motion succeed');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  hilog.error(DOMAIN, TAG, 'Unsubscribe spatial motion failed, error code: %{public}d', e.code);
+}
+
+// Unsubscribe all listeners.
+try {
+  carAwareness.offSpatialMotion();
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  hilog.error(DOMAIN, TAG, 'Unsubscribe all spatial motion failed, error code: %{public}d', e.code);
+}
+```
+
+## RealTimeWeatherInfo
+
+Interface for real-time weather response info.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| weather | number | No | No | Weather status.<br>-1: invalid<br>0: other<br>1: fog<br>2: dense fog<br>3: snow<br>4: heavy snow<br>5: rain<br>6: heavy rain |
+
+## carAwareness.onRealTimeWeather
+
+onRealTimeWeather(callback: Callback\<RealTimeWeatherInfo\>): void
+
+Subscribes to real-time weather awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. The data is returned asynchronously via callback.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permission:** ohos.permission.vehicle.MMA_WEATHER
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| callback | Callback\<RealTimeWeatherInfo\> | Yes | Callback invoked to return the real-time weather awareness data. |
+
+**Error codes**
+
+For details about the error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+
+| Error Code ID | Error Message |
+| ---- | ---- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 34000001 | Service exception. |
+| 34000002 | Specific capability not supported. |
+
+**Example**:
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'CarAwareness';
+
+try {
+  carAwareness.onRealTimeWeather((data) => {
+    hilog.info(DOMAIN, TAG, 'Current weather status: %{public}d', data.weather);
+  });
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  hilog.error(DOMAIN, TAG, 'Subscribe realtime weather failed, error code: %{public}d', e.code);
+}
+```
+
+## carAwareness.offRealTimeWeather
+
+offRealTimeWeather(callback?: Callback\<RealTimeWeatherInfo\>): void
+
+Unsubscribes from real-time weather results.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permission:** ohos.permission.vehicle.MMA_WEATHER
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| callback | Callback\<RealTimeWeatherInfo\> | No | Callback for the real-time weather event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
+
+**Error codes**
+
+For details about the error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+
+| Error Code ID | Error Message |
+| ---- | ---- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 34000001 | Service exception. |
+
+**Example**:
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'CarAwareness';
+
+try {
+  carAwareness.offRealTimeWeather();
+  hilog.info(DOMAIN, TAG, 'Unsubscribe realtime weather succeed');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  hilog.error(DOMAIN, TAG, 'Unsubscribe realtime weather failed, error code: %{public}d', e.code);
+}
+```
+
+## RefuelingInfo
+
+Interface for refueling response info.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API supports use in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| status | number | No | No | Refueling status.<br>-1: invalid<br>0: idle (refueling not started)<br>1: refueling started<br>2: refueling finished |
+
+## carAwareness.onRefueling
+
+onRefueling(callback: Callback\<RefuelingInfo\>): void
+
+Subscribes to the refueling status awareness result. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. This API uses an asynchronous callback to return the data.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API supports use in atomic services since API version 26.0.1.
+
+**Required permission:** ohos.permission.vehicle.MMA_ENERGYREFILL
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| callback | Callback\<RefuelingInfo\> | Yes | Callback invoked to return the refueling recognition data. |
+
+**Error codes**
+
+For details about the error codes, see [Car Awareness error codes](errorcode-carAwareness.md).
+
+| Error Code ID | Error Message |
+| ---- | ---- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 34000001 | Service exception. |
+| 34000002 | Specific capability not supported. |
+
+**Example**:
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'CarAwareness';
+
+try {
+  carAwareness.onRefueling((data) => {
+    hilog.info(DOMAIN, TAG, 'Refueling status: %{public}d', data.status);
+  });
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  hilog.error(DOMAIN, TAG, 'Subscribe refueling failed, error code: %{public}d', e.code);
+}
+```
+
+## carAwareness.offRefueling
+
+offRefueling(callback?: Callback\<RefuelingInfo\>): void
+
+Unsubscribes from the refueling status result.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in an atomic service since API version 26.0.1.
+
+**Required permission:** ohos.permission.vehicle.MMA_ENERGYREFILL
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | ---- | ---- |
+| callback | Callback\<RefuelingInfo\> | No | Callback for the refueling status event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
+
+**Error codes**
+
+For details about the error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+
+| Error Code ID | Error Message |
+| ---- | ---- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 34000001 | Service exception. |
+
+**Example**:
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'CarAwareness';
+
+try {
+  carAwareness.offRefueling();
+  hilog.info(DOMAIN, TAG, 'Unsubscribe refueling succeed');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  hilog.error(DOMAIN, TAG, 'Unsubscribe refueling failed, error code: %{public}d', e.code);
+}
+```
+
+## carAwareness.getAllCapabilityList
+
+getAllCapabilityList(): Promise&lt;Capability[]&gt;
+
+Obtains the list of all car awareness capabilities supported by the current device.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+
+**Returns**
+
+| Type | Description |
+| ---- | ---- |
+| Promise\<Capability[]\> | Promise used to return the list of awareness capability enums supported by the device. |
+
+**Error code:**
+
+For details about the following error codes, see [Car Awareness Error Code](errorcode-carAwareness.md).
+
+| Error Code ID | Error Message |
+| ---- | ---- |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 34000001 | Service exception. |
+
+**Example**:
+
+```ts
+import { carAwareness } from '@kit.MultimodalAwarenessKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG = 'CarAwareness';
+
+carAwareness.getAllCapabilityList()
+  .then((list) => {
+    hilog.info(DOMAIN, TAG, 'Supported capability list: %{public}s', JSON.stringify(list));
+  })
+  .catch((err: BusinessError) => {
+    hilog.error(DOMAIN, TAG, 'Get capability list failed, error code: %{public}d', err.code);
+  });
+```

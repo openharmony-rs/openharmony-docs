@@ -44,6 +44,7 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Permission verification failed. A non-system application calls a system API. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -150,6 +151,7 @@ getWant(agent: WantAgent): Promise\<Want\>
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Permission verification failed. A non-system application calls a system API. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -244,7 +246,7 @@ setWantAgentMultithreading(isMultithreadingSupported: boolean) : void
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 202       | Not System App. Interface caller is not a system app. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**：
@@ -323,6 +325,8 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                            |
@@ -343,8 +347,8 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 201       | The application does not have permission to call the interface. |
-| 202       | The application is not system-app, can not use system-api. |
+| 201       | Permission verification failed. The application does not have the permission required to call the API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 16000020   | The context is not ability context. |
 | 16000151   | Invalid wantAgent object.|
 | 16000153   | The WantAgent has been canceled.|
@@ -399,7 +403,7 @@ class MyAbility extends UIAbility {
       // 创建wantAgent对象
       wantAgent.getWantAgent(wantAgentInfo, (err: BusinessError, data: WantAgent) => {
         if (err) {
-          console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+          console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
         } else {
           wantAgentData = data;
         }
@@ -460,7 +464,7 @@ createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 202       | Not System App. Interface caller is not a system app. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -534,7 +538,7 @@ isLocalWantAgent(agent: WantAgent): boolean
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 202       | Not System App. Interface caller is not a system app. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 

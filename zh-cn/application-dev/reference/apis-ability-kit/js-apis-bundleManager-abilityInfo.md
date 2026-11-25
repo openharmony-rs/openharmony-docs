@@ -57,7 +57,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 描述窗口尺寸。
 
- <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+ **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
  **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

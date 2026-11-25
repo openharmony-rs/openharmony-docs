@@ -8,7 +8,7 @@
 
 应用可以使用faultLogger接口查询系统侧缓存的当前应用的故障日志。接口以应用包名和系统分配的UID作为唯一键值。
 
-系统侧保存的应用故障日志数量受系统日志的压力限制，推荐使用[@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md)订阅APP_CRASH及APP_FREEZE等故障事件。
+系统侧保存的故障信息与应用故障日志受系统压力限制，会被老化删除。故障信息被老化后会查询不到结果。故障信息存在但故障日志文件被老化后查询的故障信息数据结构中fullLog会打印错误信息`Fail to get log, fd is -1`。推荐使用[@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md)订阅APP_CRASH及APP_FREEZE等故障事件。
 
 > **说明：**
 >
@@ -35,9 +35,9 @@ import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | NO_SPECIFIC | 0 | 不区分故障类型。 |
-| CPP_CRASH | 2 | C++程序故障类型。 |
+| CPP_CRASH | 2 | Native运行时异常。 |
 | JS_CRASH | 3 | JS程序故障类型。 |
-| APP_FREEZE | 4 | 应用程序卡死故障类型。 |
+| APP_FREEZE | 4 | 应用程序冻屏故障类型。 |
 
 ## FaultLogInfo
 
@@ -69,7 +69,7 @@ query(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;FaultLogInfo&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | 是 | 输入要查询的故障类型。 |
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
 
 **错误码：**
 
@@ -77,8 +77,6 @@ query(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;FaultLogInfo&gt;
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **示例：**
@@ -131,7 +129,7 @@ query(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
 
 **错误码：**
 
@@ -139,8 +137,6 @@ query(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **示例：**
@@ -190,7 +186,7 @@ querySelfFaultLog(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;Faul
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | 是 | 输入要查询的故障类型。 |
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
 
 **示例：**
 
@@ -242,7 +238,7 @@ querySelfFaultLog(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&g
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
 
 **示例：**
 

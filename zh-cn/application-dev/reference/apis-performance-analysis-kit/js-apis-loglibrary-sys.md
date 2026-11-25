@@ -26,6 +26,8 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name | string | 否 | 否 | 文件名称。 |
@@ -43,6 +45,8 @@ list(logType: string): LogEntry[]
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -91,6 +95,8 @@ copy(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名    | 类型                    | 必填 | 说明 |
@@ -114,7 +120,7 @@ copy(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **示例：**
 
@@ -153,6 +159,8 @@ copy(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
@@ -171,7 +179,7 @@ copy(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **示例：**
 
@@ -206,6 +214,8 @@ move(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名    | 类型                    | 必填 | 说明 |
@@ -229,7 +239,7 @@ move(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **示例：**
 
@@ -268,6 +278,8 @@ move(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
@@ -286,7 +298,7 @@ move(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **示例：**
 
@@ -321,6 +333,8 @@ remove(logType: string, logName: string): void
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
@@ -337,7 +351,7 @@ remove(logType: string, logName: string): void
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **示例：**
 

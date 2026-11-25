@@ -3,9 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ea78c82024f7639bbbf160dc2e6fc09ba1843b7e translatedAt=2026-11-13T04:59:27.713Z pushedAt=2026-11-13T05:51:31.715Z nl=1 -->
 
 The **access** module provides APIs for enabling and disabling Bluetooth and obtaining the Bluetooth status.
 
@@ -202,6 +203,9 @@ getState(): BluetoothState
 
 Obtains the Bluetooth state.
 
+**Required permissions**:
+- API versions 10 to 12: ohos.permission.ACCESS_BLUETOOTH
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -239,6 +243,9 @@ try {
 on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
 Enables listening for Bluetooth status change events of the local device. This API uses an asynchronous callback to return the result. Since API version 18, the **ohos.permission.ACCESS_BLUETOOTH** permission is no longer verified.
+
+**Required permissions**:
+- API versions 10 to 17: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -281,6 +288,9 @@ try {
 off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
 Disables listening for Bluetooth status change events of the local device. Since API version 18, the **ohos.permission.ACCESS_BLUETOOTH** permission is no longer verified.
+
+**Required permissions**:
+- API versions 10 to 17: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -326,7 +336,7 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 Stores the virtual MAC address of a Bluetooth device persistently. This API uses a promise to return the result.
 - The device address (virtual MAC address) obtained through Bluetooth APIs, such as the scan API, is different from the actual device MAC address. The Bluetooth subsystem stores the mapping between the virtual MAC address and the actual device MAC address. If the application wants to perform operations on the Bluetooth device for a long time, you are advised to use this API to store the virtual MAC address of the device persistently. The address mapping will not change.
 - The virtual MAC address to be stored persistently must be valid. You can use [access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16) to check whether its validity.
-- When using this API, ensure that the real address of the peer Bluetooth device corresponding to the virtual MAC address remains unchanged. If the real address of the peer device changes, the persistently stored address will become invalid and unusable.
+- When using this API, ensure that the real address of the peer Bluetooth device corresponding to the virtual MAC address remains unchanged. If the real address of the peer device changes, the persistently stored address will become invalid and unusable. If the app is uninstalled and reinstalled, the persistent storage will become invalid and the app needs to be added again.
 - You can call [access.deletePersistentDeviceId](#accessdeletepersistentdeviceid16) to delete the persistently stored virtual MAC address.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
@@ -526,7 +536,7 @@ The common UUID formats include 16-bit, 32-bit, and 128-bit UUIDs. The 128-bit U
 - If a 16-bit UUID is entered, for example, 1801, "00001801-0000-1000-8000-00805f9b34fb" is output.
 - If a 32-bit UUID is entered, for example, 12341801, "12341801-0000-1000-8000-00805f9b34fb" is output.
 - If a 128-bit UUID is entered, for example, "11112222-3333-4444-5555-666677778888", the UUID is output directly.
-- If the entered UUID does not meet the preceding format or contains characters that are not in the hexadecimal range, the [401](../errorcode-universal.md#401-parameter-check-failed) error code is returned.
+- If the entered UUID does not meet the preceding format or contains characters that are not in the hexadecimal range, the [401](../errorcode-universal.md#401-function-parameter-quantity-or-type-mismatch) error code is returned.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

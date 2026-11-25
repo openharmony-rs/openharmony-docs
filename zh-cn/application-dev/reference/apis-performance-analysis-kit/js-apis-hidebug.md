@@ -240,7 +240,7 @@ getServiceDump(serviceid: number, fd: number, args: Array\<string>): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed,Possible causes:1.The parameter type error. 2.The args parameter is not string array.  |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.  |
 | 11400101 | ServiceId invalid. The system ability does not exist.                                           |
 
 **示例**：
@@ -289,7 +289,7 @@ startJsCpuProfiling(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed,Parameter type error.                        |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                        |
 
 **示例**：
 
@@ -329,11 +329,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>9+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string): void
 
 虚拟机堆数据转储。
+
+**起始版本：** 9
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)
 
 > **注意**：
 >
@@ -353,7 +359,7 @@ dumpJsHeapData(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | The parameter check failed, Parameter type error.                      |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                      |
 
 **示例**：
 
@@ -368,11 +374,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>24+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string, needClean: boolean): void
 
 虚拟机堆数据转储，支持清除nodeId缓存。
+
+**起始版本：** 24
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)
 
 > **注意**：
 >
@@ -464,7 +476,7 @@ dumpHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
 
 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 
@@ -555,7 +567,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appThreadCpuUsage: hidebug.ThreadCpuUsage[] = hidebug.getAppThreadCpuUsage();
 for (let i = 0; i < appThreadCpuUsage.length; i++) {
-  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}`);
+  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}, threadName=${appThreadCpuUsage[i].threadName}`);
 }
 ```
 
@@ -599,7 +611,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not within the enumeration type. 3.The parameter type error or parameter order error. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 11400102 | Capture trace already enabled.                                         |
 | 11400103 | No write permission on the file.                                |
 | 11400104 | Abnormal trace status.                                 |
@@ -818,7 +830,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not in the specified type. 3.The parameter type error or parameter order error.  |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 11400104 | Set limit failed due to remote exception. |
 
 **示例**：
@@ -1003,7 +1015,7 @@ getVMRuntimeStat(item: string): number
 
 | 错误码ID | 错误信息                                                                                                       |
 | ------- |------------------------------------------------------------------------------------------------------------|
-| 401 | Possible causes: 1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1057,6 +1069,7 @@ VM内存信息。
 | -------------------| ------- |----|----| ----------------------------------- |
 | threadId           | number  | 否  | 否  | 线程号。      |
 | cpuUsage           | number  | 否  | 否  | 线程CPU使用率。 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**起始版本**：26.0.1 |
 
 ## tags<sup>12+</sup>
 
@@ -1749,4 +1762,66 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
+```
+
+## hidebug.getAppRunningUniqueId
+
+getAppRunningUniqueId(): string
+
+获取应用程序的运行唯一标识符。
+
+**起始版本**：26.0.1
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| string | 返回运行唯一标识ID字符串。失败时返回空字符串。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let appRunningId = hidebug.getAppRunningUniqueId();
+console.info(`appRunningId: ${appRunningId}`);
+```
+
+## hidebug.getAppSharedHeapObjectUsedSize
+
+getAppSharedHeapObjectUsedSize(): bigint
+
+获取虚拟机中共享堆对象所占用的内存大小。
+
+**起始版本**：26.1.0
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| bigint | 虚拟机中共享堆对象所占用的内存大小，单位为KB。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug SharedHeapObjectUsedSize错误码](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------------------------------------------------- |
+| 11400104 | VM instance exception.                                           |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let sharedHeap = hidebug.getAppSharedHeapObjectUsedSize();
+console.info(`sharedHeap: ${sharedHeap}`);
 ```

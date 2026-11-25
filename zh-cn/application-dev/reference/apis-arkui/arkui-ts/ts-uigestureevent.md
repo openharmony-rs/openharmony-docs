@@ -1,7 +1,7 @@
 # 设置组件绑定的手势
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,7 +14,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 在 [GestureEvent](ts-gesture-common.md#gestureevent对象说明) 的 fingerList 元素中，手指索引编号与位置相对应，即 fingerList[index] 的 id 为 index。对于先按下但未参与当前手势触发的手指，fingerList 中对应的位置为空。建议优先使用 fingerInfos。
+> - 在 [GestureEvent](ts-gesture-common.md#gestureevent对象说明) 的 fingerList 元素中，手指索引编号与位置相对应，即 fingerList[index] 的 id 为 index。对于先按下但未参与当前手势触发的手指，fingerList 中对应的位置为undefined。建议优先使用 fingerInfos。
 
 ## UIGestureEvent
 
@@ -59,7 +59,7 @@ addParallelGesture\<T>(gesture: GestureHandler\<T>, mask?: GestureMask): void
 
 removeGestureByTag(tag: string): void
 
-移除该组件上通过modifier绑定的设置为指定标志的手势，适用于组件交互模式切换或业务状态变化时取消某个已标记手势的场景。
+移除该组件上通过modifier绑定且设置了指定标志的手势，适用于组件交互模式切换或业务状态变化时取消某个已标记手势的场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

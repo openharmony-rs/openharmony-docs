@@ -5,11 +5,12 @@
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3bb0b74f282f4cf3e6771fa62fcea0d1a886f5bc translatedAt=2026-11-04T01:23:15.329Z pushedAt=2026-11-04T01:45:23.298Z nl=1 -->
 
 
 The [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) component is a container that is able to display child components in looping mode. It is typically used in scenarios such as display of recommended content on the home page.
 
-The **Swiper** component provides a preloading mechanism, which you can use to improve the swipe experience in complex scenarios. This mechanism allows for prebuilding and prerendering components when the main thread is idle. <!--Del-->For details, see [High-Performance Swiper Development](../performance/swiper_optimization.md).<!--DelEnd-->
+For complex page scenarios, you can use the preloading mechanism of the Swiper component to build and lay out components in advance by leveraging the idle time of the main thread, thereby optimizing the swiping experience.
 
 
 ## Layout and Constraints

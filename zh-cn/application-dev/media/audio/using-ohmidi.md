@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍如何使用OH_MIDI在C/C++层与外接MIDI设备交互：覆盖创建客户端、枚举打开USB或蓝牙设备、管理输入输出端口、以UMP格式收发MIDI消息的完整开发步骤。"
+keywords: [OH_MIDI, MIDI应用开发, MIDI设备枚举, MIDI端口管理, UMP格式, MIDI消息收发, SysEx消息发送, 蓝牙MIDI设备连接, OH_MIDIClient_Create, OH_MIDIDevice_Send, 蓝牙MIDI连接失败怎么办]
+doctype: guide
+status: active
+---
+
 # 使用OH_MIDI进行MIDI开发(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -26,7 +34,7 @@ OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++
 
 ## 系统能力检查
 
-使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/syscap__ndk_8h.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
+使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/syscap-ndk-8h.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
 
 ## 接口说明
 
@@ -95,7 +103,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
 - onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑，如重新创建客户端。
 
-通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
+通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。接口拉起MIDI服务会较为耗时，建议放在非主线程中运行。
 
 <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -560,14 +568,8 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
     uint32_t eventsWritten = 0;
     OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    napi_create_object(env, &result);
-    napi_value statusValue;
-    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
-    napi_set_named_property(env, result, "status", statusValue);
-    napi_value writtenValue;
-    napi_create_uint32(env, eventsWritten, &writtenValue);
-    napi_set_named_property(env, result, "eventsWritten", writtenValue);
-    return result;
+    // ...
+}
 ```
 
 **UMP格式说明**
@@ -882,21 +884,6 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
     }
 }
 ```
-
-## 完整示例
-
-完整的示例代码可以在示例项目中查看：
-- 示例项目路径：`https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi`。
-
-示例项目展示了：
-- 创建和销毁MIDI客户端。
-- 设备枚举和设备变化回调。
-- 打开/关闭设备（USB和BLE）。
-- 获取端口信息。
-- 打开/关闭输入输出端口。
-- 发送MIDI消息（包括Note On/Off和SysEx）。
-- 接收MIDI消息回调。
-- 使用userData传递上下文数据。
 
 ## 相关参考
 

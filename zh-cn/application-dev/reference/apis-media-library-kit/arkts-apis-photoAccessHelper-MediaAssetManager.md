@@ -53,9 +53,9 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry. |
 
 **示例：**
 
@@ -138,9 +138,9 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry. |
 
 **示例：**
 
@@ -222,10 +222,10 @@ static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: R
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801   | Capability not supported. <br> 适用版本：18+      |
-| 14000011       | System inner fail.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. <br> 适用版本：18+ |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter parsing failed, please check the number and types of parameters.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is valid and retry.<br>3. Failed to initialize the dataHandler callback, possible causes: <br>(1) Memory insufficient; <br>(2) IPC timeout. Please retry. |
 
 **示例：**
 
@@ -307,10 +307,10 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801  | Capability not supported. <br> 适用版本：15+      |
-| 14000011       | System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. <br> 适用版本：15+ |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Parameter parsing failed, please check the number and types of parameters.<br>2. The dataHandler parameter must be a valid object.<br>3. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is valid and retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -344,6 +344,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+        console.error('photoAsset is undefined');
+        return;
+      }
       await photoAccessHelper.MediaAssetManager.requestVideoFile(context, photoAsset, requestOptions, fileUri, handler);
       console.info('requestVideoFile successfully');
   });
@@ -379,9 +383,9 @@ static cancelRequest(context: Context, requestId: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please check if the context is valid and retry.<br>2. The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
 
 **示例：**
 
@@ -430,8 +434,8 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
 
 **示例：**
 
@@ -446,6 +450,54 @@ async function example(context: Context) {
   }
 }
 
+```
+
+## loadSingleFileMovingPhoto
+
+static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto
+
+加载合一动态照片，将其转换为[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)对象。合一动态照片是指将图片和视频封装在同一个文件中的动态照片，更便于传输、备份和分享。相关开发指导请参考[使用合一动态照片](../../media/medialibrary/photoAccessHelper-singlefile-movingphoto.md)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                      |
+| -------- | ------ | ---- | ------------------------- |
+| singleFileMovingPhotoUri | string | 是   | 合一动态照片URI。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | 返回加载成功的动态照片对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The singleFileMovingPhotoUri is empty or can not open.<br>2. The singleFileMovingPhotoUri is belonging to MediaLibrary. |
+| 23800109 | Incorrect file format. |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  try {
+    // singleFileMovingPhotoUri需指向一个完整的合一动态照片，不能为空，且不能属于媒体库URI。
+    let singleFileMovingPhotoUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/EntryFile.jpg'; // 合一动态照片URI。
+    let movingPhoto: photoAccessHelper.MovingPhoto = photoAccessHelper.MediaAssetManager.loadSingleFileMovingPhoto(singleFileMovingPhotoUri);
+    console.info('Succeeded in loading single file moving photo, uri: ' + movingPhoto.getUri());
+  } catch (err) {
+    console.error(`Failed to load single file moving photo. Code: ${err.code}, message: ${err.message}`);
+  }
+}
 ```
 
 ## quickRequestImage<sup>13+</sup>
@@ -481,9 +533,9 @@ static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: Re
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011       | Internal system error.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | Internal system error. |
 
 **示例：**
 
@@ -518,6 +570,10 @@ async function example(context: Context) {
     }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+        console.error('photoAsset is undefined');
+        return;
+      }
       await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
       console.info('quickRequestImage successfully');
   });
@@ -532,7 +588,7 @@ static requestCompositeAuxiliaryImageData(context: Context, asset: PhotoAsset, d
 
 AI增强会额外产生一张图片，该图片与原始图组成复合图。复合图中额外产生的图片默认用于显示，另一张原始图称为辅助图。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -560,10 +616,10 @@ AI增强会额外产生一张图片，该图片与原始图组成复合图。复
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied. The application does not have the required permission ohos.permission.READ_IMAGEVIDEO.         |
-| 202      | Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151      | Scene parameters validate failed, possible causes: 1. The asset is not a cloud-enhanced composite photo asset.        |
-| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. The database is corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out.         |
+| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. The database is corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out.         |
 
 **示例：**
 
@@ -601,6 +657,10 @@ async function example(context: Context) {
     console.info('Succeeded in getting assets');
     // 获取查询结果中的第一个资产。
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
     try {
       // 请求复合图中的辅助图的数据，返回的requestId可用于cancelRequest接口取消该请求。
       let requestId: string = await photoAccessHelper.MediaAssetManager.requestCompositeAuxiliaryImageData(context, photoAsset, handler);

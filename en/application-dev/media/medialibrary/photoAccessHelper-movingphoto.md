@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6d4ec718e22999dd8a5ad5acdd716bed7f226e83 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 A moving photo is a photo form that combines an image and a video, empowering a static image with dynamic video effect. It helps users capture dynamic moments and improves the fault tolerance rate of photographing.
 
@@ -38,12 +39,13 @@ For details, see [SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-co
 
 5. Call [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to apply changes for the moving photo.
 
-<!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) -->
+<!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 // ...
+import { fileUri } from '@kit.CoreFileKit';
 
 @Entry({ routeName : 'Scene1' })
 @Component
@@ -55,7 +57,7 @@ export struct Scene1 {
     icon: SaveIconStyle.FULL_FILLED,
     text: SaveDescription.SAVE_IMAGE,
     buttonType: ButtonType.Capsule
-  }// Set properties of SaveButton.
+  }// Set the properties of the save button.
 
   // ...
 
@@ -64,15 +66,16 @@ export struct Scene1 {
       Column({ space: 20 }) {
         // ...
 
-        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+        SaveButton(this.saveButtonOptions) // Create a button labeled Save.
           .onClick(async (event, result: SaveButtonOnClickResult) => {
             if (result == SaveButtonOnClickResult.SUCCESS) {
               try {
                 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
                 // Ensure that the assets specified by imageFileUri and videoFileUri exist.
-                let imageFileUri = 'file://' + context.filesDir + '/create_moving_photo.jpg';
-                let videoFileUri = 'file://' + context.filesDir + '/create_moving_photo.mp4';
+                let photoPath = context.filesDir;
+                let imageFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.jpg';
+                let videoFileUri = fileUri.getUriFromPath(photoPath) + '/create_moving_photo.mp4';
 
                 let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
                   photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context,
@@ -161,7 +164,7 @@ export struct Scene2 {
 }
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context): Promise<string> {
   try {
-    // Use Picker to select the URI of the moving photo.
+    // Use the picker to select the URI of a moving photo.
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.MOVING_PHOTO_IMAGE_TYPE;
     photoSelectOptions.maxSelectNumber = 9;
@@ -190,7 +193,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
         }, {
           async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
             if (movingPhoto !== undefined) {
-              // Customize the logic for processing the moving photo.
+              // Implement custom logic for processing the moving photo.
               console.info('request moving photo successfully, uri: ' + movingPhoto.getUri());
               resolve(movingPhoto.getUri());
             }

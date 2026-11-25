@@ -7,11 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## 概述
 
-定义获取和使用NativeWindow的相关函数。NativeWindow基于生产者-消费者模型，通过Buffer队列管理图形缓冲区的申请、写入和消费。开发者通过OHNativeWindow申请OHNativeWindowBuffer，向缓冲区写入内容后送回Buffer队列供消费者使用，完成内容渲染流程。
-
-
-<!--RP1-->
-**相关示例：** [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--RP1End-->
+定义获取和使用NativeWindow的相关函数。NativeWindow基于生产者-消费者模型，通过Buffer队列管理图形缓冲区的申请、写入和消费。开发者通过OHNativeWindow申请OHNativeWindowBuffer，向缓冲区写入内容后送回Buffer队列供消费者使用，完成内容渲染流程。使用方法可参考[NativeWindow开发指导 (C/C++)](../../graphics/native-window-guidelines.md)。
 
 **引用文件：** <native_window/external_window.h>
 
@@ -30,13 +26,14 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [Region](capi-nativewindow-region.md) | Region | 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。 |
-| [Rect](capi-nativewindow-rect.md) | - | 如果rects是空指针nullptr，默认Buffer大小为脏区。 |
+| [Rect](capi-nativewindow-rect.md) | - | 定义矩形区域的结构体，包含矩形框的起始坐标和宽高信息。 |
 | [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) | OHHDRMetaData | HDR元数据结构体定义。 |
 | [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | OHExtDataHandle | 扩展数据句柄结构体定义。 |
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | 提供对IPC序列化对象的访问功能。 |
 | [NativeWindow](capi-nativewindow-nativewindow.md) | OHNativeWindow | 提供对OHNativeWindow的访问功能。 |
 | [NativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) | OHNativeWindowBuffer | 提供对OHNativeWindowBuffer的访问功能。 |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) | OH_NativeBuffer | 提供对OH_NativeBuffer的访问功能。 |
+| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) | OH_NativeWindow_ScreenInfoRect | 定义一个矩形对象，包含坐标和尺寸信息，用于描述屏幕区域。 |
 
 ### 枚举
 
@@ -133,6 +130,9 @@ OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 | SET_HDR_WHITE_POINT_BRIGHTNESS | 设置HDR白点亮度，函数中的可变参数是[输入] float brightness。取值范围为[0.0f, 1.0f]。<br/>**起始版本：** 12 |
 | SET_SDR_WHITE_POINT_BRIGHTNESS | 设置SDR白点亮度，函数中的可变参数是[输入] float brightness。取值范围为[0.0f, 1.0f]。<br/>**起始版本：** 12 |
 | SET_DESIRED_PRESENT_TIMESTAMP = 24 | 设置本地窗口缓冲区期望上屏时间的时间戳。<br/> 当且仅当RenderService为本地窗口的消费者时，该时间戳生效<br/>本操作执行后需要配合调用[OH_NativeWindow_NativeWindowFlushBuffer](#oh_nativewindow_nativewindowflushbuffer)生效。<br/>生产者下一次放入队列的buffer，达到该期望上屏时间后，才会被RenderService消费并上屏。<br/>如果buffer队列中存在多个生产者放入的buffer，都设置了desiredPresentTimestamp并已达到期望上屏时间，则较早入队的buffer将被消费者丢弃回队列。<br/>如果期望上屏时间大于消费者提供的时间 1 秒以上，则该期望上屏时间戳将被忽略。<br/> 函数中的可变参数是[输入] int64_t desiredPresentTimestamp，取值范围大于0，应由std::chrono::steady_clock标准库时钟生成，且单位为纳秒。<br/>**起始版本：** 13 |
+| OH_NATIVEWINDOW_SET_DMABUFFER_NAME = 25 | 设置DMA buffer名称。通过该操作码设置名称后，后续通过[OH_NativeWindow_NativeWindowRequestBuffer](#oh_nativewindow_nativewindowrequestbuffer)申请的buffer会使用该名称，名称会记录在内核DMA-BUF信息中，用于在内存泄漏排查中定位buffer的来源。<br/>DMA buffer（Direct Memory Access buffer，直接内存访问缓冲区）是允许多进程、多硬件之间共享访问的内存，OHNativeWindowBuffer对应的图形缓冲区底层基于内核DMA-BUF机制分配。<br/> 函数中的可变参数是[输入] const char* name，必须以字母开头，仅包含字母与数字，且长度不超过64字节，<!--RP1-->开发板<!--RP1End-->最大支持31字节。<br/>**起始版本：** 26.0.1 |
+| OH_NATIVEWINDOW_SET_SCREEN_INFO = 26 | 设置本地窗口的屏幕信息。通过[OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md)设置当前帧偏移和大小、原始屏幕偏移和大小，并需要设置一个旋转角度（以度为单位）。<br/>函数中的可变参数是[输入] const OH_NativeWindow_ScreenInfoRect *currentFrameRect，[输入] const OH_NativeWindow_ScreenInfoRect *originalRect，[输入] float angle。<br/>**起始版本：** 26.1.0 |
+| OH_NATIVEWINDOW_GET_SCREEN_INFO = 27 | 获取通过[OH_NATIVEWINDOW_SET_SCREEN_INFO](#nativewindowoperation)设置的本地窗口屏幕信息。函数中的可变参数是[输出] OH_NativeWindow_ScreenInfoRect *currentFrameRect，[输出] OH_NativeWindow_ScreenInfoRect *originalRect，[输出] float *angle。<br/>**说明：** 可变参数分别表示当前帧偏移和大小、原始屏幕偏移和大小以及旋转角度（以度为单位）。<br/>**起始版本：** 26.1.0 |
 
 ### OHScalingMode
 
@@ -167,7 +167,7 @@ enum OHScalingModeV2
 
 **描述**
 
-渲染缩放模式枚举。
+渲染缩放模式枚举。下表各枚举项的显示效果均基于[ArkUI_RenderFit](../apis-arkui/capi-native-type-visual-h.md#arkui_renderfit)的[ARKUI_RENDER_FIT_RESIZE_FILL](../apis-arkui/capi-native-type-visual-h.md#arkui_renderfit)枚举值实现。若设置为ArkUI_RenderFit的其他枚举值，缓冲区的实际显示效果可能与下表描述存在差异。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -179,7 +179,7 @@ enum OHScalingModeV2
 | OH_SCALING_MODE_SCALE_TO_WINDOW_V2 | 缓冲区进行拉伸缩放以匹配窗口大小。 |
 | OH_SCALING_MODE_SCALE_CROP_V2 | 缓冲区按原比例缩放，使得缓冲区的较小边与窗口匹配，较长边超出窗口部分被视为透明。 |
 | OH_SCALING_MODE_NO_SCALE_CROP_V2 | 按窗口大小将缓冲区裁剪，裁剪矩形之外的像素被视为完全透明。 |
-| OH_SCALING_MODE_SCALE_FIT_V2 | 缓冲区按原比例缩放。优先显示所有缓冲区内容。如果比例与窗口比例不同，用背景颜色填充窗口的未填充区域。<br><!--Del-->开发板和<!--DelEnd-->模拟器不支持该模式。 |
+| OH_SCALING_MODE_SCALE_FIT_V2 | 缓冲区按原比例缩放。优先显示所有缓冲区内容。如果比例与窗口比例不同，用背景颜色填充窗口的未填充区域。<!--RP1-->开发板<!--RP1End-->不支持该模式。 |
 
 ### OHHDRMetadataKey
 

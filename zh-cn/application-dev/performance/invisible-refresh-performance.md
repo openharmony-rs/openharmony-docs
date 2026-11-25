@@ -238,8 +238,8 @@ struct RefreshExample {
 |[Text](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-References/clouddb-text-0000001491435996)|跑马灯动画|已适配|overflow模式有启停方式|
 |[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)|自动轮播动画|已适配|-|
 |[LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md)|播放动画|已适配|enableLoading属性可以启停动画|
-|[Marquee](../reference/apis-arkui/arkui-ts//ts-basic-components-marquee.md)|跑马灯动画|已适配|用户设置轮播次数|
-|[Progress](../reference/apis-arkui/arkui-ts//ts-basic-components-progress.md)|流光动画|已适配|status等属性可以控制动画启停|
+|[Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md)|跑马灯动画|已适配|用户设置轮播次数|
+|[Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)|流光动画|已适配|status等属性可以控制动画启停|
 |高级组件|当前无自动播放动画|-|-|
 
 > **限制：**

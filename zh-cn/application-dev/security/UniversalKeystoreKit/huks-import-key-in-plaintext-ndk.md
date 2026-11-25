@@ -75,9 +75,6 @@ napi_value ImportAesKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
         /* 导入密钥 */
         char newKey[] = "test_aes_import";
         struct OH_Huks_Blob newKeyAlias = {.size = (uint32_t)strlen(newKey), .data = (uint8_t *)newKey};
@@ -238,9 +235,6 @@ napi_value ImportX25519Key(napi_env env, napi_callback_info info)
     do {
         ohResult = InitParamSet(&testImportKeyParamSet, g_testImportKeyParam,
                                 sizeof(g_testImportKeyParam) / sizeof(OH_Huks_Param));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }

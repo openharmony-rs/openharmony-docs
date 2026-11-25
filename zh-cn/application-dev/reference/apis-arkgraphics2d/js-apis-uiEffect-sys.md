@@ -4,7 +4,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
 <!--Designer: @chensiyi_CE-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
@@ -31,6 +31,10 @@ createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 
 创建BrightnessBlender实例用于给组件添加提亮效果。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createBrightnessBlender()](#createbrightnessblender)替代本接口。
+
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
@@ -40,7 +44,7 @@ createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 **参数：**
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
-| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度、混合比例等配置项。 |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度和混合比例等配置项。 |
 
 **返回值：**
 
@@ -62,6 +66,10 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 
 创建[HdrBrightnessBlender](#hdrbrightnessblender20)实例用于给组件添加支持HDR的提亮效果。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createBrightnessBlender()](#createbrightnessblender)替代本接口，使用时需将hdrEnabled参数设置为true。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
@@ -69,7 +77,7 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 **参数：**
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
-| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度、混合比例等配置项，用于配置提亮效果。 |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度和混合比例等配置项，用于配置提亮效果。 |
 
 **返回值：**
 
@@ -114,6 +122,10 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 创建[HdrDarkenBlender](#hdrdarkenblender)实例用于HDR图层的压暗混合效果。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createHdrDarkenBlender()](#createhdrdarkenblender)替代本接口。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -126,7 +138,7 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 | 参数名               | 类型                        | 必填  | 说明                                                              |
 | ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
-| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]，超出边界时会自动截断。<br>当取值等于1.0时，为组件原本亮度。<br>设备当前支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
 | grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
 
 **返回值：**
@@ -134,14 +146,6 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 | 类型                                   | 说明                       |
 | ---------------------------------------- | ------------------------- |
 | [HdrDarkenBlender](#hdrdarkenblender) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------- |
-| 401  | CreateHdrDarkenBlender failed, parameter is null or undefined. |
 
 **示例：**
 ```ts
@@ -174,7 +178,11 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 
 创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
 
-**起始版本：** 26.2.0
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createColorfulBrightnessBlender()](#createcolorfulbrightnessblender)替代本接口。
+
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -187,7 +195,7 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
 | brightnessBlenderParam  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。|
-| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
+| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。此参数不填时，使用ColorfulBrightnessBlenderOptions各字段的默认值。 |
 
 **返回值：**
 
@@ -198,23 +206,24 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D"
+import { uiEffect } from '@kit.ArkGraphics2D'
 
-let blender : uiEffect.ColorfulBrightnessBlender =
+// 创建ColorfulBrightnessBlender实例
+let blender: uiEffect.ColorfulBrightnessBlender =
   uiEffect.createColorfulBrightnessBlender({
-    cubicRate:1.0,
-    quadraticRate:1.0,
-    linearRate:1.0,
-    degree:1.0,
-    saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0],
-    negativeCoefficient:[0.5, 2.0, 0.5],
-    fraction:0.0}, {
+    cubicRate: 1.0,
+    quadraticRate: 1.0,
+    linearRate: 1.0,
+    degree: 1.0,
+    saturation: 1.0,
+    positiveCoefficient: [2.3, 4.5, 2.0],
+    negativeCoefficient: [0.5, 2.0, 0.5],
+    fraction: 0.0}, {
     darkenWeight: 0.6,
     vibrancyStrength: 0.5,
     lumaDiff: 0.4,
     hdrEnabled: true,
-    tintedColorPercent: 1.0})
+    tintedColorPercent: 1.0});
 
 @Entry
 @Component
@@ -391,7 +400,7 @@ filter.distort(-0.5);
 
 
 ### radiusGradientBlur<sup>19+</sup>
-radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
+radiusGradientBlur(radius: number, gradientParam: LinearGradientBlurOptions): Filter
 
 为组件内容添加半径线性渐变模糊效果。
 
@@ -402,8 +411,8 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| radius  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| gradientParam  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -737,7 +746,7 @@ struct DisplacementDistortExample {
 ```
 
 ### maskDispersion<sup>20+</sup>
-maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
+maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
 为组件内容添加由置换贴图控制的色散效果，模拟光线通过棱镜时的色散现象。典型应用场景包括炫彩特效、棱镜折射模拟等。
 
@@ -748,7 +757,7 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图，可通过自定义图片纹理实现对色散区域和强度的精细控制。可通过[createPixelMapMask](#createpixelmapmask20)方法创建Mask实例。|
+| dispersionMap  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图，可通过自定义图片纹理实现对色散区域和强度的精细控制。可通过[createPixelMapMask](#createpixelmapmask20)方法创建Mask实例。|
 | alpha  | number         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
 | rFactor  | [number, number]         | 否   | X/Y方向上R通道的色散基础偏移。当需要自定义红色通道的色散强度和方向时传入此参数，偏移越大红色色散效果越明显。不传入时默认值为[0.0, 0.0]，无R通道色散偏移。每个方向上的取值范围为[-1.0, 1.0]，超出范围自动截断。|
 | gFactor  | [number, number]         | 否   | X/Y方向上G通道的色散基础偏移。当需要自定义绿色通道的色散强度和方向时传入此参数。不传入时默认值为[0.0, 0.0]，无G通道色散偏移。取值范围同rFactor，为[-1.0, 1.0]，超出范围自动截断。|
@@ -790,6 +799,8 @@ struct MaskDispersion {
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
         this.pixelMap = pixelMap;
+      }).finally(() => {
+        imageSource.release();
       })
     })
   }
@@ -918,7 +929,7 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: number, mas
 
 | 类型              | 说明                               |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | 返回挂载了由置换贴图控制的光照效果的Filter。 |
+| [Filter](#filter) | 返回挂载了由置换贴图控制的平行光照效果的Filter。 |
 
 **错误码：**
 
@@ -1131,6 +1142,8 @@ struct BlurBubblesRiseExample {
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
+        }).finally(() => {
+          imageSource.release();
         });
       });
   }
@@ -1164,7 +1177,7 @@ haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter
 >
 > 建议作为前景滤镜使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1226,7 +1239,7 @@ spinBlur(center: common2D.Point, angle: number, samples: number): Filter
 >
 > 建议作为前景滤镜使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1273,6 +1286,68 @@ struct example {
           ))
       }
     }
+  }
+}
+```
+
+### mapColorByBrightness
+
+mapColorByBrightness(colors: Array\<Color\>, positions: Array\<number\>): Filter
+
+根据输入的颜色数组和对应的亮度锚点位置，将图片的亮度分布映射为指定的颜色渐变效果。颜色映射为循环方式，如输入5个颜色并按亮度锚点位置从小到大排序，则颜色映射顺序依次为第1个、第2个、第3个、第4个、第5个，然后循环回到第1个。
+
+> **说明：**
+>
+> 建议作为前景滤镜使用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                       | 必填 | 说明                                                                                                                          |
+| ----------- | -------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| colors      | Array\<[Color](#color20)\>   | 是   | 应用的颜色数组。每个颜色的各分量值（包括alpha）均参与映射，且必须大于等于0.0，推荐使用范围为[0.0, 1.0]。小于0.0时无效果。大于1.0时按1.0处理。数组长度范围为1到5，数组长度小于1时无效果；数组长度为1时为纯色效果；数组长度大于5时，效果仅应用前5个颜色。 |
+| positions   | Array\<number\>              | 是   | 每个颜色对应的亮度锚点位置。亮度值越小对应图片中越暗的区域，0.0对应最暗（黑色），1.0对应最亮（白色）。取值范围为[0.0, 1.0]，超出范围时按边界值处理。数组长度必须与colors数组的长度一致，不一致时无效果。           |
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | ---------------------------------- |
+| [Filter](#filter) | 返回挂载了颜色亮度映射效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State colors: Array<uiEffect.Color> = [
+    { red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 },
+    { red: 1.0, green: 0.1, blue: 0.1, alpha: 1.0 },
+    { red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 }
+  ];
+  @State positions: Array<number> = [0.0, 0.5, 1.0];
+
+  build() {
+    RelativeContainer() {
+      Stack() {
+        Image($r("app.media.startIcon"))
+          .width(200)
+          .height(200)
+          // 根据图片的明暗程度进行颜色渐变映射
+          .foregroundFilter(uiEffect.createFilter().mapColorByBrightness(this.colors, this.positions))
+      }
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -1324,6 +1399,8 @@ VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐�
 backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
 用于改变组件背景颜色的blender，目前仅支持提亮混合器。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1644,11 +1721,113 @@ struct Index {
 }
 ```
 
+### glassMarbleEffect
+
+glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSphereParam | Mask, content?: GlassMarbleContentParam): VisualEffect
+
+为组件添加玻璃弹珠效果。玻璃弹珠效果是将玻璃弹珠与材质参数以及可选的内容层进行合成，产生具有折射、色散、光晕、阴影和发光的真实玻璃质感视觉效果。
+
+> **说明：**
+>
+> - 作用于组件的背景层。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名      | 类型                                                        | 必填 | 说明                                                                                                  |
+| ----------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
+| material    | [GlassMarbleMaterialParam](#glassmarblematerialparam)       | 是   | 材质参数，控制背景色、透明度、反射贴图、阴影、焦散和形状缩放。                                          |
+| marbleShell | [GlassMarbleSphereParam](#glassmarblesphereparam) \| [Mask](#mask20) | 是   | 必选的形状参数，可以是球体几何参数（圆心和半径），也可以是预置的资源图遮罩。                              |
+| content     | [GlassMarbleContentParam](#glassmarblecontentparam)         | 否   | 可选的内容参数，包括内容遮罩、混合内容的着色颜色、缩放、饱和度和色散。不设置时，不混合附加内容。            |
+
+**返回值：**
+
+| 类型                          | 说明                                     |
+| ----------------------------- | ---------------------------------------- |
+| [VisualEffect](#visualeffect) | 返回附加了玻璃弹珠效果的VisualEffect。 |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct GlassMarbleEffectExample {
+  @State reflectionMap: image.PixelMap | null = null;
+  @State contentMask: image.PixelMap | null = null;
+
+  aboutToAppear(): void {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    context.resourceManager.getMediaContent($r('app.media.reflection').id).then((val: Uint8Array) => {
+      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
+      let imageSource: image.ImageSource = image.createImageSource(buffer);
+      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+        this.reflectionMap = pixelMap;
+      });
+    });
+    context.resourceManager.getMediaContent($r('app.media.content_mask').id).then((val: Uint8Array) => {
+      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
+      let imageSource: image.ImageSource = image.createImageSource(buffer);
+      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+        this.contentMask = pixelMap;
+      });
+    });
+  }
+
+  build() {
+    Column() {
+      Image($r('app.media.bg'))
+        .width('100%')
+        .height('100%')
+        // 为组件添加玻璃弹珠效果。
+        .visualEffect(uiEffect.createEffect().glassMarbleEffect(
+          {
+            averageBgColor: { red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0 },
+            opacity: 0.8,
+            shadowOffset: 0.1,
+            shadowRadius: 0.5,
+            shadowEdgeSoftness: 0.5,
+            shadowOpacity: 0.5,
+            causticOffset: 0.0,
+            causticRadius: 0.5,
+            causticEdgeSoftness: 0.5,
+            causticOpacity: 0.5,
+            shapeScale: 0.9,
+            reflectionMap: this.reflectionMap!
+          },
+          { center: [0.5, 0.5], radius: 0.5 },
+          {
+            contentMask: uiEffect.Mask.createPixelMapMask(this.contentMask!),
+            contentTintColor: { red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5 },
+            contentScale: 0.8,
+            contentSaturation: 0.8,
+            contentDispersion: 0.2
+          }
+        ))
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | ColorfulBrightnessBlender
+type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | ColorfulBrightnessBlender | BlenderBase
 
 混合器类型，用于描述混合效果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1659,7 +1838,8 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
 | [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
-| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.2.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.1.0 |
+| [BlenderBase](#blenderbase) | 混合器基础类型，提供包含但不限于以上所有混合效果的统一创建入口。推荐统一使用本类型的方法创建混合器。<br> **起始版本：** 26.1.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1702,14 +1882,14 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
+| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]，超出边界时会自动截断。<br>当取值等于1.0时，为组件原本亮度。<br>设备当前支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
 | grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
 
 ## ColorfulBrightnessBlender
 
 基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1720,8 +1900,150 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
 | brightnessBlenderParam   | [BrightnessBlenderParam](#brightnessblenderparam) | 否   | 否   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。 |
-| options | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   | 是   | 提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
+| options | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   | 是   | 提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。此参数不填时，使用ColorfulBrightnessBlenderOptions各字段的默认值。 |
 
+## BlenderBase
+
+混合器基础类型，提供各类混合效果的统一创建入口。推荐统一使用本类型的方法创建混合器。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+### createBrightnessBlender
+
+static createBrightnessBlender(param: BrightnessBlenderParam, hdrEnabled?: boolean): BlenderBase
+
+输入提亮混合器参数创建提亮混合的BlenderBase实例。可选参数hdrEnabled为false时效果与调用[uiEffect.createBrightnessBlender()](#uieffectcreatebrightnessblender)相同，为true时效果与调用[uiEffect.createHdrBrightnessBlender()](#uieffectcreatehdrbrightnessblender20)相同。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮混合器参数，包含灰度调整系数、饱和度和混合比例等配置项，用于配置提亮混合效果。 |
+| hdrEnabled | boolean                                      | 否   | 是否为提亮混合效果开启HDR。设置为true时，提亮混合效果开启HDR；设置为false时，提亮混合效果不开启HDR。默认值为false。 |
+
+**返回值：**
+
+| 类型                                     | 说明                     |
+| ---------------------------------------- | ----------------------- |
+| [BlenderBase](#blenderbase) | 返回带有提亮混合效果的BlenderBase实例。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// 创建提亮混合的BlenderBase实例（开启HDR）
+let blender: uiEffect.BlenderBase = uiEffect.BlenderBase.createBrightnessBlender({
+  cubicRate: 1.0, quadraticRate: 1.0, linearRate: 1.0, degree: 1.0, saturation: 1.0,
+  positiveCoefficient: [2.3, 4.5, 2.0], negativeCoefficient: [0.5, 2.0, 0.5], fraction: 0.0}, true);
+```
+
+### createHdrDarkenBlender
+
+static createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, number, number]): BlenderBase
+
+创建HDR压暗混合的BlenderBase实例，用于HDR图层的压暗混合效果。效果与调用[uiEffect.createHdrDarkenBlender()](#uieffectcreatehdrdarkenblender)相同。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名               | 类型                        | 必填  | 说明                                                              |
+| ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]，超出边界时会自动截断。<br>当取值等于1.0时，为组件原本亮度。<br>设备当前支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
+| grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
+
+**返回值：**
+
+| 类型                                   | 说明                       |
+| ---------------------------------------- | ------------------------- |
+| [BlenderBase](#blenderbase) | 返回带有HDR压暗混合效果的BlenderBase实例，用于将压暗效果添加到指定的组件上。 |
+
+**示例：**
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// 创建HDR压暗混合的BlenderBase实例
+let blender: uiEffect.BlenderBase = uiEffect.BlenderBase.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]);
+```
+
+### createColorfulBrightnessBlender
+
+static createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, options?: ColorfulBrightnessBlenderOptions): BlenderBase
+
+创建BlenderBase实例，用于给组件添加基于保持色相的提亮压暗效果。效果与调用[uiEffect.createColorfulBrightnessBlender()](#uieffectcreatecolorfulbrightnessblender)相同。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| brightnessBlenderParam  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。 |
+| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。此参数不填时，使用ColorfulBrightnessBlenderOptions各字段的默认值。 |
+
+**返回值：**
+
+| 类型                                     | 说明                     |
+| ---------------------------------------- | ----------------------- |
+| [BlenderBase](#blenderbase)  | 返回带有基于保持色相的提亮压暗混合效果的BlenderBase实例。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D'
+
+// 创建保持色相的提亮压暗混合的BlenderBase实例
+let blender: uiEffect.BlenderBase =
+  uiEffect.BlenderBase.createColorfulBrightnessBlender({
+    cubicRate: 1.0,
+    quadraticRate: 1.0,
+    linearRate: 1.0,
+    degree: 1.0,
+    saturation: 1.0,
+    positiveCoefficient: [2.3, 4.5, 2.0],
+    negativeCoefficient: [0.5, 2.0, 0.5],
+    fraction: 0.0}, {
+    darkenWeight: 0.6,
+    vibrancyStrength: 0.5,
+    lumaDiff: 0.4,
+    hdrEnabled: true,
+    tintedColorPercent: 1.0});
+```
 
 ## Color<sup>20+</sup>
 
@@ -1775,7 +2097,7 @@ RGBA格式的颜色描述。
 
 扭曲环遮罩参数，用于指定光环的半径、宽度、变化量、旋转角度、3D朝向和噪声演化。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1970,11 +2292,10 @@ struct Index {
         return undefined;
       }
       const pixelMap: image.PixelMap | null = imageSource.createPixelMapSync();
+      imageSource.release();
       if (!pixelMap) {
-        imageSource.release();
         return undefined;
       }
-      imageSource.release();
       return pixelMap;
     } catch (err) {
       return undefined;
@@ -2224,7 +2545,7 @@ static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRef
 
 创建一个模拟棱镜色散效果的扫光折射遮罩[Mask](#mask20)实例。该遮罩会在组件上生成一条带有颜色分离效果的扫光光带。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2318,7 +2639,7 @@ static createWarpedRingMask(ringParam: WarpedRingParam): Mask
 
 创建一个表示扭曲光环的[Mask](#mask20)实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2385,7 +2706,7 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 
 创建一个分形玻璃蒙版。通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。当启用对称模式时，扭曲效果关于图像垂直轴对称。可以配合[displacementDistort](#displacementdistort20)使用，产生光栅折射的视觉效果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2446,7 +2767,7 @@ static createBinocularMask(radiusX: number, radiusY: number, gap: number, softne
 
 创建一个双目蒙版，生成一个左右对称的双椭圆弧形蒙版形状。可以与[maskDispersion](#maskdispersion20)滤镜配合使用，用于控制色散效果的作用区域和方向。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2498,8 +2819,131 @@ struct Index {
 
 ```
 
+### createAtlasFrameMask
+
+static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask
+
+创建用于精灵图集（[Sprite Sheet](../../graphics/graphic-term.md#sprite-sheet精灵图集)）序列帧动画的图集帧遮罩。该遮罩携带用于驱动图集序列帧动画的图集帧参数。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名     | 类型                                                        | 必填 | 说明                       |
+| ---------- | ----------------------------------------------------------- | ---- | -------------------------- |
+| atlasInfo | [drawing.AtlasImage](js-apis-graphics-drawing-sys.md#atlasimage) | 是   | 图集帧参数。包含图集图片、行列数、单帧宽高、帧间距、帧索引和总帧数等信息，用于驱动精灵图序列帧动画。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| [Mask](#mask20) | 返回携带图集帧参数的Mask实例。 |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { uiEffect, drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct AtlasFrameMaskDemo {
+  @State contentFrameState: drawing.AtlasImage | null = null;
+
+  private contentAtlasMap: image.PixelMap | null = null;
+  private reflectionMap: image.PixelMap | null = null;
+
+  private async loadPixelMapFromRawfile(fileName: string): Promise<image.PixelMap | null> {
+    try {
+      const ctx = this.getUIContext().getHostContext();
+      if (ctx == undefined) {
+        return null;
+      }
+      const buf: Uint8Array = await ctx.resourceManager.getRawFileContent(fileName);
+      const src = image.createImageSource(buf.buffer);
+      const pm = await src.createPixelMap();
+      src.release();
+      return pm;
+    } catch (e) {
+      console.error(`AtlasFrameMaskDemo load failed: ${e}`);
+      return null;
+    }
+  }
+
+  private makeContentFrameParam(frame: number): drawing.AtlasImage {
+    return {
+      mode: drawing.AtlasInterpolationMode.NONE, rows: 17, cols: 18,
+      frameWidth: 80, frameHeight: 80, padding: 0,
+      frameIndex: frame, totalFrame: 300, atlasImage: this.contentAtlasMap!
+    };
+  }
+
+  private getEffect(): uiEffect.VisualEffect | undefined {
+    if (this.contentFrameState === null) return undefined;
+    const contentMask = uiEffect.Mask.createAtlasFrameMask(this.contentFrameState);
+    const material: uiEffect.GlassMarbleMaterialParam = {
+      averageBgColor: { red: 0.675, green: 0.718, blue: 0.808, alpha: 1.0 },
+      opacity: 1.0, shapeScale: 1.0, shadowOffset: 0.5,
+      shadowRadius: 1.0, shadowEdgeSoftness: 0.0, shadowOpacity: 0.15,
+      causticOffset: 0.5, causticRadius: 0.5, causticEdgeSoftness: 0.0, causticOpacity: 0.43,
+      reflectionMap: this.reflectionMap!
+    };
+    const sphereParam: uiEffect.GlassMarbleSphereParam = {
+      center: [0.5, 0.5],
+      radius: 0.5,
+    };
+    const contentParam: uiEffect.GlassMarbleContentParam = {
+      contentMask: contentMask,
+      contentTintColor: { red: 1.0, green: 0.75, blue: 0.5, alpha: 0.25 },
+      contentScale: 0.5, contentSaturation: 0.81, contentDispersion: 0.0
+    };
+    const effect = uiEffect.createEffect();
+    effect.glassMarbleEffect(material, sphereParam, contentParam);
+    return effect;
+  }
+
+  async aboutToAppear(): Promise<void> {
+    this.contentAtlasMap = await this.loadPixelMapFromRawfile('content_atlas.webp');
+    this.reflectionMap = await this.loadPixelMapFromRawfile('reflection.webp');
+    this.contentFrameState = this.makeContentFrameParam(0);
+
+    // 单次播放：0 → 299
+    this.getUIContext().animateTo({ duration: 4000, curve: Curve.Linear }, () => {
+      this.contentFrameState = this.makeContentFrameParam(299);
+    });
+  }
+
+  build(): void {
+    Column() {
+      Stack() {
+        Column()
+          .width(300)
+          .height(300)
+          .backgroundColor('#ACB7CE')
+        Column()
+          .width(300)
+          .height(300)
+          .visualEffect(this.getEffect())
+      }
+      .width('100%')
+      .aspectRatio(1.0)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## BrightnessBlenderParam
 BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包括灰度调整系数、饱和度和混合比例等参数。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2520,7 +2964,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2530,11 +2974,11 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景，前景倾向亮于背景以保证可读性；取1时压暗前景，前景倾向暗于背景；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
-| vibrancyStrength    | number                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
-| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差，可读性约束最弱；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景，前景倾向亮于背景以保证可读性；取1时压暗前景，前景倾向暗于背景；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会自动截断。 |
+| vibrancyStrength    | number                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会自动截断。 |
+| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差，可读性约束最弱；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会自动截断。 |
 | hdrEnabled          | boolean                    | 否   | 是   | 是否主动开启HDR。取true时主动开启HDR，结果亮度可超出SDR范围（>1.0），在HDR设备上呈现更高亮度，适合HDR内容；取false时不主动开启HDR，结果限制在SDR范围（≤1.0），但当前景或背景本身为HDR时仍可能被动触发HDR。<br>默认值为false。 |
-| tintedColorPercent  | number                     | 否   | 是   | 输入色彩影响度，控制输入色参与提亮压暗计算的程度。取1时输入色完全参与计算，输出结果保留输入色的色彩倾向；取0时输入色不参与计算，输出结果不受输入色的影响，直接基于背景颜色做提亮压暗；0到1之间为两者的插值过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| tintedColorPercent  | number                     | 否   | 是   | 输入色彩影响度，控制输入色参与提亮压暗计算的程度。取1时输入色完全参与计算，输出结果保留输入色的色彩倾向；取0时输入色不参与计算，输出结果不受输入色的影响，直接基于背景颜色做提亮压暗；0到1之间为两者的插值过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会自动截断。 |
 
 ## HeatDistortionEffectParam
 
@@ -2578,7 +3022,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 创建扫光折射遮罩的必选参数，包括遮罩半径、边缘厚度、折射强度、波纹宽度、扫光偏移和色散偏移量。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2588,7 +3032,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                                                              |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------- |
-| maskRadius    | number | 否   | 否   | 棱镜遮罩的归一化半径。取值范围为[0.0, 10.0]，超出该区间的值将被自动截断至最近边界值。当值为1.0时，表示棱镜遮罩的归一化半径等于组件宽度 |
+| maskRadius    | number | 否   | 否   | 棱镜遮罩的归一化半径。取值范围为[0.0, 10.0]，超出该区间的值将被自动截断至最近边界值。当值为1.0时，表示棱镜遮罩的归一化半径等于组件高度。 |
 | edgeThickness | number | 否   | 否   | 棱镜的归一化边缘厚度。取值范围为[1.0, 1000.0]，超出该区间的值将被自动截断至最近边界值。 |
 | refractAmount | number | 否   | 否   | 棱镜的折射强度。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
 | rippleWidth   | number | 否   | 否   | 扫光波纹的宽度。取值范围为[0.01, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
@@ -2599,7 +3043,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 棱镜形状类型枚举，用于指定扫光折射遮罩中棱镜的几何形状。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2616,7 +3060,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 创建扫光折射遮罩的可选参数，用于配置棱镜的形状、尺寸和扫光中心位置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2632,3 +3076,67 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 | prismHeight   | number                                        | 否   | 是   | 棱镜的归一化高度。取值范围为[0.01, 2.0]，默认值为1.0，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化高度等于组件高度。                   |
 | sweepCenterX  | number                                        | 否   | 是   | 扫光中心的归一化X坐标。取值范围为[0.0, 1.0]，默认值为0.0，超出该区间的值将被自动截断至最近边界值。0.0表示左边缘。1.0表示右边缘。 |
 | sweepCenterY  | number                                        | 否   | 是   | 扫光中心的归一化Y坐标。取值范围为[0.0, 1.0]，默认值为0.0，超出该区间的值将被自动截断至最近边界值。0.0表示上边缘，1.0表示下边缘。                                    |
+
+## GlassMarbleMaterialParam
+
+玻璃弹珠的材质参数。控制材质属性（背景色、透明度、阴影、焦散等）以及形状缩放。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称                | 类型                                      | 只读 | 可选 | 说明                                                                                          |
+| ------------------- | ----------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------- |
+| averageBgColor      | [Color](#color20)                         | 否   | 否   | 玻璃弹珠背景代表色，用于材质着色计算。不使用alpha通道。                                                                  |
+| opacity             | number                                    | 否   | 否   | 玻璃弹珠效果的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。 |
+| shadowOffset        | number                                    | 否   | 否   | 阴影的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]，超出范围的值将在内部被截断。             |
+| shadowRadius        | number                                    | 否   | 否   | 阴影的半径，按形状半径归一化。取值范围为[0, 1]，超出范围的值将在内部被截断。                   |
+| shadowEdgeSoftness  | number                                    | 否   | 否   | 阴影的边缘柔和度。取值范围为[0, 1]，0产生硬边缘，1产生完全柔和的边缘，超出范围的值将在内部被截断。 |
+| shadowOpacity       | number                                    | 否   | 否   | 阴影的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。                               |
+| causticOffset       | number                                    | 否   | 否   | 焦散（聚焦光线）的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]，超出范围的值将在内部被截断。 |
+| causticRadius       | number                                    | 否   | 否   | 焦散（聚焦光线）的半径，按形状半径归一化。取值范围为[0, 1]，超出范围的值将在内部被截断。       |
+| causticEdgeSoftness | number                                    | 否   | 否   | 焦散（聚焦光线）的边缘柔和度。取值范围为[0, 1]，0产生硬边缘，1产生完全柔和的边缘，超出范围的值将在内部被截断。 |
+| causticOpacity      | number                                    | 否   | 否   | 焦散（聚焦光线）的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。                   |
+| shapeScale          | number                                    | 否   | 否   | 应用于玻璃弹珠形状的缩放系数。取值范围为[0, 1]，0表示形状缩放为0（不可见），1表示形状保持原始大小，超出范围的值将在内部被截断。                       |
+| reflectionMap       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 用于玻璃弹珠表面环境反射的反射贴图。不设置时，默认值为undefined，不应用反射效果。|
+
+## GlassMarbleContentParam
+
+玻璃弹珠的内容参数。控制内容在玻璃弹珠内部的混合方式，包括内容遮罩本身、着色颜色、缩放和饱和度等。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称              | 类型                | 只读 | 可选 | 说明                                                                                                    |
+| ----------------- | ------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------- |
+| contentMask       | [Mask](#mask20)     | 否   | 否   | 用于在玻璃弹珠内部混合附加内容的内容遮罩。将该遮罩采样后与玻璃材质合成。                    |
+| contentTintColor  | [Color](#color20)   | 否   | 否   | 应用于玻璃弹珠内部混合内容的着色颜色。alpha通道用作原始内容颜色与着色颜色之间的混合系数。                  |
+| contentScale      | number              | 否   | 否   | 应用于玻璃弹珠内部混合内容的缩放系数。取值范围为[0, 1]，0表示内容缩放为0（不显示），1表示内容保持原始大小，超出范围的值将在内部被截断。                       |
+| contentSaturation | number              | 否   | 否   | 玻璃弹珠内部混合内容的饱和度。取值范围为[0, 1]，超出范围的值将在内部被截断。                               |
+| contentDispersion | number              | 否   | 否   | 玻璃弹珠内部混合内容的色散。控制内容边缘的颜色分离程度。取值范围为[0, 1]，超出范围的值将在内部被截断。     |
+
+## GlassMarbleSphereParam
+
+玻璃弹珠的球体形状参数。通过圆心位置和半径定义玻璃形状的几何结构，均采用相对于组件边界的归一化坐标。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称   | 类型              | 只读 | 可选 | 说明                                                                                                  |
+| ------ | ----------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------- |
+| center | [number, number]  | 否   | 否   | 球体形状的归一化圆心位置。[0, 0]表示组件边界的左上角，[1, 1]表示组件边界的右下角。超出[0, 1]范围的值将在内部被截断。 |
+| radius | number            | 否   | 否   | 球体形状的归一化半径。取值范围为[0, 1]，超出范围的值将在内部被截断。值为0表示半径为0（不可见），值为1表示球的直径等于组件宽度和高度的较小值。 |

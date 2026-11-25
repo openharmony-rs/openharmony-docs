@@ -284,6 +284,10 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 切换输入法，使用callback异步回调。
 
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
+
 含义/功能：将当前输入法切换为指定的目标输入法。
 
 使用场景：当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。
@@ -309,7 +313,7 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -335,12 +339,16 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.switchInputMethod<sup>9+</sup>
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
-切换输入法，使用promise异步回调。
+切换输入法，使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
 
 含义/功能：将当前输入法切换为指定的目标输入法。
 
@@ -372,7 +380,7 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -396,7 +404,7 @@ inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.getCurrentInputMethod<sup>9+</sup>
 
@@ -449,7 +457,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10       |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -486,13 +494,13 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
 
 switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&gt;
 
-切换当前输入法的子类型。使用promise异步回调。
+切换当前输入法的子类型。使用Promise异步回调。
 
 **需要权限：**
 - API版本9-10：ohos.permission.CONNECT_IME_ABILITY
@@ -518,7 +526,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10      |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -553,7 +561,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.getCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -603,7 +611,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -631,13 +639,13 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
 
 switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype): Promise&lt;boolean&gt;
 
-切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。
+切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用Promise异步回调。
 
 **需要权限：**
 - API版本9-10：ohos.permission.CONNECT_IME_ABILITY
@@ -664,7 +672,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. <br>适用版本：9-10        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：9-10        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -690,7 +698,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((resu
 
 > **说明：**
 >
-> 在 API11 中 `201 permissions check fails.` 这个错误码被移除。
+> 在API version 11中 `201 permissions check fails.` 这个错误码被移除。
 
 ## inputMethod.getInputMethodController<sup>(deprecated)</sup>
 
@@ -818,6 +826,108 @@ let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> =
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
+```
+
+## inputMethod.injectText
+
+injectText(text: string): Promise&lt;void&gt;
+
+向前台应用当前获焦的编辑框插入文本。使用Promise异步回调。仅支持PC设备。
+
+需要在当前调用中同步取得请求发送结果时，请使用[injectTextSync](#inputmethodinjecttextsync)。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION 或 ohos.permission.CONTROL_DEVICE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| text | string | 是 | 待插入的文本，无默认值。UTF-8编码后的长度为0到512字节。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | Permissions check fails. |
+| 801 | Capability not supported. |
+| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | Input method client is not editable. |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+inputMethod.injectText(text).then(() => {
+  console.info(`Succeeded in inserting text, length: ${text.length}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to injectText, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.injectTextSync
+
+injectTextSync(text: string): void
+
+同步向前台应用当前获焦的编辑框插入文本。仅支持PC设备。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION 或 ohos.permission.CONTROL_DEVICE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| text | string | 是 | 待插入的文本，无默认值。UTF-8编码后的长度为0到512字节。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | Permissions check fails. |
+| 801 | Capability not supported. |
+| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | Input method client is not editable. |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+try {
+  inputMethod.injectTextSync(text);
+  console.info(`Succeeded in inserting text synchronously, length: ${text.length}`);
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to injectTextSync, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## TextInputType<sup>10+</sup>
@@ -954,6 +1064,56 @@ Enter键的功能类型。
 | width  | number | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。                           |
 | height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。                           |
 | displayId  | number | 否 | 是 | 光标所在显示器的ID，该参数应为整数，最小值为0，默认值为0。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+
+## SetPreviewTextWithStyleCallback
+
+type SetPreviewTextWithStyleCallback = (text: string, range: Range, style: PreviewTextStyle) => void
+
+接收带样式预上屏文本的回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 预上屏文本。接口未单独限制文本长度，文本传输受IPC数据大小限制。 |
+| range | [Range](#range10) | 是 | 预上屏文本的替换范围。{ start: -1, end: -1 }表示替换当前预上屏区域；无预上屏文本时在当前光标位置插入。其他情况下，start和end为非负整数，start不大于end。有预上屏文本时，范围不得超出当前预上屏区域；无预上屏文本时，范围不得超出编辑框文本范围。start等于end表示在该位置插入。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 下划线样式及可选颜色。 |
+
+## UnderlineStyle
+
+枚举，预上屏文本的下划线样式。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -- | -- | -- |
+| NONE | 0 | 无下划线。 |
+| SOLID | 1 | 实线下划线。 |
+| WAVY | 2 | 波浪线下划线。 |
+| DASHED | 3 | 虚线下划线。 |
+
+## PreviewTextStyle
+
+描述编辑框接收到的预上屏文本样式。此接口定义在inputMethod命名空间下。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| underlineStyle | [UnderlineStyle](#underlinestyle) | 否 | 否 | 下划线样式。 |
+| underlineColor | number | 否 | 是 | 颜色格式为0xRRGGBB。透明度通道无效，由编辑框忽略。未设置时默认跟随光标颜色，显式设置0时为黑色。 |
 
 ## Range<sup>10+</sup>
 
@@ -1226,7 +1386,7 @@ inputMethod.getController().attach(true, textConfig, (err: BusinessError) => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1280,7 +1440,7 @@ inputMethod.getController().attach(true, textConfig).then(() => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1337,7 +1497,7 @@ inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then
 
 attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1394,7 +1554,7 @@ inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOpt
 
 discardTypingText(): Promise&lt;void&gt;
 
-编辑框应用发送“清空正在输入的文字”命令到输入法。使用promise异步回调。
+编辑框应用发送“清空正在输入的文字”命令到输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1427,6 +1587,56 @@ inputMethod.getController().discardTypingText().then(() => {
   console.info('Succeeded discardTypingText.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to discardTypingText, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### requestSystemInputCapability
+
+requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
+
+请求系统输入能力。使用Promise异步回调。
+
+当type为TRANSLATION时，当前输入法须为系统配置的默认输入法，否则请求被拒绝。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | [InputCapabilityType](#inputcapabilitytype) | 是 | 系统输入能力类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800009 | input method client detached. |
+| 12800010 | Not the preconfigured default input method. |
+| 12800029 | the input type is not supported. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请求翻译输入能力
+inputMethod.getController().requestSystemInputCapability(
+  inputMethod.InputCapabilityType.TRANSLATION
+).then((): void => {
+  console.info('Succeeded requestSystemInputCapability.');
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to requestSystemInputCapability, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1491,7 +1701,7 @@ inputMethod.getController().showTextInput((err: BusinessError) => {
 
 showTextInput(): Promise&lt;void&gt;
 
-进入文本编辑状态。使用promise异步回调。
+进入文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1531,7 +1741,7 @@ inputMethod.getController().showTextInput().then(() => {
 
 showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
-进入文本编辑状态。使用promise异步回调。
+进入文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1638,7 +1848,7 @@ inputMethod.getController().hideTextInput((err: BusinessError) => {
 
 hideTextInput(): Promise&lt;void&gt;
 
-退出文本编辑状态。使用promise异步回调。
+退出文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1725,7 +1935,7 @@ inputMethod.getController().detach((err: BusinessError) => {
 
 detach(): Promise&lt;void&gt;
 
-自绘控件解除与输入法的绑定。使用promise异步回调。
+自绘控件解除与输入法的绑定。使用Promise异步回调。
 
 含义/功能：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。
 
@@ -1815,7 +2025,7 @@ inputMethod.getController().setCallingWindow(windowId, (err: BusinessError) => {
 
 setCallingWindow(windowId: number): Promise&lt;void&gt;
 
-设置要避让软键盘的窗口。使用promise异步回调。
+设置要避让软键盘的窗口。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1914,7 +2124,7 @@ inputMethod.getController().updateCursor(cursorInfo, (err: BusinessError) => {
 
 updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 
-当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用promise异步回调。
+当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2013,7 +2223,7 @@ inputMethod.getController().changeSelection('text', 0, 5, (err: BusinessError) =
 
 changeSelection(text: string, start: number, end: number): Promise&lt;void&gt;
 
-当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用promise异步回调。
+当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2103,7 +2313,7 @@ inputMethod.getController().updateAttribute(inputAttribute, (err: BusinessError)
 
 updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 
-更新编辑框属性信息。使用promise异步回调。
+更新编辑框属性信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2206,7 +2416,7 @@ inputMethod.getController().stopInputSession((err: BusinessError, result: boolea
 
 stopInputSession(): Promise&lt;boolean&gt;
 
-结束输入会话。使用promise异步回调。
+结束输入会话。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2284,7 +2494,7 @@ showSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2328,7 +2538,7 @@ showSoftKeyboard(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2383,7 +2593,7 @@ hideSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2427,7 +2637,7 @@ hideSoftKeyboard(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -2586,7 +2796,7 @@ inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
 
 stopInput(): Promise&lt;boolean&gt;
 
-结束输入会话。使用promise异步回调。
+结束输入会话。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -3366,6 +3576,76 @@ inputMethodController.off('getTextIndexAtCursor', getTextIndexAtCursorCallback);
 inputMethodController.off('getTextIndexAtCursor');
 ```
 
+### onSetPreviewTextWithStyle
+
+onSetPreviewTextWithStyle(callback: SetPreviewTextWithStyleCallback): void
+
+订阅输入法设置带样式预上屏文本的事件。需在调用[attach](#attach10)前订阅，并和[on('finishTextPreview')](#onfinishtextpreview17)一起订阅。收到回调后，自绘编辑框负责根据文本、范围和样式更新内容并绘制下划线；仅记录回调不会产生可见样式。如果同时订阅了[on('setPreviewText')](#onsetpreviewtext17)，两种回调都会触发，请注意不要重复处理预上屏文本内容。
+
+原有文本编辑及结束预上屏的处理仍须保留。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| callback | [SetPreviewTextWithStyleCallback](#setpreviewtextwithstylecallback) | 是 | 接收预上屏文本、范围及样式的回调。 |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+
+const controller: inputMethod.InputMethodController = inputMethod.getController();
+const onStyledPreview: inputMethod.SetPreviewTextWithStyleCallback =
+  (text: string, range: inputMethod.Range, style: inputMethod.PreviewTextStyle): void => {
+    // 在此更新编辑模型，并在UI线程按style绘制下划线。
+    console.info(`Preview text received, range=[${range.start},${range.end}], style=${style.underlineStyle}`);
+  };
+controller.onSetPreviewTextWithStyle(onStyledPreview);
+// 其余编辑回调注册完成后，再按自绘编辑框开发指导调用attach。
+```
+
+### offSetPreviewTextWithStyle
+
+offSetPreviewTextWithStyle(callback?: SetPreviewTextWithStyleCallback): void
+
+取消订阅设置带样式预上屏文本的事件。传入callback时，取消该回调；省略callback时，取消该事件的全部回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| callback | [SetPreviewTextWithStyleCallback](#setpreviewtextwithstylecallback) | 否 | 已注册的回调对象。传入时须使用注册时的同一对象；省略时取消订阅此事件的所有回调。 |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+
+const controller: inputMethod.InputMethodController = inputMethod.getController();
+const onStyledPreview: inputMethod.SetPreviewTextWithStyleCallback =
+  (text: string, range: inputMethod.Range, style: inputMethod.PreviewTextStyle): void => {
+    console.info(`Preview length=${text.length}, range=[${range.start},${range.end}], style=${style.underlineStyle}`);
+  };
+controller.onSetPreviewTextWithStyle(onStyledPreview);
+// 使用注册时的同一回调对象取消订阅。
+controller.offSetPreviewTextWithStyle(onStyledPreview);
+// 或取消该事件的所有回调。
+controller.offSetPreviewTextWithStyle();
+```
+
 ### on('setPreviewText')<sup>17+</sup>
 
 on(type: 'setPreviewText', callback: SetPreviewTextCallback): void
@@ -3664,7 +3944,7 @@ inputMethodSetting.listInputMethodSubtype(inputMethodProperty,
 
 listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
-获取指定输入法应用的所有子类型。使用promise异步回调。
+获取指定输入法应用的所有子类型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3754,7 +4034,7 @@ inputMethodSetting.listCurrentInputMethodSubtype((err: BusinessError, data: Arra
 
 listCurrentInputMethodSubtype(): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
-查询当前输入法应用的所有子类型。使用promise异步回调。
+查询当前输入法应用的所有子类型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3838,7 +4118,7 @@ inputMethod.getSetting().getInputMethods(true, (err: BusinessError, data: Array<
 
 getInputMethods(enable: boolean): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-获取已激活/未激活的输入法应用列表。使用promise异步回调。
+获取已激活/未激活的输入法应用列表。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -3968,7 +4248,7 @@ inputMethod.getSetting().getAllInputMethods((err: BusinessError, data: Array<inp
 
 getAllInputMethods(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-获取所有输入法应用列表。使用promise异步回调。
+获取所有输入法应用列表。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4079,7 +4359,7 @@ inputMethod.getSetting().showOptionalInputMethods((err: BusinessError, result: b
 
 showOptionalInputMethods(): Promise&lt;boolean&gt;
 
-显示输入法选择对话框。使用promise异步回调。
+显示输入法选择对话框。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4153,7 +4433,7 @@ inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputM
 
 listInputMethod(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-查询已安装的输入法列表。使用promise异步回调。
+查询已安装的输入法列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4215,7 +4495,7 @@ inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
 
 displayOptionalInputMethod(): Promise&lt;void&gt;
 
-显示输入法选择对话框。使用promise异步回调。
+显示输入法选择对话框。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4245,7 +4525,7 @@ inputMethod.getSetting().displayOptionalInputMethod().then(() => {
 
 getInputMethodState(): Promise&lt;EnabledState&gt;
 
-查询输入法的启用状态。使用promise异步回调。
+查询输入法的启用状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4275,3 +4555,15 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
   console.error(`Failed to getInputMethodState, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+## InputCapabilityType
+
+系统输入能力类型。用于[requestSystemInputCapability](#requestsysteminputcapability)指定请求的系统输入能力类型。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| TRANSLATION | 0 | 翻译输入能力。<br/>使用场景：用于请求输入法切换到翻译模式。当前输入法须为系统配置的默认输入法，否则请求将被拒绝并返回12800010错误码。 |

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "提供全局配置项功能场景的开发指导：以Wi-Fi开关与用户登录状态共同判断下载条件为例，基于use shared共享模块、Sendable类与异步锁实现并发实例间一致的进程单例配置。"
+keywords: [全局配置, 共享模块, 进程单例, use shared, 异步锁, 数据一致性, 并发实例]
+doctype: guide
+status: active
+---
+
 # 全局配置项功能场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -33,7 +41,7 @@
        }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE)
      }
    
-     async logout(user?: string) {
+     async logout() {
        return this.lock.lockAsync(() => {
          this.isLogin = false;
          this.loginUser = '';
@@ -136,7 +144,7 @@
                  }
                }
              })
-             .backgroundColor(0xcccccc)
+             .backgroundColor('#cccccc')
            Text('logout')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
@@ -154,7 +162,7 @@
                  }
                }
              })
-             .backgroundColor(0xcccccc)
+             .backgroundColor('#cccccc')
            Text(this.wifiState)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)

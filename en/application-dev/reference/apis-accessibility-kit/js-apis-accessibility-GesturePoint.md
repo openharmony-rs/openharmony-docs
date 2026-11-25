@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:33:41.469Z pushedAt=2026-08-03T12:35:30.436Z -->
+<!-- md-trans-meta sourceCommit=b3705e4afba37476aadaf9a1df5606a3fb890cb1 translatedAt=2026-11-06T08:11:22.323Z pushedAt=2026-11-09T12:46:15.733Z nl=1 -->
 
 GesturePoint represents a gesture touch point and is the basic unit that constitutes a gesture path (GesturePath).
 

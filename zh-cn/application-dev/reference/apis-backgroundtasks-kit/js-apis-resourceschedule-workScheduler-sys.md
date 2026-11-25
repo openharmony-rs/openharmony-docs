@@ -9,6 +9,10 @@
 
 本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。
 
+> **说明：**
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.resourceschedule.workScheduler (延迟任务调度)](js-apis-resourceschedule-workScheduler.md)。
+
 **起始版本：** 26.0.0
 
 ## 导入模块
@@ -38,7 +42,7 @@ setExecFrequency(info: FrequencyInfo): void
 
 设置应用所在活跃分组的执行频率。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -60,8 +64,8 @@ setExecFrequency(info: FrequencyInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9700003 | System service operation failed. |
 | 9700006 | Failed to check the execution frequency parameters. |
 
@@ -90,7 +94,7 @@ resetExecFrequency(uid: number): void
 
 重置应用所在活跃分组的执行频率。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -112,8 +116,8 @@ resetExecFrequency(uid: number): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9700003 | System service operation failed. |
 | 9700006 | Failed to check the execution frequency parameters. |
 
@@ -138,7 +142,7 @@ try {
 
 FrequencyInfo作为参数设置时，uid、workId、interval为必填项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

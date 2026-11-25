@@ -2,11 +2,11 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-针对未读的通知，系统提供了角标设置接口，将未读通知个数显示在桌面图标的右上角角标上。
+针对未读的通知，系统提供了角标设置与查询接口，将未读通知个数显示在桌面图标的右上角角标上。
 
 通知增加时，角标上显示的未读通知个数需要增加。
 
@@ -25,16 +25,19 @@
 
 - 减少角标数，目前仅支持通过[setBadgeNumber()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagersetbadgenumber10)设置。
 
+- 查询角标数，支持通过[getBadgeNumber()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagergetbadgenumber22)获取当前应用桌面图标上显示的角标数，查询结果与通知开关、桌面角标开关是否开启无关。
+
   | **接口名** | **描述** |
   | -------- | -------- |
   | setBadgeNumber(badgeNumber: number): Promise\<void\> | 设置角标个数。 |
+  | getBadgeNumber(): Promise\<number\> | 获取当前应用角标数量。 |
 
 
 ## 开发步骤
 
 1. 导入NotificationManager模块。
 
-   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -76,6 +79,21 @@
    }).catch((err: BusinessError) => {
      hilog.error(DOMAIN_NUMBER, TAG,
        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
+4. 查询角标个数。
+
+   调用getBadgeNumber接口获取当前应用桌面图标上显示的角标个数。
+
+   <!-- @[get_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+   
+   ``` TypeScript
+   notificationManager.getBadgeNumber().then((data: number) => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in getting badge number, badgeNumber is ${data}`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
    });
    ```
 

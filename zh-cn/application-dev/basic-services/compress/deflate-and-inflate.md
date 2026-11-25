@@ -208,7 +208,7 @@
   
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
-  import { zlib } from '@kit.BasicServicesKit';
+  import { BusinessError, zlib } from '@kit.BasicServicesKit';
   
   @Entry
   @Component
@@ -224,6 +224,8 @@
             console.info('deflateFile success');
             fs.closeSync(inFile.fd);
             fs.closeSync(outFile.fd);
+          }).catch((error: BusinessError) => {
+            console.error(`deflateFile failed, code: ${error.code}, message: ${error.message}`);
           })
         })
   
@@ -236,6 +238,8 @@
             console.info('inflateFile success');
             fs.closeSync(inFile.fd);
             fs.closeSync(outFile.fd);
+          }).catch((error: BusinessError) => {
+            console.error(`inflateFile failed, code: ${error.code}, message: ${error.message}`);
           })
         })
       }
@@ -258,7 +262,7 @@
       let initStatus = zip.deflateInit(strm, zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED);
       console.info('deflateInit ret: ' + (await initStatus).valueOf());
     } catch (err) {
-      console.info('deflateInit err: ' + JSON.stringify(err));
+      console.error('deflateInit err: ' + JSON.stringify(err));
     }
     do {
       try {
@@ -270,7 +274,7 @@
         strm.availableIn = readLen;
         strm.nextIn = inBuf;
       } catch (err) {
-        console.info('readSync err: ' + JSON.stringify(err));
+        console.error('readSync err: ' + JSON.stringify(err));
       }
       do {
         // 设置输出缓冲区
@@ -302,9 +306,9 @@
     } while (flush != zlib.CompressFlushMode.FINISH); // 循环从文件中读取数据，直到数据全部读取
     try {
       // 释放资源
-      zip.deflateEnd(strm);
+      await zip.deflateEnd(strm);
     } catch (err) {
-      console.info('deflateEnd err: ' + JSON.stringify(err));
+      console.error('deflateEnd err: ' + JSON.stringify(err));
     }
   }
   
@@ -322,7 +326,7 @@
       let initStatus = zip.inflateInit(strm);
       console.info('inflateInit ret: ' + (await initStatus).valueOf());
     } catch (err) {
-      console.info('inflateInit err: ' + JSON.stringify(err));
+      console.error('inflateInit err: ' + JSON.stringify(err));
     }
     do {
       try {
@@ -336,7 +340,7 @@
         strm.availableIn = readLen;
         strm.nextIn = inBuf;
       } catch (err) {
-        console.info('readSync err: ' + JSON.stringify(err));
+        console.error('readSync err: ' + JSON.stringify(err));
       }
       do {
         // 设置输出缓冲区
@@ -369,9 +373,9 @@
     } while (status != zlib.ReturnStatus.STREAM_END.valueOf())  // 循环从文件中读取数据，直到数据全部读取
     try {
       // 释放资源
-      zip.inflateEnd(strm);
+      await zip.inflateEnd(strm);
     } catch (err) {
-      console.info('inflateEnd err: ' + JSON.stringify(err));
+      console.error('inflateEnd err: ' + JSON.stringify(err));
     }
   }
   ```
@@ -437,7 +441,7 @@
         zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY);
       console.info('deflateInit2 ret: ' + (await initStatus).valueOf());
     } catch (err) {
-      console.info('deflateInit2 err: ' + JSON.stringify(err));
+      console.error('deflateInit2 err: ' + JSON.stringify(err));
     }
     do {
       try {
@@ -449,7 +453,7 @@
         strm.availableIn = readLen;
         strm.nextIn = inBuf;
       } catch (err) {
-        console.info('readSync err: ' + JSON.stringify(err));
+        console.error('readSync err: ' + JSON.stringify(err));
       }
       do {
         // 设置输出缓冲区
@@ -483,7 +487,7 @@
       // 释放资源
       zip.deflateEnd(strm);
     } catch (err) {
-      console.info('deflateEnd err: ' + JSON.stringify(err));
+      console.error('deflateEnd err: ' + JSON.stringify(err));
     }
   }
   
@@ -502,7 +506,7 @@
       let initStatus = zip.inflateInit2(strm, windowBits);
       console.info('inflateInit2 ret: ' + (await initStatus).valueOf());
     } catch (err) {
-      console.info('inflateInit2 err: ' + JSON.stringify(err));
+      console.error('inflateInit2 err: ' + JSON.stringify(err));
     }
     do {
       try {
@@ -516,7 +520,7 @@
         strm.availableIn = readLen;
         strm.nextIn = inBuf;
       } catch (err) {
-        console.info('readSync err: ' + JSON.stringify(err));
+        console.error('readSync err: ' + JSON.stringify(err));
       }
       do {
         // 设置输出缓冲区
@@ -551,7 +555,7 @@
       // 释放资源
       zip.inflateEnd(strm);
     } catch (err) {
-      console.info('inflateEnd err: ' + JSON.stringify(err));
+      console.error('inflateEnd err: ' + JSON.stringify(err));
     }
   }
   ```

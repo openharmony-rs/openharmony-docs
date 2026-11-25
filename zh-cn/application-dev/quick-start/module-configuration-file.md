@@ -153,7 +153,7 @@ module.json5配置文件包含以下标签。
 | compressNativeLibs | 在打包hap时，该标签标识libs库是否以压缩存储的方式打包到HAP。<br/>-&nbsp;true：libs库以压缩方式存储。<br/>-&nbsp;false：libs库以不压缩方式存储。 | 布尔值 | 该标签可缺省，在打包hap时缺省值为false。 |
 | extractNativeLibs | 标识应用安装时，libs库是否解压到应用安装目录。当compressNativeLibs和extractNativeLibs都配置为false时，应用以不解压libs库的方式进行安装；其他场景，应用以解压libs库的方式进行安装。<br/>**说明：**<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为true。 |
 | libIsolation | 在libs目录下是否生成模块名称目录存储so，用于区分同一应用中不同HAP的.so文件，以防止.so文件冲突。<br/>-&nbsp;true：当前HAP的.so文件会储存在libs目录中以Module名命名的路径下。<br/>-&nbsp;false：当前HAP的.so文件会直接储存在libs目录中。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| [fileContextMenu](#filecontextmenu标签) | 标识当前HAP的右键菜单配置项，是一个profile文件资源。取值为长度不超过255字节的字符串。<br/>**说明：**<br/>仅在PC/2in1设备上生效。<br/>仅允许在entry类型模块中配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| [fileContextMenu](right-click-menu.md#声明右键菜单) | 标识当前HAP的右键菜单配置项，是一个profile文件资源。取值为长度不超过255字节的字符串。<br/>**说明：**<br/>仅在PC/2in1设备上生效。<br/>仅允许在entry类型模块中配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | querySchemes | 标识允许当前应用进行跳转查询的URL schemes，只允许entry类型模块配置，每个字符串取值不超过128字节。<br/>**说明：**<br/>从API version 21开始，最多允许配置200个URL scheme。API version 20及之前的版本，最多允许配置50个URL scheme。  | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | [routerMap](#routermap标签) | 标识当前模块配置的路由表路径。取值为长度不超过255字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | [appEnvironments](#appenvironments标签) | 标识当前模块配置的应用环境变量，只允许entry和feature模块配置。 | 对象数组 | 该标签可缺省，缺省值为空。 |
@@ -167,7 +167,8 @@ module.json5配置文件包含以下标签。
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | shareFiles | 标识应用沙箱中分享目录的配置文件路径，用于为应用文件提供有安全保障的开放范围，保护应用资产。只允许entry类型模块配置，取值为长度不超过255字节的字符串。具体使用方式请参考[应用共享目录配置](../file-management/share-app-file-configuration.md)。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | [skillProfiles](#skillprofiles标签) | 标识当前模块的技能配置信息，用于定义AI代理的技能能力。仅允许type字段取值为entry、feature、shared、skill的模块配置，对于skill类型的模块必须配置该标签。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。 | 对象数组 | 对于skill类型的模块，该标签不可缺省。对于其他类型的模块，该标签可缺省，缺省值为空。 |
-| [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。 | 对象数组 | 该标签可缺省，缺省值为空。 |
+| [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径及权限控制模式信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。| 对象数组 | 该标签可缺省，缺省值为空。 |
+| [launchServices](#launchservices标签) | 标识当前模块的启动服务配置信息。每个启动服务必须包含name和binaryPath字段，可选配置runAtLoad、keepAlive、provideIpcService和type字段，最多允许配置64个启动服务。仅允许type字段取值为entry、feature、shared的模块配置该标签。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
 | srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
@@ -307,7 +308,7 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | startWindowBackground | 标识当前UIAbility组件启动页面背景颜色资源文件的索引，取值为长度不超过255字节的字符串。<br/>取值示例：$color:red。| 字符串 | 该标签不可缺省。 |
 | removeMissionAfterTerminate | 标识当前UIAbility组件销毁后，是否从任务列表中移除任务。<br/>-&nbsp;true表示销毁后移除任务。<br/>-&nbsp;false表示销毁后不移除任务。<br/>**说明：**<br/>2in1设备和平板设备的自由多窗模式下配置不生效，默认移除任务。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | allowSelfRedirect | 标识应用是否允许通过<!--RP16-->[App Linking](../application-models/app-linking-startup.md)<!--RP16End-->跳转自己。<br/>-&nbsp;true表示允许通过App Linking跳转自己。<br/>-&nbsp;false表示不允许通过App Linking跳转自己。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为true。 |
-| orientation | 标识当前UIAbility组件启动时的方向，支持配置枚举，或启动方向资源索引。<br/>**启动方向枚举支持的取值如下：**<br/>-&nbsp;unspecified：未指定方向，由系统自动判断显示方向。<br/>-&nbsp;landscape：横屏。<br/>-&nbsp;portrait：竖屏。<br/>-&nbsp;follow_recent：跟随背景窗口的旋转模式。<br/>-&nbsp;landscape_inverted：反向横屏。<br/>-&nbsp;portrait_inverted：反向竖屏。<br/>-&nbsp;auto_rotation：随传感器旋转。<br/>-&nbsp;auto_rotation_landscape：传感器横屏旋转，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait：传感器竖屏旋转，包括竖屏和反向竖屏。<br/>-&nbsp;auto_rotation_restricted：传感器开关打开，方向可随传感器旋转。<br/>-&nbsp;auto_rotation_landscape_restricted：传感器开关打开，方向可随传感器旋转为横屏，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait_restricted：传感器开关打开，方向可随传感器旋转为竖屏，包括竖屏和反向竖屏。<br/>-&nbsp;locked：传感器开关关闭，方向锁定。<br/>-&nbsp;auto_rotation_unspecified：受开关控制和由系统判定的自动旋转模式。<br/>-&nbsp;follow_desktop：跟随桌面的旋转模式。<br/>&nbsp;**配置启动方向的资源索引时**，取值为长度不超过255字节的字符串，配置示例：$string:orientation。<br/>**说明：**<br/>&nbsp;-&nbsp;从API version 14开始，支持配置启动方向资源索引。 | 字符串 | 该标签可缺省，缺省值为unspecified。 |
+| orientation | 标识当前UIAbility组件启动时的方向，支持配置枚举，或启动方向资源索引。<br/>**启动方向枚举支持的取值如下：**<br/>-&nbsp;unspecified：未指定方向，由系统自动判断显示方向。<br/>-&nbsp;landscape：横屏。<br/>-&nbsp;portrait：竖屏。<br/>-&nbsp;follow_recent：随背景窗口旋转。<br/>-&nbsp;landscape_inverted：反向横屏。<br/>-&nbsp;portrait_inverted：反向竖屏。<br/>-&nbsp;auto_rotation：随传感器旋转。<br/>-&nbsp;auto_rotation_landscape：随传感器横屏旋转，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait：随传感器竖屏旋转，包括竖屏和反向竖屏。<br/>-&nbsp;auto_rotation_restricted：系统旋转锁定开关关闭，方向可随传感器旋转。<br/>-&nbsp;auto_rotation_landscape_restricted：系统旋转锁定开关关闭，方向可随传感器旋转为横屏，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait_restricted：系统旋转锁定开关关闭，方向可随传感器旋转为竖屏，包括竖屏和反向竖屏。<br/>-&nbsp;locked：系统旋转锁定开关打开，方向锁定。<br/>-&nbsp;auto_rotation_unspecified：受系统旋转锁定开关控制和由系统判定的自动旋转模式。<br/>-&nbsp;follow_desktop：随桌面旋转。<br/>&nbsp;**配置启动方向的资源索引时**，取值为长度不超过255字节的字符串，配置示例：$string:orientation。<br/>**说明：**<br/>&nbsp;-&nbsp;从API version 14开始，支持配置启动方向资源索引。 | 字符串 | 该标签可缺省，缺省值为unspecified。 |
 | supportWindowMode | 标识当前UIAbility组件所支持的窗口模式。支持的取值如下：<br/>-&nbsp;fullscreen：全屏模式。<br/>-&nbsp;split：分屏模式。<br/>-&nbsp;floating：悬浮窗模式。<br/>在[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](./app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](./app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。<br/>此外，还可以通过metadata配置窗口模式，具体的配置规则和优先级请参考[metadata](#metadata标签)。 | 字符串数组 | 该标签可缺省，缺省值为<br/>["fullscreen",&nbsp;"split",&nbsp;"floating"]。 |
 | <!--DelRow-->priority | 标识当前UIAbility组件的优先级。[隐式查询](../application-models/explicit-implicit-want-mappings.md)时，优先级越高，UIAbility在返回列表越靠前。取值范围0~10，数值越大，优先级越高。<br/>**说明：**<br/>三方应用的配置不生效，需申请应用特权AllowAbilityPriorityQueried，详见[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)。 | 整型数值 | 该标签可缺省，缺省值为0。 |
 | maxWindowRatio | 标识当前UIAbility组件支持的最大的宽高比。该标签最小取值为0。 | 数值 | 该标签可缺省，缺省值为平台支持的最大的宽高比。 |
@@ -499,7 +500,7 @@ skills示例：
 |skills | 标识当前ExtensionAbility组件能够接收的[Want](../application-models/want-overview.md)的特征集。<br/>配置规则：entry包可以配置多个具有入口能力的skills标签（配置了ohos.want.action.home和entity.system.home）的ExtensionAbility，其中第一个配置了skills标签的ExtensionAbility中的label和icon作为服务或应用的label和icon。<br/>**说明：**<br/>服务的Feature包不支持配置具有入口能力的skills标签。<br/>应用的Feature包支持配置具有入口能力的skills标签。 | 数组 | 该标签可缺省，缺省值为空。 |
 | [metadata](#metadata标签) | 标识当前ExtensionAbility组件的元信息。<br/>**说明：**<br/>该标签在type为form时，不可缺省，且必须存在一个name为ohos.extension.form的对象值，其对应的resource值不能缺省，为服务卡片的二级资源引用。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 | exported | 标识当前ExtensionAbility组件是否可以被其他应用调用。<br/>-&nbsp;true：表示可以被其他应用调用。<br/>-&nbsp;false：表示不可以被其他应用调用，包括无法被aa工具命令拉起应用。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| extensionProcessMode | 标识当前ExtensionAbility组件的进程模型，根据ExtensionAbility的类型不同，支持的配置项有所区别。支持的取值范围如下，默认值为bundle。<br/>-&nbsp;instance：表示该ExtensionAbility每个实例都各自运行在单独进程。<br/>-&nbsp;type：表示该ExtensionAbility的所有实例都运行在同一独立进程，与其他name的ExtensionAbility组件实例运行在不同进程。<br/>-&nbsp;bundle：表示该ExtensionAbility的实例与同包名下相同extensionType的ExtensionAbility实例运行在同一进程。<!--Del--><br/>-&nbsp;callerInstance：表示该ExtensionAbility实例运行在单独进程，进程的隔离粒度为调用方。同一调用方拉起的ExtensionAbility的实例运行在同一进程，不同调用方拉起的ExtensionAbility的实例运行在不同进程。从API版本26.0.0开始，支持该标签。<!--DelEnd--><br/>对于UIExtensionAbility及其子类，支持instance、type、bundle三种进程模型。<br/>对于类型为appService的ExtensionAbility，支持type和bundle两种进程模型。<!--Del--><br/>对于类型为sysPicker/mediaControl的ExtensionAbility，支持bundle、type、instance、callerInstance四种进程模型。<!--DelEnd--><!--RP10--><!--RP10End--> | 字符串 | 该标签可缺省，缺省值为bundle。 |
+| extensionProcessMode | 标识当前ExtensionAbility组件的进程模型，根据ExtensionAbility的类型不同，支持的配置项有所区别。支持的取值范围如下，默认值为bundle。<br/>-&nbsp;instance：表示该ExtensionAbility每个实例都各自运行在单独进程。<br/>-&nbsp;type：表示该ExtensionAbility的所有实例都运行在同一独立进程，与其他name的ExtensionAbility组件实例运行在不同进程。<br/>-&nbsp;bundle：表示该ExtensionAbility的实例与同包名下相同extensionType的ExtensionAbility实例运行在同一进程。<!--Del--><br/>-&nbsp;callerInstance：表示该ExtensionAbility实例运行在单独进程，进程的隔离粒度为调用方。同一调用方拉起的ExtensionAbility的实例运行在同一进程，不同调用方拉起的ExtensionAbility的实例运行在不同进程。从API版本26.0.0开始，支持该标签。<!--DelEnd--><br/>对于UIExtensionAbility及其子类，支持instance、type、bundle三种进程模型。<br/>对于类型为appService的ExtensionAbility，支持type和bundle两种进程模型。从API版本26.0.0开始，支持该标签。<!--Del--><br/>对于类型为sysPicker/mediaControl的ExtensionAbility，支持bundle、type、instance、callerInstance四种进程模型。<!--DelEnd--><!--RP10--><!--RP10End--> | 字符串 | 该标签可缺省，缺省值为bundle。 |
 | dataGroupIds | 标识当前ExtensionAbility组件的dataGroupId集合。如果当前ExtensionAbility组件所在的应用在应用市场申请的证书里groupIds也申请了某个dataGroupId，那么当前ExtensionAbility组件可以和应用共享这一个dataGroupId生成的目录，所以ExtensionAbility组件的dataGroupId需要是应用的签名证书中groupIds标签里配置的才能生效。 且该标签仅在当前ExtensionAbility组件存在独立的沙箱目录时生效。<!--RP8--><!--RP8End--> | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | process | 标识组件的进程名称，只有type为embeddedUI时可以配置该标签。具体使用方式参考[独立进程配置](../application-models/process-model-overview.md#独立进程配置)中的"静态指定进程"。<br/>**说明：**<br/>1. 仅在[PC/2in1](./module-configuration-file.md#devicetypes标签)和[Tablet](./module-configuration-file.md#devicetypes标签)设备上生效。<br/>2. UIAbility组件和ExtensionAbility组件标签一致时运行在同一个进程中。<br/>3. 从API version 14开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | isolationProcess | 标识ExtensionAbility组件能否运行在独立的进程中。<br/>-&nbsp;true：表示能运行在独立的进程中。<br/>-&nbsp;false：表示不能运行在独立的进程中。<br/>**说明：**<br/>仅当ExtensionAbility组件的type为"sys/commonUI"时该标签配置生效，且仅支持由系统应用配置type为"sys/commonUI"。<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
@@ -623,6 +624,7 @@ extensionAbilities示例：
 |awc/webpage|通用网页浏览的ExtensionAbility。|
 |awc/newsfeed|信息流资讯业务的ExtensionAbility。|
 |assetCache<sup>24+</sup>|提供通用应用数据缓存能力的ExtensionAbility。三方应用配置不生效，当前配置仅在系统应用中有效。|
+|ukeyAuth|UKey认证扩展能力[UkeyAuthExtensionAbility](../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md)。从API版本26.0.1开始，支持该标签。|
 <!--RP9--><!--RP9End-->
 
 ## shortcuts标签
@@ -646,7 +648,7 @@ shortcuts标识应用的快捷方式信息。标签值为数组，包含四个�
 | label | 标识快捷方式的标签信息，即快捷方式对外显示的文字描述信息。取值为长度不超过255字节的字符串，可以是描述性内容，也可以是标识label的资源索引。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | icon | 标识快捷方式的图标，取值为资源文件的索引。<br/>**说明：**<br/>图标分为单层图标和分层图标，单层图标包含一个图片，分层图标包含前景图和背景图，推荐使用如下配置的分层图标：<br/>1.前景图：图标显示大小为450\*450px，资源大小为1024\*1024px的透明图层。<br/>2.背景图：大小为1024\*1024px。<br/> | 字符串 | 该标签可缺省，缺省值为空。 |
 | visible | 标识快捷方式是否显示，取值为true时显示快捷方式，取值为false时不显示快捷方式。<br/>**说明：**<br/>1.从API version 20开始，支持该标签。<br/> | 布尔值 | 该标签可缺省，缺省为true。 |
-| [wants](#wants标签) | 标识快捷方式内定义的目标wants信息集合，在调用launcherBundleManager的startShortcut接口时，会拉起wants标签里的第一个目标组件，推荐只配置一个wants元素。 | 对象 | 该标签可缺省，缺省为空。 |
+| [wants](#wants标签) | 标识快捷方式内定义的目标wants信息集合<!--Del-->，在调用launcherBundleManager的startShortcut()接口时，会拉起wants标签里的第一个目标组件，推荐只配置一个wants元素<!--DelEnd-->。 | 对象 | 该标签可缺省，缺省为空。 |
 
 
 1. 在/resources/base/profile/目录下配置shortcuts_config.json配置文件。
@@ -1214,93 +1216,6 @@ hnpPackages示例：
 }
 ```
 
-## fileContextMenu标签
-
-该标签标识当前HAP的右键菜单配置项，是一个profile文件资源，用于指定描述应用注册右键菜单配置文件。仅在PC/2in1设备上生效。仅允许在entry类型模块中配置。
-
-fileContextMenu标签示例
-
-<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义的配置文件menu.json
-    // ...
-  }
-}
-```
-
-在开发视图的resources/base/profile下面定义配置文件menu.json，其中文件名“menu.json”可自定义，需要和fileContextMenu标签指定的信息对应。配置文件中描述了当前应用注册的右键菜单的项目和响应行为。
-
-配置文件根节点名称为fileContextMenu，为对象数组，标识当前module注册右键菜单的数量。（单模块和单应用注册数量不能超过5个，配置超过数量当前只解析随机5个）
-
-**表25** fileContextMenu标签配置说明
-
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| abilityName | 表示当前右键菜单对应的需要拉起的ability名称。 | 字符串 | 不可缺省。 |
-| menuItem | 右键菜单显示的信息。命名建议：<br/>原则一：[动作]+[应用名]，中文示例：用{App}打开、用{App} ({Plugin}插件) 打开；英文示例：Open with {App}、Open with {App} ({Plugin})。<br/>原则二：[动作]+[目的]，示例：压缩为{文件名}、压缩至{路径}、用{App}转换为{格式}。 | 资源id | 不可缺省。 |
-| menuHandler | 一个ability可以创建多个右键菜单， 该标签与右键菜单显示项一一对应，用于区分用户拉起的不同右键菜单项。开发者可自定义该标签取值，确保该标签在整个ability中唯一。在用户点击右键菜单拉起应用时，会作为参数传递给应用。 | 字符串 | 不可缺省。 |
-| menuContext | 定义展示该菜单项需要的上下文，可以支持多种情况，类型为数组。 | 对象数组 | 不可缺省。 |
-
-**表26** menuContext标签配置说明
-
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| menuKind | 表示单击如下类型时会触发右键菜单。取值范围如下：<br/>-&nbsp;0：空白处<br/>-&nbsp;1：文件<br/>-&nbsp;2：文件夹<br/>-&nbsp;3：文件和文件夹 | 数值 | 不可缺省。 |
-| menuRule | 表示采用什么方式选择文件或文件夹时，会触发右键菜单。取值范围如下：<br/>-&nbsp;single：单选<br/>-&nbsp;multi：多选<br/>-&nbsp;both：单选或多选 | 字符串 | 仅当menuKind为1或2时，才会读取该标签，此时不可缺省。 |
-| fileSupportType | 表示当选中的文件列表里包含指定的文件类型时，显示右键菜单。<br/>当该标签取值为["*"]时，将会读取fileNotSupportType标签。<br/>当该标签取值为[]时，将不做任何处理。 | 字符串数组 | 仅当menuKind为1时，才会读取该标签，此时不可缺省。 |
-| fileNotSupportType | 表示当选中的文件列表里包含这些文件类型时，不显示该右键菜单。<br/>仅当menuKind为1、且fileSupportType为["*"]时，才会读取该标签。 | 字符串数组 | 可缺省，缺省值为空。 |
-
-resources/base/profile路径下的menu.json资源文件示例如下：
-```json
-{
-  "fileContextMenu": [
-    {
-      "abilityName": "EntryAbility",
-      "menuItem": "$string:module_desc",
-      "menuHandler": "openCompress",
-      "menuContext": [
-        {
-          "menuKind": 0
-        },
-        {
-          "menuKind": 1,
-          "menuRule": "both",
-          "fileSupportType": [
-            ".rar",
-            ".zip"
-          ],
-          "fileNotSupportType": [
-            ""
-          ]
-        },
-        {
-          "menuKind": 2,
-          "menuRule": "single"
-        },
-        {
-          "menuKind": 3
-        }
-      ]
-    }
-  ]
-}
-```
-
-**响应行为**
-
-应用进行右键扩展菜单注册后，在文件管理器通过右键操作拉起菜单，该菜单中会有“更多”选项。单击“更多”选项后，会出现注册后的menuItem列表，单击任意一个选项后，文件管理器默认通过startAbility的方式拉起三方应用，除了指定三方应用的包名和ability名之外，want中的parameter中，也会传入如下标签：
-
-**表27** want中parameter标签说明
-
-| 参数名 | 值 | 类型 |
-| -------- | -------- | -------- |
-| menuHandler | 对应注册配置文件中menuHandler的值。 | 字符串 |
-| uriList | 用户在具体文件上触发右键的uri值，如果空白处响应，此值为空，单个文件响应，数组长度1，多个文件响应则传入对应所有文件的uri值。 | 字符串数组 |
-
 ## startWindow标签
 
 该标签指向一个profile文件资源，用于指定UIAbility组件启动页面的配置文件，在开发视图的resources/base/profile下面定义配置文件start_window.json，如果配置了该标签，startWindowIcon和startWindowBackground标签将不生效。
@@ -1417,18 +1332,19 @@ definePermissions标签示例：
 
 ## executableBinaryPaths标签
 
-标识应用内可执行二进制文件的路径信息，仅在PC/2in1设备上生效。从API version 24开始，支持该标签。
+标识应用内可执行二进制文件的路径及权限控制模式信息，仅在PC/2in1设备上生效。从API version 24开始，支持该标签。
 
 **表31** executableBinaryPaths标签说明
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | path | 标识可执行文件的路径。该路径是相对路径，必须以`libs/{abi}/`为前缀，其中`{abi}`为设备CPU架构类型（如arm64-v8a、x86_64、armeabi-v7a），即可执行二进制文件必须配置在`libs/{abi}/`目录下。 | 字符串 | 该标签不可缺省。 |
+| permissionControlMode | 标识可执行文件的权限控制模式。<br/>- "independent"：独立权限控制（按BIN自身声明的权限进行控制）；对应整型语义0。<br/>- "inheritParentProcess"：继承父进程权限控制模式；对应整型语义1。<br/>未配置或配置为未知/非法字符串字面量时，按"independent"处理。<br/>从API版本26.1.0开始支持。 | 字符串 | 该标签可缺省，缺省值为"independent"。 |
 
 
 executableBinaryPaths示例：
 
-<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->    
 
 ``` JSON5
 {
@@ -1436,7 +1352,8 @@ executableBinaryPaths示例：
     // ...
     "executableBinaryPaths": [
       {
-        "path": "libs/arm64-v8a/test.bin"
+        "path": "libs/arm64-v8a/test.bin",
+        "permissionControlMode": "independent"
       }
     ],
     // ...
@@ -1481,5 +1398,45 @@ skillProfiles标签示例：
     ],
     // ...
   }
+}
+```
+
+## launchServices标签
+
+标识当前模块的启动服务配置信息。每个启动服务对应模块内的一个可执行程序，通过配置其属性，可实现模块加载时自启动、常驻保活及提供IPC服务等能力。单模块最多支持配置64个启动服务。仅当模块的type字段取值为entry、feature或shared时，才允许配置该标签。
+
+从API版本26.1.0开始，支持该标签。
+
+**表33** launchServices标签说明
+
+| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+| -------- | -------- | -------- | -------- |
+| name | 标识启动服务的名称。命名规则如下：<br/>-&nbsp;由字母、数字、下划线（_）和点号（.）组成，且必须以字母开头。<br/>-&nbsp;最大长度255字节。 | 字符串 | 否 |
+| binaryPath | 标识启动服务对应的可执行文件的相对路径。取值为长度不超过255字节的字符串，且路径中不允许包含表示上级目录的".."路径段。 | 字符串 | 否 |
+| runAtLoad | 标识模块加载时是否自动启动该服务。<br/>-&nbsp;true：模块加载时启动该服务。<br/>-&nbsp;false：模块加载时不启动该服务。 | 布尔值 | 是，缺省值为false。 |
+| keepAlive | 标识服务启动后是否保持常驻存活。<br/>-&nbsp;true：服务启动后保持存活。<br/>-&nbsp;false：服务启动后不保持存活。 | 布尔值 | 是，缺省值为false。 |
+| provideIpcService | 标识启动服务是否提供IPC服务。<br/>-&nbsp;true：提供IPC服务。<br/>-&nbsp;false：不提供IPC服务。 | 布尔值 | 是，缺省值为false。 |
+| type | 标识启动服务的类型。当前仅支持取值为daemon。 | 字符串 | 是，缺省值为daemon。 |
+
+launchServices标签示例：
+
+<!-- @[module_launchServices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "launchServices": [
+      {
+        "name": "mydaemon",
+        "binaryPath": "mydaemon/testdaemon",
+        "runAtLoad": true,
+        "keepAlive": true,
+        "provideIpcService": false,
+        "type": "daemon"
+      }
+    ],
+    // ...
+  },
 }
 ```

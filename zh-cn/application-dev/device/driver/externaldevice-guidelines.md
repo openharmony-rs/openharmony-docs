@@ -111,7 +111,7 @@
    }
    ```
 
-5. 定义获取对应驱动远程对象的接口，通过bindDeviceDriver获取远程对象。
+5. 定义获取对应驱动远程对象的接口，通过bindDriverWithDeviceId获取远程对象。
 
    <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -120,7 +120,7 @@
      try {
        let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
          (err: BusinessError, id: number) => {
-           hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
+           hilog.error(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
          });
        return remoteDeviceDriver.remote;
      } catch (error) {
@@ -151,12 +151,12 @@
      let option = new rpc.MessageOption();
      let data = new rpc.MessageSequence();
      let reply = new rpc.MessageSequence();
-   
-     // 向驱动发送信息"Hello"
-     hilog.info(DOMAIN, 'testTag', `communicateWithRemote, message=${this.message}`);
-     data.writeString(this.message);
-   
+
      try {
+       // 向驱动发送信息"Hello"
+       hilog.info(DOMAIN, 'testTag', `communicateWithRemote, message=${this.message}`);
+       data.writeString(this.message);
+
        await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
        // 获取驱动返回信息"Hello world"
        this.message = reply.readString();

@@ -5,10 +5,11 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=eadd5d575bd3e97966b628d33a71b5aeabedc4c7 translatedAt=2026-11-02T00:56:19.530Z pushedAt=2026-11-02T09:53:24.017Z nl=1 -->
 
 This module provides APIs for controlling the Data Loss Prevention (DLP) feature, including enabling or disabling the DLP feature and returning the DLP status. It helps enterprises meet data security compliance requirements and implement access control and encryption protection for confidential files.
 
-**Use scenarios**
+**Use scenarios** 
 - Data security compliance requirements must be met.
 - Access control and encryption protection are provided for confidential files.
 > **NOTE**
@@ -69,7 +70,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 202 | Non-system applications use system APIs. |
-| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.1.0+|
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.0.1+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -103,7 +104,7 @@ Describes the DLP settings.
 | -------- | -------- | -------- | -------- | -------- |
 | isSuccess | boolean | No| No| Whether the DLP setting is successful. The value **true** indicates that the setting is successful, and the value **false** indicates that the setting fails.|
 
-## DlpFeatureInfo
+## DLPFeatureInfo
 
 Sets the DLP status.
 

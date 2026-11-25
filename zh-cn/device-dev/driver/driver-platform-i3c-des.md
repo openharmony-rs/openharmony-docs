@@ -6,7 +6,7 @@
 
 I3C（Improved Inter Integrated Circuit）总线是由MIPI Alliance开发的一种简单、低成本的双向二线制同步串行总线。
 
-I3C是两线双向串行总线，针对多个传感器从设备进行了优化，并且一次只能由一个I3C主设备控制。相比于I2C，I3C总线拥有更高的速度、更低的功耗，支持带内中断、从设备热接入以及切换当前主设备，同时向后兼容I2C从设备。I3C增加了带内中断（In-Bind Interrupt）功能，支持I3C设备进行热接入操作，弥补了I2C总线需要额外增加中断线来完成中断的不足。I3C总线上允许同时存在I2C设备、I3C从设备和I3C次级主设备。
+I3C是两线双向串行总线，针对多个传感器从设备进行了优化，并且一次只能由一个I3C主设备控制。相比于I2C，I3C总线拥有更高的速度、更低的功耗，支持带内中断、从设备热接入以及切换当前主设备，同时向后兼容I2C从设备。I3C增加了带内中断（In-Band Interrupt）功能，支持I3C设备进行热接入操作，弥补了I2C总线需要额外增加中断线来完成中断的不足。I3C总线上允许同时存在I2C设备、I3C从设备和I3C次级主设备。
 
 I3C接口定义了完成I3C传输的通用方法集合，包括：
 
@@ -22,7 +22,7 @@ I3C接口定义了完成I3C传输的通用方法集合，包括：
 
 - IBI（In-Band Interrupt）<br>
 
-    带内中断。在SCL线没有启动信号时，I3C从设备可以通过拉低SDA线使主设备发出SCL启动信号，从而发出带内中断请求。若有多个从机同时发出中断请求，I3C主机则通过从机地址进行仲裁，低地址优先相应。
+    带内中断。在SCL线没有启动信号时，I3C从设备可以通过拉低SDA线使主设备发出SCL启动信号，从而发出带内中断请求。若有多个从机同时发出中断请求，I3C主机则通过从机地址进行仲裁，低地址优先响应。
 
 - DAA（Dynamic Address Assignment）<br>
 
@@ -85,7 +85,8 @@ I3C模块提供的主要接口如表1所示，具体API[详见](https://gitcode.
 | int32_t I3cRequestIbi(DevHandle handle, uint16_t addr, I3cIbiFunc func, uint32_t payload) | 请求带内中断 |
 | int32_t I3cFreeIbi(DevHandle handle, uint16_t addr) | 释放带内中断 |
 
->![](../public_sys-resources/icon-note.gif) **说明：**<br>
+>**说明：**
+>
 >本文涉及的所有接口，仅限内核态使用，不支持在用户态使用。
 
 ### 开发步骤<a name="section9"></a>
@@ -109,7 +110,9 @@ DevHandle I3cOpen(int16_t number);
 | 参数 | 参数描述 |
 | ---------- | ------------------- |
 | number | int16_t类型，I3C控制器号 |
+
 | **返回值** | **返回值描述** |
+| ---------- | ------------------- |
 | NULL | 打开I3C控制器失败 |
 | 控制器句柄 | 打开的I3C控制器句柄 |
 
@@ -140,7 +143,9 @@ int32_t I3cGetConfig(DevHandle handle, struct I3cConfig *config);
 | ---------- | -------------- |
 | handle | DevHandle类型，I3C控制器句柄  |
 | config | 结构体指针，I3C控制器配置  |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------- |
 | HDF_SUCCESS | 获取成功 |
 | 负数 | 获取失败 |
 
@@ -170,7 +175,9 @@ int32_t I3cSetConfig(DevHandle handle, struct I3cConfig *config);
 | ---------- | -------------- |
 | handle | DevHandle类型，I3C控制器句柄 |
 | config | 结构体指针，I3C控制器配置 |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------- |
 | HDF_SUCCESS | 配置成功 |
 | 负数 | 配置失败 |
 
@@ -205,7 +212,9 @@ int32_t I3cTransfer(DevHandle handle, struct I3cMsg *msgs, int16_t count, enum T
 | msgs | 结构体指针，待传输数据的消息结构体数组 |
 | count | int16_t类型，消息数组长度 |
 | mode | 枚举类型，传输模式，0：I2C模式；1：I3C模式；2：发送CCC |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------------------------------------- |
 | 正整数 | 成功传输的消息结构体数目 |
 | 负数 | 执行失败 |
 
@@ -223,7 +232,7 @@ msgs[0].flags = 0;            // 传输标记为0，默认为写
 msgs[1].buf = rbuff;          // 要读取的数据
 msgs[1].len = 2;              // 读取数据长度为2
 msgs[1].addr = 0x3F;          // 读取设备地址为0x3F
-msgs[1].flags = I3C_FLAG_READ // I3C_FLAG_READ置位
+msgs[1].flags = I3C_FLAG_READ; // I3C_FLAG_READ置位
 // 进行一次I2C模式自定义传输，传输的消息个数为2
 ret = I3cTransfer(i3cHandle, msgs, 2, I2C_MODE);
 if (ret != 2) {
@@ -232,9 +241,10 @@ if (ret != 2) {
 }
 ```
 
->![](../public_sys-resources/icon-caution.gif) **注意：** 
+>**注意：**
+>
 >-   I3cMsg结构体中的设备地址不包含读写标志位，读写信息由flags成员变量的读写控制位传递。
->-   本函数不对消息结构体个数做限制，其最大个数度由具体I3C控制器决定。
+>-   本函数不对消息结构体个数做限制，其最大个数由具体I3C控制器决定。
 >-   本函数不对每个消息结构体中的数据长度做限制，同样由具体I3C控制器决定。
 >-   本函数可能会引起系统休眠，禁止在中断上下文调用。
 
@@ -254,7 +264,9 @@ int32_t I3cRequestIbi(DevHandle handle, uint16_t addr, I3cIbiFunc func, uint32_t
 | addr | uint16_t类型，I3C设备地址 |
 | func | 函数指针，IBI回调函数 |
 | payload | IBI有效载荷 |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------- |
 | HDF_SUCCESS | 请求成功 |
 | 负数 | 请求失败 |
 
@@ -308,7 +320,9 @@ int32_t I3cFreeIbi(DevHandle handle, uint16_t addr);
 | ---------- | -------------- |
 | handle | DevHandle类型，I3C控制器句柄  |
 | addr | uint16_t类型，I3C设备地址 |
+
 | **返回值** | **返回值描述** |
+| ---------- | -------------- |
 | HDF_SUCCESS | 释放成功 |
 | 负数 | 释放失败 |
 
@@ -347,7 +361,7 @@ I3cClose(i3cHandle); // 关闭I3C控制器
 
 - 虚拟I3C设备：I3C地址为0x3f, 寄存器位宽为1字节。
 
-- 硬件连接：虚拟I3C设备挂接在18号和19号I3C控制器下。
+- 硬件连接：虚拟I3C设备挂接在18号或19号I3C控制器下（示例以18为例）。
 
 本例程进行简单的I3C传输，测试I3C通路是否正常。
 
@@ -426,7 +440,7 @@ static int32_t TestCaseI3c(void)
     // 设备信息初始化
     testDevice.busNum = 18;
     testDevice.addr = 0x3F;
-    testDevice.regLen = 2;
+    testDevice.regLen = 1;
     testDevice.i3cHandle = NULL;
 
     // 打开I3C控制器 

@@ -80,6 +80,7 @@ AbilityRuntime模块的错误码的枚举。
 | ABILITY_RUNTIME_ERROR_CODE_CROSS_APP_IN_PROCESS = 16000176 |  在[OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode)模式下，调用方与目标Ability不在同一应用。<br>**起始版本：** 26.0.0 |
 | ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID = 16000177 | NativeAbility数据信息无效或不完整。<br>**起始版本：** 26.0.0 |
 | ABILITY_RUNTIME_ERROR_CODE_METADATA_INVALID = 16000178 | 类型库元数据无效。<br>**起始版本：** 26.0.0 |
-| ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL = 16000179 | 缓冲区过小。<br>**起始版本：** 26.1.0 |
+| ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL = 16000179 | 缓冲区过小。<br>**起始版本：** 26.0.1 |
+| ABILITY_RUNTIME_ERROR_CODE_CHILD_PROCESS_NOT_EXIST = 16000206 | 子进程不存在，或非当前应用创建的子进程，或当前接口在子进程中调用。<br>**起始版本：** 26.1.0 |
 
 

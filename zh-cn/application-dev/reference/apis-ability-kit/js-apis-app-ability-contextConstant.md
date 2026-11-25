@@ -125,7 +125,7 @@ StartupVisibility作为[StartOptions](js-apis-app-ability-startOptions.md)的一
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
 | SCENARIO_MOVE_MISSION_TO_FRONT | 0x00000001 | <!--RP1-->系统接口[missionManager.moveMissionToFront](./js-apis-app-ability-missionManager-sys.md#missionmanagermovemissiontofront-2)接口触发的UIAbility到前台场景。<!--RP1End-->        |
 | SCENARIO_SHOW_ABILITY | 0x00000002 | [showAbility](./js-apis-inner-application-uiAbilityContext.md#showability12)接口触发的UIAbility到前台场景。     |
-| SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT | 0x00000004 | [backToCallerAbilityWithResult](./js-apis-inner-application-uiAbilityContext.md#backtocallerabilitywithresult12)接口触发的UIAbility到前台场景。     |
+| SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT | 0x00000004 | [backToCallerAbilityWithResult](./js-apis-inner-application-uiAbilityContext.md#backtocallerabilitywithresultdeprecated)接口触发的UIAbility到前台场景。     |
 
 **示例：**
 
@@ -173,7 +173,7 @@ export default class EntryAbility extends UIAbility {
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
 | APPLICATION_CONTEXT | 0 | [ApplicationContext](js-apis-inner-application-applicationContext.md)类型，提供应用级别的资源和能力。  |
 | ABILITY_STAGE_CONTEXT | 1 | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md)类型，提供模块级别的资源和能力。   |
-| UIABILITY_CONTEXT | 2 | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)类型，提供界面交互、组件启动等能力。     |
+| UIABILITY_CONTEXT | 2 | [UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)类型，提供界面交互、组件启动等能力。     |
 | FORM_EXTENSION_CONTEXT | 3 | [FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md)类型，提供卡片服务能力。     |
 | APP_SERVICE_EXTENSION_CONTEXT | 4 | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)类型，提供后台服务能力。     |
 

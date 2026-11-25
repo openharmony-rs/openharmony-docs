@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍通过XComponent Native接口为自绘制内容申请独立绘制帧率并注册每帧回调，适用于自绘制UI框架等Native开发场景。"
+keywords: [XComponent, 自绘制, 每帧回调, 期望回调, 期望帧率]
+doctype: guide
+status: active
+---
+
 # 请求自绘制内容绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 对于基于[XComponent](../ui/napi-xcomponent-guidelines.md)进行Native开发的业务，可以请求独立的绘制帧率进行内容开发，如游戏、自绘制UI框架对接等场景。

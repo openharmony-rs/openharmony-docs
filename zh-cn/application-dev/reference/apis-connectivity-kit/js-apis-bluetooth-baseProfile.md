@@ -46,7 +46,7 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 | 名称     | 类型                           | 只读 | 可选 | 说明                            |
 | -------- | ----------------------------- | ---- | ---- | ------------------------------- |
-| deviceId | string                        | 否   | 否   | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。   |
+| deviceId | string                        | 否   | 否   | 对端设备地址，例如："11:22:33:44:55:66"。   |
 | state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | Profile连接状态。 |
 | cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | Profile断开连接的原因。|
 | role| [PanRole](#panrole) | 否 | 是 | 当前对端设备对应的[PAN](../../connectivity/bluetooth/terminology.md#pan)角色。仅PAN Profile连接状态发生变化时返回该字段，非PAN场景下该字段不存在。<br> **起始版本**：26.0.0|
@@ -90,9 +90,7 @@ getConnectedDevices(): Array&lt;string&gt;
 
 获取和本端设备间已连接Profile的对端设备列表。例如，在蓝牙音频播放应用中，可通过该方法获取当前已连接的A2DP音频设备列表以进行设备展示或管理。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -137,7 +135,9 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 获取和对端设备间Profile的连接状态。例如，在蓝牙应用中判断设备是否已连接，以决定是否可以发起数据传输或更新设备连接状态显示。
 
-- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取Profile连接状态。
+- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取A2DP Profile连接状态。
+- 从API版本26.0.0开始，此接口支持使用对端设备的实际MAC地址获取HFP、PAN Profile的连接状态。
+- 不同Profile对实际MAC地址的支持起始版本不同，请按需使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -149,7 +149,7 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 对端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -179,7 +179,7 @@ import { a2dp } from '@kit.ConnectivityKit';
 
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile(); // 以a2dp举例
-    let ret = a2dpSrc.getConnectionState('XX:XX:XX:XX:XX:XX');
+    let ret = a2dpSrc.getConnectionState('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -191,9 +191,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 
 订阅Profile的连接状态变化事件。使用Callback异步回调。例如，在蓝牙音频应用中，当耳机连接或断开时实时更新播放界面状态或提示用户。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

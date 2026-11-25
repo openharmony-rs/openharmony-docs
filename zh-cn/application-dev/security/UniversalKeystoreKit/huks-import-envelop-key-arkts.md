@@ -115,7 +115,7 @@ let enOption: huks.HuksOptions = {
 let cipherData: Uint8Array;
 let handle: number;
 
-async function EnvelopRsaTest()
+async function envelopRsaTest()
 {
   let wrappingKeyAlias = "WrappedKey";
   await huks.generateKeyItem(wrappingKeyAlias, option)
@@ -125,7 +125,7 @@ async function EnvelopRsaTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error('decrypt init fail, errorCode: ${error.code}')
+      console.error(`encrypt init fail, errorCode: ${error.code}`)
     })
   await huks.finishSession(handle, enOption)
     .then((data) => {
@@ -320,7 +320,7 @@ async function EnvelopAesTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error('decrypt init fail')
+      console.error(`encrypt init fail`)
     });
   await huks.finishSession(handle, enOption)
     .then((data) => {

@@ -85,6 +85,7 @@ static show(options?: TimePickerDialogOptions)
 | enableCascade<sup>18+</sup>              | boolean | 否  | 是  | 设置上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。<br>- true：自动切换。<br>- false：不自动切换。<br>默认值：false<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 | enableHapticFeedback<sup>18+</sup> | boolean | 否  | 是  | 设置是否开启触控反馈。<br>- true：开启触控反馈。<br>- false：不开启触控反馈。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**说明：**<br>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br>2. 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 | systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br>**说明：**<br>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE<br>**说明：**<br>当alignment不为DialogAlignment.Default，或者offset值不为0时，该接口不生效。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 
@@ -401,6 +402,7 @@ struct TimePickerDialogExample {
             useMilitaryTime: false,
             selected: this.selectTime,
             format: TimePickerFormat.HOUR_MINUTE_SECOND,
+            // 设置了start或end且为非默认值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。
             start: new Date('2022-07-22T08:30:00'),
             onAccept: (value: TimePickerResult) => {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
@@ -415,7 +417,8 @@ struct TimePickerDialogExample {
   }
 }
 ```
-![TimePickerDialog](figures/TimePickerDialogDemo7.png)
+
+![TimePickerDialog](figures/TimePickerDialogDemo7.gif)
 
 ### 示例8（设置时间滑动选择器弹窗的结束时间）
 
@@ -437,6 +440,7 @@ struct TimePickerDialogExample {
             useMilitaryTime: false,
             selected: this.selectTime,
             format: TimePickerFormat.HOUR_MINUTE_SECOND,
+            // 设置了start或end且为非默认值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。
             end: new Date('2022-07-22T15:20:00'),
             onAccept: (value: TimePickerResult) => {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
@@ -451,7 +455,8 @@ struct TimePickerDialogExample {
   }
 }
 ```
-![TimePickerDialog](figures/TimePickerDialogDemo8.png)
+
+![TimePickerDialog](figures/TimePickerDialogDemo8.gif)
 
 ### 示例9（设置上午下午跟随时间联动）
 
@@ -574,7 +579,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct DatePickerDialogExample {
+struct TimePickerDialogExample {
   build() {
     Stack({ alignContent: Alignment.Top }) {
       Column() {
@@ -595,3 +600,36 @@ struct DatePickerDialogExample {
 ```
 
 ![time-picker-dialog-systemMaterial](figures/time-picker-dialog-systemMaterial.gif)
+
+### 示例13（设置弹窗适配握持习惯）
+
+该示例通过[TimePickerDialogOptions](#timepickerdialogoptions对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[TimePickerDialogOptions](#timepickerdialogoptions对象说明)中新增了adaptToHandedness属性。
+
+```ts
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TimePickerDialogExample {
+  private selectTime: Date = new Date('2020-12-25T08:30:00');
+
+  build() {
+    Column() {
+      Button('TimePickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showTimePickerDialog({
+            selected: this.selectTime,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/timepickerdialoghandedness.gif)

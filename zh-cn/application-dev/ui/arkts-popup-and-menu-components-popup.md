@@ -142,7 +142,7 @@ export struct ButtonPopupExample {
 
 通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)或[CustomPopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#custompopupoptions8类型说明)中的transition属性，可以控制气泡的进场和出场动画效果。
 
-<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
+<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -202,7 +202,7 @@ export struct AnimationPopupExample {
               }
             },
             // 设置弹窗显示动效与退出动效为缩放动效
-            transition: TransitionEffect.scale({ x: 1, y: 0 }).animation({ duration: 500, curve: Curve.Ease })
+            transition: TransitionEffect.scale({ x: 1, y: 0, centerX: '50%', centerY: '50%' }).animation({ duration: 500, curve: Curve.Ease })
           })
           .position({ x: 80, y: 300 })
       }.width('100%').padding({ top: 5 })

@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -40,17 +40,17 @@
 | smallIcon                      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知左侧图标，默认为空。系统自动生成，无需开发者配置。<br>图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP4--><!--RP4End-->。                                                 |
 | largeIcon                      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知右侧图标，默认为空。当`content`使用[NotificationPictureContent](js-apis-inner-notification-notificationContent.md#notificationpicturecontent)时，该参数设置不生效。<br>图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP1--><!--RP1End-->。                                                 |
 | overlayIcon<sup>23+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)            |   否  | 是  | 通知重叠图标，替换通知左侧图标，默认为空。此接口只在[notificationSlotType](#notificationrequest-1)类型设置为SOCIAL_COMMUNICATION时生效。<br>图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），超出后设置不生效。建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式<!--RP3--><!--RP3End-->。 |
-| groupName<sup>8+</sup>         | string                                                  |   否  | 是  | 通知所属组。当不同通知的groupName相同时，这些通知将成组展示。<br>大小不超过202字节，超出部分会被截断。默认为空。              |
-| template<sup>8+</sup>          | [NotificationTemplate](./js-apis-inner-notification-notificationTemplate.md) |   否  | 是  | 通知模板，默认为空。                                                  |
-| extraInfo                      | {[key: string]: any}                                    |   否  | 是  | 扩展参数。为应用提供定制服务。默认为空。<br/>以下Key由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。<br/> - 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的[Want](../apis-ability-kit/js-apis-app-ability-want.md#want) 中的uri字段，使用[getActiveNotifications](./js-apis-notification.md#notificationgetactivenotifications)接口获取该信息。 |
-| slotType<sup>(deprecated)</sup> | [notification.SlotType](./js-apis-notification.md#slottype)    |   否  | 是  | 通知渠道类型，默认值为OTHER_TYPES。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationSlotType替代。 |
+| groupName<sup>8+</sup>         | string                                                  |   否  | 是  | 通知所属组。当不同通知的groupName相同时，这些通知将成组展示。<br>建议仅社交通信、服务提醒渠道通知使用该属性。<br>大小不超过202字节，超出部分会被截断。默认为空。              |
+| template<sup>8+</sup>          | [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) |   否  | 是  | 通知模板，默认为空。                                                  |
+| extraInfo                      | {[key: string]: any}                                    |   否  | 是  | 扩展参数。为应用提供定制服务。默认为空。<br/>以下Key由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。<br/> - 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的[Want](../apis-ability-kit/js-apis-app-ability-want.md#want) 中的uri字段，使用[getActiveNotifications](js-apis-notificationManager.md#notificationmanagergetactivenotifications-1)接口获取该信息。 |
+| slotType<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype)    |   否  | 是  | 通知渠道类型，默认值为OTHER_TYPES。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationSlotType替代。 |
 | hashCode                       | string                                                  |   是  | 是  | 通知唯一标识。                                                                   |
-| creatorBundleName              | string                                                  |   是  | 是  | 创建通知的应用名称。                                                              |
+| creatorBundleName              | string                                                  |   是  | 是  | 创建通知的应用包名。                                                              |
 | creatorUid                     | number                                                  |   是  | 是  | 创建通知的应用UID。                                                              |
 | creatorPid                     | number                                                  |   是  | 是  | 创建通知的PID。                                                                  |
 | creatorUserId<sup>8+</sup>     | number                                                  |   是  | 是  | 创建通知的用户ID。                                                               |
 | isOngoing                      | boolean                                                 |   否  | 是  | 预留能力，暂未支持。                                                             |
-| isUnremovable                  | boolean                                                 |   否  | 是  | 预留能力，暂未支持。                                                             |
+| isUnremovable<sup>(deprecated)</sup>                  | boolean                                                 |   否  | 是  | 预留能力，暂未支持。<br>从API version 7开始支持，从API版本26.1.0开始废弃。                                                             |
 | color                          | number                                                  |   否  | 是  | 通知背景颜色。预留能力，暂未支持。                                                |
 | colorEnabled                   | boolean                                                 |   否  | 是  | 通知背景颜色是否使能。预留能力，暂未支持。                                         |
 | isStopwatch                    | boolean                                                 |   否  | 是  | 是否显示已用时间。预留能力，暂未支持。                                             |
@@ -82,6 +82,6 @@
 
 | 名称                   | 类型            | 只读 | 可选 | 说明                               |
 | -----------------------| -------------- | ---- | ---- | --------------------------------- |
-| wantAction          | string        | 否   | 是   | 应用在创建wantAgent时，传入的want的action字段，具体含义请参考[action](../apis-ability-kit/js-apis-app-ability-want.md#want)。|
-| wantUri  | string | 否   | 是   | 应用在创建wantAgent时，传入的want的uri字段，具体含义请参考[uri](../apis-ability-kit/js-apis-app-ability-want.md#want)。 |
-| wantParameters  | Record\<string, Object> | 否   | 是   | 应用在创建wantAgent时，传入的want的parameters字段，具体含义请参考[parameters](../apis-ability-kit/js-apis-app-ability-want.md#want)。 |
+| wantAction          | string        | 否   | 是   | 应用在创建wantAgent时，传入的Want的action字段，具体含义请参考[action](../apis-ability-kit/js-apis-app-ability-want.md#want)。|
+| wantUri  | string | 否   | 是   | 应用在创建wantAgent时，传入的Want的uri字段，具体含义请参考[uri](../apis-ability-kit/js-apis-app-ability-want.md#want)。 |
+| wantParameters  | Record\<string, Object> | 否   | 是   | 应用在创建wantAgent时，传入的Want的parameters字段，具体含义请参考[parameters](../apis-ability-kit/js-apis-app-ability-want.md#want)。 |

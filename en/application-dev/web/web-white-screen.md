@@ -1,10 +1,11 @@
 # Troubleshooting White Screen Issues on Web Pages
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
-<!--Designer: @LongLie-->
+<!--Owner: @pxlstrong-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=4aa686c4e1d049efde30887f870d819bb874da68 translatedAt=2026-11-12T04:50:10.683Z pushedAt=2026-11-12T08:45:37.340Z nl=1 -->
 
 There are many reasons for white screen issues on web pages. This topic describes how to troubleshoot common white screen issues.
 
@@ -14,6 +15,7 @@ There are many reasons for white screen issues on web pages. This topic describe
 4. Handle the compatibility problem of the HTML5 code.
 5. Check the keywords related to the lifecycle and network loading in the log.
 6. Check whether the [Secure Shield mode](./web-secure-shield-mode.md) is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb)
+7. Check for white screen caused by inconsistent WebView cache negotiation. For details, see [White Screen Caused by Inconsistent Cache Negotiation and Server-Side Resource Update in WebView Default Cache Mode](#white-screen-caused-by-inconsistent-cache-negotiation-and-server-side-resource-update-in-webview-default-cache-mode).
 
 ## Checking Permissions and Network Status
 If the network or file access permission is not added for the application, or the network status of the device is poor, the **Web** component will fail to be loaded or page elements will be missing, resulting in a white screen.
@@ -31,13 +33,13 @@ If the network or file access permission is not added for the application, or th
     ```
 
 * The following table lists attributes used to enable related permissions.
-    | Name  | Description |                       
+    | Name  | Description |
     | ----   | -------------------------------- |
-    | [domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) | Sets whether to enable the local storage. If this permission is not enabled, local storage cannot be used to store data, any code that calls local storage will become invalid, and functionalities that depend on local storage will be abnormal.|
-    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | Sets whether to enable the file read/write functionality. If the file read/write functionality is not enabled, the file-dependent modules will crash.| 
-    | [imageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#imageaccess) | Sets whether to enable automatic image loading.| 
+    | [domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) | Sets whether to enable the Document Object Model Storage API (DOM Storage API) permission. If disabled, localStorage cannot be used to store data, any code that calls localStorage becomes invalid, and features that depend on local storage will behave abnormally. |
+    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | Sets whether to enable access to the file system in the application. If disabled, file read/write functions are completely blocked, and modules that depend on file read/write will encounter access denied errors. |
+    | [imageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#imageaccess) | Sets whether to enable automatic image loading.|
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | Sets whether to enable online image loading (through HTTP and HTTPS).|
-    | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | Sets whether to enable JavaScript script execution.| 
+    | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | Sets whether to enable JavaScript script execution.|
 
     <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
 
@@ -109,13 +111,14 @@ If a white screen issue persists after the network and permission configurations
   
     Method 1
 
-      Use HTTP or HTTPS instead of the file or resource protocol to ensure that **Web** components can successfully access cross-origin resources. Customize URL domain names for individuals or organizations to prevent conflicts with actual domain names on the Internet. In addition, use the [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) method of the **Web** component to intercept and replace local resources.
+      You should use HTTP or HTTPS instead of the file or resource protocol to ensure that the Web component can successfully access cross-origin resources. The replacement URL domain name should be custom-built and used only by an individual or organization to prevent conflicts with actual domain names on the Internet. In addition, you need to use the [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) method of the Web component to intercept and replace local resources accordingly.
 
-      The following uses an example to describe how to use HTTP or HTTPS to access local cross-origin resources. The **index.html** and **js/script.js** files are stored in the **rawfile** directory of the project. When the resource protocol is used to access the **index.html** file, the **js/script.js** file is intercepted due to cross-origin access and cannot be loaded. In the example, the domain name **https:\//www\.example.com/** is used to replace the original resource protocol, and the **onInterceptRequest** API is used to replace the resource to ensure that the **js/script.js** file can be successfully loaded. In this way, the cross-origin interception problem is solved.
-    ```ts
-    // main/ets/pages/Index.ets
+      The following example shows how to use protocols such as HTTP or HTTPS to resolve the failure to access local resources across origins. In this example, the index.html and js/script.js files are placed in the rawfile directory of the project. When index.html is accessed through the resource protocol, the js/script.js file is blocked due to cross-origin restrictions and cannot be loaded. In the example, the original resource protocol is replaced with the https:\//www\.example.com/ domain name, and the onInterceptRequest API is used to replace resources, ensuring that the js/script.js file can be loaded successfully and thereby resolving the cross-origin blocking issue.
+    <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
+    
+    ``` TypeScript
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct Index {
@@ -123,27 +126,27 @@ If a white screen issue persists after the network and permission configurations
       webviewController: webview.WebviewController = new webview.WebviewController();
       // Construct a mapping table between domain names and local files.
       schemeMap = new Map([
-        ["https://www.example.com/index.html", "index.html"],
-        ["https://www.example.com/js/script.js", "js/script.js"],
+        ['https://www.example.com/index.html', 'index.html'],
+        ['https://www.example.com/js/script.js', 'js/script.js'],
       ])
       // Construct the local file and the return value format mimeType.
       mimeTypeMap = new Map([
-        ["index.html", 'text/html'],
-        ["js/script.js", "text/javascript"]
+        ['index.html', 'text/html'],
+        ['js/script.js', 'text/javascript']
       ])
-
+    
       build() {
         Row() {
           Column() {
-            // For the local index.html file, use HTTP or HTTPS in place of file or resource as the protocol and construct a custom domain name.
+            // For the local index.html, use the http or https protocol instead of the file or resource protocol, and construct a domain name of your own.
             // In this example, www.example.com is constructed.
-            Web({ src: "https://www.example.com/index.html", controller: this.webviewController })
+            Web({ src: 'https://www.example.com/index.html', controller: this.webviewController })
               .javaScriptAccess(true)
               .fileAccess(true)
               .domStorageAccess(true)
               .geolocationAccess(true)
-              .width("100%")
-              .height("100%")
+              .width('100%')
+              .height('100%')
               .onInterceptRequest((event) => {
                 if (!event) {
                   return;
@@ -173,7 +176,6 @@ If a white screen issue persists after the network and permission configurations
       }
     }
     ```
-
     ```html
     <!-- main/resources/rawfile/index.html -->
     <!DOCTYPE html>
@@ -197,28 +199,30 @@ If a white screen issue persists after the network and permission configurations
 
     Method 2
 
-    Use [setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12) to set a path list for allowing cross-origin access to local files using the file protocol. Note that only the resources in the path list can be accessed by the file protocol when this method is used. In this case, the behavior of [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) is overwritten. The paths in the list should be any of the following directories:
+    Use [setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12) to set a path list. When resources in the list are accessed through the file protocol, cross-origin access to local files is allowed. In addition, once the path list is set, the file protocol can access only the resources in the list (in this case, the behavior of [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) is overridden by this API).
+    
+    Removing the cross-origin access restriction on directories through setPathAllowingUniversalAccess is a high-risk operation. Based on the principle of least privilege, the paths opened for el1 and el2 are fixed, and the paths in the path list must conform to one of the following path formats:
 
-    1. The application file directory and its subdirectories, which can be obtained through [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), such as:
+    1. The app file directory is obtained through [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Examples of its subdirectories are as follows:
 
-    * /data/storage/el2/base/files/example
-    * /data/storage/el2/base/haps/entry/files/example
+       * /data/storage/el2/base/files/example
+       * /data/storage/el2/base/haps/entry/files/example
 
-    2. The application resource directory and its subdirectories, which can be obtained through [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), such as:
+    2. The app resource directory is obtained through [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Examples of its subdirectories are as follows:
 
-    * /data/storage/el1/bundle/entry/resources/resfile
-    * /data/storage/el1/bundle/entry/resources/resfile/example
+       * /data/storage/el1/bundle/entry/resources/resfile
+       * /data/storage/el1/bundle/entry/resources/resfile/example
 
-    3. Since API version 21, the application cache directory is obtained through [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context). Example subdirectories are as follows:
+    3. Starting from API version 21, the app cache directory is also included, which is obtained through [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Its subdirectories are as follows:
 
-    * /data/storage/el2/base/cache
-    * /data/storage/el2/base/haps/entry/cache/example
-    * The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
+       * /data/storage/el2/base/cache
+       * /data/storage/el2/base/haps/entry/cache/example
+       * The configured directory path must not contain cache/web; otherwise, error code 401 is thrown. If the configured directory path is cache, cache/web is also inaccessible.
 
-    4. Since API version 21, the application temporary directory is obtained through [Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context). Example subdirectories are as follows:
+    4. Starting from API version 21, the app temporary directory obtained through [Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties) is also included. Examples of its subdirectories are as follows:
 
-    * /data/storage/el2/base/temp
-    * /data/storage/el2/base/haps/entry/temp/example
+       * /data/storage/el2/base/temp
+       * /data/storage/el2/base/haps/entry/temp/example
 
     If a path is not any of the preceding paths, an error code 401 is reported and the path list fails to be set. If the path list is empty, the access scope of the file protocol complies with the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) rule. The following is an example:
 
@@ -257,7 +261,7 @@ If a white screen issue persists after the network and permission configurations
     }
     ```
 
-	  HTML code:
+    HTML sample code:
     ```html
     <!-- main/resources/resfile/index.html -->
     <!DOCTYPE html>
@@ -313,13 +317,13 @@ If a white screen issue persists after the network and permission configurations
 
 3. Check whether error reporting APIs, such as **onErrorReceive**, **onHttpErrorReceive**, **onSslErrorEvent**, **onHttpAuthRequest**, and **onClientAuthenticationRequest**, are called. Rectify the fault based on the returned error code and [The List of ArkWeb Network Protocol Stack Errors](../reference/apis-arkweb/arkts-apis-netErrorList.md).
 
-    | Name  | Description |                       
+    | Name  | Description |
     | ----   | -------------------------------- |
     | [onErrorReceive](../reference/apis-arkweb/arkts-basic-components-web-events.md#onerrorreceive) | Called when resources fail to be loaded. For example, 302 (**UNKNOWN_URL_SCHEME**) is reported when a scheme that is not supported by the kernel is accessed.|
-    | [onHttpErrorReceive](../reference/apis-arkweb/arkts-basic-components-web-events.md#onhttperrorreceive) | Called when the server returns an HTTP error code, which requires joint commissioning with the server.| 
-    | [onHttpAuthRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onhttpauthrequest9) | Called when the server returns 407, indicating that the device needs to provide the user name and password for authentication. If the processing is incorrect, the loading may be abnormal and a white screen may occur.| 
-    | [onClientAuthenticationRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onclientauthenticationrequest9) | Called when the server requests a certificate from the device. If the request is not processed correctly, the page loading will be abnormal.| 
-    | [onSslErrorEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onsslerrorevent12) | Called when the certificate is incorrect. The application needs to locate the fault based on the certificate error information.  | 
+    | [onHttpErrorReceive](../reference/apis-arkweb/arkts-basic-components-web-events.md#onhttperrorreceive) | Called when the server returns an HTTP error code, which requires joint commissioning with the server.|
+    | [onHttpAuthRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onhttpauthrequest9) | Called when the server returns 407, indicating that the device needs to provide the user name and password for authentication. If the processing is incorrect, the loading may be abnormal and a white screen may occur.|
+    | [onClientAuthenticationRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onclientauthenticationrequest9) | Called when the server requests a certificate from the device. If the request is not processed correctly, the page loading will be abnormal.|
+    | [onSslErrorEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onsslerrorevent12) | Certificate error. The application needs to troubleshoot based on the certificate error information. Common causes include certificate configuration errors, certificate expiration, or untrusted certificates. |
 
 
 ## Resolving White Screen Issues Caused by Complex Layout and Rendering Modes
@@ -333,7 +337,7 @@ The **Web** component provides the capability of adapting to the page layout. Fo
 - Disable the scrolling effect through **webSetting({overScrollMode: OverScrollMode.NEVER})**.
 - Do not dynamically adjust the component height in this mode to ensure that the page height is fixed.
 - Do not enable the **RESIZE_CONTENT** attribute in **FIT_CONTENT** mode to avoid layout invalidation.
-- If the CSS **height: <number& > vh** is conflict with the **Web** component size adaptation page layout, check whether **height: vh** is the first CSS height style from the body node. As shown in the following example. The height of the DOM node whose ID is 2 is 0, causing a white screen.
+- There is a calculation conflict between the CSS style `height: <number> vh` and the adaptive page layout of the **Web** component size. Check whether `height: <number> vh` is the first height CSS style inside the body node. In the following structure, the height of the DOM node with ID 2 will be 0, causing a white screen.
 
   ```html
   <body>
@@ -367,18 +371,27 @@ The **Web** component provides the capability of adapting to the page layout. Fo
 To avoid white screen issues, you can handle the compatibility issue as follows:
 * Intercept special protocols.
 * If a white screen is displayed due to the **tel:** or **mailto:** protocol invoked by the HTML5 page, intercept the protocol and invoke the system dialing capability through **onInterceptRequest**.
-   ```c
-   .onInterceptRequest((event) => {
-       if (event.request.url.startsWith('tel:')) {
-           // Invoke the system dialing capability.
-           call.makeCall({ phoneNumber: '123456' });
-           return { responseCode: 404 }; // Prevent the default behavior.
-       }
-       return null;  
-   })
-   ```
+<!-- @[InterceptTelScheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/InterceptTelScheme.ets) -->
+
+``` TypeScript
+.onInterceptRequest((event) => {
+  if (!event) {
+    return null;
+  }
+  // Intercept the tel: protocol, call the system dialing capability, and block the Web default behavior that causes a white screen.
+  if (event.request.getRequestUrl().startsWith('tel:')) {
+    this.makePhoneCall(event.request.getRequestUrl(), 'onInterceptRequest');
+    // Return a non-empty WebResourceResponse to block the Web component from continuing to load the URL, avoiding a white screen.
+    let response = new WebResourceResponse();
+    response.setResponseCode(404);
+    response.setReasonMessage('Not Found');
+    return response;
+  }
+  return null;
+})
+```
 ## Monitoring Memory and Lifecycle
-If the memory usage reaches the threshold, the rendering process will be terminated, causing a white screen. Similarly, a white screen will occur if the rendering process fails to start or is abnormally terminated. You can check the cause in logs. For example, check whether the **Web** component is correctly bound to the **WebController** or whether the white screen occurs because the **Web** component is released too early. Check the information related to the render process in the log, for example, whether a memory leak causes insufficient rendering memory. The keyword **MEMORY_PRESSURE_LEVEL_CRITICAL** indicates that the memory usage has reached the threshold. In this case, the web page may encounter exceptions such as black screen, artifacts, or flicker. You need to check whether a memory leak occurs. Check whether the render process starts successfully or exits abnormally.
+When the memory reaches the threshold, the render process is terminated, causing a white screen. Similarly, a failure to create the render process or its abnormal destruction also causes a white screen. You can identify the cause from logs. Check whether the **Web** component is correctly bound to the WebviewController, or whether the white screen is caused by the premature release of the WebviewController. Pay attention to the information related to the render process in the logs: check whether there is a memory leak that causes insufficient render memory. The keyword "MEMORY_PRESSURE_LEVEL_CRITICAL" indicates that the memory has reached the threshold. In this case, the Web may encounter abnormal conditions such as a black screen, a blurred screen, or a flickering screen, and you need to check whether there is a memory leak. Check whether the render process is started successfully or exits abnormally.
 
 The following table lists log keywords and the corresponding descriptions.
 
@@ -392,7 +405,8 @@ The following table lists log keywords and the corresponding descriptions.
 | INFO: request had no response within 5 seconds | Network timeout.|
 | final url: ***, error_code xxx(net::ERR_XXX) | An error is reported during the main resource loading.|
 
-The following figure shows the key points contained during the **Web** component loading process. The following table lists the log keywords during the **Web** component loading process.
+The following describes the key logs during the network loading process of the **Web** component. Under normal circumstances, the loading process of a **Web** component should contain these key nodes:
+
 ![web-white-page-load](figures/web-white-page-load.PNG)
 
 | Keyword  | Description |                       
@@ -414,15 +428,36 @@ The following figure shows the key points contained during the **Web** component
 
 **Symptom**
 
-The HTML5 page is properly loaded through WebView on the phone, but a white screen is displayed on the tablet, and PC/2-in-1 device.
+Loading H5 with WebView works normally on a phone, but a white screen occurs on a tablet, PC, or 2-in-1 device.
 
-**Possible causes**
+**Possible Causes**
 
-The WebView on the tablet, and PC/2-in-1 device uses multi-process loading by default, and iframe is loaded using sub-processes by default. After the main process is loaded, if the sub-process is not loaded, a white screen is displayed.
+The WebView on a tablet, PC, or 2-in-1 device uses multi-process loading by default, and iframe uses sub-process loading by default. After the main process is loaded, if the sub-process has not finished loading, a white screen occurs.
 
 **Solution**
 
-Use **setRenderProcessMode()** to set the WebView rendering mode to single-process loading.
-   ```ts
-   webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
-   ```
+Use [setRenderProcessMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setrenderprocessmode12) to set the WebView rendering mode to single-process loading.
+<!-- @[set_render_process_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/RenderAndCacheMode.ets) -->
+
+``` TypeScript
+// Set the rendering process to single-process mode to resolve the white screen issue of multi-process iframe loading on Tablet/PC/2in1 devices.
+try {
+  webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+} catch (error) {
+  console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+}
+```
+   
+## White Screen Caused by Inconsistent Cache Negotiation and Server-Side Resource Update in WebView Default Cache Mode
+
+**Symptom**
+
+The web page is displayed normally in the system browser, but a white screen occurs when the page is loaded in the WebView of the app.
+
+**Possible Causes**
+
+The default cache mode `CacheMode.Default` of WebView prioritizes the use of the cache. When a resource exists in the cache, WebView automatically attaches the conditional request header `If-None-Match` (carrying the cached ETag value) based on the cached content in subsequent requests to perform cache negotiation validation with the server. When a server-side resource update causes the ETag to change, the conditional match fails and the server returns 412. After receiving 412, WebView does not automatically degrade and retry, but directly determines that the main resource has failed to load, resulting in a white screen.
+
+**Solution**
+
+Set the [cacheMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#cachemode) attribute on the **Web** component to `CacheMode.Online` (that is, `.cacheMode(CacheMode.Online)`). In this mode, WebView sends an unconditional request to the server without carrying conditional headers based on the old cache (such as `If-None-Match`), forcibly fetches the latest resource from the network without using any cache, thereby bypassing the cache negotiation validation and preventing the main resource from failing to load due to negotiation failure, which would cause a white screen.

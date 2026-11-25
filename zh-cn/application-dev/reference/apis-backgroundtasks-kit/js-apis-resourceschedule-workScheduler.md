@@ -40,11 +40,11 @@ startWork(work: WorkInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 | 9700005 | Calling startWork failed. |
 
 **示例：**
@@ -96,11 +96,11 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -152,11 +152,11 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -199,11 +199,11 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -248,7 +248,7 @@ obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -273,7 +273,7 @@ obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -313,7 +313,7 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -345,7 +345,7 @@ stopAndClearWorks(): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -393,11 +393,11 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 ## workScheduler.isLastWorkTimeOut<sup>10+</sup>
 
@@ -420,11 +420,11 @@ isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -467,11 +467,11 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -523,6 +523,7 @@ workScheduler.isLastWorkTimeOut(500)
 | idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位：ms。           |
 | parameters      | Record<string, number \| string \| boolean>  | 否    | 是    |携带参数信息。 |
 | earliestStartTime<sup>22+</sup> | number | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位：ms，默认为0，范围大于等于0。 |
+| isPerformanceSensitive    | boolean                 | 否    | 是    |是否为性能敏感任务。系统对性能敏感任务的运行时长、运行频率以及整机总运行时长有严格限制。<br> - true表示是性能敏感任务，当设置为true时，isCharging与isDeepIdle必须同时为true，且周期性任务的repeatCycleTime必须大于等于24小时。<br> - false表示不是性能敏感任务。<br>默认值：false<br>**起始版本：** 26.1.0 |
 
 ## NetworkType
 
@@ -548,7 +549,7 @@ workScheduler.isLastWorkTimeOut(500)
 | 名称                        | 值  | 说明                   |
 | ------------------------- | ---- | -------------------- |
 | CHARGING_PLUGGED_ANY      | 0    | 表示这个触发条件是任何类型的充电器连接。 |
-| CHARGING_PLUGGED_AC       | 1    | 表示这个触发条件是直流充电器连接。    |
+| CHARGING_PLUGGED_AC       | 1    | 表示这个触发条件是交流充电器连接。    |
 | CHARGING_PLUGGED_USB      | 2    | 表示这个触发条件是USB充电连接。     |
 | CHARGING_PLUGGED_WIRELESS | 3    | 表示这个触发条件是无线充电器连接。    |
 

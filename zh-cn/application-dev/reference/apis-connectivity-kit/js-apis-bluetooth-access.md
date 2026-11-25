@@ -351,7 +351,7 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"。<br>该地址一般来源于蓝牙扫描结果，如：可通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。  |
+| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："11:22:33:44:55:66"。<br>该地址一般来源于蓝牙扫描结果，如：可通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。  |
 
 **返回值**：
 
@@ -402,7 +402,7 @@ deletePersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"，<br>该地址一般来源于蓝牙扫描结果，如：通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。           |
+| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："11:22:33:44:55:66"，<br>该地址一般来源于蓝牙扫描结果，如：通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。           |
 
 **返回值**：
 
@@ -493,7 +493,7 @@ isValidRandomDeviceId(deviceId: string): boolean;
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"。           |
+| deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："11:22:33:44:55:66"。           |
 
 **返回值**：
 
@@ -531,14 +531,14 @@ try {
 
 convertUuid(uuid: string): string
 
-将指定格式的的UUID转换为128bit的UUID。
+将指定格式的UUID转换为128bit的UUID。
 
 常用的UUID格式主要包括16bit、32bit和128bit三种格式。蓝牙协议定义的128bit格式的基准UUID为：00000000-0000-1000-8000-00805f9b34fb。若输入16bit或者32bit的UUID，将基于蓝牙基准UUID进行转换。若输入128bit的UUID，将不做转换直接输出该UUID。
 
 - 若输入16bit的UUID，例如“1801”，将输出“00001801-0000-1000-8000-00805f9b34fb”。
 - 若输入32bit的UUID，例如“12341801”，将输出“12341801-0000-1000-8000-00805f9b34fb”。
 - 若输入128bit的UUID，例如“11112222-3333-4444-5555-666677778888”，将直接输出该UUID。
-- 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-参数检查失败)错误码。
+- 若输入不符合以上格式的UUID或包含非16进制范围内的字符，将返回[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)错误码。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

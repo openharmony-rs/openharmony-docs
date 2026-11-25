@@ -6,11 +6,11 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=deec821b591abb0aeafbc7cd36714c88339c6efa translatedAt=2026-08-19T07:01:26.702Z pushedAt=2026-08-20T10:45:03.038Z -->
+<!-- md-trans-meta sourceCommit=b099c92b963b4f3255627c2895a794338431568d translatedAt=2026-11-03T02:10:44.275Z pushedAt=2026-11-13T01:05:59.957Z nl=1 -->
 
-This component is used to display list item groups. It supports custom group header and footer areas, card style, dividers, lazy loading, and preloading. It is suitable for scenarios where list items need to be logically grouped for display. By default, it spans the entire width of the [List](ts-container-list.md) component and must be used with the **List** component.
+**ListItemGroup** is used to display list item groups. It supports custom group header and footer areas, card style, dividers, lazy loading, and preloading. It is suitable for scenarios where list items need to be logically grouped for display. By default, it spans the entire width of the [List](ts-container-list.md) component and must be used with the **List** component.
 
-Lazy loading of **ListItemGroup** loads the child components in the visible area as required. Compared with full loading, lazy loading can improve the app startup speed and reduce the memory usage. When **ListItemGroup** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the lazy loading capabilities differ as follows:
+Lazy loading of **ListItemGroup** loads the child components in the display area as required. Compared with full loading, lazy loading can improve the app startup speed and reduce the memory usage. When **ListItemGroup** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the lazy loading capabilities differ as follows:
 
  - When **ListItemGroup** is used together with **ForEach**, all child nodes are created at a time. The nodes within the screen range are laid out and rendered when needed. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that enter the screen range are laid out and rendered.
 
@@ -28,12 +28,12 @@ Preloading in **ListItemGroup** refers to loading not only the child components 
 
 > **NOTE**
 >
-> - This component is supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 9. Newly added content in later versions is marked with a superscript to indicate the version in which it was introduced.
 > - The parent component of this component can only be [List](ts-container-list.md).
 > - The **ListItemGroup** component does not support the [universal attribute aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio).
-> - When the [listDirection](ts-container-list.md#listdirection) attribute of the parent **List** component is **Axis.Vertical**, setting the [universal attribute height](ts-universal-attributes-size.md#height) does not take effect. The height of the **ListItemGroup** is the sum of the header height, footer height, and the total height of all **ListItem** components after layout.
-> - When the **listDirection** attribute of the parent **List** component is **Axis.Horizontal**, setting the [universal attribute width](ts-universal-attributes-size.md#width) does not take effect. The width of the **ListItemGroup** is the sum of the header width, footer width, and the total width of all **ListItem** components after layout.
-> - Setting the layout direction through the **direction** attribute of the **ListItemGroup** does not take effect. The layout direction of the **ListItemGroup** component follows that of the parent **List** component.
+> - When the [listDirection](ts-container-list.md#listdirection) attribute of the parent **List** component of **ListItemGroup** is **Axis.Vertical**, setting the [universal attribute height](ts-universal-attributes-size.md#height) does not take effect. The height of **ListItemGroup** is the sum of the header height, footer height, and the total height of all **ListItem** components after layout.
+> - When the **listDirection** attribute of the parent **List** component is **Axis.Horizontal**, setting the [universal attribute width](ts-universal-attributes-size.md#width) does not take effect. The width of **ListItemGroup** is the sum of the header width, footer width, and the total width of all **ListItem** components after layout.
+> - Setting the layout direction through the **direction** attribute of **ListItemGroup** does not take effect. The layout direction of the **ListItemGroup** component follows that of the parent **List** component.
 
 ## Child Components
 
@@ -62,16 +62,15 @@ Describes the **ListItemGroup** component parameter.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name             | Type                                           | Read-Only| Optional  | Description                                                    |
 | ------------------- | --------------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | header              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;   | No   | Yes | Header component of the **ListItemGroup**.<br/>**NOTE**<br/>It can contain a single child component or no child component. If it is not set, there is no header component. This parameter has a lower priority than **headerComponent**. That is, if both header and **headerComponent** are set, the value of **headerComponent** takes effect.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.               |
 | headerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No   | Yes | Used to set the header component of the **ListItemGroup** using a **ComponentContent** parameter.<br/>**NOTE**<br/>It can contain a single child component or no child component. If it is not set, there is no header component. This parameter has a higher priority than **header**. That is, if both **header** and **headerComponent** are set, the value of **headerComponent** takes effect.<br/>It is not recommended to use the same **headerComponent** for different **ListItemGroup** components at the same time, as this may cause display issues.<br/>**Atomic service API:** This API can be used in atomic services since API version 13.<br/>**Model restriction:** This API can be used only in the stage model.              |
 | footer              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;     | No   | Yes | Footer component of the **ListItemGroup**.<br/>**NOTE**<br/>It can contain a single child component or no child component. If it is not set, there is no footer component. This parameter has a lower priority than **footerComponent**. That is, if both footer and **footerComponent** are set, the value of **footerComponent** takes effect.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.               |
 | footerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No   | Yes | Used to set the footer component of the **ListItemGroup** using a **ComponentContent** parameter.<br/>**NOTE**<br/>It can contain a single child component or no child component. If it is not set, there is no footer component. This parameter has a higher priority than footer. That is, if both footer and **footerComponent** are set, the value of **footerComponent** takes effect.<br/>It is not recommended to use the same **footerComponent** for different **ListItemGroup** components at the same time, as this may cause display issues.<br/>**Atomic service API:** This API can be used in atomic services since API version 13.<br/>**Model restriction:** This API can be used only in the stage model.                           |
-| space               | number&nbsp;\|&nbsp;string                          | No   | Yes | Spacing between list items. It applies only between **ListItem** components, not between header and **ListItem** or between **footer** and **ListItem**.<br/>Default value: **0**<br/>Unit: vp<br/>**NOTE**<br/>If it is set to a negative value or a value greater than or equal to the length of the List content area, the default value is used. If both **spaceWidth** and space are set, **spaceWidth** takes effect first. When **spaceWidth** is **undefined** or **null**, space takes effect.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.  |
-| spaceWidth          | [Dimension](ts-types.md#dimension10)                          | No  | Yes| Spacing between list items. This parameter only affects the spacing between list items, but not spacing between the header and list items or between the footer and list items.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used. If both **spaceWidth** and **space** are set, **spaceWidth** takes precedence. When **spaceWidth** is **undefined** or **null**, **space** takes effect.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0. |
-| style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10) | No   | Yes | Card style of the **ListItemGroup** component.<br/>Default value: **ListItemGroupStyle.NONE**<br/>When set to **ListItemGroupStyle.NONE**, no style is applied.<br/>When set to **ListItemGroupStyle.CARD**, it is recommended to use it together with **ListItemStyle.CARD** of [ListItem](ts-container-listitem.md) to display the default card style.<br/>In card style, the default specifications of **ListItemGroup** are as follows: left and right margins of 12 vp, and top, bottom, left, and right padding of 4 vp.<br/>In card style, default **focused**, **hover**, **pressed**, **selected**, and **disabled** styles are provided for the list items in the card.<br/>**NOTE**<br/>When set to **ListItemGroupStyle.CARD**, the **listDirection** attribute of List must be **Axis.Vertical**. If it is set to **Axis.Horizontal**, the display will be disordered. The [alignListItem](ts-container-list.md#alignlistitem9) attribute of **List** defaults to **ListItemAlign.Center**, which centers the items.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.<br/>**Model restriction:** This API can be used only in the stage model. |
+| space               | number&nbsp;\|&nbsp;string                          | No   | Yes | Spacing between list items. It applies only between **ListItem** components, not between header and **ListItem** or between **footer** and **ListItem**.<br/>Default value: **0**<br/>When the parameter type is number, the unit is vp.<br/>**Note:**<br/>If it is set to a negative value or a value greater than or equal to the length of the List content area, the default value is used. If both **spaceWidth** and space are set, **spaceWidth** takes effect first. When **spaceWidth** is **undefined** or **null**, space takes effect.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.  |
+| spaceWidth          | [Dimension](ts-types.md#dimension10)                          | No   | Yes | Spacing between list items. It applies only between **ListItem** components, not between header and **ListItem** or between **footer** and **ListItem**.<br/>Default value: **0**<br/>When the parameter type is number, the unit is vp.<br/>**Note:**<br/>If it is set to a negative value or a value greater than or equal to the length of the List content area, the default value is used. If both **spaceWidth** and space are set, **spaceWidth** takes effect first. When **spaceWidth** is **undefined** or **null**, space takes effect.<br/>**Since:** 26.0.0 <br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.  |
+| style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10) | No   | Yes | Card style of the **ListItemGroup** component.<br/>Default value: **ListItemGroupStyle.NONE**<br/>When set to **ListItemGroupStyle.NONE**, no style is applied.<br/>When set to **ListItemGroupStyle.CARD**, it is recommended to use it together with **ListItemStyle.CARD** of [ListItem](ts-container-listitem.md) to display the default card style. <br/>In card style, the default specifications of **ListItemGroup** are as follows: left and right margins of 12 vp, and top, bottom, left, and right padding of 4 vp.<br/>In card style, default focused, hovered, pressed, selected, and disabled styles are provided for the list items in the card.<br/>**Note:**<br/>When set to **ListItemGroupStyle.CARD**, the **listDirection** attribute of **List** must be **Axis.Vertical**. If it is set to **Axis.Horizontal**, the display will be disordered. The [alignListItem](ts-container-list.md#alignlistitem9) attribute of **List** defaults to **ListItemAlign.Center**, which centers the items.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.<br/>**Model restriction:** This API can be used only in the stage model. |
 | headerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | No   | Yes | Header style of the **ListItemGroup**.<br/>Default value: **ListItemGroupHeaderFooterStyle.NONE**<br/>When set to **ListItemGroupHeaderFooterStyle.NONE**, no style is applied.<br/>When set to **ListItemGroupHeaderFooterStyle.FLOATING**, the header component floats during scrolling.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 | footerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | No   | Yes | Footer style of the **ListItemGroup**.<br/>Default value: **ListItemGroupHeaderFooterStyle.NONE**<br/>When set to **ListItemGroupHeaderFooterStyle.NONE**, no style is applied.<br/>When set to **ListItemGroupHeaderFooterStyle.FLOATING**, the footer component floats during scrolling.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 
@@ -91,7 +90,7 @@ When a list item has [polymorphic styles](ts-universal-attributes-polymorphic-st
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -113,7 +112,7 @@ Sets the size information of the child components of a **ListItemGroup** compone
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -151,6 +150,7 @@ Enumerates the header and footer styles of **ListItemGroup**.
 | NONE     | 0    | No style.  |
 | FLOATING | 1    | Floating style.|
 
+
 ## Example
 
 ### Example 1: Setting a Sticky Header and Footer
@@ -160,7 +160,6 @@ This example uses [sticky](ts-container-list.md#sticky9) to implement the sticky
 **ListDataSource** implements the **LazyForEach** data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for **List** and **ListItemGroup** through **LazyForEach**.
 
 <!--code_no_check-->
-
 ```ts
 // ListDataSource.ets
 export class TimeTableDataSource implements IDataSource {
@@ -235,7 +234,6 @@ export interface TimeTable {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
@@ -300,7 +298,7 @@ struct ListItemGroupExample {
               }
             }, (item: string) => item)
           }
-          .divider({ strokeWidth: 1, color: Color.Blue }) // Divider between lines
+          .divider({ strokeWidth: 1, color: Color.Blue }) // Divider between each row
         })
       }
       .width('90%')
@@ -372,7 +370,6 @@ interface ArrObject {
   itemStyles: number[];
 }
 ```
-
 ![ListItemGroupStyle](figures/listItemGroup2.jpeg)
 
 ### Example 3: Setting Header and Footer
@@ -382,7 +379,6 @@ This example uses [ComponentContent](../js-apis-arkui-ComponentContent.md#compon
 For details about **ListDataSource** and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
@@ -461,7 +457,7 @@ struct MyItemGroup {
         }
       }, (item: string) => item)
     }
-    .divider({ strokeWidth: 1, color: Color.Blue }) // Divider between lines
+    .divider({ strokeWidth: 1, color: Color.Blue }) // Divider between rows.
   }
 }
 
@@ -522,7 +518,6 @@ This example shows how **ListItemGroup** is used in a multi-column layout. The m
 For details about **ListDataSource** and the complete code, see [Example 1: Setting a Sticky Header and Footer](#example-1-setting-a-sticky-header-and-footer).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';

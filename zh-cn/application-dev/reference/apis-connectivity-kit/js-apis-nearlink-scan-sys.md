@@ -14,7 +14,7 @@
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.scan (星闪扫描能力)](js-apis-nearlink-scan.md)。
 
 ## 导入模块
 
@@ -29,6 +29,8 @@ import { scan } from '@kit.ConnectivityKit';
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 

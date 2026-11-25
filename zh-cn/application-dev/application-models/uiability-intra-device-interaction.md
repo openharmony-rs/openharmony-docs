@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍启动应用内UIAbility组件的方法，包括startAbility启动、获取返回结果、冷启动与热启动指定页面跳转，以及系统应用指定窗口模式启动等场景。"
+keywords: [启动UIAbility, startAbility, startAbilityForResult, 指定页面, 冷启动, 热启动, onNewWant]
+doctype: guide
+status: active
+---
 # 启动应用内的UIAbility组件
 
 <!--Kit: Ability Kit-->
@@ -445,9 +452,8 @@ export default class ColdStartAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
     hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // Main window is created, set main page for this ability
+    // 主窗口已创建，为该Ability设置主页面
     let url = 'pages/Index';
     if (this.funcAbilityWant?.parameters?.router && this.funcAbilityWant.parameters.router === 'funcA') {
       url = 'pages/ColdPage';
@@ -491,8 +497,8 @@ export default class ColdStartAbility extends UIAbility {
     export default class HotStartAbility extends UIAbility {
       private funcAbilityWant: Want | undefined = undefined;
       private uiContext: UIContext | undefined = undefined;
-     // ···
-     
+      // ···
+
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
@@ -542,7 +548,7 @@ export default class ColdStartAbility extends UIAbility {
         }
         ```
 
-    2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
+    2. 在Index页面显示时触发onPageShow()回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
         <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
         

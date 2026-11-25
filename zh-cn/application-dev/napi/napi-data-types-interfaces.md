@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍Node-API支持的数据类型和接口，包括napi_status枚举、napi_value值类型、扩展能力接口等，为开发者提供完整的Node-API数据类型和接口参考。"
+keywords: [Node-API, 数据类型, napi_value, napi_status, 接口参考, 扩展能力, napi_env, 回调函数]
+doctype: guide
+status: active
+---
+
 # Node-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -38,8 +46,9 @@ typedef enum {
     napi_arraybuffer_expected,
     napi_detachable_arraybuffer_expected,
     napi_would_deadlock, /* unused */
-    napi_no_external_buffers_allowed,
-    napi_cannot_run_js
+    napi_create_ark_runtime_too_many_envs = 22,
+    napi_create_ark_runtime_only_one_env_per_thread = 23,
+    napi_destroy_ark_runtime_env_not_exist = 24
 } napi_status;
 ```
 
@@ -160,6 +169,10 @@ napi_critical_scope是Node-API中，用于创建临界接口执行环境的机�
 
 临界接口：需要在临界区作用域内执行的接口，通常接口名中含有`critical`关键字。
 
+**napi_microtask_scope（扩展能力）**
+
+napi_microtask_scope是OpenHarmony Node-API组件扩展能力，用于限制微任务执行的机制。它由napi_open_microtask_scope接口创建，由napi_close_microtask_scope接口关闭。作用域打开期间，微任务（如Promise回调）不会被触发执行，而是被保留在微任务队列中，待作用域关闭时同步执行。
+
 **napi_strong_ref（扩展能力）**
 
 指向napi_value，允许用户管理ArkTS对象的生命周期。
@@ -215,10 +228,6 @@ napi_async_complete_callback用于异步操作完成后的回调。当需要进�
 **napi_threadsafe_function_call_js**
 
 函数指针，在事件循环线程中执行，可与ArkTS/JS交互，从而实现更加复杂的功能，用于napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)接口。
-
-**napi_cleanup_hook**
-
-函数指针，用于napi_add_env_cleanup_hook接口，当环境销毁时会被执行。
 
 **napi_async_cleanup_hook**
 
@@ -379,7 +388,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_is_array | 判断给定ArkTS value是否为array。 |
 | napi_set_element | 在给定Object的指定索引处，设置属性值。 |
 | napi_get_element | 获取给定Object指定索引处的元素。 |
-| napi_has_element | 若给定Object的指定索引处拥有属性。 |
+| napi_has_element | 判断给定Object的指定索引处是否存在元素。 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 |
 | napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 |
 | napi_is_typedarray | 判断给定ArkTS value是否为TypedArray。|
@@ -463,8 +472,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_throw_range_error | 抛出一个带文本信息的ArkTS RangeError。 |
 | napi_is_error | 判断napi_value是否表示为一个error对象。 |
 | napi_create_error | 创建并获取一个带文本信息的ArkTS Error。 |
-| napi_create_type_error | 创建并获取一个带文本信息的ArkTS Error对象 |
-| napi_create_range_error | 创建并获取一个带文本信息的ArkTS Error对象。 |
+| napi_create_type_error | 创建并获取一个带文本信息的ArkTS TypeError对象。 |
+| napi_create_range_error | 创建并获取一个带文本信息的ArkTS RangeError对象。 |
 | napi_get_and_clear_last_exception | 获取并清除最近一次出现的异常。 |
 | napi_is_exception_pending | 判断是否出现了异常。 |
 | napi_fatal_error | 引发致命错误以立即终止进程。 |
@@ -586,6 +595,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_property_with_callsite_info | 使用调用点信息快速获取对象属性值。 |
 | napi_set_property_with_callsite_info | 使用调用点信息快速设置对象属性值。 |
 | napi_get_global_handle_count | 遍历并获取global handle数量。 |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -604,7 +615,7 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-**注：**使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
+**注**：使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
 **napi_load_module**
 
 ```c
@@ -951,6 +962,18 @@ napi_status napi_set_property_with_callsite_info(napi_env env,
 
 ```c
 napi_status napi_get_global_handle_count(napi_env env, size_t* count);
+```
+
+**napi_open_microtask_scope**
+
+```c
+napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope);
+```
+
+**napi_close_microtask_scope**
+
+```c
+napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope);
 ```
 
 ### 其他实用工具

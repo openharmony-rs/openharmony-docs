@@ -2,11 +2,12 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5487d1b7e86ba7315ebf7d7f564f6ce81141d5ed translatedAt=2026-11-03T03:10:44.046Z pushedAt=2026-11-03T03:24:01.886Z nl=1 -->
 
-When the web page loads slowly, you can use the capabilities of pre-connection, preloading, and prefetching POST requests to accelerate the access to the web page.
+When a web page loads slowly, you can use the preconnect, prefetch, and POST request prefetching capabilities to accelerate web page access.
 
 For details about how to optimize the web page loading performance, see [Performance Optimization for Web Page Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section128761465256).
 
@@ -16,11 +17,10 @@ You can preparse or preconnect to the page to be loaded using [prepareForPageLoa
 
   In the following example, the page to be loaded is preconnected in the **onAppear** callback of the **Web** component.
 
-<!-- @[previously_connect_in_onAppear_to_pages_being_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/pages/Index.ets) -->
+<!-- @[previously_connect_in_onAppear_to_pages_being_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
 
 @Entry
 @Component
@@ -29,12 +29,6 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button('loadData')
-        .onClick(() => {
-          if (this.webviewController.accessBackward()) {
-            this.webviewController.backward();
-          }
-        })
       Web({ src: 'https://www.example.com/', controller: this.webviewController })
         .onAppear(() => {
           // The second parameter specifies whether to preconnect to a URL. The value false means that only DNS resolution is conducted on the URL.
@@ -50,36 +44,41 @@ You can also call [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-we
 
   In the following example, the web kernel is initialized in advance and the home page is preconnected in **onCreate** of the UIAbility.
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[initialize_kernel_in_onCreate_and_pre_connect_to_homepage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+// EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ...
+import { webview } from '@kit.ArkWeb';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info("EntryAbility onCreate");
+    console.info('EntryAbility onCreate');
     webview.WebviewController.initializeWebEngine();
     // Replace 'https://www.example.com' with the actual URL to be accessed.
-    webview.WebviewController.prepareForPageLoad("https://www.example.com/", true, 2);
-    AppStorage.setOrCreate("abilityWant", want);
-    console.info("EntryAbility onCreate done");
+    webview.WebviewController.prepareForPageLoad('https://www.example.com/', true, 2);
+    AppStorage.setOrCreate('abilityWant', want);
+    console.info('EntryAbility onCreate done');
   }
+
+  // ...
 }
 ```
 
 ## Prefetching
 
-This method is used for resource-level optimization. Based on predictions as to what page is to be loaded or visited, you can use [prefetchPage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchpage10) for prefetching.
+This method is used for resource-level optimization. If you can predict the page that a **Web** component is about to load or navigate to, you can use [prefetchPage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchpage10) to prefetch the page that is about to be loaded.
 
 Prefetching downloads the resources required by the page in advance, including main resources and subresources, to avoid blocking page rendering. However, the JavaScript code of the web page is not executed. Before calling **prefetchPage()**, you must create a **WebviewController** instance bound to the **Web** component.
 
 In the following example, prefetching of a page is triggered in **onPageEnd**.
   
-<!-- @[on_page_end_triggers_preload_of_next_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/Prefetching.ets) -->
+<!-- @[on_page_end_triggers_preload_of_next_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/Prefetching.ets) -->    
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
+
 @Entry
 @Component
 struct WebComponent {
@@ -99,15 +98,15 @@ struct WebComponent {
 
 ## Prefetching a POST Request
 
-This method is used for request-level optimization. You can use [prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12) to prefetch a POST request on the page to be loaded. When the page loading is complete, you can use [clearPrefetchedResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearprefetchedresource12) to clear the cached prefetched resources that are no longer used.
+This method is used for request-level optimization. You can use [prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12) to prefetch the POST request on the page that is about to be loaded. When the page load ends, you can use [clearPrefetchedResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearprefetchedresource12) to clear the prefetched resource cache that is no longer needed.
 
-  The following is an example: In the **onAppear** event of the **Web** component, prefetch the POST request for the page that is about to be loaded; in the **onPageEnd** event, you can clear the cache of the prefetched POST request that is no longer needed.
+  In the following example, in the **onAppear** event of the **Web** component, prefetch the POST request on the page that is about to be loaded. In the **onPageEnd** event, you can clear the prefetched POST request cache.
 
-<!-- @[prefetch_post_request_on_page_end_clear_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_one.ets) -->
+<!-- @[prefetch_post_request_on_page_end_clear_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_one.ets) -->    
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
+
 @Entry
 @Component
 struct WebComponent {
@@ -139,15 +138,15 @@ struct WebComponent {
 }
 ```
 
-If you can predict that a **Web** component is about to load a page or is about to navigate to a page that includes a POST request, you can use [prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12) to prefetch the POST request on the page to be loaded.
+If you can predict a POST request for a page that the Web component is about to load or navigate to, you can use [prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12) to prefetch the POST request for the page that is about to be loaded.
 
-  Here is an example of how you might initiate prefetching of a POST request for a page to visit, in the **onPageEnd** callback:
+  In the following example, in the **onPageEnd** event, prefetching of a POST request for a page to visit is triggered.
 
-<!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets) -->
+<!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_two.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ···
+
 @Entry
 @Component
 struct WebComponent {
@@ -175,34 +174,39 @@ struct WebComponent {
 }
 ```
 
-You can also use [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the kernel in advance, and then call [prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12) to prefetch the POST request on the page to be loaded after the kernel is initialized. This approach is suitable for prefetching POST requests for the home page in advance.
+You can also use [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the kernel in advance, and then call [prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12) to prefetch the POST request on the page that is about to be loaded. This approach is suitable for prefetching the POST request of the home page in advance.
 
-  In the following example, the web engine is initialized in advance and the POST request of the home page is preobtained in **onCreate()** of the ability.
+  In the following example, in **onCreate()** of the ability, the web kernel is initialized in advance and the POST request of the home page is prefetched.
 
-```ts
-// xxx.ets
+<!-- @[initialize_kernel_in_onCreate_and_pre_fetch_post_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+// EntryAbility.ets
 import { webview } from '@kit.ArkWeb';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ...
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info("EntryAbility onCreate");
+    console.info('EntryAbility onCreate');
     webview.WebviewController.initializeWebEngine();
-    // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit.
+    // When prefetching, replace 'https://www.example1.com/post?e=f&g=h' with the actual website address to be accessed.
     webview.WebviewController.prefetchResource(
       {
-        url: "https://www.example1.com/post?e=f&g=h",
-        method: "POST",
-        formData: "a=x&b=y",
+        url: 'https://www.example1.com/post?e=f&g=h',
+        method: 'POST',
+        formData: 'a=x&b=y',
       },
       [{
-        headerKey: "c",
-        headerValue: "z",
+        headerKey: 'c',
+        headerValue: 'z',
       },],
-      "KeyX", 500);
-    AppStorage.setOrCreate("abilityWant", want);
-    console.info("EntryAbility onCreate done");
+      'KeyX', 500);
+    AppStorage.setOrCreate('abilityWant', want);
+    console.info('EntryAbility onCreate done');
   }
+
+  // ...
 }
 ```
 
@@ -212,35 +216,44 @@ You can use [precompileJavaScript()](../reference/apis-arkweb/arkts-apis-webview
 
 You are advised to use this function together with dynamic components, use offline **Web** components to generate bytecode caches, and load the service **Web** component at the appropriate time to use the bytecode caches. The example code is as follows:
 
-1. Save **UIContext** to **localStorage** in **EntryAbility**.
+1. First, in EntryAbility, store [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../ui/state-management/arkts-localstorage.md).
 
-   ```ts
+   <!-- @[save_the_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
    import { window } from '@kit.ArkUI';
-
+   // ...
+   
    const localStorage: LocalStorage = new LocalStorage('uiContext');
-
+   
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
-
+     // ...
+     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
            return;
          }
-
-         this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+   
+         this.storage.setOrCreate<UIContext>('uiContext', windowStage.getMainWindowSync().getUIContext());
        });
      }
+   
+     // ...
+     // ...
+     // ...
    }
    ```
 
 2. Compile the basic code of the dynamic component.
 
-   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets) -->
+   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/DynamicComponent.ets
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
    
    export interface BuilderData {
@@ -289,11 +302,12 @@ You are advised to use this function together with dynamic components, use offli
    }
    ```
 
-3. Compile the component for generating the bytecode cache. In this example, the local Javascript resource reads the local file in the **rawfile** directory through **readRawFile()**.
+3. Write a component for generating bytecode caches. In this example, the local JavaScript resource content is read from a local file in the rawfile directory through the file read API.
 
-   <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
+   <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/PrecompileWebview.ets 
    import { BuilderData } from './DynamicComponent';
    import { Config, configs } from './PrecompileConfig';
    
@@ -315,7 +329,7 @@ You are advised to use this function together with dynamic components, use offli
        try {
          controller.precompileJavaScript(config.url, content, config.options)
            .then(errCode => {
-             console.error('precompile successfully! ' + errCode);
+             console.info('precompile successfully! ' + errCode);
            }).catch((errCode: number) => {
              console.error('precompile failed. ' + errCode);
          });
@@ -334,13 +348,14 @@ You are advised to use this function together with dynamic components, use offli
    }
    ```
 
-   JavaScript resources can also be obtained through [Data Request](../reference/apis-network-kit/js-apis-http.md). However, the format of HTTP response header obtained using this method is not standard. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is **e-tag**, convert it to **E-Tag** before using it.
+   JavaScript resources can also be obtained through [data requests](../reference/apis-network-kit/js-apis-http.md). However, the HTTP response headers obtained in this way are not in the standard HTTP response header format, so you need to convert them to the standard HTTP response header format before use. For example, if the response header obtained through a network request is e-tag, convert it to E-Tag before use.
 
 4. Compile the code of the service component.
 
-   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->
+   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/BusinessWebview.ets
    import { BuilderData } from './DynamicComponent';
    
    @Builder
@@ -355,9 +370,10 @@ You are advised to use this function together with dynamic components, use offli
 
 5. Edit the resource configuration information.
 
-   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->
+   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/PrecompileConfig.ets 
    import { webview } from '@kit.ArkWeb'
    
    export interface Config {
@@ -382,9 +398,10 @@ You are advised to use this function together with dynamic components, use offli
 
 6. Use the components on the page.
 
-   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->
+   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/Index.ets
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
    import { createNode } from './DynamicComponent';
@@ -431,35 +448,44 @@ You can use [injectOfflineResources()](../reference/apis-arkweb/arkts-apis-webvi
 
 You are advised to use this function together with dynamic components, use offline **Web** components to inject resources into the memory cache of the kernel, and load the service **Web** component at the appropriate time to use these resources. The example code is as follows:
 
-1. Save **UIContext** to **localStorage** in **EntryAbility**.
+1. First, in EntryAbility, store [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../ui/state-management/arkts-localstorage.md).
 
-   ```ts
+   <!-- @[save_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    // EntryAbility.ets
    import { UIAbility } from '@kit.AbilityKit';
    import { window } from '@kit.ArkUI';
-
+   // ...
+   
    const localStorage: LocalStorage = new LocalStorage('uiContext');
-
+   
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
-
+     // ...
+   
+     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
            return;
          }
-
-         this.storage.setOrCreate<UIContext>("uiContext", windowStage.getMainWindowSync().getUIContext());
+   
+         this.storage.setOrCreate<UIContext>('uiContext', windowStage.getMainWindowSync().getUIContext());
        });
      }
+     // ...
+     // ...
+     // ...
    }
    ```
 
 2. Compile the basic code of the dynamic component.
 
-   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->
+   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/DynamicComponent.ets 
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
    
    export interface BuilderData {
@@ -474,7 +500,7 @@ You are advised to use this function together with dynamic components, use offli
      private rootNode: BuilderNode<BuilderData[]> | null = null;
      private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
    
-     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>,  context: UIContext) {
+     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
      storage = context.getSharedLocalStorage();
        super();
        this.wrappedBuilder = wrappedBuilder;
@@ -510,9 +536,10 @@ You are advised to use this function together with dynamic components, use offli
 
 3. Compile the component code for injecting resources. In this example, the local resource reads the local file in the **rawfile** directory through **readRawFile()**.
 
-   <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->
+   <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/InjectWebview.ets 
    import { webview } from '@kit.ArkWeb';
    import { resourceConfigs } from './Resource';
    import { BuilderData } from './DynamicComponent';
@@ -564,9 +591,10 @@ You are advised to use this function together with dynamic components, use offli
 
 4. Compile the code of the service component.
 
-   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->
+   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/BusinessWebview.ets 
    import { BuilderData } from './DynamicComponent';
    
    @Builder
@@ -581,9 +609,10 @@ You are advised to use this function together with dynamic components, use offli
 
 5. Edit the resource configuration information.
 
-   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->
+   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/Resource.ets 
    import { webview } from '@kit.ArkWeb';
    
    export interface ResourceConfig {
@@ -622,9 +651,10 @@ You are advised to use this function together with dynamic components, use offli
    ```
 
 6. Use the components on the page.
-   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->
+   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/Index.ets
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
    import { createNode } from './DynamicComponent';

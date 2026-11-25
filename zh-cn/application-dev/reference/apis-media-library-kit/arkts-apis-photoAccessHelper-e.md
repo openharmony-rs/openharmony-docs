@@ -157,6 +157,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ----- |  ---- |  ---- |
 | IMAGE_RESOURCE |  1 |  表示图片资源。 |
 | VIDEO_RESOURCE |  2 |  表示视频资源。 |
+| PRIVATE_MOVING_PHOTO_RESOURCE |  4 |  表示私有动态照片资源。**起始版本：** 26.1.0 |
 
 ## ImageFileType<sup>13+</sup>
 
@@ -536,11 +537,11 @@ async function example() {
  
 表示Picker的颜色模式的枚举。
  
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
  
 **模型约束：** 此接口仅可在Stage模型下使用。
  
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
  
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
  

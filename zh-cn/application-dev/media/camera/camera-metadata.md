@@ -1,4 +1,4 @@
-# 元数据（ArkTS）
+# 元数据(ArkTS)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
@@ -28,9 +28,12 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
 
 2. 调用[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的supportedMetadataObjectTypes属性，获取当前设备支持的元数据类型，并通过[createMetadataOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createmetadataoutput)方法创建元数据输出流。
 
-   ```ts
-   function getMetadataOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability): camera.MetadataOutput | undefined {
-     let metadataObjectTypes: Array<camera.MetadataObjectType> = cameraOutputCapability.supportedMetadataObjectTypes;
+   <!-- @[camera_getMetadataOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   getMetadataOutput(cameraManager: camera.CameraManager,
+     cameraOutputCapability: camera.CameraOutputCapability): camera.MetadataOutput | undefined {
+     let metadataObjectTypes: camera.MetadataObjectType[] = cameraOutputCapability.supportedMetadataObjectTypes;
      let metadataOutput: camera.MetadataOutput | undefined = undefined;
      try {
        metadataOutput = cameraManager.createMetadataOutput(metadataObjectTypes);
@@ -46,35 +49,38 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
 
    previewOutput获取方式请参考[相机预览开发步骤](camera-preview.md#开发步骤)。
 
-   ```ts
-   async function startMetadataOutput(previewOutput: camera.PreviewOutput, metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager): Promise<void> {
-     let cameraArray: Array<camera.CameraDevice> = [];
+   <!-- @[camera_startMetadataOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   async startMetadataOutput(previewOutput: camera.PreviewOutput,
+     metadataOutput: camera.MetadataOutput, cameraManager: camera.CameraManager): Promise<void> {
+     let cameraArray: camera.CameraDevice[] = [];
      try {
        cameraArray = cameraManager.getSupportedCameras();
        if (cameraArray.length == 0) {
-         console.error('no camera.');
+         console.error(`no camera.`);
          return;
        }
-       // 示例代码默认选择第一个镜头，实际开发需根据所需镜头。
+       // 示例代码默认选择第一个镜头，实际开发中请根据实际需求选择。
        const cameraDevice: camera.CameraDevice = cameraArray[0];
        // 获取支持的模式类型。
-       let sceneModes: Array<camera.SceneMode> = cameraManager.getSupportedSceneModes(cameraDevice);
+       let sceneModes: camera.SceneMode[] = cameraManager.getSupportedSceneModes(cameraDevice);
        let isSupportPhotoMode: boolean = sceneModes.indexOf(camera.SceneMode.NORMAL_PHOTO) >= 0;
        if (!isSupportPhotoMode) {
-         console.error('photo mode not support');
+         console.error(`photo mode not support`);
          return;
        }
        let cameraInput: camera.CameraInput | undefined = undefined;
        cameraInput = cameraManager.createCameraInput(cameraDevice);
        if (cameraInput === undefined) {
-         console.error('cameraInput is undefined');
+         console.error(`cameraInput is undefined`);
          return;
        }
        // 打开相机。
        await cameraInput.open();
        let session = cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO);
        if (!session) {
-         console.error('session is null');
+         console.error(`session is null`);
          return;
        }
        let photoSession: camera.PhotoSession = session as camera.PhotoSession;
@@ -85,17 +91,19 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
        await photoSession.commitConfig();
        await photoSession.start();
      } catch (error) {
-       console.error('startMetadataOutput call failed');
+       console.error(`startMetadataOutput call failed`);
      }
    }
    ```
 
 4. 调用[Session.stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11)方法停止输出metadata数据，接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
      
-   ```ts
-   function stopMetadataOutput(session: camera.Session): void {
+   <!-- @[camera_stopMetadataOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   stopMetadataOutput(session: camera.Session): void {
      session.stop().then(() => {
-       console.info('Callback returned with session stopped.');
+       console.info(`Callback returned with session stopped.`);
      }).catch((err: BusinessError) => {
        console.error(`Failed to session stop, error code: ${err.code}`);
      });
@@ -108,16 +116,18 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
 
 - 通过注册监听获取metadata对象，监听事件固定为metadataObjectsAvailable。检测到有效metadata数据时，callback返回相应的metadata数据信息，metadataOutput创建成功时可监听。
     
-  ```ts
-  function onMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
-    metadataOutput.on('metadataObjectsAvailable', (err: BusinessError, metadataObjectArr: Array<camera.MetadataObject>) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info('metadata output metadataObjectsAvailable');
-    });
-  }
-  ```
+   <!-- @[camera_onMetadataAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   onMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
+     metadataOutput.on('metadataObjectsAvailable', (err: BusinessError, metadataObjectArr: camera.MetadataObject[]) => {
+       if (err !== undefined && err.code !== 0) {
+         return;
+       }
+       console.info(`metadata output metadataObjectsAvailable`);
+     });
+   }
+   ```
 
   > **说明：**
   >
@@ -125,10 +135,12 @@ Metadata主要是通过一个TAG（Key），去找对应的Data，用于传递�
 
 - 通过注册回调函数，获取监听metadata流的错误结果，callback返回metadata输出接口使用错误时返回的错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
     
-  ```ts
-  function onMetadataError(metadataOutput: camera.MetadataOutput): void {
-    metadataOutput.on('error', (metadataOutputError: BusinessError) => {
-      console.error(`Metadata output error code: ${metadataOutputError.code}`);
-    });
-  }
-  ```
+   <!-- @[camera_onMetadataError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   onMetadataError(metadataOutput: camera.MetadataOutput): void {
+     metadataOutput.on('error', (metadataOutputError: BusinessError) => {
+       console.error(`Metadata output error code: ${metadataOutputError.code}`);
+     });
+   }
+   ```

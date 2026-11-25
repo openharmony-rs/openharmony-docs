@@ -10,11 +10,11 @@
 
 ## Purpose
 
-This file declares the functions for obtaining and using native virtual synchronization (VSync).
+This file declares the functions for obtaining and using native vertical synchronization (VSync).
 
-<!--RP1-->
+<!--Del-->
 
-**Sample**: [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--RP1End-->
+**Sample**: [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--DelEnd-->
 
 **File to include**: <native_vsync/native_vsync.h>
 

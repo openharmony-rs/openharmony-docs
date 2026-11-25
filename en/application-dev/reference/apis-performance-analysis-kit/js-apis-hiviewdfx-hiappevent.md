@@ -1,4 +1,4 @@
-# @ohos.hiviewdfx.hiAppEvent (Application Event Logging)
+# @ohos.hiviewdfx.hiAppEvent (HiAppEvent)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=178cecff097f82ef8fc674ab3a5b1768585eaacc translatedAt=2026-11-03T06:21:56.518Z pushedAt=2026-11-03T12:08:25.639Z nl=1 -->
 
 This module provides application logging and event subscription capabilities, including event storage, event subscription, event clearance, and logging configuration. HiAppEvent records the events triggered during application running in [AppEventInfo](#appeventinfo), and classifies the events into system events and application events.
 
@@ -53,12 +54,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11102002 | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11102003 | Invalid row value. Possible caused by the row value is less than zero. |
-| 11102004 | Invalid size value. Possible caused by the size value is less than zero. |
-| 11102005 | Invalid timeout value. Possible caused by the timeout value is less than zero. |
+| 11102003 | Invalid row value. Possibly caused by the row value is less than zero. |
+| 11102004 | Invalid size value. Possibly caused by the size value is less than zero. |
+| 11102005 | Invalid timeout value. Possibly caused by the timeout value is less than zero. |
 
 > **NOTE**
 >
@@ -196,7 +196,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message             |
 | -------- | --------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 
 **Example**
@@ -245,8 +244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101004 | Invalid string length of the event parameter. |
@@ -278,13 +276,13 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name.<br>Configuration items vary depending on events. Currently, only the following events are supported:
-- **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig).)
+- **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Parameters of setEventConfig](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig))
 - **APP_CRASH** (For details about the parameter configuration, see [Crash Log Configuration Parameters](../../dfx/hiappevent-watcher-crash-events.md#customizing-crash-log-specifications).)
 - **RESOURCE_OVERLIMIT** (For details about the parameter configuration, see [Resource Leak Event Overview](../../dfx/hiappevent-watcher-resourceleak-events.md#customizing-specifications).)
 
  > **NOTE**
  >
- > Since API version 26.0.0, all settings of this API are supported by [configEventPolicy](#hiappeventconfigeventpolicy22). You are advised to use [configEventPolicy](#hiappeventconfigeventpolicy22).
+ > Since API version 26.0.0, all settings of this API are supported by **configEventPolicy**. You are advised to use [configEventPolicy](#hiappeventconfigeventpolicy22).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -309,7 +307,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Example**
 
@@ -356,7 +354,15 @@ In the same lifecycle, you can set system event configuration by policy.
 
 | Type               | Description         |
 | ------------------- | ------------ |
-| Promise&lt;void&gt; | Promise that returns no value.<br>For details about the event configuration policy, see [EventPolicy](#eventpolicy22). If the configuration policy is incorrect, the API returns a failure message.<br>- If the parameter type is incorrect, error code 401 is returned.<br>- If the parameter specifications are incorrect, the error information is output in HiLog logs.|
+| Promise&lt;void&gt; | Promise object, which returns no value.<br>For the event configuration policy of each event, see the [EventPolicy](#eventpolicy22) type description for detailed specifications. If the configuration policy is set incorrectly, the API returns a failure.<br>- If the parameter specification is set incorrectly, related error information is output to the hilog log. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                      |
+| -------- | --------------------------------------------- |
+| 401 | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Example**
 
@@ -496,8 +502,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message           |
 | -------- | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **Example**
 
@@ -530,8 +535,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message           |
 | -------- | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **Example**
 
@@ -621,7 +625,7 @@ Defines parameters of the event group returned by the subscription. This API can
 
 write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-Writes events of the **AppEventInfo** type. This API uses an asynchronous callback to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](#hiappeventevent)). The events written by this API can be subscribed to through ([addWatcher](#hiappeventaddwatcher)).
+Writes application events. This method stores events of the **AppEventInfo** type and uses a callback as the asynchronous callback. The event object written through this API is a developer-defined object. To avoid conflicts and confusion with system events, writing system events (the system event name constants defined in [Event](#event)) is not recommended. Events written through this API can be subscribed to by an event watcher ([addWatcher](#hiappeventaddwatcher)).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -631,7 +635,7 @@ Writes events of the **AppEventInfo** type. This API uses an asynchronous callba
 
 | Name  | Type                          | Mandatory| Description          |
 | -------- | ------------------------------ | ---- | -------------- |
-| info     | [AppEventInfo](#appeventinfo) | Yes  | Application event object. You are advised to avoid the conflict between the custom event name and the system event name constant defined in [Event](#hiappeventevent).|
+| info     | [AppEventInfo](#appeventinfo) | Yes   | Application event object. The event name defined inside it should avoid conflicting with the system event name constants defined in [Event](#event). |
 | callback | AsyncCallback&lt;void&gt;      | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -640,11 +644,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -686,7 +690,7 @@ hiAppEvent.write({
 
 write(info: AppEventInfo): Promise&lt;void&gt;
 
-Writes events of the **AppEventInfo** type. This API uses a promise to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](#hiappeventevent)). The events written by this API can be subscribed to through ([addWatcher](#hiappeventaddwatcher)).
+Writes application events. This method stores events of the **AppEventInfo** type and uses a promise as the asynchronous callback. The event object written through this API is a developer-defined object. To avoid conflicts and confusion with system events, writing system events (the system event name constants defined in [Event](#event)) is not recommended. Events written through this API can be processed by an event watcher ([addWatcher](#hiappeventaddwatcher)).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -696,7 +700,7 @@ Writes events of the **AppEventInfo** type. This API uses a promise to return th
 
 | Name| Type                          | Mandatory| Description          |
 | ------ | ------------------------------ | ---- | -------------- |
-| info   | [AppEventInfo](#appeventinfo) | Yes  | Application event object. You are advised to avoid the conflict between the custom event name and the system event name constant defined in [Event](#hiappeventevent).|
+| info | [AppEventInfo](#appeventinfo) | Yes | Application event object. The event name is recommended to avoid conflicts with the system event name constants defined in [Event](#event). |
 
 **Return value**
 
@@ -710,11 +714,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -754,7 +758,7 @@ hiAppEvent.write({
 
 addProcessor(processor: Processor): number
 
-Adds the configuration information of the data processor, such as the event name received by it.  
+Adds the configuration information of the data processor, such as the event name received by it.
 
 This is a synchronous API and involves time-consuming operations. To ensure performance, you are advised to use the asynchronous API [addProcessorFromConfig](#hiappeventaddprocessorfromconfig20) or use a child thread.
 
@@ -773,14 +777,6 @@ This is a synchronous API and involves time-consuming operations. To ensure perf
 | Type   | Description                  |
 | ------ | ---------------------- |
 | number | ID of the data processor of the reported event, which uniquely identifies the data processor and can be used to remove the data processor. If the operation fails, **-1** is returned. If the operation is successful, a value greater than **0** is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message         |
-| ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -863,14 +859,6 @@ Removes the data processor of a reported event.
 | ------| ------- | ---- | --------------------------- |
 | id    | number  | Yes  | ID of a data processor. The value must be greater than **0**. The value is obtained by calling [addProcessor](#hiappeventaddprocessor11) or [addProcessorFromConfig](#hiappeventaddprocessorfromconfig20).|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message         |
-| ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -903,8 +891,8 @@ Sets a user ID, which is used for association when a [Processor](#processor11) i
 
 | Name    | Type                     | Mandatory| Description          |
 | --------- | ------------------------- | ---- | -------------  |
-| name      | string                    | Yes  | Key of a user ID. The value is string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit.  |
-| value     | string                    | Yes  | Value of a user ID. It can contain a maximum of 256 characters. If the value is **null** or left empty, the user ID is cleared.|
+| name      | string                    | Yes  | Key of a user ID. The value is a string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit.  |
+| value | string | Yes | Value of the user ID. The length cannot exceed 256 characters. When the value is null or an empty string, the user ID is cleared. |
 
 **Error codes**
 
@@ -912,7 +900,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Example**
 
@@ -955,7 +943,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Example**
 
@@ -986,8 +974,8 @@ Sets a user property, which is used for association when a [Processor](#processo
 
 | Name    | Type                     | Mandatory| Description          |
 | --------- | ------------------------- | ---- | -------------- |
-| name      | string                    | Yes  | Key of a user property. The value is string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit. |
-| value     | string                    | Yes  | Value of a user property. It can contain a maximum of 1024 characters. If the value is **null** or left empty, the user property is cleared. |
+| name      | string                    | Yes  | Key of a user property. The value is a string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit. |
+| value     | string                    | Yes   | Value of the user attribute. The length cannot exceed 1024 characters. When the value is null or an empty string, the user attribute is cleared.  |
 
 **Error codes**
 
@@ -995,7 +983,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Example**
 
@@ -1038,7 +1026,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | ------- | ----------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Example**
 
@@ -1094,8 +1082,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11103001 | Invalid max storage quota value. Possible caused by incorrectly formatted. |
+| 11103001 | Invalid max storage quota value. Possibly caused by incorrectly formatted. |
 
 **Example**
 
@@ -1108,7 +1095,7 @@ hiAppEvent.configure(config1);
 
 // Set the maximum size of the file storage directory to 100 MB.
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```
@@ -1125,7 +1112,7 @@ Provides configuration options for application event logging.
 | Name      | Type   | Read Only| Optional| Description                                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | No| Yes  | Whether to enable the event logging function. The default value is **false**. If this parameter is set to **true**, the logging function is disabled. Otherwise, the logging function is enabled.|
-| maxStorage | string  | No| Yes  | Quota for the directory that stores event logging files. The default value is **10M**. It is recommended that the quota be less than or equal to 10 MB. Otherwise, the API efficiency may be affected.<br>If the directory size exceeds the specified quota when application event logging is performed, event logging files in the directory will be cleared one by one based on the generation time to ensure that directory size does not exceed the quota.<br>The quota value must meet the following requirements:<br>- The quota value consists of only digits and a unit (including b\|k\|kb\|m\|mb\|g\|gb\|t\|tb, which are case-insensitive).<br>- The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b** (that is, byte) is used by default.|
+| maxStorage | string  | No | Yes   | Quota size of the directory for storing event logging data. The default value is "10MB". It is recommended that the quota size not exceed 10MB; an excessively large quota may affect API efficiency.<br>After the directory size exceeds the quota, the next event logging triggers a cleanup operation on the directory: event logging data files are deleted one by one from oldest to newest until the directory size no longer exceeds the quota.<br>The quota value string specification is as follows:<br>- The quota value string consists only of digit characters and size unit characters (the supported unit characters are [b\|k\|kb\|m\|mb\|g\|gb\|t\|tb], case-insensitive).<br>- The quota value string must start with a digit, and may optionally omit the unit character (byte is used by default) or end with a unit character. |
 
 
 ## EventPolicy<sup>22+</sup>
@@ -1188,12 +1175,14 @@ Defines the crash event configuration policy.
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
-| Name      | Type   | Read Only| Optional| Description    |
+| Name      | Type   | Read-Only| Optional| Description    |
 | ---------- | ------- | ---- | ---- | ------------- |
 | pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for crash events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| extendPcLrPrinting    | boolean | No| Yes  | Whether to print the memory values before and after the PC and LR registers in crash logs.<br>The value **true** means to print the memory values of 248 bytes before and 256 bytes after the PC and LR on 64-bit system, or 124 bytes before and 128 bytes after on 32-bit systems.<br>The value **false** means to print the memory values of 16 bytes before and 232 bytes after the PC and LR on 64-bit system, or 8 bytes before and 116 bytes after on 32-bit systems.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| extendPcLrPrinting    | boolean | No| Yes  | Whether to print the memory values before and after the PC and LR registers in crash logs.<br>The value **true** means to print the memory values of 248 bytes before and 256 bytes after the PC and LR on 64-bit systems, or 124 bytes before and 128 bytes after on 32-bit systems.<br>The value **false** means to print the memory values of 16 bytes before and 232 bytes after the PC and LR on 64-bit systems, or 8 bytes before and 116 bytes after on 32-bit systems.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | logFileCutoffSzBytes    | number | No| Yes  | Truncation size for crash logs. The value ranges from 0 to 5242880, in bytes. The default value is 0, indicating that crash logs are not truncated.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | simplifyVmaPrinting    | boolean | No| Yes  | Whether to print the mapping information of all virtual memory areas (VMAs) in the crash log, that is, the **Maps** field in the crash log.<br>The value **true** means to print only the VMA mapping information of the addresses in the crash log to reduce the log size.<br>The value **false** means to print all VMA mapping information.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| collectMinidump    | boolean | No | Yes   | Whether to enable [minidump](../../dfx/performance-analysis-kit-terminology.md#minidump). The default value is **false**. <!--RP5--><br/>**true**: The upper limit of the total size of generated and existing fault log files determined by the **log_over_limit** field in [params](../../dfx/hiappevent-watcher-crash-events.md#params) is adjusted to 35 MB.<br/>**false**: The upper limit of the total size of generated and existing fault log files determined by the **log_over_limit** field is restored to 5 MB. <!--RP5End--><br/>**Note**: This configuration item is persistent. Its value remains unchanged until the application resets it.<br/>**Since**: 26.0.0<br/>**Atomic service API**: Since API version 26.0.0, this API is supported in atomic services. |
+| publishOnNextLaunch    | boolean | No | Yes   | Used to configure the timing for the application to receive crash event callbacks, that is, whether to fix the event callback to be received after the application restarts.<br>true: Enable fixing the event callback to be received after the application restarts.<br>false: Do not enable fixing the event callback to be received after the application restarts.<br>Default value: false, which means fixing the event callback to be received after the application restarts is not enabled.<br>**Note**: This configuration item is a persistent configuration. Its value remains unchanged until the application resets it.<br>**Since Version**: 26.1.0<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1216,7 +1205,8 @@ Defines the resource leak event configuration policy.
 | Name      | Type   | Read Only| Optional| Description    |
 | ---------- | ------- | ---- | ---- | ------------- |
 | pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for resource leak events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| jsHeapLogtype    | string | No| Yes  | Heap snapshot transfer specifications.<br>**event**: No heap snapshot is transferred when an OOM error occurs.<br>**event_rawheap**: The system generates and transfers a heap snapshot when an OOM error occurs.<br>**NOTE**<br>- Only the preceding two values are supported. If other values are passed in, the method fails to be called and takes no effect.<br>- If the parameter value is **event_rawheap**, the heap snapshot file may fail to be generated. This is because the application may exit in advance due to a freeze event triggered by a performance problem.<br>-The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| **jsHeapLogtype** | string | No | Yes | Specification for passing heap snapshots.<br/>**"event"**: When the application encounters an OOM, no heap snapshot is passed.<br/>**"event_rawheap"**: When the application encounters an OOM, the system generates and passes the heap snapshot.<br/>**Note**:<br/>- Currently only the above two values are accepted. If any other content is passed in, the method call fails and has no effect.<br/>- When the parameter value is **"event_rawheap"**, it cannot be guaranteed that the heap snapshot file is successfully generated. This is because, when generating the heap snapshot, the application may trigger a screen freeze due to performance issues and exit prematurely.<br/>- Each enabling behavior of the application takes effect only in the current lifecycle of the application. Within the same lifecycle, the enabled state of the last successful call prevails. After the application restarts, the enabled state must be set again.<br/>**Since Version**: 26.0.0<br/>**Atomic service API**: Since API version 26.0.0, this API is supported in atomic services. |
+| **useRefinedLogFileName** | boolean | No | Yes | Whether to enable the refined event log file name switch.<br/>**true**: Enables the refined event log file name switch.<br/>**false**: Disables the refined event log file name switch.<br/>Default value: **false**.<br>**Since Version:** 26.0.0<br/>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services. |
 
 ## AddressSanitizerPolicy<sup>24+</sup>
 
@@ -1303,7 +1293,7 @@ Enumerates event types.
 | BEHAVIOR  | 4    | Behavior event.|
 
 
-## hiAppEvent.domain<sup>11+</sup>
+## domain<sup>11+</sup>
 
 ### Constants
 
@@ -1318,7 +1308,7 @@ Provides domain name constants.
 | OS   | string | Yes| System domain.|
 
 
-## hiAppEvent.event
+## event
 
 ### Constants
 
@@ -1346,7 +1336,7 @@ Provides event name constants, including system event name constants and applica
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | Yes| ArkWeb fling jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 23.|
 | appFreezeWarning | string | Yes| Application freeze warning event. This is a system event name constant.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
-## hiAppEvent.param
+## Parameters
 
 ### Constants
 
@@ -1361,3 +1351,586 @@ Provides parameter name constants.
 | USER_ID                         | string | Yes| Custom user ID.    |
 | DISTRIBUTED_SERVICE_NAME        | string | Yes| Distributed service name.  |
 | DISTRIBUTED_SERVICE_INSTANCE_ID | string | Yes| Distributed service instance ID.|
+
+## ExternalLogManager
+
+Provides a class for managing the external_log of the current application.
+
+The external_log is obtained from the system event information subscribed to through [addWatcher](#hiappeventaddwatcher), and represents the path of the fault log file of the system event.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+### onCapacityReached
+
+onCapacityReached(container: ExternalLogContainer): void
+
+Called when the capacity of an external_log directory in the application sandbox reaches the threshold. This function is used to manage the external_log contained in the given external_log container.
+
+For the current specifications of the external_log directory, see [specifications](../../dfx/external-log.md#log-specifications). For the thresholds of each directory, see [thresholds](../../dfx/external-log.md#constraints).
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------------------------------------------- |
+| container | [ExternalLogContainer](#externallogcontainer) | Yes | External log container class that contains all external_log information of the current application. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    hilog.info(0x0000, 'testTag', `[MyLogManager] Capacity threshold reached`);
+  }
+};
+```
+
+## ExternalLogContainer
+
+The external_log container holds all external_log information of the current application and supports obtaining external_log of a specific specification within the application.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+### getAllLogs
+
+getAllLogs(): Set&lt;ExternalLogWrapper&gt;
+
+Obtains the file information of all external_log files in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API is supported in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| [Set&lt;ExternalLogWrapper&gt;](#externallogwrapper) | Set of external_log information wrapper classes. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the details of all log information.
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+  }
+};
+```
+
+### getAllLogFiles
+
+getAllLogFiles(): Set&lt;string&gt;
+
+Obtains the paths of all external_log log files in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API is supported in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | Set of paths of all external_log log files in the current application. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the paths of all external_log log files.
+    let allFiles: Set<string> = container.getAllLogFiles();
+  }
+};
+```
+
+### getLogFilesOfSysEvent
+
+getLogFilesOfSysEvent(event: string): Set&lt;string&gt;
+
+Obtains the external_log log file paths of the specified event type in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name  | Type   | Mandatory | Description                              |
+| ----- | ------ | --------- | ---------------------------------------- |
+| event | string | Yes       | Event type, for example, "APP_CRASH". |
+
+**Return value**
+
+| Type            | Description                                                          |
+| --------------- | -------------------------------------------------------------------- |
+| Set&lt;string&gt; | Set of external_log log file path strings of the specified type in the current application. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the paths of external_log log files of the specified event type.
+    let crashFiles: Set<string> = container.getLogFilesOfSysEvent('APP_CRASH');
+  }
+};
+```
+
+### getLogFilesGeneratedAfter
+
+getLogFilesGeneratedAfter(timePoint: number): Set&lt;string&gt;
+
+Obtains the paths of external_log log files generated after the specified time in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name | Type   | Mandatory | Description                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| timePoint | number | Yes   | Timestamp accurate to milliseconds. |
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | Set of paths of external_log log files generated after the specified time in the current application. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the paths of external_log log files generated after the specified time.
+    let timePoint = Date.now() - 60 * 60 * 1000; // Current timestamp minus 1 hour.
+    let files: Set<string> = container.getLogFilesGeneratedAfter(timePoint);
+  }
+};
+```
+
+### getLogFilesGeneratedBefore
+
+getLogFilesGeneratedBefore(timePoint: number): Set&lt;string&gt;
+
+Obtains the paths of the external_log log files generated before the specified time in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------------------------------------------- |
+| timePoint | number | Yes | Timestamp accurate to milliseconds. |
+
+**Return value**
+
+| Type | Description |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | Set of paths of the external_log log files generated before the specified time in the current application. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the paths of external_log log files generated before the specified time.
+    let timePoint = Date.now() - 60 * 60 * 1000; // Current timestamp minus 1 hour.
+    let files: Set<string> = container.getLogFilesGeneratedBefore(timePoint);
+  }
+};
+```
+
+### getLogFilesLargerThan
+
+getLogFilesLargerThan(sizeKb: number): Set&lt;string&gt;
+
+Obtains the paths of external_log log files in the current application that are larger than the specified size.
+
+**Since:** 26.0.1
+
+**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------------------------------------------- |
+| sizeKb | number | Yes | File size, in KB. |
+
+**Return value**
+
+| Type | Description |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | Set of paths of external_log log files in the current application that are larger than the specified size. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the paths of external_log log files larger than the specified size.
+    let files: Set<string> = container.getLogFilesLargerThan(100);
+  }
+};
+```
+
+### getLogFilesSmallerThan
+
+getLogFilesSmallerThan(sizeKb: number): Set&lt;string&gt;
+
+Obtains the paths of external_log log files smaller than the specified size in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------------------------------------------- |
+| sizeKb | number | Yes | File size, in KB. |
+
+**Return value**
+
+| Type | Description |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | Set of paths of external_log log files smaller than the specified size in the current application. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the paths of external_log log files smaller than the specified size.
+    let files: Set<string> = container.getLogFilesSmallerThan(100);
+  }
+};
+```
+
+### getLogNumber
+
+getLogNumber(): number
+
+Obtains the number of log files in the external_log directory of the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API is supported in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| number | Number of log files in the external_log directory of the current application. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the number of log files in the external_log directory.
+    let num: number = container.getLogNumber();
+  }
+};
+```
+
+### getFirstGeneratedLogFiles
+
+getFirstGeneratedLogFiles(num: number): Set&lt;string&gt;
+
+Obtains the paths of a given number of earliest generated external_log log files in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API is supported in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Name | Type   | Mandatory | Description                                         |
+| ------ | ------ | ---- | -------------------------------------------- |
+| num | number | Yes   | Number of earliest generated files. |
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| Set&lt;string&gt; | Set of path strings of a given number of earliest generated external_log log files in the current application. |
+
+**Example**
+
+```ts
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the paths of the earliest six external_log log files.
+    let files: Set<string> = container.getFirstGeneratedLogFiles(6);
+  }
+};
+```
+
+## ExternalLogWrapper
+
+A wrapper class for external_log that records the path, generation time, event type, and file size information of the external_log log files in the current application.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+### getFilePath
+
+getFilePath(): string
+
+Obtains the path of the external_log log file.
+
+**Since:** 26.0.1
+
+**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| string | Path of the external_log log file in the current application. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the details of all log information.
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] File: ${log.getFilePath()}`);
+    }
+  }
+};
+```
+
+### getGenerationTime
+
+getGenerationTime(): number
+
+Obtains the generation time of the external_log log file in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API is supported in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| number | Generation time of the external_log log file. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the details of all log information.
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] Time: ${log.getGenerationTime()}`);
+    }
+  }
+};
+```
+
+### getSizeInKb
+
+getSizeInKb(): number
+
+Obtains the size of the external_log log file in the current application, in KB.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| number | Size of the external_log log file, in KB. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the details of all log information.
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] Size: ${log.getSizeInKb()}KB,`);
+    }
+  }
+};
+```
+
+### getSysEvent
+
+getSysEvent(): string
+
+Obtains the event type of the external_log log file in the current application.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API is supported in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| string | Event type of the external_log log file. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+    // Obtain the details of all log information.
+    let allLogs: Set<hiAppEvent.ExternalLogWrapper> = container.getAllLogs();
+    for (const log of Array.from(allLogs)) {
+      hilog.info(0x0000, 'hiAppEvent', `[MyLogManager] Event: ${log.getSysEvent()}`);
+    }
+  }
+};
+```
+
+## hiAppEvent.registerExternalLogManager
+
+registerExternalLogManager(logMngr: ExternalLogManager): void
+
+Registers the manager of external_log log files. Registration is allowed only once. If registration has already succeeded, a repeated registration returns a failure.
+
+The registration is not persisted. An application does not inherit the registration state from the previous launch and must register again.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Parameters**
+
+| Parameter Name | Type                          | Mandatory | Description           |
+| ------ | ---------------------------- | ---- | -------------- |
+| logMngr | [ExternalLogManager](#externallogmanager)  | Yes   | Manager of external_log log files. |
+
+**Error codes**
+
+For details about the following error codes, see [Application Event Hit Tracing Error Codes](errorcode-hiappevent.md).
+
+| ID | Error Message                         |
+| -------- | -------------------------------- |
+| 11106001 | State error. Possible causes: 1. Log manager already registered. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Define the ExternalLogManager implementation.
+let myLogManager: hiAppEvent.ExternalLogManager = {
+  onCapacityReached(container: hiAppEvent.ExternalLogContainer): void {
+  }
+};
+
+// Register the manager. When the external_log directory reaches the threshold, the onCapacityReached callback is invoked.
+try {
+  hiAppEvent.registerExternalLogManager(myLogManager);
+  hilog.info(0x0000, 'hiAppEvent', '[App] ExternalLogManager registered successfully');
+} catch (e) {
+  hilog.info(0x0000, 'hiAppEvent', `[App] Registration failed: ${e.code}, ${e.message}`);
+}
+```
+
+## hiAppEvent.isExternalLogManagerRegistered
+
+isExternalLogManagerRegistered(): boolean
+
+Queries whether the external_log log file manager is registered.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API is supported in atomic services since API version 26.0.1.
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+**Return value**
+
+| Type                                | Description                                                   |
+| ----------------------------------- | ------------------------------------------------------ |
+| boolean | Returns true if registered, and false otherwise. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Check whether the manager is registered.
+let registered: boolean = hiAppEvent.isExternalLogManagerRegistered();
+hilog.info(0x0000, 'hiAppEvent', `[App] Registered: ${registered}`);
+```

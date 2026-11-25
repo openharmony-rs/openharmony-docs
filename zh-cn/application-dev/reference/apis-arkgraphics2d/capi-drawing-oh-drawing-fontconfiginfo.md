@@ -1,9 +1,9 @@
 # OH_Drawing_FontConfigInfo
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 ```c
 typedef struct OH_Drawing_FontConfigInfo {...} OH_Drawing_FontConfigInfo

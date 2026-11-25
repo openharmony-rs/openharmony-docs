@@ -39,6 +39,7 @@
 | [InputMethod_ErrorCode OH_InputMethodProxy_NotifyConfigurationChange(InputMethod_InputMethodProxy *inputMethodProxy,InputMethod_EnterKeyType enterKey, InputMethod_TextInputType textType)](#oh_inputmethodproxy_notifyconfigurationchange) | 通知输入框配置变化。 |
 | [InputMethod_ErrorCode OH_InputMethodProxy_NotifyCursorUpdate(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_CursorInfo *cursorInfo)](#oh_inputmethodproxy_notifycursorupdate) | 通知光标位置变化。 |
 | [InputMethod_ErrorCode OH_InputMethodProxy_SendPrivateCommand(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_PrivateCommand *privateCommand[], size_t size)](#oh_inputmethodproxy_sendprivatecommand) | 发送私有数据命令。 |
+| [InputMethod_ErrorCode OH_InputMethod_InputMethodProxy_RequestSystemInputCapability(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_InputCapabilityType type)](#oh_inputmethod_inputmethodproxy_requestsysteminputcapability) | 请求系统输入能力。 |
 
 ## 函数说明
 
@@ -295,3 +296,38 @@ InputMethod_ErrorCode OH_InputMethodProxy_SendPrivateCommand(InputMethod_InputMe
 | 类型 | 说明 |
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功，私有命令已发送。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 参数错误，可能是size超过5、privateCommand为NULL、或单个命令超过32KB，请检查参数值。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端错误。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法服务错误。<br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 未绑定输入法，已Detach需重新Attach。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，inputMethodProxy或privateCommand为NULL。<br>具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+
+### OH_InputMethod_InputMethodProxy_RequestSystemInputCapability()
+
+```c
+InputMethod_ErrorCode OH_InputMethod_InputMethodProxy_RequestSystemInputCapability(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_InputCapabilityType type)
+```
+
+**描述**
+
+请求系统输入能力。调用此函数后，系统将根据请求的能力类型切换输入法到对应的输入模式。
+
+使用场景：当应用需要请求输入法切换到翻译模式时调用此函数，传入type为[IME_INPUT_CAPABILITY_TYPE_TRANSLATION](capi-inputmethod-types-capi-h.md#inputmethod_inputcapabilitytype)。
+
+使用后效果：当type为TRANSLATION且当前输入法为系统配置的默认输入法时，输入法将切换到翻译模式。调用失败后，返回对应的错误码。
+
+前置条件：必须先调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)获取inputMethodProxy实例，且当前处于已绑定（Attached）状态。
+
+约束限制：当type为TRANSLATION时，当前输入法须为系统配置的默认输入法，否则返回OH_INPUTMETHOD_ERR_NOT_DEFAULT_IME错误码。
+
+线程安全：此函数非线程安全，不建议在多线程环境下同时操作同一个inputMethodProxy对象。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) *inputMethodProxy | 输入指针，表示指向[InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md)实例的指针。inputMethodProxy由调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)获取。该指针不可为NULL，若传入NULL指针将返回IME_ERR_NULL_POINTER错误码。Detach后该指针失效。 |
+| [InputMethod_InputCapabilityType](capi-inputmethod-types-capi-h.md#inputmethod_inputcapabilitytype) type | 输入参数，表示输入能力类型。取值范围：[IME_INPUT_CAPABILITY_TYPE_TRANSLATION](capi-inputmethod-types-capi-h.md#inputmethod_inputcapabilitytype)（0）表示请求翻译输入能力。传入其他值将返回IME_ERR_PARAMCHECK错误码。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 参数错误，type值无效。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法管理服务异常。<br>[OH_INPUTMETHOD_ERR_NOT_DEFAULT_IME](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 当前输入法应用不是系统配置的默认输入法。<br>[OH_INPUTMETHOD_ERR_INPUT_TYPE_NOT_SUPPORTED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入类型不支持。<br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端断开连接。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针，inputMethodProxy为NULL。<br>具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |

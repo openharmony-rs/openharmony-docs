@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:39:03.336Z pushedAt=2026-11-20T06:09:51.254Z nl=1 -->
 
 ## Checking the Revocation Status of Local Certificate Chain with Only Leaf Certificate Checked
 
@@ -13,7 +14,7 @@ The revocation status check of the local certificate chain supports checking onl
 
 ### How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
@@ -35,6 +36,7 @@ Example:
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
@@ -57,7 +59,9 @@ async function createCertChain(certData: string): Promise<cert.X509CertChain> {
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
   } catch (err) {
-    console.error(`createCertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertChain failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509CertChain;
 }
@@ -74,15 +78,17 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createCert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
 
-export async function createCRL(crmPem: string): Promise<cert.CertCRLCollection> {
+export async function createCRL(crlPem: string): Promise<cert.CertCRLCollection> {
   try {
     let crlEncodingBlob: cert.EncodingBlob = {
-      data: stringToUint8Array(crmPem),
+      data: stringToUint8Array(crlPem),
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     }
     let crl: cert.X509CRL = await cert.createX509CRL(crlEncodingBlob);
@@ -113,18 +119,20 @@ async function doTestLeafCertCrlCheck() {
     await x509CertChain.validate(param);
     console.info(`validate result: success.`);
   } catch (error) {
-    console.error(`x509CertChain validate failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
 
 ## Checking the Revocation Status of Intermediate CA Certificates in a Certificate Chain Online
 
-The revocation status of intermediate CA certificates in a certificate chain can be checked online since API version 22.
+Starting from API version 22, you can check the revocation status of intermediate CA certificates in a certificate chain online.
 
 ### How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
@@ -148,6 +156,7 @@ Example:
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
@@ -170,7 +179,8 @@ async function createCertChain(certData: string): Promise<cert.X509CertChain> {
   try {
     x509CertChain = await cert.createX509CertChain(encodingBlob);
   } catch (err) {
-    console.error(`createCertChain failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCertChain failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509CertChain;
 }
@@ -187,7 +197,8 @@ async function createCert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createCert failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createCert failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509Cert;
 }
@@ -211,7 +222,8 @@ async function doTestCaCheck() {
     await x509CertChain.validate(param);
     console.info(`validate result: success.`);
   } catch (error) {
-    console.error(`x509CertChain validate failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`x509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```
@@ -219,20 +231,22 @@ async function doTestCaCheck() {
 
 ## Ignoring the Network Unreachable Exception During Online Certificate Revocation Check in Certificate Chain Validation
 
-The network unreachable exception during online certificate revocation check can be ignored during certificate chain validation since API version 23.
+Starting from API version 23, you can ignore the network unreachable exception during online certificate revocation check in certificate chain validation.
 
 ### How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 2. Call [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11-2) to create a certificate chain object.
 
-3. Call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an X.509 certificate object. Construct **cert.CertChainValidationParameters** and set **revocationCheckParam** to **RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR** to ignore the network unreachable exception.
+3. Call [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an X.509 certificate object.
 
-4. Call [cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11) and pass the certificate chain verification parameters to verify the certificate chain.
+4. Construct the `cert.CertChainValidationParameters` certificate chain validation parameters and set `revocationCheckParam` to `RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR` to ignore the network unreachable case.
+
+5. Call [cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11) and pass the certificate chain verification parameters to verify the certificate chain.
 
 Example:
 
@@ -300,7 +314,8 @@ async function validateCRL() {
     await certChain.validate(param);
     console.info('validateCRL result: success.');
   } catch (err) {
-    console.error(`X509CertChain validate failed: errCode: ${err.code}, message: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`X509CertChain validate failed: errCode: ${e.code}, message: ${e.message}`);
   }
 }
 ```

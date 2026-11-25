@@ -6,7 +6,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=05bf1ec1ef36948fde16c6c85c487f96fd5dc0bb translatedAt=2026-08-24T11:34:32.794Z pushedAt=2026-08-25T06:01:46.545Z -->
+<!-- md-trans-meta sourceCommit=405ff88200c2ec4181f73862bbec8846cb359b2c translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
@@ -98,7 +98,7 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
 | -------------------------------------------------------------------- | -------------------------- |
 | onCreate(want: Want): void;                                          | Creates a distributed collaboration task.      |
 | onDestroy(): void;                                                   | Destroys a distributed collaboration task.          |
-| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested. |
+| onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult; | Called when distributed collaboration is requested. |
 
 ### Development Procedure
 
@@ -126,6 +126,7 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
        ]
      }
    }
+
    ```
 
 2. Import the required modules.
@@ -152,11 +153,10 @@ For details about how to use the APIs, see [@ohos.application.DistributedExtensi
    
      onCollaborate(wantParam: Record<string, Object>) {
        console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
-       let sessionId = -1;
-       const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-       if (collaborationValues == undefined) {
-         return sessionId;
-       }
+        const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
+        if (collaborationValues == undefined) {
+          return AbilityConstant.CollaborateResult.REJECT;
+        }
    
        console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
        return AbilityConstant.CollaborateResult.ACCEPT;

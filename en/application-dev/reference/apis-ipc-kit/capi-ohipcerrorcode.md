@@ -1,16 +1,15 @@
 # OHIPCErrorCode
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ceec5d18179ba29b1eca79fa9240e27795b5216c translatedAt=2026-07-28T02:18:50.148Z pushedAt=2026-07-29T07:09:35.326Z -->
+<!-- md-trans-meta sourceCommit=45a81b7bea817baeae8988e7a761257052387361 translatedAt=2026-10-23T03:16:45.620Z pushedAt=2026-10-26T03:20:41.187Z nl=1 -->
 
 ## Overview
 
-Provides IPC error codes for identifying and handling various errors that occur during inter-process communication, helping you quickly locate and resolve IPC-related issues.
+Defines the IPC error codes, which are used to identify and handle various errors that may occur during IPC communication. You can quickly locate the cause of an error based on the returned error code, such as parameter error, serialization failure, memory allocation failure, and remote object death, and then take corresponding measures to rectify the error.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -22,4 +21,4 @@ Provides IPC error codes for identifying and handling various errors that occur 
 
 | Name | Description |
 | ---- | ---- |
-| [ipc_error_code.h](capi-ipc-error-code-h.md) | Defines IPC error code constants, including definitions and descriptions of various error codes that may occur during inter-process communication, for you to use in IPC development. |
+| [ipc_error_code.h](capi-ipc-error-code-h.md) | Defines IPC error code constants, including the definitions and descriptions of various error codes that may occur during inter-process communication, for use in IPC development. |

@@ -1,17 +1,26 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use Node-API extensions to create and destroy critical scopes and access string content, using napi_open_critical_scope to manage critical scopes and call critical APIs within them."
+keywords: [Node-API, critical scopes, napi_open_critical_scope, napi_close_critical_scope, critical APIs, string access, GC blocking]
+doctype: guide
+status: active
+---
+
 # Creating and Destroying a Critical Scope and Accessing String Content Using Node-API Extension APIs
 
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.368Z nl=1 -->
 
 The Node-API extension APIs **napi_open_critical_scope** and **napi_close_critical_scope** are used to open and close a critical scope, respectively.
 
 > **NOTE**
 >
-> Non-critical APIs cannot be used in a critical scope, and only one critical scope can be opened in an execution environment. You are advised to open a critical scope only when critical APIs are required, and close the scope in a timely manner after the APIs are used.
+> Non-critical APIs cannot be used within a critical scope, and only one critical scope can be opened in the same execution environment. Opening a critical scope blocks GC. Keeping a critical scope open for a long time may cause issues such as memory shortage and lag. It is recommended that a critical scope be opened only when critical APIs are needed and closed promptly after use.
 
 ## When to Use
 
@@ -27,11 +36,11 @@ After the critical scope is closed, do not use the critical API or its return re
 | napi_close_critical_scope                      | Closes a critical scope.                         | napi_generic_failure       |
 | napi_get_buffer_string_utf16_in_critical_scope | Obtains the UTF-16 encoding memory buffer data of an ArkTS string.| napi_generic_failure       |
 
->**NOTE** 
+>**NOTE**  
 >
->1. To obtain the memory buffer of an ArkTS string stored in UTF-16-encoding format, use **napi_get_buffer_string_utf16_in_critical_scope**. Otherwise, an error will be returned.
+> 1. Only when an ArkTS string is stored in UTF-16 encoding can `napi_get_buffer_string_utf16_in_critical_scope` correctly obtain its memory buffer; otherwise, the function returns an error.
 >  
->2. **napi_create_string_utf16** and **napi_create_string_utf8** are used to pass the input data to the VM in the specified encoding format. These functions do not control the internal storage encoding format of strings in the VM.
+> 2. `napi_create_string_utf16` and `napi_create_string_utf8` are used to pass the input data to the VM in the specified encoding format. These functions do not control the internal storage encoding format of strings in the VM.
 
 ## Sample Code
 
@@ -91,8 +100,9 @@ After the critical scope is closed, do not use the critical API or its return re
       if (napi_get_value_string_utf16(env, value, nullptr, 0, &strLength) != napi_ok) {
          return {};
       }
-      /* The Node-API requires that the buffer length be greater than the string length, which is used to write the end flag of the C string.
-         Therefore, to obtain the complete string, the buffer size must be the string length plus 1.*/
+      /* The Node-API requires the buffer length to be greater than the string length to accommodate the null terminator of the C string.
+       * Therefore, to obtain the complete string, the buffer size must be the string length plus 1.
+       */
       std::vector<char16_t> result(strLength + 1);
       if (napi_get_value_string_utf16(env, value, result.data(), result.size(), &strLength) != napi_ok) {
          return {};
@@ -193,4 +203,5 @@ After the critical scope is closed, do not use the critical API or its return re
    makeTest("你好");        // Expected result: 0 or 2
    makeTest("测试字符串");   // Expected result: 1 or 3
    ```
+
 <!--no_check-->

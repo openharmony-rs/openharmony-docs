@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "概述应用间跳转的能力与应用场景，介绍拉起指定应用（应用链接、指定Ability）和拉起指定类型应用两种跳转方式，帮助开发者选择合适的跳转方案。"
+keywords: [应用间跳转, 应用跳转, openLink, startAbility, 应用链接, 显式Want]
+doctype: guide
+status: active
+---
 # 应用间跳转概述
 
 <!--Kit: Ability Kit-->
@@ -23,7 +30,7 @@
 
     > **说明：**
     >
-    > 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定[应用链接](app-startup-overview.md#应用链接)方式，详见[显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)。
+    > 从API版本12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定[应用链接](app-startup-overview.md#应用链接)方式，详见[显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)。
 
     - 指定应用链接（推荐）：通过[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)或[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口来指定[应用链接](app-startup-overview.md#应用链接)，拉起目标应用页面。
 

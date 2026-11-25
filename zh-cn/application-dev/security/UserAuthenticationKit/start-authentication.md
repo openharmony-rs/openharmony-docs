@@ -74,7 +74,7 @@
 
 > **说明：**
 >
-> 从API版本26.1.0开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
+> 从API版本26.0.1开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
 
 ## 开发步骤
 
@@ -306,4 +306,4 @@ initiatingUserAuthentication4() {
 
 ## 示例代码
 
-  - [发起认证](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - 可参考[用户认证服务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)示例代码。

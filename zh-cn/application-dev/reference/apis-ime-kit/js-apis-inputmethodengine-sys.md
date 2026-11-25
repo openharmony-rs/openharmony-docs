@@ -55,7 +55,7 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取最终的面板大小，完成最终的面板布局刷新。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取最终的面板大小，完成最终的面板布局刷新。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -95,7 +95,7 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 
 > **说明:**
 >
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED、FLG_FLOATING或FLAG_DETACHED的面板。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -155,7 +155,7 @@ setShadow(radius: number, color: string, offsetX: number, offsetY: number): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800013  | window manager service error.      |
 | 12800017 | invalid panel type or panel flag. Possible causes: Panel's flag is FLG_FIXED. |
 

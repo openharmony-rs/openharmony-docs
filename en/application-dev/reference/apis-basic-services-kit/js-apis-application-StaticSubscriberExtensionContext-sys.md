@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:41:57.580Z pushedAt=2026-10-08T02:39:02.481Z -->
 
 The **StaticSubscriberExtensionContext** module, inherited from **ExtensionContext**, provides context for **StaticSubscriberExtensionAbility**.
 
@@ -48,7 +49,7 @@ Starts an ability that belongs to the same application as this **StaticSubscribe
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information about the target ability.   |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information about the target ability. The target ability must belong to the same app as the static subscription.    |
 | callback | AsyncCallback&lt;void&gt;           | Yes  | Callback used to receive the result of starting the ability.|
 
 **Error codes**
@@ -125,13 +126,13 @@ Starts an ability that belongs to the same application as this **StaticSubscribe
 
 | Name| Type                               | Mandatory| Description                   |
 | ------ | ----------------------------------- | ---- | ----------------------- |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information about the target ability.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information about the target ability. The target ability must belong to the same app as the static subscription. |
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 

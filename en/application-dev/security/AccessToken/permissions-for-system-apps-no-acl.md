@@ -200,3 +200,17 @@ Allows a system service to enable distributed hardware resources.
 **Certificate-based authorization**: false
 
 **Valid since**: 11
+
+## ohos.permission.EXECUTE_HISHELL_COMMAND
+
+Allows an application to start the HiShell command-line terminal to execute commands or scripts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: false
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0

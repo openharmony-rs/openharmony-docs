@@ -406,6 +406,25 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | networkId  | string                              | 否 | 否 | 网络id。 |
 | percentage<sup>23+</sup> | number | 否 | 是 | 音量百分比，取值范围为[0, 100]。|
 
+## VolumeLimitExceededEvent
+
+描述音量超过阈值时的通知事件。收到通知后，应用在继续调整音量前必须通过`confirmVolumeLimitExceeded`发送确认结果。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| uid | number | 否 | 否 | 指示触发音量越限的进程的UID。 |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 否 | 否 | 当前音量类型。 |
+| currentVolume | number | 否 | 否 | 当前音量等级。取值范围在`getMinSystemVolume()`和`getMaxSystemVolume()`获取的值之间。 |
+| volumeThreshold | number | 否 | 否 | 当前音量类型的音量阈值。取值范围在`getMinSystemVolume()`和`getMaxSystemVolume()`获取的值之间。 |
+
 ## ConnectType<sup>9+</sup>
 
 枚举，设备连接类型。
@@ -453,8 +472,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                                         |  值     | 说明                   |
 | :------------------------------------------- | :----- | :--------------------- |
-| SOURCE_TYPE_WAKEUP <sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br/>**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE |
-| SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br/>**需要权限：** ohos.permission.RECORD_VOICE_CALL |
+| SOURCE_TYPE_WAKEUP<sup>10+</sup>            | 3 | 语音唤醒音频流录制音频源。<br>此类型需要`ohos.permission.MANAGE_INTELLIGENT_VOICE`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)会创建失败。 |
+| SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | 通话录音的音频源。<br>此类型需要`ohos.permission.RECORD_VOICE_CALL`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)会创建失败。 |
 | SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | 语音转写音频源。 |
 | SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT<sup>23+</sup>   | 19     | 未处理的语音助手音频源。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -491,6 +510,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
 | ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
 | preferredInputDevice | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频录音器的偏好输入设备。对于该设备有以下要求：<br/>- 此设备必须为输入设备，并且**capturerInfo**中的源类型必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)、[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)或[SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](#sourcetype8)，否则此参数将被忽略。<br/>- 如果用户未指定设备，系统会按当前音频路由策略自动选择可用输入设备。<br/>- 当用户指定偏好设备时：<br/>1. 如果偏好设备在线，当前音频录音器使用该设备录音；如果录音过程中该设备离线，系统会按当前音频路由策略自动选择其他可用输入设备。<br/>2. 如果偏好设备离线，系统会按当前音频路由策略自动选择其他可用输入设备；如果录音过程中该设备上线，系统会自动切换到偏好设备。<br/>- 用户可通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的设备。<br/>**起始版本：** 26.0.0 |
+| actualUsingAppTokenId | number | 否 | 是 | 实际使用该录音流的应用Token ID，用于在点亮麦克风隐私指示器时，显示正确的应用信息。<br>如果未指定该字段，默认使用调用方应用的Token ID。<br>设置该字段时，调用方必须申请`ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR`权限，否则[createMicInAudioCapturer](#audiocreatemicinaudiocapturer23)创建失败。<br>**起始版本：** 26.1.0 |
 
 ## AudioSessionBehaviorFlags<sup>24+</sup>
 
@@ -585,6 +605,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ----- |--------| ---- |---|-------------|
 | preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频采集器的偏好输入设备。<br/>此设备必须为输入设备，并且capturerInfo的source type必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)或[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)。否则，此参数将会被忽略。<br/>1. 当调用者未指定偏好设备时，系统会自动选择一个设备。<br/>2. 当调用者指定了偏好设备创建语音识别或者语音转写流时：<br/>（1）设备在线，当前audiocapturer会使用偏好设备；如果运行过程中，偏好设备下线，系统会自动选择一个录音设备。<br/>（2）设备不在线，当前audiocapturer会自动选择一个录音设备；如果运行过程中，偏好设备上线，系统会自动切换到偏好设备上。<br/>3. 调用者可以通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的录音设备。<br>**系统能力：** SystemCapability.Multimedia.Audio.Capturer |
 | playbackCaptureUid | number | 否 | 是 | 应用UID，用于音视频通话播放采集。<br>此参数仅在[AudioCapturerOptions](./arkts-apis-audio-i.md#audiocaptureroptions8).playbackCaptureMode设置为[AudioPlaybackCaptureMode](#audioplaybackcapturemode).MODE_ONLY_VOIP时生效。在其他模式下，此参数将被忽略。<br>该值必须为整数类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
+| actualUsingAppTokenId | number | 否 | 是 | 实际使用该录音流的应用Token ID，用于在点亮麦克风隐私指示器时，显示正确的应用信息。<br>如果未指定该字段，默认使用调用方应用的Token ID。<br>设置该字段时，调用方必须申请`ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)创建失败。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.Capturer |
 
 ## AudioManager
 
@@ -826,7 +847,48 @@ audioManager.disableSafeMediaVolume().then(() => {
   console.error(`disableSafeMediaVolume fail: ${err.code},${err.message}`);
 });
 ```
+### getSuiteDownloadManager
 
+getSuiteDownloadManager(): AudioSuiteDownloadManager
+
+获取AudioSuiteDownloadManager实例，用于下载音频编创特性。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**返回值：**
+
+| 类型                                           | 说明                          |
+|----------------------------------------------| ----------------------------- |
+| [AudioSuiteDownloadManager](js-apis-audio-sys.md#audiosuitedownloadmanager) | AudioSuiteDownloadManager实例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  console.info(`Succeeded in getting suite download manager.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get suite download manager. Code: ${error.code}, message: ${error.message}`);
+}
+```
 ### on('volumeChange')<sup>(deprecated)</sup>
 
 on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
@@ -1003,6 +1065,8 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 根据应用ID获取指定应用的音量百分比（范围为0到100）。使用Promise异步回调。
 
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1044,6 +1108,8 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
 根据应用ID设置指定应用的音量百分比（范围为[0, 100]）。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -1281,6 +1347,8 @@ isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
 >
 > 如果有多个调用者设置了静音状态，那么只有当所有调用者都取消静音状态后，此应用才会真正取消静音。
 
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1323,6 +1391,8 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
 setAppVolumeMutedForUid(uid: number, muted: boolean\): Promise<void\>
 
 根据应用ID设置应用静音状态。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -1490,6 +1560,8 @@ on(type: 'appVolumeChangeForUid', uid: number, callback: Callback\<VolumeEvent>)
 
 监听指定应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -1529,6 +1601,8 @@ audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEv
 off(type: 'appVolumeChangeForUid', callback?: Callback\<VolumeEvent>): void
 
 取消监听指定应用应用级音量变化事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -1799,6 +1873,131 @@ let volumePercentageChangeCallback = (volumeEvent: audio.VolumeEvent) => {
 audioVolumeManager.onVolumePercentageChange(volumePercentageChangeCallback);
 
 audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
+```
+
+### onVolumeLimitExceeded
+
+onVolumeLimitExceeded(callback: Callback\<VolumeLimitExceededEvent>): void
+
+监听当前音量超过音量保护阈值的事件。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 是 | 用于获取音量限制事件的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.onVolumeLimitExceeded((event: audio.VolumeLimitExceededEvent) => {
+  console.info(`UID: ${event.uid}`);
+  console.info(`Volume type: ${event.volumeType}`);
+  console.info(`Current volume: ${event.currentVolume}`);
+  console.info(`Volume threshold: ${event.volumeThreshold}`);
+});
+```
+
+### offVolumeLimitExceeded
+
+offVolumeLimitExceeded(callback?: Callback\<VolumeLimitExceededEvent>): void
+
+取消监听当前音量是否超过音量保护阈值。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 否 | 用于获取音量限制事件的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let volumeLimitExceededCallback = (event: audio.VolumeLimitExceededEvent) => {
+  console.info(`UID: ${event.uid}`);
+  console.info(`Volume type: ${event.volumeType}`);
+  console.info(`Current volume: ${event.currentVolume}`);
+  console.info(`Volume threshold: ${event.volumeThreshold}`);
+};
+
+audioVolumeManager.onVolumeLimitExceeded(volumeLimitExceededCallback);
+audioVolumeManager.offVolumeLimitExceeded(volumeLimitExceededCallback);
+
+// 取消该事件的所有监听。
+audioVolumeManager.offVolumeLimitExceeded();
+```
+
+### confirmVolumeLimitExceeded
+
+confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
+
+确认超出音量保护阈值的音量调节结果。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是 | 音频音量类型，不同的音量类型有不同的阈值，volumeType用于标识当前音量类型的阈值。 |
+| result | boolean | 是 | 确认音量调整超出音量保护阈值。true表示超出，false表示未超出。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301 | System error. |
+
+**示例：**
+
+```ts
+audioVolumeManager.onVolumeLimitExceeded((event: audio.VolumeLimitExceededEvent) => {
+  audioVolumeManager.confirmVolumeLimitExceeded(event.volumeType, true);
+});
 ```
 
 ## AudioVolumeGroupManager<sup>9+</sup>
@@ -2450,7 +2649,7 @@ getSupportedAudioEffectProperty(): Array\<AudioEffectProperty>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let propertyArray: Array<audio.AudioEffectProperty> = audioStreamManager.getSupportedAudioEffectProperty();
+  let propertyArray: Array<audio.AudioEffectProperty> = audioEffectManager.getSupportedAudioEffectProperty();
   console.info(`The effect modes are: ${propertyArray}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -2803,7 +3002,7 @@ getSoundCardInfo(): Promise\<SoundCardInfo\>
 
 | 类型 | 说明 |
 | ------------------- | ------------------------------ |
-| Promise\<[SoundCardInfo](#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
+| Promise\<[SoundCardInfo](arkts-apis-audio-AudioDeviceEnhanceManager.md#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
 
 **错误码：**
 
@@ -2831,25 +3030,740 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
 });
 ```
 
-## SoundCardInfo
+## AudioSuiteFeatureType
 
-描述声卡信息。
+枚举，音频编创特性类型。
 
-**起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.Audio.Core
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| 名称                              |  值     | 说明                                          |
+| :-------------------------------- | :----- | :-------------------------------------------- |
+| AUDIO_DIALOG_ENHANCEMENT          | 0      | 音频中人声对话部分增强。 |
+| AUDIO_CENTER_VOICE_ENHANCEMENT    | 1      | 音频中主体人声部分增强。 |
+| AUDIO_VOICE_ENHANCEMENT           | 2      | 音频中的人声部分增强。 |
+| AUDIO_MUSIC_ENHANCEMENT           | 3      | 音频中的音乐部分增强。 |
+| AUDIO_SOURCE_SEPARATION           | 4      | 音频音源分离。 |
+
+## AudioSuiteFeatureStatus
+
+枚举，音频编创特性状态。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| 名称                       |  值     | 说明                                          |
+| :------------------------- | :----- | :-------------------------------------------- |
+| INVALID                    | -1     | 无效的状态。 |
+| INITIALIZED                | 0      | 初始化状态。 |
+| VERSION_CHECKING           | 10     | 特性正在检查版本。 |
+| VERSION_CHECK_FAILED       | 11     | 检测版本失败状态。 |
+| VERSION_CHECK_SUCCEEDED    | 12     | 检测版本成功状态。 |
+| DOWNLOADING                | 20     | 正在下载状态。 |
+| DOWNLOAD_PAUSED            | 21     | 下载期间暂停状态。 |
+| DOWNLOAD_FAILED            | 22     | 下载失败状态。 |
+| DOWNLOAD_SUCCEEDED         | 23     | 下载成功状态。 |
+| INSTALLING                 | 30     | 安装状态。 |
+| WAITING_FOR_INSTALLATION   | 31     | 等待安装状态。 |
+| INSTALLATION_FAILED        | 35     | 安装失败状态。 |
+| INSTALLATION_SUCCEEDED     | 36     | 安装成功状态。 |
+| UNINSTALLING               | 40     | 卸载状态。 |
+| WAITING_FOR_UNINSTALLATION | 41     | 等待卸载状态。 |
+| UNINSTALLATION_FAILED      | 42     | 卸载失败状态。 |
+| UNINSTALLATION_SUCCEEDED   | 43     | 卸载成功状态。 |
+
+## NetworkType
+
+枚举，音频编创特性下载的网络类型。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| 名称                              |  值     | 说明                                          |
+| :-------------------------------- | :----- | :-------------------------------------------- |
+| WIFI                              | 6      | Wi-Fi网络。 |
+| CELLULAR_AND_WIFI                 | 7      | 蜂窝和Wi-Fi网络。 |
+
+## AudioSuiteFeatureStatusInfo
+
+定义音频编创特性的状态信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| name | string | 是 | 否 | 声卡名称。 |
-| vendor | string | 是 | 否 | 声卡厂商。 |
-| model | string | 是 | 否 | 声卡型号。 |
-| busAddress | string | 是 | 否 | 声卡总线地址。 |
-| driver | string | 是 | 否 | 声卡驱动信息。 |
+| featureType | [AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype) | 否 | 否 | 特性模块类型。 |
+| status | [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus) | 否 | 否 | 特性模块状态。 |
+| installPath | string | 否 | 否 | 安装路径。 |
+| progress | number | 否 | 否 | 下载进度，取值范围从0到100。取值限定为整数。 |
+| errorCode | [AudioErrors](arkts-apis-audio-e.md#audioerrors9) | 否 | 否 | 特性进入异常状态后的错误码。<br>如果错误码为6800301，表示系统内部数据库异常或IO异常，与应用调用无关。 |
+
+## AudioSuiteFeatureStatusInfoArray
+
+type AudioSuiteFeatureStatusInfoArray = Array&lt;AudioSuiteFeatureStatusInfo&gt;
+
+定义音频编创特性的状态信息数组。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| 类型      | 说明                                                            |
+|---------|---------------------------------------------------------------|
+|  Array&lt;[AudioSuiteFeatureStatusInfo](js-apis-audio-sys.md#audiosuitefeaturestatusinfo)&gt; | 数组类型，[AudioSuiteFeatureStatusInfo](js-apis-audio-sys.md#audiosuitefeaturestatusinfo)数组。 |
+
+## AudioSuiteFeatureVersionInfo
+
+定义音频编创特性的版本信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| featureType | [AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype) | 否 | 否 | 特性模块类型。 |
+| status | [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus) | 否 | 否 | 特性模块状态。 |
+| version | string | 否 | 否 | 特性版本。 |
+| size | number | 否 | 否 | 特性模块占用空间大小。单位为：字节。 |
+| errorCode | [AudioErrors](arkts-apis-audio-e.md#audioerrors9) | 否 | 否 | 特性进入异常状态后的错误码。<br>如果错误码为6800301，表示系统内部数据库异常或IO异常，与应用调用无关。 |
+
+## AudioSuiteDownloadManager
+
+提供音频编创特性下载管理能力，包括启动、暂停、取消下载、查询状态、卸载特性功能。需要使用[getSuiteDownloadManager](js-apis-audio-sys.md#getsuitedownloadmanager)获取AudioSuiteDownloadManager实例。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+### isFeatureInstalled
+
+isFeatureInstalled(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;Array&lt;boolean&gt;&gt;
+
+获取指定特性是否已安装。使用Promise异步回调。
+
+此接口仅基于特性本地安装状态查询，不依赖网络环境。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要查询的特性类型。最大长度为5。 |
+
+**返回值：**
+
+| 类型                                                                      | 说明                                    |
+| --------------------------------------------------------------------------| --------------------------------------- |
+| Promise&lt;Array&lt;boolean&gt;&gt;     | Promise对象，返回安装状态数组。每个元素对应于featureTypes中相同索引处的特性。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.isFeatureInstalled(featureTypes).then((featureInstalled: Array<boolean>) => {
+    console.info(`Succeeded in checking feature installed state: ${JSON.stringify(featureInstalled)}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to check feature installed state. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check feature installed state. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getFeatureStatus
+
+getFeatureStatus(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;AudioSuiteFeatureStatusInfoArray&gt;
+
+获取指定特性的状态。使用Promise异步回调。
+
+此接口仅基于特性本地安装状态查询，不依赖网络环境。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要查询的特性类型。最大长度为5。 |
+
+**返回值：**
+
+| 类型                                                                      | 说明                                    |
+| --------------------------------------------------------------------------| --------------------------------------- |
+| Promise&lt;[AudioSuiteFeatureStatusInfoArray](js-apis-audio-sys.md#audiosuitefeaturestatusinfoarray)&gt;    | Promise对象，返回特性状态数组。每个元素对应于featureTypes中相同索引处的特性。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.getFeatureStatus(featureTypes).then((featureStatus: audio.AudioSuiteFeatureStatusInfoArray) => {
+    console.info(`Succeeded in getting feature status: ${JSON.stringify(featureStatus)}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get feature status. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get feature status. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getNewVersionInfo
+
+getNewVersionInfo(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;Array&lt;AudioSuiteFeatureVersionInfo&gt;&gt;
+
+获取指定特性的最新版本信息。使用Promise异步回调。
+
+调用此接口前，需确保设备已连接可用网络。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要查询的特性类型。最大长度为5。 |
+
+**返回值：**
+
+| 类型                                                                      | 说明                                    |
+| --------------------------------------------------------------------------| --------------------------------------- |
+| Promise&lt;Array&lt;[AudioSuiteFeatureVersionInfo](js-apis-audio-sys.md#audiosuitefeatureversioninfo)&gt;&gt; | Promise对象，返回版本信息数组。每个元素对应于featureTypes中相同索引处的特性。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+| 6800501 | Required network conditions not met. The current network status is unavailable. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.getNewVersionInfo(featureTypes).then((versionInfos: Array<audio.AudioSuiteFeatureVersionInfo>) => {
+    console.info(`Succeeded in getting new version info: ${JSON.stringify(versionInfos)}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get new version info. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get new version info. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### startDownload
+
+startDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;, networkType: NetworkType): Promise&lt;void&gt;
+
+根据指定的网络开始下载特性。使用Promise异步回调。先调用[getNewVersionInfo](js-apis-audio-sys.md#getnewversioninfo)查询新版本；查询成功且状态变为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).VERSION_CHECK_SUCCEEDED后调用本接口，或者在[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED状态调用本接口继续下载，调用后状态会变为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING。下载成功后自动进入[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).INSTALLING状态。
+
+接口在开始下载后就返回，下载过程中可以通过[onDownloadStatusChange](js-apis-audio-sys.md#ondownloadstatuschange)订阅的下载状态变化事件获取下载进度。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要下载的特性类型。最大长度为5。 |
+| networkType | [NetworkType](js-apis-audio-sys.md#networktype) | 是 | 下载的网络类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+| 6800501 | Required network conditions not met. The current network conditions do not match the type specified by networkType. |
+| 6800502 | Insufficient storage space. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.startDownload(featureTypes, audio.NetworkType.WIFI).then(() => {
+    console.info(`Succeeded in starting download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to start download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to start download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### pauseDownload
+
+pauseDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+暂停下载指定特性。使用Promise异步回调。应在特性状态为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING后调用，调用后状态会变为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED。
+
+当特性状态不为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING时调用本接口，接口会返回成功，保持原有状态不变。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要暂停的特性类型。最大长度为5。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.pauseDownload(featureTypes).then(() => {
+    console.info(`Succeeded in pausing download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to pause download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to pause download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### cancelDownload
+
+cancelDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+取消下载指定特性。使用Promise异步回调。应在特性状态为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING或[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED时调用，调用后状态会变为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).VERSION_CHECK_SUCCEEDED。
+
+当特性状态不为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING或[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED时调用本接口，接口会返回成功，保持原有状态不变。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要取消的特性类型。最大长度为5。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.cancelDownload(featureTypes).then(() => {
+    console.info(`Succeeded in canceling download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to cancel download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to cancel download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### startBackgroundDownload
+
+startBackgroundDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+开始后台下载特性。使用Promise异步回调。如果当前网络条件为Wi-Fi网络场景，系统音频服务会直接下载特性；如果非Wi-Fi网络，系统音频服务会在切换到Wi-Fi网络后自动进行下载。可以在任意[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus)状态调用。客户端进程退出后，系统音频服务会持续监听网络环境直到任务下载成功。
+
+接口在发送命令后就返回，下载过程中可以通过[onDownloadStatusChange](js-apis-audio-sys.md#ondownloadstatuschange)订阅的下载状态变化事件获取下载进度。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要下载的特性类型。最大长度为5。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.startBackgroundDownload(featureTypes).then(() => {
+    console.info(`Succeeded in starting background download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to start background download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to start background download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### uninstallFeature
+
+uninstallFeature(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+卸载已下载的特性。使用Promise异步回调。应在特性状态为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).INSTALLATION_SUCCEEDED后调用，调用后状态会变为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).UNINSTALLING则开始卸载。
+
+当特性状态不为[AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).INSTALLATION_SUCCEEDED时调用本接口，接口会返回成功，保持原有状态不变。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | 是 | 要卸载的特性类型。最大长度为5。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.uninstallFeature(featureTypes).then(() => {
+    console.info(`Succeeded in uninstalling feature.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to uninstall feature. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to uninstall feature. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### onDownloadStatusChange
+
+onDownloadStatusChange(callback: Callback&lt;AudioSuiteFeatureStatusInfoArray&gt;): void
+
+订阅下载状态变化事件。当任一特性的下载状态、下载进度发生变化时，会触发订阅的回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;[AudioSuiteFeatureStatusInfoArray](js-apis-audio-sys.md#audiosuitefeaturestatusinfoarray)&gt; | 是 | 回调函数，返回变化后的下载状态变化信息数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.onDownloadStatusChange((statusInfos: audio.AudioSuiteFeatureStatusInfoArray) => {
+    console.info(`Download status changed: ${JSON.stringify(statusInfos)}`);
+  });
+  console.info(`Succeeded in subscribing download status change.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to subscribe download status change. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### offDownloadStatusChange
+
+offDownloadStatusChange(callback?: Callback&lt;AudioSuiteFeatureStatusInfoArray&gt;): void
+
+取消订阅下载状态变化事件。取消后，系统将不再触发回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;[AudioSuiteFeatureStatusInfoArray](js-apis-audio-sys.md#audiosuitefeaturestatusinfoarray)&gt; | 否 | 需要取消的回调函数，默认值为空。若不设置此参数值，则取消之前在当前进程中订阅的所有回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800302 | System service process terminated. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+let callback = (statusInfos: audio.AudioSuiteFeatureStatusInfoArray) => {
+  console.info(`Download status changed: ${JSON.stringify(statusInfos)}`);
+};
+
+try {
+  downloadManager.onDownloadStatusChange(callback);
+  console.info(`Succeeded in subscribing download status change.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to subscribe download status change. Code: ${error.code}, message: ${error.message}`);
+}
+
+try {
+  downloadManager.offDownloadStatusChange(callback);
+  console.info(`Succeeded in unsubscribing download status change.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to unsubscribe download status change. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## AudioRoutingManager<sup>9+</sup>
 
@@ -3624,9 +4538,9 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 >
 > 该功能仅能排除外部输出设备，不支持本地输出设备。
 
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
-
-从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+**需要权限：** 
+- API版本23+：N/A
+- API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -3651,7 +4565,7 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied.      |
+| 201     | Permission denied.<br>适用版本：18-22     |
 | 202     | Not system application.                             |
 | 6800101 | Parameter verification failed. |
 
@@ -3693,9 +4607,9 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 解除排除输出设备。成功调用此函数后，音频将会重新选择输出设备。
 
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
-
-从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
+**需要权限：** 
+- API版本23+：N/A
+- API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -3720,7 +4634,7 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. |
+| 201     | Permission denied.<br>适用版本：18-22 |
 | 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
@@ -3762,7 +4676,9 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 解除属于特定用途的所有输出设备的排除。成功调用此函数后，音频将会重新选择输出设备。
 
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+**需要权限：** 
+- API版本23+：N/A
+- API版本18-22：ohos.permission.MANAGE_AUDIO_CONFIG
 
 从API version 23开始，使用该功能时不需要申请ohos.permission.MANAGE_AUDIO_CONFIG权限，同时不会抛出错误码201。
 
@@ -3788,7 +4704,7 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 201     | Permission denied. |
+| 201     | Permission denied.<br>适用版本：18-22 |
 | 202     | Not system application. |
 | 6800101 | Parameter verification failed. |
 
@@ -3814,8 +4730,6 @@ async function unexcludeOutputDevices(){
 getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors
 
 获取排除输出设备列表。
-
-**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
 
 **系统接口：** 此接口为系统接口。
 
@@ -4114,6 +5028,7 @@ audioRecordingManager.offSystemRecordControllerEnabledChange();
 | uid          | number                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 | rendererId   | number                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| blockFirstOverrode   | boolean |  否  | 是 | 表示是否保持首次选择的设备不被清除。true表示选择的设备不会被清除，false表示选择的设备会被清除。<br>默认值：false。<br>**起始版本：** 26.0.1 <br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 
 **示例：**
 
@@ -4126,7 +5041,8 @@ let outputAudioRendererFilter: audio.AudioRendererFilter = {
     usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
     rendererFlags : 0
   },
-  rendererId : 0
+  rendererId : 0,
+  blockFirstOverrode : true
 };
 ```
 
@@ -4163,7 +5079,7 @@ let inputAudioCapturerFilter: audio.AudioCapturerFilter = {
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
-| 参数名                 | 类型                                                         | 只读 | 可选 | 说明                      |
+| 名称                 | 类型                                                         | 只读 | 可选 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- |---| ------------------------- |
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 否 | 否 | 指定设备的描述。     |
 | enabled               | boolean                                                      | 否 | 否 | 表示开启/关闭空间音频渲染或头动。true为开启，false为关闭。  |
@@ -5247,7 +6163,7 @@ audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice');
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
   console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
-  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+  console.info(`isHeadTrackingEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 };
 
 audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);
@@ -5353,7 +6269,7 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 | ------- | --------------------------------------------|
 | 201     | Permission denied. Return by promise.     |
 | 202     | Not system App.                             |
-| 801     | Capability not supported on device. |
+| 801     | Capability not supported on the device. |
 | 6800101 | Parameter verification failed. |
 
 **示例：**

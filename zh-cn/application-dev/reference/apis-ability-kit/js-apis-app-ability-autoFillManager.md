@@ -39,7 +39,7 @@ type OnFillSuccessFn = (viewData: ViewData) => void
 
 | 参数名   | 类型                                              | 必填 | 说明                     |
 | -------- | ------------------------------------------------- | ---- | ----------------------- |
-| viewData | [ViewData](js-apis-inner-application-viewData.md) | 是   | 自动填充的视图数据信息。 |
+| viewData | [ViewData](js-apis-inner-application-viewData.md) | 是 | 自动填充的视图数据信息。 |
 
 ## OnFillFailureFn
 
@@ -115,49 +115,10 @@ onFailure(): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-### onSuccess
-
-onSuccess: OnFillSuccessFn
-
-当填充请求成功时，该回调被调用，返回的viewData包含可用于填充表单的数据，如用户名密码、收货地址等。
-
-**起始版本：** 26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型                                | 说明                            |
-| ----------------------------------- | ------------------------------- |
-| [OnFillSuccessFn](#onfillsuccessfn) | 用于处理填充请求成功后的回调，接收包含填充视图数据的viewData参数。 |
-
-**示例：**
-
-参见[autoFillManager.requestAutoFill](#autofillmanagerrequestautofill)。
-
-### onFailure
-
-onFailure: OnFillFailureFn
-
-当填充请求失败时，会触发该回调。
-
-**起始版本：** 26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型                                | 说明                            |
-| ----------------------------------- | ------------------------------- |
-| [OnFillFailureFn](#onfillfailurefn) | 用于处理填充请求失败后的回调，接收包含失败原因的result参数。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| onSuccess | [OnFillSuccessFn](#onfillsuccessfn) | 否 | 否 | 当填充请求成功时，该回调被调用，返回的viewData包含可用于填充表单的数据，如用户名密码、收货地址等。 |
+| onFailure | [OnFillFailureFn](#onfillfailurefn) | 否 | 否 | 当填充请求失败时，会触发该回调。 |
 
 **示例：**
 
@@ -532,7 +493,7 @@ type ViewData = _ViewData.default
 
 | 类型                                                       | 说明                        |
 | ---------------------------------------------------------- | --------------------------- |
-| [_ViewData](js-apis-inner-application-viewData.md#viewdata-1).default | 表示自动填充的视图数据信息。 |
+| [_ViewData](js-apis-inner-application-viewData.md#viewdata).default | 表示自动填充的视图数据信息。 |
 
 ## PageNodeInfo
 
@@ -550,7 +511,7 @@ type PageNodeInfo = _PageNodeInfo.default
 
 | 类型                                                               | 说明                        |
 | ------------------------------------------------------------------ | --------------------------- |
-| [_PageNodeInfo](js-apis-inner-application-pageNodeInfo.md#pagenodeinfo-1).default | 表示自动填充的页面节点信息。 |
+| [_PageNodeInfo](js-apis-inner-application-pageNodeInfo.md#pagenodeinfo).default | 表示自动填充的页面节点信息。 |
 
 ## FillRequest
 
@@ -604,7 +565,7 @@ type AutoFillRect = _AutoFillRect.default
 
 | 类型                                                               | 说明                        |
 | ------------------------------------------------------------------ | --------------------------- |
-| [_AutoFillRect](js-apis-inner-application-autoFillRect.md#autofillrect-1).default | 表示用于自动填充的矩形区域。 |
+| [_AutoFillRect](js-apis-inner-application-autoFillRect.md#autofillrect).default | 表示用于自动填充的矩形区域。 |
 
 ## FillFailureResult
 

@@ -3,14 +3,12 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @opasser-->
 <!--Designer: @opasser-->
-<!--Tester: @zhouhuan31-->
+<!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-定义获取和使用NativeVsync的相关函数。
-<!--RP1-->
-**相关示例：** [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--RP1End-->
+定义获取和使用NativeVsync的相关函数，使用方法可参考[NativeVSync开发指导 (C/C++)](../../graphics/native-vsync-guidelines.md)。
 
 **引用文件：** <native_vsync/native_vsync.h>
 

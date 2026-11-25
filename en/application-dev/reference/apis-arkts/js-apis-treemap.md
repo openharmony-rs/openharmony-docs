@@ -1,18 +1,19 @@
 # @ohos.util.TreeMap (Nonlinear Container TreeMap)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=d1445e627393d0b704d7fd66f2f8322beeeda048 translatedAt=2026-11-06T09:42:11.776Z pushedAt=2026-11-13T07:01:30.128Z nl=1 -->
 
 TreeMap stores key-value (KV) pairs. Each key must be unique and have only one value.
 
-TreeMap is implemented using a red-black tree, which is a binary search tree where keys are stored in sorted order for efficient insertion and removal.
+TreeMap is implemented based on a red-black tree. It uses the binary tree characteristics to search for key-value pairs, and the time complexity of search, insertion, and deletion operations is O(log n). Keys are stored in sorted order, which enables efficient in-order traversal.
 
-[HashMap](js-apis-hashmap.md) is faster in accessing data than TreeMap, because the former accesses data based on the hash code of the key, whereas the latter stores and accesses the keys in sorted order.
+Compared with [HashMap](js-apis-hashmap.md), HashMap accesses data based on the hashCode of keys, which is faster but does not guarantee the order of keys. TreeMap, in contrast, accesses data in sorted order based on a red-black tree, which is less efficient but supports ordered operations such as in-order traversal, range query, and lookup of the first/last key and adjacent keys.
 
-Recommended use case: Use TreeMap when you need to store KV pairs in sorted order.
+**Recommended use cases:** Scenarios that require ordered storage and access of key-value pairs, such as range query, in-order traversal, and adjacent key lookup.
 
 This topic uses the following to identify the use of generics:
 
@@ -50,7 +51,7 @@ import { TreeMap } from '@kit.ArkTS';
 
 constructor(comparator?:(firstValue: K, secondValue: K) => boolean)
 
-A constructor used to create a **TreeMap** instance. It supports sorting elements in customized order by using comparators.
+Constructor of TreeMap, which supports sorting elements by custom rules through a comparison function. When the key is a custom type, a comparison function must be provided; otherwise, keys of the custom type cannot be sorted and compared properly.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -60,22 +61,21 @@ A constructor used to create a **TreeMap** instance. It supports sorting element
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | function | No| Custom comparator, which can be used to sort elements based on the comparison relationship. The default value is null, indicating that no comparator is provided.|
+| comparator | function | No | User-defined Comparison Function that sorts Elements based on the comparison relationship. The default value is null, indicating that no Comparison Function is provided. When the key is a custom type, a Comparison Function must be provided; otherwise, insertion or lookup exceptions may occur. |
 
 comparator parameters
 
 | Name| Type| Mandatory| Description|
 | ------| ---- | ----- | -- |
-| firstValue | K | Yes| Previous element.|
-| secondValue | K | Yes| Next element.|
+| firstValue | K | Yes | The first element involved in the comparison, serving as the first object for sorting judgment. |
+| secondValue | K | Yes | The second element involved in the comparison, serving as the second object for sorting judgment. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | 10200012 | The TreeMap's constructor cannot be directly invoked. |
 
 **Example**
@@ -87,16 +87,16 @@ let treeMap = new TreeMap<number, number>();
 
 ```ts
 // Use the comparator firstValue < secondValue if the elements are expected to be sorted in ascending order. Use firstValue > secondValue if the elements are expected to be sorted in descending order.
-let treeMap: TreeMap<string,string> = new TreeMap<string,string>((firstValue: string, secondValue: string): boolean => {
+let treeMap: TreeMap<string, string> = new TreeMap<string, string>((firstValue: string, secondValue: string): boolean => {
   return firstValue > secondValue;
 });
-treeMap.set("aa","3");
-treeMap.set("dd","1");
-treeMap.set("cc","2");
-treeMap.set("bb","4");
+treeMap.set('aa', '3');
+treeMap.set('dd', '1');
+treeMap.set('cc', '2');
+treeMap.set('bb', '4');
 for (let item of treeMap) {
-  console.info("key: " + item[0], "value: " + item[1]);
-}
+  console.info('key: ' + item[0], 'value: ' + item[1]);
+};
 // Output:
 // key: dd value: 1
 // key: cc value: 2
@@ -105,12 +105,12 @@ for (let item of treeMap) {
 ```
 
 ```ts
-// When a custom type is inserted, a comparator must be provided.
-class TestEntry{
+// When inserting a custom type, a comparison function must be provided.
+class TestEntry {
   public id: number = 0;
 }
 
-let ts1: TreeMap<TestEntry, string> = new TreeMap<TestEntry, string>((t1: TestEntry, t2: TestEntry): boolean => {
+let testEntryMap: TreeMap<TestEntry, string> = new TreeMap<TestEntry, string>((t1: TestEntry, t2: TestEntry): boolean => {
   return t1.id < t2.id;
 });
 let entry1: TestEntry = {
@@ -119,9 +119,9 @@ let entry1: TestEntry = {
 let entry2: TestEntry = {
   id: 1
 }
-ts1.set(entry1, "0");
-ts1.set(entry2, "1");
-console.info("length:", ts1.length); // length: 2
+testEntryMap.set(entry1, '0');
+testEntryMap.set(entry2, '1');
+console.info('length:', testEntryMap.length); // length: 2
 ```
 
 
@@ -153,8 +153,9 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<number, number>();
+// Determine whether the container is empty.
 let result = treeMap.isEmpty();
-console.info("result:", result);  // result: true
+console.info('result:', result);  // result: true
 ```
 
 
@@ -172,7 +173,7 @@ Checks whether this TreeMap has the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Target key.|
+| key | K | Yes | Key to check whether it exists in the container. |
 
 **Return value**
 
@@ -192,9 +193,11 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-let result = treeMap.hasKey("squirrel");
-console.info("result:", result);  // result: true
+// Add data to the container.
+treeMap.set('squirrel', 123);
+// Check whether the container contains the specified key.
+let result = treeMap.hasKey('squirrel');
+console.info('result:', result);  // result: true
 ```
 
 
@@ -202,7 +205,7 @@ console.info("result:", result);  // result: true
 
 hasValue(value: V): boolean
 
-Checks whether this TreeMap has the specified key.
+Checks whether the container contains the specified value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -212,13 +215,13 @@ Checks whether this TreeMap has the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | V | Yes| Target value.|
+| value | V | Yes | Value to check whether it exists in the container. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Returns **true** if the specified value is contained; returns **false** otherwise.|
+| boolean | Returns true if the specified value is contained; otherwise returns false. |
 
 **Error codes**
 
@@ -232,9 +235,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
+treeMap.set('squirrel', 123);
+// Determine whether the container contains the specified value.
 let result = treeMap.hasValue(123);
-console.info("result:", result);  // result: true
+console.info('result:', result);  // result: true
 ```
 
 
@@ -242,7 +246,7 @@ console.info("result:", result);  // result: true
 
 get(key: K): V
 
-Obtains the value of the specified key in this TreeMap.
+Obtains the value corresponding to the specified key. If the specified key does not exist, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -252,13 +256,13 @@ Obtains the value of the specified key in this TreeMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Target key.|
+| key | K | Yes | Specify the key whose corresponding value is required. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| V | Value obtained. If nothing is obtained, **undefined** is returned.|
+| V | Returns the value mapped by the key, and returns undefined when the specified key does not exist. |
 
 **Error codes**
 
@@ -272,10 +276,11 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
-let result = treeMap.get("sparrow");
-console.info("result:", result); // result: 356
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+// Obtain the value corresponding to the specified key.
+let result = treeMap.get('sparrow');
+console.info('result:', result); // result: 356
 ```
 
 
@@ -283,7 +288,7 @@ console.info("result:", result); // result: 356
 
 getFirstKey(): K
 
-Obtains the first key in this TreeMap.
+Obtains the first key in the container in sorted order. If the container is empty, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -293,7 +298,7 @@ Obtains the first key in this TreeMap.
 
 | Type| Description|
 | -------- | -------- |
-| K | Key obtained. If nothing is obtained, **undefined** is returned.|
+| K | Return the first key in sorted order, or undefined if the container is empty. |
 
 **Error codes**
 
@@ -307,10 +312,11 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+// Obtain the first key in the container.
 let result = treeMap.getFirstKey();
-console.info("result:", result); // result: sparrow
+console.info('result:', result); // result: sparrow
 ```
 
 
@@ -318,7 +324,7 @@ console.info("result:", result); // result: sparrow
 
 getLastKey(): K
 
-Obtains the last key in this TreeMap.
+Obtains the last key in the container in sorted order. If the container is empty, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -328,7 +334,7 @@ Obtains the last key in this TreeMap.
 
 | Type| Description|
 | -------- | -------- |
-| K | Key obtained. If nothing is obtained, **undefined** is returned.|
+| K | Returns the last key in sorted order, or undefined when the container is empty. |
 
 **Error codes**
 
@@ -342,10 +348,11 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+// Get the last key in the sorted container.
 let result = treeMap.getLastKey();
-console.info("result:", result); // result: squirrel
+console.info('result:', result); // result: squirrel
 ```
 
 
@@ -353,7 +360,7 @@ console.info("result:", result); // result: squirrel
 
 setAll(map: TreeMap<K, V>): void
 
-Adds all elements in a **TreeMap** instance to this TreeMap.
+Adds all elements in one TreeMap to another TreeMap.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -363,29 +370,28 @@ Adds all elements in a **TreeMap** instance to this TreeMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| map | TreeMap<K, V> | Yes| **TreeMap** object to be added to the TreeMap.|
+| map | TreeMap<K, V> | Yes | Adds all elements in the parameter map to the TreeMap object that calls the setAll method. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The setAll method cannot be bound. |
 
 **Example**
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
-let map : TreeMap<string, number> = new TreeMap();
-map.set("demo", 12);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+let map: TreeMap<string, number> = new TreeMap();
+map.set('demo', 12);
 map.setAll(treeMap); // Add all elements in the treeMap to the map.
-map.forEach((value ?: number, key ?: string) : void => {
-  console.info("value: " + value, "key: " + key); 
-})
+map.forEach((value?: number, key?: string) : void => {
+  console.info('value: ' + value, 'key: ' + key); 
+});
 // Output:
 // value: 12 key: demo
 // value: 356 key: sparrow
@@ -397,7 +403,7 @@ map.forEach((value ?: number, key ?: string) : void => {
 
 set(key: K, value: V): Object
 
-Adds or updates an element in this TreeMap.
+Adds a key-value pair to the container. If the key already exists, the corresponding value is updated; if the key does not exist, a new key-value pair is added.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -418,19 +424,18 @@ Adds or updates an element in this TreeMap.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The set method cannot be bound. |
 
 **Example**
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-console.info("squirrel:", treeMap.get("squirrel")); // squirrel: 123
+treeMap.set('squirrel', 123);
+console.info('squirrel:', treeMap.get('squirrel')); // squirrel: 123
 ```
 
 
@@ -438,7 +443,7 @@ console.info("squirrel:", treeMap.get("squirrel")); // squirrel: 123
 
 remove(key: K): V
 
-Removes the element with the specified key from this TreeMap.
+Deletes the element corresponding to the specified key and returns its value. If the specified key does not exist, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -448,7 +453,7 @@ Removes the element with the specified key from this TreeMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Target key.|
+| key | K | Yes | Specifies the key corresponding to the element to be removed. |
 
 **Return value**
 
@@ -468,10 +473,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
-let result = treeMap.remove("sparrow"); // Delete data.
-console.info("result = " + result); // result = 356
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+let result = treeMap.remove('sparrow'); // Delete the data.
+console.info('result = ' + result); // result = 356
 ```
 
 
@@ -479,7 +484,7 @@ console.info("result = " + result); // result = 356
 
 getLowerKey(key: K): K
 
-Obtains the largest key in this TreeMap that is less than the specified comparison key.
+Obtains the largest key in the container that is smaller than the comparison key. If no key smaller than the comparison key exists, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -495,7 +500,7 @@ Obtains the largest key in this TreeMap that is less than the specified comparis
 
 | Type| Description|
 | -------- | -------- |
-| K | Key obtained. If nothing is obtained, **undefined** is returned.|
+| K | Returns the largest key smaller than the specified key, or undefined when not existing. |
 
 **Error codes**
 
@@ -513,8 +518,9 @@ treeMap.set(1, 'one');
 treeMap.set(2, 'two');
 treeMap.set(3, 'three');
 treeMap.set(4, 'four');
+// Obtain the maximum key less than the comparison key value 3.
 let result = treeMap.getLowerKey(3);
-console.info("result:", result); // result: 2
+console.info('result:', result); // result: 2
 ```
 
 
@@ -522,7 +528,7 @@ console.info("result:", result); // result: 2
 
 getHigherKey(key: K): K
 
-Obtains the smallest key in this TreeMap that is greater than the specified comparison key.
+Obtains the smallest key in the container that is greater than the specified key. If no key greater than the specified key exists, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -538,7 +544,7 @@ Obtains the smallest key in this TreeMap that is greater than the specified comp
 
 | Type| Description|
 | -------- | -------- |
-| K | Key obtained. If nothing is obtained, **undefined** is returned.|
+| K | Returns the key that is one position after the specified key in the sorted order. Returns undefined when not existing. |
 
 **Error codes**
 
@@ -556,15 +562,16 @@ treeMap.set(1, 'one');
 treeMap.set(2, 'two');
 treeMap.set(3, 'three');
 treeMap.set(4, 'four');
+// Obtain the smallest key greater than the comparison key value 3.
 let result = treeMap.getHigherKey(3);
-console.info("result:", result); // result: 4
+console.info('result:', result); // result: 4
 ```
 
 ### replace
 
 replace(key: K, newValue: V): boolean
 
-Replaces an element in this TreeMap.
+Replaces the value corresponding to the specified key in the container. If the key exists, the replacement succeeds and true is returned. If the key does not exist, no modification is made and false is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -574,8 +581,8 @@ Replaces an element in this TreeMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Target key.|
-| newValue | V | Yes| New value of the element.|
+| key | K | Yes | Specify the key corresponding to the value to be replaced. |
+| newValue | V | Yes | New value to replace, which overwrites the original value corresponding to the specified key. |
 
 **Return value**
 
@@ -595,9 +602,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("sparrow", 123);
-let result = treeMap.replace("sparrow", 357);
-console.info("sparrow:", treeMap.get("sparrow")); // sparrow: 357
+treeMap.set('sparrow', 123);
+// Replace the value corresponding to the specified key.
+treeMap.replace('sparrow', 357);
+console.info('sparrow:', treeMap.get('sparrow')); // sparrow: 357
 ```
 
 
@@ -623,11 +631,12 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+// Clear all elements in the container.
 treeMap.clear();
 let result = treeMap.isEmpty();
-console.info("result:", result); // result: true
+console.info('result:', result); // result: true
 ```
 
 
@@ -645,7 +654,7 @@ Returns an iterator that contains all the keys in this TreeMap.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;K&gt; | Iterator obtained.|
+| IterableIterator&lt;K&gt; | Returns an iterator object containing all keys in this map. |
 
 **Error codes**
 
@@ -659,11 +668,12 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+// Obtain the iterator containing all keys.
 let keys = treeMap.keys();
 for (let key of keys) {
-  console.info("key:", key);
+  console.info('key:', key);
 }
 // Output:
 // key: sparrow
@@ -675,7 +685,7 @@ for (let key of keys) {
 
 values(): IterableIterator&lt;V&gt;
 
-Returns an iterator that contains all the values in this TreeMap.
+Returns a new iterator object containing all values in this map.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -685,7 +695,7 @@ Returns an iterator that contains all the values in this TreeMap.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;V&gt; | Iterator obtained.|
+| IterableIterator&lt;V&gt; | Returns an iterator object containing all values in this map. |
 
 **Error codes**
 
@@ -699,11 +709,12 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+// Obtain the iterator containing all values.
 let values = treeMap.values();
 for (let value of values) {
-  console.info("value:", value);
+  console.info('value:', value);
 }
 // value: 356
 // value: 123
@@ -714,7 +725,7 @@ for (let value of values) {
 
 forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object): void
 
-Uses a callback to traverse the elements in this TreeMap and obtain their indexes.
+Traverses the elements and their keys on the instance object through a callback function.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -724,33 +735,33 @@ Uses a callback to traverse the elements in this TreeMap and obtain their indexe
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked to traverse the elements in the TreeMap.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function used to traverse each key-value pair in the instance object and perform custom operations in the callback. |
+| thisArg | Object | No | Value used as this when callbackFn is called. The default value is undefined. |
 
 callbackFn
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | V | No| Value of the element that is currently traversed. The default value is the value of the first key-value pair.|
-| key | K | No| Key of the element that is currently traversed. The default value is the key of the first key-value pair.|
-| map | TreeMap<K, V> | No| Instance that calls the **forEach** API. The default value is this instance.|
+| value | V | No | Value of the element that is currently traversed. |
+| key | K | No | Key of the element that is currently traversed. |
+| map | TreeMap<K, V> | No | Instance object that currently calls the forEach method. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("sparrow", 123);
-treeMap.set("gull", 357);
+treeMap.set('sparrow', 123);
+treeMap.set('gull', 357);
+// Traverse all elements in TreeMap through the callback function.
 treeMap.forEach((value: number, key: string): void => {
-  console.info("value: " + value, "key: " + key);
+  console.info('value: ' + value, 'key: ' + key);
 });
 // Output:
 // value: 357 key: gull
@@ -760,11 +771,11 @@ treeMap.forEach((value: number, key: string): void => {
 ```ts
  // You are not advised to use the set or remove APIs in forEach because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
  let treeMap = new TreeMap<string, number>();
- for(let i = 0; i < 10; i++) {
-   treeMap.set("sparrow" + i, 123);
+ for (let i = 0; i < 10; i++) {
+   treeMap.set('sparrow' + i, 123);
  }
- for(let i = 0;i < 10; i++) {
-   treeMap.remove("sparrow" + i);
+ for (let i = 0; i < 10; i++) {
+   treeMap.remove('sparrow' + i);
  }
 ```
 
@@ -782,7 +793,7 @@ Returns an iterator that contains all the elements in this TreeMap.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator<[K, V]> | Iterator obtained.|
+| IterableIterator<[K, V]> | Returns an iterator object containing all key-value pairs in this map. |
 
 **Error codes**
 
@@ -796,13 +807,15 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
-let it = treeMap.entries();
-let t: IteratorResult<Object[]> = it.next();
-while(!t.done) {
-  console.info("TreeMap:", t.value);
-  t = it.next()
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
+// Obtain the key-value pair iterator.
+let entriesIterator = treeMap.entries();
+// Traverse all key-value pairs through the iterator.
+let nextResult: IteratorResult<Object[]> = entriesIterator.next();
+while (!nextResult.done) {
+  console.info('TreeMap:', nextResult.value);
+  nextResult = entriesIterator.next();
 }
 // Output:
 // TreeMap: sparrow,356
@@ -812,11 +825,11 @@ while(!t.done) {
 ```ts
  // You are not advised to use the set or remove APIs in entries because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
  let treeMap = new TreeMap<string, number>();
- for(let i = 0; i < 10; i++) {
-   treeMap.set("sparrow" + i, 123);
+ for (let i = 0; i < 10; i++) {
+   treeMap.set('sparrow' + i, 123);
  }
- for(let i = 0;i < 10; i++) {
-   treeMap.remove("sparrow" + i);
+ for (let i = 0;i < 10; i++) {
+   treeMap.remove('sparrow' + i);
  }
 ```
 
@@ -824,7 +837,7 @@ while(!t.done) {
 
 [Symbol.iterator]\(): IterableIterator&lt;[K, V]&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator, where each item of the iterator is a [K, V] array containing a key and a value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -847,12 +860,12 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let treeMap = new TreeMap<string, number>();
-treeMap.set("squirrel", 123);
-treeMap.set("sparrow", 356);
+treeMap.set('squirrel', 123);
+treeMap.set('sparrow', 356);
 
 // Method 1:
 for (let item of treeMap) {
-  console.info("TreeMap:", item[0], item[1]);
+  console.info('TreeMap:', item[0], item[1]);
 }
 // Output:
 // TreeMap: sparrow,356
@@ -860,11 +873,11 @@ for (let item of treeMap) {
 
 // Method 2:
 let iter = treeMap[Symbol.iterator]();
-let temp: IteratorResult<Object[]> = iter.next();
-while(!temp.done) {
-  console.info("key:", temp.value[0]);
-  console.info("value:", temp.value[1]);
-  temp = iter.next();
+let nextResult: IteratorResult<Object[]> = iter.next();
+while (!nextResult.done) {
+  console.info('key:', nextResult.value[0]);
+  console.info('value:', nextResult.value[1]);
+  nextResult = iter.next();
 }
 // Output:
 // key: sparrow
@@ -876,10 +889,10 @@ while(!temp.done) {
 ```ts
  // You are not advised to use the set or remove APIs in Symbol.iterator because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
  let treeMap = new TreeMap<string, number>();
- for(let i = 0; i < 10; i++) {
-   treeMap.set("sparrow" + i, 123);
+ for (let i = 0; i < 10; i++) {
+   treeMap.set('sparrow' + i, 123);
  }
- for(let i = 0;i < 10; i++) {
-   treeMap.remove("sparrow" + i);
+ for (let i = 0;i < 10; i++) {
+   treeMap.remove('sparrow' + i);
  }
 ```

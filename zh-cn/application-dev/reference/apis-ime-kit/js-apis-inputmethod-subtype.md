@@ -71,7 +71,7 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 | mode | 'upper' \| 'lower' | 是 | 是 | 输入法子类型的模式，包括upper（大写）和lower（小写）。用于描述键盘的大小写状态模式。 |
 | locale | string | 是 | 否 | 输入法子类型的区域。遵循ICU Locale格式（下划线分隔，如'zh_CN'），也兼容POSIX风格（连字符分隔，如'zh-CN'）。用于标识子类型的语言和地区。 |
 | language | string | 是 | 否 | 输入法子类型的语言，如'zh'（中文）、'en'（英文）。用于标识子类型的语言，是locale的子集。 |
-| icon | string | 是 | 是 | 输入法子类型的图标，可以通过iconId查询获取。 |
+| icon | string | 是 | 是 | 输入法子类型的图标。规格限制：当前不可通过该参数获取或显示子类型图标。 |
 | iconId | number | 是 | 是 | 输入法子类型的图标id。用于通过资源ID加载子类型图标。 |
 | extra | object | 否 | 是 | 输入法子类型的其他信息。<br/>说明：<br/>- 从API version 10开始为非必填参数。|
 

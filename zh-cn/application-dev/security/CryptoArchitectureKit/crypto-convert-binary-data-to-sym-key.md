@@ -38,27 +38,32 @@
     return { data: keyMaterial };
   }
   
-  function testConvertSymKey() {
-    // 创建SymKeyGenerator实例
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
-    // 根据指定的数据生成对称密钥
-    let keyMaterialBlob = genKeyMaterialBlob();
-    try {
-      symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
-        if (error) { // 如果业务逻辑执行失败，则callback的第一个参数返回错误信息，即异步抛出异常
-          let e: BusinessError = error as BusinessError;
-          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
-          return;
-        }
-        console.info('key algName: ' + key.algName);
-        console.info('key format: ' + key.format);
-        let encodedKey = key.getEncoded(); // 获取对称密钥的二进制数据，并以字节数组形式输出。长度为24字节
-        console.info('key getEncoded hex: ' + encodedKey.data);
-      })
-    } catch (error) { // 参数检查发现错误立即抛出异常
-      let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
-    }
+  function testConvertSymKey(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      // 创建SymKeyGenerator实例
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+      // 根据指定的数据生成对称密钥
+      let keyMaterialBlob = genKeyMaterialBlob();
+      try {
+        symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
+          if (error) { // 如果业务逻辑执行失败，则callback的第一个参数返回错误信息，即异步抛出异常
+            let e: BusinessError = error as BusinessError;
+            console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
+            // ...
+            return;
+          }
+          console.info('key algName: ' + key.algName);
+          console.info('key format: ' + key.format);
+          let encodedKey = key.getEncoded(); // 获取对称密钥的二进制数据，并以字节数组形式输出。长度为24字节
+          console.info('key getEncoded hex: ' + encodedKey.data);
+          resolve();
+        })
+      } catch (error) { // 参数检查发现错误立即抛出异常
+        let e: BusinessError = error as BusinessError;
+        console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
+        // ...
+      }
+    });
   }
   ```
 
@@ -81,11 +86,12 @@
   }
   
   function testConvertSymKey() {
-    // 创建SymKeyGenerator实例
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
-    // 根据指定的数据生成对称密钥
-    let keyMaterialBlob = genKeyMaterialBlob();
+  
     try {
+      // 创建SymKeyGenerator实例
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+      // 根据指定的数据生成对称密钥
+      let keyMaterialBlob = genKeyMaterialBlob();
       let key = symKeyGenerator.convertKeySync(keyMaterialBlob);
       console.info('key algName: ' + key.algName);
       console.info('key format: ' + key.format);
@@ -94,6 +100,7 @@
     } catch (error) { // 参数检查发现错误立即抛出异常
       let e: BusinessError = error as BusinessError;
       console.error(`convertKeySync failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -117,18 +124,25 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function testConvertHmacKey() {
-    // 对称密钥长度为64字节，512比特
-    let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
-    let keyBlob: cryptoFramework.DataBlob = {
-      data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+    try {
+      // 对称密钥长度为64字节，512比特
+      let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
+      let keyBlob: cryptoFramework.DataBlob = {
+        data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+      }
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let key = await symKeyGenerator.convertKey(keyBlob);
+      let encodedKey = key.getEncoded();
+      console.info('key encoded data: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-    let key = await symKeyGenerator.convertKey(keyBlob);
-    let encodedKey = key.getEncoded();
-    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 
@@ -139,18 +153,25 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function testConvertKeySync() {
-    // 对称密钥长度为64字节，512比特
-    let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
-    let keyBlob: cryptoFramework.DataBlob = {
-      data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+    try {
+      // 对称密钥长度为64字节，512比特
+      let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
+      let keyBlob: cryptoFramework.DataBlob = {
+        data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+      }
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let key = symKeyGenerator.convertKeySync(keyBlob);
+      let encodedKey = key.getEncoded();
+      console.info('key encoded data: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-    let key = symKeyGenerator.convertKeySync(keyBlob);
-    let encodedKey = key.getEncoded();
-    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 

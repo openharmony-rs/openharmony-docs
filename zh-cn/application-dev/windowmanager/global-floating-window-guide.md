@@ -2,41 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
 
-全局悬浮窗具有在应用主窗口退后台时，继续在前台显示的能力，适用于如多人视频通话、屏幕共享等场景。
+全局悬浮窗具有在应用主窗口退后台时，继续在前台显示的能力，适用于多人视频通话、屏幕共享场景。
 
 全局悬浮窗的层级比所有应用主窗口、子窗口的层级高。
-
-**全局悬浮窗和闪控窗的对比：**
-
-- 共同点：全局悬浮窗和[闪控窗](../reference/apis-arkui/js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
-
-- 区别：
-
-  - 全局悬浮窗由开发者管理并实现UI绘制，无统一UI及动效。
-
-  - 闪控窗由系统管理并统一绘制UI，动效更为高端精致。
-
-  - 闪控窗支持和闪控球联合使用，实现更复杂的场景。
-
-  - 全局悬浮窗仅支持在PC/2in1设备上使用。
-
-  - 闪控窗支持在Phone、Tablet、PC/2in1设备上使用。
-
-- 适用场景：
-
-  - 全局悬浮窗适用于多人视频通话、屏幕共享的场景。
-
-  - 闪控窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。比如股市盯盘应用、手机直播应用。<!--RP1--><!--RP1End-->
-
-  - 针对其他非指定场景，如视频播放、视频会议、视频通话等，建议使用画中画功能来以小窗模式呈现视频内容。<!--RP2--><!--RP2End-->
-
 
 ## 约束限制
 
@@ -54,27 +29,27 @@
 
 1. 创建全局悬浮窗。  
 
-   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
+   通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
    <!-- @[floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    let floatWindowClass: window.Window | undefined = undefined;
    // ...
-         // 1.创建全局悬浮窗。
-         let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
-         let config: window.Configuration = {
-           name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: context as common.BaseContext
-         };
-         window.createWindow(config, (err, data) => {
-           if (err?.code) {
-             console.error(`Failed to create the floatWindow. Cause code: ${err.code}, message: ${err.message}`);
-             return;
-           }
-           floatWindowClass = data;
-           console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
-           // ...
-         });
+   // 1.创建全局悬浮窗。
+   let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
+   let config: window.Configuration = {
+     name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: context as common.BaseContext
+   };
+   window.createWindow(config, (err, data) => {
+     if (err?.code) {
+       console.error(`Failed to create the floatWindow. Cause code: ${err.code}, message: ${err.message}`);
+       return;
+     }
+     floatWindowClass = data;
+     console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
+     // ...
+   });
    ```
 
 2. 对全局悬浮窗进行属性设置等操作。  

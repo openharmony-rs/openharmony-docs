@@ -124,7 +124,7 @@ Saves the passed PixelMap object, which is an edited image. This API uses a prom
 | Name | Type | Mandatory | Description |
 | ------------ | ------------ | ------------ | ------------ |
 | pixeMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes | Edited image, which is an image.PixelMap object. |
-| option  | [image.PackingOption](..//apis-image-kit/arkts-apis-image-i.md#packingoption)  |  Yes| Option for image packing. |
+| option  | [image.PackingOption](../apis-image-kit/arkts-apis-image-i.md#packingoption)  |  Yes| Option for image packing. |
 
 **Return value**
 |  Type| Description |

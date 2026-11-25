@@ -369,7 +369,7 @@ Web页面场景下，全局滚动条模式。
 | SUCCESS | 0 | 成功。 |
 | ERR_UNKNOWN   | -1 | 未知错误，内部状态错误等。 |
 | ERR_INVALID_PARAM   | -2 | 参数不合法。 |
-| ERR_CONTROLLER_NOT_INITED   | -3 | WebViewController未绑定组件。 |
+| ERR_CONTROLLER_NOT_INITED   | -3 | WebviewController未绑定组件。 |
 | ERR_KEY_NOT_MATCH   | -4 | 未匹配到key值，对于[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)需与[getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20)配套使用并且key值一致，否则返回该错误码。 |
 | ERR_SIGNIFICANT_CHANGE   | -5 | 当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)接口不会成功启用插帧。 |
 | ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的插帧持续时间超出范围。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -474,3 +474,19 @@ WebviewController与Web组件的绑定状态。
 | ------------------------------- | - | ---------- |
 | UNATTACHED | 0 | 未绑定状态。 |
 | ATTACHED   | 1 | 已绑定状态。 |
+
+## NavigationThrottleAction
+
+[NavigationThrottle](./arkts-apis-webview-NavigationThrottle.md)回调可执行的动作枚举。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| PROCEED | 0 | 允许导航继续。当回调未实现或返回无效值时，默认使用该动作。 |
+| CANCEL  | 1 | 取消导航。需要拦截导航时使用该动作。 |
+| DEFER   | 2 | 挂起决策。导航暂停，直到在[DeferThrottleCallback](./arkts-apis-webview-DeferThrottleCallback.md)上调用proceed()或cancel()。 |

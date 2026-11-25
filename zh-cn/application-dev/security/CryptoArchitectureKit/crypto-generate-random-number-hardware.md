@@ -11,7 +11,7 @@
 
 随机数主要用于临时会话密钥生成和非对称加密算法密钥生成等场景。在加解密场景中，安全随机数生成器需要具备随机性、不可预测性和不可重现性。
 
-使用更安全的熵源，对随机数而言，就意味着 “结果难以被猜测或复现”，是 “真随机性” 的量化体现。
+使用更安全的熵源，对随机数而言，就意味着“结果难以被猜测或复现”，是“真随机性”的量化体现。
 <!--Del-->当前硬件熵源随机数的实现依赖HUKS。对于具备安全环境（如TEE、安全芯片）的系统或设备，开启硬件熵源后，将通过HUKS从TEE中获取安全随机数（其熵源为硬件熵源）作为算法库生成随机数的熵源。由于安全环境依赖硬件支持，在开源仓中仅为模拟实现，需OEM厂商适配。<!--DelEnd-->
 
 当前硬件熵源通过调用[HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md)接口实现。
@@ -48,7 +48,7 @@
 
 1. 调用[cryptoFramework.createRandom](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreaterandom)，生成随机数实例。
 
-2. 调用[cryptoFramework.enableHardwareEntropy](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#enablehardwareentropy21)，开启硬件熵源。
+2. 调用[rand.enableHardwareEntropy](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#enablehardwareentropy21)，开启硬件熵源。
 
 3. （可选）设置DataBlob数据，调用[Random.setSeed](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setseed)，为随机数生成器设置种子。
 
@@ -62,8 +62,10 @@
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function doRand() {
+    try {
       let rand = cryptoFramework.createRandom();
       rand.enableHardwareEntropy();
       let seed = new Uint8Array([1, 2, 3]);
@@ -71,7 +73,12 @@
       let len = 12;
       let randOutput = await rand.generateRandom(len);
       console.info('rand output: ' + randOutput.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
+  }
   ```
 
 
@@ -86,17 +93,19 @@
   function doRandBySync() {
     let rand = cryptoFramework.createRandom();
     rand.enableHardwareEntropy();
-    let len = 24; // Generate a 24-byte random number.
+    let len = 24; // 生成一个24字节的随机数。
     try {
       let randData = rand.generateRandomSync(len);
       if (randData.data.length !== 0) {
         console.info('[Sync]: rand result: ' + randData.data);
       } else {
         console.error('[Sync]: get rand result: fail!');
+        // ...
       }
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`do rand failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

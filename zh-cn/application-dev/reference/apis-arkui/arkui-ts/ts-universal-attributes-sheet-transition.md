@@ -105,8 +105,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。该属性仅在[preferType](#sheetoptions)设置为[SheetType.CONTENT_COVER](#sheettype11枚举说明)（全屏弹窗样式）时生效，其他弹窗样式设置该属性无效。<br>默认值：ModalTransition.DEFAULT<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br>默认值：RenderStrategy.FAST <br>**说明：** 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  |设置组件的系统材质。<br>默认值：undefined，会清除由该接口设置的材质效果。 <br>**说明：** <br> - 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](#示例10半模态设置系统材质)。<br> - 使用该接口设置材质会赋予关闭按钮一种系统内置的材质效果。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| titleBarHoverMode | [SheetTitleBarHoverMode](#sheettitlebarhovermode) | 否 | 是 |标题栏悬浮模式。仅当标题栏存在时生效。<br>默认值：SheetTitleBarHoverMode.STANDARD<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| scrollBarState | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 |半模态内容区Scroll滚动条的显示状态。<br>默认值：BarState.Off<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| titleBarHoverMode | [SheetTitleBarHoverMode](#sheettitlebarhovermode) | 否 | 是 |标题栏悬浮模式。仅当标题栏存在时生效。<br>默认值：SheetTitleBarHoverMode.STANDARD<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scrollBarState | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 |半模态内容区Scroll滚动条的显示状态。<br>默认值：BarState.Off<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| adaptToHandedness | [HandednessFollowMode](#handednessfollowmode) | 否 | 是 |半模态如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE，不适配握持习惯。<br>**说明：**<br>该属性仅在[preferType](#sheetoptions)设置为[SheetType.CENTER](#sheettype11枚举说明)（居中弹窗）时生效，其他弹窗样式下该属性不生效。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SheetSize枚举说明
 
@@ -358,30 +359,11 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 > 设置POPUP_SHEET避让方式时，半模态只避让由面板内的文本框组件拉起的软键盘场景，其他场景半模态无需避让。
 >
 
-## SheetTitleBarBackgroundBlur
-
-标题栏背景模糊样式枚举。
-
-**起始版本：** 26.1.0
-
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称      | 值 | 说明           |
-| ------- | ---- | -------- |
-| NONE | 0 | 无模糊效果。  |
-| GRADIENT    | 1 | 渐变模糊，从标题栏顶部向下渐变至透明。 |
-
 ## SheetTitleBarHoverMode
 
 标题栏悬浮模式枚举。
 
-**起始版本：** 26.1.0
-
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -389,8 +371,27 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 | 名称      | 值 | 说明           |
 | ------- | ---- | -------- |
-| STANDARD | 0 | 标准模式，标题栏与内容区竖直排列不重叠。  |
-| STACK    | 1 | 堆叠模式，标题栏悬浮在内容区上方，设置为该样式时开发者需要在内容区顶部添加内边距以避免遮挡。 |
+| STANDARD | 0 | 标准模式，标题栏与内容区竖直排列不重叠。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| STACK    | 1 | 堆叠模式，标题栏悬浮在内容区上方，设置为该样式时开发者需要在内容区顶部添加内边距以避免遮挡。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| SAFE_AREA_PADDING | 2 | 安全区模式，标题栏放置在安全区域内边距区域，内容区扩展到安全区，滚动内容的裁剪范围延伸到安全区范围。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+
+## HandednessFollowMode
+
+type HandednessFollowMode = import('../api/@ohos.arkui.dialog').HandednessFollowMode
+
+握持习惯跟随模式的枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| --- | --- |
+| import('../api/@ohos.arkui.dialog').[HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 握持习惯跟随模式的枚举。 |
 
 ## 示例
 ### 示例1（不同高度的半模态弹窗）
@@ -1091,16 +1092,18 @@ struct SheetMaterialExample {
 
 ### 示例11（半模态设置标题栏悬浮模式）
 
-该示例通过titleBarHoverMode属性设置半模态标题栏为STACK堆叠模式，标题栏悬浮在内容区上方。
+该示例通过titleBarHoverMode属性演示不同半模态标题栏悬浮模式（[SheetTitleBarHoverMode](#sheettitlebarhovermode)）的效果。
 
-从API版本26.1.0开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。从API版本26.1.0开始，SheetTitleBarHoverMode中新增[SAFE_AREA_PADDING](#sheettitlebarhovermode)枚举值。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
+struct SheetTitleBarHoverModeDemo {
+  @State isShowStandard: boolean = false;
+  @State isShowStack: boolean = false;
+  @State isShowSafeAreaPadding: boolean = false;
 
   @Builder
   myBuilder() {
@@ -1136,16 +1139,38 @@ struct SheetMaterialExample {
   build() {
     Stack() {
       Column() {
-        Button('拉起半模态')
+        Button('STANDARD')
           .onClick(() => {
-            this.isShow = true;
+            this.isShowStandard = true;
           })
           .fontSize(20)
           .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
+          .bindSheet($$this.isShowStandard, this.myBuilder(), {
             height: SheetSize.MEDIUM,
-            title: { title: '标题' },
+            title: { title: 'title standard' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STANDARD,
+          })
+        Button('STACK')
+          .onClick(() => {
+            this.isShowStack = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowStack, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title stack' },
             titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+          })
+        Button('SAFE_AREA_PADDING')
+          .onClick(() => {
+            this.isShowSafeAreaPadding = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowSafeAreaPadding, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title safeArea' },
+            titleBarHoverMode: SheetTitleBarHoverMode.SAFE_AREA_PADDING,
           })
       }
       .justifyContent(FlexAlign.Center)
@@ -1156,14 +1181,14 @@ struct SheetMaterialExample {
 }
 ```
 
-![zh-cn_sheet](figures/sheet13-stack.jpg)
+![zh-cn_sheet](figures/sheetTitleBarHoverMode.gif)
 
 
 ### 示例12（半模态自定义滚动条状态）
 
 该示例通过scrollBarState属性设置半模态内容区滚动条的显示状态，点击按钮在[BarState](ts-appendix-enums.md#barstate)的Off、On、Auto和未设置之间切换。
 
-从API版本26.1.0开始，[SheetOptions](#sheetoptions)新增scrollBarState属性。
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增scrollBarState属性。
 
 ```ts
 // xxx.ets
@@ -1244,3 +1269,73 @@ struct SheetMaterialExample {
 ```
 
 ![zh-cn_sheet](figures/sheet14-scroll.gif)
+
+### 示例13（半模态适配握持习惯）
+
+该示例通过[SheetOptions](#sheetoptions)中的adaptToHandedness属性设置半模态适配握持习惯，使半模态跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[SheetOptions](#sheetoptions)中新增了adaptToHandedness属性。
+
+```ts
+// xxx.ets
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetHandednessExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Text('Sheet Content')
+        .margin(20)
+        .fontSize(20)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('Open sheet on left')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            preferType: SheetType.CENTER,
+            width: 400,
+            showClose: true,
+            title: { title: 'title', subtitle: 'subtitle' },
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR,
+          })
+
+        Button('Open sheet in center')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+
+        Button('Open sheet on right')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+      }
+      .justifyContent(FlexAlign.SpaceEvenly)
+      .width('100%')
+      .height('50%')
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![zh-cn_sheet](figures/sheetHandedness.gif)

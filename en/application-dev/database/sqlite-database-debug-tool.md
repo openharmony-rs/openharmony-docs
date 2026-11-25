@@ -1,31 +1,27 @@
 # SQLite Debugging Tool
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @linzhuobin1-->
 <!--Designer: @csuxsh-->
 <!--Tester: @zhujieliang-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T01:14:49.453Z pushedAt=2026-07-07T06:54:03.242Z -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:48:08.835Z pushedAt=2026-11-16T13:26:44.120Z nl=1 -->
 
 SQLite is a lightweight, embedded, serverless relational database management system. Its core advantage is that the entire database is stored in a single file, without the need for an independent server process. It supports cross-platform operation and is widely used in mobile applications, embedded devices, and desktop software.
 
 This debugging tool implements operations on the SQLite database based on the hdc command. It provides an efficient way to manage the SQLite database through the CLI, which is applicable to quick database operations and verification in the development, debugging, and O&M phases.
 
 <!--RP1-->
-
 >**NOTE**
 >
 > - The SQLite debugging tool is available since OpenHarmony 6.0.
 > 
 > - You can also use DevEco Studio to debug the database. For details, see [App Database Access](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-database-inspector).
-
 <!--RP1End-->
 
 ## Environment Requirements
 
 - Before using SQLite debugging tool, you should enable the [developer mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432), obtain the [hdc](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/hdc) tool, and run **hdc shell**.
-
 - The devices are properly connected.
 
 ## Preparations
@@ -50,7 +46,7 @@ Enter ".help" for usage hints.
 sqlite>
 ```
 
-If you create a database and table in the path of a non-target application, the system throws a permission error. 
+If you create a database and table in the path of a non-target application, the system throws a permission error.  
 
 Run the **CREATE TABLE** command in the SQL statement to create a table.
 
@@ -81,9 +77,7 @@ sqlite>.open asd.db
 Error: unable to open database "asd.db": unable to open database file
 Notice: using substitute in-memory database instead of "asd.db"
 ```
-
 After SQLite accesses the encryption database, the following error information is displayed:
-
 ```sqlite
 # sqlite3 ./wallet_personal_info_data_relational_store
 SQLite version 3.44.4 2025-02-19 00:18:53
@@ -107,13 +101,12 @@ The following table lists the commands supported by the SQLite debugging tool.
 | .tables         | Lists all tables in a database.             |
 | .show          | Displays the default settings of the SQLite command prompt.       |
 | .schema         | Obtains complete information about a table.                    |
-| .quit or .exit| Exits the SQLite CLI.                 |
+| `.quit` or `.exit` | Exits the SQLite command line interface.                  |
 | .schema [TABLE] | Displays the SQL statement for creating a table (or the structure of all tables).|
 
 ## Notes
 
 - Semicolons are not required in SQLite commands. Unlike SQL statements, SQLite commands can be run by pressing the **Enter** key.
-
 - Ensure that there is no space between the **sqlite>** prompt and the command. Otherwise, the command cannot be run.
 
 ## Command Usage and Examples
@@ -123,7 +116,6 @@ The following table lists the commands supported by the SQLite debugging tool.
 ```SQLite
 sqlite>.help
 ```
-
 ### Creating or Opening an Existing Database
 
 - Open an existing database.
@@ -140,6 +132,7 @@ sqlite>.help
   ```SQLite
   sqlite3 /data/app/el1/100/base/com.test.myapplication/mydb.db # Open a database without accessing to the shell.
   ```
+
 
 - Create and open a database.
 
@@ -179,7 +172,7 @@ sqlite>.tables
 COMPANY
 ```
 
-After the **.tables** command is run, the created **COMPANY** table is listed. 
+After the **.tables** command is run, the created **COMPANY** table is listed.  
 
 Run the SQLite command **.schema** to obtain the complete information about the table.
 
@@ -225,6 +218,7 @@ sqlite>.tables
   1|Zhang San|28|Chaoyang District, Beijing|20000.5
   ```
 
+
 - Run **INSERT INTO COMPANY (*fields*) values()** to insert multiple data records.
 
   ```sql
@@ -245,7 +239,7 @@ sqlite>.tables
 
 ### Querying Data
 
-Run the **sqlite> SELECT** command in either of the following manners to query data:
+At the sqlite> prompt, data can be queried via `SELECT`. The following data queries are supported:
 
 - Run **SELECT * FROM *table name*** to query all data.
 
@@ -317,5 +311,4 @@ In actual database operations, the query result may be empty because no data exi
 To avoid this, you should ensure that related data is inserted to the table before running the query command.
 
 ### How do I delete characters?
-
 You can press **Ctrl+Backspace** to delete a single character and press **Ctrl+U** to delete all characters.

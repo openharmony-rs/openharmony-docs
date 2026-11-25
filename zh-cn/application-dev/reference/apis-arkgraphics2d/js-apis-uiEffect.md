@@ -4,7 +4,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
 <!--Designer: @chensiyi_CE-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
@@ -134,7 +134,6 @@ hdrBrightnessRatio(ratio: number): Filter
 > 使用HDR提亮效果会带来一定的性能功耗开销，建议在已有HDR图片或视频的场景使用。
 
 **需要权限：** ohos.permission.HDR_BRIGHTNESS
-<!--Del-->系统应用无需申请此权限。<!--DelEnd-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -168,3 +167,5 @@ filter.hdrBrightnessRatio(2.0);
 
 ## VisualEffect
 VisualEffect效果类，用于将相应的效果添加到指定的组件上。在调用VisualEffect的方法前，需要先通过[createEffect](#uieffectcreateeffect)创建一个VisualEffect实例。
+
+**系统能力：** SystemCapability.Graphics.Drawing

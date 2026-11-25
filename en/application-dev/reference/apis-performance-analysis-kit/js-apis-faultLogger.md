@@ -5,20 +5,21 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=78a8bf19448436f5c84e93efc29486e00a2ee905 translatedAt=2026-11-16T01:10:58.207Z pushedAt=2026-11-20T07:28:32.807Z nl=1 -->
 
 The **faultLogger** APIs can be used to query fault logs of an application cached on the system. The APIs use the application bundle name and the UID allocated by the system as the unique key value.
 
-The number of application fault logs stored in the system is limited by the system log pressure. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md) to subscribe to fault events such as **APP_CRASH** and **APP_FREEZE**.
+The fault information and application fault logs stored on the system are subject to system pressure limits and will be deleted due to aging. After the fault information is aged out, no result can be queried. If the fault information still exists but the fault log file has been aged out, `fullLog` in the queried fault information data structure prints the error message `Fail to get log, fd is -1`. It is recommended that you use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md) to subscribe to fault events such as APP_CRASH and APP_FREEZE.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are no longer maintained since API version 18. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md) to subscribe to the **APP_CRASH** and **APP_FREEZE** events in later versions.
+> The APIs of this module are deprecated since API version 18 and are no longer maintained. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md) to subscribe to APP_CRASH and **APP_FREEZE** events.
 >
-> For details about how to use HiAppEvent to subscribe to the **APP_CRASH** event, see [Migrating Crash Events from the FaultLogger API](../../dfx/hiappevent-watcher-crash-events-arkts.md#migrating-crash-events-from-the-faultlogger-api).
+> For details about how to use HiAppEvent to subscribe to **APP_CRASH** events, see [Migrating Crash Events from the FaultLogger API](../../dfx/hiappevent-watcher-crash-events-arkts.md#migrating-crash-events-from-the-faultlogger-api).
 >
-> For details about how to use HiAppEvent to subscribe to the **APP_FREEZE** event, see [Migrating Application Freeze Events from the Faultlogger API](../../dfx/hiappevent-watcher-freeze-events-arkts.md#migrating-application-freeze-events-from-the-faultlogger-api).
+> For details about how to use HiAppEvent to subscribe to **APP_FREEZE** events, see [Migrating App Freeze Events from the FaultLogger API](../../dfx/hiappevent-watcher-freeze-events-arkts.md#migrating-app-freeze-events-from-the-faultlogger-api).
 
 ## Modules to Import
 
@@ -35,9 +36,9 @@ Enumerates the fault types.
 | Name| Value| Description|
 | -------- | -------- | -------- |
 | NO_SPECIFIC | 0 | No specific fault type.|
-| CPP_CRASH | 2 | C++ program crash.|
+| CPP_CRASH | 2 | Native runtime exception. |
 | JS_CRASH | 3 | JS program crash.|
-| APP_FREEZE | 4 | Application freezing.|
+| APP_FREEZE | 4 | Application frozen screen fault type. |
 
 ## FaultLogInfo
 
@@ -69,7 +70,7 @@ Obtains the fault information about the current application. This API uses an as
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | Yes| Fault type.|
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes| Callback used to return the fault information array.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned.|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes | Callback used to return the fault information array.<br/>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned. |
 
 **Error codes**
 
@@ -77,8 +78,6 @@ For details about the error codes, see [FaultLogger Error Codes](errorcode-fault
 
 | ID| Error Message|
 | --- | --- |
-| 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **Example**
@@ -131,7 +130,7 @@ Obtains the fault information about the current application. This API uses a pro
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval.|
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br/>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. |
 
 **Error codes**
 
@@ -139,8 +138,6 @@ For details about the error codes, see [FaultLogger Error Codes](errorcode-fault
 
 | ID| Error Message|
 | --- | --- |
-| 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **Example**
@@ -190,7 +187,7 @@ Obtains the fault information about the current application. This API uses an as
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | Yes| Fault type.|
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes| Callback used to return the fault information array.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned.|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Yes | Callback used to return the fault information array.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. In this case, an error string will be returned. |
 
 **Example**
 
@@ -242,7 +239,7 @@ Obtains the fault information about the current application. This API uses a pro
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval.|
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise used to return the fault information array. The fault information instance can be obtained in its then() method or by using await. <br/>**value** is the fault information array obtained. If **value** is **undefined**, it indicates that an exception occurred during the retrieval process. |
 
 **Example**
 

@@ -355,7 +355,7 @@ Starts a [native child process](../../application-models/ability-terminology.md#
 
 **Example**
 
-For details about the child process, see [Child Process Development Guide (ArkTS) - Creating a Native Child Process That Supports Parameter Passing](../../application-models/arkts-child-process-development-guideline.md#creating-a-native-child-process-that-supports-parameter-passing):
+For details about the child process, see [Child Process Development Guide (ArkTS) - Creating a Native Child Process That Supports Parameter Passing](../../application-models/arkts-child-process-development-guideline.md):
 
 ```c++
 #include <AbilityKit/native_child_process.h>
@@ -543,7 +543,7 @@ Obtains the information about all child processes of the current application. Th
 - [childProcessManager.startArkChildProcess](#childprocessmanagerstartarkchildprocess12)
 - [childProcessManager.startNativeChildProcess](#childprocessmanagerstartnativechildprocess13)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

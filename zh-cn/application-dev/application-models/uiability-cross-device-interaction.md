@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过Call调用实现UIAbility跨设备协同开发的方法，包括Callee端创建、Caller通信接口获取、序列化数据收发与通信接口释放等完整步骤。"
+keywords: [Call调用, 多端协同, 跨设备, Caller, Callee, startAbilityByCall, 分布式迁移]
+doctype: guide
+status: active
+---
 # 通过Call调用实现多端协同
 
 <!--Kit: Ability Kit-->
@@ -152,7 +159,7 @@ Call功能主要接口如下表所示。具体的API详见[Caller](../reference/
     }
 
     function sendMsgCallback(data: rpc.MessageSequence): rpc.Parcelable {
-      hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'CalleeSortFunc called');
+      hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'sendMsgCallback called');
 
       // 获取Caller发送的序列化数据
       let receivedData: MyParcelable = new MyParcelable(0, '');

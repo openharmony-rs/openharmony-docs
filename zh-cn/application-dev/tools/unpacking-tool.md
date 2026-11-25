@@ -288,6 +288,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | originalSize         | long                        | 标识HAP包的原始大小，单位字节。         | NA             |
 | isModuleAbcCompressed  | boolean                   | 标识[modules.abc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
 | skillProfiles    | List\<[SkillProfileInfo](#skillprofileinfo)\>  | 标识当前模块的技能配置信息列表，用于定义AI代理的技能能力。   | 从API版本26.0.0开始支持。  |
+| anyOfDeviceFeatures  | Map\<String, List\<String>> | 标识当前模块运行所需要的特定的设备特性，满足设备任一特性即可。 | 从API版本26.1.0开始支持。 |
 <!--RP1--><!--RP1End-->
 
 ### AbilityInfo结构体信息
@@ -491,6 +492,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | 字段                | 类型                     | 描述                                                         | 备注        |
 | ------------------- | -------------------------| ------------------------------------------------------------ |-----------|
 | name                | String                   | 标识forms的名称。                                              | NA        |
+| formManagerAnimatedImages | List\<String> | 标识卡片动态图片资源的解析结果列表，资源未命中时保留原始引用。 | 仅Stage模型支持。缺字段或空数组时返回空列表。从API版本26.1.0开始支持。|
 | type                | String                   | 标签标识卡片的类型。                                           | NA        |
 | updateEnabled       | boolean                  | 标识该卡片是否支持定时刷新。true表示支持，false表示不支持。                                   | NA        |
 | scheduledUpdateTime | String                   | 标签标识卡片定时刷新的时间，采用24小时计数，精确到分钟。       | NA        |

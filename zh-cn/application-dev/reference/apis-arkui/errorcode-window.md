@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -322,6 +322,73 @@ onPageHide() {
   }
 }
 ```
+
+### 当前存在模态UIExtension，不允许创建非安全窗口
+**可能原因**
+
+应用内已拉起模态UIExtension，开发者在创建子窗口、全局悬浮窗或Dialog窗口等非安全窗口时，由于模态UIExtension不允许非安全窗口遮挡，导致窗口创建失败。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: It is not allowed to create non-secure window when secure extension exists. Maybe blocked by:
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：创建子窗口、全局悬浮窗或Dialog窗口等API调用处
+- 文件名和行号：定位具体代码位置
+- 模态UIExtension信息：Error Message后会列出模态UIExtension的包名
+
+**处理步骤**
+
+确保将模态UIExtension关闭后，再创建窗口。
+
+### 创建子窗口的进程和其父窗的进程不相同
+**可能原因**
+
+创建子窗口请求的进程pid和该子窗口父窗的进程pid不相同，导致创建子窗口失败。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: The parent window and the subwindow are not created by the same process
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：createSubWindowWithOptions()或createSubWindow()调用位置
+- 文件名和行号：定位具体代码位置
+
+**处理步骤**
+
+请确保创建子窗口的进程跟创建其父窗的进程是同一进程。
+
+### 超出子窗口最大允许嵌套层数
+**可能原因**
+
+子窗口内创建子窗口时（即进行子窗口嵌套），子窗口嵌套层数受限制，超出最大允许嵌套层数（10层）时，创建子窗口失败。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: Subwindow level exceeds the maximum limit
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：createSubWindowWithOptions()调用位置
+- 文件名和行号：定位具体代码位置
+
+**处理步骤**
+
+优化业务逻辑，避免创建过多层级的嵌套子窗口。
 
 ## 1300003 系统服务工作异常
 **错误信息**<br>
@@ -692,11 +759,11 @@ Repeated PiP operation.
 **处理步骤**<br>
 不要重复启动/停止画中画。<br>
 
-## 1300016 参数校验错误
+## 1300016 参数错误
 
 **错误信息**
 
-Parameter validation error.
+Parameter error.
 
 **错误描述**
 
@@ -972,6 +1039,26 @@ Updating static template-based floating balls is not supported.
 
 请删除已有的静态模板类型闪控球，然后创建新的闪控球。
 
+<!--Del-->
+## 1300029 窗口类型无效
+
+**错误信息**
+
+This window type is invalid.
+
+**错误描述**
+
+窗口类型不支持该操作。
+
+**可能原因**
+
+主窗、子窗、dialog、TYPE_FLOAT非系统窗类型不支持某些操作。
+
+**处理步骤**
+
+返回该错误码表示当前窗口类型不支持该操作，应用需要更改窗口类型。
+<!--DelEnd-->
+
 ## 1300030 重复操作闪控窗
 
 **错误信息**
@@ -1093,6 +1180,24 @@ This operation conflicts with other floating windows.
 **处理步骤**
 
 启动闪控窗前，请先停止闪控球窗口和画中画窗口。
+
+## 1300035 不允许创建子窗口
+
+**错误信息**
+
+ Creating a subwindow is not allowed in the current context.
+
+**错误描述**
+
+当前上下文不允许创建子窗口。
+
+**可能原因**
+
+应用Ability继承自AgentUIExtensionAbility。
+
+**处理步骤**
+
+创建子窗口前，检查应用Ability是否继承自AgentUIExtensionAbility。
 
 ## 1001 窗口空指针异常<sup>(deprecated)</sup>
 **错误信息**<br>

@@ -42,7 +42,7 @@ setSVGResourceLimitLevel(limit: image.SVGResourceLimitLevel): void
 
 设置SVG解码的资源限制等级。未通过该接口设置时，默认值为image.[SVGResourceLimitLevel](../apis-image-kit/js-apis-image-sys.md#svgresourcelimitlevel).NONE。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=272eb5714494d8ebc6ba67a073c7577a0ffae4b1 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -18,7 +19,7 @@ Detect faces in images and return high-precision face bounding box coordinates. 
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
 1. Import the modules.
    ```ts
@@ -42,7 +43,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    }
    ```
 
-3. Call [Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11) to start outputting metadata, and obtain the data through subscription to the **'metadataObjectsAvailable'** event. If the call fails, an error code is returned. For details, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+3. Call the [Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11) method to start metadata data output, and then obtain data through the **metadataObjectsAvailable** event callback. If the API call fails, a corresponding error code is returned. For the error code type, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
 
    For details about how to obtain preview output, see [Camera Preview (ArkTS)](camera-preview.md).
 
@@ -90,7 +91,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    }
    ```
 
-4. Call [Session.stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11) to stop outputting metadata. If the call fails, an error code is returned. For details, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+4. Call the [Session.stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11) method to stop metadata data output. If the API call fails, a corresponding error code is returned. For the error code type, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
      
    ```ts
    function stopMetadataOutput(session: camera.Session): void {
@@ -123,7 +124,7 @@ During camera application development, you can listen for the status of metadata
   >
   > Currently, only **FACE_DETECTION** is available for the metadata type. The metadata object is the rectangle of the recognized face, including the x-axis coordinate and y-axis coordinate of the top-left corner of the rectangle as well as the width and height of the rectangle.
 
-- Register the **'error'** event to listen for metadata stream errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+- Register a callback to obtain error results from the metadata stream. The callback returns the error code when the metadata output API is used incorrectly. For the error code type, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
     
   ```ts
   function onMetadataError(metadataOutput: camera.MetadataOutput): void {

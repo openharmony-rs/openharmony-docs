@@ -163,6 +163,7 @@ type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | focusable<sup>19+</sup>       | boolean | 否   | 是  | 设置弹窗是否获取焦点。值为true表示获取焦点，值为false表示不获取焦点。<br />默认值：true <br />**说明：**<br />只有弹出覆盖在当前窗口之上的弹窗才可以获取焦点。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br/>默认值：HandednessFollowMode.NONE<br/>**说明：**<br/>当[customStyle](#customdialogcontrolleroptions对象说明)为true，或者alignment不为DialogAlignment.Default，或者offset值不为0时，该接口不生效。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 >
@@ -525,101 +526,7 @@ struct CustomDialogUser {
 
 ![zh-cn_image_custom_style](figures/image-custom-style.gif)
 
-### 示例4（悬停态弹窗）
-
-<!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
-
-```ts
-@CustomDialog
-@Component
-struct CustomDialogExample {
-  @Link textValue: string;
-  @Link inputValue: string;
-  controller?: CustomDialogController;
-
-  build() {
-    Column() {
-      Text('Change text').fontSize(20).margin({ top: 10, bottom: 10 })
-      TextInput({ placeholder: '', text: this.textValue }).height(60).width('90%')
-        .onChange((value: string) => {
-          this.textValue = value;
-        })
-      Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
-      Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Button('cancel')
-          .onClick(() => {
-            if (this.controller != undefined) {
-              this.controller.close();
-            }
-          }).backgroundColor(0xffffff).fontColor(Color.Black)
-        Button('confirm')
-          .onClick(() => {
-            if (this.controller != undefined) {
-              this.inputValue = this.textValue;
-              this.controller.close();
-            }
-          }).backgroundColor(0xffffff).fontColor(Color.Red)
-      }.margin({ bottom: 10 })
-    }.borderRadius(10)
-    // 如果需要使用border属性或cornerRadius属性，请和borderRadius属性一起使用。
-  }
-}
-@Entry
-@Component
-struct CustomDialogUser {
-  @State textValue: string = '';
-  @State inputValue: string = 'click me';
-  dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-      textValue: this.textValue,
-      inputValue: this.inputValue
-    }),
-    cancel: this.exitApp,
-    autoCancel: true,
-    onWillDismiss: (dismissDialogAction: DismissDialogAction)=> {
-      console.info(`reason= ${dismissDialogAction.reason}`);
-      console.info('dialog onWillDismiss');
-      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-        dismissDialogAction.dismiss();
-      }
-      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-        dismissDialogAction.dismiss();
-      }
-    },
-    alignment: DialogAlignment.Bottom,
-    offset: { dx: 0, dy: -20 },
-    gridCount: 4,
-    customStyle: false,
-    cornerRadius: 10,
-    enableHoverMode: true,
-    hoverModeArea: HoverModeAreaType.TOP_SCREEN
-  })
-
-  // 在自定义组件即将析构销毁时将dialogController置空
-  aboutToDisappear() {
-    this.dialogController = null; // 将dialogController置空
-  }
-
-  exitApp() {
-    console.info('Click the callback in the blank area');
-  }
-
-  build() {
-    Column() {
-      Button(this.inputValue)
-        .onClick(() => {
-          if (this.dialogController != null) {
-            this.dialogController.open();
-          }
-        }).backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-<!--RP2--><!--RP2End-->
-
-### 示例5（获取弹窗的状态）
+### 示例4（获取弹窗的状态）
 
 该示例实现了在[CustomDialogController](#customdialogcontroller)中调用[getState](#getstate20)获取弹窗当前状态。
 
@@ -680,7 +587,7 @@ struct CustomDialogUser {
 }
 ```
 
-### 示例6（使用@Link和@Consume监听数据变化）
+### 示例5（使用@Link和@Consume监听数据变化）
 
 该示例使用[@Link](../../../ui/state-management/arkts-link.md)和[@Consume](../../../ui/state-management/arkts-provide-and-consume.md)实现页面与弹窗内数据的双向绑定。
 
@@ -783,7 +690,7 @@ struct CustomDialogUser {
 ```
 ![zh-cn_image_custom_consume_or_link](figures/dialog_consume_or_link.gif)
 
-### 示例7（自定义带loading的弹窗）
+### 示例6（自定义带loading的弹窗）
 
 该示例使用[maskColor](#customdialogcontrolleroptions对象说明)，[maskRect](#customdialogcontrolleroptions对象说明)和[LoadingProgress](ts-basic-components-loadingprogress.md)，实现带loading的弹窗，并展示不在maskRect区域的事件透传效果。
 
@@ -887,7 +794,7 @@ struct CustomDialogUser {
 ```
 ![zh-cn_image_custom_loading](figures/custom_loading_dialog.gif)
 
-### 示例8（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
+### 示例7（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
 
 该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的`bottom`属性，实现与使用[keyboardAvoidDistance](#customdialogcontrolleroptions对象说明)调整弹窗与软键盘的间距一样的效果。
 
@@ -1027,7 +934,7 @@ struct CustomDialogUser {
 ```
 ![zh-cn_image_custom_keyboard_distance](figures/dialog_keyboard_distance.gif)
 
-### 示例9（弹窗生命周期）
+### 示例8（弹窗生命周期）
 
 该示例为弹窗配置生命周期回调。
 
@@ -1124,7 +1031,7 @@ struct Example3 {
 
 ![zh-cn_image_custom_lifecycle](figures/image-custom-lifecycle.gif)
 
-### 示例10（不同customStyle下的弹窗示例）
+### 示例9（不同customStyle下的弹窗示例）
 
 该示例是在对齐方式为[DialogAlignment.Bottom](ts-methods-alert-dialog-box.md#dialogalignment枚举说明)时，展示[customStyle](#customdialogcontrolleroptions对象说明)不同值下，弹窗内容与安全区域的效果。
 
@@ -1209,7 +1116,7 @@ struct CustomDialogUser {
 ```
 ![zh-cn_image_custom_style](figures/customstyle_dialog_demo.gif)
 
-### 示例11（自定义背景模糊效果参数）
+### 示例10（自定义背景模糊效果参数）
 
 该示例通过配置[backgroundBlurStyleOptions](#customdialogcontrolleroptions对象说明)，实现自定义背景模糊效果。
 
@@ -1271,7 +1178,7 @@ struct CustomDialogUser {
 
 ![image-custom-backgroundBlurStyleOptions](figures/image-custom-backgroundBlurStyleOptions.png)
 
-### 示例12（自定义背景效果参数）
+### 示例11（自定义背景效果参数）
 
 该示例通过配置[backgroundEffect](#customdialogcontrolleroptions对象说明)，实现自定义背景效果。
 
@@ -1334,7 +1241,7 @@ struct CustomDialogUser {
 
 ![image-custom-backgroundEffect](figures/image-custom-backgroundEffect.png)
 
-### 示例13（自定义弹窗动态刷新宽度）
+### 示例12（自定义弹窗动态刷新宽度）
 
 该示例通过状态变量同步自定义组件的宽度，实现自定义弹窗宽度动态切换。
 
@@ -1401,7 +1308,7 @@ struct CustomDialogUser {
 
 ![zh-cn_image_custom_dynamicRefreshwidth](figures/image-dynamicRefreshwidth.gif)
 
-### 示例14（设置弹窗的沉浸光感效果）
+### 示例13（设置弹窗的沉浸光感效果）
 
 该示例通过[systemMaterial](#customdialogcontrolleroptions对象说明)设置组件的系统材质，实现沉浸光感效果。设置系统材质后，CustomDialog弹出过程中会有非线性形变和边缘流光。
 
@@ -1467,3 +1374,58 @@ struct CustomDialogUser {
 设置系统材质后：
 
 ![设置系统材质后](figures/customdialogwithmaterial.gif)
+
+### 示例14（设置弹窗适配握持习惯）
+
+该示例通过[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了adaptToHandedness属性。
+
+```ts
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build() {
+    Column() {
+      Text('这是自定义弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close();
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample(),
+    adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+  })
+
+  build() {
+    Column() {
+      Button('CustomDialog')
+        .margin(20)
+        .onClick(() => {
+          if (this.dialogController != null) {
+            this.dialogController.open();
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/customdialoghandedness.gif)

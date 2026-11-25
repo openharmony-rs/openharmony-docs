@@ -1,13 +1,13 @@
 # Interface (AVTranscoder)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 
-AVTranscoder is a transcoding management class. It provides APIs to transcode videos. Before calling any API in AVTranscoder, you must use [createAVTranscoder()](arkts-apis-media-f.md#mediacreateavtranscoder12) to create an AVTranscoder instance.
+**AVTranscoder** provides transcoding management APIs to transcode videos. Before calling any API in AVTranscoder, you must use [createAVTranscoder()](arkts-apis-media-f.md#mediacreateavtranscoder12) to create an AVTranscoder instance.
 
 For details about the AVTranscoder demo, see [Using AVTranscoder for Transcoding](../../media/media/using-avtranscoder-for-transcodering.md).
 
@@ -35,7 +35,7 @@ import { media } from '@kit.MediaKit';
 
 ## addWatermark
 
-addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
+addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
 
 Adds a watermark to the video transcoding. This API uses a promise to return the result.
  
@@ -55,7 +55,7 @@ Adds a watermark to the video transcoding. This API uses a promise to return the
 | Name   | Type                                   | Mandatory| Description                      |
 | --------- | --------------------------------------- | ---- | -------------------------- |
 | watermark | [image.PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Watermark image.                |
-| configs   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | Yes  | Watermark configuration parameters.            |
+| config   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | Yes  | Watermark configuration parameters.            |
 
 **Return value**
 
@@ -81,19 +81,37 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 import { image } from '@kit.ImageKit';
 
-async function test() {
+async function test(context: Context) {
   // Create an AVTranscoder instance.
   let avTranscoder = await media.createAVTranscoder();
   
   // Set watermark parameters.
   let watermarkConfig: media.WatermarkConfiguration = {
       // Set watermark parameters as required. The unit is pixel.
-      top : 40,
-      left : 40,
+      top: 40,
+      left: 40,
       width: 200,
       height: 300,
   };
 
+  // Obtain a resource manager.
+  let resourceManager = context.resourceManager;
+  // Obtain the descriptor of the watermark image in the raw file. Replace 'img.png' with the actual watermark image file name.
+  let rawFileDescriptor = resourceManager.getRawFdSync('img.png');
+  // Create an ImageSource based on the file descriptor.
+  let watermarkImageSource = image.createImageSource(rawFileDescriptor.fd);
+
+  // Create a PixelMap for the watermark.
+  const decodingOptions: image.DecodingOptions = {
+    // Editable pixels
+    editable: true,
+    // Pixel format
+    desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
+  };
+  const watermarkPixelMap = await watermarkImageSource.createPixelMap(decodingOptions);
+  console.info('PixelMap created for watermark');
+
+  // Add a watermark.
   avTranscoder.addWatermark(watermarkPixelMap, watermarkConfig).then((watermarkId: number) => {
     console.info('addWatermark success, watermarkId: ' + watermarkId);
   }).catch((err: BusinessError) => {
@@ -130,7 +148,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | -------------------------------------- |
-| 401  | The parameter check failed. Return by promise. |
+| 401  | The parameter check failed. Return by promise. <br>Applicable versions: 22+|
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | IO error. Return by promise.              |
 | 5400105  | Service died. Return by promise.       |
@@ -462,7 +480,7 @@ An application can subscribe to only one AVTranscoder error event. When the appl
 
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| type     | string        | Yes  | Event type, which is **'error'** in this case.<br>This event is triggered when an error occurs during recording.|
+| type     | string        | Yes  | Event type, which is **'error'** in this case. This event is triggered when an error occurs during transcoding.|
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback invoked when the event is triggered.                                      |
 
 **Error codes**
@@ -490,7 +508,7 @@ async function test() {
   // Create an AVTranscoder instance.
   let avTranscoder = await media.createAVTranscoder();
   avTranscoder.on('error', (err: BusinessError) => {
-    console.info('case avTranscoder.on(error) called, errMessage is ' + err.message);
+    console.error('case avTranscoder.on(error) called, errMessage is ' + err.message);
   });
 }
 ```
@@ -528,7 +546,7 @@ async function test() {
 
 on(type: 'complete', callback: Callback\<void>): void
 
-Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
+Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one transcoding completion event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
 
 When this event is reported, the current transcoding operation is complete. You need to call [release()](#release12) to exit the transcoding.
 
@@ -540,7 +558,7 @@ When this event is reported, the current transcoding operation is complete. You 
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | Event type, which is **'complete'** in this case. This event is triggered by the system during transcoding.|
+| type     | string   | Yes  | Event type, which is **'complete'** in this case. This event is triggered by the system when transcoding is completed.|
 | callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback used to return the event callback method.|
 
 **Example**

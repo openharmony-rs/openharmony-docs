@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供管理屏幕的一些基础能力，包括获取屏幕对象，监听屏幕变化，创建和销毁虚拟屏幕等。适用于多屏显示管理、投屏应用等场景，可帮助开发者统一管理所有[物理屏](../../displaymanager/display-terminology.md#物理屏)，提升多屏协同体验和显示能力。
@@ -1134,9 +1134,13 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏幕显示。
 
+针对无内置屏的设备，最多可同时存在2个扩展屏幕；针对有内置屏的设备，仅能同时存在1个扩展屏幕，且有线扩展屏幕优先级高于无线扩展屏幕。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)中可正常调用，在其他设备和其他模式中调用返回1400003。
 
 **参数：**
 

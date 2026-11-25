@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4e262b0cf5d2db1530f56b5b4a73ee6cf2edf084 translatedAt=2026-09-03T04:17:34.106Z pushedAt=2026-09-09T10:56:40.416Z -->
+<!-- md-trans-meta sourceCommit=3773c93197f92fca41c91700d9d7214b3dd9913a translatedAt=2026-11-13T09:26:15.283Z pushedAt=2026-11-18T08:39:36.209Z nl=1 -->
 
 The **Navigation** component is the root view container for navigation. It typically functions as the root container of a page and includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of **Navigation**) and non-home page content (child components of [NavDestination](ts-basic-components-navdestination.md)) through routing.
 
@@ -106,7 +106,7 @@ Sets the page title.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -123,7 +123,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
@@ -145,7 +145,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
@@ -162,7 +162,7 @@ Sets the display mode of the page title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                               | Mandatory| Description                                                     |
 | ------ | --------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -184,7 +184,7 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; 20%; 8%; 62%-->
 | Name | Type                                                        | Mandatory| Description                                                        |
@@ -202,7 +202,7 @@ Specifies whether to hide the toolbar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -220,7 +220,7 @@ Specifies whether to hide the toolbar. Compared with [hideToolBar](#hidetoolbar)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -237,7 +237,7 @@ Specifies whether to hide the title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -255,7 +255,7 @@ Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitle
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -272,7 +272,7 @@ Sets whether to hide the back button in the title bar. The back button takes eff
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -290,7 +290,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                     |
 | ------ | ---------------------------- | ---- | ----------------------------------------- |
@@ -306,7 +306,7 @@ Sets the position of the navigation page. It takes effect only when [mode](#mode
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                         |
 | ------ | ------------------------------------------ | ---- | --------------------------------------------- |
@@ -322,7 +322,7 @@ Sets the display mode of the navigation page. The options are **Stack**, **Split
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -342,7 +342,7 @@ Sets the icon of the back button in the title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                |
 | ------ | ------------------------------------------------------------ | ---- | -------------------- |
@@ -366,7 +366,7 @@ Sets the icon and accessibility text for the back button on the title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
@@ -385,7 +385,7 @@ From API version 9 to API version 10, this attribute takes effect only in split-
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
@@ -403,7 +403,7 @@ Creates a **NavDestination** component. The builder receives the **name** and **
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                  | Mandatory| Description                    |
 | ------- | -------------------------------------- | ---- | ------------------------ |
@@ -431,7 +431,7 @@ Divider dragging range:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -449,7 +449,7 @@ Minimum width of the navigation bar content area (effective in split-column mode
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                | Mandatory| Description                                                        |
 | ------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -463,7 +463,7 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 
 > **NOTE**
 >   
-> - Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:  
+> - Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:   
 > When **LayoutSafeAreaType.SYSTEM** is set, the component can extend into the non-safe area if its boundaries overlap with it.
 >   
 > - If the component extends into the non-safe area, events triggered within that area (such as click events) might be intercepted by the system. This allows the system to prioritize responses to system components such as the status bar.
@@ -476,7 +476,7 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                              | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -509,7 +509,7 @@ Sets the style of the system status bar when the home page of the **Navigation**
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -532,7 +532,7 @@ Sets whether the **Navigation** component is recoverable. If set to recoverable,
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -550,7 +550,7 @@ Sets whether to display a drag bar in split-column scenarios. This attribute has
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -568,7 +568,7 @@ Sets whether to enable the animation for switching between single- and split-col
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -586,7 +586,7 @@ Sets whether to enable toolbar adaptation ([toolbarConfiguration](#toolbarconfig
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -604,7 +604,7 @@ Sets a default placeholder page for the right column in the **Navigation** compo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -624,7 +624,7 @@ Sets the divider style in the split-column mode of the **Navigation** component.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -646,7 +646,7 @@ Sets whether to enable the linkage between the [onShown](./ts-basic-components-n
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -684,7 +684,7 @@ Sets the page subtitle.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
@@ -702,13 +702,13 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description        |
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
 | value  | object&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar.|
 
-**object**
+**object** 
 
 | Name    | Type           | Mandatory  | Description             |
 | ------ | ------------- | ---- | --------------- |
@@ -728,7 +728,7 @@ Triggered when [titleMode](#titlemode) is set to **NavigationTitleMode.Free** an
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                               | Mandatory| Description      |
 | --------- | --------------------------------------------------- | ---- | ---------- |
@@ -744,7 +744,7 @@ Callback invoked when the navigation page visibility status changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type   | Mandatory| Description                                          |
 | --------- | ------- | ---- | ---------------------------------------------- |
@@ -762,7 +762,7 @@ Triggered when the **Navigation** component is displayed for the first time or i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type   | Mandatory| Description                                          |
 | --------- | ------- | ---- | ---------------------------------------------- |
@@ -784,7 +784,7 @@ Defines the callback of the custom transition animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                                 | Mandatory| Description                   |
 | --------- | ----------------------------------------------------- | ---- | ----------------------- |
@@ -792,7 +792,7 @@ Defines the callback of the custom transition animation.
 | to        | [NavContentInfo](#navcontentinfo11)                   | Yes  | Destination page to enter.|
 | operation | [NavigationOperation](#navigationoperation11) | Yes  | Transition type.             |
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -812,12 +812,12 @@ Starting from API version 12, **NavPathStack** is inheritable. Objects of a deri
 
 > **NOTE**
 >
-> 1. When multiple navigation controller operations are triggered in succession, the intermediate states are bypassed, and only the final result of the operations is rendered.<br>
+> 1. When multiple navigation controller operations are triggered in succession, the intermediate states are bypassed, and only the final result of the operations is rendered.<br/>
 > Example: If a pop operation is performed on page 1 followed by a push on the same page, the system considers the states before and after the operations to be the same and does not perform any operations. To forcibly push a new page 1 instance, set the **launchMode** attribute in [NavigationOption](#navigationoptions12) to **LaunchMode.NEW_INSTANCE**.
 >
 > 2. You are advised not to manage the navigation controllers by listening to page lifecycles.
 >
-> 3. When the app is in the background, calling stack operation APIs of **NavPathStack** will trigger a refresh upon the app's return to the foreground.
+> 3. When the application is in the background, calling stack operation APIs of **NavPathStack** will trigger a refresh upon the application's return to the foreground.
 
 ### constructor<sup>10+</sup>
 
@@ -1657,11 +1657,15 @@ Updates the array of route page information in this routing stack to the specifi
 
 preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
-Preloads the **NavDestination** page specified by the **info** parameter. The preloaded page is not displayed immediately but is cached. When [pushPath](#pushpath10) is called later, if the parameters match, the preloaded page instance is used for quick display. This API uses a promise to return the result.
+Preloads the **NavDestination** page specified by **info**. The preloaded page is not displayed immediately but is cached. When the page parameters and page name of an unloaded page are the same as those in **info** for preloading, the preloaded page instance is used for quick display.
 
-**Since:** 26.1.0
+> **NOTE**
+>
+> Calling this API immediately creates the target **navDestination** node and triggers the [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear) and [onDidBuild](ts-custom-component-lifecycle.md#ondidbuild12) lifecycle callbacks of the custom node where it resides.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Since**: 26.0.1
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1682,11 +1686,10 @@ Preloads the **NavDestination** page specified by the **info** parameter. The pr
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../../errorcode-universal.md), [Router Error Codes](../errorcode-router.md), and [API Call Error Codes](../errorcode-internal.md).
+For details about the error codes, see [Router Error Codes](../errorcode-router.md) and [API Call Error Codes](../errorcode-internal.md).
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001    | Internal error.|
 | 100005    | Builder function not registered. |
 | 100006    | NavDestination not found.|
@@ -1779,7 +1782,7 @@ Defines the custom transition animation protocol. You need to implement this pro
 
 | Name| Type| Read-Only| Optional| Description|
 |------|-----|-----|-----|------|
-| timeout | number | No| Yes| Animation timeout time.<br> Unit: ms<br>Value range: [0, +∞)<br> Default value: no default value for interactive animations; 1000 ms for non-interactive animations.|
+| timeout | number | No | Yes | Timeout duration of the animation. After this duration elapses, the system automatically ends the current transition.<br> Unit: ms.<br/>Value range: [0, +∞).<br> Default value: For interactive animations, there is no timeout limit by default. If **timeout** is not set, you must call [finishTransition](#finishtransition) to end the current transition. For non-interactive animations, the default timeout is 1000 ms.|
 | transition | (transitionProxy:[NavigationTransitionProxy](#navigationtransitionproxy-11)) =&gt; void | No| No| Callback for executing the custom transition animation.<br> **transitionProxy**: proxy for the custom transition animation.|
 | onTransitionEnd | (success:boolean)&nbsp;=>&nbsp;void | No| Yes| Callback invoked when the transition is complete.<br> **success**: whether the transition is successful.|
 | isInteractive<sup>12+</sup> | boolean | No| Yes| Whether the transition animation is interactive.<br>**true**: yes; **false**: no<br> Default value: **false**|
@@ -2262,9 +2265,9 @@ Defines the routing stack operation options.
 
 Provides the options for preloading a page.
 
-**Since:** 26.1.0
+**Since**: 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2287,8 +2290,8 @@ Provides the navigation configuration item.
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | stackSizeLimit | number | No| Yes| Maximum number of active page nodes in the navigation routing stack.<br>Default value: **0**, indicating that the routing stack size is not limited.<br>If the value is less than or equal to 0, the routing stack size is not limited.<br>If the value is greater than 0, the number of active page nodes is limited to the specified value. If the number exceeds the limit, the system automatically destroys the page nodes that are pushed to the stack earlier in the first-in-first-out (FIFO) order. The **NavPathInfo** of the pages is completely retained in the routing stack, so that the pages can be recreated later.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-| recyclePagesOnLowMemory | boolean | No| Yes| Whether to recycle invisible pages when a low memory signal is received.<br>Default value: **false**<br>**true**: Invisible **NavDestination** page instances are recycled when a low memory signal is received. **NavPathInfo** is retained, so that the page can be recreated later.<br>**false**: Invisible **NavDestination** page instances are not recycled when a low memory signal is received.<br>**Since:** 26.1.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0.<br>|
-| clearContentStackOnPrimaryNavigation | boolean | No| Yes| Whether to enable the navigation stack clearing capability from left to right.<br>The default value is **false**. The value **true** indicates that the navigation stack clearing capability from left to right is enabled, and the value **false** indicates that the capability is disabled.<br>**Description of the navigation stack clearing capability from left to right:**<br>When the navigation page is displayed in split mode, if a user's operation (such as clicking a button on the page) on the home page (**NavBar** or **NavDestination**) triggers the page redirection, the system clears the pages before the first newly created page in the navigation page stack, and only the first newly created page and the pages that follow it are retained.<br>**Since:** 26.1.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0.|
+| recyclePagesOnLowMemory | boolean | No | Yes | Whether to recycle invisible pages when a low memory signal is received.<br/>Default value: **false**<br/>**true**: Invisible **NavDestination** page instances are recycled when a low memory signal is received. **NavPathInfo** is retained, so that the page can be recreated later.<br/>**false**: Invisible **NavDestination** page instances are not recycled when a low memory signal is received.<br/>**Since:** 26.0.1<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.1.<br/> |
+| clearContentStackOnPrimaryNavigation | boolean | No | Yes | Whether to enable the navigation stack clearing capability from left to right.<br/>Default value: **false**. The value **true** means to enable the navigation stack clearing capability from left to right, and the value **false** means to disable it.<br/>**Description of the navigation stack clearing capability from left to right:**<br/>When the navigation page is displayed in split mode, if a user's operation (such as clicking a button on the page) on the home page (**NavBar** or **NavDestination**) triggers the page redirection, the system clears the pages before the first newly created page in the navigation page stack, and only the first newly created page and the pages that follow it are retained.<br/>**Since:** 26.0.1<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.1. |
 
 ## MoreButtonOptions<sup>19+</sup>
 
@@ -3318,7 +3321,7 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let pageParam = new pageParam();
+            let pageParam = new PageParam();
             // Push the navigation destination page specified by name, with the data specified by param, to the routing stack. Use the onPop callback to receive the page processing result.
             this.pageInfo.pushDestinationByName('pageTwo', pageParam, (popInfo) => {
               this.message = 
@@ -3922,7 +3925,7 @@ struct PageOne {
         this.paramNum = (ctx?.pathInfo?.param as PageParam)?.num;
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.Code}, message: ${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message: ${err.message}`);
       }
     })
   }
@@ -4041,7 +4044,7 @@ struct PageOneComponent {
         this.eventStr += '<onReady>';
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.code}, message:${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message:${err.message}`);
       }
     })
   }
@@ -4109,7 +4112,7 @@ struct NavigationExample {
           Scroll(this.scrollerForScroll) {
             Column() {
               // Replace $r('app.media.image_1') with the resource file you use.
-              Image($r('app.media.image_1'))// Set the height to be the same as that of the title bar to observe the STACK effect.
+              Image($r('app.media.image_1')) // Set the height to be consistent with the title bar to observe the STACK effect.
                 .height(138)
                 .width('100%')
               Button('BarStyle.STANDARD')
@@ -5675,7 +5678,7 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 >
 > 2. Swipe up the application to return to the background and open the CLI.
 >
-> 3. Run **hdc shell**, and then run **pidof <package_name>** to query the value of **pid**.
+> 3. Run **hdc shell**, and then run **pidof Package name** to query the value of **pid**.
 >
 > 4. Run the **aa force-stop *Project name* -p *Value of pid* -r RESOURCE_CONTROL** command to simulate the scenario where the app exits due to improper resource usage.
 >
@@ -5889,6 +5892,8 @@ struct NavigationTitleMaterialDemo {
 }
 ```
 
+The figure in this example shows the strong effect on a high-computing-power device.
+
 ![navigationTitleSystemMaterial.gif](figures/navigationTitleSystemMaterial.gif)
 
 
@@ -5896,7 +5901,7 @@ struct NavigationTitleMaterialDemo {
 
 This example demonstrates how to use the **clearContentStackOnPrimaryNavigation** attribute to enable the stack clearing effect from left to right on the navigation page.
 
-The **clearContentStackOnPrimaryNavigation** attribute is added to [NavigationConfiguration](#navigationconfiguration) since API version 26.1.0.
+Since API version 26.0.1, the **clearContentStackOnPrimaryNavigation** attribute is added to [NavigationConfiguration](#navigationconfiguration).
 
 ```ts
 // xxx.ets

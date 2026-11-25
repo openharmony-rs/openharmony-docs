@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Introduces the purpose and acquisition path of the ArkTS disassembler tool Disassembler, provides command-line parameter descriptions and usage examples, and helps developers disassemble abc bytecode files into readable assembly instructions for problem analysis."
+keywords: [Disassembler, disassembly, DevEco Studio, ark_disasm, abc file, Ark bytecode, assembly instructions]
+doctype: guide
+status: active
+---
+
 # Disassembler
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao; @luobohua-->
-<!--Designer: @hufeng20-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-11-06T10:51:34.871Z pushedAt=2026-11-12T13:37:41.931Z nl=1 -->
 
 ## Overview
 
@@ -44,9 +53,16 @@ Description of **options**
 
 Assume that the Ark bytecode file **test.abc** exists, with the following source code:
 
-```ts
+<!-- @[disassembler_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Disassembler.ts) -->
+
+``` TypeScript
+// Disassembler.ts
 let i = 99;
-function show(){return i;}
+
+function show() {
+  return i;
+}
+
 show();
 ```
 
@@ -96,7 +112,7 @@ The file content is as follows:
 
 L_ESSlotNumberAnnotation:
     u32 slotNumberIdx { 0x0 }
-.function any test.#*#show(any a0, any a1, any a2) <static> {                // The show method in the source code. It belongs to the test module.
+.function any test.#*#show(any a0, any a1, any a2) <static> {                // This method is the show method in the source code, and it also indicates that it belongs to the test module.
     ldlexvar 0x0, 0x0
     ......
 }

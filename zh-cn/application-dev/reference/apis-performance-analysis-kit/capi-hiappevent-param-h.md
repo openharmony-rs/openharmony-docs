@@ -43,7 +43,7 @@
 | [OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING](#oh_app_crash_param_simplify_vma_printing) "simplify_vma_printing"                                                        | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否只打印崩溃日志中出现的地址所属的VMA映射信息，以减小CPP_CRASH日志文件大小。<br>**起始版本：** 24  |
 | [OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG](#oh_app_crash_param_merge_cppcrash_app_log) "merge_cppcrash_app_log"                                                        | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否在CPP_CRASH场景拼接应用沙箱中指定文件的日志。<br>**起始版本：** 24  |
 | [OH_APP_CRASH_PARAM_COLLECT_MINIDUMP](#oh_app_crash_param_collect_minidump) "collect_minidump"  | <!--RP1-->用于APP_CRASH事件，是否使能minidump。<!--RP1End--><br>**起始版本：** 26.0.0  |
-
+| [OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH ](#oh_app_crash_param_publish_on_next_launch) "publish_on_next_launch"  | 用于APP_CRASH事件，是否使能固定在重启后收到事件回调。<br>**起始版本：** 26.1.0  |
 
 ## 宏定义说明
 
@@ -214,3 +214,15 @@
 <!--RP2-->用于APP_CRASH事件，是否使能minidump。<!--RP2End-->
 
 **起始版本：** 26.0.0
+
+### OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH
+
+```c
+#define OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH "publish_on_next_launch"
+```
+
+**描述**
+
+用于APP_CRASH事件，是否使能固定在重启后收到事件回调。
+
+**起始版本：** 26.1.0

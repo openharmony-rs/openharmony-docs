@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
-<!--Designer: @junathuawei1; @zph000-->
+<!--Designer: @xuexuexuehc-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -248,6 +248,165 @@ console.info('form.uniformDataType: ' + form.uniformDataType);
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
 ```
 
+## VirtualBaseItem
+
+表示虚拟文件或目录的公共元数据。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| name | string | 否 | 否 | 节点名称，最多255字节，不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
+| type | 'file' \| 'dir' | 是 | 否 | 节点类型，file为文件类型，dir为目录类型。 |
+| modifyTime | number | 否 | 否 | 最近的修改时间，以Unix时间戳表示，单位为ms。 |
+
+## VirtualFileItem
+
+表示虚拟文件的基础信息。继承自[VirtualBaseItem](#virtualbaseitem)。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| id | string | 否 | 否 | 传给虚拟文件回调的文件标识，最多1024字节，不同文件应使用不同id。 |
+| type | 'file' | 是 | 否 | 文件节点类型。 |
+| size | number | 否 | 否 | 文件大小，单位为字节。需为非负整数，0表示真实空文件。 |
+
+## VirtualDirItem
+
+表示虚拟目录及其可选子节点。目录不要求提供文件大小。继承自[VirtualBaseItem](#virtualbaseitem)。
+
+单棵虚拟文件树最多4096个节点，包含根节点和全部目录、文件节点。根节点深度为0，子节点深度逐层加1，最大深度为64。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| type | 'dir' | 是 | 否 | 目录的节点类型。 |
+| subItems | Array&lt;[VirtualItemType](#virtualitemtype)&gt; | 否 | 是 | 当前目录下的子文件和子目录列表，未设置或为空数组时，表示空目录。 |
+
+## VirtualItemType
+
+type VirtualItemType = VirtualFileItem | VirtualDirItem
+
+表示虚拟文件或目录的元数据。
+
+取值类型为下表类型的并集，每个节点可以是虚拟文件或虚拟目录。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [VirtualFileItem](#virtualfileitem) | 虚拟文件的元数据，取值需满足该类型定义的属性约束，type固定为'file'。 |
+| [VirtualDirItem](#virtualdiritem) | 虚拟目录的元数据，取值需满足该类型定义的属性约束，type固定为'dir'。 |
+
+## VirtualFileOnStat
+
+type VirtualFileOnStat = (id: string) => Promise&lt;VirtualFileItem&gt;
+
+通过文件id返回对应虚拟文件的信息，如文件名、大小和修改时间。使用Promise异步回调。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| id | string | 是 | 虚拟文件的标识。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[VirtualFileItem](#virtualfileitem)&gt; | Promise对象，返回虚拟文件元数据，其中size必须为非负整数。 |
+
+## VirtualFileOnRead
+
+type VirtualFileOnRead = (id: string, offset: number, length: number) => Promise&lt;Uint8Array&gt;
+
+从虚拟文件读取至多length字节，单次请求最大为5MiB。使用Promise异步回调。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| id | string | 是 | 待读取文件的标识，非空且最多1024字节。 |
+| offset | number | 是 | 本次读取在文件中的起始位置，单位为字节，从0开始计算。 |
+| length | number | 是 | 本次最多需要提供的字节数，正常回调中取值为1～5242880（5MiB），且不超过文件剩余大小。返回的数据长度不得超过该值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Uint8Array&gt; | Promise对象，成功时返回读取到的文件内容，空数组表示文件结束；读取失败时应reject，失败不会被视为正常文件结束，也不会回滚此前已成功读取的数据。 |
+
+## VirtualFileOnCancel
+
+type VirtualFileOnCancel = (idList: Array&lt;string&gt;) => Promise&lt;void&gt;
+
+根据文件标识列表取消对应文件的待处理任务。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| idList | Array&lt;string&gt; | 是 | 需要取消待处理任务的虚拟文件标识列表，可能包含重复id。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。应用完成取消处理时resolve，处理失败时reject；该结果不改变UDMF的会话清理或读取失败处理。 |
+
+## VirtualFileInfo
+
+用于配置虚拟文件或目录的根节点信息，以及获取文件元数据、读取文件内容和取消待处理任务的回调。
+
+**起始版本**：26.1.0
+
+**系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| itemInfo | [VirtualItemType](#virtualitemtype) | 否 | 否 | 作为根节点的虚拟文件或目录。 |
+| onStat | [VirtualFileOnStat](#virtualfileonstat) | 否 | 是 | 文件元数据回调，不能替代必填的文件大小，默认值为空。 |
+| onRead | [VirtualFileOnRead](#virtualfileonread) | 否 | 否 | 读取文件内容的回调。 |
+| onCancel | [VirtualFileOnCancel](#virtualfileoncancel) | 否 | 是 | 取消回调。默认值为空，为空时，取消操作成功，不向提供方发送回调通知。 |
+
 ## FileUri<sup>15+</sup>
 
 文件地址类型数据，用于描述文件的URI地址信息。创建FileUri对象后，可用于文件拖拽、文件共享等场景，支持通过uriAuthorizationPolicies控制文件访问权限，实现跨应用的文件数据传递和权限管理。
@@ -257,10 +416,11 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
 | uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
-| oriUri     | string | 否   | 否  | 文件的原始URI路径。支持本地文件绝对路径、file://协议和http/https网络URL格式。长度限制为4096字节。例如：`/data/local/tmp/test.txt`、`file:///data/local/tmp/test.txt`或`http://example.com/file.txt`。|
+| oriUri     | string | 否   | 否  | 文件的原始URI路径。支持本地文件绝对路径、file://协议和http/https网络URL格式。长度限制为4096字节。例如：`/data/local/tmp/test.txt`、`file:///data/local/tmp/test.txt`或`http://example.com/file.txt`。若使用`virtualEntry`，该属性可填写一个非空的占位文件 URI，不要求对应的真实文件已经存在。 |
 | fileType   | string | 否   | 否  | 文件类型必须是标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。fileType最大长度限制为1024个字节，超出限制时抛出异常。|
 | details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 | uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权）。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0|
+| virtualEntry | [VirtualFileInfo](#virtualfileinfo) | 否 | 是 | 提供内容的虚拟文件信息。<br/>**起始版本**：26.1.0 |
 
 
 **示例：**

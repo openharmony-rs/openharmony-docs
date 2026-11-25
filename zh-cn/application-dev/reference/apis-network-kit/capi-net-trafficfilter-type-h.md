@@ -78,12 +78,18 @@
 | OH_TRAFFICFILTER_MIN_GROUP_ID        1 | 最小Group ID值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_MAX_GROUP_ID        65535 | 最大Group ID值。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_IFNAMSIZ            32 | 网络接口名称最大长度。<br>**起始版本：** 26.0.0 |
-| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | MAC地址字符串的最大长度（XX:XX:XX:XX:XX:XX格式）。<br>**起始版本：** 26.1.0 |
+| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | MAC地址字符串的最大长度（XX:XX:XX:XX:XX:XX格式）。<br>**起始版本：** 26.0.1 |
 | OH_TRAFFICFILTER_PROTO_ANY           0 | 协议类型常量：任意协议。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_TCP           6 | 协议类型常量：TCP协议。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_UDP           17 | 协议类型常量：UDP协议。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_ICMP          1 | 协议类型常量：ICMP协议。<br>**起始版本：** 26.0.0 |
 | OH_TRAFFICFILTER_PROTO_ICMPV6        58 | 协议类型常量：ICMPV6协议。<br>**起始版本：** 26.0.0 |
+
+### 函数
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)](capi-trafficfilter-oh-trafficfilter-packetcallback.md) | OH_TrafficFilter_PacketCallback | 包过滤回调函数。 |
 
 ## 枚举类型说明
 
@@ -197,7 +203,7 @@ enum OH_TrafficFilter_PacketCopyMode
 
 报文复制模式枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -216,7 +222,7 @@ enum OH_TrafficFilter_PacketDecision
 
 报文处理决策类型。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
 | -- | -- |

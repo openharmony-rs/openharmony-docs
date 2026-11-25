@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=cbeab3efe78496eefe7f99a9dc945e61d5d3c1bd translatedAt=2026-08-29T09:16:48.443Z pushedAt=2026-08-31T01:43:23.284Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:26:04.887Z pushedAt=2026-11-20T06:05:43.006Z nl=1 -->
 
 ```c
 typedef struct {...} WindowManager_WindowProperties

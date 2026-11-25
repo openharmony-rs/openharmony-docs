@@ -1605,13 +1605,13 @@ NODE_TEXT_AREA_BLUR_ON_SUBMIT = 8010
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 触发回车键后是否失焦。<br>0表示触发回车键后不失焦，1表示触发回车键后失焦。<br>默认值0。 |
+| .value[0].i32 | 触发回车键后是否失焦。<br>0表示不失焦，1表示失焦。<br>当[NODE_TEXT_AREA_ENTER_KEY_TYPE](#node_text_area_enter_key_type)为ARKUI_ENTER_KEY_TYPE_NEW_LINE时默认值0；其他回车键类型时默认值1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 触发回车键后是否失焦。0表示触发回车键后不失焦，1表示触发回车键后失焦。 |
+| .value[0].i32 | 触发回车键后是否失焦。0表示不失焦，1表示失焦。 |
 
 ## NODE_TEXT_AREA_INPUT_FILTER
 
@@ -1677,7 +1677,7 @@ NODE_TEXT_AREA_ENTER_KEY_TYPE = 8013
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 回车键类型，具体枚举值参考[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype)。默认值ARKUI_ENTER_KEY_TYPE_DONE，显示为完成样式。 |
+| .value[0].i32 | 回车键类型，具体枚举值参考[ArkUI_EnterKeyType](capi-text-common-h.md#arkui_enterkeytype)。默认值ARKUI_ENTER_KEY_TYPE_NEW_LINE，显示为换行样式。 |
 
 **返回：**
 

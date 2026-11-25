@@ -21,6 +21,10 @@ App Linking是一种实现应用间跳转的技术，通过系统传入的uri信
 
 应用接续（Application Continuation），也称为"跨端迁移"，指当用户在一个设备上操作某个应用时，可以在另一个设备的同一个应用中快速切换，无缝衔接上一个设备的应用体验。具体是指在用户使用过程中，当使用情景发生变化：之前使用的设备不再适合继续当前任务，或者周围有更合适的设备时，用户可以选择使用新的设备来继续当前的任务。接续完成后，之前设备的应用可退出或保留，用户可以将注意力集中在被启动的设备上，继续执行任务。
 
+### ArkAF
+
+[ArkAF](./arkaf-overview.md)（Ark Agentic Framework，方舟智能开发框架）是面向智能体时代的应用能力开发框架，提供意图框架、Skill框架和端侧A2A框架三种能力开放机制，帮助开发者将应用能力外化给系统智能体调用，实现应用与智能体的无缝协同。
+
 ### ArkTS子进程
 
 ArkTS子进程是指启动后系统默认创建ArkTS运行时环境的应用子进程。
@@ -80,7 +84,7 @@ FA模型是早期的应用模型，为应用程序提供必备的组件与运行
 
 当应用存在多个进程时，如果开发者需要将不同的Ability实例动态分配给指定进程，系统会在应用启动时自动指定一个进程来负责总体的协调分配工作，该进程即为主控进程。默认情况下，系统指定应用启动的第一个进程为主控进程。
 
-开发者可以设置[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
+开发者可以设置[onNewProcessRequest()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
 
 
 ## N
@@ -129,11 +133,11 @@ UIAbility生命周期是指一个UIAbility组件从创建到销毁的完整过�
 
 ### UIAbility冷启动
 
-当UIAbility实例处于完全关闭状态并被启动时，将发生冷启动。冷启动意味着系统需要完整地加载并初始化该UIAbility的所有代码和资源。随后，其生命周期回调将按顺序触发：依次是onCreate、onWindowStageCreate和onForeground。
+当UIAbility实例处于完全关闭状态并被启动时，将发生冷启动。冷启动意味着系统需要完整地加载并初始化该UIAbility的所有代码和资源。随后，其生命周期回调将按顺序触发：依次是onCreate()、onWindowStageCreate()和onForeground()。
 
 ### UIAbility热启动
 
-UIAbility热启动发生在实例已启动并切换至后台后再次被启动时。由于实例无需完全重建，系统可快速恢复其原有状态，其生命周期会跳过初始创建阶段，直接触发onNewWant回调，随后UIAbility进入前台状态并触发onForeground回调。
+UIAbility热启动发生在实例已启动并切换至后台后再次被启动时。由于实例无需完全重建，系统可快速恢复其原有状态，其生命周期会跳过初始创建阶段，直接触发onNewWant()回调，随后UIAbility进入前台状态并触发onForeground()回调。
 
 
 ## X

@@ -6,18 +6,19 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:35:32.888Z pushedAt=2026-11-20T06:02:11.789Z nl=1 -->
 
 Certificate signing with CMS is supported since API version 18.
 
 Certificate encapsulation with CMS is supported since API version 22.
 
-PKCS #7 is a standard syntax for storing signed or encrypted data. The extension of PKCS#7, which is CMS, supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signature data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
 
 Currently, only CMS signature data and encapsulated data are supported.
 
 ## How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
@@ -89,46 +90,39 @@ async function testPkcs7SignByPromise() {
     // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
-  cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
-    if (error) {
-      console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
-    } else {
-      try {
-        let cmsContentType = cert.CmsContentType.SIGNED_DATA;
-        let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-        console.info('testPkcs7SignByPromise createCmsGenerator result: success.');
-        let privateKeyInfo: cert.PrivateKeyInfo = {
-          key: rsaStr1024,
-          password: '123456'
-        };
-        // If addCert is true, an error will be reported if the same certificate is added to addSigner or addCert.
-        let config: cert.CmsSignerConfig = {
-          mdName: 'SHA256',
-          addCert: false,
-          addAttr: true,
-          addSmimeCapAttr: true
-        }
-        cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-        console.info('testPkcs7SignByPromise addSigner result: success.');
-        cmsGenerator.addCert(x509Cert);
-        console.info('testPkcs7SignByPromise addCert result: success.');
-        let content = new Uint8Array([1, 2, 3, 4]);
-        let optionsFinal: cert.CmsGeneratorOptions = {
-          contentDataFormat: cert.CmsContentDataFormat.BINARY,
-          outFormat: cert.CmsFormat.PEM,
-          isDetached: true
-        };
-        cmsGenerator.doFinal(content, optionsFinal).then(result => {
-          console.info('testPkcs7SignByPromise doFinal result: success, result = %s', result);
-        }).catch((error: BusinessError) => {
-          console.error(`testPkcs7SignByPromise failed: errCode: ${error.code}, message: ${error.message}`);
-        });
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        console.error(`testPkcs7SignByPromise failed: errCode: ${e.code}, message: ${e.message}`);
-      }
+  try {
+    let x509Cert = await cert.createX509Cert(certEncodingBlob);
+    let cmsContentType = cert.CmsContentType.SIGNED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info('testPkcs7SignByPromise createCmsGenerator result: success.');
+    let privateKeyInfo: cert.PrivateKeyInfo = {
+      key: rsaStr1024,
+      password: '123456'
+    };
+    // When addCert is set to true, calling addSigner or addCert a second time to add the same certificate reports an error.
+    let config: cert.CmsSignerConfig = {
+      mdName: 'SHA256',
+      addCert: false,
+      addAttr: true,
+      addSmimeCapAttr: true
     }
-  });
+    cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
+    console.info('testPkcs7SignByPromise addSigner result: success.');
+    cmsGenerator.addCert(x509Cert);
+    console.info('testPkcs7SignByPromise addCert result: success.');
+    let content = new Uint8Array([1, 2, 3, 4]);
+    let optionsFinal: cert.CmsGeneratorOptions = {
+      contentDataFormat: cert.CmsContentDataFormat.BINARY,
+      outFormat: cert.CmsFormat.PEM,
+      isDetached: true
+    };
+    let result = await cmsGenerator.doFinal(content, optionsFinal);
+    console.info('testPkcs7SignByPromise doFinal result: success, result = %s', result);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPkcs7SignByPromise failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
+  }
 }
 ```
 
@@ -185,48 +179,44 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-function testPkcs7SignBySync() {
+async function testPkcs7SignBySync() {
   let certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
-  cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
-    if (error) {
-      console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
-    } else {
-      try {
-        let cmsContentType = cert.CmsContentType.SIGNED_DATA;
-        let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-        console.info('testPkcs7SignBySync createCmsGenerator success.');
-        let privateKeyInfo: cert.PrivateKeyInfo = {
-          key: rsaStr1024,
-          password: '123456'
-        };
-        // If addCert is true, an error will be reported if the same certificate is added to addSigner or addCert.
-        let config: cert.CmsSignerConfig = {
-          mdName:'SHA256',
-          addCert:false,
-          addAttr:false,
-          addSmimeCapAttr:false
-        }
-        cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-        console.info('testPkcs7SignBySync addSigner result: success.');
-        cmsGenerator.addCert(x509Cert);
-        console.info('testPkcs7SignBySync addCert result: success.');
-        let content = new Uint8Array([1,2,3,4]);
-        let optionsFinal: cert.CmsGeneratorOptions = {
-          contentDataFormat : cert.CmsContentDataFormat.BINARY,
-          outFormat : cert.CmsFormat.DER,
-          isDetached : false
-        };
-        let output = cmsGenerator.doFinalSync(content, optionsFinal);
-        console.info('testPkcs7SignBySync doFinalSync result: success, output = %s.', output);
-      } catch (err) {
-        let e: BusinessError = err as BusinessError;
-        console.error(`testPkcs7SignBySync failed: errCode: ${e.code}, message: ${e.message}`);
-      }
+  try {
+    let x509Cert = await cert.createX509Cert(certEncodingBlob);
+    let cmsContentType = cert.CmsContentType.SIGNED_DATA;
+    let cmsGenerator = cert.createCmsGenerator(cmsContentType);
+    console.info('testPkcs7SignBySync createCmsGenerator success.');
+    let privateKeyInfo: cert.PrivateKeyInfo = {
+      key: rsaStr1024,
+      password: '123456'
+    };
+    // When addCert is set to true, calling addSigner or addCert a second time to add the same certificate reports an error.
+    let config: cert.CmsSignerConfig = {
+      mdName:'SHA256',
+      addCert:false,
+      addAttr:false,
+      addSmimeCapAttr:false
     }
-  });
+    cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
+    console.info('testPkcs7SignBySync addSigner result: success.');
+    cmsGenerator.addCert(x509Cert);
+    console.info('testPkcs7SignBySync addCert result: success.');
+    let content = new Uint8Array([1,2,3,4]);
+    let optionsFinal: cert.CmsGeneratorOptions = {
+      contentDataFormat : cert.CmsContentDataFormat.BINARY,
+      outFormat : cert.CmsFormat.DER,
+      isDetached : false
+    };
+    let output = cmsGenerator.doFinalSync(content, optionsFinal);
+    console.info('testPkcs7SignBySync doFinalSync result: success, output = %s.', output);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPkcs7SignBySync failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
+  }
 }
 ```

@@ -14,7 +14,7 @@
 > **说明：**
 >
 >1. 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->2. API版本26.0.0前请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) && [nfcController.isNfcAvailable](js-apis-nfcController.md#nfccontrollerisnfcsupported)判断设备是否支持NFC能力。从API版本26.0.0开始请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) && [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported)共同判断设备是否支持NFC能力更加准确，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
+>2. API版本26.0.0前请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap-ndk-8h.md#caniuse) && [nfcController.isNfcAvailable](js-apis-nfcController.md#nfccontrollerisnfcsupported)判断设备是否支持NFC能力。从API版本26.0.0开始请使用[canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap-ndk-8h.md#caniuse) && [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported)共同判断设备是否支持NFC能力更加准确，否则可能导致应用运行稳定性问题，参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag-access-guide.md)。
 >3. 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 
 ## **导入模块**
@@ -560,8 +560,8 @@ registerForegroundDispatch(elementName: [ElementName](../apis-ability-kit/js-api
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
-| 3100202  | The element state is invalid. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
+| 3100202  | The element state is invalid.<br>适用版本：12+ |
 
 **示例：**
 
@@ -594,7 +594,7 @@ unregisterForegroundDispatch(elementName: [ElementName](../apis-ability-kit/js-a
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
 
 **示例：**
 
@@ -687,7 +687,7 @@ on(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-bu
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
 | 3100202  | The element state is invalid. |
 
 **示例：**
@@ -723,7 +723,7 @@ off(type: 'readerMode', elementName: [ElementName](../apis-ability-kit/js-apis-b
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
-| 3100201 | The tag running state is abnormal in the service. |
+| 3100201 | The tag running state is abnormal in the service.<br>适用版本：12+ |
 | 3100203  | The off() API can be called only when the on() has been called. |
 
 **示例：**

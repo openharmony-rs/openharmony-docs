@@ -1,22 +1,26 @@
 # (Recommended) Using OHAudio for Audio Playback (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=42e560c3ac7053a20248b25bdd60aaa0a330135f translatedAt=2026-09-18T03:53:14.551Z pushedAt=2026-09-18T10:23:08.744Z -->
 
 OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only and are suitable for applications that implement audio output at the native layer.
+
+When an audio stream is in the working state (not released), it occupies system audio stream resources. Since the system limits the number of audio streams, call `OH_AudioRenderer_Release()` to release audio resources when the client temporarily does not use the audio stream. This ensures proper resource utilization and prevents failures in creating subsequent audio streams.
 
 OHAudio audio playback state transition
 
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
 
+
 ## Prerequisites
 
 To use the playback capability of OHAudio, you must first import the corresponding header files.
 
-The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC).
+The examples below are code snippets. You can obtain the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleC) via the link at the bottom right of each code example.
 
 ### Linking the Dynamic Library in the CMake Script
 
@@ -89,6 +93,7 @@ The following walks you through how to implement simple playback:
 
    ``` C++
    // Set the audio sampling rate.
+   // Starting from API version 26.0.0, audio rendering extensions support sampling rates from 8000 Hz to 384000 Hz in 10 Hz increments. Actual sampling rate support varies by device.
    const int SAMPLING_RATE_48K = 48000;
    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE_48K);
    // Set the number of audio channels.
@@ -118,7 +123,7 @@ The following walks you through how to implement simple playback:
      > 
      > - Once the callback function finishes its execution, the audio service queues the data in the buffer for playback. Therefore, do not change the buffered data outside the callback. Regarding the last frame, if there is insufficient data to completely fill the buffer, you must concatenate the available data with padding to ensure that the buffer is full. This prevents any residual dirty data in the buffer from adversely affecting the playback effect.
 
-    - Starting from API version 12, you can call [OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback) to set **audioDataSize**.
+    - Starting from API version 12, you can set audioDataSize through [OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).
 
    <!-- @[Render_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
@@ -132,6 +137,13 @@ The following walks you through how to implement simple playback:
    {
        // Write the data to be played to audioData by audioDataSize.
        // If you do not want to play a segment of audioData, return AUDIO_DATA_CALLBACK_RESULT_INVALID.
+       size_t readCount = fread(audioData, audioDataSize, 1, g_fp);
+       if (readCount == 0) {
+           return AUDIO_DATA_CALLBACK_RESULT_INVALID;
+       }
+       if (feof(g_fp)) {
+           fseek(g_fp, 0, SEEK_SET);
+       }
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
 
@@ -155,8 +167,8 @@ The following walks you through how to implement simple playback:
    }
    // ...
        // Configure the callback function for interruption events.
-       OH_AudioRenderer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent_New;
-       OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, OnIntereruptCb, nullptr);
+       OH_AudioRenderer_OnInterruptCallback OnInterruptCb = MyOnInterruptEvent_New;
+       OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, OnInterruptCb, nullptr);
        
        // Configure the callback function for audio exceptions.
        OH_AudioRenderer_OnErrorCallback OnErrorCb = MyOnError_New;
@@ -180,7 +192,7 @@ The following walks you through how to implement simple playback:
 5. Use the audio renderer.
 
    You can use the APIs listed below to control the audio streams.
-    
+
     | API                                                        | Description        |
     | ------------------------------------------------------------ | ------------ |
     | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | Starts the audio renderer.    |
@@ -209,30 +221,33 @@ The following walks you through how to implement simple playback:
 
 You can use [OH_AudioRenderer_SetVolume](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setvolume) to set the volume for the current audio stream.
 
-<!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
 
 ``` C++
-float volume = 0.5f;
+static float volume = 0.1f;
+volume = volume > 0.5f ? 0.1f : 0.8f;
 
 // Set the volume for the audio stream.
 OH_AudioRenderer_SetVolume(audioRenderer, volume);
 ```
 
-### Setting the Low Latency Mode
+### Setting the Low-Latency Mode
 
 If the device supports the low-latency channel and the sampling rate is set to 48000 Hz, you can use the low-latency mode to create a player for a higher-quality audio experience.
 
-The development process is similar to that in the common playback scenario (described in [Implementing Audio Playback](#implementing-audio-playback)). The only difference is that you need to set the low delay mode by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) when creating an audio stream builder in step 1.
+The development process is similar to that in the common playback scenario (described in [Implementing Audio Playback](#implementing-audio-playback)). The only difference is that you need to set the low-latency mode by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) when creating an audio stream builder in step 1.
 
 > **NOTE**
 >
-> - In audio recording scenarios, if [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to **AUDIOSTREAM_USAGE_VOICE_COMMUNICATION** or **AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
-> - The low-latency mode requires robust data processing capabilities. If your application generates data slowly, it may lead to lag. Therefore, for typical music and video playback, this mode is not recommended. It is best suited for applications that are sensitive to latency, such as gaming and karaoke.
+> - When [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to `AUDIOSTREAM_USAGE_VOICE_COMMUNICATION` or `AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION` in an audio playback scenario, the low-latency mode cannot be actively set. The system determines the output audio path based on the device capabilities.
+> - The low-latency path requires high data processing performance. Slow data generation by the app can easily cause stuttering. This mode is not recommended for common music or video playback scenarios. It is recommended only for latency-sensitive apps such as gaming and karaoke.
 
-<!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
 
 ``` C++
-OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_FAST);
+OH_AudioStream_LatencyMode latencyMode = g_mode == 0 ? AUDIOSTREAM_LATENCY_MODE_NORMAL :
+    AUDIOSTREAM_LATENCY_MODE_FAST;
+OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
 ### Setting the Audio Channel Layout
@@ -243,7 +258,7 @@ The development process is similar to that in the common playback scenario (desc
 
 If the audio channel layout does not match the number of audio channels, audio streams fail to be created. Therefore, you must ensure that the audio channel layout setting is correct.
 
-If you do not know the accurate audio channel layout or you want to use the default audio channel layout, do not call the API to set the audio channel layout. Alternatively, deliver **CH_LAYOUT_UNKNOWN** to use the default audio channel layout, which is specific to the number of audio channels.
+If you do not know the accurate channel layout information or you want to use the default channel layout, you can skip calling the channel layout setting API, or set it to CH_LAYOUT_UNKNOWN to use the default channel layout based on the channel count.
 
 For audio in Higher Order Ambisonics (HOA) format, to obtain the correct rendering and playback effect, you must specify the audio channel layout.
 
@@ -291,7 +306,7 @@ For details about the sample related to OHAudio audio playback, see [OHAudio Rec
 
 ## Precautions
 
-Starting from API version 12, the [OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md) API is no longer recommended for setting audio callback functions. If this API must be used, you should ensure that the audio callback function is set properly to avoid unexpected behavior. You can do this in one of two ways:
+Starting from API version 12, using [OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md) to set audio callback functions is **no longer recommended**. If you must use it, configure it in one of the following two ways to avoid unexpected behavior.
 
 - Initialize each callback in [OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md) by a custom callback method or a null pointer.
 

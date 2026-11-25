@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:34:51.616Z pushedAt=2026-11-23T08:04:13.206Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [Scrypt](crypto-key-derivation-overview.md#scrypt).
 
@@ -18,7 +19,7 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
    - **algName**: algorithm to use, which is **'SCRYPT'**.
    - **passphrase**: original password used to generate the derived key.
 
-      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
+      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or Base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
       
    - **salt**: salt value.
    - **n**: number of iterations. The value must be a positive integer.
@@ -67,6 +68,7 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
     } catch(error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      // ...
     }
   }
   ```
@@ -81,24 +83,26 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
-  function scryptPromise() {
-    let spec: cryptoFramework.ScryptSpec = {
-      algName: 'SCRYPT',
-      passphrase: '123456',
-      salt: new Uint8Array(16),
-      n:1024,
-      p:16,
-      r:8,
-      maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
-      keySize: 64
-    };
-    let kdf = cryptoFramework.createKdf('SCRYPT');
-    let kdfPromise = kdf.generateSecret(spec);
-    kdfPromise.then((secret) => {
+  async function scryptPromise() {
+    try {
+      let spec: cryptoFramework.ScryptSpec = {
+        algName: 'SCRYPT',
+        passphrase: '123456',
+        salt: new Uint8Array(16),
+        n:1024,
+        p:16,
+        r:8,
+        maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
+        keySize: 64
+      };
+      let kdf = cryptoFramework.createKdf('SCRYPT');
+      let secret = await kdf.generateSecret(spec);
       console.info('key derivation output: ' + secret.data);
-    }).catch((error: BusinessError) => {
-      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`key derivation failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -126,9 +130,11 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
       let kdf = cryptoFramework.createKdf('SCRYPT');
       let secret = kdf.generateSecretSync(spec);
       console.info('[Sync]key derivation output: ' + secret.data);
-    } catch(error) {
+    } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      // ...
     }
   }
   ```
+

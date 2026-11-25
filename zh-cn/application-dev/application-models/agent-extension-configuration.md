@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "详细说明AgentExtensionAbility的agent_config.json配置文件各标签字段含义与示例，涵盖AgentCard能力描述、技能列表、输入输出模式等配置项。"
+keywords: [AgentExtensionAbility, agent_config.json, AgentCard, AgentSkill, 智能体卡片, 配置文件]
+doctype: guide
+status: active
+---
 # AgentExtensionAbility配置文件说明
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -6,7 +13,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-[AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)作为Agent的“名片”，主要用于描述Agent的能力。AgentCard的详细配置信息需要通过agent_config.json配置文件来承载。
+[AgentCard (Agent卡片)](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)作为Agent的“名片”，主要用于描述Agent的能力。AgentCard的详细配置信息需要通过agent_config.json配置文件来承载。
 
 该配置文件由开发者手动创建，通常位于Module的`resources/base/profile/`目录下。AgentExtensionAbility可以在metadata配置项中引用该资源文件，来绑定对应的AgentCard。一个agent_config.json只能被一个AgentExtensionAbility引用。
 

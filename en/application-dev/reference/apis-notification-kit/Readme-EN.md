@@ -2,9 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=41c190e8dc8f15d3ce2f78bfa04e558b48657de4 translatedAt=2026-11-13T02:27:56.944Z pushedAt=2026-11-13T09:44:30.433Z nl=1 -->
 
 - ArkTS APIs<!--notification-arkts-->
   - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)
@@ -51,3 +52,5 @@
       - [notification.h](capi-notification-h.md)
 - Error Codes<!--notification-arkts-errcode-->
   - [Notification Error Codes](errorcode-notification.md)
+<!--RP1-->
+<!--RP1End-->

@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Information Display Component Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=00d8471aa555cf6cc5dfeff4258ec5a6b23f56d0 translatedAt=2026-08-25T02:18:35.143Z pushedAt=2026-08-26T06:00:06.767Z -->
+<!-- md-trans-meta sourceCommit=206bd97188fc4ec7832475ee377b959beb5bd8db translatedAt=2026-11-18T08:47:59.716Z pushedAt=2026-11-19T02:12:36.256Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -33,6 +32,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -43,7 +43,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Foreground color, in 0xARGB format.|
+| .value[0].u32 | Foreground color, in 0xARGB format. |
 
 ## NODE_LOADING_PROGRESS_ENABLE_LOADING
 
@@ -55,6 +55,7 @@ Whether to show the loading animation for the **LoadingProgress** component. Thi
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -79,6 +80,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -89,7 +91,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Current value of the progress indicator. The value range is [0, **total**]. The default value is **0**. |
+| .value[0].f32 | Current value of the progress indicator. The value range is [0, **total**]. |
 
 ## NODE_PROGRESS_TOTAL
 
@@ -102,6 +104,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -112,7 +115,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Total value of the progress indicator. The value range is (0, +∞). The default value is **100**. |
+| .value[0].f32 | Total value of the progress indicator. The value range is (0, +∞). |
 
 ## NODE_PROGRESS_COLOR
 
@@ -125,6 +128,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -135,7 +139,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_PROGRESS_TYPE
 
@@ -147,6 +151,7 @@ Type of the progress indicator. This attribute can be set, reset, and obtained a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -170,6 +175,7 @@ Linear progress indicator style. This attribute can be set, reset, and obtained 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 15
+
 
 **Parameters**
 

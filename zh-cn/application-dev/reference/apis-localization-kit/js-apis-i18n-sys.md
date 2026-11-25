@@ -410,7 +410,7 @@ static setFirstDayOfWeek(type: WeekDay): void
 
 | 参数名  | 类型      | 必填   | 说明                              |
 | ---- | ------- | ---- | ------------------------------- |
-| type | [WeekDay](./js-apis-i18n.md#weekday18) | 是 | 周期起始日。 |
+| type | [WeekDay](./js-apis-i18n.md#weekday18) | 是 | 一周的起始日。 |
 
 **错误码：**
 
@@ -1178,10 +1178,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();
-    for (let i = 0; i < timeZoneCityItemArray.length; i++) {
-        console.info(timeZoneCityItemArray[i].zoneId + ", " + timeZoneCityItemArray[i].cityId + ", " + timeZoneCityItemArray[i].cityDisplayName +
-            ", " + timeZoneCityItemArray[i].offset + "\r\n");
-    }
+    timeZoneCityItemArray.forEach((item: i18n.TimeZoneCityItem) => {
+      console.info(item.zoneId + ", " + item.cityId + ", " + item.cityDisplayName +
+          ", " + item.offset + "\r\n");
+    });
   } catch(error) {
     let err: BusinessError = error as BusinessError;
     console.error(`call SystemLocaleManager.getTimeZoneCityItemArray failed, error code: ${err.code}, message: ${err.message}.`);
@@ -1218,8 +1218,8 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 | cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。           |
 | offset          | number          |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。       |
 | zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。           |
-| latitude        | number          |   否    |   否    | 城市纬度坐标，单位为度（°）。<br>**起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
-| longitude       | number          |   否    |   否    | 城市经度坐标，单位为度（°）。<br>**起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| latitude        | number          |   否    |   否    | 城市纬度坐标，单位为度（°）。<br>**起始版本**：26.0.1<br>**模型约束**：此接口仅可在Stage模型下使用。        |
+| longitude       | number          |   否    |   否    | 城市经度坐标，单位为度（°）。<br>**起始版本**：26.0.1<br>**模型约束**：此接口仅可在Stage模型下使用。        |
 | rawOffset       | number          |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。   |
 
 

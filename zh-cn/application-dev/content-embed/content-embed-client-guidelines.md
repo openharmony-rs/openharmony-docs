@@ -19,7 +19,7 @@ OE客户端应用指嵌入其他文档的应用，通过调用OE框架层[conten
 - 在笔记应用中嵌入其他应用的文档，实现跨应用协作。
 
 ## 约束限制
-在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[canIUse()](../reference/common/syscap__ndk_8h.md#caniuse)接口查询指定的系统能力是否被支持。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[canIUse()](../reference/common/syscap-ndk-8h.md#caniuse)接口查询指定的系统能力是否被支持。并申请ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
 
 ## 接口说明
 
@@ -30,7 +30,7 @@ OE客户端应用指嵌入其他文档的应用，通过调用OE框架层[conten
 | 接口名称 | 功能描述 |
 | ------- | ---- |
 | OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](content-embed-kit-terminology.md#oe文档)。|
-| OH_ContentEmbed_CreateDocumentByOEId | 通过[OEID](content-embed-kit-terminology.md#oeid)创建OE文档。|
+| OH_ContentEmbed_CreateDocumentByOEid | 通过[OEID](content-embed-kit-terminology.md#oeid)创建OE文档。|
 | OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](content-embed-kit-terminology.md#oe格式文件)加载OE文档。|
 | OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](content-embed-kit-terminology.md#客户端oe对象)。|
 | OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源。|
@@ -53,18 +53,23 @@ OE客户端应用指嵌入其他文档的应用，通过调用OE框架层[conten
 ### 添加动态链接库
 在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库：
 
-```txt
+<!-- @[content_embed_client_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/CMakeLists.txt) -->  
+
+``` Text
 target_link_libraries(entry PUBLIC
     libcontent_embed_ndk.so
     libhilog_ndk.z.so
     libace_napi.z.so
     libpixelmap.so
+    libohfileshare.so
 )
 ```
 
 ### 引用头文件
 
-```cpp
+<!-- @[content_embed_client_include_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+
+``` C++
 #include <string>
 #include <ContentEmbedKit/content_embed/content_embed_common.h>
 #include <ContentEmbedKit/content_embed/content_embed_document.h>
@@ -77,34 +82,52 @@ target_link_libraries(entry PUBLIC
 
 查询当前设备在指定语言下支持的所有可嵌入文档的信息。
 
-```cpp
-void QueryAllFormat(const std::string &locale)
+<!-- @[content_embed_client_query_all_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+
+``` C++
+ContentEmbed_Info* CreateContentEmbedInfoWithCount(
+    const std::string &locale, uint32_t& outCount, ContentEmbed_ErrorCode& outErr)
 {
-    ContentEmbed_Info* contentEmbedInfo = nullptr;
+    outCount = 0;
+    ContentEmbed_Info* info = nullptr;
     // 创建ContentEmbedInfo
-    ContentEmbed_ErrorCode errCode = OH_ContentEmbed_CreateContentEmbedInfo(&contentEmbedInfo);
-    if (errCode != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_CreateContentEmbedInfo failed, errCode: %{public}d.", errCode);
-        return;
+    ContentEmbed_ErrorCode err = OH_ContentEmbed_CreateContentEmbedInfo(&info);
+    if (err != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_CreateContentEmbedInfo failed, errCode: %{public}d.", err);
+        outErr = err;
+        return nullptr;
     }
     // 获取locale语言的ContentEmbedInfo信息
-    errCode = OH_ContentEmbed_GetContentEmbedInfo(locale.c_str(), contentEmbedInfo);
-    if (errCode != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetContentEmbedInfo failed, errCode: %{public}d.", errCode);
+    err = OH_ContentEmbed_GetContentEmbedInfo(locale.c_str(), info);
+    if (err != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetContentEmbedInfo failed, errCode: %{public}d.", err);
         // 查询失败销毁ContentEmbedInfo对象
-        OH_ContentEmbed_DestroyContentEmbedInfo(contentEmbedInfo);
-        return;
+        OH_ContentEmbed_DestroyContentEmbedInfo(info);
+        outErr = err;
+        return nullptr;
     }
-    uint32_t count = 0;
     // 获取ContentEmbedInfo对象Format对象数量
-    errCode = OH_ContentEmbed_GetFormatCountFromInfo(contentEmbedInfo, &count);
-    if (errCode != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetFormatCountFromInfo failed, errCode: %{public}d.", errCode);
+    err = OH_ContentEmbed_GetFormatCountFromInfo(info, &outCount);
+    if (err != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetFormatCountFromInfo failed, errCode: %{public}d.", err);
         // 查询失败销毁ContentEmbedInfo对象
-        OH_ContentEmbed_DestroyContentEmbedInfo(contentEmbedInfo);
-        return;
+        OH_ContentEmbed_DestroyContentEmbedInfo(info);
+        outErr = err;
+        return nullptr;
     }
-    for (int i = 0; i < count; i++) {
+    outErr = CE_ERR_OK;
+    return info;
+}
+
+ContentEmbed_ErrorCode QueryAllFormat(const std::string &locale)
+{
+    uint32_t count = 0;
+    ContentEmbed_ErrorCode errCode = CE_ERR_OK;
+    ContentEmbed_Info* contentEmbedInfo = CreateContentEmbedInfoWithCount(locale, count, errCode);
+    if (contentEmbedInfo == nullptr) {
+        return errCode;
+    }
+    for (uint32_t i = 0; i < count; i++) {
         ContentEmbed_Format* ceFormat = nullptr;
         // 从ContentEmbedInfo对象获取索引为i的ContentEmbed_Format信息
         errCode = OH_ContentEmbed_GetFormatFromInfo(contentEmbedInfo, i, &ceFormat);
@@ -124,7 +147,8 @@ void QueryAllFormat(const std::string &locale)
         // 获取名称和描述
         errCode = OH_ContentEmbed_GetNameAndDescriptionFromFormat(ceFormat, name, description);
         if (errCode != CE_ERR_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetNameAndDescriptionFromFormat failed, errCode: %{public}d.", errCode);
+            OH_LOG_ERROR(LOG_APP,
+                "OH_ContentEmbed_GetNameAndDescriptionFromFormat failed, errCode: %{public}d.", errCode);
             continue;
         }
         OH_PixelmapNative* pixelMap = nullptr;
@@ -134,37 +158,49 @@ void QueryAllFormat(const std::string &locale)
             OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetIconFromFormat failed, errCode: %{public}d.", errCode);
             continue;
         }
-        unsigned int count = 0;
+        // pixelMap不使用时需要释放掉
+        if (pixelMap != nullptr) {
+            OH_PixelmapNative_Destroy(&pixelMap);
+        }
+        unsigned int extensionCount = 0;
         // 获取文件后缀
-        char **fileNameExtensions = OH_ContentEmbed_GetFileNameExtensionsFromFormat(ceFormat, &count);
+        char **fileNameExtensions = OH_ContentEmbed_GetFileNameExtensionsFromFormat(ceFormat, &extensionCount);
         if (fileNameExtensions == nullptr) {
             OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetFileNameExtensionsFromFormat failed");
             continue;
         }
+        // ...
     }
     // 销毁ContentEmbedInfo对象
     OH_ContentEmbed_DestroyContentEmbedInfo(contentEmbedInfo);
+    return errCode;
 }
 ```
 
 ### 查询OEID对应的格式信息
 
-```cpp
-void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
+<!-- @[content_embed_client_query_format_by_oeid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+
+``` C++
+ContentEmbed_Format* QueryFormatByOEid(const std::string &oeid, const std::string &locale,
+    ContentEmbed_ErrorCode& outErr)
 {
     ContentEmbed_Format* ceFormat = nullptr;
     // 创建ContentEmbed_Format
     ContentEmbed_ErrorCode errCode = OH_ContentEmbed_CreateContentEmbedFormat(&ceFormat);
     if (errCode != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_CreateContentEmbedFormat failed, errCode: %{public}d.", errCode);
-        return;
+        outErr = errCode;
+        return nullptr;
     }
     errCode = OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(oeid.c_str(), locale.c_str(), ceFormat);
     if (errCode != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale failed, errCode: %{public}d.", errCode);
         // 查询失败销毁ContentEmbed_Format对象
         OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
-        return;
+        outErr = errCode;
+        return nullptr;
     }
     char name[MAX_NAME_LENGTH];
     char description[MAX_DESCRIPTION_LENGTH];
@@ -172,22 +208,33 @@ void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
     errCode = OH_ContentEmbed_GetNameAndDescriptionFromFormat(ceFormat, name, description);
     if (errCode != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetNameAndDescriptionFromFormat failed, errCode: %{public}d.", errCode);
-        return;
+        OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
+        outErr = errCode;
+        return nullptr;
     }
     OH_PixelmapNative* pixelMap = nullptr;
     // 获取图标
     errCode = OH_ContentEmbed_GetIconFromFormat(ceFormat, &pixelMap);
     if (errCode != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetIconFromFormat failed, errCode: %{public}d.", errCode);
-        return;
+        OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
+        outErr = errCode;
+        return nullptr;
+    }
+    if (pixelMap != nullptr) {
+        OH_PixelmapNative_Destroy(&pixelMap);
     }
     unsigned int count = 0;
     // 获取文件后缀
     char **fileNameExtensions = OH_ContentEmbed_GetFileNameExtensionsFromFormat(ceFormat, &count);
     if (fileNameExtensions == nullptr) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_GetFileNameExtensionsFromFormat failed");
-        return;
+        OH_ContentEmbed_DestroyContentEmbedFormat(ceFormat);
+        outErr = CE_ERR_NULL_POINTER;
+        return nullptr;
     }
+    outErr = CE_ERR_OK;
+    return ceFormat;
 }
 ```
 
@@ -232,7 +279,10 @@ void QueryFormatByOEid(const std::string &oeid, const std::string &locale)
 
 基于OE文档和当前上下文实例创建客户端OE对象，实现OE文档与客户端OE对象的关联，并用于与服务端通信。
 
-```cpp
+<!-- @[content_embed_client_create_proxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+
+``` C++
+constexpr size_t CHUNK_SIZE = 4 * 1024 * 1024;
 void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 {
     OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnUpdateFunc");
@@ -250,45 +300,35 @@ void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
         OH_LOG_INFO(LOG_APP, "linking document, No need to save to the sandbox");
         return;
     }
-    const size_t CHUNK_SIZE = 4096; // 分块大小
     uint8_t *buffer = new (std::nothrow) uint8_t[CHUNK_SIZE + 1];
-    if (!buffer)
+    if (!buffer) {
         return;
+    }
     size_t offset = 0;
     size_t actualRead = 0;
+
     do {
         // 读取OE文档内容
         ret = OH_ContentEmbed_Document_Read(buffer, CHUNK_SIZE, document, offset, &actualRead);
-
-        if (ret != CE_ERR_OK || actualRead == 0)
+        if (ret != CE_ERR_OK || actualRead == 0) {
             break;
-
+        }
         // 自行处理buffer数据流
         // ...
         offset += actualRead;
-    } while (true);
-
+    } while (ret == CE_ERR_OK && actualRead != 0);
     delete[] buffer;
 }
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
+    OH_LOG_ERROR(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
 }
 
 void ClientCallBack_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)
 {
     OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnEditingFinishedFunc, dataModified: %{public}d", dataModified);
-    // 建议此时销毁OE文档和客户端OE对象，释放资源。
-    ContentEmbed_Document *document = nullptr;
-    ContentEmbed_ErrorCode errCode = OH_ContentEmbed_Proxy_GetDocument(proxy, &document);
-    if (errCode != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Proxy_GetDocument failed, errCode: %{public}d.", errCode);
-        return;
-    }
-    // 销毁OE文档
-    OH_ContentEmbed_DestroyDocument(document);
-    // 销毁客户端OE对象
+    // 编辑完成后，不需要使用时，可销毁客户端OE对象
     OH_ContentEmbed_DestroyExtensionProxy(proxy);
 }
 
@@ -301,14 +341,14 @@ void ClientCallBack_OnExtensionStoppedFunc(ContentEmbed_ExtensionProxy *proxy)
 // oeDocument: OE文档
 void CreateProxy(void* contextPtr, ContentEmbed_Document *oeDocument)
 {
-    ContentEmbed_ExtensionProxy* proxy;
+    ContentEmbed_ExtensionProxy* proxy = nullptr;
     // 创建客户端OE对象
     ContentEmbed_ErrorCode errCode = OH_ContentEmbed_CreateExtensionProxy(oeDocument, &proxy, contextPtr);
     if (errCode != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_CreateExtensionProxy failed, errCode: %{public}d.", errCode);
         return;
     }
-    // 注册回调：注册文档更新、错误、编辑结束等回调函数，回调函数注册顺序无要求，但不能遗漏。
+    // 注册回调：注册文档更新、错误、编辑结束等回调函数，回调函数注册顺序无要求，但不能遗漏
     // 注册OE文档更新回调
     errCode = OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(proxy, ClientCallBack_OnUpdateFunc);
     if (errCode != CE_ERR_OK) {
@@ -324,29 +364,34 @@ void CreateProxy(void* contextPtr, ContentEmbed_Document *oeDocument)
     // 注册OE文档编辑结束回调
     errCode = OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(proxy, ClientCallBack_OnEditingFinishedFunc);
     if (errCode != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc failed, errCode: %{public}d.", errCode);
         return;
     }
     // 注册Extension实例关闭回调
     errCode = OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(proxy, ClientCallBack_OnExtensionStoppedFunc);
     if (errCode != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc failed, errCode: %{public}d.", errCode);
         return;
     }
 }
 ```
 
 获取当前上下文实例。
+ 
+<!-- @[content_embed_client_get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// 获取UIAbility Context
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// 调用Native接口，将Context传到C++侧处理
-nativeModule.receiveContext(context);
+``` TypeScript
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+testNapi.receiveContext(context);
 ```
 
-```cpp
-static napi_value ReceiveContext(napi_env env, napi_callback_info info) {
+<!-- @[content_embed_client_receive_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/napi_init.cpp) -->  
+
+``` C++
+napi_value ReceiveContext(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -359,7 +404,6 @@ static napi_value ReceiveContext(napi_env env, napi_callback_info info) {
     napi_create_reference(env, contextObj, 1, &tmp);
     // 把ArkTS对象解包为C++指针
     napi_status status = napi_unwrap(env, contextObj, &contextPtr);
-  
     if (status != napi_ok || contextPtr == nullptr) {
         // 错误处理
         napi_throw_error(env, nullptr, "Failed to unwrap context");
@@ -370,10 +414,11 @@ static napi_value ReceiveContext(napi_env env, napi_callback_info info) {
     return nullptr;
 }
 
-// napi注册
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
     napi_property_descriptor desc[] = {
+        // ...
         {"receiveContext", nullptr, ReceiveContext, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -390,8 +435,10 @@ EXTERN_C_END
 4. 查询OE文档编辑状态。
 5. 获取OE文档快照。
 
-```cpp
-void HandleProxy(ContentEmbed_ExtensionProxy* proxy)
+<!-- @[content_embed_client_handle_proxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEClientDemo/entry/src/main/cpp/content_embed/content_embed_proxy.cpp) -->  
+
+``` C++
+static void HandleProxy(ContentEmbed_ExtensionProxy* proxy)
 {
     ContentEmbed_ErrorCode errCode = CE_ERR_OK;
     // 启动OE Extension组件
@@ -420,11 +467,17 @@ void HandleProxy(ContentEmbed_ExtensionProxy* proxy)
     bool isModified = false;
     // 查询被嵌入文档编辑状态
     errCode = OH_ContentEmbed_Proxy_GetEditStatus(proxy, &isEditing, &isModified);
+    if (errCode != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Proxy_GetEditStatus failed, errCode: %{public}d.", errCode);
+    }
     if ((bitmask & CE_CAPABILITY_SUPPORT_SNAPSHOT) != 0) {
         // 服务端支持获取OE快照能力时，从OE服务端获取OE文档快照
-        OH_PixelmapNative* pixelMap;
+        OH_PixelmapNative* pixelMap = nullptr;
         // 获取OE文档快照
         errCode = OH_ContentEmbed_Proxy_GetSnapshot(proxy, &pixelMap);
+        if (errCode == CE_ERR_OK && pixelMap != nullptr) {
+            OH_PixelmapNative_Release(pixelMap);
+        }
     }
     // 当proxy不需要和服务端交互时
     OH_ContentEmbed_Proxy_StopWork(proxy);

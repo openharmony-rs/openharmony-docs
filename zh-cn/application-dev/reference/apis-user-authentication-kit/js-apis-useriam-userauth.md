@@ -220,7 +220,7 @@ getAuthLockState(authType: UserAuthType): Promise\<AuthLockState\>
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500008 | The parameter is out of range. |
@@ -279,8 +279,7 @@ getEnrolledState(authType: UserAuthType): EnrolledState
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500010 | The type of credential has not been enrolled. |
@@ -631,7 +630,7 @@ on(type: 'result', callback: IAuthCallback): void
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例1：**
@@ -778,7 +777,7 @@ off(type: 'result', callback?: IAuthCallback): void
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例：**
@@ -851,8 +850,7 @@ start(): void
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 201      | Permission denied. Possible causes: <br>1.No permission to access biometric. <br>2.No permission to start authentication from background.|
-| 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500001 | Authentication failed. <br> 适用版本：10-19                          |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
@@ -925,8 +923,7 @@ cancel(): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 201      | Permission denied. |
-| 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error.        |
 
 **示例：**
@@ -1150,7 +1147,7 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.   |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.   |
 | 12500002 | General operation error.                         |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
@@ -1197,9 +1194,9 @@ try {
 
 用户识别状态枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1217,9 +1214,9 @@ try {
 
 用户识别结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1240,9 +1237,9 @@ type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 
 用户识别结果回调类型。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1264,7 +1261,7 @@ type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 >
 > 每次调用getUserRecognitionMgr返回新的UserRecognitionMgr实例。on和off需使用同一实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1276,9 +1273,9 @@ getUserRecognitionResult(): Promise\<UserRecognitionResult\>
 
 获取最新的用户识别结果。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1326,9 +1323,9 @@ onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 
 订阅用户识别结果变化事件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1372,9 +1369,9 @@ offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 
 取消订阅用户识别结果变化事件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1424,9 +1421,9 @@ getUserRecognitionMgr(): UserRecognitionMgr | null
 
 **需要权限：** ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1446,7 +1443,7 @@ getUserRecognitionMgr(): UserRecognitionMgr | null
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 201      | Permission denied.       |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 
@@ -1755,7 +1752,7 @@ start: () => void
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. |
 | 12500001 | Authentication failed. |
 | 12500002 | General operation error. |
@@ -1807,7 +1804,7 @@ cancel: () => void
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. |
 | 12500002 | General operation error. |
 
@@ -1925,8 +1922,7 @@ getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12500002 | General operation error. |
 | 12500005 | The authentication type is not supported. |
 | 12500006 | The authentication trust level is not supported. |

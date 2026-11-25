@@ -367,6 +367,170 @@ connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
 });
 ```
 
+## connection.onAppHttpProxy
+
+onAppHttpProxy(callback: Callback\<HttpProxy>): void
+
+订阅当前应用的HTTP代理变化。
+
+> **说明：**
+>
+> - 注册后立即回调当前应用的代理配置；未配置应用代理时返回空代理。
+> - 调用[setAppHttpProxy](#connectionsetapphttpproxy11)后，应用代理的地址、端口、旁路列表中任意一个发生变化时，触发回调。
+> - 可同时注册多个不同的回调函数。
+> - 回调只提供`host`、`port`和`exclusionList`，不提供代理用户名和密码。
+> - 重复注册同一个回调函数时，仅首次注册生效，且不会重复触发注册时的立即回调。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 是 | 回调函数，返回当前应用代理信息。 |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const appProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 根据当前应用代理更新应用逻辑。
+};
+
+connection.onAppHttpProxy(appProxyCallback);
+```
+
+## connection.offAppHttpProxy
+
+offAppHttpProxy(callback?: Callback\<HttpProxy>): void
+
+取消订阅当前应用的HTTP代理变化。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 否 | 回调函数，可以指定传入[onAppHttpProxy](#connectiononapphttpproxy)中的callback对象，取消对应的订阅。不填该参数，或显式传入`undefined`时，取消当前应用注册的全部应用代理回调。 |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const appProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 处理应用代理变化。
+};
+
+connection.onAppHttpProxy(appProxyCallback);
+connection.offAppHttpProxy(appProxyCallback); // 只取消该回调。
+// connection.offAppHttpProxy(); // 取消全部应用代理回调。
+```
+
+## connection.onDefaultHttpProxy
+
+onDefaultHttpProxy(callback: Callback\<HttpProxy>): void
+
+订阅当前默认HTTP代理的变化（应用级代理优先于全局代理，选择规则与[getDefaultHttpProxy](#connectiongetdefaulthttpproxy10)一致）。
+
+> **说明：**
+>
+> - 注册后立即回调当前有效代理；当前没有有效代理时返回空代理。如果注册时暂时无法查询代理，则本次不立即回调。
+> - 默认代理的地址、端口、旁路列表中任意一个发生变化时，触发回调。
+> - 可同时注册多个不同的回调函数。
+> - 回调只提供`host`、`port`和`exclusionList`，不提供代理用户名和密码。
+> - 重复注册同一个回调函数时，仅首次注册生效，且不会重复触发注册时的立即回调。
+
+**起始版本**：26.1.0
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 是 | 回调函数，返回当前有效默认代理信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const defaultProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 根据当前有效代理更新应用逻辑。
+};
+
+connection.onDefaultHttpProxy(defaultProxyCallback);
+```
+
+## connection.offDefaultHttpProxy
+
+offDefaultHttpProxy(callback?: Callback\<HttpProxy>): void
+
+取消订阅当前应用的默认HTTP代理变化。
+
+> **说明：**
+>
+> 若因权限不足取消失败，原回调仍有效，可在获得权限后重试。
+
+**起始版本**：26.1.0
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | Callback\<[HttpProxy](#httpproxy10)> | 否 | 回调函数，可以指定传入[onDefaultHttpProxy](#connectionondefaulthttpproxy)中的callback对象，取消对应的订阅。不填该参数，或显式传入`undefined`时，取消当前应用注册的全部默认代理回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+
+const defaultProxyCallback = (proxy: connection.HttpProxy): void => {
+  // 处理默认代理变化。
+};
+
+connection.onDefaultHttpProxy(defaultProxyCallback);
+connection.offDefaultHttpProxy(defaultProxyCallback); // 只取消该回调。
+// connection.offDefaultHttpProxy(); // 取消全部默认代理回调。
+```
+
 ## connection.getAppNet<sup>9+</sup>
 
 getAppNet(callback: AsyncCallback\<NetHandle>): void
@@ -1982,7 +2146,7 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
+设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：`http://127.0.0.1:21998/PacProxyScript.pac`。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
 
 >**说明：** 
 >
@@ -2395,11 +2559,11 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
-  if (data.length !== 0) {
-    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
-    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
-    console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
-  }
+  data.forEach((info: connection.NetIpMacInfo) => {
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(info.ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(info.iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(info.macAddress)}`);
+  });
 }).catch((error: BusinessError) => {
   console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
 });
@@ -2570,7 +2734,7 @@ import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.xn--fsq092h.com
-let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
 ```
 
@@ -2612,7 +2776,7 @@ import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.示例.com
-let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
 ```
 
@@ -3254,7 +3418,7 @@ interface Data {
   if (socketType == "TCPSocket") {
     tcp.bind({address:"192.168.xxx.xxx",
               port:8080,
-              family:1} as socket.NetAddress, (error: Error) => {
+              family:1} as socket.NetAddress, (error: BusinessError) => {
       if (error) {
         console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
@@ -3866,7 +4030,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。   |
-| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是阻塞状态。true：标识当前网络是阻塞状态；false：标识当前网络不是阻塞状态。 |
 
 ## ConnectionProperties
 

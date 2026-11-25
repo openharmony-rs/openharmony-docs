@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_Rdb_Store
+typedef struct OH_Rdb_Store {...} OH_Rdb_Store
 ```
 
 ## 概述

@@ -2,10 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=9ff629abb1f77c36b24792690e916ea8f7bdd366 translatedAt=2026-08-27T08:35:14.351Z pushedAt=2026-08-27T11:44:12.142Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-18T09:03:51.727Z pushedAt=2026-11-20T01:48:20.916Z nl=1 -->
 
 ```c
 typedef struct {...} NativeDisplayManager_CutoutInfo

@@ -5,7 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1fae70b72575596c0efec66316113d81f9770910 translatedAt=2026-09-04T03:07:50.060Z pushedAt=2026-09-09T09:11:03.690Z -->
+<!-- md-trans-meta sourceCommit=a0d227a70bf8ecafb5564bb98a4a48f5b6c05f9c translatedAt=2026-11-16T01:38:20.994Z pushedAt=2026-11-20T07:27:14.246Z nl=1 -->
 
 ## Overview
 
@@ -36,6 +36,7 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) | OH_UdmfOptions | Defines the optional parameters for data operations.|
 | [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) | OH_UdmfDataLoadParams | Defines a struct for data loading parameters.|
 | [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) | OH_UdmfDataLoadInfo | Defines a struct for the data loading information.|
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | OH_UDMF_Summary |  Defines a struct for the data summary of a unified data object, including the data type and size. |
 
 ### Enums
 
@@ -47,7 +48,7 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [Udmf_ProgressIndicator](#udmf_progressindicator) | Udmf_ProgressIndicator | Enumerates the progress indicator options. You can use the default progress indicator as required.|
 | [Udmf_Visibility](#udmf_visibility) | Udmf_Visibility | Enumerates data visibility level.|
 
-## Macros
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -132,11 +133,11 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)](#oh_udmfoptions_getvisibility) | - | Obtains the data visibility level from a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
 | [int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)](#oh_udmfoptions_setvisibility) | - | Sets the data visibility level in a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
 | [typedef OH_UdmfData* (\*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo)](#oh_udmf_dataloadhandler) | OH_Udmf_DataLoadHandler | Represents the callback used to load data. |
-| [OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()](#oh_udmfdataloadparams_create) | - | Creates a pointer to a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadParams_Destroy](#oh_udmfdataloadparams_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()](#oh_udmfdataloadparams_create) | - | Creates a pointer to a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadParams_Destroy()](#oh_udmfdataloadparams_destroy) to destroy the instance; otherwise, memory leaks may occur. |
 | [void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)](#oh_udmfdataloadparams_destroy) | - | Destroys the instance pointed to by the data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) pointer. |
 | [void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)](#oh_udmfdataloadparams_setloadhandler) | - | Sets the data load handler in a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md). |
 | [void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadparams_setdataloadinfo) | - | Sets the data load information in a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md). |
-| [OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()](#oh_udmfdataloadinfo_create) | - | Creates a pointer to a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadInfo_Destroy](#oh_udmfdataloadinfo_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()](#oh_udmfdataloadinfo_create) | - | Creates a pointer to a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadInfo_Destroy()](#oh_udmfdataloadinfo_destroy) to destroy the instance; otherwise, memory leaks may occur. |
 | [void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_destroy) | - | Destroys the instance pointed to by the data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) pointer. |
 | [char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)](#oh_udmfdataloadinfo_gettypes) | - | Obtains the data type list from a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). |
 | [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | Sets the data type in a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). |
@@ -144,6 +145,11 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | Sets the number of records in a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). |
 | [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | Obtains the unified data object at the specified index from an [OH_UdmfData](capi-udmf-oh-udmfdata.md) array. |
 | [int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)](#oh_udmfproperty_setauthpermission) | - | Sets permissions in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), which take effect on [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
+| [OH_UDMF_Summary *OH_UDMF_CreateSummary(void)](#oh_udmf_createsummary) | - | Creates a pointer to the [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance of the data summary of the unified data object.<br>When no longer needed, call [OH_UDMF_DestroySummary()](#oh_udmf_destroysummary) to release the pointer. |
+| [void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)](#oh_udmf_destroysummary) | - | Destroys the instance object pointed to by the pointer of the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md). Note that this function cannot be called repeatedly for the same pointer. |
+| [int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)](#oh_udmf_getsummaryoverviewtypes) | - | Obtains all data types in the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md). |
+| [int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)](#oh_udmf_getsummaryoverviewsize) | - | Obtains the data size associated with the data type in the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md). |
+| [int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)](#oh_udmf_getsummaryfilenameextensions) | - | Obtains all file name extensions in the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance. |
 
 ## Enum Description
 
@@ -2351,3 +2357,117 @@ Sets permissions in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), which take 
 | Type| Description|
 | -- | -- |
 | int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).|
+
+### OH_UDMF_CreateSummary()
+
+```c
+OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
+```
+
+**Description**
+
+Creates a pointer to the [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance of the data summary of the unified data object.<br>When the pointer is no longer needed, [OH_UDMF_DestroySummary()](#oh_udmf_destroysummary) must be called to release it.
+
+**Since:** 26.0.1
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | Returns a pointer to the [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance if the operation is successful. The caller owns the instance. |
+
+### OH_UDMF_DestroySummary()
+
+```c
+void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)
+```
+
+**Description**
+
+Destroys the instance object pointed to by the [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) pointer of the data summary. Note that this function cannot be called repeatedly for the same pointer.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [in] Pointer to the [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance. |
+
+### OH_UDMF_GetSummaryOverviewTypes()
+
+```c
+int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)
+```
+
+**Description**
+
+Obtains all data types in the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md).
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [in] Pointer to the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance. This pointer cannot be NULL. |
+| const char *const **types | [out] Output array of the data type. Each element is a non-empty UTF-8 string ending with '\0'. |
+| int64_t *count | [out] Number of data types in the output array. If summary is empty, count is 0. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
+
+### OH_UDMF_GetSummaryOverviewSize()
+
+```c
+int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)
+```
+
+**Description**
+
+Obtains the data size associated with the data type in the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md).
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [in] Pointer to the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance. This pointer cannot be NULL. |
+| const char *type | [in] Data type to query. This parameter is a UTF-8 string ending with '\0' and cannot be empty. |
+| int64_t *dataSize | [output] Data size, in bytes. If the corresponding data type is not found, *dataSize is -1. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.<br>Returns **UDMF_ERR** if an internal data error occurs. The possible cause may be the service error or insufficient memory. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |
+
+### OH_UDMF_GetSummaryFilenameExtensions()
+
+```c
+int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)
+```
+
+**Description**
+
+Obtains all file name extensions in the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [out] Pointer to the data summary [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance. This pointer cannot be NULL. |
+| const char *const **filenameExtensions | [out] Pointer to the array of file name extensions. Each extension contains a leading period and uses lowercase ASCII letters. Each array element is a non-empty string ending with '\0'. This parameter becomes invalid after the [OH_UDMF_DestroySummary()](#oh_udmf_destroysummary) interface is called. |
+| int64_t *count | [out] Pointer to the number of file name extensions. This value is a non-negative integer. If no valid extension is obtained, the value is 0. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| int | Result code.<br>Returns **UDMF_E_OK** if the operation is successful.<br>Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode). |

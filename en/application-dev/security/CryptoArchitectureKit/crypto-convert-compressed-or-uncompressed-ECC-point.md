@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:25:54.240Z pushedAt=2026-08-10T07:28:08.047Z -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:23:28.471Z pushedAt=2026-11-23T07:57:01.146Z nl=2 -->
 
 You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data.
 
@@ -24,60 +24,67 @@ You can pass in the string parameter **format** to specify the format of the poi
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccPointUncompressedToCompressed() {
-  let pkData =
-    new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
-      157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242,
-      206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-  let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-  console.info('convertPoint result: success.');
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'COMPRESSED');
-  console.info('returnData: ' + returnData);
+  try {
+    let pkData =
+      new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8,
+        195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228,
+        123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+    let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
+    console.info('convertPoint result: success.');
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'COMPRESSED');
+    console.info('returnData: ' + returnData);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccPointUncompressedToCompressed failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
+  }
 }
 ```
 
 ## Converting Compressed Point Data into a Key Object
 
 1. Call [ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12) to convert compressed ECC point data of the Uint8Array type into a [Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10) object.
-
 2. Call [ECCKeyUtil.genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11) with the curve name set to **NID_brainpoolP256r1** to generate the asymmetric common key parameters for the ECC key pair.
-
 3. Construct a [ECCPubKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#eccpubkeyspec10) object to specify the parameters for the ECC public key. **ECCPubKeySpec** is a child class of **AsyKeySpec**. Set **algName** to **ECC**, specify [AsyKeySpecType.PUBLIC_KEY_SPEC](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#asykeyspectype10), and set **pk** to the point object obtained.
-
 4. Call [createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10) with the public key parameters to create an asymmetric key generator (**AsyKeyGeneratorBySpec**) object.
-
 5. Call [AsyKeyGeneratorBySpec.generatePubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkey10) to generate the public key.
-
 6. Call [ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12) to obtain uncompressed point data.
-
 7. Call [PubKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10) to obtain the x coordinate of the ECC public key **pk**.
 
 <!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccPointCompressedToPoint() {
-  let pkData =
-    new Uint8Array([2, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
-      157, 111, 40, 217, 215, 148, 120, 224, 205, 82]);
-  let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-  console.info('convertPoint result: success.');
-  let eccCommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP256r1');
-  let eccPubKeySpec: cryptoFramework.ECCPubKeySpec = {
-    algName: 'ECC',
-    specType: cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC,
-    params: eccCommonParamsSpec,
-    pk: returnPoint
-  };
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(eccPubKeySpec);
-  let pubKey = await generatorBySpec.generatePubKey();
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
-  console.info('returnData: ' + returnData);
-  let eccPkX = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
-  console.info('returnPoint x data: ' + returnPoint.x);
-  console.info('ECC_PK_X_BN: ' + eccPkX);
+  try {
+    let pkData =
+      new Uint8Array([2, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8,
+        195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82]);
+    let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
+    console.info('convertPoint result: success.');
+    let eccCommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP256r1');
+    let eccPubKeySpec: cryptoFramework.ECCPubKeySpec = {
+      algName: 'ECC',
+      specType: cryptoFramework.AsyKeySpecType.PUBLIC_KEY_SPEC,
+      params: eccCommonParamsSpec,
+      pk: returnPoint
+    };
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(eccPubKeySpec);
+    let pubKey = await generatorBySpec.generatePubKey();
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+    console.info('returnData: ' + returnData);
+    let eccPkX = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+    console.info('returnPoint x data: ' + returnPoint.x);
+    console.info('ECC_PK_X_BN: ' + eccPkX);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccPointCompressedToPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
+  }
 }
 ```
-<!--no_check-->

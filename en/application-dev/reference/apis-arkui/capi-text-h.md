@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5835a654c43d42e4957bbd83eedb5298c773b9b1 translatedAt=2026-08-29T09:16:43.134Z pushedAt=2026-08-31T02:16:36.408Z -->
+<!-- md-trans-meta sourceCommit=d0e7d4684d02e20ec3894e48c9decc21705d1cde translatedAt=2026-11-18T09:21:33.607Z pushedAt=2026-11-20T03:59:00.248Z nl=1 -->
 
 ## Overview
 
@@ -927,7 +927,7 @@ OH_ArkUI_NativeModule_LineSpacingOptions* OH_ArkUI_NativeModule_LineSpacingOptio
 
 Creates a text line spacing option object. After use, call [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy the object.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Return value**
 
@@ -945,7 +945,7 @@ void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_Line
 
 Destroys a text line spacing option object.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -963,7 +963,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_
 
 Sets the **onlyBetweenLines** parameter of the text line spacing options. When set to **true**, the line spacing is applied only between lines, with no extra line spacing above the first line or below the last line. When set to **false**, line spacing also exists above the first line and below the last line.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -988,7 +988,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(con
 
 Obtains the **onlyBetweenLines** parameter of the text line spacing options.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 

@@ -6,6 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=618d050d52a254fe9b2f2ffe3d571de5571f0730 translatedAt=2026-11-03T07:13:18.935Z pushedAt=2026-11-04T03:11:19.975Z nl=1 -->
 
 ## Overview
 
@@ -60,12 +61,12 @@ Creates an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchan
 
 | Type| Description|
 | -- | -- |
-| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.<br>      **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
+| [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* | Pointer to an OH_MediaAssetChangeRequest instance, or a NULL pointer if the creation fails. |
 
 ### OH_MediaAssetChangeRequest_AddResourceWithUri()
 
 ```c
-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ResourceType resourceType, char* fileUri)
+MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ResourceType resourceType, char* fileUri)
 ```
 
 **Description**
@@ -92,7 +93,7 @@ Adds a resource of the given URI.
 ### OH_MediaAssetChangeRequest_AddResourceWithBuffer()
 
 ```c
-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ResourceType resourceType, uint8_t* buffer, uint32_t length)
+MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ResourceType resourceType, uint8_t* buffer, uint32_t length)
 ```
 
 **Description**
@@ -109,7 +110,7 @@ Adds a resource using ArrayBuffer data.
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance.|
 | [MediaLibrary_ResourceType](capi-media-asset-base-capi-h.md#medialibrary_resourcetype) resourceType | Type of the resource to add.|
 | uint8_t* buffer | Pointer to the data buffer.|
-| uint32_t length | Length of the data buffer.|
+| uint32_t length | Length of the data buffer, in bytes. |
 
 **Return value**
 
@@ -137,7 +138,7 @@ Obtains the handler used for writing a file to cache.
 | Parameter| Description|
 | -- | -- |
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)* changeRequest | Pointer to an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) instance.|
-| int32_t* fd | Pointer to the file descriptor (FD) obtained.|
+| int32_t* fd | Output parameter, used to obtain the write handle of the temporary file. Data can be written to the temporary file through this handle. Close the handle promptly after use to avoid resource leakage. |
 
 **Return value**
 
@@ -148,12 +149,18 @@ Obtains the handler used for writing a file to cache.
 ### OH_MediaAssetChangeRequest_SaveCameraPhoto()
 
 ```c
-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ImageFileType imageFileType)
+MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ImageFileType imageFileType)
 ```
 
 **Description**
 
 Saves the photo taken by the camera.
+
+> **NOTE**
+>
+> - In non-YUV capture mode, the encoding format used to save the photo resource is consistent with the encoding format in [Camera_Format](../apis-camera-kit/capi-camera-h.md#camera_format).
+> - In YUV capture mode, this API encodes and saves the YUV object in the specified format based on [MediaLibrary_ImageFileType](capi-media-asset-base-capi-h.md#medialibrary_imagefiletype).
+> - When this API is used in combination with [OH_MediaAssetChangeRequest_AddResourceWithUri()](#oh_mediaassetchangerequest_addresourcewithuri) or [OH_MediaAssetChangeRequest_AddResourceWithBuffer()](#oh_mediaassetchangerequest_addresourcewithbuffer), the encoding format used to save the photo resource is consistent with the encoding format of the resource added by [OH_MediaAssetChangeRequest_AddResourceWithUri()](#oh_mediaassetchangerequest_addresourcewithuri) or [OH_MediaAssetChangeRequest_AddResourceWithBuffer()](#oh_mediaassetchangerequest_addresourcewithbuffer).
 
 **Since**: 12
 
@@ -220,3 +227,5 @@ Releases an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetcha
 | Type| Description|
 | -- | -- |
 | [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>      **MEDIA_LIBRARY_PARAMETER_ERROR**: incorrect parameters. Possible causes:<br>                                      1. A mandatory parameter is not specified.<br>                                      2. A parameter type is incorrect.<br>                                      3. Parameter verification fails.|
+
+

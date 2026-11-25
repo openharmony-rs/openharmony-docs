@@ -5,6 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bfafda498ec5dc8b609f41c676b2aaa8fa6ccc43 translatedAt=2026-11-16T01:42:59.244Z pushedAt=2026-11-20T07:27:26.054Z nl=1 -->
 
 > **NOTE**
 >
@@ -132,23 +133,3 @@ The KV store or result set is closed manually before the operation.
 
 1. Obtain the KV store and try again.
 2. Obtain the result set and try again.
-
-## 15100006 Failed to Update the KV Store Encryption Key
-
-**Error Message**
-
-Failed to update the key.
-
-**Description**
-
-Failed to call the [rekey](js-apis-distributedKVStore.md#rekey) API to update the KV store encryption key.
-
-**Possible Causes**
-
-1. When the [getKVStore](js-apis-distributedKVStore.md#getkvstore) API is called to create a KV store, the encryption mode is not used (that is, the value of **encrypt** is **false**).
-2. An internal error occurs during the key update.
-
-**Solution**
-
-1. Before calling the [rekey](js-apis-distributedKVStore.md#rekey) API to update the encryption key, ensure that the current KV store is encrypted. That is, when the [getKVStore](js-apis-distributedKVStore.md#getkvstore) API is called to create a KV store, set **encrypt** to **true**.
-2. Update the key again.

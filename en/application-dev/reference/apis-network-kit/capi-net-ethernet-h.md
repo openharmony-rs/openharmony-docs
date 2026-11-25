@@ -6,13 +6,14 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=434de930b1eb27757cab0c168892c60abe5b3e26 translatedAt=2026-08-11T08:14:36.345Z pushedAt=2026-08-12T11:04:30.952Z -->
+<!-- md-trans-meta sourceCommit=993bc5d275badf6a555bd5d61b59a1ec117055af translatedAt=2026-09-23T01:11:44.458Z pushedAt=2026-09-24T06:00:14.088Z -->
+
 
 ## Overview
 
 Provides C APIs for the Ethernet NIC module.
 
-**File to include:** &lt;network/net_ethernet/net_ethernet.h&gt;
+**File to include:** <network/netmanager_ext/net_ethernet.h>
 
 **Library:** libnet_ethernet.so
 
@@ -88,3 +89,5 @@ Obtains the IP address list of Ethernet NICs.
 | Type | Description |
 | -- | -- |
 | int32_t | **0**: Success.<br>         **201**: Missing permissions.<br>         **2200001**: Parameter error. **2200002**: Service connection failure.<br>         **2201005**: Device information does not exist. |
+
+

@@ -57,8 +57,8 @@ createModuleContext(context: Context, bundleName: string, moduleName: string): P
 
 | 错误码ID | 错误信息        |
 | -------- | --------------- |
-| 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
@@ -119,8 +119,8 @@ createBundleContext(context: Context, bundleName: string): Promise\<Context>
 
 | 错误码ID | 错误信息        |
 | -------- | --------------- |
-| 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 
@@ -180,8 +180,8 @@ createPluginModuleContextForHostBundle(context: Context, pluginBundleName: strin
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201      | Permission denied. |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -201,7 +201,7 @@ export default class EntryAbility extends UIAbility {
         .catch((error: BusinessError) => {
           console.error(`createPluginModuleContextForHostBundle failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
-    } catch (error: BusinessError) {
+    } catch (error) {
       console.error(`createPluginModuleContextForHostBundle failed, error.code: ${error.code}, error.message: ${error.message}`);
     }
   }

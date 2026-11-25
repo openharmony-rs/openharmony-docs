@@ -67,7 +67,7 @@ struct WebComponent {
           console.info("[schemeHandler] getCustomErrorCode:" + response.getCustomErrorCode())
 
         } catch (error) {
-          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
         }
       })
       Web({ src: 'https://www.example.com', controller: this.controller })
@@ -91,10 +91,6 @@ setUrl(url: string): void
 | --------| ------- | ---- | ---------------------------|
 | url | string | 是 | 重定向或因HSTS而更改后的URL。 |
 
-**示例：**
-
-完整示例代码参考[constructor](#constructor12)。
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -102,6 +98,10 @@ setUrl(url: string): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Incorrect parameter types.    |
+
+**示例：**
+
+完整示例代码参考[constructor](#constructor12)。
 
 ## setNetErrorCode<sup>12+</sup>
 
@@ -402,7 +402,7 @@ setCustomErrorCode(customErrorCode: number): void
 
 给当前的Response设置自定义错误码。详情参考[WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md#getcustomerrorcode)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -424,7 +424,7 @@ getCustomErrorCode(): number
 
 获取当前Response的自定义错误码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

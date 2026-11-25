@@ -75,7 +75,7 @@ enum OH_AI_DeviceType
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_AI_DEVICETYPE_CPU = 0 | 设备类型是CPU。|
-| OH_AI_DEVICETYPE_GPU | Device type: GPU。预留选项，暂不支持。|
+| OH_AI_DEVICETYPE_GPU | 设备类型是GPU。预留选项，暂不支持。|
 | OH_AI_DEVICETYPE_KIRIN_NPU | 设备类型是麒麟NPU。预留选项，暂不支持。 |
 | OH_AI_DEVICETYPE_NNRT = 60 | 设备类型是NNRt。 |
 | OH_AI_DEVICETYPE_INVALID = 100 | 设备类型无效。|

@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationRequest](./js-apis-inner-notification-notificationRequest.md)。
+> 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationRequest](js-apis-inner-notification-notificationRequest.md)。
 
 ## NotificationRequest
 
@@ -25,15 +25,15 @@
 | trigger<sup>23+</sup>          | [Trigger](#trigger23) |   否  | 是  | 条件对象。默认为空。 <br>**系统接口**：此接口为系统接口。 |
 | overlayIcon<sup>11+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标，默认为空。图标像素的总字节数不超过192KB。<br>**系统接口**：此接口为系统接口。                                                 |
 | classification                | string                                                   |   否  | 是  | 通知分类。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。                               |
-| isRemoveAllowed<sup>8+</sup>   | boolean                                                  |   否  | 是  | 通知是否能被移除（点击通知下方删除按钮无法删除，左滑不出现删除按钮）。默认为true。<br> - true：是。<br> - false：否。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.SET_UNREMOVABLE_NOTIFICATION |
+| isRemoveAllowed<sup>(deprecated)</sup>   | boolean                                                  |   否  | 是  | 通知是否能被移除（点击通知下方删除按钮无法删除，左滑不出现删除按钮）。默认为true。<br> - true：是。<br> - false：否。<br>从API version 8开始支持，从API版本26.1.0开始废弃。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.SET_UNREMOVABLE_NOTIFICATION |
 | source<sup>8+</sup>            | number                                                   |   是  | 是  | 通知源。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。                                |
 | deviceId<sup>8+</sup>          | string                                                   |   是  | 是  | 通知源的deviceId。<br>**系统接口**：此接口为系统接口。预留能力，暂未支持。                       |
 | representativeBundle<sup>12+</sup> | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 是 | 被代理的包信息。默认为空。<br>**系统接口**：此接口为系统接口。 |
 | notificationControlFlags<sup>12+</sup>       | number                                                   |   否  | 是  | [通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)管控。默认值为0。<br>可以通过此接口减少当前通知的提醒方式。与[NotificationControlFlagStatus](js-apis-notificationManager-sys.md#notificationcontrolflagstatus12)的枚举进行按位或运算得到该参数。<br>**系统接口**：此接口为系统接口。            |
-| unifiedGroupInfo<sup>12+</sup>       | [UnifiedGroupInfo](#unifiedgroupinfo12) |   否  | 是  |消息[智能聚合](../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。默认为空。 <br>**系统接口**：此接口为系统接口。|
+| unifiedGroupInfo<sup>12+</sup>       | [UnifiedGroupInfo](#unifiedgroupinfo12) |   否  | 是  |消息智能聚合信息字段。默认为空。 <br>**系统接口**：此接口为系统接口。|
 | creatorInstanceKey<sup>(deprecated)</sup>      | number |   是  | 是  | 创建者实例键值。<br>从API version 12开始支持，从API version 15开始废弃，建议使用appInstanceKey替代。<br>**系统接口**：此接口为系统接口。|
 | agentBundle<sup>12+</sup>       | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) |   是  | 是  | 创建通知的代理包信息。默认为空。 <br>**系统接口**：此接口为系统接口。|
-| appInstanceKey<sup>15+</sup>       | string |   是  | 是  | 应用实例键值。默认为空。 <br>**系统接口**：此接口为系统接口。|
+| appInstanceKey<sup>15+</sup>       | string |   是  | 是  | 应用实例键值。默认为空。当需要区分同一应用的不同实例时，设置此字段。<br>**系统接口**：此接口为系统接口。|
 | notDistributed<sup>18+</sup> | boolean | 否 | 是 | 通知是否不进行全场景[跨设备协同](../../notification/notification-glossary.md#cross-device-collaboration跨设备协同)显示，默认为false。<br/>**说明**:<br/>该字段与forceDistributed字段互斥，当两者同时为true时，仅notDistributed字段生效。<br/>-&nbsp;设置为true时：通知仅在本设备上显示。<br/>-&nbsp;设置为false时：通知将在所有协同设备上显示。<br>**系统接口**: 此接口为系统接口。 |
 | forceDistributed<sup>18+</sup> | boolean | 否 | 是 | 通知是否强制进行全场景跨设备协同显示，默认为false。<br/>**说明**:<br/>仅当应用在跨设备协同管控名单中且notDistributed为false时，该字段才会生效。通过读取notification_config.json文件（文件配置路径见：[notification_config_parse.h](https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h) 中的NOTIFICATION_CONFIG_FILE属性）中的collaborationFilter字段，查看是否包含应用的UID或包名。如果包含，说明是在应用跨设备协同管控名单中。<br>-&nbsp;设置为true时：通知将在所有协同设备上显示。<br/>-&nbsp;设置为false时：通知将按照协同管控名单显示。<br>**系统接口**: 此接口为系统接口。 |
 | extendInfo<sup>20+</sup> | Record<string, Object> | 否 | 是 | 系统应用发布通知时的自定义扩展参数。默认为空。<br>**系统接口**: 此接口为系统接口。 |
@@ -52,7 +52,7 @@
 
 ## NotificationFilter<sup>11+</sup>
 
-描述查询普通实况窗时的筛选条件。
+描述查询实况通知时的筛选条件。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -81,7 +81,7 @@
 
 ## UnifiedGroupInfo<sup>12+</sup>
 
-描述通知[智能聚合](../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。
+描述通知智能聚合信息字段。
 
 **系统能力**：SystemCapability.Notification.Notification
 

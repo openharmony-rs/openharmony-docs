@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to run and stop event loops on asynchronous threads using the Node-API extensions napi_run_event_loop and napi_stop_event_loop, with support for nowait and default modes."
+keywords: [Node-API, event loop, napi_run_event_loop, napi_stop_event_loop, asynchronous threads, event queue, nowait, default mode]
+doctype: guide
+status: active
+---
+
 # Running or Stopping an Event Loop in an Asynchronous Thread Using Node-API Extension APIs
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cafe730c03f95c1273b115a81e96d29ade5b9ef8 translatedAt=2026-11-09T08:52:17.388Z nl=1 -->
 
 ## **Scenario**
 When calling asynchronous ArkTS APIs in the ArkTS running environment, you can use **napi_run_event_loop** to run an event loop and use **napi_stop_event_loop** to stop an event loop.
@@ -39,56 +48,84 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
       return nullptr;
   }
   
+  static bool CallSetTimeoutWithCallbacks(napi_env env, napi_value objectUtils)
+  {
+      napi_value setTimeout = nullptr;
+      napi_value promise = nullptr;
+  
+      if (napi_get_named_property(env, objectUtils, "SetTimeout", &setTimeout) != napi_ok) {
+          return false;
+      }
+      if (napi_call_function(env, objectUtils, setTimeout, 0, nullptr, &promise) != napi_ok) {
+          return false;
+      }
+  
+      napi_value theFunc = nullptr;
+      if (napi_get_named_property(env, promise, "then", &theFunc) != napi_ok) {
+          return false;
+      }
+  
+      napi_value resolvedCallback = nullptr;
+      napi_value rejectedCallback = nullptr;
+      if (napi_create_function(env, "resolvedCallback", NAPI_AUTO_LENGTH,
+                               ResolvedCallback, nullptr, &resolvedCallback) != napi_ok) {
+          return false;
+      }
+      if (napi_create_function(env, "rejectedCallback", NAPI_AUTO_LENGTH,
+                               RejectedCallback, nullptr, &rejectedCallback) != napi_ok) {
+          return false;
+      }
+      napi_value argv[2] = {resolvedCallback, rejectedCallback};
+      if (napi_call_function(env, promise, theFunc, INT_ARG_2, argv, nullptr) != napi_ok) {
+          return false;
+      }
+      return true;
+  }
+  
   static void *RunEventLoopFunc(void *arg)
   {
       // 1. Create an ArkTS instance.
-      napi_env env;
+      napi_env env = nullptr;
       napi_status ret = napi_create_ark_runtime(&env);
       if (ret != napi_ok) {
           return nullptr;
       }
   
-      napi_handle_scope scope;
-      ret = napi_open_handle_scope(env, &scope);
-      if (ret != napi_ok) {
-          napi_destroy_ark_runtime(&env);
-          return nullptr;
-      }
+      napi_handle_scope scope = nullptr;
+      napi_open_handle_scope(env, &scope);
   
       // 2. Load the custom modules.
-      napi_value objectUtils;
+      napi_value objectUtils = nullptr;
       // 'com.example.myapplication' is the bundle name of the current application.
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objectUtils);
       if (ret != napi_ok) {
+          OH_LOG_ERROR(LOG_APP, "Failed to load module");
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
   
       // 3. Call the asynchronous SetTimeout API.
-      napi_value setTimeout = nullptr;
-      napi_value promise = nullptr;
-  
-      napi_get_named_property(env, objectUtils, "SetTimeout", &setTimeout);
-      napi_call_function(env, objectUtils, setTimeout, 0, nullptr, &promise);
-  
-      napi_value theFunc = nullptr;
-      if (napi_get_named_property(env, promise, "then", &theFunc) != napi_ok) {
+      if (!CallSetTimeoutWithCallbacks(env, objectUtils)) {
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
   
-      napi_value resolvedCallback = nullptr;
-      napi_value rejectedCallback = nullptr;
-      napi_create_function(env, "resolvedCallback", NAPI_AUTO_LENGTH, ResolvedCallback, nullptr, &resolvedCallback);
-      napi_create_function(env, "rejectedCallback", NAPI_AUTO_LENGTH, RejectedCallback, nullptr, &rejectedCallback);
-      napi_value argv[2] = {resolvedCallback, rejectedCallback};
-      napi_call_function(env, promise, theFunc, INT_ARG_2, argv, nullptr);
-  
       auto flag = reinterpret_cast<bool *>(arg);
       if (*flag == true) {
-          napi_run_event_loop(env, napi_event_mode_default);
+          if (napi_run_event_loop(env, napi_event_mode_default) != napi_ok) {
+              napi_close_handle_scope(env, scope);
+              napi_destroy_ark_runtime(&env);
+              return nullptr;
+          }
       } else {
-          // Process the tasks in the event queue without blocking the asynchronous API.
-          napi_run_event_loop(env, napi_event_mode_nowait);
+          if (napi_run_event_loop(env, napi_event_mode_nowait) != napi_ok) {
+              napi_close_handle_scope(env, scope);
+              napi_destroy_ark_runtime(&env);
+              return nullptr;
+          }
       }
   
       if (scope != nullptr) {
@@ -98,7 +135,7 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
       if (env != nullptr) {
           napi_status destroy_ret = napi_destroy_ark_runtime(&env);
           if (destroy_ret != napi_ok) {
-              OH_LOG_INFO(LOG_APP, "Failed to destroy ark runtime");
+              OH_LOG_ERROR(LOG_APP, "Failed to destroy ark runtime");
           }
           env = nullptr;
       }
@@ -186,13 +223,15 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
    <!-- @[napi_event_loop_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
    
    ``` JSON5
-   "buildOption": {
-     "arkOptions" : {
-       "runtimeOnly" : {
-         "sources": [
-           "./src/main/ets/pages/ObjectUtils.ets"
-         ]
-       }
+     "buildOption": {
+       "arkOptions" : {
+         "runtimeOnly" : {
+           "sources": [
+             "./src/main/ets/pages/ObjectUtils.ets"
+           ]
+         }
+       },
+   // ...
      },
    ```
 

@@ -110,6 +110,10 @@ OH_Data_Value *OH_Value_Create(void)
 | -------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) * | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_Value_Destroy](#oh_value_destroy)接口释放内存。 |
 
+**参考：**
+
+[OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy)
+
 ### OH_Value_Destroy()
 
 ```c
@@ -495,7 +499,7 @@ int OH_Value_GetText(OH_Data_Value *value, const char **val)
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。   |
-| const char **val                              | 一个输出参数，表示指向字符串类型数据的指针。<br>无需申请内存和释放内存。<br>val的生命周期遵循value中index的值。 |
+| const char **val                              | 一个输出参数，表示指向字符串类型数据的指针。<br>无需申请内存和释放内存。<br>val的生命周期遵循value的生命周期。 |
 
 **返回：**
 
@@ -610,6 +614,10 @@ int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, siz
 | ---- | ------------------------------------------------------------ |
 | int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
+**参考：**
+
+[OH_Value_GetAssetsCount](capi-oh-data-value-h.md#oh_value_getassetscount)
+
 ### OH_Value_GetFloatVectorCount()
 
 ```c
@@ -663,6 +671,10 @@ int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+
+**参考：**
+
+[OH_Value_GetFloatVectorCount](capi-oh-data-value-h.md#oh_value_getfloatvectorcount)
 
 ### OH_Value_GetUnlimitedIntBand()
 
@@ -718,6 +730,10 @@ int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+
+**参考：**
+
+[OH_Value_GetUnlimitedIntBand](capi-oh-data-value-h.md#oh_value_getunlimitedintband)
 
 
 

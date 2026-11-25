@@ -1,12 +1,11 @@
 # Camera API Call Sequence Issues
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:20:40.435Z pushedAt=2026-07-21T06:47:08.463Z -->
+<!-- md-trans-meta sourceCommit=c363c4134c11bcec868cc8b279dc8af0b7551cf3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Symptom
 
@@ -34,7 +33,7 @@ Step 4: After [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-S
 
 ## Solution
 
-1. Before creating an output stream, compare the resolutions specified in the profiles of the input and output streams to ensure that they are consistent.
+1. Before creating the output stream and input stream, compare the resolutions in their profiles to ensure they are consistent.
 
 2. Call most `set` APIs after `commitConfig` is completed. For example, white balance related `set` APIs should be called after session configuration is complete.
 

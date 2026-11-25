@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to create and call functions using Node-API, including obtaining callback arguments, calling ArkTS functions, and creating ArkTS functions to support functional programming in Node-API modules."
+keywords: [Node-API, functions, napi_get_cb_info, napi_call_function, napi_create_function, callback arguments, ArkTS functions, function calls]
+doctype: guide
+status: active
+---
+
 # Working with Functions Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.375Z nl=1 -->
 
 ## Introduction
 
@@ -25,22 +34,27 @@ Functions are blocks of reusable code that performs specific tasks or operations
 ## Example
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code related to function invocation.
-## napi_get_cb_info
+### napi_get_cb_info
 
 Use **napi_get_cb_info** to obtain detailed information about function calls.
 
 CPP code:
 
-```cpp
+<!-- @[napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
+
+``` C++
 #include "napi/native_api.h"
-// Obtain information about the parameters passed from ArkTS.
+
+// napi_get_cb_info
+// Obtain parameter information of the input arguments from the ArkTS side.
 static napi_value GetCbArgs(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     return args[0];
 }
+
 // Obtain the number of parameters passed from ArkTS.
 static napi_value GetCbArgQuantity(napi_env env, napi_callback_info info)
 {
@@ -50,6 +64,7 @@ static napi_value GetCbArgQuantity(napi_env env, napi_callback_info info)
     napi_create_int32(env, argc, &result);
     return result;
 }
+
 // Obtain thisArg passed from ArkTS.
 static napi_value GetCbContext(napi_env env, napi_callback_info info)
 {
@@ -58,22 +73,25 @@ static napi_value GetCbContext(napi_env env, napi_callback_info info)
     return thisArg;
 }
 ```
-<!-- @[napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const getCbArgs: <T>(arg: T) => T;
+<!-- @[napi_get_cb_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const getCbArgs: <T>(arg: T) => T; // napi_get_cb_info
+
 // The input parameters of getCbArgQuantity are customized. In this example, two input parameters are used: string and number.
 export const getCbArgQuantity: (str: string, num: number) => number;
+
 export const getCbContext: () => Object;
 ```
-<!-- @[napi_get_cb_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
+<!-- @[ark_napi_get_cb_info_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
@@ -84,45 +102,66 @@ function summation(arr: Array<number>) {
   }
   return sum;
 }
+
 const str = 'message';
 const arr = [0, 1, 2, 3, 4, 5];
 const num = 526;
+
 class Student {
   name: string;
   age: number;
   score: number;
+
   constructor(name: string, age: number, score: number) {
     this.name = name;
     this.age = age;
     this.score = score;
   }
 }
+```
+
+<!-- @[ark_napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// napi_get_cb_info
 let student = new Student('Alice', 18, 100);
 // Obtain parameters.
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get string arg:%{public}s', testNapi.getCbArgs(str));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get array arg:%{public}s ', testNapi.getCbArgs(arr).toString());
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get num arg:%{public}d ', testNapi.getCbArgs(num));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get undefined arg:%{public}s ', testNapi.getCbArgs(undefined));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get object arg:%{public}s ', JSON.stringify(testNapi.getCbArgs(student)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get function arg:%{public}d ', testNapi.getCbArgs(summation(arr)));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get string arg:%{public}s',
+  testNapi.getCbArgs(str));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get array arg:%{public}s ',
+  testNapi.getCbArgs(arr).toString());
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get num arg:%{public}d ',
+  testNapi.getCbArgs(num));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get undefined arg:%{public}s ',
+  testNapi.getCbArgs(undefined));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get object arg:%{public}s ',
+  JSON.stringify(testNapi.getCbArgs(student)));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get function arg:%{public}d ',
+  testNapi.getCbArgs(summation(arr)));
 // Obtain the number of parameters.
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get arg quantity:%{public}d ', testNapi.getCbArgQuantity(str, num));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get arg quantity:%{public}d ',
+  testNapi.getCbArgQuantity(str, num));
 // Obtain the context.
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{public}s ', testNapi.getCbContext().toString());
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{public}s ',
+  testNapi.getCbContext().toString());
 ```
-<!-- @[ark_napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
-## napi_call_function
+### napi_call_function
 
 Use **napi_call_function** to call an ArkTS function from a C/C++ addon.
 
-Note: The length of **argv** passed to **napi_call_function** must be greater than or equal to the number of **argc** declarations, and each element must be initialized to **nullptr**.
+Notes:
+- The length of **argv** passed to **napi_call_function** must be no less than **argc**.
+- When **argc** is **0**, **nullptr** can be passed; otherwise, each **argv** element must be a valid **napi_value**.
+- After **napi_call_function** is executed, microtasks are triggered.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
+``` C++
+// napi_call_function
+constexpr int ARG_NUM = 10;
 static napi_value CallFunction(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -132,10 +171,13 @@ static napi_value CallFunction(napi_env env, napi_callback_info info)
     // Obtain the global object. Here, global is used because the second parameter of napi_call_function is the this parameter of the ArkTS function.
     napi_value global = nullptr;
     napi_get_global(env, &global);
+    // Create a numeric input argument.
+    napi_value args[1] = {nullptr};
+    napi_create_int32(env, ARG_NUM, &args[0]);
     // Call the ArkTS method.
     napi_value result = nullptr;
-    // The length of argv passed by napi_call_function must be greater than or equal to the value of argc and must be initialized to nullptr.
-    napi_call_function(env, global, argv[0], argc, argv, &result);
+    // When calling napi_call_function, the length of argv must be greater than or equal to the number declared by argc.
+    napi_call_function(env, global, argv[0], 1, args, &result);
     return result;
 }
 
@@ -148,51 +190,59 @@ static napi_value ObjCallFunction(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     // Call the ArkTS method.
     napi_value result = nullptr;
-    // The length of argv passed by napi_call_function must be greater than or equal to the value of argc and must be initialized to nullptr.
-    napi_call_function(env, argv[0], argv[1], argc, argv, &result);
+    // The age method has no input arguments. Pass 0 for argc and nullptr for argv in napi_call_function.
+    napi_call_function(env, argv[0], argv[1], 0, nullptr, &result);
     return result;
 }
 ```
-<!-- @[napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const callFunction: (func: Function) => number;
+<!-- @[napi_call_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const callFunction: (func: Function) => number; // napi_call_function
+
 export const objCallFunction: (obj: Object, func: Function) => number;
 ```
-<!-- @[napi_call_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_call_function_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
-function returnNumber() {
-  return 10;
+``` TypeScript
+function returnNumber(num: number) {
+  return num;
 }
+
 class Person {
   age(): number {
     return 11;
   }
 }
-const person = new Person();
-hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d', testNapi.callFunction(returnNumber));
-hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d', testNapi.objCallFunction(person,person.age));
 ```
-<!-- @[ark_napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
-## napi_create_function
+<!-- @[ark_napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// napi_call_function
+const person = new Person();
+hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
+  testNapi.callFunction(returnNumber));
+hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
+  testNapi.objCallFunction(person, person.age));
+```
+
+### napi_create_function
 
 Use **napi_create_function** to create an ArkTS function object in native code, which allows calling into the native code from ArkTS. This API returns a **napi_value** that represents the function created.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
+``` C++
+// napi_create_function
 static napi_value CalculateArea(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
@@ -209,33 +259,35 @@ static napi_value CalculateArea(napi_env env, napi_callback_info info)
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // ...
     napi_value fn = nullptr;
     napi_create_function(env, nullptr, 0, CalculateArea, nullptr, &fn);
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     napi_set_named_property(env, exports, "calculateArea", fn);
     return exports;
 }
 EXTERN_C_END
 ```
-<!-- @[napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const calculateArea: (width: number, height: number) => number;
+<!-- @[napi_create_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+
+``` TypeScript
+export const calculateArea: (width: number, height: number) => number; // napi_create_function
 ```
-<!-- @[napi_create_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
 
-hilog.info(0x0000, 'testTag', 'Test Node-API create_function:%{public}d ', testNapi.calculateArea(1.2, 4));
+``` TypeScript
+// napi_create_function
+hilog.info(0x0000, 'testTag', 'Test Node-API create_function:%{public}d ',
+  testNapi.calculateArea(1.2, 4));
 ```
-<!-- @[ark_napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

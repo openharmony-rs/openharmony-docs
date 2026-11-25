@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=dfe2e67712d0f6e828ed16ffd0de94a48864106f translatedAt=2026-10-30T06:36:02.701Z pushedAt=2026-11-03T01:23:24.886Z nl=1 -->
 
 > **NOTE**
 >
@@ -28,7 +29,7 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
-2. Check whether the service data is too long. 
+2. Check whether the service data is too long.
 
 ## 19020002 Runtime Error
 
@@ -42,11 +43,15 @@ This error code is reported if an error occurs during running.
 
 **Possible Causes**
 
-An unexpected error occurs.
+1. A memory copy failure occurs in the system.
+2. A null pointer occurs in the system. For example, the certificate chain validator object is null.
+3. Failure to obtain the native object or convert parameters, for example, the NAPI or ANI API call fails.
 
 **Solution**
 
-Check whether the system is running properly.
+1. Check whether the memory space is sufficient, clear the memory, and try again.
+2. The system is abnormal. Try again later or restart the device.
+3. If the problem cannot be located after the preceding checks, collect log information and contact Huawei technical support.
 
 ## 19020003 Parameter Check Failure
 

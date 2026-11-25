@@ -16,7 +16,7 @@ WantAgentInfo用于定义触发WantAgent所需要的信息，可作为[getWantAg
 ## 导入模块
 
 ```ts
-import { wantAgent as abilityWantAgent } from '@kit.AbilityKit';
+import { wantAgent } from '@kit.AbilityKit';
 ```
 
 ## WantAgentInfo

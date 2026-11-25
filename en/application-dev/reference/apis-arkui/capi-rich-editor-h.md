@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e3097dd8d5c27545917cb656309e39044a9203bd translatedAt=2026-08-27T08:52:04.368Z pushedAt=2026-08-28T06:58:38.015Z -->
+<!-- md-trans-meta sourceCommit=12354031ed4a50af57488781a67bd71cb16d450d translatedAt=2026-11-18T09:18:17.661Z pushedAt=2026-11-20T02:32:58.620Z nl=1 -->
 
 ## Overview
 
@@ -43,6 +43,7 @@ Defines structs, enumerations, and APIs related to **RichEditor**. **RichEditor*
 | [OH_ArkUI_TextEditorSpanType](#oh_arkui_texteditorspantype) | OH_ArkUI_TextEditorSpanType | Enumerates the span types of a custom text selection menu.|
 | [OH_ArkUI_TextEditorResponseType](#oh_arkui_texteditorresponsetype) | OH_ArkUI_TextEditorResponseType | Enumerates the response types of a custom text selection menu.|
 | [OH_ArkUI_TextMenuType](#oh_arkui_textmenutype) | OH_ArkUI_TextMenuType | Enumerates text menu types.|
+| [OH_ArkUI_TextEditorType](#oh_arkui_texteditortype) | OH_ArkUI_TextEditorType | Enumerates the input types of the text editor, used to specify the input modes of the text editor. |
 
 ### Functions
 
@@ -135,6 +136,31 @@ Enumerates text menu types, which are used to distinguish different types of pop
 | OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | Text selection menu.|
 | OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | Preview menu.|
 
+### OH_ArkUI_TextEditorType
+
+```c
+enum OH_ArkUI_TextEditorType
+```
+
+**Description**
+
+Enumerates the input types of the text editor, used to specify the input modes of the text editor.
+
+**Since**: 26.1.0
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NORMAL = 0 | Normal input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER = 2 | Numeric input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PHONE_NUMBER = 3 | Phone number input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_EMAIL = 5 | Email address input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_PASSWORD = 7 | Password input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_PASSWORD = 8 | Numeric password input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_SCREEN_LOCK_PASSWORD = 9 | Screen lock password input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_USER_NAME = 10 | User name input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NEW_PASSWORD = 11 | New password input mode. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_NUMBER_DECIMAL = 12 | Numeric input mode with a decimal point. |
+| OH_ARKUI_TEXT_EDITOR_TYPE_ONE_TIME_CODE = 14 | One-time code input mode. |
 
 ## Function Description
 

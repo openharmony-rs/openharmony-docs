@@ -57,7 +57,7 @@ The table below shows the effect of each blend mode, where the yellow rectangle 
 | HARD_LIGHT  | 20   | Hard light mode. Selectively applies the MULTIPLY or SCREEN mode based on the brightness of the source pixel.    | ![HARD_LIGHT](figures/BlendMode-HardLight.png) |
 | SOFT_LIGHT  | 21   | Soft light mode. Softly brightens or darkens the target pixel based on the brightness of the source pixel.             | ![SOFT_LIGHT](figures/BlendMode-SoftLight.png) |
 | DIFFERENCE  | 22   | Difference mode. rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d. Calculates the difference between the color values of the source and target pixels. | ![DIFFERENCE](figures/BlendMode-Difference.png) |
-| EXCLUSION   | 23   | Exclusion mode. rc = s + d - two(s * d), ra = s + (1 - sa) * d. Similar to DIFFERENCE, but with lower contrast. | ![EXCLUSION](figures/BlendMode-Exclusion.png) |
+| EXCLUSION   | 23   | Exclusion mode. rc = s + d - 2 * (s * d), ra = s + (1 - sa) * d. Similar to DIFFERENCE, but with lower contrast. | ![EXCLUSION](figures/BlendMode-Exclusion.png) |
 | MULTIPLY    | 24   | Multiply mode. r = s * (1 - da) + d * (1 - sa) + s * d. Multiplies the color values of the source and target pixels, and the result is usually darker. | ![MULTIPLY](figures/BlendMode-Multiply.png) |
 | HUE         | 25   | Hue mode. Uses the hue of the source pixel and the saturation and brightness of the target pixel.               | ![HUE](figures/BlendMode-Hue.png) |
 | SATURATION  | 26   | Saturation mode. Uses the saturation of the source pixel and the hue and brightness of the target pixel.             | ![SATURATION](figures/BlendMode-Saturation.png) |

@@ -5,6 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-18T09:03:11.912Z pushedAt=2026-11-20T01:48:08.913Z nl=1 -->
 
 ## Overview
 
@@ -78,11 +79,11 @@ Enumerates the key codes for key events.
 | KEY_9 = 2009 | Key 9|
 | KEY_STAR = 2010 | Key *|
 | KEY_POUND = 2011 | Key #|
-| KEY_DPAD_UP = 2012 | Up key on D-pad.|
-| KEY_DPAD_DOWN = 2013 | Down key on D-pad.|
+| KEY_DPAD_UP = 2012 | Up key on D-pad|
+| KEY_DPAD_DOWN = 2013 | Down key on D-pad|
 | KEY_DPAD_LEFT = 2014 | Left key on D-pad.|
-| KEY_DPAD_RIGHT = 2015 | Right key on D-pad.|
-| KEY_DPAD_CENTER = 2016 | Center key on D-pad.|
+| KEY_DPAD_RIGHT = 2015 | Right key on D-pad|
+| KEY_DPAD_CENTER = 2016 | Center key on D-pad|
 | KEY_A = 2017 | Key A|
 | KEY_B = 2018 | Key B|
 | KEY_C = 2019 | Key C|
@@ -191,7 +192,7 @@ Enumerates the key codes for key events.
 | KEY_NUMPAD_RIGHT_PAREN = 2122 | Key ) on numeric keypad|
 | KEY_VIRTUAL_MULTITASK = 2210 | Multi-task key|
 | KEY_SLEEP = 2600 | Sleep key|
-| KEY_ZENKAKU_HANKAKU = 2601 | Zenkaku/Hankaku key|
+| KEY_ZENKAKU_HANKAKU = 2601 | Zenkaku/Hankaku key |
 | KEY_102ND = 2602 | Additional key on non-US keyboard layouts (102-key) usually located to the right of the left Shift key (corresponding to the '<', '>', or '\|', '\' characters).|
 | KEY_RO = 2603 | Ro key|
 | KEY_KATAKANA = 2604 | Katakana key|
@@ -248,7 +249,7 @@ Enumerates the key codes for key events.
 | KEY_DOCUMENTS = 2656 | Documents key|
 | KEY_VIDEO_NEXT = 2657 | Next Video key|
 | KEY_VIDEO_PREV = 2658 | Previous Video key|
-| KEY_BRIGHTNESS_CYCLE = 2659 | Brightness Cycle key|
+| KEY_BRIGHTNESS_CYCLE = 2659 | Brightness Cycle key |
 | KEY_BRIGHTNESS_ZERO = 2660 | Brightness Zero key|
 | KEY_DISPLAY_OFF = 2661 | Display Off key|
 | KEY_BTN_MISC = 2662 | Misc Button key|
@@ -297,8 +298,8 @@ Enumerates the key codes for key events.
 | KEY_PRESENTATION = 2705 | Presentation key|
 | KEY_DATABASE = 2706 | Database key|
 | KEY_NEWS = 2707 | News key|
-| KEY_VOICEMAIL = 2708 | Voicemail key|
-| KEY_ADDRESSBOOK = 2709 | Address book key|
+| KEY_VOICEMAIL = 2708 | Voicemail key. |
+| KEY_ADDRESSBOOK = 2709 | Address book key. |
 | KEY_MESSENGER = 2710 | Messenger key|
 | KEY_BRIGHTNESS_TOGGLE = 2711 | Brightness Toggle key|
 | KEY_SPELLCHECK = 2712 | Spell Check key|
@@ -306,7 +307,7 @@ Enumerates the key codes for key events.
 | KEY_MEDIA_REPEAT = 2714 | Media Repeat key|
 | KEY_IMAGES = 2715 | Images key|
 | KEY_BUTTONCONFIG = 2716 | Button Configuration key|
-| KEY_TASKMANAGER = 2717 | Task Manager key|
+| KEY_TASKMANAGER = 2717 | Task Manager key. |
 | KEY_JOURNAL = 2718 | Log key|
 | KEY_CONTROLPANEL = 2719 | Control Panel key|
 | KEY_APPSELECT = 2720 | App Select key|
@@ -363,8 +364,8 @@ Enumerates the key codes for key events.
 | KEY_SWITCHVIDEOMODE = 2841 | Switch Video Mode key (monitor, LCD, and TV, etc.)|
 | KEY_BATTERY = 2842 | Battery key|
 | KEY_BLUETOOTH = 2843 | Bluetooth key|
-| KEY_WLAN = 2844 | WLAN key|
-| KEY_UWB = 2845 | Ultra-wideband key|
+| KEY_WLAN = 2844 | WLAN key. |
+| KEY_UWB = 2845 | Ultra-wideband key. |
 | KEY_WWAN_WIMAX = 2846 | WWAN WiMAX key|
 | KEY_RFKILL = 2847 | Radio disabling key|
 | KEY_CHANNEL = 3001 | Channel key|
@@ -397,3 +398,5 @@ Enumerates the key event actions.
 | OH_NATIVEXCOMPONENT_KEY_ACTION_UNKNOWN = -1 | Unknown key action.|
 | OH_NATIVEXCOMPONENT_KEY_ACTION_DOWN = 0 | Key press.|
 | OH_NATIVEXCOMPONENT_KEY_ACTION_UP = 1 | Key release.|
+
+

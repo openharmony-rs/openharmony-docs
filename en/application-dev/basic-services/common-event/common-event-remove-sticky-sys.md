@@ -1,11 +1,11 @@
 # Removing Sticky Common Events (for System Applications Only)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-06T12:00:22.792Z pushedAt=2026-11-09T12:20:44.539Z nl=1 -->
 
 ## When to Use
 
@@ -13,7 +13,7 @@ Subscribers can receive sticky common events that have been sent. If the events 
 
 ## Available APIs
 
-For details, see [API Reference](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10).
+See [commonEventManager.removeStickyCommonEvent](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10).
 
 | Name| Description|
 | -------- | -------- |
@@ -48,7 +48,8 @@ For details, see [API Reference](../../reference/apis-basic-services-kit/js-apis
        hilog.error(DOMAIN_NUMBER, TAG, `Failed to remove sticky common event. Code is ${err.code}, message is ${err.message}`);
        return;
      }
-     //...
+     // ...
      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in removing sticky event.`);
    });
    ```
+

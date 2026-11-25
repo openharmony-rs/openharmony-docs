@@ -21,7 +21,7 @@ typedef struct OH_TrafficFilter_FilterRule {...} OH_TrafficFilter_FilterRule
 
 失败规则：如果[OH_TrafficFilter_AddPacketRule](capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)返回错误，不保证规则已被添加或生效。调用者应在假设规则生效之前检查返回值。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)
 

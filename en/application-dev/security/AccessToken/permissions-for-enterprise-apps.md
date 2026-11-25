@@ -6,8 +6,10 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9dd55b053b89fa72857b413bdd99b8031d614bc7 translatedAt=2026-11-20T09:19:03.269Z pushedAt=2026-11-23T07:55:36.090Z nl=1 -->
 
-The following permissions are open to <!--Del-->system applications and <!--DelEnd-->enterprise applications.
+<!--RP1-->
+The following permissions are open to system applications and enterprise applications.
 
 Enterprise applications include normal enterprise applications and mobile device management (MDM) applications.
 
@@ -15,13 +17,13 @@ Enterprise applications have the following characteristics:
 
 - It runs only on enterprise-customized devices and does not run on common consumer devices.
 - The distribution types are enterprise_normal (normal enterprise applications) and enterprise_mdm (MDM applications).
-<!--RP1--><!--RP1End-->
+<!--RP1End-->
 
 For details about how to request the permissions for enterprise applications, see [declaring permissions](declare-permissions.md).
 
 > **NOTE**
 >
-> The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) during the debugging and release phases.
+> The following permissions do not support automatic signing. Therefore, during both debugging and release, you must complete manual signing by following the steps in [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual).
 
 ## ohos.permission.SET_FILE_GUARD_POLICY
 
@@ -31,14 +33,14 @@ Allows an application to update the file guard policy.
 
 **Permission level**: system_basic
 
-**Authorization mode**: system_grant
+**Authorization method**: system authorization (system_grant)
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PC/2in1
 
-**Valid since**: 10
+**Since**: 10
 
 **Changelog**: For API versions 10 to 14, this permission is of the system_core level and available only to MDM applications. Starting from API version 14, the permission level is changed to system_basic and this permission is accessible to normal enterprise applications.
 
@@ -59,7 +61,7 @@ Currently, the extended properties include the file security level and file labe
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 10
+**Since**: 10
 
 **Changelog**: For API versions 10 to 14, this permission is of the system_core level and available only to MDM applications. Starting from API version 14, the permission level is changed to system_basic and this permission is accessible to normal enterprise applications.
 
@@ -80,11 +82,13 @@ With this permission, the application can obtain the write permission on user fi
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 Allows an application to interact across local accounts.
+
+<!--RP8--><!--RP8End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -95,7 +99,7 @@ Allows an application to interact across local accounts.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 7
+**Since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
 
@@ -104,6 +108,8 @@ Allows an application to interact across local accounts.
 Allows an application to query the identities (such as names and IDs) of specified or all local accounts.
 
 With this permission, the application can query the identities of specified or all local accounts in the system. Based on the obtained identities, the application can further access or manage the target local accounts.
+
+<!--RP13--><!--RP13End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -116,7 +122,7 @@ With this permission, the application can query the identities of specified or a
 
 **Supported devices**: general devices
 
-**Valid since**: 26.0.0
+**Initial version**: 26.0.0
 
 ## ohos.permission.GET_RUNNING_INFO
 
@@ -133,7 +139,7 @@ With this permission, the application can obtain the runtime information of othe
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 7
+**Since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
 
@@ -152,7 +158,7 @@ With this permission, the application can register an application state observer
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 7
+**Since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
 
@@ -160,7 +166,7 @@ With this permission, the application can register an application state observer
 
 Allows an application to obtain basic information and sensitive information about another application,
 
-such as the app bundle name and version.
+Examples are the application package name and version.
 
 <!--RP2--><!--RP2End-->
 
@@ -171,7 +177,7 @@ such as the app bundle name and version.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 7
+**Since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
 
@@ -192,7 +198,7 @@ With this permission, the application can obtain Wi-Fi configurations, such as t
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 8
+**Since**: 8
 
 **Changelog**: This permission is available only to system applications in API versions 8 to 14. From API version 15, it is available to normal enterprise applications.
 
@@ -213,13 +219,15 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 8
+**Since**: 8
 
 **Changelog**: This permission is available only to system applications in API versions 8 to 14. From API version 15, it is available to normal enterprise applications.
 
 ## ohos.permission.GET_DOMAIN_ACCOUNTS
 
 Allows an application to obtain domain account information.
+
+<!--RP12--><!--RP12End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -230,7 +238,7 @@ Allows an application to obtain domain account information.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 **Changelog**: This permission is available only to system applications in API versions 10 to 13. From API version 14, it is available to normal enterprise applications.
 
@@ -247,7 +255,7 @@ Allows an enterprise security application to query security audit events.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 12
+**Since**: 12
 
 **Changelog**: This permission is available only to MDM applications in API versions 12 to 13. From API version 14, it is available to normal enterprise applications.
 
@@ -266,9 +274,9 @@ With this permission, the system application can terminate other running applica
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 12
+**Since**: 12
 
-**Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
+**Changelog**: In API 12-13, this permission is open only to system applications. Starting from API 14, the open scope changes from system applications to enterprise ordinary applications.
 
 ## ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -284,7 +292,7 @@ With this permission, the application can enable or disable Wi-Fi, connect to Wi
 
 **Certificate-based authorization**: true
 
-**Valid since**: 15
+**Since**: 15
 
 ## ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT
 
@@ -301,7 +309,7 @@ With this permission, the enterprise application can install private CA certific
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.MANAGE_NET_FIREWALL
 
@@ -318,7 +326,7 @@ Currently, this permission is available only to 2-in-1 device applications.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 12
+**Since**: 12
 
 **Changelog**: This permission is available only to system applications in API versions 12 to 14. From API version 15, it is available to normal enterprise applications.
 
@@ -337,7 +345,7 @@ Currently, this permission is available only to 2-in-1 device applications.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 12
+**Since**: 12
 
 **Changelog**: This permission is available only to system applications in API versions 12 to 14. From API version 15, it is available to normal enterprise applications.
 
@@ -345,6 +353,8 @@ Currently, this permission is available only to 2-in-1 device applications.
 
 Allows an application to obtain domain account server configurations.
 
+<!--RP9--><!--RP9End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -354,12 +364,14 @@ Allows an application to obtain domain account server configurations.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 Allows an application to manage domain account server configurations.
 
+<!--RP10--><!--RP10End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -369,12 +381,14 @@ Allows an application to manage domain account server configurations.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNTS
 
 Allows an application to manage domain accounts.
 
+<!--RP11--><!--RP11End-->
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
@@ -384,7 +398,7 @@ Allows an application to manage domain accounts.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.GET_SIGNATURE_INFO
 
@@ -399,7 +413,7 @@ Allows an application to obtain the application package signature information.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.VISIBLE_WINDOW_INFO
 
@@ -414,13 +428,13 @@ Allows an application to obtain visible window information of the current screen
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.kernel.AUTH_AUDIT_EVENT
 
 Allows an enterprise security application to block security audit events.
 
-With this permission, the enterprise security application can block security audit events, including file creation, opening, and deletion.
+After an enterprise security application obtains this permission, it can block security audit events. These events include file creation, file opening, and file deletion.
 
 <!--RP2--><!--RP2End-->
 
@@ -433,7 +447,7 @@ With this permission, the enterprise security application can block security aud
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.SUPPORT_APP_SERVICE_EXTENSION
 
@@ -452,7 +466,7 @@ With this permission, the application can be started or connected as an **AppSer
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -471,7 +485,7 @@ With this permission, the software can obtain 802.1X packets and add information
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.SUPPORT_INSTALL_ON_U1
 
@@ -490,7 +504,7 @@ The specific user supports applications running in singleton mode.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.QUERY_LOCAL_WORKSPACES
 
@@ -509,7 +523,7 @@ With this permission, the application can query the basic information about work
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.SET_NET_EXT_ATTRIBUTE
 
@@ -528,7 +542,7 @@ With this permission, the application can specify whether a network is identifie
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.MANAGE_ANTIVIRUS
 
@@ -545,7 +559,7 @@ Allows an enterprise application to manage antivirus software.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.REGISTER_ANTIVIRUS
 
@@ -562,7 +576,7 @@ Allows enterprise antivirus software to register with the system and update basi
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.CALL_TPM_CMD
 
@@ -579,7 +593,7 @@ Allows an application to call Trusted Platform Module (TPM) commands.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_WORKSPACES_EVENT_SUBSCRIBE
 
@@ -598,7 +612,7 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.SCAN_REMEDIATE_VIRUS
 
@@ -617,7 +631,7 @@ This permission is only available to antivirus applications.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.sec.ACCESS_UDID
 
@@ -634,7 +648,7 @@ The UDID uniquely identifies a device.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 7
+**Since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 19. From API version 20, it is available to normal enterprise applications.
 
@@ -655,28 +669,28 @@ With this permission, the application can update print status and printer inform
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.DLP_POLICY_MANAGER
 
-Allows common enterprise applications to manage transparent encryption/decryption policies through the data loss prevention capability.
+Allows an enterprise ordinary application to manage transparent encryption and decryption policies through the data loss prevention capability.
 
-With this permission, an application can manage transparent encryption/decryption policies, such as specifying files of other applications that require transparent encryption/decryption and specifying encryption/decryption algorithms.
+After obtaining this permission, the application can manage transparent encryption and decryption policies, such as specifying that file operations of other applications require transparent encryption and decryption and specifying the corresponding encryption and decryption algorithms.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Certificate-based authorization**: true<!--DelEnd-->
+**Support certificate authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA
- 	 
-Allows an application to launch EmbeddedUIExtension on other applications.
+
+Allows an application to launch an EmbeddedUIExtension across applications.
 
 <!--RP3--><!--RP3End-->
 
@@ -687,15 +701,15 @@ Allows an application to launch EmbeddedUIExtension on other applications.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Certificate-based authorization**: true<!--DelEnd-->
+**Certificate Authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.SUPPORT_NP_PLUGIN_FOR_WEB
- 	 
-Allows an application to release plugin libraries.
+
+Allows an application to release the plugin library.
 
 <!--RP4--><!--RP4End-->
 
@@ -706,14 +720,14 @@ Allows an application to release plugin libraries.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Certificate-based authorization**: true<!--DelEnd-->
+**Support certificate authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY_FOR_WEB
- 	 
+
 Allows an application to load plugin libraries signed with binary certificates.
 
 <!--RP5--><!--RP5End-->
@@ -725,15 +739,15 @@ Allows an application to load plugin libraries signed with binary certificates.
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Certificate-based authorization**: true<!--DelEnd-->
+**Whether certificate authorization is supported**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
-Allows an enterprise common application to obtain the list of all installed applications.
+Allows an enterprise normal application to obtain the list of all installed applications.
 
 <!--RP2--><!--RP2End-->
 
@@ -742,20 +756,20 @@ Allows an enterprise common application to obtain the list of all installed appl
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Certificate-based authorization**: true<!--DelEnd-->
+**Whether certificate authorization is supported**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.kernel.TRAFFIC_FILTER
 
-Allows an application to check data packets in the network traffic path and determine whether to permit their passage, and redirect traffic to local ports.
+Allows an application to inspect packets in the network traffic path and decide whether to forward them, as well as to redirect network traffic to a local port.
 
-With this permission, the application can:
+With this permission, the application can: 
 
-1. Inline-intercept the network traffic processing path to perform real-time inspection, analysis, and policy judgment on network packets passing through the device or system. Based on packet attributes such as source address, destination address, port, and protocol type, the application can decide whether to allow the traffic to proceed, block the connection, drop the packets, modify the packets, or execute security actions such as triggering alerts and logging events. 
-2. Redirect specific network traffic to designated local ports for further processing by local security agents, proxy services, detection engines, or policy execution components. For example, it can be used for malicious traffic detection, intrusion prevention, data loss prevention, access control, threat analysis, content filtering, and enterprise compliance auditing. 
+1. Connects to the network traffic processing path in an inline manner to perform real-time inspection, analysis, and policy decisions on network packets passing through the device or system. The application can decide, based on the source address, destination address, port, and protocol type of a packet, whether to allow the traffic to continue transmitting, block the connection, drop the packet, modify the packet, or perform security handling operations such as raising an alarm or recording a log. 
+2. Redirects specific network traffic to a designated local port for further processing by a local security agent, proxy service, detection engine, or policy enforcement component. For example, this can be used in scenarios such as malicious traffic detection, intrusion prevention, data loss prevention, access control, threat analysis, content filtering, and enterprise compliance auditing.
 
 <!--RP6--><!--RP6End-->
 
@@ -770,13 +784,32 @@ With this permission, the application can:
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
- ## ohos.permission.ENTERPRISE_MANAGE_BACKUP
+## ohos.permission.ENTERPRISE_MANAGE_BACKUP
+ 
+Allows an application to use the backup and restore capability.
 
-Allows an application to use backup and restore capabilities.
+After obtaining this permission, the application can back up and restore user data and application sandbox data.
 
-With this permission, the application can back up and restore user data and application sandbox data.
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate authorization supported**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+Allows an enterprise application to obtain audio sound card information.
+
+<!--RP7--><!--RP7End-->
 
 <!--RP2--><!--RP2End-->
 
@@ -789,4 +822,23 @@ With this permission, the application can back up and restore user data and appl
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Since**: 26.1.0
+
+## ohos.permission.ENTERPRISE_MANAGE_DISK
+
+Allows enterprise common applications to query local disk hardware information.
+
+After obtaining this permission, applications can query sensitive information related to local disks, such as disk power-on time and disk start/stop count, to help enterprise administrators monitor disk health status.
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Whether certificate authorization is supported**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Initial version**: 26.1.0

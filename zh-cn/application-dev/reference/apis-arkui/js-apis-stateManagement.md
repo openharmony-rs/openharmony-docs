@@ -427,6 +427,7 @@ globalConnect参数类型。
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，对应数值：0-4，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)。不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密级别数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
+|ignoreReadOnlyProperties      | boolean   |否   |是    |是否忽略只读属性。当值为false时，反序列化含有只读属性的类（例如被[@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter函数）时会抛出错误。当值为true时，将忽略只读属性，不会抛出错误。默认值为false。<br>**起始版本：** 26.1.0 <br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
@@ -2174,7 +2175,7 @@ struct CompV2 {
 
 ## CustomComponentContext
 
-`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例。
+`CustomComponentContext`类提供对组件级服务的访问，包括复用池。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例，开发者请勿自行实现或重写该接口。
 
 **起始版本：** 26.0.0
 
@@ -2241,9 +2242,97 @@ struct PoolOwner {
 }
 ```
 
+### getDefaultReusePool
+
+getDefaultReusePool(): IDefaultReusePool | undefined
+
+返回该自定义组件拥有的默认复用池。与[getReusePool](#getreusepool)返回的全局复用池不同，默认复用池用于缓存该组件回收的直接子组件，无需开发者配置。当组件存在默认复用池时返回默认复用池，否则返回`undefined`。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [IDefaultReusePool](#idefaultreusepool) \| undefined | 当前组件存在默认复用池时，返回默认复用池，否则返回`undefined`。 |
+
+**示例：**
+
+以下示例中，点击Recycle child按钮可将自定义组件回收进默认复用池，点击Clear按钮可释放默认复用池中的组件。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showChild: boolean = true;
+
+  clearDefaultPool() {
+    // 获取当前组件的默认复用池
+    const pool = UIUtils.getCustomComponentContext(this).getDefaultReusePool();
+    if (!pool) {
+      console.info('No default reuse pool available.');
+      return;
+    }
+    // 清理默认复用池中的全部组件
+    pool.clearCache();
+    // 也可以仅清理reuseId为'A'的组件
+    // pool.clearCache('A');
+  }
+
+  build() {
+    Column() {
+      if (this.showChild) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      Button('Recycle child')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showChild = false;
+        })
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理复用池
+          this.clearDefaultPool();
+        })
+    }
+  }
+}
+```
+
 ## IReusePool
 
-`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。
+`IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。通过[CustomComponentContext.getReusePool](#getreusepool)获取实例，开发者请勿自行实现或重写该接口。
 
 **起始版本：** 26.0.0
 
@@ -2464,6 +2553,113 @@ struct CompA {
 }
 ```
 
+## IDefaultReusePool
+
+`IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例，开发者请勿自行实现或重写该接口。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### clearCache
+
+clearCache(reuseId?: string): void
+
+清理复用池中的组件。指定`reuseId`时，仅清理该`reuseId`对应的可复用自定义组件；未指定时，清理复用池中的全部组件。
+
+> **说明：**
+>
+> 1. 已从复用池中取出、正参与复用的组件不受影响。
+> 2. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------- |
+| reuseId | string | 否   | 需要清理的复用池中可复用自定义组件的复用标识ID。<br>默认值：undefined，即清理复用池中的全部组件。 |
+
+**示例：**
+
+以下示例中，点击Recycle A按钮或Recycle B按钮可将自定义组件回收进默认复用池，点击Clear All按钮可释放默认复用池中的所有组件，点击Clear A按钮可释放默认复用池中reuseId为A的组件。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // 清理默认复用池中的全部组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // 仅清理reuseId为'A'的组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
+        })
+    }
+  }
+}
+```
+
 ## IReusableInfo
 
 `IReusableInfo`接口提供有关复用池管理的可复用组件的当前数量和数量上限的信息。
@@ -2576,3 +2772,288 @@ type ReusableComponentConstructor = Function
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+## RecoverableStorage
+
+提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过[connect](#connect-1)声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。具体UI使用说明，详见[RecoverableStorage: 可恢复的UI状态存储](../../ui/state-management/arkts-new-recoverablestorage.md)。
+
+>**说明：**
+>
+>可恢复场景包括：
+>
+>- 资源管控终止（如低内存）场景：恢复退后台时保存的值。
+>
+>- JS_ERROR与APP_FREEZE异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已在AbilityStage的onCreate中调用[enableAppRecovery](../apis-ability-kit/js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery)（默认参数即可满足）且未注册错误观察者。
+>
+>仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，[connect](#connect-1)返回默认值。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### connect
+
+static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object\>( <br>
+&nbsp;&nbsp;&nbsp;&nbsp;params:&nbsp;RecoverableConnectOptions\<T,&nbsp;S\> <br>
+):&nbsp;T
+
+声明一个可恢复的状态变量。若该变量已存在（内存或快照中），返回已存的值；否则通过[defaultCreator](#recoverableconnectoptionst-s)构造默认值并返回。
+
+>**说明：**
+>
+>1. 仅支持对象类型，不支持基本类型。传入number、string、boolean等基本类型会抛出错误码。
+>
+>2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出错误码。
+>
+>3. 恢复重启时恢复值优先于默认值；恢复失败时返回通过[defaultCreator](#recoverableconnectoptionst-s)构造的默认值，并经`notifyOnError`上报错误。
+>
+>4. 典型用法为修改所连接对象的属性。对例如[状态管理V1](../../ui/state-management/arkts-application-state-management-overview.md)的[\@State](../../ui/state-management/arkts-state.md)变量整体重新赋值会导致已存引用失效，不被跟踪。
+>
+>5. 变量按component入参获取的窗口级实例ID隔离，归属于不同窗口实例的变量互不影响。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| params | [RecoverableConnectOptions\<T, S\>](#recoverableconnectoptionst-s) | 是 | 连接选项，用于配置连接的组件实例（component）、变量类型（type）与默认值构造器（defaultCreator）等。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ------------------------------------------------------------ |
+| T | 连接成功时返回恢复值或默认值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](./errorcode-stateManagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 140124 | Unsupported type or parameters. |
+
+**示例：**
+
+```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+// 可恢复状态变量的类型
+class Draft {
+  text: string = '';
+  constructor(text: string = '') {
+    this.text = text;
+  }
+}
+
+@Entry
+@Component
+struct DraftPage {
+  // 连接可恢复状态变量
+  @State draft: Draft = RecoverableStorage.connect({
+    component: this,   // 传入当前组件实例
+    type: Draft,
+    defaultCreator: (): Draft => new Draft('')
+  });
+
+  build() {
+    Column() {
+      TextInput({ text: this.draft.text })
+        .onChange((v: string) => { this.draft.text = v; })
+    }
+  }
+}
+```
+
+### keys
+
+static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
+
+获取当前实例（以[component](#recoverableconnectoptionst-s)的窗口级实例ID，即每个窗口实例的唯一标识）注册的所有可恢复状态变量的key。
+
+>**说明：**
+>
+>key在Array中的顺序是无序的，与key注册的顺序无关。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，在自定义组件中使用时，直接传入**this**。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ------------------------------------------------------------ |
+| Array\<string\> | 当前实例注册的所有key。未注册变量时返回空数组。 |
+
+**示例：**
+
+```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+// 可恢复状态变量的类型
+class Draft {
+  text: string = '';
+}
+
+@Entry
+@Component
+struct MyPage {
+  // 连接可恢复状态变量
+  @State draft: Draft = RecoverableStorage.connect({
+    component: this,   // 传入当前组件实例
+    type: Draft,
+    defaultCreator: (): Draft => new Draft()
+  });
+  @State keys: string[] = [];   // 保存查询结果
+
+  build() {
+    Column() {
+      // 查询当前实例已注册的全部key
+      Button('keys').onClick(() => {
+        this.keys = RecoverableStorage.keys(this);
+      })
+      Text(this.keys.join(','))
+    }
+  }
+}
+```
+
+### remove
+
+static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs\<T\>):&nbsp;void
+
+注销当前实例（以[component](#recoverableconnectoptionst-s)的窗口级实例ID标识）指定key的可恢复状态变量。注销后该变量不再保存与恢复，再次通过[connect](#connect-1)连接该key时返回默认值。
+
+>**说明：**
+>
+>注销不存在的key时会产生警告。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，在自定义组件中使用时，直接传入**this**。 |
+| keyOrType | string&nbsp;\|&nbsp;[TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 待注销的key。若传入类型，则注销以该类型名为key的变量。 |
+
+**示例：**
+
+```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+// 可恢复状态变量的类型
+class Draft {
+  text: string = '';
+}
+
+@Entry
+@Component
+struct MyPage {
+  // 连接可恢复状态变量
+  @State draft: Draft = RecoverableStorage.connect({
+    component: this,   // 传入当前组件实例
+    type: Draft,
+    defaultCreator: (): Draft => new Draft()
+  });
+
+  build() {
+    Column() {
+      // 按key注销
+      Button('remove draft').onClick(() => {
+        RecoverableStorage.remove(this, 'draft');
+      })
+      // 按类型注销
+      Button('remove Draft').onClick(() => {
+        RecoverableStorage.remove(this, Draft);
+      })
+    }
+  }
+}
+```
+
+## RecoverableConnectOptions\<T, S\>
+
+定义[RecoverableStorage.connect](#connect-1)的连接选项，用于指定连接的组件实例（component）、变量类型（type）与默认值构造器（defaultCreator），可选配置key、容器元素构造器与错误回调。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，在自定义组件中使用时，直接传入**this**。 |
+| type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 可恢复状态变量的类型。<br>仅支持对象类型。 |
+| key | string | 否 | 可恢复状态变量的key。<br>不指定时使用类型名作为key。 |
+| defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。<br>首次连接时使用，恢复失败时作为回退。 |
+| defaultSubCreator | StorageDefaultCreator\<S\> | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。<br>仅对容器类型（Array/Map/Set）顶层生效。 |
+| notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback) | 否 | 序列化/反序列化错误回调，用于在保存/恢复失败时获取原因与受影响的key。<br>不指定时错误在内部处理，不会导致应用崩溃。 |
+
+## RecoverableStorageError
+
+定义[RecoverableStorage](#recoverablestorage)通过notifyOnError回调上报的错误信息，包含错误原因（reason）、受影响的key列表（keys）与附加信息（message），用于定位保存/恢复失败的原因。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示保存失败（如数据超出上限或包含不支持的数据），'deserialization'表示恢复失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）直接抛出，不经本回调上报。推荐数据总量：每实例≤100KB。（150KB序列化数据上限，与系统数据共享） |
+| keys | Array\<string\> | 是 | 保存或恢复失败所影响的可恢复状态变量key列表。 |
+| message | string | 是 | 错误的附加信息。 |
+
+## NotifyOnErrorCallback
+
+type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError)&nbsp;=>&nbsp;void
+
+定义用于上报[RecoverableStorage](#recoverablestorage)序列化/反序列化错误的回调类型。设置于连接选项（notifyOnError），回调在UI线程执行，回调内不应抛出异常。
+
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| error | [RecoverableStorageError](#recoverablestorageerror) | 是 | 错误信息。 |

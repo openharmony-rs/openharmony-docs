@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:31:49.870Z pushedAt=2026-08-10T09:35:04.929Z -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:35:06.534Z pushedAt=2026-11-23T08:04:17.807Z nl=1 -->
 
 Starting from API version 23, the algorithm library supports obtaining a public key object from a private key object.
 
@@ -20,7 +20,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
 
    The default number of primes for creating an RSA asymmetric key is **2**. The **PRIMES_2** parameter is omitted in the string parameter here.
 
-2. Call [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to randomly generate an asymmetric key pair (**KeyPair**).
+2. Call [AsyKeyGenerator.convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12-1) and pass in the binary data of the private key to generate an asymmetric key object (**KeyPair**).
 
    The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
@@ -35,7 +35,7 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
 - Example: Generate an RSA key pair asynchronously (by calling [getPubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkey23)):
 
   <!-- @[prikey_get_pubkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -93,21 +93,23 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = await priKey.getPubKey();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = await priKey.getPubKey();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);
     } catch (e) {
       console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
 
+
 - Example: Generate an RSA key pair synchronously (by calling [getPubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkeysync23)):
 
   <!-- @[prikey_get_pubkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -165,15 +167,16 @@ For the corresponding algorithm specifications, see [Asymmetric Key Encryption a
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = priKey.getPubKeySync();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = priKey.getPubKeySync();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);
     } catch (e) {
       console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
 
-  <!--no_check-->
+

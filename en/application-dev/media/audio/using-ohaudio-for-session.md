@@ -1,10 +1,11 @@
 # Using OHAudio for Audio Session (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @LauJianghu-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=155a37b301f9617552fd06df23d4e3691597be8a translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a [default audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management of all streams (including playback and recording).
 
@@ -16,7 +17,7 @@ This section mainly introduces the usage and precautions of the AudioSession-rel
 
 To use the audio session manager provided by OHAudio, add the corresponding header file.
 
-The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC).
+The following examples are code snippets. You can access the [complete sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSessionSampleC) via the link at the bottom-right corner of each code snippet.
 
 ### Linking the Dynamic Library in the CMake Script
 
@@ -45,12 +46,12 @@ Create an [OH_AudioSessionManager](../../reference/apis-audio-kit/capi-ohaudio-o
 OH_AudioSessionManager *audioSessionManager;
 // ...
     OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
-                                                                                      AudioSessionStateChangedCallback);
     if (resultManager == 0) {
         OH_LOG_Print(LOG_APP, LOG_INFO, g_audioSessionVariable->globalResmgr, SESSION_TAG,
                      " OH_AudioManager_GetAudioSessionManager success! ");
     }
+    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
+                                                                                      AudioSessionStateChangedCallback);    
 ```
 
 ## Activating an Audio Session
@@ -77,6 +78,25 @@ Call [OH_AudioSessionManager_IsAudioSessionActivated](../../reference/apis-audio
 
 ``` C++
 bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
+```
+
+## Setting Session-Level Recording Stream Mute Hint
+
+Starting from API version 24, when an app has muted the recording streams within the current audio session on the service side, it can call [OH_AudioSessionManager_SetCaptureMuteHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setcapturemutehint) to report this state to the system audio module. The system audio module then adjusts its strategy based on the reported state to reduce power consumption. This feature currently takes effect only on certain PCs and 2-in-1 devices. This API does not actually trigger muting, nor does it perform mute processing on recording data. It merely informs the system audio module that the app has muted the recording streams within the current audio session. The app must still handle recording data on its own, for example, by not sending captured data or by sending silent data.
+
+This API can only be called when there is an active recording stream in the current audio session; otherwise, it returns `AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE`. If a recording stream has both the stream-level mute hint API [OH_AudioCapturer_SetMuteHint](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setmutehint) and the session-level mute hint API called on it, the stream-level setting takes precedence. Therefore, when multiple recording streams in an app share the same mute state, you can use the session-level API for unified reporting. When different recording streams have different mute states, use the stream-level API for each specific recording stream. If you create a recording stream with a mic audio source solely to call the session-level API, you must request the microphone permission `ohos.permission.MICROPHONE`.
+
+<!-- @[cset_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) --> 
+
+``` C++
+bool mute = true;
+OH_AudioCommon_Result setResult = OH_AudioSessionManager_SetCaptureMuteHint(audioSessionManager, mute);
+if (setResult != AUDIOCOMMON_RESULT_SUCCESS) {
+    // Handle exceptions based on the return value, such as AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE.
+}
+
+mute = false;
+OH_AudioCommon_Result unsetResult = OH_AudioSessionManager_SetCaptureMuteHint(audioSessionManager, mute);
 ```
 
 ## Deactivating an Audio Session
@@ -182,8 +202,8 @@ OH_AudioSessionManager *audioSessionManager;
         audioSessionManager, MyAudioSessionDeactivatedCallback);
     // ...
     // Cancel listening for audio session deactivation events.
-    result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager,
-                                                                  AudioSessionStateChangedCallback);
+    result = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager,
+                                                                         MyAudioSessionDeactivatedCallback);
     // ...
     // Deactivate the audio session.
     result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
@@ -210,7 +230,7 @@ Starting from API version 23, when the current application plays audio in the **
 
 After enabling mute suggestion notifications, if other applications play audio that cannot be played concurrently with the current application while the current application is playing audio, the current application will receive a mute suggestion notification. The current application can either choose to take no action (allowing concurrent playback with other applications) or mute itself to let other applications play audio alone.
 
-To enable mute suggestion notifications for mixed playback, you need to first call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set scene parameters and subscribe to the [OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) audio session state change event. After enabling, call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the **AudioSession**. A prerequisite for enabling mute suggestion notifications is that [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) must be set to **CONCURRENCY_MIX_WITH_OTHERS**.
+To enable the mute suggestion notification when mixing with others, you must first call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set scene parameters, call [OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers) to enable the feature, subscribe to the audio session state change event [OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint), and finally call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the AudioSession. A prerequisite for enabling the mute suggestion notification is that the [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) must be set to CONCURRENCY_MIX_WITH_OTHERS.
 
 <!-- @[cenable_muteSuggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -231,7 +251,7 @@ Listen for audio session focus state changes through [OH_AudioSession_StateChang
 
 **Below is a comprehensive example of requesting focus for an audio session and listening for focus change events:**
 
-<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
 
 ``` C++
 OH_AudioSessionManager *audioSessionManager;
@@ -267,6 +287,12 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
         case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
           // This branch indicates that another application has finished playing non-mixed audio, and the system may decide whether to unmute the current application.
             break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_MUTE:
+          // This branch indicates that the system has muted the audio.
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
+          // This branch indicates that the system has unmuted the audio.
+            break;
         default:
             break;
     }
@@ -289,4 +315,42 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
     // ...
     OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(
         audioSessionManager, MyAudioSessionDeactivatedCallback);
+```
+
+## Setting Audio Session Behavior
+
+Starting from API version 24, you can set audio session behavior parameters through [OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) to achieve a better audio focus experience in specific scenarios.
+
+| Enum Value | API Version | Recommended Scenario |
+| -------- | -------- | -------- |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED | 24 | Live streaming audio interrupted by another stream. |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED | 26.0.0 | Media audio that needs to resume after interruption by short-duration media audio, such as an audio advertisement. |
+
+When another app starts an audio stream, such as keyboard speech-to-text recording, it can interrupt a live stream and pause both its audio and video, disrupting the viewing experience. If the live streaming app sets [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED, the live stream continues playing while muted rather than pausing, keeping the video uninterrupted. Audio is automatically unmuted when the interruption ends.
+
+When media audio is interrupted by other short-duration media audio, the system does not normally notify the app to resume playback. Setting [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED makes the system notify the app to resume, preventing playback from remaining paused after a short interruption. This behavior does not take effect if the interruption exceeds the specified duration, that is, if the interrupting audio is long-duration media audio.
+
+> **NOTE**
+>
+> - PAUSE_WHEN_INTERRUPTED and MUTE_WHEN_INTERRUPTED cannot take effect together. If both are set, only PAUSE_WHEN_INTERRUPTED takes effect.
+> - When configuring this behavior through [OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior), also call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene). Otherwise, the configuration does not take effect.
+> - If [OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) is called while the audio session is active, call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) again for the configuration to take effect.
+
+If your app does not use audio session management, you can also set independent audio session behavior for individual audio streams. For playback streams, see [OH_AudioRenderer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy). For recording streams, see [OH_AudioCapturer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy).
+
+<!-- @[cset_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+// AUDIO_SESSION_SCENE_MEDIA is only an example. Modify it based on the actual situation.
+OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
+    
+// Call this API before activating the audio session.
+// If this API is called while the audio session is active, reactivate the audio session for the change to take effect.
+uint32_t behavior = OH_AudioSession_BehaviorFlags::MUTE_WHEN_INTERRUPTED;
+OH_AudioSessionManager_SetBehavior(audioSessionManager, behavior);
+    
+OH_AudioSession_Strategy strategy = {CONCURRENCY_PAUSE_OTHERS};
+    
+// Set the audio concurrency mode and activate the audio session.
+OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 ```

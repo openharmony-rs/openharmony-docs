@@ -270,7 +270,7 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 | 参数项 | 描述 |
 | -- | -- |
 | [struct Http_Response](capi-netstack-http-response.md) *response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
-|  uint32_t errCode | 响应码。 |
+|  uint32_t errCode | HTTP请求错误码，参考 [Http_ErrCode](#http_errcode)。 |
 
 ### Http_OnDataReceiveCallback()
 

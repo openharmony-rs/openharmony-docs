@@ -1,8 +1,8 @@
 # @ohos.file.cloudSyncManager (端云同步管理能力)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
@@ -32,6 +32,9 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 | USER_STOPPED        | 4   | 下载过程中，客户端主动停止下载。                       |
 | APP_UNLOAD          | 5   | 下载过程中，云文件所属应用被卸载。                     |
 | OTHER_REASON        | 6   | 下载过程中，因其他原因停止下载，如：云服务器未响应等。 |
+| CONTENT_NOT_FOUND   | 7   | 下载过程中，因内容缺失停止下载。<br>**起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
+| FREQUENT_USER_REQUESTS | 8   | 下载过程中，因用户请求过于频繁停止下载。<br>**起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
+| LOW_BATTERY         | 9   | 下载过程中，因低电量停止下载。<br>**起始版本**：26.1.0 <br> **模型约束**：此接口仅可在Stage模型下使用。|
 
 ## DownloadState<sup>20+</sup>
 

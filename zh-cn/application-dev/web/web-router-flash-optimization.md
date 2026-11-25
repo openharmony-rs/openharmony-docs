@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍设置与网页背景色一致的Web组件背景色，消除Navigation路由跳转至Web页面时的底部闪烁现象。"
+keywords: [页面闪烁, Web组件, Web组件背景色, Navigation, 路由跳转, backgroundColor, 系统导航栏]
+doctype: guide
+status: active
+---
+
 # 优化跳转至新Web组件过程中的页面闪烁现象
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -34,8 +42,8 @@
 以下为设置Web组件背景色的接口示例（示例中将Web组件背景色设置为灰色，若不设置，Web组件背景色默认为白色）：
 
   <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
-
+  
   ``` TypeScript
-  Web({ src: $rawfile('xxx.html'),  controller: this.webController})
+  Web({ src: $rawfile('xxx.html'), controller: this.webController})
     .backgroundColor(Color.Gray)
   ```

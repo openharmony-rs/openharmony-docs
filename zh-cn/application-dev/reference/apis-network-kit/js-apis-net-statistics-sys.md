@@ -56,11 +56,7 @@ on(type: 'netStatsChange', callback: Callback\<NetStatsChangeInfo\>): void
 ```js
 import { statistics } from '@kit.NetworkKit';
 
-class IFace {
-  iface: string = ""
-  uid?: number = 0
-}
-statistics.on('netStatsChange', (data: IFace) => {
+statistics.on('netStatsChange', (data: statistics.NetStatsChangeInfo) => {
   console.info('on netStatsChange' + JSON.stringify(data));
 });
 ```
@@ -101,11 +97,7 @@ off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 ```js
 import { statistics } from '@kit.NetworkKit';
 
-class IFace {
-  iface: string = ""
-  uid?: number = 0
-}
-let callback: (data: IFace) => void = (data: IFace) => {
+let callback: (data: statistics.NetStatsChangeInfo) => void = (data: statistics.NetStatsChangeInfo) => {
     console.info("on netStatsChange, iFace:" + data.iface + " uid: " + data.uid);
 }
 statistics.on('netStatsChange', callback);
@@ -131,7 +123,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 | 参数名    | 类型                                            | 必填 | 说明                                                                                    |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。                                     |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。当成功获取指定网卡历史流量信息时，err为undefined，data为获取到的网卡历史流量信息；否则为错误对象。 |
+| callback  | AsyncCallback\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 是   | 回调函数。当成功获取指定网卡历史流量信息时，err为undefined，data为获取到的网卡历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -153,31 +145,22 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let iFaceInfo: statistics.IfaceInfo | null = null;
-if (iFaceInfo) {
-  statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    if (error) {
-      console.error(JSON.stringify(error));
-      return;
-    };
-    console.info(
-      "getTrafficStatsByIface bytes of received = " +
-      JSON.stringify(statsInfo.rxBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface bytes of sent = " +
-      JSON.stringify(statsInfo.txBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of received = " +
-      JSON.stringify(statsInfo.rxPackets)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of sent = " +
-      JSON.stringify(statsInfo.txPackets)
-    );
-  });
-}
+let iFaceInfo: statistics.IfaceInfo = {
+  iface: 'wlan0',
+  startTime: Math.floor(Date.now() / 1000) - 86400,
+  endTime: Math.floor(Date.now() / 1000),
+};
+
+statistics.getTrafficStatsByIface(iFaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+    return;
+  }
+  console.info("getTrafficStatsByIface bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.info("getTrafficStatsByIface bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.info("getTrafficStatsByIface packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.info("getTrafficStatsByIface packets of sent = " + JSON.stringify(statsInfo.txPackets));
+});
 ```
 
 ## statistics.getTrafficStatsByIface
@@ -202,7 +185,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise对象，返回网卡历史流量信息。 |
+| Promise\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | Promise对象，返回网卡历史流量信息。 |
 
 **错误码：**
 
@@ -221,29 +204,23 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let iFaceInfo: statistics.IfaceInfo | null = null;
-if (iFaceInfo) {
-  statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo).then((statsInfo: statistics.NetStatsInfo) => {
-    console.info(
-      "getTrafficStatsByIface bytes of received = " +
-      JSON.stringify(statsInfo.rxBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface bytes of sent = " +
-      JSON.stringify(statsInfo.txBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of received = " +
-      JSON.stringify(statsInfo.rxPackets)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of sent = " +
-      JSON.stringify(statsInfo.txPackets)
-    );
-  });
-}
+let iFaceInfo: statistics.IfaceInfo = {
+  iface: 'wlan0',
+  startTime: Math.floor(Date.now() / 1000) - 86400,
+  endTime: Math.floor(Date.now() / 1000),
+};
+
+statistics.getTrafficStatsByIface(iFaceInfo).then((statsInfo: statistics.NetStatsInfo) => {
+  console.info("getTrafficStatsByIface bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.info("getTrafficStatsByIface bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.info("getTrafficStatsByIface packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.info("getTrafficStatsByIface packets of sent = " + JSON.stringify(statsInfo.txPackets));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.getTrafficStatsByUid
@@ -263,7 +240,7 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 | 参数名   | 类型                                            | 必填 | 说明                                                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | uidInfo  | [UidInfo](#uidinfo)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。                                         |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。当成功获取指定应用历史流量信息时，err为undefined，data为获取到的应用历史流量信息；否则为错误对象。 |
+| callback | AsyncCallback\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 是   | 回调函数。当成功获取指定应用历史流量信息时，err为undefined，data为获取到的应用历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -288,9 +265,9 @@ import { statistics } from '@kit.NetworkKit';
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
   ifaceInfo: {
-    iface: '',
-    startTime: 1,
-    endTime: 3,
+    iface: 'wlan0',
+    startTime: Math.floor(Date.now() / 1000) - 86400,
+    endTime: Math.floor(Date.now() / 1000),
   }
 }
 
@@ -300,7 +277,7 @@ statistics.getTrafficStatsByUid(
     if (error) {
       console.error(JSON.stringify(error));
       return;
-    };
+    }
     console.info(
       "getTrafficStatsByUid bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -343,7 +320,7 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
 | 类型                                      | 说明                                               |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise对象，返回应用历史流量信息。 |
+| Promise\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | Promise对象，返回应用历史流量信息。 |
 
 **错误码：**
 
@@ -362,14 +339,15 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
   ifaceInfo: {
-    iface: '',
-    startTime: 1,
-    endTime: 3,
+    iface: 'wlan0',
+    startTime: Math.floor(Date.now() / 1000) - 86400,
+    endTime: Math.floor(Date.now() / 1000),
   }
 }
 
@@ -378,7 +356,9 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
   console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
   console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
   console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
-})
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.getTrafficStatsByNetwork<sup>12+</sup>
@@ -422,11 +402,12 @@ getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { connection, statistics } from '@kit.NetworkKit';
 
 let networkInfo: statistics.NetworkInfo = {
   type: connection.NetBearType.BEARER_CELLULAR,
-  startTime: Math.floor(Date.now() / 1000) - 86400 * 7, 
+  startTime: Math.floor(Date.now() / 1000) - 86400 * 7,
   endTime: Math.floor(Date.now() / 1000) + 5,
   simId: 1,
 }
@@ -436,7 +417,9 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
   rank.forEach((value: object, key: string) => {
     console.info("getTrafficStatsByNetwork key=" + key + ", value=" + JSON.stringify(value));
   })
-})
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.getTrafficStatsByUidNetwork<sup>12+</sup>
@@ -481,12 +464,13 @@ getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<Net
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { connection, statistics } from '@kit.NetworkKit';
 
 let uid: number = 20020147;
 let networkInfo: statistics.NetworkInfo = {
   type: connection.NetBearType.BEARER_CELLULAR,
-  startTime: Math.floor(Date.now() / 1000) - 86400 * 7, 
+  startTime: Math.floor(Date.now() / 1000) - 86400 * 7,
   endTime: Math.floor(Date.now() / 1000) + 5,
   simId: 1,
 }
@@ -495,7 +479,9 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
   for (let i = 0; i < statsInfoSequence.length; i++) {
     console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
   }
-})
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.setCalibrationTraffic
@@ -505,8 +491,6 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据，接口会将simId对应的剩余流量（remainTraffic）与套餐总流量（totalTraffic）写入系统流量统计数据库并用于后续流量统计与校准计算，校准结果对后续查询接口返回的数据生效。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -549,7 +533,7 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let simId:number = 1;
+let simId: number = 1;
 let remainData:number = 600*1024*1024;   // 当前剩余流量为600MB。
 let totalData:number = 1024*1024*1024;   // 套餐总流量为1GB。
 statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
@@ -585,21 +569,6 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 | --------- | ------------------------------------- | ---- |---| -------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo) | 否   |否 |需查询的网卡和时间参数信息。 |
 | uid       | number                                | 否   |否 |需查询的应用 uid。          |
-
-## NetStatsInfo
-
-获取的历史流量信息。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
-| 名称      | 类型   | 只读 |可选| 说明                      |
-| --------- | ------ | ---- |---| ------------------------ |
-| rxBytes   | number | 否   |否 |流量下行数据(单位:字节)。 |
-| txBytes   | number | 否   |否 |流量上行数据(单位:字节)。 |
-| rxPackets | number | 否   |否 |流量下行包个数。          |
-| txPackets | number | 否   |否 |流量上行包个数。          |
 
 ## NetStatsChangeInfo<sup>11+</sup>
 
@@ -639,7 +608,7 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 
 | 名称        | 类型                                            | 只读 |可选| 说明           |
 |-----------|-----------------------------------------------|----|---|--------------|
-| [uid: number] | [NetStatsInfo](#netstatsinfo) | 否  |否 |所有应用的历史流量信息。 |
+| [uid: number] | [NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
@@ -653,4 +622,4 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 |-----------|---------------------------------|----|---|--------------|
 | startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |
 | endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |
-| info      | [NetStatsInfo](#netstatsinfo) | 否  |否 |获取的应用历史流量信息。 |
+| info      | [NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22) | 否  |否 |获取的应用历史流量信息。 |

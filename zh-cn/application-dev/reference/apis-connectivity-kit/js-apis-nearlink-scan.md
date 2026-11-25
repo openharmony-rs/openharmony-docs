@@ -12,7 +12,6 @@
 
 **起始版本：** 26.0.0
 
-
 ## 导入模块
 
 ```typescript
@@ -25,9 +24,13 @@ startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise&lt;void
 
 发起星闪扫描。使用Promise异步回调。需先调用[scan.onDeviceFound](#scanondevicefound)订阅扫描结果回调，本接口发起扫描后，扫描到的设备信息通过[scan.onDeviceFound](#scanondevicefound)回调上报。扫描完成后可调用[scan.stopScan](#scanstopscan)停止扫描。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -52,8 +55,8 @@ startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise&lt;void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Integer out of range. |
 | 36100041 | Invalid address. |
@@ -99,9 +102,13 @@ stopScan(): Promise&lt;void&gt;
 
 停止星闪扫描。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -119,8 +126,8 @@ stopScan(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -149,9 +156,13 @@ onDeviceFound(callback: Callback\<ScanResults[]\>): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -167,7 +178,7 @@ onDeviceFound(callback: Callback\<ScanResults[]\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：** 
 ```typescript
@@ -191,9 +202,13 @@ offDeviceFound(callback?: Callback\<ScanResults[]\>): void
 
 取消订阅星闪扫描结果。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -209,7 +224,7 @@ offDeviceFound(callback?: Callback\<ScanResults[]\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：** 
 ```typescript
@@ -232,6 +247,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -242,6 +259,7 @@ try {
 | deviceName | string | 否 | 否 | 表示扫描到的设备名称。字符串长度范围[0, 30]。 |
 | isConnectable | boolean | 否 | 否 | 表示扫描到的广播是否可连接。true：可连接，false：不可连接 |
 | deviceClass | [nearlinkConstant.DeviceClass](js-apis-nearlink-constant.md#deviceclass) | 否 | 是 | 表示扫描到的设备类型。设备广播未携带设备类型信息时该字段不返回。 |
+| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 表示收到的广播包的无线帧类型。未返回该字段时，帧类型为FRAME_TYPE_1。<br>**起始版本：** 26.1.0 |
 
 
 ## ScanFilters
@@ -251,6 +269,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -272,12 +292,15 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | scanMode | [ScanMode](#scanmode) | 否 | 是 | 表示扫描模式。默认值为'SCAN_MODE_LOW_POWER'。 |
 | duration | number | 否 | 是 | 表示扫描持续时间。单位：秒，取值范围[10, 60]，默认值为全时段扫描。 |
+| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 表示扫描选项的无线帧类型。默认值为FRAME_TYPE_1。<br>**起始版本：** 26.1.0 |
 
 
 ## ScanMode
@@ -287,6 +310,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 

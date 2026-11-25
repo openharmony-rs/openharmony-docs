@@ -33,6 +33,7 @@
     - [创建应用分身](app-clone.md)
     - [创建应用多实例](multiInstance.md)
     - [配置应用图标和名称](layered-image.md)
+    - [配置应用右键扩展菜单（PC/2in1）](right-click-menu.md)
     - [HAR转HSP指导](har-to-hsp.md)
     - [HSP转HAR指导](hsp-to-har.md)
     - [HAP转HAR指导](hap-to-har.md)
@@ -44,25 +45,21 @@
   - [初识ArkTS语言](arkts-get-started.md)
   - ArkTS语法<!--arkts-language-guide-->
     - [基础知识](arkts-language-guide-basics.md)
-    - [基本操作符](arkts-language-guide-basic-operators.md)
+    - [基本运算符](arkts-language-guide-basic-operators.md)
+    - [高级运算符](arkts-language-guide-advanced-operators.md)
     - [字符串](arkts-language-guide-strings.md)
-    - [集合类型](arkts-language-guide-collection-types.md)
     - [控制语句](arkts-language-guide-control-statements.md)
     - [函数](arkts-language-guide-functions.md)
+    - [类型系统](arkts-language-guide-types.md)
+    - [集合](arkts-language-guide-collection-types.md)
     - [枚举](arkts-language-guide-enums.md)
     - [类](arkts-language-guide-classes.md)
-    - [属性](arkts-language-guide-properties.md)
-    - [方法](arkts-language-guide-methods.md)
-    - [初始化](arkts-language-guide-initialization.md)
-    - [继承](arkts-language-guide-inheritance.md)
     - [接口](arkts-language-guide-interfaces.md)
-    - [错误处理](arkts-language-guide-error-handling.md)
-    - [类型转换](arkts-language-guide-type-conversion.md)
     - [泛型](arkts-language-guide-generics.md)
-    - [异步并发](arkts-language-guide-async-concurrency.md)
-    - [高级运算符](arkts-language-guide-advanced-operators.md)
-    - [模块系统](arkts-language-guide-module-system.md)
+    - [错误处理](arkts-language-guide-error-handling.md)
+    - [并发编程](arkts-language-guide-async-concurrency.md)
     - [注解](arkts-language-guide-annotations.md)
+    - [模块系统](arkts-language-guide-module-system.md)
   - [ArkTS编程规范](arkts-coding-style-guide.md)
   - 从TypeScript到ArkTS的适配指导<!--typescript-to-arkts-migration-->
     - [ArkTS语法适配背景](arkts-migration-background.md)
@@ -74,3 +71,5 @@
     - [从Swift到ArkTS的迁移指导](getting-started-with-arkts-for-swift-programmers.md)
 <!--RP2-->
 <!--RP2End-->
+- CLI工具<!--cli-tools-->
+  - [ohos-fontManager CLI工具](font-manager-cli.md)<!--font-manager-cli-->

@@ -37,7 +37,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 意图执行的返回结果。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -47,11 +47,27 @@ import { insightIntent } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | interactionInfo | [InteractionInfo](#interactioninfo) | 否 | 是 | 意图执行完成后返回的交互信息。|
 
+## FileEntity
+
+定义文件实体的结构体。表示意图执行过程中涉及的关键文件对象，包括意图参数和执行结果。
+
+**起始版本**：26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| flags | number | 否 | 是 | 意图调用方给意图执行方授权的uris的权限。<br>**说明：**<br>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。权限介绍见[Flags](js-apis-app-ability-wantConstant.md#flags)。取值限定为整数。 |
+
 ## InteractionUI
 
 定义当前意图执行完成后需要展示的交互界面的信息。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -67,7 +83,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 定义当意图执行完成时模态UIExtension要显示为交互界面的信息，不支持分布式。继承自[InteractionUI](#interactionui)。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -85,11 +101,29 @@ import { insightIntent } from '@kit.AbilityKit';
 | uri | string | 否 | 否 | 传递给目标UIExtension的URI信息。 |
 | parameters | Record\<string, Object\> | 否 | 否 | 传递给目标UIExtension的参数。 |
 
+## InteractionText
+
+定义当意图执行完成时嵌入式文本要显示为交互界面的信息，不支持分布式。继承自[InteractionUI](#interactionui)。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| interactionUIType | string | 否 | 否 | 交互界面的类型，固定为'TEXT'。 |
+| parameters | Record\<string, Object\> | 否 | 否 | 传递给目标TEXT的参数。 |
+| buttons | Array\<string\> | 否 | 是 | 传递给目标TEXT的按钮列表。 |
+
 ## InteractionInfo
 
 定义当前意图执行完成后返回的交互信息。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

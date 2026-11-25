@@ -5,6 +5,7 @@
 <!--Designer: @geng_wd-->
 <!--Tester: @wzzqishi-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=dd5d1a669fcae8dd8f4d23b3b8a6fc39ab8245d8 translatedAt=2026-11-03T03:30:55.062Z pushedAt=2026-11-03T07:31:22.666Z nl=1 -->
 
 A device enters standby mode if it is unused for a long period of time or after the Power button is pressed. The standby mode prolongs the battery life without affecting the use of applications. The **deviceStandby** module provides APIs for you to check whether a device is in standby mode and request or cancel standby resource control for an application.
 
@@ -35,7 +36,7 @@ Obtains the list of applications that can still use resources of the specified t
 
 | Name     | Type                  | Mandatory  | Description                            |
 | -------- | -------------------- | ---- | ------------------------------ |
-| ResourceTypes|number | Yes   | Resource types. For details, see [ResourceType](#resourcetype).|
+| resourceTypes|number | Yes    | Resource type. For details about the specific type, see [ResourceType](#resourcetype). |
 | callback | AsyncCallback<Array&lt;[ExemptedAppInfo](#exemptedappinfo)&gt;> | Yes   |Callback used to return the exempted application information.|
 
 **Error codes**
@@ -87,7 +88,7 @@ Obtains the list of applications that can still use resources of the specified t
 
 | Name     | Type                  | Mandatory  | Description                            |
 | -------- | -------------------- | ---- | ------------------------------ |
-| ResourceTypes|number | Yes   |Resource types. For details, see [ResourceType](#resourcetype).|
+| resourceTypes|number | Yes    |Resource type. For details about the specific type, see [ResourceType](#resourcetype).|
 
 **Return value**
 
@@ -248,8 +249,8 @@ Defines the information about an exempted application.
 |Name |Type  | Read-Only  | Optional  |Description  |
 | ------------ | ------------ |------------ |------------ | ------------ |
 |resourceTypes   | number  | No  | No  |Resource types. For details, see [ResourceType](#resourcetype).  |
-|name   |string   | No  | No  |  Name of the application. |
-|duration   | number  | No  | No  | Exemption duration.|
+|name   |string   | No   | No   |  App bundle name.  |
+|duration   | number  | No   | No   | Exemption duration, in seconds. |
 
 ## ResourceRequest
 
@@ -262,6 +263,6 @@ Defines the message used to request to be an exempted application.
 | ------------ | ------------ |------------ |------------| ------------ |
 |resourceTypes   | number  | No| No  |Resource types. For details, see [ResourceType](#resourcetype).  |
 |uid   | number  | No | No  |UID of the application.  |
-|name   |string   | No| No   | Name of the application. |
-|duration   | number    | No| No   | Exemption duration.|
+|name   |string   | No | No    | App bundle name.  |
+|duration   | number    | No | No    | Exemption duration, in seconds. |
 |reason   |string   | No | No  |  Reason for the request. |

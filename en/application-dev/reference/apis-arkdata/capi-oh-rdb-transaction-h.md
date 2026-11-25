@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=795678d6d6efd468f2c7707f1e103147c856438a translatedAt=2026-09-04T02:52:29.581Z pushedAt=2026-09-09T09:11:03.649Z -->
+<!-- md-trans-meta sourceCommit=c582e9253511363cd58a70d18424a8ab03511aae translatedAt=2026-11-16T01:25:51.546Z pushedAt=2026-11-20T07:26:58.145Z nl=1 -->
 
 ## Overview
 
@@ -55,7 +55,7 @@ Defines APIs and enums related to transactions.
 | [OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)](#oh_rdbtrans_querysql) | Queries data from the database based on the SQL statement.                 |
 | [int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)](#oh_rdbtrans_execute) | Executes an SQL statement that contains specified parameters.                     |
 | [int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)](#oh_rdbtrans_destroy) | Destroys a transaction object.                                  |
-| [OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char * const columns[], int len)](#oh_rdbtrans_querywithoutrowcount) | Queries data from the database based on specified conditions without calculating the row count.|
+| [OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *const columns[], int len)](#oh_rdbtrans_querywithoutrowcount) | Queries data from the database based on specified conditions without calculating the row count. |
 | [OH_Cursor *OH_RdbTrans_QuerySqlWithoutRowCount(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)](#oh_rdbtrans_querysqlwithoutrowcount) | Queries data from the database based on the SQL statement without calculating the row count.|
 | [int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdbtrans_batchinsertwithreturning) | Inserts batch data into the target table and outputs the change information to the context.|
 | [int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdbtrans_updatewithreturning) | Updates data in the database based on specified conditions and outputs the change information to the context.|
@@ -494,7 +494,7 @@ Destroys a transaction object.
 ### OH_RdbTrans_QueryWithoutRowCount()
 
 ```c
-OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char * const columns[], int len)
+OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *const columns[], int len)
 ```
 
 **Description**

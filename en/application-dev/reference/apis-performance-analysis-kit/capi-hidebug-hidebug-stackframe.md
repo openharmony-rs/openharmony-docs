@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1821c5a567ccf5560c729461b55189633a21be94 translatedAt=2026-11-03T06:12:59.973Z pushedAt=2026-11-03T12:08:25.603Z nl=1 -->
 
 ```c
 typedef struct HiDebug_StackFrame {...} HiDebug_StackFrame
@@ -13,7 +14,7 @@ typedef struct HiDebug_StackFrame {...} HiDebug_StackFrame
 
 ## Overview
 
-Defines the stack frame content.
+Defines the stack frame content. This structure represents the stack frame information during debugging. It supports obtaining the current stack type and the corresponding JS stack frame or Native stack frame content, helping developers locate issues and perform debugging analysis.
 
 **Since**: 20
 
@@ -27,6 +28,8 @@ Defines the stack frame content.
 
 | Name| Description|
 | -- | -- |
-| [HiDebug_StackFrameType](capi-hidebug-type-h.md#hidebug_stackframetype) type | Type of the current stack.                                        |
-| struct [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) js       | JS stack frame content defined by [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md).        |
-| struct [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) native                                   | Native stack frame content defined by [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md).|
+| HiDebug_StackFrameType type | Type of the current stack. |
+| frame.js       | JS stack frame content defined by [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md). |
+| frame.native                                   | Native stack frame content defined by [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md). |
+
+

@@ -1,12 +1,13 @@
 # MDNS Error Codes
 
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:46:46.489Z pushedAt=2026-09-24T06:00:14.171Z -->
+
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:56.324Z pushedAt=2026-06-26T03:00:41.282Z -->
 
 > **NOTE**
 >
@@ -150,7 +151,7 @@ Failed to send the message.
 
 **Description**
 
-This error code is reported if messages fail to be sent through an MDNS service.
+Failed to send the message.
 
 **Possible Causes**
 

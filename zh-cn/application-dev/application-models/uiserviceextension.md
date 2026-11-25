@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何启动和连接UIServiceExtensionAbility组件，实现带UI的系统悬浮窗服务，并说明设备与前台获焦等约束。"
+keywords: [UIServiceExtensionAbility, 系统悬浮窗, 扩展服务, startUIServiceExtensionAbility, connectUIServiceExtensionAbility, UIServiceProxy, 2in1设备]
+doctype: guide
+status: active
+---
 # 使用通过UIServiceExtensionAbility实现的系统悬浮窗
 
 <!--Kit: Ability Kit-->
@@ -15,7 +22,7 @@ UIServiceExtensionAbility组件是带用户界面（UI）的扩展服务组件�
 
 应用可以通过启动和连接两种形式使用UIServiceExtensionAbility组件：
 - 通过[UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)调用[startUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startuiserviceextensionability14)方法启动UIServiceExtensionAbility。
-- 通过[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)方法连接UIServiceExtensionAbility。
+- 通过[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)调用[connectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectuiserviceextensionability14)方法连接UIServiceExtensionAbility。
 
 ## 约束限制
 

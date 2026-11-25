@@ -169,6 +169,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
 | rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| walStartCheckpointSize | number                            | 否    | 是  | 设置WAL文件大小的检查点阈值。当WAL文件大小达到这个值时，会触发将WAL文件的内容合并到主数据库文件。单位：KB。取值范围：[16, 524288]。默认值：204800。 <br>**注意**： 较大的值会降低触发回写的频率，但会增加WAL文件大小和内存使用峰值。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 
 ## BackupConfig<sup>24+</sup>
 
@@ -5807,7 +5808,6 @@ rekey(): Promise&lt;void&gt;
 | ------------ | -------------------------------------- |
 | 15100003     | Database corrupted. |
 | 15100005     | Database or result set already closed. |
-| 15100006     | Failed to update the key. |
 
 **示例：**
 

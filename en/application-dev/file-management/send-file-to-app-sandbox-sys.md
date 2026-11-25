@@ -6,6 +6,7 @@
 <!--Designer: @liveery; @zl_startup-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=55ecbb63cdcbb4e81284adb2d6683652dcc6cb26 translatedAt=2026-10-29T10:30:53.861Z pushedAt=2026-10-29T10:30:53.861Z nl=1 -->
 
 
 During the development and debugging process of an application, you may need to push files to the application sandbox directory for intra-application access or for testing purposes. You can use either of the following methods to push files:
@@ -23,7 +24,7 @@ The application package **com.ohos.example** is used as an example. If files are
 Run the following command to push a file:
 
 ```
-hdc file send ${Path of the local file to send}/data/app/el1/bundle/public/com.ohos.example/
+hdc file send ${Path of the local file to send} /data/app/el1/bundle/public/com.ohos.example/
 ```
 
 After the file is pushed, set **user_id** and **group_id** of the file to **user_id** of the application. You can run the following command to query **user_id** of the application, which is the value in the first column of the process.

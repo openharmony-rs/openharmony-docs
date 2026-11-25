@@ -22,6 +22,7 @@
   - [@ohos.distributedsched.abilityConnectionManager (应用多端协同管理)(系统接口)](js-apis-distributed-abilityConnectionManager-sys.md)
   - [@ohos.cooperate (键鼠穿越)（系统接口）](js-apis-devicestatus-cooperate-sys.md)
   - [@ohos.distributedSoftBus.conversation (跨设备唤醒与消息传输)(系统接口)](js-apis-conversation-sys.md)
+  - [@ohos.distributed.softbusBase (设备感知)(系统接口)](js-apis-softbusBase-sys.md)
   - 已停止维护的接口<!--distributed-service-dep-->
     - [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)](js-apis-device-manager-sys.md)
   
@@ -37,6 +38,7 @@
   <!--Del-->
   - [键鼠穿越管理错误码](errorcode-devicestatus.md)
   - [跨设备唤醒与消息传输错误码](errorcode-conversation.md)
+  - [设备感知错误码](errorcode-softbusBase.md)
   <!--DelEnd-->
   - [增强连接错误码](errorcode-link-enhance.md)
   - [代理通道管理错误码](errorcode-proxyChannelManager.md)

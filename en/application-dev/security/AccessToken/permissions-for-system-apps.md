@@ -471,7 +471,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_HVAC
 
@@ -487,7 +487,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.FRIDGE_INFO
 
@@ -503,7 +503,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_FRIDGE
 
@@ -519,7 +519,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.SEAT_INFO
 
@@ -535,7 +535,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SEAT
 
@@ -551,7 +551,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.DOOR_INFO
 
@@ -567,7 +567,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DOOR
 
@@ -583,7 +583,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.LOCK_INFO
 
@@ -599,7 +599,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_LOCK
 
@@ -615,7 +615,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.WINDOW_INFO
 
@@ -631,7 +631,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WINDOW
 
@@ -647,7 +647,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.SUNROOF_INFO
 
@@ -663,7 +663,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SUNROOF
 
@@ -679,7 +679,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_STEERINGWHEEL
 
@@ -695,7 +695,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ENERGY_PORT_COVER_INFO
 
@@ -711,7 +711,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ENERGY_PORT_COVER
 
@@ -727,7 +727,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.EXTERIOR_LIGHT_INFO
 
@@ -743,7 +743,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_LIGHT
 
@@ -759,7 +759,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_CAMERA_INFO
 
@@ -775,7 +775,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_CAMERA
 
@@ -791,7 +791,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.EXTERIOR_CAMERA_INFO
 
@@ -807,7 +807,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_CAMERA
 
@@ -823,7 +823,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_SPEAKER_INFO
 
@@ -839,7 +839,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_SPEAKER
 
@@ -855,7 +855,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.EXTERIOR_SPEAKER_INFO
 
@@ -871,7 +871,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_SPEAKER
 
@@ -887,7 +887,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.WIPER_INFO
 
@@ -903,7 +903,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WIPER
 
@@ -919,7 +919,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.MIRROR_INFO
 
@@ -935,7 +935,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_MIRROR
 
@@ -951,7 +951,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.HORN_INFO
 
@@ -967,7 +967,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_HORN
 
@@ -983,7 +983,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CHB_INFO
 
@@ -999,7 +999,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CHB
 
@@ -1015,7 +1015,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CODEBOX_INFO
 
@@ -1031,7 +1031,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CODEBOX
 
@@ -1047,7 +1047,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.STANDEMBLEM_INFO
 
@@ -1063,7 +1063,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_STANDEMBLEM
 
@@ -1079,7 +1079,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.GRILLE_INFO
 
@@ -1095,7 +1095,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_GRILLE
 
@@ -1111,7 +1111,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.WIRELESSCHARGER_INFO
 
@@ -1127,7 +1127,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WIRELESSCHARGER
 
@@ -1143,7 +1143,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.PROJECTORSCREEN_INFO
 
@@ -1159,7 +1159,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_PROJECTORSCREEN
 
@@ -1175,7 +1175,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DRIVE_INFORMATION
 
@@ -1191,7 +1191,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.BODY_SENSOR_INFO
 
@@ -1207,7 +1207,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_BODY_SENSOR
 
@@ -1223,7 +1223,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.VSC_SYSTEM_INFO
 
@@ -1239,7 +1239,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_VSC_SYSTEM
 
@@ -1255,7 +1255,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CHG_DISCHG_INFO
 
@@ -1271,7 +1271,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CHG_DISCHG
 
@@ -1287,7 +1287,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.EPB_INFO
 
@@ -1303,7 +1303,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EPB
 
@@ -1319,7 +1319,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.PBS_INFO
 
@@ -1335,7 +1335,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_PBS
 
@@ -1351,7 +1351,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.TIRE_SYSTEM_INFO
 
@@ -1367,7 +1367,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_TIRE_SYSTEM
 
@@ -1383,7 +1383,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.TOW_SYSTEM_INFO
 
@@ -1399,7 +1399,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_TOW_SYSTEM
 
@@ -1415,7 +1415,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.SUSPENSION_SYSTEM_INFO
 
@@ -1431,7 +1431,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SUSPENSION_SYSTEM
 
@@ -1447,7 +1447,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ACCELERATOR_PEDAL
 
@@ -1463,7 +1463,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_BRAKE_PEDAL
 
@@ -1479,7 +1479,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_MODE_INFO
 
@@ -1495,7 +1495,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CAR_MODE
 
@@ -1511,7 +1511,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.DRIVING_MODE_INFO
 
@@ -1527,7 +1527,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DRIVING_MODE
 
@@ -1543,7 +1543,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_HEATING_MODULE_INFO
 
@@ -1559,7 +1559,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_HEATING_MODULE
 
@@ -1575,7 +1575,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.SPECIAL_MOBILITY_MODE_INFO
 
@@ -1591,7 +1591,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SPECIAL_MOBILITY_MODE
 
@@ -1607,7 +1607,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.BUTTON_LEVER_INFO
 
@@ -1623,7 +1623,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_BUTTON_LEVER
 
@@ -1639,7 +1639,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.WHC_INFO
 
@@ -1655,7 +1655,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WHC
 
@@ -1671,7 +1671,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.PRIVACYCURTAIN_INFO
 
@@ -1687,7 +1687,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_PRIVACYCURTAIN
 
@@ -1703,7 +1703,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.POWER_MANAGEMENT_INFO
 
@@ -1719,7 +1719,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_POWER_MANAGEMENT
 
@@ -1735,7 +1735,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.SMARTKEY_INFO
 
@@ -1751,7 +1751,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SMARTKEY
 
@@ -1767,7 +1767,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ETC_INFO
 
@@ -1783,7 +1783,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ETC
 
@@ -1799,7 +1799,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.HUD_INFO
 
@@ -1815,7 +1815,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_HUD
 
@@ -1831,7 +1831,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.NAVIGATION_INFO
 
@@ -1847,7 +1847,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_NAVIGATION
 
@@ -1863,7 +1863,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.OXYGEN_CONCENTRATOR_INFO
 
@@ -1879,7 +1879,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_OXYGEN_CONCENTRATOR
 
@@ -1895,7 +1895,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_SEAT_BELT_INFO
 
@@ -1911,7 +1911,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_SEAT_BELT
 
@@ -1927,7 +1927,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.FRONT_REAR_TRUNK_INFO
 
@@ -1943,7 +1943,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_FRONT_REAR_TRUNK
 
@@ -1959,7 +1959,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.RANGE_EXTENDER_INFO
 
@@ -1975,7 +1975,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_RANGE_EXTENDER
 
@@ -1991,7 +1991,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.DIFFERENTIAL_LOCK_INFO
 
@@ -2007,7 +2007,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DIFFERENTIAL_LOCK
 
@@ -2023,7 +2023,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ARMREST_SCREEN_INFO
 
@@ -2039,7 +2039,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ARMREST_SCREEN
 
@@ -2055,7 +2055,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ARMREST_BOX_INFO
 
@@ -2071,7 +2071,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ARMREST_BOX
 
@@ -2087,7 +2087,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_REAR_SPOILER_INFO
 
@@ -2103,7 +2103,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_REAR_SPOILER
 
@@ -2119,7 +2119,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_PEDAL_INFO
 
@@ -2135,7 +2135,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_PEDAL
 
@@ -2151,7 +2151,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_DRIVE_SYSTEM_INFO
 
@@ -2167,7 +2167,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_DRIVE_SYSTEM
 
@@ -2183,7 +2183,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.SPACE_PARTITIONING_INFO
 
@@ -2199,7 +2199,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SPACE_PARTITIONING
 
@@ -2215,7 +2215,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.USB_INFO
 
@@ -2231,7 +2231,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CONTROL_USB
 
@@ -2247,7 +2247,7 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -2591,6 +2591,8 @@ Allows an application to modify HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | smarthomehosts
+
 **Since**: 10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -2602,6 +2604,8 @@ Allows an application to access HiView data.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | smarthomehosts
 
 **Since**: 10
 
@@ -3370,7 +3374,7 @@ Allows an application to obtain information about local accounts.
 
 ## ohos.permission.GET_TELEPHONY_STATE
 
-Allows an application to read telephony information. 
+Allows an application to read telephony information.
 
 **Permission level**: system_basic
 
@@ -3949,6 +3953,20 @@ Allows a system service or system application to use the **instantshare** privat
 **Certificate-based authorization**: true
 
 **Valid since**: 11
+
+## ohos.permission.ACCESS_INSTANTSHARE_RECOMMEND_DATA
+
+Allows an application to connect to a ServiceExtensionAbility that provides smart recommendation sharing data and obtain the shared data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | phones | TVs | tablets
+
+**Valid since**: 26.1.0
 
 ## ohos.permission.ACCESS_MCP_AUTHORIZATION
 
@@ -6758,7 +6776,7 @@ Allows a system application to inject playback audio into the capture stream.
 
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
-Allows a system application or system service to call kernel APIs for code decryption. 
+Allows a system application or system service to call kernel APIs for code decryption.
 
 With this permission, the application can access kernel APIs across processes to request decryption of encrypted code. This helps prevent unauthorized access and further safeguards application code assets.
 
@@ -7459,17 +7477,17 @@ With this permission, the application can call the API to obtain the local accou
 **Valid since**: 24
 
  ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
- 
+
  Allows a system application to enable agent-related permission management features.
- 
+
  **Permission level**: system_basic
- 
+
  **Authorization mode**: system_grant
- 
+
  **Certificate-based authorization**: true
- 
+
  **Supported devices**: phones | PCs/2-in-1 devices | tablets
- 
+
  **Valid since**: 26.0.0
 
 ## ohos.permission.GET_AGENT_CARD
@@ -7612,7 +7630,7 @@ Allows an application to obtain the information and status of the rear control s
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
@@ -7640,7 +7658,7 @@ Allows a system application to read directory logs of the vehicle log service, B
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.AUTO_UPDATER
 
@@ -7668,7 +7686,7 @@ Allows a system application to send commands to collect logs.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.READ_HARDWARE_CONFIG
 
@@ -7682,21 +7700,7 @@ Allows an application to read vehicle hardware information.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
-
-## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
-
-Allows an application to write vehicle hardware information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
 
@@ -7710,7 +7714,7 @@ Allows an application to read vehicle and head unit configurations.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
 
@@ -7724,7 +7728,7 @@ Allows an application to write vehicle and head unit configurations.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
 
@@ -7738,7 +7742,7 @@ Allows an application to sign vehicle privacy agreements or policies.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
 
@@ -7752,7 +7756,7 @@ Allows an application to set the status of driver-seat privacy mode.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
 
@@ -7766,7 +7770,7 @@ Allows an application to configure trace removal and update the trace removal st
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
 
@@ -7782,7 +7786,7 @@ With this permission, the application can configure the validity period for perm
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
 
@@ -7798,7 +7802,7 @@ With this permission, the application can enable or disable remote viewing of th
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
 
@@ -7812,7 +7816,7 @@ Allows an application to use voiceprint anonymization capabilities.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
 
@@ -7826,7 +7830,7 @@ Allows an application to set the in-vehicle privacy protection status.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -8081,7 +8085,7 @@ Allows an application to trigger the Always On Display (AOD) mode or exit it, an
 **Valid since**: 26.0.0
 
 ## ohos.permission.MANAGE_SKILL_PRIVILEGE
-     
+
 Allows an application to use skills.
 
 With this permission, the application can:
@@ -8116,7 +8120,7 @@ Allows a system application to query the status of visual-related accessibility 
 
 ## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_HEARING
 
-Allows a system application to query the status of hearing-related accessibility functions via CLI commands. 
+Allows a system application to query the status of hearing-related accessibility functions via CLI commands.
 
 **Permission level**: system_basic
 
@@ -8665,17 +8669,17 @@ Allows a system application to send HUAP messages.
 **Valid since**: 26.0.0
 
 ## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
- 	 
+
 Allows a system application to access the file cache path of the file transfer service.
- 	 
+
 **Permission level**: system_basic
- 	 
+
 **Authorization mode**: system_grant
- 	 
+
 **Certificate-based authorization**: true
- 	 
+
 **Supported devices**: PCs/2-in-1 devices
- 	 
+
 **Valid since**: 26.0.0
 
 ## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
@@ -8690,10 +8694,10 @@ Allows an application to trigger smart analysis for assets.
 
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.CREATE_SIGN_CONTENT_TRUST
- 	 
+
 Allows an application to create a content trust signature.
 
 **Permission level**: system_basic
@@ -8722,7 +8726,7 @@ Allows an application to append a content trust signature.
 
 ## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
 
-Allows an application to set cellular network information.
+Allows an application to configure cellular network-related information.
 
 **Permission level**: system_basic
 
@@ -8732,11 +8736,11 @@ Allows an application to set cellular network information.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
-Allows an application to read cellular network information.
+Allows an application to read cellular network-related information.
 
 **Permission level**: system_basic
 
@@ -8746,11 +8750,11 @@ Allows an application to read cellular network information.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
-Allows an application to set TBox WiFi related information.
+Allows an application to configure T-Box Wi-Fi-related information.
 
 **Permission level**: system_basic
 
@@ -8760,7 +8764,7 @@ Allows an application to set TBox WiFi related information.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.TBOX_WIFI_INFO
 
@@ -8774,7 +8778,7 @@ Allows an application to obtain T-Box Wi-Fi–related information.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.PACKET_CAPTURE_INFO
 
@@ -8788,20 +8792,21 @@ Allows an application to trigger network packet capture.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
 
-Allows the triggering of network self-check and self-healing.
+Allows an application to trigger network self-inspection and self-healing.
 
 **Permission level**: system_basic
+
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.AUTO_OTA_PROXY
 
@@ -8829,20 +8834,20 @@ Allows an application to access the vehicle camera.
 
 **Supported devices**: cars
 
-**Valid since**: 26.0.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
- 	 
+
 Allows an application to manage clone preferences.
- 	 
+
 **Permission level**: system_basic
- 	 
+
 **Authorization mode**: system_grant
- 	 
+
 **Certificate-based authorization**: true
- 	 
+
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
- 	 
+
 **Valid since**: 26.0.0
 
 ## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
@@ -8857,7 +8862,7 @@ Allows an application to obtain configurations related to device unlocking via e
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
 
@@ -8871,7 +8876,21 @@ Allows an application to configure the capability of unlocking devices via enter
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
+
+## ohos.permission.MOUNT_BUNDLE_INFO
+
+Allows an application to mount the specified file directory to the sandbox directory of the SceneBoard application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars| lite wearables
+
+**Since**: 26.0.1
 
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
 
@@ -8965,6 +8984,20 @@ With this permission, the application can add file event records, search for fil
 
 **Since**: 26.0.0
 
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+Allows an application to access the driver monitoring camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.ACCESS_MEDIALIB_SANDBOX
 
 Allows an application to mount the media library sandbox within appspawn.
@@ -8977,7 +9010,7 @@ Allows an application to mount the media library sandbox within appspawn.
 
 **Supported devices**: wearables | TVs | tablets | phones | PCs/2-in-1 devices | cars | lite wearables | smartlocks | routers
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.MUTE_VOIP_CAPTURE
 
@@ -9033,7 +9066,7 @@ Allows a system application to manage the on/off states of multiple screens.
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.DEVICE_AUTH
 
@@ -9047,7 +9080,7 @@ Allows an application on the rear armrest screen to connect to the head unit for
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.AutoWiredProjection
 
@@ -9061,7 +9094,7 @@ Allows an application to use the wired projection service to query information s
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.ACCESS_EXTERNAL_DVR_DATA
 
@@ -9075,7 +9108,7 @@ Allows an application to access data on the external storage card of the dashcam
 
 **Supported devices**: cars
 
-**Since**: 26.2.0
+**Since**: 26.0.1
 
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
@@ -9089,7 +9122,7 @@ Allows a system application to send the authorization results for model download
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.ACCESS_FILE_MONITOR_DIR
 
@@ -9105,7 +9138,7 @@ With this permission, the application can query the database using the sandbox i
 
 **Supported devices**: PC/2in1 | Phone | Tablet | TV | Smartlock | Car
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
 
@@ -9119,7 +9152,7 @@ Allows an application to sign data using OEM certificates.
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
 
@@ -9133,7 +9166,7 @@ Allows an application to use restricted networks, such as internal networks and 
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
 
@@ -9147,12 +9180,12 @@ Allows a system application to connect to near-field devices and send/receive da
 
 **Supported devices**: PCs/2-in-1 devices | cars | phones | wearables | tablets | TVs
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
 
 Allows a system application to modify the delayed task parameters of specified applications.
-    
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -9161,7 +9194,7 @@ Allows a system application to modify the delayed task parameters of specified a
 
 **Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
@@ -9175,7 +9208,7 @@ Allows an application to restore the vehicle system to factory settings.
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
 
@@ -9189,7 +9222,7 @@ Allows a system application to access sensitive data provided by the navigation 
 
 **Supported devices**: cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
@@ -9203,7 +9236,7 @@ Allows an application to switch the list of displayable applications on multi‑
 
 **Supported devices**: tablets | PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -9217,10 +9250,10 @@ Allows a system application to access shared albums and files within the albums.
 
 **Supported devices**: phones | tablets | PCs/2-in-1 devices | cars | TVs | wearables
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_LOH
- 	 
+
 Allows an application to invoke virtualization capabilities of the Linux subsystem.
 
 **Permission level**: system_basic
@@ -9231,7 +9264,7 @@ Allows an application to invoke virtualization capabilities of the Linux subsyst
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_LOH_PTY
 
@@ -9245,7 +9278,7 @@ Allows an application to pass Linux commands with normal privileges to a contain
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_LOH_PTY_ROOT
 
@@ -9259,7 +9292,39 @@ Allows an application to pass Linux commands with root privileges to a container
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
+
+## ohos.permission.MANAGE_VM
+
+Allows an application to call basic virtual machine capabilities.
+
+With this permission, the application can call basic virtual machine capabilities, such as installing, deleting, starting, and pausing virtual machines.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
+## ohos.permission.MANAGE_VM_EXTENDED
+
+Allows an application to call enhanced virtual machine capabilities.
+
+With this permission, the application can call enhanced virtual machine capabilities, such as importing and exporting virtual machine disk images and obtaining the host serial number (SN).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
 
 ## ohos.permission.CLEAR_BACKGROUND_APPS
 
@@ -9273,7 +9338,7 @@ Allows an application to clear background application resources.
 
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.SOFTBUS_MANAGER_RESOURCE
 
@@ -9287,11 +9352,547 @@ Allows a system application to manage SoftBus resources.
 
 **Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
+
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+
+Allows an application to install Distributing OpenHarmony PC Software Outside the AppGallery.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.1
 
 ## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
- 
+
 Allows an application to skip enterprise re-signing certificate verification.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.REGISTER_AGENT_HOOK
+
+Allows a system application to register an agent hook.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.DEVICE_INFO_WRITE
+
+Allows an application to configure parameters for devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.DEVICE_INFO_READ
+
+Allows an application to get parameters of devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.LICENSE_WRITE
+
+Allows an application to apply for a temporary vehicle license.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.LICENSE_READ
+
+Allows an application to get license-related information about the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CURTAIN_WRITE
+
+Allows an application to set curtain mode and motion commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CURTAIN_READ
+
+Allows an application to get curtain mode and motion status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_INFO_WRITE
+
+Allows an application to set the personalization parameters for the instrument cluster.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_INFO_READ
+
+Allows an application to get information related to instrument cluster personalization settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR
+
+Allows an application to specify the actual entity using the audio and activate the privacy indicator accordingly.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
+
+Allows an application to install other applications of the debug type.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.AUTH_SERVICE_ACCESS
+
+Allows an application to access authentication event management framework to report authentication events and receive event authentication results.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SET_DSL_MODE
+
+Allows an application to modify the device security level (DSL) configuration.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.INNER_NETWORK
+
+Allows an application to access the vehicle's internal networks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.LOGIN_TSP
+
+Allows an application to call the login and logout APIs of the automotive cloud mobile service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_INFO
+
+Allows an application to obtain Telematics Service Provider account information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_SERVICE_TOKEN
+
+Allows an application to obtain the account service token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_VEHICLE_APP_TOKEN
+
+Allows an application to obtain the vehicle application token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_ROLE
+
+Allows an application to obtain the Telematics Service Provider account role.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.PUBLISH_ACMSCORE_EVENT
+
+Allows an application to publish automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.SUBSCRIBE_ACMSCORE_EVENT
+
+Allows an application to subscribe to automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.VEHICLE_POWER
+
+Allows a system application to subscribe to and query the vehicle cabin power status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.NONRDA_SCREEN
+
+Allows a system application to control the on/off state of screens other than the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_SCREEN
+
+Allows a system application to control the on/off state of the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SHUTDOWN
+
+Allows a system application to turn off the vehicle cabin power.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.KEEP_STANDBY
+
+Allows a system application to request keeping the vehicle cabin awake.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.SWB_RW_DEEPLINK
+
+Allows an application to call SteerWheelButton (SWB) APIs to read and write DeepLink.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.SWB_MONITOR
+
+Allows an application to subscribe to SteerWheelButton (SWB) key events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.CONNECT_AGENT_FROM_BACKGROUND
+
+Allows a system application to connect an agent in the background.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets |  TVs | wearables | cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.ALLOW_DIRECT_BOOT
+
+Allows an application to start after a device cold boot or restart, before the user unlocks the device for the first time.
+
+> **NOTE**
+>
+> Applications requesting this permission must not access storage paths at the EL2 level or higher before the user unlocks the device for the first time.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.AALE_LIGHTRES_SERVICE
+
+Allows an application to bind to the Light Resource Management Service (LightResManagerService).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.AALE_AMBIENT_SERVICE
+
+Allows an application to bind to the automotive ambient light engine service (AaleService).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.HIMA_COOPERATE
+
+Allows an application to call the device-cloud synergy API to query and download resources and configuration files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.HIMA_DEVICE_AUTH
+
+Allows an application to call the genuine device authentication API to perform device authenticity verification.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.PROMPT_INJECT_DETECTION
+
+Allows an application to detect indirect prompt injection attacks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
+## ohos.permission.MOUNT_SANDBOX_SETTINGSDATA
+
+Allows an application to mount the specified file directory to the sandbox directory of the SettingsData application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.MMA_OCCUPANT
+ 
+Allows an in-vehicle application to obtain occupant status, including seat occupancy and occupant types.
  
 **Permission level**: system_basic
  
@@ -9299,6 +9900,64 @@ Allows an application to skip enterprise re-signing certificate verification.
  
 **Certificate-based authorization**: true
  
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: cars
  
-**Since**: 26.2.0
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_CARSTATUS
+ 
+Allows an in-vehicle application to obtain the real-time status of vehicle components.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
+## ohos.permission.MANAGE_CURSOR_STYLE
+
+Allows an application to manage mouse cursor styles.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 26.1.0
+
+## ohos.permission.MANAGE_DAEMON_SERVICE
+ 
+Allows a system application to manage daemon services.
+
+With this permission, the system application can query daemon service information and set their enablement status.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0
+
+## ohos.permission.RESOURCE_SCHEDULE_PERF_HINT
+ 
+Allows a system application to report performance-sensitive scenario information.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+ 
+**Valid since**: 26.1.0

@@ -9,6 +9,8 @@
 
 本模块提供了星闪服务交互协议（SparkLink Service Access Protocol，SSAP）连接功能，包括创建客户端与服务端、连接管理、服务发现、属性读写与通知、MTU协商等。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 ## 导入模块
@@ -28,6 +30,8 @@ type ConnectionState = nearlinkConstant.ConnectionState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 类型 | 说明 |
@@ -41,9 +45,13 @@ createClient(address: string): Client
 
 创建SSAP客户端实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -67,8 +75,8 @@ createClient(address: string): Client
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100099 | Operation failed. |
@@ -95,9 +103,13 @@ createServer(): Server
 
 创建SSAP服务端实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -115,8 +127,8 @@ createServer(): Server
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -177,7 +189,7 @@ connect(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -227,7 +239,7 @@ disconnect(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -276,7 +288,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -322,7 +334,7 @@ getServices(): Promise&lt;Service[]&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -386,7 +398,7 @@ readProperty(property: Property): Promise&lt;Property&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -411,7 +423,7 @@ try {
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -462,7 +474,7 @@ writeProperty(property: Property, writeType: PropertyWriteType): Promise&lt;void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -482,13 +494,13 @@ try {
   }).catch((err: BusinessError) => {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
   });
-  // 创建property,实际开发时需要通过getServices接口从服务端获取
+  // 创建property，实际开发时需要通过getServices接口从服务端获取
   let valueBuffer = new ArrayBuffer(8);
   // 期望写入的property值
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -539,7 +551,7 @@ setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -564,7 +576,7 @@ try {
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -614,7 +626,7 @@ requestMtuSize(mtu: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -845,6 +857,8 @@ offMtuChange(callback?: Callback&lt;number&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：** 
@@ -914,7 +928,7 @@ addService(service: Service): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -925,44 +939,51 @@ addService(service: Service): void
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 构造descriptor
-let descriptorsArray: ssap.PropertyDescriptor[] = [];
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
-descValue[0] = 11;
-descValue[1] = 22;
-let descriptor: ssap.PropertyDescriptor = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+// 构造属性1的descriptor
+let descriptorsArray1: ssap.PropertyDescriptor[] = [];
+let descriptor1: ssap.PropertyDescriptor = {
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBuffer,
-  descriptorType: ssap.PropertyDescriptorType.PROPERTY,
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
   isWriteable: true
 };
-descriptorsArray[0] = descriptor;
+descriptorsArray1[0] = descriptor1;
+// 构造属性2的descriptor
+let descriptorsArray2: ssap.PropertyDescriptor[] = [];
+let descriptor2: ssap.PropertyDescriptor = {
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
+  propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
+  isWriteable: true
+};
+descriptorsArray2[0] = descriptor2;
 // 构造properties
 let propertiesArray: ssap.Property[] = [];
-let arrayBufferProperty = new ArrayBuffer(8);
-let propertyValue = new Uint8Array(arrayBufferProperty);
+let valueBuffer = new ArrayBuffer(8);
+let propertyValue = new Uint8Array(valueBuffer);
 propertyValue[0] = 1;
 let property1: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBufferProperty,
-  descriptors:descriptorsArray
+  value: valueBuffer,
+  descriptors: descriptorsArray1,
+  operation: ssap.Operation.READABLE | ssap.Operation.WRITE_NO_RESPONSE | ssap.Operation.NOTIFY
 };
 let property2: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
-  value: arrayBufferProperty,
-  descriptors:descriptorsArray,
-  operation:12
+  value: valueBuffer,
+  descriptors: descriptorsArray2,
+  operation: ssap.Operation.WRITE_WITH_RESPONSE | ssap.Operation.NOTIFY
 };
 propertiesArray[0] = property1;
 propertiesArray[1] = property2;
 // 构造服务
 let service: ssap.Service = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
-  properties:propertiesArray
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
+  properties: propertiesArray
 };
 let server: ssap.Server;
 try {
@@ -1000,7 +1021,7 @@ removeService(serviceUuid: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -1043,7 +1064,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -1095,7 +1116,7 @@ notifyPropertyChanged(address: string, property: Property): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID in property. |
@@ -1109,27 +1130,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 构造descriptor
 let descriptorsArray: ssap.PropertyDescriptor[] = [];
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
-descValue[0] = 11;
-descValue[1] = 22;
 let descriptor: ssap.PropertyDescriptor = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBuffer,
-  descriptorType:ssap.PropertyDescriptorType.PROPERTY,
-  isWriteable:true
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
+  isWriteable: true
 };
 descriptorsArray[0] = descriptor;
 // 构造properties
-let arrayBufferProperty = new ArrayBuffer(8);
-let propertyValue = new Uint8Array(arrayBufferProperty);
+let valueBuffer = new ArrayBuffer(8);
+let propertyValue = new Uint8Array(valueBuffer);
 propertyValue[0] = 123; // 本次更新后的值
 let property: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBufferProperty,
-  descriptors:descriptorsArray
+  value: valueBuffer,
+  descriptors: descriptorsArray
 };
 let server: ssap.Server;
 try {
@@ -1172,7 +1189,7 @@ sendResponse(response: ServerResponse): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100099 | Operation failed. |
@@ -1183,14 +1200,14 @@ import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 订阅客户端的读写请求，收到请求后通过该接口回复
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
+let valueBuffer = new ArrayBuffer(8);
+let descValue = new Uint8Array(valueBuffer);
 descValue[0] = 11;
 descValue[1] = 22;
 let resp: ssap.ServerResponse = {
   address: '00:11:22:33:AA:FF', // 请求方的客户端地址
   requestId: 1, // 请求方传入
-  value: arrayBuffer // 回复的数据
+  value: valueBuffer // 回复的数据
 };
 let server: ssap.Server;
 try {
@@ -1473,6 +1490,8 @@ offMtuChange(callback?: Callback&lt;number&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：** 
@@ -1507,6 +1526,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1522,6 +1543,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -1542,6 +1565,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1561,6 +1586,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1578,6 +1605,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -1599,6 +1628,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1616,6 +1647,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1631,6 +1664,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -1651,6 +1686,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 值 | 说明 |
@@ -1668,6 +1705,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 

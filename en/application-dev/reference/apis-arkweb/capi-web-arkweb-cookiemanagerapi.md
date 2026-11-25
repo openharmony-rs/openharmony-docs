@@ -1,12 +1,11 @@
 # ArkWeb_CookieManagerAPI
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:52:49.423Z pushedAt=2026-08-06T09:24:48.893Z -->
+<!-- md-trans-meta sourceCommit=d85a1b8fa185d55a402f908f378a6e1872935c67 translatedAt=2026-11-06T11:47:09.367Z pushedAt=2026-11-13T11:16:37.441Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_CookieManagerAPI
@@ -16,7 +15,7 @@ typedef struct {...} ArkWeb_CookieManagerAPI
 
 ArkWeb_CookieManagerAPI is a Native API struct for cookie management. This struct provides capabilities such as reading, setting, clearing, and synchronizing cookies. It is applicable to scenarios where user sessions need to be managed and user preferences need to be tracked in the Web component, helping developers conveniently implement data persistence and state synchronization.
 
-CookieManager APIs must be obtained by calling the OH_ArkWeb_GetNativeAPI method in the UI thread. Before calling, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check the availability of function pointers, so as to avoid crashes caused by mismatch between the SDK and the device ROM.
+By default, CookieManager-related APIs must be obtained by calling the OH_ArkWeb_GetNativeAPI method on the UI thread. Before calling, it is recommended to verify the availability of the function pointer through [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to avoid crashes caused by a mismatch between the SDK and the device ROM. Starting from API version 26.0.1, after calling [OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager) and setting it to true, CookieManager-related APIs support use on non-UI threads.
 
 **Since**: 12
 
@@ -31,6 +30,7 @@ CookieManager APIs must be obtained by calling the OH_ArkWeb_GetNativeAPI method
 | Name| Description|
 | -- | -- |
 | size_t size | Size of the struct.|
+
 
 ### Member Functions
 
@@ -52,7 +52,7 @@ ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includ
 
 **Description**
 
-Obtains the cookie value of a specified URL. This method is used in scenarios such as user login state maintenance, session management, and personalized configuration reading. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer.
+Obtains the cookie value corresponding to the specified URL. It is used in scenarios such as user login state maintenance, session management, and personalized configuration reading. By default, this method must be called on the UI thread, and it is recommended to verify the availability of the function pointer before calling. Starting from API version 26.0.1, after calling [OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager) and setting it to true, calling on non-UI threads is supported.
 
 **Parameters**
 
@@ -77,7 +77,7 @@ ArkWeb_ErrorCode (*configCookieSync)(const char* url, const char* cookieValue, b
 
 **Description**
 
-Sets the cookie value of a specified URL. This method is used in scenarios such as saving user preference settings, maintaining login state, and saving session information. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer.
+Sets the cookie value for the specified URL. It is used in scenarios such as saving user preferences, maintaining login state, and saving session information. By default, this method must be called on the UI thread, and it is recommended to verify the availability of the function pointer before calling. Starting from API version 26.0.1, after calling [OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager) and setting it to true, calling on non-UI threads is supported.
 
 **Parameters**
 
@@ -102,7 +102,7 @@ bool (*existCookies)(bool incognito)
 
 **Description**
 
-Checks whether cookies exist. This method is used in scenarios such as determining whether a user is logged in, checking whether a session is valid, and verifying identity status. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer.
+Checks whether a cookie exists. It is used in scenarios such as determining whether the user is logged in, checking whether a session is valid, and verifying identity status. By default, this method must be called on the UI thread, and it is recommended to verify the availability of the function pointer before calling. Starting from API version 26.0.1, after calling [OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager) and setting it to true, calling on non-UI threads is supported.
 
 **Parameters**
 
@@ -124,13 +124,14 @@ void (*clearAllCookiesSync)(bool incognito)
 
 **Description**
 
-Clears all cookies (including persistent cookies and session cookies). This method is used in scenarios such as user logout, clearing privacy data, and resetting user state. If you only need to clear session cookies, you are advised to use [clearSessionCookiesSync](#clearsessioncookiessync). This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer.
+Clears all cookies (including persistent cookies and session cookies). It is used in scenarios such as user logout, clearing private data, and resetting user state. If only session cookies need to be cleared, it is recommended to use [clearSessionCookiesSync()](#clearsessioncookiessync). By default, this method must be called on the UI thread, and it is recommended to verify the availability of the function pointer before calling. Starting from API version 26.0.1, after calling [OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager) and setting it to true, calling on non-UI threads is supported.
 
 **Parameters**
 
 | Name| Description|
 |----|----|
 | bool incognito   | Whether to clear all cookies in incognito mode. The value **true** means to clear all cookies in incognito mode, and **false** means the opposite.  |
+
 
 ### clearSessionCookiesSync()
 
@@ -140,4 +141,4 @@ void (*clearSessionCookiesSync)()
 
 **Description**
 
-Clears all session cookies. This method is used in scenarios such as clearing temporary session data, closing all sessions, and cleaning up session timeouts. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer.
+Clears all session cookies. It is used in scenarios such as clearing temporary session data, closing all sessions, and session timeout cleanup. By default, this method must be called on the UI thread, and it is recommended to verify the availability of the function pointer before calling. Starting from API version 26.0.1, after calling [OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager](capi-native-interface-arkweb-h.md#oh_nativearkweb_lazyinitializewebengineincookiemanager) and setting it to true, calling on non-UI threads is supported.

@@ -23,7 +23,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_color.h](capi-drawing-color-h.md) | 文件中定义了与颜色相关的功能函数。 |
 | [drawing_color_filter.h](capi-drawing-color-filter-h.md) | 声明与绘图模块中的颜色滤波器对象相关的函数。 |
 | [drawing_color_space.h](capi-drawing-color-space-h.md) | 文件中定义了与颜色空间相关的功能函数。 |
-| [drawing_error_code.h](capi-drawing-error-code-h.md) | 声明与绘图模块中的错误码相关的函数。include native_drawing/drawing_error_code.h |
+| [drawing_error_code.h](capi-drawing-error-code-h.md) | 声明与绘图模块中的错误码相关的函数。 |
 | [drawing_filter.h](capi-drawing-filter-h.md) | 声明与绘图模块中的滤波器对象相关的函数。 |
 | [drawing_font.h](capi-drawing-font-h.md) | 文件中定义了与字体相关的功能函数。 |
 | [drawing_font_collection.h](capi-drawing-font-collection-h.md) | 定义绘制模块中与字体集合相关的函数。 |
@@ -36,6 +36,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_memory_stream.h](capi-drawing-memory-stream-h.md) | 文件中定义了与内存流相关的功能函数。 |
 | [drawing_path.h](capi-drawing-path-h.md) | 文件中定义了与自定义路径相关的功能函数。 |
 | [drawing_path_effect.h](capi-drawing-path-effect-h.md) | 文件中定义了与路径效果相关的功能函数。 |
+| [drawing_path_iterator.h](capi-drawing-path-iterator-h.md) | 声明与路径操作迭代器对象相关的函数。路径操作迭代器用于遍历路径中的操作指令（如移动、连线、贝塞尔曲线、闭合等），迭代器从路径起始位置依次遍历各操作指令，内部维护当前遍历位置。支持创建和销毁迭代器、判断是否还有下一个操作、读取下一个操作并将迭代器前移、查看下一个操作但不移动迭代器。通过迭代器可在不修改原始路径的情况下逐条读取路径操作信息。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_pen.h](capi-drawing-pen-h.md) | 文件中定义了与画笔相关的功能函数。 |
 | [drawing_pixel_map.h](capi-drawing-pixel-map-h.md) | 声明与绘图模块中的像素图对象相关的函数。 |
 | [drawing_point.h](capi-drawing-point-h.md) | 文件中定义了与坐标点相关的功能函数。 |

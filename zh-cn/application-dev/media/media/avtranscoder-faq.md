@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "汇总AVTranscoder视频转码过程中的常见问题，包括音频编码格式自动变更原因及转码失败后的处理建议，适用于转码功能排障场景。"
+keywords: [AVTranscoder, 转码, 常见问题, 音频编码格式, AAC, 转码失败, 错误处理, 格式支持]
+doctype: faq
+status: active
+---
 # 转码常见问题
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -19,3 +26,10 @@
    当前转码能力支持情况：[AVTranscoder支持的格式](media-kit-intro.md#avtranscoder)、[AVCodec支持的格式](../avcodec/avcodec-support-formats.md)<!--RP1--><!--RP1End-->。
 
 2. 应用在收到error事件后，建议发送原视频；应用在收到complete事件后，建议先调用release再对转码后的视频做发送、上云等操作。
+
+## 转码参数对输出分辨率、画质与文件大小的影响
+
+- 未设置视频分辨率时，输出分辨率与源视频一致。
+- 相同分辨率下，视频码率设置越高，输出画质越清晰，文件体积也越大。
+- 未设置视频码率时，默认码率由视频分辨率决定，详细规格参见[AVTranscoderConfig](../../reference/apis-media-kit/arkts-apis-media-i.md#avtranscoderconfig12)。
+- 编码器输出的码率受视频内容影响，存在实际输出码率与目标码率有一定偏差的情况，属于正常现象。

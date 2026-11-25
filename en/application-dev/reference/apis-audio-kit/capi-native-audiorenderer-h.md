@@ -1,10 +1,11 @@
 # native_audiorenderer.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c36c28945696e4e51a7cd220b9ca90518d2530d1 translatedAt=2026-11-03T04:04:15.490Z pushedAt=2026-11-04T03:11:46.968Z nl=1 -->
 
 ## Overview
 
@@ -40,8 +41,8 @@ The file declares the functions related to an audio renderer.
 | [OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer, OH_AudioStream_Usage* usage)](#oh_audiorenderer_getrendererinfo) | - | Obtains the usage type of an audio renderer.|
 | [OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)](#oh_audiorenderer_getencodingtype) | - | Obtains the encoding type of an audio renderer.|
 | [OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)](#oh_audiorenderer_getframeswritten) | - | Obtains the number of frames that have been written since the stream was created.|
-| [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - | Obtains the timestamp and position information of an output audio stream.<br> This function obtains the actual playback position (specified by **framePosition**) of the audio channel and the timestamp when playing to that position (specified by **timestamp**, in nanoseconds).<br> When you switch devices or resume playback after a pause, the playback position and timestamp retrieved via this function will temporarily stay in the state they were in before the switch or pause, since the playback channel requires a moment to stabilize.<br> This API is used to implement audio-video synchronization. Frequent calls may result in power consumption issues. You are advised to call the API at an interval not less than 200 ms, and the API can be called once every minute. Therefore, do not frequently query the timestamp when the audio-video synchronization effect can be ensured.|
-| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | Obtains the timestamp and position information of an output audio stream. It adapts to the speed adjustment interface.<br> This information is commonly used for audio and video synchronization.|
+| [OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_gettimestamp) | - | Obtains the timestamp and position information of the output audio stream.<br>This interface can obtain the actual playback position (framePosition) of the audio channel and the timestamp when the playback reaches that position.<br>The playback position is in samples, and the timestamp is in nanoseconds (ns).<br> When a device switch or playback pause recovery occurs, because the playback path itself needs a period of time to recover, the playback position and timestamp obtained by calling this interface will briefly remain in the state before switching or pausing.<br> This interface is usually used to implement audio-video synchronization. The call frequency is recommended to be higher than once every 200 ms, and the recommended frequency is once per minute. When audio-video synchronization can be guaranteed, there is no need to query the timestamp frequently to avoid power consumption issues. |
+| [OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)](#oh_audiorenderer_getaudiotimestampinfo) | - | Obtains the timestamp and position information of the output audio stream, adapted to the speed-change interface.<br> Obtains the timestamp and position information of the output audio stream, which is usually used for audio-video synchronization alignment. The playback position is in samples, and the timestamp is in nanoseconds (ns).<br> When a device switch or playback pause recovery occurs, because the playback path itself needs a period of time to recover, the playback position and timestamp obtained by calling this interface will briefly remain in the state before switching or pausing.<br> This interface is usually used to implement audio-video synchronization. The call frequency is recommended to be higher than once every 200 ms, and the recommended frequency is once per minute. When audio-video synchronization can be guaranteed, there is no need to query the timestamp frequently to avoid power consumption issues.|
 | [OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)](#oh_audiorenderer_getframesizeincallback) | - | Obtains the frame size in the callback. The frame size is the fixed length of the buffer returned by each callback.|
 | [OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)](#oh_audiorenderer_getspeed) | - | Obtains the rate of an audio renderer.|
 | [OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)](#oh_audiorenderer_setspeed) | - | Sets the rate for an audio renderer.|
@@ -59,7 +60,7 @@ The file declares the functions related to an audio renderer.
 | [OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool* on)](#oh_audiorenderer_getsilentmodeandmixwithothers) | - | Checks whether the silent mode in concurrent playback is enabled for an audio renderer.|
 | [OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* renderer, OH_AudioDevice_Type deviceType)](#oh_audiorenderer_setdefaultoutputdevice) | - | Sets the default built-in audio output device.<br> This function applies only to the scenario where [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to voice messages, VoIP voice calls, and VoIP video calls and the available device types are the receiver, speaker, and system default device.<br> This function can be called at any time after an AudioRenderer instance is created. The system records the default built-in audio output device set by the application. When the application is started, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.<br>|
 | [typedef void (\*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)](#oh_audiorenderer_oninterruptcallback) | OH_AudioRenderer_OnInterruptCallback | Defines the callback for interruption events of an audio renderer.|
-| [typedef void (\*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)](#oh_audiorenderer_onerrorcallback) | OH_AudioRenderer_OnErrorCallback | Defines the callback for error events of an audio renderer.|
+| [typedef void (\*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)](#oh_audiorenderer_onerrorcallback) | OH_AudioRenderer_OnErrorCallback | Callback function for audio stream error events. Triggered when an internal system fault occurs, such as abnormal exit of the audio service, not caused by application calls. |
 | [OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer, OH_AudioStream_FastStatus* status)](#oh_audiorenderer_getfaststatus) | - | Obtains the running status of an audio renderer to determine whether it is running in low-latency mode.|
 | [typedef void (\*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status)](#oh_audiorenderer_onfaststatuschange) | OH_AudioRenderer_OnFastStatusChange | Defines a callback function for low-latency status changes during audio playback.|
 | [OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)](#oh_audiorenderer_setloudnessgain) | - | Sets the loudness of audio playback. The default loudness value is 0.0 dB. The audio stream playback type must be one of the following: Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC;<br> movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE;<br> audiobooks (including books, crosstalk, and storytelling), audio news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK.<br> The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> Loudness settings are not supported for high-definition audio channels.<br> Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.<br> You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.|
@@ -407,7 +408,7 @@ Obtains the number of frames that have been written since the stream was created
 | Name| Description|
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
-| int64_t* frames | Pointer to a variable used to receive the frame count.|
+| int64_t* frames | Pointer to a variable used to receive the number of frames written. |
 
 **Returns**
 
@@ -423,12 +424,13 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **Description**
 
-Obtains the timestamp and position information of an output audio stream.<br> This function obtains the actual playback position (specified by **framePosition**) of the audio channel and the timestamp when playing to that position (specified by **timestamp**, in nanoseconds).<br> When you switch devices or resume playback after a pause, the playback position and timestamp retrieved via this function will temporarily stay in the state they were in before the switch or pause, since the playback channel requires a moment to stabilize.<br> This API is used to implement audio-video synchronization. You are advised to keep the API call frequency within reasonable limits, such as once per minute. The minimal interval between calls should not be less than 200 ms. Frequent calls may increase power consumption. Therefore, do not frequently query the timestamp when the audio-video synchronization effect can be ensured.
+Obtains the timestamp and position information of the output audio stream.<br>This interface can obtain the actual playback position (framePosition) of the audio channel and the timestamp when the audio is played to that position.<br>The playback position is in samples, and the timestamp is in nanoseconds (ns).<br>When a device switch or playback pause recovery occurs, because the playback path itself needs a period of time to recover, the playback position and timestamp obtained by calling this interface will briefly remain in the state before switching or pausing.<br>This interface is usually used to implement audio-video synchronization. The call frequency is recommended to be higher than once every 200 ms, and the recommended frequency is once per minute. When audio-video synchronization can be guaranteed, there is no need to query the timestamp frequently to avoid power consumption issues.
 
 > **NOTE**
 >
-> - When the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins playback.
-> - The playback position is also reset when **Flush** is called.
+> - When the actual playback position (framePosition) is 0, the timestamp is a fixed value and is updated only when the stream actually starts running.
+> - The playback position (framePosition) is in samples. The number of samples is calculated by multiplying the sampling rate by the time. For example, when the sampling rate is 48000 Hz, the number of samples corresponding to 20 ms of audio data is 48000*0.02, that is, 960 sample points.
+> - When the Flush interface is called, the actual playback position is also reset.
 
 **Since**: 10
 
@@ -455,13 +457,16 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 **Description**
 
-Obtains the timestamp and position information of an output audio stream. It adapts to the speed adjustment interface.<br> This information is commonly used for audio and video synchronization.
+Gets the timestamp and position information of the output audio stream, adapting to the speed change interface.<br> Gets the timestamp and position information of the output audio stream, which is usually used for audio-video synchronization alignment. The playback position is in samples, and the timestamp is in nanoseconds (ns).<br> When a device switch or playback pause recovery occurs, because the playback path itself needs a period of time to recover, the playback position and timestamp obtained by calling this interface will briefly remain in the state before switching or pausing.<br> This interface is usually used to implement audio-video synchronization. The call frequency is recommended to be higher than once every 200 ms, and the recommended frequency is once per minute. When audio-video synchronization can be guaranteed, there is no need to query the timestamp frequently to avoid power consumption issues.
 
 > **NOTE**
 >
-> - When the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins playback.
-> - The playback position is also reset when **Flush** is called.
-> - Additionally, changes in the audio stream route, such as switching devices or output types, will reset the playback position, whereas the timestamp keeps increasing. You are advised to call this function to obtain the corresponding value only when the actual playback position and timestamp are stable. This function adapts to the speed adjustment interface. For example, if the playback speed is set to 2x, the rate at which the playback position increases is also twice the normal speed.
+> - When the actual playback position (framePosition) is 0, the timestamp is a fixed value and is updated only when the stream actually starts playing.
+> - The playback position (framePosition) is measured in samples. The number of samples is calculated as the sampling rate multiplied by the time. For example, when the sampling rate is 48000 Hz, the number of samples corresponding to 20 ms of audio data is 48000*0.02, that is, 960 sample points.
+> - The actual playback position is also reset when the Flush interface is called.
+> - Before calling this function, ensure that the audio stream is in the running state and that at least one frame of data has been played successfully.
+> - When the audio stream route changes, for example, when the device or the output type changes, the playback position may also be reset, but the timestamp keeps increasing. It is recommended that you use the values obtained by this interface only after the changes of the actual playback position and timestamp become stable.
+> - This interface adapts to the speed change interface. For example, when the playback speed is set to 2x, the growth rate of the playback position is also returned as 2x the normal rate.
 
 **Since**: 15
 
@@ -496,7 +501,7 @@ Obtains the frame size in the callback. The frame size is the fixed length of th
 | Name| Description|
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
-| int32_t* frameSize | Pointer to a variable used to receive the frame size.|
+| int32_t* frameSize | Pointer to a variable used to receive the frame size. |
 
 **Returns**
 
@@ -673,7 +678,7 @@ Obtains the volume of an audio renderer.
 | Name| Description|
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
-| float* volume | Pointer to the audio volume, in the range of [0.0, 1.0].|
+| float* volume | Pointer to a variable used to receive the current audio stream volume. The value ranges from 0.0 to 1.0. |
 
 **Returns**
 
@@ -866,7 +871,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 Sets the default built-in audio output device.<br> This function applies only to the scenario where [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to voice messages, VoIP voice calls, and VoIP video calls and the available device types are the receiver, speaker, and system default device.<br> This function can be called at any time after an AudioRenderer instance is created. The system records the default built-in audio output device set by the application. When the application is started, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.<br>
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
+**Device behavior difference:** When this interface sets the default sound output device to the earpiece on a device without an earpiece, sound is output from the speaker.
 
 **Since**: 12
 
@@ -881,7 +886,7 @@ Sets the default built-in audio output device.<br> This function applies only to
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**:<br>                                                  1. The **renderer** parameter is nullptr.<br>                                                  2. The **deviceType** parameter is set to an invalid value.<br>         **AUDIOSTREAM_ERROR_ILLEGAL_STATE**: The execution status is abnormal.<br>         **AUDIOSTREAM_ERROR_SYSTEM**: A system error occurs.|
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS: the function is executed successfully.<br>         AUDIOSTREAM_ERROR_INVALID_PARAM:<br>                                                  1. The renderer parameter is nullptr.<br>                                                  2. The deviceType parameter is invalid.<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE: the execution state is abnormal.<br>         AUDIOSTREAM_ERROR_SYSTEM: a system error occurs. |
 
 ### OH_AudioRenderer_OnInterruptCallback()
 
@@ -912,7 +917,7 @@ typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, voi
 
 **Description**
 
-Defines the callback for error events of an audio renderer.
+Callback function for audio stream error events. It is triggered when an internal system fault occurs, such as an abnormal exit of the audio service, and is not caused by an application call.
 
 **Since**: 20
 
@@ -968,7 +973,7 @@ Defines a callback function for low-latency status changes during audio playback
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | void* userData | Pointer to the data storage area customized by the application.|
-| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | Low-latency status.|
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | Current low-latency status. |
 
 ### OH_AudioRenderer_SetLoudnessGain()
 
@@ -1045,7 +1050,7 @@ Defines a function pointer to the callback used to write audio data. Unlike **OH
 
 | Type| Description|
 | -- | -- |
-| int32_t | Actual length of valid audio data filled by the application. The return value must be in the range of [0, audioDataSize].<br> If the return value is less than 0, the system adjusts it to 0. If the return value is greater than **audioDataSize**, the system adjusts it to **audioDataSize**.<br> Note that the return value must be an integer multiple of the size of a single sampling point.<br> For example, for audio data in stereo s16 format, it must be an integer multiple of 4 (2 * 16 / 8).<br> Failure to do so may result in playback noise.|
+| int32_t | Length of the valid audio data actually filled by the application. The return value must be within [0, audioDataSize].<br> If the return value is less than 0, the system adjusts it to 0. If the return value is greater than audioDataSize, the system adjusts it to audioDataSize.<br> Note that the return value must be an integer multiple of the size of a single sample.<br> For example, for dual-channel S16 audio data, it must be an integer multiple of 4 (2 * 16 / 8).<br> Otherwise, playback noise may occur. |
 
 ### OH_AudioRenderer_GetLatency()
 
@@ -1098,3 +1103,5 @@ Sets the independent audio session strategy and behavior parameters. If this API
 | Type| Description|
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: The parameter value is a null pointer or out of range.<br>         **AUDIOSTREAM_ERROR_ILLEGAL_STATE**: The execution status is abnormal.|
+
+

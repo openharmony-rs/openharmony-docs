@@ -79,9 +79,11 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 融合围栏请求信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -103,9 +105,11 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 融合围栏场景。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -119,9 +123,11 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 融合围栏类型采用二进制标记，该类型在使用时是将支持的围栏类型所在bit位置为1。例如支持GNSS和CELLULAR围栏，则值为0011（二进制），转换为十进制为3；全部四种围栏都支持，则值为1111（二进制），转换为十进制为15。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -135,9 +141,11 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 POI位置信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
-**系统能力**：SystemCapability.Location.Location.Geofence
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -149,9 +157,11 @@ POI位置信息。
 
 GNSS围栏信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -164,9 +174,11 @@ GNSS围栏信息。
 
 GNSS围栏类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -178,9 +190,11 @@ GNSS围栏类型。
 
 CELL围栏信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -191,9 +205,11 @@ CELL围栏信息。
 
 Wi-Fi围栏信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -205,9 +221,11 @@ Wi-Fi围栏信息。
 
 Wi-Fi指纹算法类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -219,9 +237,11 @@ Wi-Fi指纹算法类型。
 
 Wi-Fi指纹信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -234,23 +254,17 @@ Wi-Fi指纹信息。
 
 融合围栏回调事件信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | identifier | string | 否 | 否 | 表示融合围栏唯一标识。<br/>**系统接口**：此接口为系统接口。 |
 | scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | 否 | 否 | 表示融合围栏场景。<br/>**系统接口**：此接口为系统接口。 |
 | transitionEvent | GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt; | 否 | 否 | 表示围栏事件。<br/>**系统接口**：此接口为系统接口。 |
-
-
-## Location
-
-位置信息。
-
-**系统能力**：SystemCapability.Location.Location.Core
-
 
 ## ReverseGeocodingMockInfo
 
@@ -277,7 +291,7 @@ Wi-Fi指纹信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | timeInterval | number | 否 | 否 | 表示模拟位置上报的时间间隔，单位是秒。 <br>**系统接口**：此接口为系统接口。|
-| locations | Array&lt;[Location](#location)&gt; | 否 | 否 | 表示模拟位置数组。 <br>**系统接口**：此接口为系统接口。|
+| locations | Array&lt;[Location](js-apis-geoLocationManager.md#location)&gt; | 否 | 否 | 表示模拟位置数组。 <br>**系统接口**：此接口为系统接口。|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
@@ -311,8 +325,8 @@ Wi-Fi指纹信息。
 | wifiData | [WifiScanInfo](#wifiscaninfo10) | 否 | 是 | 表示WiFi扫描结果。 <br>**系统接口**：此接口为系统接口。|
 | bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | 否 | 是 | 表示蓝牙扫描结果。 <br>**系统接口**：此接口为系统接口。|
 | slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示驻留小区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示邻区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| campedCellInfo<sup>23+</sup> |  [CellInfo](#cellinfo23)| 否 | 是 | 表示驻留小区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;[CellInfo](#cellinfo23)&gt; | 否 | 是 | 表示邻区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -369,7 +383,7 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 | signalIntensity | number | 否 | 否 | 表示信号强度。 <br>**系统接口**：此接口为系统接口。|
 | arfcn | number | 否 | 否 | 表示绝对无线载频信道号（absolute radio frequency channel number）。<br> **系统接口**：此接口为系统接口。|
 | pci | number | 否 | 否 | 表示物理小区标识。 <br>**系统接口**：此接口为系统接口。|
-| tag | number | 否 | 是 | 表示跟踪区域码。 <br>**系统接口**：此接口为系统接口。<br />**起始版本：** 26.0.0|
+| tac | number | 否 | 是 | 表示跟踪区域码。 <br>**系统接口**：此接口为系统接口。<br />**起始版本：** 26.1.0 <br />**模型约束**：此接口仅可在Stage模型下使用。|
 | additionsMap | Map&lt;string, string&gt; | 否 | 是 | 附加信息。 <br>**系统接口**：此接口为系统接口。|
 
 
@@ -660,7 +674,7 @@ enableLocationMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.enableLocationMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -697,7 +711,7 @@ disableLocationMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.disableLocationMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -742,7 +756,7 @@ setMockedLocations(config: LocationMockConfig): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.setMockedLocations} due to limited device capabilities.          |
@@ -844,7 +858,7 @@ enableReverseGeocodingMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.enableReverseGeocodingMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -880,7 +894,7 @@ disableReverseGeocodingMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.disableReverseGeocodingMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -924,7 +938,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.setReverseGeocodingMockInfo} due to limited device capabilities.          |
@@ -1020,7 +1034,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
-查询用户是否同意定位服务隐私申明，是否同意启用定位服务。只有系统应用才能调用。
+查询用户是否同意定位服务隐私声明，是否同意启用定位服务。只有系统应用才能调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -1030,13 +1044,13 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type |  [LocationPrivacyType](#locationprivacytype)| 是 | 指定隐私申明场景，例如开机向导中的隐私申明、开启网络定位功能时弹出的隐私申明等。 |
+  | type |  [LocationPrivacyType](#locationprivacytype)| 是 | 指定隐私声明场景，例如开机向导中的隐私声明、开启网络定位功能时弹出的隐私声明等。 |
 
 **返回值**：
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：用户同意定位服务隐私申明。<br/>false：用户不同意定位服务隐私申明。 |
+  | boolean | true：用户同意定位服务隐私声明。<br/>false：用户不同意定位服务隐私声明。 |
 
 **错误码**：
 
@@ -1066,7 +1080,7 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
 setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean): void
 
-设置用户勾选定位服务隐私申明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。
+设置用户勾选定位服务隐私声明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -1078,8 +1092,8 @@ setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean)
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | [LocationPrivacyType](#locationprivacytype) | 是 | 指定隐私申明场景，例如开机向导中的隐私申明、开启网络定位功能时弹出的隐私申明等。 |
-  | isConfirmed | boolean | 是 | true：用户同意定位服务隐私申明。<br/>false：用户不同意定位服务隐私申明。 |
+  | type | [LocationPrivacyType](#locationprivacytype) | 是 | 指定隐私声明场景，例如开机向导中的隐私声明、开启网络定位功能时弹出的隐私声明等。 |
+  | isConfirmed | boolean | 是 | true：用户同意定位服务隐私声明。<br/>false：用户不同意定位服务隐私声明。 |
 
 **错误码**：
 
@@ -1490,13 +1504,15 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
 
 融合围栏支持设置多种类型围栏，包括GNSS围栏、Wi-Fi围栏、CELL围栏。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -1512,12 +1528,11 @@ addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.addFusionFence} due to limited device.          |
 |3301000 | The location service is unavailable.                                            |
 |3301100 | The location switch is off.|
-|3301603 | Duplicate fusion fence identifier.                                            |
 |3301601 | The number of geofences exceeds the maximum.                                            |
+|3501603 | Duplicate fusion fence identifier.                                            |
 
 **示例**
 
@@ -1628,11 +1643,13 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
 
 删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported)接口判断对应能力是否支持。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -1647,7 +1664,6 @@ removeFusionFence(identifier: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeFusionFence} due to limited device.          |
 |3301000 | The location service is unavailable.                                            |
 |3301602 | Failed to delete a fusion fence due to an incorrect identifier.                                          |
@@ -1678,21 +1694,28 @@ isFusionFenceSupported(): boolean
 
 判断系统是否支持融合围栏能力。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Location.Location.Geofence
+**系统能力**：SystemCapability.Location.Location.Core
 
-**错误码**：
-
-以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **返回值**：
 
   | 类型 | 说明 |
   | -------- | -------- |
   | boolean | true：支持融合围栏能力。<br/>false：不支持融合围栏能力。 |
+  
+  **错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|3301000 | The location service is unavailable.                                            |
 
 **示例**
 

@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=391da42c508dadaae4e2b22c7b74f883a18f11d0 translatedAt=2026-09-23T02:05:15.025Z pushedAt=2026-09-24T06:00:14.196Z -->
 
 The **ethernet** module provides Ethernet management functions such as configuring a network proxy and obtaining the network IP address.
 
@@ -35,7 +36,7 @@ Defines the network proxy configuration.
 
 getMacAddress(): Promise\<Array\<MacAddressInfo>>
 
-Obtains the names and MAC addresses of all Ethernet NICs. This API uses a promise to return the result.
+Obtains the names of all Ethernet NICs and the MAC address information of the corresponding NICs. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_ETHERNET_LOCAL_MAC
 
@@ -45,9 +46,11 @@ Obtains the names and MAC addresses of all Ethernet NICs. This API uses a promis
 
 | Type                                                   | Description                              |
 |-------------------------------------------------------| ---------------------------------- |
-| Promise\<Array[\<MacAddressInfo>](#macaddressinfo14)> | Promise used to return the result.       |
+| Promise\<Array\<[MacAddressInfo](#macaddressinfo14)\>\> | Promise object used to return the names of all Ethernet NICs and the corresponding MAC address information.        |
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ethernet Connection Error Codes](errorcode-net-ethernet.md).
 
 | ID| Error Message                                |
 | ------- | ----------------------------------------|
@@ -62,9 +65,9 @@ import { ethernet } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 ethernet.getMacAddress().then((data: Array<ethernet.MacAddressInfo>) => {
-  console.info("getMacAddress promise data = " + JSON.stringify(data));
+  console.info(`getMacAddress promise data = ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
-  console.error("getMacAddress promise error = " + JSON.stringify(error));
+  console.error(`getMacAddress promise error = ${JSON.stringify(error)}`);
 });
 ```
 
@@ -75,5 +78,5 @@ Defines the name and MAC address of an Ethernet NIC.
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| iface        | string                  |  No  | No| Name of the Ethernet NIC.                                       |
-| macAddress       | string                |  No  | No| MAC address of the Ethernet NIC.|
+| iface        | string                  |  No   | No | Ethernet NIC name, for example, "eth0". It can be obtained through [getMacAddress](#ethernetgetmacaddress14).                                        |
+| macAddress       | string                |  No   | No | MAC address information of the Ethernet NIC, in the format of "XX:XX:XX:XX:XX:XX". |

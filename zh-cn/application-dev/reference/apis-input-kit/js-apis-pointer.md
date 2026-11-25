@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.pointer (鼠标光标)
+# @ohos.multimodalInput.pointer (鼠标光标和光标类的外设)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-鼠标光标管理模块，用于查询和设置鼠标光标相关属性。
+本模块提供鼠标光标和光标类型外设的管理功能，用于查询和设置鼠标光标和光标类型外设的相关属性。
 
 > **说明**：
 >
@@ -42,7 +42,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported.<br/>适用版本：18+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br/>适用版本：18+  |
 
 **示例**：
 
@@ -102,7 +102,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported.<br/>适用版本：18+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br/>适用版本：18+  |
 
 **示例**：
 
@@ -529,6 +529,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -597,6 +598,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -662,6 +664,7 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -1043,7 +1046,7 @@ getTouchpadScrollDirection(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴方向，使用callback异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1098,7 +1101,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 获取触控板滚轴方向，使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 

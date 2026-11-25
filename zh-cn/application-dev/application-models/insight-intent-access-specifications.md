@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "汇总影音、娱乐、导航、生活、新闻、阅读、购物等垂域的标准意图接入规范，给出意图名称、参数和返回值定义。"
+keywords: [标准意图, 意图接入规范, 意图参数, MediaDomain, NavigationDomain, 垂域意图, 返回值定义]
+doctype: guide
+status: active
+---
 # 附录：标准意图接入规范
 
 <!--Kit: Ability Kit-->
@@ -115,7 +122,7 @@
 | entityId    | string | 否   | 意图实体ID，长度不超过64字符。                                                                  | "12949589" |
 | srcLocation | object | 否   | 出发地信息，包含字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02坐标系）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。      | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1236",<br>  "locationName": "北京站",<br>  "latitude": "39.902895",<br>  "longitude": "116.427915",<br>  "address": "北京市东城区北京站"<br>} |
 | dstLocation | object | 否   | 目的地的信息，包含字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02坐标系）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。     | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1248",<br>  "locationName": "北京西站",<br>  "latitude": "39.89534",<br>  "longitude": "116.32128",<br>  "address": "北京市丰台区北京西站"<br>} |
-| wayPoints   | array | 否   | 途经点Array：语音入口调用时必填Array\<PoiLocation>，途径点包含字段与srcLocation中的字段一致。                                      | [{<br>  "locationSystem": "GCJ02",<br>  "poiId": "1445",<br>  "locationName": "前门东大街社区",<br>  "latitude": "39.89995",<br>  "longitude": "116.35628",<br>  "address": "北京市东城区前门街道"<br>}] |
+| wayPoints   | array | 否   | 途经点Array：语音入口调用时必填Array\<PoiLocation>，途经点包含字段与srcLocation中的字段一致。                                      | [{<br>  "locationSystem": "GCJ02",<br>  "poiId": "1445",<br>  "locationName": "前门东大街社区",<br>  "latitude": "39.89995",<br>  "longitude": "116.35628",<br>  "address": "北京市东城区前门街道"<br>}] |
 | dstLocationType | string | 否   | 目的地类型，比如"家"、"公司"等。                                                               | "家" |
 | trafficType | string | 否   | 交通方式。<br>- Drive：驾车（默认值）。<br>- Walk：步行。<br>- Cycle：骑行。<br>- Bus：公交。<br>- Subway：地铁。 | "Cycle" |
 
@@ -420,7 +427,7 @@
 | code   | number| 是   | 返回结果码：0表示成功，其他值表示失败。支持自定义。     | 0 |
 | result | object | 是  | 返回结果列表对象。如果结果列表为空，则返回空。 | -       |
 | entityId   | string | 是  | 意图实体ID。                       | "C10194368"          |
-| entityName | string | 是  | 执行结果实体的名称，BicycleInfo。                        | "EBicycleDeviceInfo" |
+| entityName | string | 是  | 执行结果实体的名称，EBicycleDeviceInfo。                        | "EBicycleDeviceInfo" |
 | deviceName   | string | 是  | 设备名称。                                       | "我的小牛"               |
 | batteryLevel | number | 否  | 剩余电量结果。单位：百分比。                               | 30                   |
 | remainingMileage   | number | 否  | 剩余里程。单位：KM。                                  | 20                   |
@@ -1237,7 +1244,7 @@
 
 | 参数名 | 类型  | 必选 | 说明               | 数据样例 |
 |-------------|--------|----|------------------|---------|
-| city    | string | 是  |体检中心所在城市。 | "北京市" |
+| city    | string | 是  |医院所在城市。 | "北京市" |
 | district    | string | 否  | 所在区域。 | "丰台区" |
 | keywords    | string | 否  | 关键字。 | "建国门" |
 
@@ -1407,7 +1414,7 @@
 
 | 参数名 | 类型  | 必选 | 说明               | 数据样例 |
 |-------------|--------|------|------------------|---------|
-| category    | string | 否   | 余量分类。<br>- DataTraffic：数据流量。<br>- VoiceTraffic：语音流量。<br>- SMSTraffic：短信流量。 | "DataTraffic" |
+| category    | string | 否   | 已订业务分类。<br>- DataTraffic：数据流量。<br>- VoiceTraffic：语音流量。<br>- SMSTraffic：短信流量。 | "DataTraffic" |
 
 **返回值**：
 
@@ -1645,7 +1652,7 @@
 | result | object | 是  | 返回结果列表对象。如果结果列表为空，则返回空。 | -       |
 
 ### 查看账户变动功能
-用于触发客户端查询用户银行账户的交易明细或资金变动记录，支持通过意图实体ID、银行卡尾号、银行卡类型及时间段等多维度精准筛选目标交易数据，并返回操作结果状态及变动记录列表。
+用于以功能方式触发客户端查询用户银行账户的交易明细或资金变动记录，支持通过意图实体ID、银行卡尾号、银行卡类型及时间段等多维度精准筛选目标交易数据，并返回操作结果状态及变动记录列表。
 
 **意图名称**：ViewAccountChangeFunc
 
@@ -2081,7 +2088,7 @@
 | 参数名 | 类型  | 必选 | 说明                                               | 数据样例                                                                                                                        |
 |-------------|--------|------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | keywords    | string | 否   | 搜索关键词，如景点名称，多个搜索关键词用英文逗号分隔。                      | "故宫","江宁有什么好玩的"                                                                                                             |
-| location    | object | 否   | 位置的经纬度信息。纬度的取值范围：[-90, 90]，经度的取值范围：[-180, 180]。  | {"locationSystem": "GCJ02/BD09LL", "locationName": "xxxx", "latitude": "120.785645", "longitude": "33.039635", "address": "xxx"} |
+| location    | object | 否   | 位置的经纬度信息。纬度的取值范围：[-90, 90]，经度的取值范围：[-180, 180]。  | {"locationSystem": "GCJ02/BD09LL", "locationName": "xxxx", "latitude": "33.039635", "longitude": "120.785645", "address": "xxx"} |
 | city    | string | 否   | 用于搜索景点名称等场景按城市筛选过滤非本城市记录。                        | "深圳市"                              |
 | travelGuidesType    | string | 否   | 攻略类型。<br>- Scenic：景点攻略。<br>- CitySelection：城市精选。 | "CitySelection"      |
 

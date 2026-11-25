@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:37:17.766Z pushedAt=2026-11-20T06:07:00.425Z nl=1 -->
 
-This topic walks you through on how to create a certificate extension (**CertExtension**) object, obtain the certificate extension information based on an object identifier (OID), and check whether the certificate is a CA certificate.
+This example demonstrates how to create, parse, and verify a certificate extension object by obtaining a specified Object Identifier (OID) field from a certificate and determining whether it is a CA (Certificate Authority) certificate.
 
 ## How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
@@ -44,7 +45,7 @@ let extData = new Uint8Array([
 ]);
 
 // Certificate extension example.
-function certExtensionSample(): void {
+async function certExtensionSample() {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
     data: extData,
@@ -52,31 +53,25 @@ function certExtensionSample(): void {
     encodingFormat: cert.EncodingFormat.FORMAT_DER
   };
 
-  // Create a CertExtension object.
-  cert.createCertExtension(encodingBlob, (err, certExtension) => {
-    if (err != null) {
-      // The CertExtension object fails to be created.
-      console.error(`createCertExtension failed, errCode:${err.code}, errMsg:${err.message}`);
-      return;
-    }
+  try {
+    // Create a certificate extension instance.
+    let certExtension = await cert.createCertExtension(encodingBlob);
     // The CertExtension object is created.
     console.info('createCertExtension result: success.');
-
-    try {
-      // Obtain the certificate extension information based on an OID.
-      let oidData = '2.5.29.14';
-      let oid: cert.DataBlob = {
-        data: textEncoder.encodeInto(oidData),
-      }
-      let entry = certExtension.getEntry(cert.ExtensionEntryType.EXTENSION_ENTRY_TYPE_ENTRY, oid);
-
-      // Check whether the certificate is a CA certificate.
-      let pathLen = certExtension.checkCA();
-      console.info('checkCA result: success.');
-    } catch (err) {
-      let e: BusinessError = err as BusinessError;
-      console.error(`operation failed, errCode:${e.code}, errMsg:${e.message}`);
+    // Obtain the certificate extension information according to the OID.
+    let oidData = '2.5.29.14';
+    let oid: cert.DataBlob = {
+      data: textEncoder.encodeInto(oidData),
     }
-  });
+    let entry = certExtension.getEntry(cert.ExtensionEntryType.EXTENSION_ENTRY_TYPE_ENTRY, oid);
+
+    // Check whether the certificate is a CA certificate.
+    let pathLen = certExtension.checkCA();
+    console.info('checkCA result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`operation failed, errCode:${e.code}, errMsg:${e.message}`);
+    // ...
+  }
 }
 ```

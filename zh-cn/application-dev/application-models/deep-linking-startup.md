@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何使用Deep Linking机制实现应用间跳转，涵盖目标应用module.json5的skills配置、URI解析获取，以及通过openLink、startAbility和Web组件三种方式发起跳转。"
+keywords: [Deep Linking, 应用间跳转, openLink, startAbility, skills标签, uri匹配, Web组件, 隐式Want]
+doctype: guide
+status: active
+---
 # 使用Deep Linking实现应用间跳转
 
 <!--Kit: Ability Kit-->
@@ -88,11 +95,15 @@ export default class DeepAbility extends UIAbility {
     let uri = want?.uri;
     if (uri) {
       // 从链接中解析query参数，拿到参数后，开发者可根据自己的业务需求进行后续的处理。
-      let urlObject = url.URL.parseURL(want?.uri);
-      let action = urlObject.params.get('action');
-      // 例如，当action为showall时，展示所有的节目。
-      if (action === 'showall') {
-        // ···
+      try {
+        let urlObject = url.URL.parseURL(want?.uri);
+        let action = urlObject.params.get('action');
+        // 例如，当action为showall时，展示所有的节目。
+        if (action === 'showall') {
+          // ···
+        }
+      } catch (error) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to parse URL: %{public}s', JSON.stringify(error));
       }
     }
   }

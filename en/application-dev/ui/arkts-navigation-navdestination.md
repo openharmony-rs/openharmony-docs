@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=63eba97e061c9e4e7437e83255a2faedb257fe7e translatedAt=2026-11-12T03:46:20.419Z pushedAt=2026-11-13T06:20:24.940Z nl=1 -->
 
 [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) is the root container for **Navigation** subpages and is used to hold special attributes as well as lifecycles of subpages. You can set separate attributes such as the title bar and menu bar for **NavDestination**, in the same way you set attributes for **Navigation**. You can also set different display modes for **NavDestination** through the **mode** attribute to meet different page requirements.
 
@@ -16,14 +17,14 @@
 
   By default, subpages in the **NavDestination** component are in standard mode, which corresponds to the [NavDestinationMode.STANDARD](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationmode11) value of the [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#mode11) attribute. Only one standard **NavDestination** page can be displayed in **Navigation**.
 
-- Dialog mode
+- Display mode
   
   With **mode** set to **NavDestinationMode.DIALOG**, a **NavDestination** is displayed transparently by default. The appearance and disappearance of the **NavDestination** in dialog mode do not affect the display and lifecycle of the underlying **NavDestination** in standard mode, and both can be displayed at the same time.
 
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
   
   ``` TypeScript
-  // Dialog NavDestination
+  // NavDestination display type. 
   @Entry
   @Component
   struct PageDisplayType {
@@ -146,5 +147,4 @@ To facilitate the decoupling of components from pages, custom components within 
   
   You can register a listener for **NavDestination** lifecycle changes using the [observer.on('navDestinationUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationupdate) API.
 
-  Alternatively, you can register a callback for page transition states through [observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12). This callback can be used to obtain page information during route changes using [NavDestinationSwitchInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12). This registration supports different scopes: [UIAbilityContext](../reference//apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) and [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
-  
+  Alternatively, you can register a callback for page transition states through [observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12). This callback can be used to obtain page information during route changes using [NavDestinationSwitchInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12), and provides listening of different scopes: [UIAbilityContext (UIAbility context)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) and [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).

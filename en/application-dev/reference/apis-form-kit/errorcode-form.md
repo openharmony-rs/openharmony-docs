@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=cb95b4618a1090cfc2abd873d8686044194f5272 translatedAt=2026-09-15T01:33:49.625Z pushedAt=2026-09-15T06:12:20.844Z -->
 
 > **NOTE**
 >
@@ -284,7 +285,7 @@ The semi-modal widget editing page is not opened.
 
 **Solution**
 
-Ensure that the [semi-modal widget editing page](../../form/arkts-ui-widget-event-formeditextensionability-overview.md#semi-modal-widget-editing) is opened.
+Ensure that the [semi-modal widget editing page](../../form/arkts-ui-widget-event-formeditextensionability.md#semi-modal-widget-editing) is open.
 
 ## 16501015 Failed to Close Semi-Modal Widget Editing Page of Another Application
 
@@ -322,6 +323,98 @@ The specified widget location information is out of the system-defined range.
 
 Ensure that the input widget location is in the [FormLocation](js-apis-app-form-formInfo.md#formlocation20) list.
 
+## 16501017 No Space to Publish the Widget
+
+**Error Message**
+
+There is no space to publish the form.
+
+**Description**
+
+There is no space on the home screen to accommodate the new widget during widget publishing. 
+
+**Possible Causes**
+
+1. The current home screen and the next screen have insufficient space, and the total number of home screens has reached its limit.
+2. The number of widgets on the home screens has reached the upper limit, and no more widgets can be added.
+
+**Solution**
+
+Delete unnecessary widgets and try again.
+
+## 16501018 Widget Not Supported for Publishing
+
+**Error Message**
+
+This form does not support publishing.
+
+**Description**
+
+The home screen does not allow the widget to be published.
+
+**Possible Causes**
+
+The widget cannot be published on the home screen.
+
+**Solution**
+
+Ensure that the widget configuration meets the current scenario. For details, see the **renderingMode** field description in the [configuration file](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file) and the [supportDimensions Field and Device Support Relationship Table](../../form/arkts-ui-widget-configuration.md#supportdimensions-field-and-device-support-relationship-table).
+
+## 16501019 Unable to Unregister the Widget Service Not Registered by the Current Application
+
+**Error Message**
+
+A form service not owned by you cannot be unregistered.
+
+**Description**
+
+During widget service unregistration, the widget service being operated is not registered by the current application.
+
+**Possible Causes**
+
+The current application attempts to unregister a widget service registered by another application.
+
+**Solution**
+
+Unregister only the widget service registered by the current application itself.
+
+## 16501020 Remote Widget Service Unavailable
+
+**Error Message**
+
+Remote form service is unavailable.
+
+**Description**
+
+The remote widget service is unavailable during widget publishing across devices.
+
+**Possible Causes**
+
+The remote device has not started the widget service, or the widget service is abnormal.
+
+**Solution**
+
+Check the widget service status on the remote device, and re-initiate the cross-device widget publishing request when the remote widget service is available.
+
+## 16501021 Remote Widget Application Not Installed or Version Too Low
+
+**Error Message**
+
+The peer form application is not installed or the version is too old.
+
+**Description**
+
+During widget publishing across devices, the target widget application on the remote device is not installed or its version is too low.
+
+**Possible Causes**
+
+1. The target widget application is not installed on the remote device.
+2. The version of the target widget application on the remote device is too low to support cross-device widget publishing.
+
+**Solution**
+
+Confirm that the target widget application is installed on the remote device and that the application version supports cross-device publishing, and then re-initiate the cross-device widget publishing request.
+
 ## 2293761 Internal Service Error
 
 **Error Message**
@@ -350,11 +443,12 @@ The requested bundle name does not exist.
 
 **Description**
 
-The requested bundle name does not exist. This is an internal error.
+The application package name obtained by the system during execution does not exist. This error is an internal error.
 
 **Possible Causes**
 
-An error occurs when the bundle management module obtains the bundle name of the requester. This is an internal service execution exception.
+An error occurred when the package manager attempted to request the requester's bundleName. This is an internal execution exception of the system service.
+
 
 **Solution**
 

@@ -1,12 +1,11 @@
 # canBeObserved API: Determining Whether an Object Can Be Observed
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:05:02.402Z pushedAt=2026-07-24T01:13:44.253Z -->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T11:10:05.269Z pushedAt=2026-09-23T08:39:45.837Z -->
 
 To determine whether an object is observable and to obtain component information associated with the object, you can use [canBeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23).
 
@@ -53,19 +52,16 @@ The object calls the **canBeObserved** API. The value of **reason** in the retur
 | The object data is decorated with @Observed or wrapped by makeV1Observed | The object is decorated with the [@Observed](./arkts-observed-and-objectlink.md) decorator or wrapped by the [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) method. For details, see [Scenarios Where V1 Component Objects Can Be Observed](#scenarios-where-v1-component-objects-can-be-observed).|
 | The object data is decorated with V2 @ObservedV2 and @Trace | The object and its properties are decorated with the [@ObservedV2 and @Trace](./arkts-new-observedV2-and-trace.md) decorators. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
 | The object data is wrapped by V2's makeObserved | The object is wrapped using the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) method. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
-| The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | Data objects of the **Array**, **Set**, **Map**, and **Date** types are decorated with the state management V2 decorators or decorated with the [@Trace](./arkts-new-observedV2-and-trace.md) decorator as object properties. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
-| The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | When V1 and V2 components are mixed up, the object is wrapped using the [enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility) method. For details, see [Scenarios Where Objects Become Observable When Mixing V1 and V2 Components](#scenarios-where-objects-become-observable-when-mixing-v1-and-v2-components).|
+| The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | Proxy data of built-in types such as Array, Map, Set, and Date decorated with the [@Trace](./arkts-new-observedV2-and-trace.md) decorator. See [V2 component object observation scenario](#scenarios-where-v2-component-objects-can-be-observed). |
+| The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | When V1 and V2 components are mixed, the V1 observable object is wrapped using the [enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility) method and used in @ComponentV2. For details, see [Scenarios Where Objects Become Observable When Mixing V1 and V2 Components](#scenarios-where-objects-become-observable-when-mixing-v1-and-v2-components). |
 
 Note that if the value of **reason** ends with **but not used in UI** or **but not used in @ComponentV2**, the object is observable but not used by any UI component. Therefore, changing the object value will not refresh the UI.
 
 ### Scenarios Where V1 Component Objects Can Be Observed
 
 In V1 components, the following objects can be observed:
-
 - Objects decorated with a state management V1 decorator in a component (including **Array**, **Set**, **Map**, and **Date** data objects)
-
 - Objects decorated with the [@Observed](./arkts-observed-and-objectlink.md) decorator
-
 - Objects wrapped using the [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) method
 
 The state management V1 decorators refer to [@State](./arkts-state.md), [@Prop](./arkts-prop.md), [@Link](./arkts-link.md), [@ObjectLink](./arkts-observed-and-objectlink.md), [@StorageLink](./arkts-appstorage.md#storagelink), [@StorageProp](./arkts-appstorage.md#storageprop), [@LocalStorageLink](./arkts-localstorage.md#localstoragelink), [@LocalStorageProp](./arkts-localstorage.md#localstorageprop), [@Provide](./arkts-provide-and-consume.md), and [@Consume](./arkts-provide-and-consume.md).
@@ -254,7 +250,7 @@ Returned result:
     "decoratorInfo": [{
         // When the object property is decorated with @Track, the decorator name is fixed to @Track.
         "decoratorName": "@Track",
-        // When the object property is decorated with @Track, stateVariableName indicates the name of the property decorated with @Track.
+        // When an object property uses the @Track decorator, stateVariableName indicates the name of the property decorated with @Track.
         "stateVariableName": "name",
         // When the object property is decorated with @Track, owningComponentOrClassName indicates the class name.
         "owningComponentOrClassName": "TrackUser",
@@ -282,17 +278,13 @@ Returned result:
 ### Scenarios Where V2 Component Objects Can Be Observed
 
 In V2 components, the following objects can be observed:
-
 - Objects decorated with the [@ObservedV2](./arkts-new-observedV2-and-trace.md) decorator
-
 - **Array**, **Set**, **Map**, and **Date** data objects decorated with state management V2 decorators
-
 - Objects wrapped using the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) method
 
 State management V2 decorators refer to [@Local](./arkts-new-local.md), [@Param](./arkts-new-param.md), [@Provider](./arkts-new-provider-and-consumer.md) and [@Consumer](./arkts-new-provider-and-consumer.md).
 
 The specifications for collecting decorators of V2 components are different from those of V1 components. V2 components collect decorator information based on the object properties decorated with the @Trace decorator. The following TestClass is used as an example. The @Trace decorator displays information about associated components by property.
-
 ``` TypeScript
 // Define a class.
 @ObservedV2
@@ -302,7 +294,6 @@ class TestClass {
   @Trace c?: string;
 }
 ```
-
 ``` json5
 // Analyze the returned result.
 {
@@ -618,7 +609,6 @@ static increaseVolume(balloon: Balloon) {
   balloon.volume += 2;
 }
 ```
-
 <!-- @[case_a_b_call_right_reduceVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallRight.ets) -->
 
 ``` TypeScript
@@ -897,7 +887,7 @@ The key information in the returned result is as follows, indicating that **this
             "elementId": 16
         }]
     }, 
-    ...
+    // ...
     //The following result is omitted.
   ]
 }

@@ -5,11 +5,14 @@
 <!--Designer: @HmQQQ; @stupig001-->
 <!--Tester: @xchaosioda; @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=698cf01903f4278cd4a8d0c7bda3422598f67093 translatedAt=2026-11-09T06:32:06.274Z pushedAt=2026-11-09T08:47:41.287Z nl=1 -->
 
 - ArkTS APIs<!--media-arkts-->
-  - @ohos.multimedia.media (Media)<!--js-apis-media-->
+  - @ohos.multimedia.media (Media Service)<!--js-apis-media-->
     - [Module Description](arkts-apis-media.md)
     - [Functions](arkts-apis-media-f.md)
+    - [Interface (AVAdsController)](arkts-apis-media-AVAdsController.md)
+    - [Interface (AVDownloaderManager)](arkts-apis-media-AVDownloaderManager.md)
     - [Interface (AVImageGenerator)](arkts-apis-media-AVImageGenerator.md)
     - [Interface (AVMetadataExtractor)](arkts-apis-media-AVMetadataExtractor.md)
     - [Interface (AVPlayer)](arkts-apis-media-AVPlayer.md)
@@ -24,6 +27,7 @@
     - [Deprecated Interface (AudioPlayer, deprecated)](arkts-apis-media-AudioPlayer.md)
     - [Deprecated Interface (AudioRecorder, deprecated)](arkts-apis-media-AudioRecorder.md)
     - [Deprecated Interface (VideoPlayer, deprecated)](arkts-apis-media-VideoPlayer.md)
+  - [@ohos.multimedia.videoProcessing (Video Processing)](arkts-apis-media-videoProcessing.md)
   <!--Del-->
   - [@ohos.multimedia.media (Media) (System API)](js-apis-media-sys.md)
   <!--DelEnd-->
@@ -108,6 +112,7 @@
     - [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
     - [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
     - [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)
+    - [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md)
     - [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)
     - [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)
     - [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md)

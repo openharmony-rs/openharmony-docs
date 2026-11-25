@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=2a6c15d2a447a4992ae289de55299bb9d89f4c4a translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 ## Function Description
 
@@ -40,7 +41,7 @@ resources
 >
 > - Files in resource directories and resource group directories are considered as resource files and will not be obfuscated during application packaging.
 >
-> - For details about the resource packaging policies in directories other than **resources**, see [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+> - For details about the resource packaging policies in directories other than **resources**, see the description of **copyCodeResource** under [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348).
 >
 > - The common resource files used across projects in the stage model are stored in the **resources** directory under **AppScope**.
 >
@@ -63,7 +64,7 @@ Table 2 Resource group directories
 
 | Directory   | Description                                    | Resource File                                    |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| element | Indicates element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows.<br>- **boolean**: boolean data<br>- **color**: color data<br>- **float**: floating point number, ranging from -2^128 to 2^128<br>- **intarray**: array of integers<br>- **integer**: integer, ranging from -2^31 to 2^31-1<br>- **plural**: plural form data<br>- **strarray**: array of strings<br>- **string**: string. For details about how to format strings, see [API Reference](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only)<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only)<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
+| element | Indicates element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows.<br>- **boolean**: boolean data.<br>- **color**: color data.<br>- **float**: floating point number, ranging from `-2^128` to `2^128`.<br>- **intarray**: array of integers.<br>- **integer**: integer, ranging from `-2^31` to `2^31-1`.<br>- **plural**: plural form data.<br>- **strarray**: array of strings.<br>- **string**: string. The maximum length of a single string is 65535 bytes. For extra-long strings, you are advised to store them as text files in the **rawfile** directory. For details about how to add placeholders in strings and format them, see [getStringSync](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only).<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only).<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
 | media   | Indicates media resources, including non-text files such as images, audios, and videos. (Only files are supported in this directory.)<br>Table 3 and Table 4 describe the types of images, audios, and videos.             | The file name can be customized, for example, **icon.png**.                    |
 | profile  | Indicates a custom configuration file. You can obtain the file content by using the [getProfileByAbility](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) API. (Only JSON files are supported in this directory.)      | The file name can be customized, for example, **test_profile.json**.          |
 
@@ -108,7 +109,7 @@ Table 5 Requirements for qualifier values
 | Text         | Indicates the script type used by the device. The value starts with one uppercase letter followed by three lowercase letters. For example, **Hans** indicates simplified Chinese, and **Hant** indicates traditional Chinese.<br>For details about the value range, see [ISO 15924](https://www.iso.org/standard/81905.html) (codes for the representation of names of scripts).|
 | Country/Region      | Indicates the country or region where the user is located. The value consists of two or three uppercase letters or three digits. For example, **CN** indicates China, and **GB** indicates the United Kingdom.<br>For details about the value range, see [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) (codes for the representation of names of countries and their subdivisions).|
 | Screen orientation        | Indicates the screen orientation of the device. The value can be:<br>- **vertical**: portrait orientation<br>- **horizontal**: landscape orientation|
-| Device type       | <!--RP1-->Indicates the device type. The value can be:<br>- **car**: a telematics device<br>- **tablet**: tablet<br>- **tv**: smart TV<br>- **wearable**: smart wearable<!--RP1End--> |
+| Device type | Indicates the device type. The value can be:<br>- **phone**: mobile phone<br>- **tablet**: tablet<br>- **car**: telematics device<br>- **tv**: smart TV<br>- **wearable**: wearable<br>- **2in1**: 2-in-1 device |
 | Color mode       | Indicates the color mode of the device. The value can be:<br>- **dark**: dark mode<br>- **light**: light mode|
 | Screen density       | Indicates the screen density of the device, in dpi. The value can be:<br>- **sdpi**: small-scale DPI. This value is applicable to devices with a DPI range of (0, 120].<br>- **mdpi**: medium-scale DPI. This value is applicable to devices with a DPI range of (120, 160].<br>- **ldpi**: large-scale DPI. This value is applicable to devices with a DPI range of (160, 240].<br>- **xldpi**: extra-large-scale DPI. This value is applicable to devices with a DPI range of (240, 320].<br>- **xxldpi**: extra-extra-large-scale DPI. This value is applicable to devices with a DPI range of (320, 480].<br>- **xxxldpi**: extra-extra-extra-large-scale DPI. This value is applicable to devices with a DPI range of (480, 640].|
 
@@ -232,7 +233,7 @@ The following takes the Chinese and English string resource files as examples to
 
 2. Similarly, select **en** for language and **US** for country/region to create the **en_US/element/string_sample.json** file.
 
-   The following figure shows the created resource files. For details about how to access the created resource files, see [Accessing Resources](#accessing-resources).
+   The following figure shows the created resource files. For details about how to access the created resource files, see [Accessing Resources](#accessing-resources)<!--Del--> and [Samples](#samples)<!--DelEnd-->.
 
    ![create-resource-file-5](figures/create-resource-file-5.png)
 
@@ -480,8 +481,8 @@ To access system resources, use the `$r('sys.type.name')` format, where **sys** 
 >
 > - The use of system resources is only supported in the declarative development paradigm.
 >
-> - The default system font used on the UI is HarmonyOS Sans, and the supported character range follows the standards in [Information technology—Chinese coded character set GB18030-2022](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3). If the characters cannot be displayed in HarmonyOS Sans, the system uses another font with the highest priority to display the characters. For details about the priority of the system fonts, see the **/system/etc/fontconfig.json** configuration file on the device.
-
+> - The default system font used on the UI is HarmonyOS Sans, and the supported character range follows the standards in [Information technology-Chinese coded character set GB18030-2022](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=A1931A578FE14957104988029B0833D3). If the characters cannot be displayed in HarmonyOS Sans, the system uses another font with the highest priority to display the characters. For details about the priority of the system fonts, see the **/system/etc/fontconfig.json** configuration file on the device.
+<!--RP3-->
 <!-- @[system_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -503,7 +504,7 @@ Image($r('sys.media.ohos_app_icon'))
   .height(100)
   .width(100)
 ```
-
+<!--RP3End-->
 ## Matching Resources
 
 When your application needs to use a resource, the system preferentially searches the qualifiers subdirectories that match the current device state. The system searches the **base** subdirectory for the target resource only when the **resources** directory does not contain any qualifiers subdirectories that match the current device state or the target resource is not found in the qualifiers subdirectories. **rawfile** and **resfile** are raw file directories, which will not match resources based on the device status.
@@ -596,7 +597,7 @@ struct Index {
 
   build() {
     Column() {
-    // ...
+    // ···
       Text(this.getString())
         .id('config_resource_one')
         .fontSize(30)
@@ -609,7 +610,7 @@ struct Index {
         .id('config_resource_three')
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-    // ...
+    // ···
     }
     .height('100%')
     .width('100%')
@@ -658,9 +659,15 @@ Overlay is a resource replacement mechanism. With overlay resource packages, you
 1. Place the overlay resource package in the target application installation path. For example, for the com.example.overlay application, place the overlay resource package in **data/app/el1/bundle/public/com.example.overlay/**.
 2. The application uses [addResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10) to load overlay resources and uses [removeResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10) to remove overlay resources. The path to an overlay resource consists of the application's sandbox root directory (obtained through **getContext().bundleCodeDir**) and the overlay resource bundle name. For example, **let path = getContext().bundleCodeDir + "overlay *resource bundle name*"**, such as **/data/storage/el1/bundle/overlayResourceBundleName**.
 
+> **NOTE**
+>
+> When an overlay package is loaded, the system uses the intersection of resources in the overlay package and the target module resources. If multiple target modules share the same overlay package, only the first loaded module takes effect. Resources outside the intersection do not take effect for subsequent modules.
+>
+> Example: target module 1 contains resources A and B, target module 2 contains resources B and C, and the overlay package contains resources A, B, and C. After target module 1 loads the overlay package, the overlay package retains resources A and B. When target module 2 loads the overlay package later, resource C cannot take effect.
+
 ### Using overlay in static mode
 
-This feature is enabled by default. For details about how to enable and disable this feature, see [@ohos.bundle.overlay (overlay Module)](../reference/apis-ability-kit/js-apis-overlay.md).
+This feature is enabled by default. For details about how to enable and disable this feature, see [@ohos.bundle.overlay (overlay Feature Module)](../reference/apis-ability-kit/js-apis-overlay.md).
 
 The **app.json5** file in the inter-application overlay resource package supports the following fields:
 ```json
@@ -737,14 +744,35 @@ The **module.json5** file in the cross-application overlay resource package supp
 > - Other fields such as **Ability**, **ExtensionAbility**, and **Permission** are not supported.
 >
 > - The overlay feature does not support JSON images.
+>
+> - When an overlay package is loaded, the system uses the intersection of resources in the overlay package and the target module resources. Other resources in the overlay package do not take effect. To improve performance and memory efficiency, you are advised to place only replacement resources in the overlay package.
 
 If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase. Modules with the overlay feature generally provide an overlay resource file for other modules on the device, so that the module specified by **targetModuleName** can display different colors, labels, themes, and the like by using the overlay resource file in a running phase.
 
 <!--Del-->
-##  
+## Samples
 
- 
+For examples of accessing application resources, see the following sample:
 
--  
+- [Resource Management (ArkTS) (API 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Resource/ResourceManager)
 <!--DelEnd-->
+
+## Terms
+
+### Qualifier
+
+A label value used to characterize an application scenario or device feature. It is used to name resource directories so that resources can be dynamically matched. Qualifiers include the mobile country code (MCC), mobile network code (MNC), language, script, country or region, screen orientation, device type, color mode, and screen density. Qualifiers are combined in a fixed order and separated by specific delimiters. A qualifier participates in resource matching only when its value is consistent with the current device state.
+
+### Qualifiers directory
+
+A resource directory named by combining one or more qualifiers. It is used to store resource files that match specific device features or application scenarios.
+
+### rawfile
+
+A special resource directory under **resources**. It supports multiple levels of subdirectories for storing various types of files. Files in this directory are directly packed into the application in raw form and are accessed by the specified file path and file name. Native APIs can be used to obtain file contents, file lists, and file descriptors.
+
+### resfile
+
+A special resource directory under **resources**. It supports multiple levels of subdirectories for storing various types of files. Files in this directory are directly packed into the application in raw form. After the application is installed, files in this directory are decompressed to the application sandbox path. After the directory is obtained through the **resourceDir** attribute of **Context**, files can be accessed in read-only mode by file path.
+
 <!--no_check-->

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:15.337Z pushedAt=2026-06-26T03:00:41.286Z -->
+<!-- md-trans-meta sourceCommit=9149ee785adbed9063bcb1e1620f73d7c39f5d49 translatedAt=2026-09-23T01:51:45.439Z pushedAt=2026-09-24T06:00:14.180Z -->
 
 > **NOTE**
 >
@@ -34,7 +34,7 @@ Check whether the input parameter value is within the valid value range.
 
 **Error Information**
 
-Failed to connect to the service.
+Operation failed. Cannot connect to service.
 
 **Description**
 
@@ -78,7 +78,7 @@ VPN creation denied, please check the user type.
 
 **Description**
 
-This error code is reported if a VPN fails to be created.
+Refuses to create a VPN. Check the type of the current user.
 
 **Possible Causes**
 
@@ -87,6 +87,7 @@ The login user does not have the operation permission. Specifically, the GUEST u
 **Solution**
 
 Check the type of the login user.
+
 
 ## 2203002 VPN Already Exists
 
@@ -105,6 +106,7 @@ The VPN has been created.
 **Solution**
 
 Call the **destroy** API to destroy the existing VPN, and then call the **setUp** API.
+
 
 ## 2203004 Invalid Descriptor
 
@@ -158,4 +160,6 @@ An internal error is probably due to a null pointer, memory allocation error, or
 
 **Solution**
 
-Check whether the VPN service is normal.
+1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+
+2. Check whether the VPN system service is normal. If the problem persists, submit the issue via [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/).

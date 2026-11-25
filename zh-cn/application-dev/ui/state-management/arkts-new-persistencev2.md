@@ -442,7 +442,67 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 13. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
     - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
-14. 不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
+14. 在API版本26.1.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.1.0开始，通过在[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18)中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
+
+    ```typescript
+    import { PersistenceV2 } from '@kit.ArkUI';
+
+    @ObservedV2
+    class SampleComputed {
+      @Trace public value: number = 1;
+
+      // @Computed为只读属性，需配合ignoreReadOnlyProperties使用
+      @Computed
+      get doubled(): number {
+        return this.value * 2;
+      }
+    }
+
+    @Entry
+    @ComponentV2
+    struct Index {
+      @Local sample: SampleComputed = PersistenceV2.globalConnect({
+        type: SampleComputed,
+        defaultCreator: () => new SampleComputed(),
+        // 必须配置ignoreReadOnlyProperties: true，否则反序列化会因@Computed失败，导致应用crash
+        ignoreReadOnlyProperties: true
+      })!;
+
+      build() {
+        Column() {
+          Text(`doubled value is ${this.sample.doubled}`)
+        }.width('100%')
+      }
+    }
+    ```
+
+    ![persistencev2-ignorereadonlyproperties](./figures/persistencev2-ignorereadonlyproperties.png)
+  
+
+15. 在使用globalConnect持久化[集合类型](#globalconnect支持的集合类型)（如`Array`、`Map`、`Set`、`collections.Array`、`collections.Map`、`collections.Set`）时，若容器内部元素类型为基础类型（如`number`、`string`、`boolean`），则不应声明`defaultSubCreator`，否则会导致编辑、编译报错。
+
+    `defaultSubCreator`的类型为`StorageDefaultCreator<S>`，其泛型参数`S`受`S extends object`约束，而`number`、`string`、`boolean`等基础类型在ArkTS中不继承自`object`，无法满足该约束，因此当容器内部元素类型为基础类型时，声明`defaultSubCreator`将导致编辑、编译报错。
+    
+    当容器内部元素类型为自定义`class`类型（即继承自`object`的引用类型）时，才需要声明`defaultSubCreator`，用于通知状态管理框架如何创建容器内的对象项。如下示例以`Array<number>`为例展示正反用法：
+
+    ```typescript
+    // 反例：容器内元素类型为基础类型number，声明defaultSubCreator会导致编辑、编译报错
+    @Local arr1: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+      defaultSubCreator: () => 10
+    })!;
+
+    // 正例：容器内元素类型为基础类型number，不声明defaultSubCreator
+    @Local arr2: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>())
+    })!;
+    ```
+
+16. 不支持对持久化数据类的类名和属性名进行混淆，否则会导致已有数据无法读取或反序列化失败。应用需关闭混淆，或通过混淆配置保留相关类名和属性名，具体请参考[源码混淆保留选项](../../arkts-utils/source-obfuscation-keep-options.md#保留选项汇总)和[字节码混淆保留选项](../../arkts-utils/bytecode-obfuscation.md#已有保留选项汇总)。
+
+17. [通过意图装饰器开发标准意图](../../application-models/insight-intent-decorator-development.md#通过意图装饰器开发标准意图)场景中声明的后台意图（UI_ABILITY_BACKGROUND）的程序执行入口不涉及UI组件，不会初始化PersistenceV2模块，导致在onExecute函数中使用PersistenceV2无法持久化数据。建议开发者在后台意图场景下使用ArkData模块的[通过用户首选项实现数据持久化（ArkTS）](../../database/data-persistence-by-preferences.md)能力，向UI主程序同步持久化数据。
 
 ## globalConnect支持的类型
 
@@ -815,7 +875,7 @@ struct Page2 {
   }
 }
 ```
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/router_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:router_map"。
 ```json
 {
   "routerMap": [
@@ -1002,9 +1062,9 @@ struct Page1 {
 
 **connect的存储路径需要注意以下两点：**
 
-1、connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
+1. connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
 
-2、当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
+2. 当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
 
 **globalConnect的存储路径需要注意：**
 

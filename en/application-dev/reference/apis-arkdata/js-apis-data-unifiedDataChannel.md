@@ -5,7 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ecdf029dccf124090b32e9e3826719b2cbec1cee translatedAt=2026-09-04T03:57:02.636Z pushedAt=2026-09-09T09:11:03.736Z -->
+<!-- md-trans-meta sourceCommit=82685951231dfbdc9c0904715262b4dcaa8040a6 translatedAt=2026-11-16T02:16:25.105Z pushedAt=2026-11-20T07:28:10.557Z nl=1 -->
 
 This module is a part of the Unified Data Management Framework (UDMF). It provides a standardized data channel for various many-to-many cross-application data sharing scenarios, and offers standardized data access and read APIs. It also provides standardized definitions for data types such as text and images, facilitating data exchange between different applications and reducing the workload of data type adaptation.
 
@@ -242,15 +242,7 @@ Creates a unified data object that contains a data record. After the call is suc
 
 | Name | Type                            | Mandatory | Description                                      |
 | ------ | ------------------------------- | ---- |-----------------------------------------|
-| record | [UnifiedRecord](#unifiedrecord) | Yes   | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its subclass. |
-
-**Error Codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **Error Code ID** | **Error Message**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| record | [UnifiedRecord](#unifiedrecord) | Yes   | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its child class. |
 
 **Example**
 
@@ -279,15 +271,7 @@ Adds a data record to the current unified data object. After the call is success
 
 | Name | Type                            | Mandatory | Description                                          |
 | ------ | ------------------------------- | ---- |---------------------------------------------|
-| record | [UnifiedRecord](#unifiedrecord) | Yes   | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its subclass.|
-
-**Error codes:**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **Error Code ID** | **Error Message**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| record | [UnifiedRecord](#unifiedrecord) | Yes   | Data record to add to the unified data object. The record is a UnifiedRecord object or an object of its child class.|
 
 **Example**
 
@@ -315,7 +299,7 @@ unifiedData.addRecord(link);
 
 getRecords(): Array\<UnifiedRecord\>
 
-Obtains all data records in the current unified data object. The data obtained through this API is of the UnifiedRecord type. You need to obtain the data type through [getType](#gettype) and then convert it to a subclass before use.
+Obtains all data records in the current unified data object. The data obtained through this API is of the UnifiedRecord type. You need to obtain the data type through [getType](#gettype) and then convert it to a child class before use.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -325,7 +309,7 @@ Obtains all data records in the current unified data object. The data obtained t
 
 | Type                                     | Description                      |
 | ---------------------------------------- |-------------------------|
-| Array\<[UnifiedRecord](#unifiedrecord)\> | Array of all data records contained in the current unified data object. Each record can be converted to a specific subclass after its type is obtained through getType, for reading and processing various types of data in the unified data. |
+| Array\<[UnifiedRecord](#unifiedrecord)\> | Array of all data records contained in the current unified data object. Each record can be converted to a specific child class after its type is obtained through getType, for reading and processing various types of data in the unified data. |
 
 **Example**
 
@@ -349,8 +333,7 @@ let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 unifiedData.addRecord(link);
 
 let records = unifiedData.getRecords();
-for (let i = 0; i < records.length; i++) {
-  let record = records[i];
+records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
   let types = record.getTypes();
   if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
     let plainText = record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as unifiedDataChannel.PlainText;
@@ -359,7 +342,7 @@ for (let i = 0; i < records.length; i++) {
     let hyperlink = record.getEntry(uniformTypeDescriptor.UniformDataType.HYPERLINK) as unifiedDataChannel.Hyperlink;
     console.info(`linkUrl: ${hyperlink.url}`);
   }
-}
+});
 ```
 
 ### hasType<sup>12+</sup>
@@ -385,14 +368,6 @@ For file types, if the type set of the UnifiedData object contains "general.jpeg
 | Type                                     | Description                      |
 | ---------------------------------------- |-------------------------|
 | boolean | Returns true if the specified data type exists; returns false otherwise. |
-
-**Error Code**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **Error Code ID** | **Error Message**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -470,6 +445,7 @@ Describes the data summary of a unified data object, including the data type and
 | summary   | Record<string, number> | No | No | A dictionary object whose key indicates the data type (see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)) and whose value is the total size (in bytes) of the records of that type in the unified data object.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | totalSize | number | No | No | Total size (in bytes) of the records in the unified data object.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | overview<sup>22+</sup>   | Record<string, number> | Yes | No | Mapping between all data types in the unified data object and the sizes of the records of each type, where the data size is in bytes. When the obtained unified data object is empty, the value of this overview attribute is empty.<br/>**Atomic service API:** This API can be used in atomic services since API version 22. |
+| filenameExtensions   | Array\<string> | Yes | No | Array of file name extensions of the file record in the unified data object. The extensions are unique, include the leading period, and use lowercase ASCII letters. For example, the extension of the file myphoto.png is '.png'. If no valid file extension exists, an empty array is returned.<br/>**Since:** 26.0.1<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.1. |
 
 **Example**
 
@@ -492,6 +468,7 @@ function parseSummary(summary: unifiedDataChannel.Summary) {
   }
   let overviewRecord = summary.overview as Record<string, number>;
   let totalSize = summary.totalSize;
+  let filenameExtensions = summary.filenameExtensions;
 }
 ```
 
@@ -532,14 +509,6 @@ Creates a data record of the specified type and value. After the call is success
 | type | string | Yes | Type of the data record to create, used to identify the specific type of the data record. For details about the values, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype), for example, 'general.plain-text' and 'general.hyperlink'. |
 | value | [ValueType](#valuetype12) | Yes   | Value of the data record to create. |
 
-**Error Codes:**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **Error Code ID** | **Error Message**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -579,7 +548,7 @@ let pixelMapRecord =
 
 getType(): string
 
-Obtains the type of the current data record. Since the data obtained by calling [getRecords](#getrecords) from a unified data object is a UnifiedRecord object, you need to use this API to query the specific type of the record, and then convert the UnifiedRecord object to its subclass and call the subclass APIs.
+Obtains the type of the current data record. Since the data obtained by calling [getRecords](#getrecords) from a unified data object is a UnifiedRecord object, you need to use this API to query the specific type of the record, and then convert the UnifiedRecord object to its child class and call the child class APIs.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -667,14 +636,6 @@ Adds a data entry with the specified data type and content to the current data r
 | type | string | Yes   | Data type to create. For details, see [UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype). |
 | value | [ValueType](#valuetype12) | Yes | Value of the data to create. |
 
-**Error Code**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **Error Code ID** | **Error Message**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
-
 **Example**
 
 ```ts
@@ -723,14 +684,6 @@ Obtains the data content in a data record by data type.
 | Type   | Description                                                   |
 | ------ |------------------------------------------------------|
 | [ValueType](#valuetype12) | Value corresponding to the current data record. |
-
-**Error codes:**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **Error Code ID** | **Error Message**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -909,7 +862,7 @@ for (let i = 0; i < records.length; i++) {
 
 ## Text
 
-Represents text data. It is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of text data, used to describe text data. You are advised to use subclasses of Text, such as [PlainText](#plaintext), [Hyperlink](#hyperlink), and [HTML](#html), to describe data.
+Represents text data. It is a child class of [UnifiedRecord](#unifiedrecord) and the base class of text data, used to describe text data. You are advised to use child classes of Text, such as [PlainText](#plaintext), [Hyperlink](#hyperlink), and [HTML](#html), to describe data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -932,7 +885,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 ## PlainText
 
-A subclass of [Text](#text) that describes plain text data.
+A child class of [Text](#text) that describes plain text data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -953,7 +906,7 @@ text.abstract = 'This is abstract';
 
 ## Hyperlink
 
-A subclass of [Text](#text) that describes hyperlink data.
+A child class of [Text](#text) that describes hyperlink data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -974,7 +927,7 @@ link.description = 'This is description';
 
 ## HTML
 
-The HTML type data, a subclass of [Text](#text), is used to describe HyperText Markup Language data.
+The HTML type data, a child class of [Text](#text), is used to describe HyperText Markup Language data.
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -998,7 +951,7 @@ html.uriAuthorizationPolicies = [
 
 ## File
 
-The File type data is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of file type data. It is used to describe file type data. You are advised to use subclasses of File, such as [Image](#image), [Video](#video), and [Folder](#folder), to describe data.
+The File type data is a child class of [UnifiedRecord](#unifiedrecord) and the base class of file type data. It is used to describe file type data. You are advised to use child classes of File, such as [Image](#image), [Video](#video), and [Folder](#folder), to describe data.
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1037,7 +990,7 @@ export default class EntryAbility extends UIAbility {
 
 ## Image
 
-Represents image data. It is a subclass of [File](#file) and is used to describe an image file.
+Represents image data. It is a child class of [File](#file) and is used to describe an image file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1068,7 +1021,7 @@ export default class EntryAbility extends UIAbility {
 
 ## Video
 
-Video data, a subclass of [File](#file), used to describe a video file.
+Video data, a child class of [File](#file), used to describe a video file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1099,7 +1052,7 @@ export default class EntryAbility extends UIAbility {
 
 ## Audio
 
-Audio data, a subclass of [File](#file), used to describe an audio file.
+Audio data, a child class of [File](#file), used to describe an audio file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1130,7 +1083,7 @@ export default class EntryAbility extends UIAbility {
 
 ## Folder
 
-Folder type data, a subclass of [File](#file), used to describe a folder.
+Folder type data, a child class of [File](#file), used to describe a folder.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1161,7 +1114,7 @@ export default class EntryAbility extends UIAbility {
 
 ## SystemDefinedRecord
 
-SystemDefinedRecord is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of OpenHarmony system-specific data types. It is used to describe data types that circulate only within the OpenHarmony system. You are advised to use subclasses of SystemDefinedRecord, such as [SystemDefinedForm](#systemdefinedform), [SystemDefinedAppItem](#systemdefinedappitem), and [SystemDefinedPixelMap](#systemdefinedpixelmap), to describe data.
+SystemDefinedRecord is a child class of [UnifiedRecord](#unifiedrecord) and the base class of OpenHarmony system-specific data types. It is used to describe data types that circulate only within the OpenHarmony system. You are advised to use child classes of SystemDefinedRecord, such as [SystemDefinedForm](#systemdefinedform), [SystemDefinedAppItem](#systemdefinedappitem), and [SystemDefinedPixelMap](#systemdefinedpixelmap), to describe data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1186,7 +1139,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(sdr);
 
 ## SystemDefinedForm
 
-Represents the system-defined widget data, which is a subclass of [SystemDefinedRecord](#systemdefinedrecord).
+Represents the system-defined widget data, which is a child class of [SystemDefinedRecord](#systemdefinedrecord).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1220,7 +1173,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 
 ## SystemDefinedAppItem
 
-System-defined desktop icon data, which is a subclass of [SystemDefinedRecord](#systemdefinedrecord).
+System-defined desktop icon data, which is a child class of [SystemDefinedRecord](#systemdefinedrecord).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1256,7 +1209,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(appItem);
 
 ## SystemDefinedPixelMap
 
-An image data type corresponding to the system-defined [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) data type. It is a subclass of [SystemDefinedRecord](#systemdefinedrecord) and stores only the binary data of a PixelMap.
+An image data type corresponding to the system-defined [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) data type. It is a child class of [SystemDefinedRecord](#systemdefinedrecord) and stores only the binary data of a PixelMap.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1310,7 +1263,7 @@ image.createPixelMap(color, opts, (error, pixelMap) => {
 
 ## ApplicationDefinedRecord
 
-ApplicationDefinedRecord is a subclass of [UnifiedRecord](#unifiedrecord) and the base class of application-defined data types. It describes custom data types that circulate only within the application ecosystem. Applications can extend custom data types based on this class.
+ApplicationDefinedRecord is a child class of [UnifiedRecord](#unifiedrecord) and the base class of application-defined data types. It describes custom data types that circulate only within the application ecosystem. Applications can extend custom data types based on this class.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1569,7 +1522,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1631,7 +1584,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                                                                                                                                                                                 |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                                                                  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1686,7 +1639,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1769,7 +1722,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1845,7 +1798,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1909,7 +1862,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                                                                                                                                                                                 |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -1966,7 +1919,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -2030,7 +1983,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                                                                                                                                                                                 |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -2087,8 +2040,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.        |
 
 **Example**
@@ -2127,8 +2080,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2165,14 +2118,6 @@ Otherwise, no action is taken.
 | Name    | Type                    | Mandatory | Description                                                         |
 | --------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | data    | [UnifiedData](#unifieddata) | Yes  | Unified data object to be converted into a multi-style data structure.           |
-
-**Error code:**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| **Error Code ID** | **Error Message**                                                 |
-| ----------------- | ------------------------------------------------------------ |
-| 401               | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 

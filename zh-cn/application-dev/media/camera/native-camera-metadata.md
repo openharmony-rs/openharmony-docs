@@ -16,7 +16,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 1. 导入NDK接口，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->     
    
    ``` C
    #include <cstdint>
@@ -27,7 +27,6 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -42,6 +41,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include "ohcamera/camera_device.h"
    #include <window_manager/oh_display_info.h>
    #include <window_manager/oh_display_manager.h>
    
@@ -109,17 +109,17 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 5. 配置session，完成后通过调用[OH_CaptureSession_Start()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_start)方法输出metadata数据。接口调用失败会返回相应错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
    <!-- @[add_metadata_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-   
+
    ``` C++
    // 开始配置会话。
    Camera_ErrorCode ret = OH_CaptureSession_BeginConfig(captureSession_);
-   
+
    // 将相机输入流加入会话。
    ret = OH_CaptureSession_AddInput(captureSession_, cameraInput_);
-   
+
    // 将相机预览流加入会话。
    ret = OH_CaptureSession_AddPreviewOutput(captureSession_, previewOutput_);
-   
+
    if (isVideo_) {
        // 将相机录像流加入会话。
        AddVideoOutput();
@@ -136,11 +136,11 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
        OH_NativeBuffer_ColorSpace colorSpace = OH_NativeBuffer_ColorSpace::OH_COLORSPACE_P3_FULL;
        SetColorSpace(colorSpace);
    }
-   
+
    // 提交会话配置信息。
    ret = OH_CaptureSession_CommitConfig(captureSession_);
    // ...
-   
+
    InitPreviewRotation();
    // 开始会话。
    OH_LOG_INFO(LOG_APP, "session start");
@@ -182,12 +182,12 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 - 通过注册回调函数，获取监听metadata流的错误结果，callback返回metadata输出接口使用错误时返回的错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
-  <!-- @[metadata_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @[metadata_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->      
   
   ``` C++
   void OnMetadataOutputError(Camera_MetadataOutput *metadataOutput, Camera_ErrorCode errorCode)
   {
-      OH_LOG_INFO(LOG_APP, "OnMetadataOutput errorCode = %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "OnMetadataOutput errorCode = %{public}d", errorCode);
   }
   ```
 

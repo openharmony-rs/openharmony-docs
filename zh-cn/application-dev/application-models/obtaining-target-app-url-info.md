@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍在使用openLink拉起目标应用前，如何通过hdc、bm、aa等工具获取目标应用的bundleName和URL配置信息并拼接完整链接，提供Deep Linking拉起的完整调试验证流程。"
+keywords: [目标应用URL, Deep Linking, openLink, skills配置, uri拼接]
+doctype: guide
+status: active
+---
 # 获取目标应用的URL信息
 
 <!--Kit: Ability Kit-->
@@ -82,14 +89,14 @@
         hdc shell bm dump -n com.example.myapplication
         ```
 
-    2. 通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
+    2. 通过查看输出中`name`为`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
 
         ```json5
         // 输出示例（skills部分）：
         // ...
-        "name": "EntryAbility",
-        // ...
         {
+          "name": "EntryAbility",
+          // ...
           "skills": [
             {
               "actions": [

@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍OpenSL ES在OpenHarmony上的实现与已支持接口，说明其能力扩展受限，建议开发者改用OHAudio开发音频播放功能。"
+keywords: [OpenSL ES, 音频播放, 嵌入式音频, 播放接口, 接口迁移]
+doctype: guide
+status: not_recommended
+---
 # 使用OpenSL ES开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -85,7 +92,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. 使用slCreateEngine接口和获取engine实例。
+2. 使用slCreateEngine接口创建并实例化引擎对象。
      
    ```cpp
    SLObjectItf engineObject = nullptr;
@@ -93,7 +100,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. 获取接口SL_IID_ENGINE的engineEngine实例。
+3. 获取SL_IID_ENGINE对应的引擎接口句柄。
      
    ```cpp
    SLEngineItf engineEngine = nullptr;
@@ -166,7 +173,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. 获取接口SL_IID_PLAY的playItf实例，开始播放。
+7. 获取SL_IID_PLAY对应的播放接口句柄，开始播放。
      
    ```cpp
    SLPlayItf playItf = nullptr;

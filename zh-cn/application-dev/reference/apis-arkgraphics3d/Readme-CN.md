@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 - ArkTS API<!--arkgraphics-3d-arkts-->
@@ -23,3 +23,7 @@
     <!--Del-->
     - [SceneBoidsSim (系统接口)](js-apis-inner-scene-boids-sim-sys.md)
     <!--DelEnd-->
+<!--Del-->
+- 错误码<!--arkgraphics-3d-arkts-errcode-->
+  - [图形3D错误码](errorcode-graphics3d.md)
+<!--DelEnd-->

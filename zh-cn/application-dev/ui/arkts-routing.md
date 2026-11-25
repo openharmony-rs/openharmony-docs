@@ -416,9 +416,9 @@ struct MyComponent {
 <!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->   
 
 ``` TypeScript
- import { hilog } from '@kit.PerformanceAnalysisKit';
- const DOMAIN = 0xF811;
- const TAG = '[Sample_ArkTSRouter]';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 // Page.ets
 @Entry
 @Component

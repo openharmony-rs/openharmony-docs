@@ -2,7 +2,7 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Applications-->
-<!--Owner: @YingCong-->
+<!--Owner: @wuminnan-->
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
 <!--Adviser: @fang-jinxu-->
@@ -338,7 +338,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', set
 
 getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -374,7 +374,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 
 getValue(context: Context, name: string): Promise\<string>
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -441,7 +441,6 @@ getValue(context: Context, name: string, domainName: string): Promise\<string>
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 更新数据项亮度的值(该数据项在数据库中已存在，故getValue方法将更新该数据项的值)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
@@ -480,7 +479,6 @@ getValueSync(context: Context, name: string, defValue: string): string
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 获取数据项亮度的值(该数据项在数据库中已存在)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '10');
@@ -522,7 +520,6 @@ getValueSync(context: Context, name: string, defValue: string, domainName: strin
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 更新数据项亮度的值(该数据项在数据库中已存在)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
@@ -966,7 +963,7 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 > **说明：**
 >
@@ -1004,7 +1001,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise\<object>
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1175,11 +1172,11 @@ openInputMethodDetail(context: Context, bundleName: string, inputMethodId: strin
 
 **参数**：
 
-| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
-| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| bundleName      | string          | 是   | 拉起输入法的对应包名 |
-| inputMethodId   | string          | 是   | 输入法扩展在应用内唯一标识[id](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)。 |
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                       |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext，UIExtensionContext和InputMethodExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| bundleName      | string          | 是   | 拉起输入法的对应包名                                                                                                                                                               |
+| inputMethodId   | string          | 是   | 输入法扩展在应用内唯一标识[id](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)。                                                                                          |
 
 **错误码**：
 

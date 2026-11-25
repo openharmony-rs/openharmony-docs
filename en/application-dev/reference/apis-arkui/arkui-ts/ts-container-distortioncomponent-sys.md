@@ -1,19 +1,18 @@
 # DistortionComponent (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-08-21T02:23:09.108Z pushedAt=2026-08-21T07:25:36.994Z -->
+<!-- md-trans-meta sourceCommit=e042eeb2479a6b74a897a2fffcb48a0011ae7296 translatedAt=2026-11-03T01:57:23.196Z pushedAt=2026-11-13T01:05:59.932Z nl=1 -->
 
 The **DistortionComponent** component is a container-type visual effect component that applies spatial distortion to its child components on a two-dimensional plane, simulating visual effects such as perspective projection, lens barrel/pincushion distortion, and corner stretching. By changing the normalized coordinates of the four corners and the barrel distortion coefficients of the four edges, the component content can present a sense of warping, bulging, indentation, or shearing that approximates three-dimensional space.
 
 > **NOTE**
 >
 > - This module is a system API.
->
+> 
 > - The spatial distortion visual effect supports animation. To achieve smooth transition animation of the parameters, modify the distortion-related parameters in the closure of the [animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) animation API. If the parameters are modified directly, the effect takes effect immediately without transition animation.
 
 **Since:** 26.0.0
@@ -70,6 +69,7 @@ Defines the spatial distortion parameters.
 > - When setting the coordinates of the four corner points, comply with the spatial logic: the y coordinate of the top corner points should be smaller than that of the bottom corner points, and the x coordinate of the left corner points should be smaller than that of the right corner points, to ensure that the distorted quadrilateral maintains a reasonable spatial perspective relationship. (That is, the corner point coordinates should maintain a reasonable spatial perspective relationship to avoid vertical flipping or crossing.) For example, if **topLeft** = **{ x:0, y:0.7 }** and **bottomLeft** = **{ x:0, y:0.2 }**, the top-left corner is lower than the bottom-left corner, which violates the spatial logic and may cause rendering exceptions (such as crossing or flipping of mesh patches, resulting in disordered or unpredictable visual results).
 > - The coordinates of the four corner points can be used together with **barrelDistortion** to build richer spatial distortion effects.
 
+
 **Since:** 26.0.0
 
 **System API:** This is a system API.
@@ -84,7 +84,7 @@ Defines the spatial distortion parameters.
 | topRight       | [Vector2](#vector2) | No  | No   | Coordinate of the top-right corner. Value principle: the coordinate value is a ratio relative to the component size, where 0 indicates 0% and 1 indicates 100%. Recommended value range: [0, 1]. The value must comply with spatial logic to avoid rendering anomalies.                                                                                     |
 | bottomLeft     | [Vector2](#vector2) | No  | No   | Coordinate of the bottom-left corner. Value principle: the coordinate value is a ratio relative to the component size, where 0 indicates 0% and 1 indicates 100%. Recommended value range: [0, 1]. The value must comply with spatial logic to avoid rendering anomalies.                                                                                     |
 | bottomRight    | [Vector2](#vector2) | No  | No   | Coordinate of the bottom-right corner. Value principle: the coordinate value is a ratio relative to the component size, where 0 indicates 0% and 1 indicates 100%. Recommended value range: [0, 1]. The value must comply with spatial logic to avoid rendering anomalies.                                                                                   |
-| barrelDistortion | [Vector4](#vector4) | No   | No   | Barrel distortion parameters for the four edges.<br>The four values in Vector4: **x** for the left edge, **y** for the right edge, **z** for the top edge, and **w** for the bottom edge.<br>A positive value indicates the edge is convex, while a negative value indicates it is concave. When the absolute value of the distortion parameter is 1, the distortion is at its extreme.<br> Value range for x, y, z, and w: [-1, 1] <br>**Note:**<br>The four components of **barrelDistortion** jointly determine the barrel distortion intensity of the four edges and can be used in combination with the four corner coordinates to create more various spatial distortion.<br>Geometrically, **x** and **y** determine the bending direction and magnitude of the left and right vertical edges, while **z** and **w** determine those of the top and bottom horizontal edges. When a component is positive, the corresponding edge bulges outward from the component, creating a convex barrel distortion; when negative, the corresponding edge curves inward toward the component, creating a concave pincushion distortion. When the four component values are similar, the overall effect presents a uniform barrel distortion similar to that of a wide-angle lens; when **x**, **y** differ significantly from **z**, **w**, asymmetric distortion with horizontal or vertical stretching occurs.<br>Because extreme values may cause image folding (mesh patches overlapping and flipping) or sampling anomalies (texture coordinates exceeding the valid sampling range), it is recommended to keep **x**, **y**, **z**, and **w** within the range of [-1, 1].|
+| barrelDistortion | [Vector4](#vector4) | No | No | Parameter for the barrel distortion degree of the four edges.<br>The four values in Vector4 control the following respectively: x is the left edge, y is the right edge, z is the top edge, and w is the bottom edge.<br>A positive value indicates distortion where the edge bulges outward, and a negative value indicates distortion where the edge sinks inward. The larger the absolute value, the stronger the distortion. It is recommended to set a value whose absolute value less than 1 to obtain a more aesthetically pleasing distortion effect.<br>Value range of x, y, z, and w: [-1, 1] <br>**Note:**<br>The four components of barrelDistortion jointly determine the barrel distortion intensity of the four edges, and can be used in combination with the four corner point coordinates to construct richer spatial distortion.<br>From a geometric perspective, x and y determine the bending direction and amplitude of the left and right vertical edges, while z and w determine the bending direction and amplitude of the top and bottom horizontal edges. When a component is positive, the corresponding edge bulges outward from the component, presenting a "barrel outward bulge" effect; when it is negative, the corresponding edge sinks inward toward the component, presenting a "pincushion inward depression" effect. When the four components have similar values, the overall effect presents a uniform barrel distortion similar to that of a wide-angle lens; when the values of x, y differ greatly from those of z, w, asymmetric distortion with horizontal or vertical stretching occurs.<br>Because extreme values may cause image folding (overlapping and flipping of mesh patches) or sampling exceptions (texture coordinates exceeding the valid sampling range), it is recommended to keep x, y, z, and w within the range of [-1, 1].|
 
 ## Vector2
 
@@ -104,6 +104,7 @@ Defines the two-dimensional vector, which contains the x and y coordinates and i
 | ------ | -------- |
 | [Vector2](../../apis-arkui/js-apis-arkui-graphics.md#vector2)   | A vector that contains two values: **x** and **y**.<br>**x** and **y** indicate the coordinate values.<br>Value range: (-∞, +∞) |
 
+
 ## Vector4
 
 type Vector4 = Vector4
@@ -122,9 +123,14 @@ Defines the four-dimensional vector, which contains x, y, z, and w coordinates t
 | ------ | -------- |
 | [Vector4](../../apis-arkui/js-apis-arkui-graphics.md#vector4)   | A vector that contains four values: **x**, **y**, **z**, and **w**.<br>The values of **x**, **y**, **z**, and **w** indicate the barrel distortion degree on the left, right, top, and bottom sides of the component, respectively.<br>Value range: (-∞, +∞) |
 
+
 ## Attributes
 
 Only the system material attribute [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) is supported, which provides the component with a system preset material effect.
+
+## Events
+
+The [universal events](ts-component-general-events.md) are supported.
 
 ## Examples
 
@@ -186,7 +192,6 @@ struct DistortionCornerExample {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting Four-Edge Barrel Distortion
@@ -260,7 +265,6 @@ struct DistortionBarrelExample {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting Combined Corner and Barrel Distortion Animation
@@ -339,5 +343,4 @@ struct DistortionCombinedExample {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->

@@ -1,12 +1,11 @@
 # @AnimatableExtend: Animatable Property Definition
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-08-28T01:36:50.899Z pushedAt=2026-08-28T08:14:19.288Z -->
+<!-- md-trans-meta sourceCommit=d59c4c97eb33b416be08f23c5b48e0263d99ef43 translatedAt=2026-11-03T01:43:18.791Z pushedAt=2026-11-13T01:05:59.893Z nl=1 -->
 
 The **@AnimatableExtend** decorator is used to customize animatable property methods. Functions defined within this decorator must be used together with the [animation](ts-animatorproperty.md#animation) property and called before the **animation** property, so that changing the property value can trigger the animation effect of the **animation** property. During the animation process, the function is called on a frame-by-frame basis until the animation ends. Common uses of this decorator include:
 
@@ -35,11 +34,8 @@ The **@AnimatableExtend** decorator is used to customize animatable property met
 ```
 
 - \@AnimatableExtend can be defined only globally.
-
 - The parameter of the \@AnimatableExtend decorated function must be of the number type or a custom type that implements the **AnimatableArithmetic\<T\>** API.
-
 - The function body of an \@AnimatableExtend decorated function can only access attribute methods of the component type specified within the parentheses of @AnimatableExtend.
-
 - Functions defined by \@AnimatableExtend must be called before the **animation** property for the animation effect to take effect. If they are called after the **animation** property or are not used together with the **animation** property, the property value changes abruptly to the target value without any animation transition effect.
 
 ## AnimatableArithmetic\<T\>
@@ -230,9 +226,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
 
   multiply(scale: number): PointVector {
     let result = new PointVector([]);
-    for (let i = 0; i < this.length; i++) {
-      result.push((this as Array<Point>)[i].multiply(scale));
-    }
+    this.forEach((point: Point) => result.push(point.multiply(scale)));
     return result;
   }
 
@@ -240,12 +234,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     if (this.length !== rhs.length) {
       return false;
     }
-    for (let i = 0; i < this.length; i++) {
-      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
-        return false;
-      }
-    }
-    return true;
+    return this.every((point: Point, index: number) => point.equals((rhs as Array<Point>)[index]));
   }
 
   get(): Array<Object[]> {
@@ -297,5 +286,4 @@ struct AnimatablePropertyExample {
   }
 }
 ```
-
 ![image](figures/animatable-points.gif)

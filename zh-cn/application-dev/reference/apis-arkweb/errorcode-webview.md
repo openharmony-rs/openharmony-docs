@@ -97,7 +97,7 @@ Function not enabled.
 请检查相关功能开关是否已配置为true，或检测当前接口是否支持并发。
 
 
-## 17100005 cookie value格式错误
+## 17100005 Cookie value格式错误
 
 **错误信息**
 
@@ -105,15 +105,15 @@ The provided cookie value is invalid. It must follow the format specified in RFC
 
 **错误描述**
 
-cookie value格式错误。
+Cookie value格式错误。
 
 **可能原因**
 
-不支持的cookie value类型。
+不支持的Cookie value类型。
 
 **处理步骤**
 
-请检查输入的cookie value是否符合RFC 6265规范，确保不包含控制字符、分隔符等非法内容。
+请检查输入的Cookie value是否符合RFC 6265规范，确保不包含控制字符、分隔符等非法内容。
 
 
 ## 17100006 无法注册message port回调
@@ -402,6 +402,44 @@ AIPageCommand参数格式错误。
 **处理步骤**
 
 检查command参数是否为合法的JSON对象字符串，并确认JSON对象中包含字符串类型的method字段。
+
+## 17100025 Web引擎已初始化
+
+**错误信息**
+
+Engine already initialized. The suffix must be set before the web engine is initialized.
+
+**错误描述**
+
+调用[setDataDirectorySuffix](arkts-apis-webview-WebviewController.md#setdatadirectorysuffix)时，Web引擎已经初始化，导致数据目录后缀设置失败。
+
+**可能原因**
+
+1. 在调用setDataDirectorySuffix之前已经调用了[initializeWebEngine](arkts-apis-webview-WebviewController.md#initializewebengine)。
+
+2. 在调用setDataDirectorySuffix之前已经创建了Web组件，触发了Web引擎的懒初始化。
+
+**处理步骤**
+
+请确保在调用[initializeWebEngine](arkts-apis-webview-WebviewController.md#initializewebengine)或创建任何Web组件之前，先调用[setDataDirectorySuffix](arkts-apis-webview-WebviewController.md#setdatadirectorysuffix)设置数据目录后缀。
+
+## 17100026 数据目录后缀已设置
+
+**错误信息**
+
+Data directory suffix has already been set. Only one suffix can be set per process.
+
+**错误描述**
+
+当前进程已经设置过数据目录后缀，再次调用[setDataDirectorySuffix](arkts-apis-webview-WebviewController.md#setdatadirectorysuffix)会失败。每个进程只能设置一次数据目录后缀。
+
+**可能原因**
+
+同一进程内重复调用了[setDataDirectorySuffix](arkts-apis-webview-WebviewController.md#setdatadirectorysuffix)。
+
+**处理步骤**
+
+每个进程仅允许设置一次数据目录后缀。如无法确认当前状态，可通过[getDataDirectorySuffix](arkts-apis-webview-WebviewController.md#getdatadirectorysuffix)查询当前进程已设置的后缀，避免重复设置。
 
 ## 17100101 使用了错误的网络错误码
 

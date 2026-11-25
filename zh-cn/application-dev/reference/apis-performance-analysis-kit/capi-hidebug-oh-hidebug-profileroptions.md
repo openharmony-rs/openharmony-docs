@@ -15,7 +15,7 @@ typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions
 
 资源采集配置结构体前向声明。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [HiDebug](capi-hidebug.md)
 

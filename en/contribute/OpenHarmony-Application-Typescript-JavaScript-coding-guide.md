@@ -1,5 +1,7 @@
 # TypeScript and JavaScript Coding Style Guide
 
+<!-- md-trans-meta sourceCommit=8e600af821b06715faa08e9e35b44f81c8d6dd8d translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 # Overview
 
 ## Purpose
@@ -1014,3 +1016,5 @@ For details, see [@typescript-eslint/no-unsafe-return](https://github.com/typesc
 1. [JavaScript Coding Style Guide](OpenHarmony-JavaScript-coding-style-guide.md)
 1. [ESLint Rules](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules)
 1. High Performance JavaScript
+
+<!--no_check-->

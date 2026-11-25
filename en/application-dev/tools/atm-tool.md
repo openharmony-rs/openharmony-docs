@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:34.900Z pushedAt=2026-07-21T07:51:44.679Z -->
+<!-- md-trans-meta sourceCommit=a6852e07af10719772909bedca1b70c6b19fcc3c translatedAt=2026-11-13T12:15:26.450Z pushedAt=2026-11-16T02:06:53.340Z nl=1 -->
 
 Access Token Manager (atm) is a tool used to query and set the information such as permission and usage type of an application process. It provides the capability of access control based on the token ID, bundle name, and process name.
 
@@ -90,7 +90,7 @@ atm toggle -h
 # Enable the camera permission for user 0.
 atm toggle -r -s -i 0 -p ohos.permission.CAMERA -k 1
 
-# Obtain the toggle state of the camera permission for user 0.
+# Obtain the toggle status of the camera permission for user 0.
 atm toggle -r -o -i 0 -p ohos.permission.CAMERA
 ```
 
@@ -152,6 +152,8 @@ In the following table, **-d**<!--Del-->, **-r**, **-v**,<!--DelEnd--> and **-t*
 
 Example:
 
+Starting from API version 26.1.0, when querying permission information, the displayed result includes a new field `uid`, which indicates the UID of the system service or application.
+
 ```bash
 #Query all permission definitions in the system.
 atm dump -d
@@ -164,6 +166,7 @@ atm dump -d -p *********
 #     "grantMode": "SYSTEM_GRANT",
 #     "availableLevel": "SYSTEM_CORE",
 #     "availableType": "SYSTEM",
+#     "provisionEnable": true,
 #     "distributedSceneEnable": true,
 #     "isKernelEffect": true,
 #     "hasValue": true,
@@ -182,6 +185,7 @@ atm dump -t -i *********
 #   "tokenId": 672078897,
 #   "processName": "samgr",
 #   "apl": 2,
+#   "uid": 5555,
 #   "permStateList": [
 #     {
 #       "permissionName": "ohos.permission.DISTRIBUTED_DATASYNC",
@@ -199,6 +203,7 @@ atm dump -t -b ohos.telephony.resources
 #   "tokenAttr": 1,
 #   "ver": 1,
 #   "userId": 100,
+#   "uid": 20010042,
 #   "bundleName": "ohos.telephony.resources",
 #   "instIndex": 0,
 #   "dlpType": 0,

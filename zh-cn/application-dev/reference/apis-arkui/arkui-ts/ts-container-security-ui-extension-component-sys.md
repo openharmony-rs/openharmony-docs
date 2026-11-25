@@ -63,6 +63,8 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -71,10 +73,11 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 | -------- | -------- | -------- |
 | FOLLOW_HOST_DPI | 0 | 表示分辨率跟随宿主。 |
 | FOLLOW_UI_EXTENSION_ABILITY_DPI | 1 | 表示分辨率跟随UIExtensionAbility。 |
+| FOLLOW_HOST_DPI_ALL | 2 | 表示UIExtensionAbility的UI和子窗分辨率均跟随宿主。<br/>**起始版本：** 26.1.0 |
 
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)。
+仅支持[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)。
 
 ## 事件
 

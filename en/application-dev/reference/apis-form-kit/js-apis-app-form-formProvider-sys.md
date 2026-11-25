@@ -1,12 +1,11 @@
 # @ohos.app.form.formProvider (formProvider) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6b0733adc9a538f18ea8143587feeecb737929d9 translatedAt=2026-07-31T08:23:55.310Z pushedAt=2026-08-01T01:24:42.065Z -->
+<!-- md-trans-meta sourceCommit=a803680196989d9767f0bdfccba7af2f46c1c90e translatedAt=2026-11-03T06:55:47.043Z pushedAt=2026-11-04T03:11:19.938Z nl=1 -->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, set the update time, and request a widget release.
 
@@ -21,7 +20,8 @@ The **formProvider** module provides APIs to obtain widget information, update w
 import { formProvider } from '@kit.FormKit';
 ```
 
-## requestPublishForm
+
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback\<string>): void
 
@@ -50,6 +50,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable version: 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable version: 26.0.1 |
 
 **Example**
 
@@ -84,7 +88,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -112,6 +116,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable version: 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable version: 26.0.1 |
 
 **Example**
 
@@ -141,7 +149,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;string&gt;
 
@@ -175,6 +183,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>Applicable version: 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>Applicable version: 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>Applicable version: 26.0.1 |
 
 **Example**
 
@@ -202,7 +214,7 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -269,7 +281,7 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
@@ -331,7 +343,7 @@ try {
 }
 ```
 
-## activateSceneAnimation<sup>20+</sup>
+## formProvider.activateSceneAnimation<sup>20+</sup>
 
 activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -339,7 +351,7 @@ Requests to activate a widget. This API takes effect only for [scene-based widge
 
 **System capability**: SystemCapability.Ability.Form
 
-**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
+**Device behavior difference:** This API is supported on some Phone models. Calling this API on unsupported devices returns error code [801](../errorcode-universal.md#801-api-not-supported-on-some-devices).
 
 **System API**: This is a system API.
 
@@ -362,7 +374,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 202 | The application is not a system application. |
-| 801 | Capability not supported.function activateSceneAnimation can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported.function activateSceneAnimation cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -390,7 +402,7 @@ try {
 }
 ```
 
-## deactivateSceneAnimation<sup>20+</sup>
+## formProvider.deactivateSceneAnimation<sup>20+</sup>
 
 deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -398,7 +410,7 @@ Requests to deactivate a widget. This API takes effect only for [scene-based wid
 
 **System capability**: SystemCapability.Ability.Form
 
-**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
+**Device behavior difference:** This API is supported on some Phone models. Calling this API on unsupported devices returns error code [801](../errorcode-universal.md#801-api-not-supported-on-some-devices).
 
 **System API**: This is a system API.
 
@@ -421,7 +433,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 202 | The application is not a system application. |
-| 801 | Capability not supported.function deactivateSceneAnimation can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported.function deactivateSceneAnimation cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -449,7 +461,7 @@ try {
 }
 ```
 
-## updateTemplateFormDetailInfo<sup>23+</sup>
+## formProvider.updateTemplateFormDetailInfo<sup>23+</sup>
 
 updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
 
@@ -510,7 +522,7 @@ try {
 }
 ```
 
-## onPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.onPublishFormCrossBundleControl<sup>23+</sup>
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
@@ -556,7 +568,57 @@ try {
 }
 ```
 
-## offPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.openFormManagerCrossBundle<sup>20+</sup>
+
+openFormManagerCrossBundle(want: Want): void
+
+Opens the form management page.
+
+**Permission required:** ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+
+**System capability:** SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type                                                    | Mandatory | Description                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want parameter in the request for opening the form management page. It must include the following fields.<br>bundleName: bundle name of the application that owns the form.<br>abilityName: name of the ability that owns the form.<br>parameters:<br>- ohos.extra.param.key.form_dimension: [form dimension](js-apis-app-form-formInfo.md#formdimension).<br>- ohos.extra.param.key.form_name: form name.<br>- ohos.extra.param.key.module_name: name of the module that owns the form. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| ID | Error Message                                      |
+| -------- | -------------------------------------------- |
+| 201      | Permissions denied.                          |
+| 202      | The application is not a system application. |
+| 801      | Capability not supported.                    |
+| 16500050 | IPC connection error.                        |
+
+**Example**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+const want: Want = {
+  bundleName: 'com.example.formbutton',
+  abilityName: 'EntryFormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  },
+};
+try {
+  formProvider.openFormManagerCrossBundle(want);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 

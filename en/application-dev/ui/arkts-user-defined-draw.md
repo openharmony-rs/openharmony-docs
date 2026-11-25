@@ -1,12 +1,11 @@
-# Custom Drawing
-
+# Implementing Custom Drawing
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1f32bcbdd4ae62e5f571fb73a9473dd94b7e4c93 translatedAt=2026-08-05T01:24:14.212Z pushedAt=2026-08-05T08:13:11.650Z -->
+<!-- md-trans-meta sourceCommit=7ad1c90a6f0725a10b9d0139373b5bca022b08ee translatedAt=2026-11-12T04:07:28.759Z pushedAt=2026-11-13T09:00:04.967Z nl=1 -->
 
 ## Overview
 
@@ -32,6 +31,7 @@ You can implement custom drawing at different layers by registering the correspo
 | ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW | Custom foreground layer drawing.|
 | ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW | Custom overlay layer drawing.|
 
+
 ### Example of Custom Drawing at the Content Layer
 
 In this example, the content layer drawing event **ARKUI_NODE_CUSTOM_EVENT_ON_DRAW** is registered to draw a diagonal line from the upper left area to the lower right area at the node content layer. The following figure shows the effect.
@@ -43,7 +43,7 @@ The following scenario is based on the [Accessing ArkTS Pages](ndk-access-the-ar
 1. Call the [createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) API of [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md), passing the **ARKUI_NODE_CUSTOM** enum value from [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) to create a custom node.
 
    <!-- @[create_customNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
-
+   
    ``` C
    auto customNode = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
    ```
@@ -51,7 +51,7 @@ The following scenario is based on the [Accessing ArkTS Pages](ndk-access-the-ar
 2. When an event is registered, the custom node, event type, event ID, and **UserData** are passed as parameters.
 
    <!-- @[userdata_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
-
+   
    ``` C
    // UserData
    struct A {
@@ -69,21 +69,21 @@ The following scenario is based on the [Accessing ArkTS Pages](ndk-access-the-ar
        // ...
    });
    ```
-
+    
 3. In the callback, use [OH_ArkUI_NodeCustomEvent_GetEventType](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtype) to obtain the type of the custom event, [OH_ArkUI_NodeCustomEvent_GetEventTargetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtargetid) to obtain the event ID, and [OH_ArkUI_NodeCustomEvent_GetUserData](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getuserdata) to obtain user data. Then, determine which drawing event is triggered based on the event type and event ID, and execute the corresponding logic.
 
    <!-- @[nodeCustomEvent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
-
+   
    ``` C
    auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
    auto targetId = OH_ArkUI_NodeCustomEvent_GetEventTargetId(event);
    auto userData = reinterpret_cast<A *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
    ```
-
+    
 4. [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw) obtains the drawing context through the custom component event and transfers the drawing context to [OH_ArkUI_DrawContext_GetCanvas](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas) to obtain the canvas pointer. The pointer is then converted to an [OH_Drawing_Canvas](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md) pointer for drawing.
 
    <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->  
-
+   
    ``` C
    // Obtain the drawing context for the custom event.
    auto *drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
@@ -120,8 +120,8 @@ In the figure, the dark blue rectangle represents the **drawFront** layer, the l
 
 2. Create an encapsulated object for the custom drawing component.
 
-   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) --> 
-
+   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) -->  
+   
    ``` C
    #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
    #define MYAPPLICATION_ARKUICUSTOMNODE_H
@@ -141,7 +141,7 @@ In the figure, the dark blue rectangle represents the **drawFront** layer, the l
        {
            // Register the custom event listener.
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // Declare the custom event and pass itself as custom data.
+           // Declare a custom event and pass itself as custom data.
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -270,8 +270,8 @@ In the figure, the dark blue rectangle represents the **drawFront** layer, the l
 
 3. Use the custom drawing component and custom container to create a sample UI.
 
-    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) --> 
-
+    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->  
+    
     ``` C++
     #include <arkui/native_node_napi.h>
     #include <arkui/native_type.h>
@@ -415,8 +415,8 @@ Effect with message overlay and star decoration on the foreground layer:
 
 2. Create the wrapper objects of the message overlay component.
 
-   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) --> 
-
+   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) -->  
+   
    ``` C
    #ifndef MYAPPLICATION_ARKUIMESSAGEMASKNODE_H
    #define MYAPPLICATION_ARKUIMESSAGEMASKNODE_H
@@ -448,7 +448,7 @@ Effect with message overlay and star decoration on the foreground layer:
        {
            // Register the custom event listener.
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // Declare the custom event and pass itself as custom data.
+           // Declare a custom event and pass itself as custom data.
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -649,7 +649,7 @@ Effect with message overlay and star decoration on the foreground layer:
                OH_Drawing_TextStyle* textStyle = nullptr;
                OH_Drawing_Brush* textBrush = nullptr;
                OH_Drawing_Typography* typography = nullptr;
-
+   
                ~DrawingTextResources()
                {
                    OH_Drawing_DestroyTypography(typography);
@@ -660,7 +660,7 @@ Effect with message overlay and star decoration on the foreground layer:
                    OH_Drawing_DestroyFontCollection(fontCollection);
                }
            } resources;
-
+   
            // Create a font set.
            resources.fontCollection = OH_Drawing_CreateFontCollection();
            if (resources.fontCollection == nullptr) {
@@ -717,11 +717,11 @@ Effect with message overlay and star decoration on the foreground layer:
    
    #endif // MYAPPLICATION_ARKUIMESSAGEMASKNODE_H
    ```
-
+   
 3. Use the message overlay component to create a sample UI.
 
     <!-- @[messageMaskCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->
-
+    
     ``` C++
     #include <arkui/native_node_napi.h>
     #include <arkui/native_type.h>

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍一入二出视频编码能力，主编码器与副编码器共享同一输入Surface、同时产出两路不同规格码流，适用于多码率直播、多人会议、多人视频通话等场景。"
+keywords: [一入二出, 主编码器, 副编码器, 多码率直播, MBR Encoding, Surface共享, 视频通话, 降采样]
+doctype: guide
+status: active
+---
+
 # 一入二出视频编码
 
 <!--Kit: AVCodec Kit-->
@@ -28,7 +36,7 @@
 应用可依据自己的场景选择使用，场景使用举例见下表：
 | 场景 | 主编码器（Primary） | 副编码器（Secondary） | 用途说明 |
 |------|---------------------|----------------------|----------|
-| 多码率直播（ABR） | 高码率主码流 | 降采样 + 丢帧的低码流/低码率 | 无需云端进行多码率转码。在主播端编码两种码流，就可以适配不同看播端设备和带宽，减少云端转码时延和转码成本。 |
+| 多码率编码（Multi-Bitrate Encoding，MBR Encoding） | 高码率主码流 | 降采样 + 丢帧的低码流/低码率 | 无需云端进行多码率转码。在主播端编码两种码流，就可以适配不同看播端设备和带宽，减少云端转码时延和转码成本。 |
 | ROI 区域关注 | 全帧编码归档 | 裁剪感兴趣区域编码 | 监控全帧存储 + 局部区域分析 |
 | 多人视频通话 | 高分辨率/高帧率/高码率码流 | 降采样/丢帧/低码率码流 | 无需云端进行多码率转码。在发送端编码两种码流，就可以适配不同接收端设备和带宽，减少云端转码时延和转码成本。 |
 
@@ -42,7 +50,7 @@
 | 2 | 创建顺序：必须先创建Primary，再从Primary派生Secondary。 |
 | 3 | 生命周期关系：Primary是Secondary的所有者（Owner），Secondary不得脱离Primary独立存在。<br>- **推荐销毁顺序**：先`Destroy(Secondary)` → 再`Destroy(Primary)`，销毁后立即将对应指针赋值`nullptr`。<br>- **容错机制**：若违反顺序先Destroy Primary，系统会级联释放关联的Secondary，但仍应显式遵循正确顺序。 |
 | 4 | 重建能力：Secondary销毁后，可以从同一个Primary重新创建新的Secondary。 |
-| 5 | 仅支持surface模式。 |
+| 5 | 仅支持Surface模式。 |
 
 **接口可用性约束**
 
@@ -79,7 +87,7 @@
 | Surface共享 | 主/副编码器共享同一个Consumer Surface，仅需从`GetSurface`获取一次并绑定到数据源（Camera/XComponent）。 |
 | Window生命周期 | `OH_VideoEncoder_GetSurface`获取的window实例需由开发者负责释放，在所有编码器Destroy之后调用`OH_NativeWindow_DestroyNativeWindow(window)`销毁。 |
 | 前处理独立性 | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥。 |
-| 回调独立性 | 两路的`onNewOutputBuffer`回调在不同线程中触发，需各自释放FreeOutputBuffer。 |
+| 回调独立性 | 两路的onNewOutputBuffer()回调在不同线程中触发，需各自释放FreeOutputBuffer。 |
 
 
 ## 开发步骤
@@ -352,7 +360,7 @@ if (window != nullptr){
 - **Primary**：全帧编码 → 完整画面归档
 - **Secondary**：裁剪指定区域 → 局部分析/特写
 
-### 模式 C：多码率自适应（ABR）
+### 模式 C：多码率编码（MBR Encoding）
 
 - **Primary**：全帧 + 适度丢帧 → 主码流
 - **Secondary**：大幅降采样 + 大幅丢帧 → 弱网备用码流

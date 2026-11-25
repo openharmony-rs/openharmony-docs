@@ -14,7 +14,16 @@
 
 - 分段式拍照是指相机拍照既可以输出低质量图用作缩略图，提升用户感知拍照速度，也可以使用高质量图保证最后的成图质量达到系统相机的水平。满足了图像处理算法的需求的同时，又不会阻塞前台的拍照速度，构筑相机性能竞争力，提升用户体验。 
 - 单段式拍照是指在拍照过程中通过多帧融合以及多个底层算法处理之后返回一张高质量图片，所以Shot2See（用户点击拍照控件到在缩略图显示区域显示缩略图的过程）完成时延较长。此外，单段式拍照支持通过[高性能拍照](#高性能拍照)功能调整[画质优先策略](#画质优先策略)，以加快出图速度或提升图片质量。 
- 
+
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
+
+在使用拍照功能前建议开发者查看[相机开发指导(ArkTS)](camera-device-management.md)的具体章节，了解[设备输入](camera-device-input.md)、[会话管理](camera-session-management.md)等单个流程。
+
+## 开发流程
+
+在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
+
+![Photographing Development Process](figures/photographing-development-process.png)
 
 ## 开发步骤
 
@@ -29,7 +38,61 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 创建拍照输出流。
+2. 查询相机是否支持拍照模式。
+
+   通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取传入镜头支持的模式，查询是否支持拍照模式。
+
+   ```ts
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
+     try {
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
+     }
+   }
+   ```
+
+3. 通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取镜头支持的[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)列表。
+
+   <!-- @[camera_getSupportedOutputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   async getSupportedOutputCapabilityFn(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager,
+     sceneMode: camera.SceneMode): Promise<camera.CameraOutputCapability | undefined> {
+     let cameraOutputCapability: camera.CameraOutputCapability;
+     try {
+       // 获取相机设备支持的输出流能力。
+       cameraOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, sceneMode);
+       if (!cameraOutputCapability) {
+         console.error(`cameraManager.getSupportedOutputCapability error`);
+         return undefined;
+       }
+       console.info(`outputCapability: ${JSON.stringify(cameraOutputCapability)}`);
+       // 以NORMAL_PHOTO模式为例，需要添加预览流、拍照流。
+       // previewProfiles属性为获取当前设备支持的预览输出流。
+       let previewProfilesArray: camera.Profile[] = cameraOutputCapability.previewProfiles;
+       if (!previewProfilesArray) {
+         console.error(`createOutput previewProfilesArray == null || undefined`);
+       }
+       // photoProfiles属性为获取当前设备支持的拍照输出流。
+       let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
+       if (!photoProfilesArray) {
+         console.error(`createOutput photoProfilesArray == null || undefined`);
+       }
+       return cameraOutputCapability;
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`getSupportedOutputCapability failed, err code: ${err.code}`);
+       return undefined;
+     }
+   }
+   ```
+
+4. 创建拍照输出流。
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)创建拍照输出流。
 
@@ -40,7 +103,7 @@
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
      let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
      if (!photoProfilesArray || photoProfilesArray.length === 0) {
-       console.error('photoProfilesArray is null or []');
+       console.error(`photoProfilesArray is null or []`);
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
@@ -54,7 +117,7 @@
    }
    ```
 
-3. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
+5. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
 
    Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -62,22 +125,22 @@
 
    需要在[photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)接口获取到buffer时，将buffer在安全控件中保存到媒体库。
 
-   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
    
    ``` TypeScript
    setPhotoOutputCb(photoOutput: camera.PhotoOutput, context: Context) {
      // 设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
-       console.info('getPhoto start');
+       console.info(`getPhoto start`);
        if (errCode || photo === undefined) {
-         console.error('getPhoto failed, err: ${errCode}');
+         console.error(`getPhoto failed, err: ${errCode}`);
          return;
        }
-         // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
-         this.mediaLibSavePhotoSingle(context, photo.main)
+       // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
+       this.mediaLibSavePhotoSingle(context, photo.main)
      });
    }
-   
+
    mediaLibSavePhotoSingle(context: Context, imageObj: image.Image) {
      imageObj.getComponent(image.ComponentType.JPEG, async (errCode: BusinessError, component: image.Component) => {
        if (errCode || component === undefined) {
@@ -111,7 +174,7 @@
    }
    ```
 
-4. 参数配置。
+6. 参数配置。
 
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
@@ -185,7 +248,7 @@
    }
    ```
 
-5. 触发拍照。
+7. 触发拍照。
 
    通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置参数的setting，setting中可以设置照片的质量和旋转角度，第二参数为回调函数。
 
@@ -222,10 +285,10 @@
        }
        this.photoOutput.capture(settings, (err: BusinessError) => {
          if (err) {
-           console.error(`Failed to capture the photo. error: ${err}`);
+           console.error(`Failed to capture the photo. error: ${err.code}`);
            return;
          }
-         console.info('Callback invoked to indicate the photo capture request success.');
+         console.info(`Callback invoked to indicate the photo capture request success.`);
        });
      } catch (error) {
        console.error(`capture call failed. error: ${error}`);
@@ -259,168 +322,98 @@
 
 ### 开发步骤
 
+使用高性能拍照。
+
+   <!-- @[camera_enableHighPerfCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   async modeSwitchToHigh(photoSession: camera.PhotoSession, photoOutput: camera.PhotoOutput): Promise<void> {
+     try {
+       if (photoSession) {
+         let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
+         let isSupported = false;
+         isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+         if (isSupported) {
+           photoOutput.setPhotoQualityPrioritization(quality);
+         } else {
+           console.error(`session is not supported`);
+         }
+       } else {
+         console.error(`session is null`);
+       }
+     } catch {
+       console.error(`catch error`);
+     }
+   }
+   ```
+
 高性能拍照相关接口需要在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中进行调用。  
 
 具体调用时机如下：  
 
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)结束之后进行调用。 
 
-  ```ts
-  async function startSession(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+  <!-- @[camera_useHighPerfCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  async startSessionWithHighPerf(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput,
+    previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
     try {
       photoSession.addInput(cameraInput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to addInput. error: ${err.code}`);
-    }
-    let canAddPreviewOutput : boolean = false;
-    try {
+      let canAddPreviewOutput: boolean = false;
       canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add previewOutput. error: ${err.code}`);
-    } 
-    if (!canAddPreviewOutput) {
-      console.error(`Failed to add preview output.`);
-      return;
-    }
-    try {
-      photoSession.addOutput(previewOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add previewOutput. error: ${err.code}`);
-    }
-    let canAddPhotoOutput : boolean = false
-    try {
-      canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add photoOutput error: ${err.code}`);
-    }
-    if (!canAddPhotoOutput) {
-      console.error(`Failed to add photo output.`);
-      return;
-    }
-    try {
-      photoSession.addOutput(photoOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add photoOutput. error: ${err.code}`);
-    }
-    try {
-      await photoSession.commitConfig();
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to commitConfig. error: ${err.code}`);
-      return;
-    }
-   
-    try {
-      await photoSession.start();
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to start. error: ${err.code}`);
-    }
-    modeSwitchToHigh(photoSession, photoOutput);
-  }
-
-  async function modeSwitchToHigh(photoSession: camera.PhotoSession, photoOutput: camera.PhotoOutput): Promise<void> {
-    try {
-      if (photoSession) {
-        let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
-        let isSupported = false;
-        isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
-        if (isSupported) {
-          photoOutput.setPhotoQualityPrioritization(quality);
-        } else {
-          console.error(`session is not supported`);
-        }
-      } else {
-        console.error(`session is null`);
+      if (!canAddPreviewOutput) {
+        console.error(`Failed to add preview output.`);
+        return;
       }
-    } catch {
-      console.error(`catch error`);
+      photoSession.addOutput(previewOutput);
+      let canAddPhotoOutput: boolean = false;
+      canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
+      if (!canAddPhotoOutput) {
+        console.error(`Failed to add photo output.`);
+        return;
+      }
+      photoSession.addOutput(photoOutput);
+      await photoSession.commitConfig();
+      await photoSession.start();
+      await this.modeSwitchToHigh(photoSession, photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`session flow error: ${err.code}`);
     }
   }
   ```
 
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前调用。 
 
-  ```ts
-  async function startSession(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+  <!-- @[camera_useHighPerfCapture_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  async startSessionWithHighPerfOption(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput,
+    previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
     try {
       photoSession.addInput(cameraInput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to addInput. error: ${err.code}`);
-    }
-    let canAddPreviewOutput : boolean = false;
-    try {
+      let canAddPreviewOutput: boolean = false;
       canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add previewOutput. error: ${err.code}`);
-    } 
-    if (!canAddPreviewOutput) {
-      console.error(`Failed to add preview output.`);
-      return;
-    }
-    try {
+      if (!canAddPreviewOutput) {
+        console.error(`Failed to add preview output.`);
+        return;
+      }
       photoSession.addOutput(previewOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add previewOutput. error: ${err.code}`);
-    }
-    let canAddPhotoOutput : boolean = false
-    try {
+      let canAddPhotoOutput: boolean = false;
       canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add photoOutput error: ${err.code}`);
-    }
-    if (!canAddPhotoOutput) {
-      console.error(`Failed to add photo output.`);
-      return;
-    }
-    try {
+      if (!canAddPhotoOutput) {
+        console.error(`Failed to add photo output.`);
+        return;
+      }
       photoSession.addOutput(photoOutput);
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to add photoOutput. error: ${err.code}`);
-    }
-    modeSwitchToHigh(photoSession, photoOutput);
-    try {
+      // 在commitConfig之前设置高性能拍照。
+      await this.modeSwitchToHigh(photoSession, photoOutput);
       await photoSession.commitConfig();
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`Failed to commitConfig. error: ${err.code}`);
-      return;
-    }
-   
-    try {
       await photoSession.start();
     } catch (error) {
       let err = error as BusinessError;
-      console.error(`Failed to start. error: ${err.code}`);
-    }
-  }
-
-  async function modeSwitchToHigh(photoSession: camera.PhotoSession, photoOutput: camera.PhotoOutput): Promise<void> {
-    try {
-      if (photoSession) {
-        let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
-        let isSupported = false;
-        isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
-        if (isSupported) {
-          photoOutput.setPhotoQualityPrioritization(quality);
-        } else {
-          console.error(`session is not supported`);
-        }
-      } else {
-        console.error(`session is null`);
-      }
-    } catch {
-      console.error(`catch error`);
+      console.error(`session flow error: ${err.code}`);
     }
   }
   ```
@@ -434,7 +427,7 @@
   <!-- @[capture_start_with_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   
   ``` TypeScript
-  // 监听拍照开始
+  // 监听拍照开始。
   photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo): void => {
     Logger.info(TAG, `photoOutputCallBack captureStartWithInfo success: ${JSON.stringify(captureStartInfo)}`);
   });
@@ -446,7 +439,7 @@
   <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   
   ``` TypeScript
-  // 监听拍照结束
+  // 监听拍照结束。
   photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
     Logger.info(TAG, `photoOutputCallBack captureEnd captureId:
       ${captureEndInfo.captureId}, frameCount: ${captureEndInfo.frameCount}`);
@@ -471,8 +464,8 @@
   <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   
   ``` TypeScript
-  // 监听拍照异常
-  photoOutput.on('error', (data: BusinessError): void => {
-    Logger.info(TAG, `photoOutput data: ${JSON.stringify(data)}`);
+  // 监听拍照异常。
+  photoOutput.on('error', (err: BusinessError): void => {
+    console.error(`photoOutput error, err code: ${err.code}`);
   });
   ```

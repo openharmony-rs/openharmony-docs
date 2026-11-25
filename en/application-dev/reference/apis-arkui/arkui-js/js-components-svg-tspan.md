@@ -1,14 +1,14 @@
 # tspan
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:47.511Z pushedAt=2026-06-24T03:08:11.659Z -->
+<!-- md-trans-meta sourceCommit=2d89ab40148c8e22839f807ddcedcfe23c064435 translatedAt=2026-11-12T04:47:43.890Z pushedAt=2026-11-18T07:00:29.104Z nl=1 -->
 
 The **\<tspan>** component is used to add a text style.
+
 
 >  **NOTE**
 >  - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
@@ -21,11 +21,15 @@ The **\<tspan>** component is used to add a text style.
 
 None
 
+
 ## Child Components
 
 The **[\<tspan>](js-components-svg-tspan.md)** child component is supported.
 
+## Attributes
+
 The attributes in the following table are supported.
+
 
 | Name            | Type                                | Default Value  | Mandatory  | Description                                      |
 | -------------- | ---------------------------------- | ----- | ---- | ---------------------------------------- |
@@ -59,7 +63,7 @@ The attributes in the following table are supported.
       <tspan dx="-5" fill-opacity="0.2">first span.</tspan>
       <tspan dx="5" fill="red" font-size="25" fill-opacity="0.4">second span.</tspan>
       <tspan dy="-5" fill="#D2691E" font-size="35" rotate="-10" fill-opacity="0.6">third span.</tspan>
-      <tspan fill="#blue" font-size="40" rotate="10" fill-opacity="0.8" stroke="#00FF00" stroke-width="1px">forth span.</tspan>
+      <tspan fill="blue" font-size="40" rotate="10" fill-opacity="0.8" stroke="#00FF00" stroke-width="1px">fourth span.</tspan>
     </text>
   </svg>
 </div>

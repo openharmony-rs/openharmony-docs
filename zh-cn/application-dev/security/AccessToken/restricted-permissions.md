@@ -656,6 +656,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：18
 
+<!--Del-->
 ## ohos.permission.kernel.SUPPORT_PLUGIN
 
 允许主体应用安装插件。
@@ -667,6 +668,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **授权方式**：系统授权（system_grant）
 
 **起始版本**：19
+<!--DelEnd-->
 
 ## ohos.permission.CUSTOM_SANDBOX
 
@@ -768,9 +770,9 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-允许应用使用闪控球的自动恢复到应用主窗口的能力。
+允许创建闪控球的应用在后台时，不通过用户点击闪控球的方式，直接调用[restoreMainWindow](../../reference/apis-arkui/js-apis-floatingBall.md#restoremainwindow)接口将应用自身恢复到前台。
 
-**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
+**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起使用，才能实现相关功能。
 
 <!--RP69--><!--RP69End-->
 
@@ -900,7 +902,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.STEERINGWHEEL_INFO
 
@@ -916,7 +918,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
 
@@ -932,7 +934,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
 
@@ -948,7 +950,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
 
@@ -964,7 +966,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
 
@@ -980,7 +982,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.BRAKE_PEDAL_INFO
 
@@ -996,7 +998,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
@@ -1144,7 +1146,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
 
-允许应用加载二进制证书签名的共享库。
+允许应用加载二进制证书签名、调试证书签名、自签名的共享库。
 
 <!--RP61--><!--RP61End-->
 
@@ -1382,7 +1384,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.FLOAT_VIEW
 
-允许应用使用闪控窗。
+允许应用使用闪控窗的能力。
 
 <!--RP78--><!--RP78End-->
 
@@ -1454,9 +1456,11 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：26.0.0
+
+**变更信息：** 从API版本26.0.0开始，增加支持在平板、PC/2in1、TV上申请。
 
 ## ohos.permission.KNOCK_COLLABORATION
 
@@ -1612,7 +1616,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -1626,7 +1630,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_WEATHER
 
@@ -1640,11 +1644,11 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
-允许车内后排屏上应用调用空间手势接口，完成乘客与屏幕隔空交互。
+允许车载应用调用空间手势接口，完成乘客与屏幕隔空交互。
 
 <!--RP106--><!--RP106End-->
 
@@ -1654,7 +1658,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.LOCAL_DEBUG_OTHER_APPS
 
@@ -1668,7 +1672,21 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
+
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY
+ 
+允许应用加载二进制证书签名与调试证书签名的共享库。
+ 
+<!--RP109--><!--RP109End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
 
 ## ohos.permission.kernel.ALLOW_PTRACE_READ
 
@@ -1681,6 +1699,8 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
 
 ## ohos.permission.GET_ALL_BUNDLE_INFO
  
@@ -1694,4 +1714,203 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
  
 **支持设备**：PC/2in1
  
+**起始版本**：26.0.1
+
+## ohos.permission.ASSESSMENT_CONFIGURATION
+
+允许应用进入考试场景，系统服务将弹窗提醒用户进入考试模式后会限制系统能力，防止用户考试作弊或泄密，在保障考试公平的同时保护用户权益。
+
+<!--RP112--><!--RP112End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.DIRECT_CALL
+
+允许应用一键拨号。
+
+获取该权限后，在设备为单SIM卡，或多SIM卡设备已指定默认拨号卡的前提下，无需跳转联系人界面，实现直接拨号。
+
+<!--RP114--><!--RP114End-->
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.1
+
+## ohos.permission.SYNC_ROOT_MANAGER
+
+允许应用管理云盘同步文件夹。
+
+获取该权限后，应用可以将同步根文件夹添加到文件管理器侧边栏，以及自定义同步根文件夹图标。
+
+<!--RP115--><!--RP115End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.HIDDEN_CAMERA_DETECTION
+
+允许应用检测隐藏摄像头。
+
+获取该权限后，在酒店、民宿等地点，应用可辅助使用人员以检测当前空间是否存在隐藏摄像头，保护用户隐私。
+
+<!--RP120--><!--RP120End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.1
+
+## ohos.permission.ALLOW_CROSS_APP_IPC
+
+允许同一开发者的应用之间进行IPC通信。
+
+<!--RP121-->
+应用需要在HarmonyAppProvision配置文件中修改"app-services-capabilities"字段来添加ipcGroupId，配置了相同ipcGroupId的应用之间才可完成跨应用IPC通信。
+
+配置样例：
+
+```json5
+{
+  // ...
+  "acls":{
+    "allowed-acls":[
+      "ohos.permission.ALLOW_CROSS_APP_IPC"
+    ]
+  },
+  "app-services-capabilities": {
+    "ohos.permission.ALLOW_CROSS_APP_IPC": {"ipcGroupIds": ["ipcGroupId0000", "ipcGroupId1000"]}
+  }
+}
+```
+
+<!--RP121End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
+## ohos.permission.INPUT_RECORDING
+
+允许应用监听输入事件。
+
+获取该权限后，应用可实现输入事件的录制和回放功能。
+
+<!--RP116--><!--RP116End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
+ 
+允许应用在创建音频播放流或音频录制流时，创建指定超低时延音频模式，从而使得创建出来的音频流在播放或录制时，整体时延低于普通模式。
+
+<!--RP117--><!--RP117End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1 | Phone | Tablet
+ 
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+允许应用获取设备硬件信息。
+
+<!--RP118--><!--RP118End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.START_HISHELL_TERMINAL
+
+允许应用启动HiShell命令行终端。
+
+获取该权限后，应用可启动HiShell命令行终端，新建终端页签或新建终端窗口实例。
+
+<!--RP123--><!--RP123End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.CONTROL_COMPONENT
+
+允许应用管理指定组件是否支持被模拟操控。
+
+获取该权限后，应用可将指定组件标记为禁止模拟操控，使其他应用（如智能体应用）无法通过模拟操控操作该组件。
+
+<!--RP119--><!--RP119End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+允许应用拦截输入事件。
+
+<!--RP122--><!--RP122End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION
+
+允许应用操作其他应用中已获焦输入框的文本。
+
+<!--RP124--><!--RP124End-->
+
+**权限级别**：system_basic
+
+**授权方式**：manual_settings
+
+**支持设备**：PC/2in1
+
 **起始版本**：26.1.0

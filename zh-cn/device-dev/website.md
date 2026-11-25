@@ -59,6 +59,35 @@
     - [编译形态整体说明](quick-start/quickstart-appendix-compiledform.md)
     - [Hi3516标准系统入门（IDE方式）](quick-start/quickstart-appendix-hi3516-ide.md)
     - [Hi3516标准系统入门（命令行方式）](quick-start/quickstart-appendix-hi3516-pkg.md) 
+  - 应用适配器
+    - [应用适配器CSS属性说明](quick-start/application-adapter/README-CN.md)
+    - [align-content CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-align-content.md)
+    - [align-items CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-align-items.md)
+    - [align-self CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-align-self.md)
+    - [aspect-ratio CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-aspect-ratio.md)
+    - [flex-basis CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-basis.md)
+    - [flex-direction CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-direction.md)
+    - [flex-grow CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-grow.md)
+    - [flex-shrink CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-shrink.md)
+    - [flex-wrap CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-flex-wrap.md)
+    - [gap CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-gap.md)
+    - [justify-content CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-justify-content.md)
+    - [margin-left CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-margin-left.md)
+    - [max-height CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-max-height.md)
+    - [max-width CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-max-width.md)
+    - [min-height CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-min-height.md)
+    - [min-width CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-min-width.md)
+    - [overflow CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-overflow.md)
+    - [position CSS能力开发指南](quick-start/application-adapter/quickstart-lite-flex-position.md)
+    - [Button组件开发指导](quick-start/application-adapter/quickstart-lite-ui-button.md)
+    - [ScrollBar组件开发指导](quick-start/application-adapter/quickstart-lite-ui-scrollbar.md)
+    - [Slider组件开发指导](quick-start/application-adapter/quickstart-lite-ui-slider.md)
+    - [Switch组件开发指导](quick-start/application-adapter/quickstart-lite-ui-switch.md)
+    - [GPU graphic接口快速接入指导文档](quick-start/application-adapter/quickstart-lite-graphics-gpu-interface.md)
+    - [轻图形-SVG开发指导](quick-start/application-adapter/quickstart-lite-graphics-svg.md)
+    - [轻图形-动画开发指导](quick-start/application-adapter/quickstart-lite-graphics-animation.md)
+    - [轻图形-线性渐变开发指导](quick-start/application-adapter/quickstart-lite-graphics-gradient.md)
+    - [轻量系统路由页面转场动效开发指导](quick-start/application-adapter/quickstart-lite-router-page-transition.md)
   - [获取源码](get-code/sourcecode-acquire.md)
 - 隐私和安全
   - [隐私保护](security/security-privacy-protection.md)
@@ -318,7 +347,7 @@
        - [Codec](driver/driver-peripherals-codec-des.md)
        - [Display VDI](driver/driver-peripherals-display-vdi-des.md)
        - [Face_auth](driver/driver-peripherals-face_auth-des.md)
-       - [Fingerprint_auth](driver/driver-peripherals-fingerprint_auth-des.md)
+       - [Fingerprint_auth](driver/driver-peripherals-fingerprint-auth-des.md)
        - [LCD](driver/driver-peripherals-lcd-des.md)
        - [Light](driver/driver-peripherals-light-des.md)
        - [Motion](driver/driver-peripherals-motion-des.md)
@@ -462,6 +491,11 @@
        - [电源模式定制开发指导](subsystems/subsys-power-mode-customization.md)
        - [电源默认休眠行为定制开发指导](subsystems/subsys-power-default-sleep-behavior-customization.md)
        - [唤醒源定制开发指导](subsystems/subsys-power-wakeup-source-customization.md)
+  -  打印服务
+     - 打印首选项
+       - [打印首选项开发指导](subsystems/subsys-print-preferences-guide.md)
+     - 打印驱动
+       - [打印驱动开发指导](subsystems/subsys-print-driver-guide.md)
 - 专题
   - HPM Part
     - [HPM Part介绍](hpm-part/hpm-part-about.md)
@@ -494,7 +528,7 @@
     - [平台驱动开发示例](guide/device-driver-demo.md)
     - [外设驱动开发示例](guide/device-outerdriver-demo.md)
 - 调测
-  - [developer_test开发者自测试执行框架使用指导](device-test/developer_test.md)
+  - [developer_test开发者自测试执行框架使用指导](device-test/developer-test.md)
   - [xdevice测试调度框架使用指导](device-test/xdevice.md)
   - [Smartperf-Host调优工具使用指导](device-test/smartperf-host.md)
   - 调测工具

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何使用AgentExtensionAbility组件实现智能体服务端，涵盖生命周期实现、双向数据收发及安全认证机制，适用于跨应用智能体协作场景。"
+keywords: [AgentExtensionAbility, 智能体服务, AgentHostProxy]
+doctype: guide
+status: active
+---
 # 使用AgentExtensionAbility组件实现智能体服务
 
 <!--Kit: Ability Kit-->
@@ -21,7 +28,7 @@
 
 1. 在工程Module对应的ets目录下，右键选择"New > Directory"，新建一个目录并命名为agentextability。
 
-2. 在AgentExtAbility目录，右键选择"New > ArkTS File"，新建一个文件并命名为AgentExtAbility.ets。
+2. 在agentextability目录，右键选择"New > ArkTS File"，新建一个文件并命名为AgentExtAbility.ets。
 
     ``` txt
     ├── ets
@@ -77,7 +84,7 @@
         } catch (err) {
           let code = (err as BusinessError).code;
           let msg = (err as BusinessError).message;
-          console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+          console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
         }
       }
       // 销毁
@@ -104,7 +111,7 @@
             "metadata": [
               {
                 "name": "ohos.extension.agent",
-                "resource": "$profile:agent_config",
+                "resource": "$profile:agent_config"
               }
             ]
           }
@@ -113,7 +120,7 @@
     }
     ```
 
-5. 在工程Module的`resources/base/profile/`目录下新建agent_config.json文件，然后在其中配置[AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)信息，详细操作步骤请参考[Agent配置文件说明](./agent-extension-configuration.md)。
+5. 在工程Module的`resources/base/profile/`目录下新建agent_config.json文件，然后在其中配置[AgentCard (Agent卡片)](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)信息，详细操作步骤请参考[Agent配置文件说明](./agent-extension-configuration.md)。
 
 ## 使用AgentExtensionAbility组件收发数据
 
@@ -165,7 +172,7 @@ export default class AgentExtAbility extends AgentExtensionAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let msg = (err as BusinessError).message;
-      console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+      console.error(`authorize failed, err code: ${code}, err msg: ${msg}.`);
     }
   }
   // ...

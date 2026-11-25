@@ -2,10 +2,11 @@
 
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xjtu_liushang-->
-<!--Designer: @changjiuy-->
-<!--Tester: @yangwang01-->
+<!--Owner: @zy_194-->
+<!--Designer: @gongzheng92-->
+<!--Tester: @gongzheng92-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d4e58d510018ab97aee0051e4f89bc85d0fa802e translatedAt=2026-11-06T02:22:58.677Z pushedAt=2026-11-12T08:44:05.669Z nl=1 -->
 
 > **NOTE**
 >
@@ -75,7 +76,7 @@ Failed to process image buffer. For example, the processing times out.
 
 **Description**
 
-Processing the image buffer fails. For example, processing timed out.
+Failed to process the image. For example, the processing timed out.
 
 **Possible Causes**
 
@@ -83,17 +84,17 @@ Processing timed out.
 
 **Handling Procedure**
 
-Reduce the load.
+Check whether the input parameters meet expectations.
 
 ## 29200005 Unsupported Operations
 
 **Error Message**
 
-The processing is not supported. You may call OH_ImageProcessing_IsXXXSupported to check whether the capability is supported.
+The processing is not supported. You may call OH_ImageProcessing_IsSupported to check whether the capability is supported.
 
 **Description**
 
-The processing is not supported. You can call **OH_ImageProcessing_Is*XXX*Supported** to check whether the capability is supported.
+The processing is not supported. You can call OH_ImageProcessing_IsSupported to check whether the capability is supported.
 
 **Possible Causes**
 

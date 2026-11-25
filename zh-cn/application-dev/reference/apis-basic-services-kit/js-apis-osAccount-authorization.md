@@ -9,7 +9,7 @@
 
 本模块提供操作系统本地账号授权管理能力。您可以使用该命名空间中的API请求对指定的[Privilege](#privilege)进行授权，这些特权是基于授权策略和用户同意来进行授予的。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -23,7 +23,7 @@ getAuthorizationManager(): AuthorizationManager
 
 获取[AuthorizationManager](#authorizationmanager)实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -47,7 +47,7 @@ let authorizationManager: authorization.AuthorizationManager = authorization.get
 
 定义授权管理器，用于请求和检查授权。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -59,7 +59,7 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 
 当应用处于前台且不存在有效授权时，将以模应用弹窗方式显示授权弹窗。若已存在有效授权，则会直接复用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -72,7 +72,7 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 | 参数名    | 类型                                                | 必填 | 说明                                                             |
 | --------- | --------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | privilege | [Privilege](#privilege)                             | 是   | 目标特权。      |
-| context   | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 承载授权弹窗的UIAbility上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 承载授权弹窗的UIAbility上下文。 |
 
 **返回值：**
 
@@ -86,7 +86,7 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally.                         |
 | 12300302 | User interaction is required but not allowed.<br>Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground.<br>Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext.                |
 | 12300304 | Authorization service is busy. <br>Possible cause: Another authorization is being processed.                               |
@@ -114,13 +114,82 @@ try {
 }
 ```
 
+### requestBatchAuthorization
+
+requestBatchAuthorization(privileges: Array&lt;Privilege&gt;, context: UIAbilityContext): Promise&lt;Map&lt;Privilege, AuthorizationResult&gt;&gt;
+
+请求将指定的批量特权授予当前进程。使用Promise异步回调。
+
+当应用处于前台且不存在有效授权时，将以模应用弹窗方式显示授权弹窗。若已存在有效授权，则会直接复用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+**参数：**
+
+| 参数名     | 类型                                                                                      | 必填 | 说明                        |
+| ---------- | ----------------------------------------------------------------------------------------- | ---- | --------------------------- |
+| privileges | Array&lt;[Privilege](#privilege)&gt;                                                      | 是   | 目标特权列表，必须为非空数组，且列表长度最大不超过5个。 |
+| context    | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)    | 是   | 承载授权弹窗的UIAbility上下文。 |
+
+**返回值：**
+
+| 类型                                                                                                            | 说明                                                              |
+| --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Promise&lt;Map&lt;[Privilege](#privilege), [AuthorizationResult](#authorizationresult)&gt;&gt;                  | Promise对象，返回授权结果，每个输入特权对应一个[AuthorizationResult](#authorizationresult)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 12300001 | The system service works abnormally.                         |
+| 12300002 | The privileges array is empty or exceeds the batch limit.   |
+| 12300302 | User interaction is required but not allowed.<br>Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground.<br>Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext.                |
+| 12300304 | Authorization service is busy. <br>Possible cause: Another authorization is being processed.                               |
+
+**示例：**
+
+```ts
+import { authorization, BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 获取UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+try {
+  authorization.getAuthorizationManager().requestBatchAuthorization(
+    [
+      authorization.Privilege.PRIVILEGE_OPERATE_RAW_NET_PACKETS,
+      authorization.Privilege.PRIVILEGE_MONITOR_RAW_USB_PACKETS
+    ], context
+  ).then((result: Map<authorization.Privilege, authorization.AuthorizationResult>) => {
+    result.forEach((value: authorization.AuthorizationResult, key: authorization.Privilege) => {
+      console.info(`requestBatchAuthorization: privilege=${key}, resultCode=${value.resultCode}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`requestBatchAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`requestBatchAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### hasAuthorization
 
 hasAuthorization(privilege: Privilege): Promise&lt;boolean&gt;
 
 检查当前进程是否拥有指定特权的授权。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -171,7 +240,7 @@ try {
 
 在请求对这些特权授权前，确保当前应用和运行环境满足授权策略要求。有关每个特权的详细定义（包括授权策略），请参见[系统账号特权列表](appendix-osAccount-authorization-privileges.md)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -180,12 +249,13 @@ try {
 | 名称                             | 值                                            | 说明                 |
 | -------------------------------- | --------------------------------------------- | -------------------- |
 | PRIVILEGE_OPERATE_RAW_NET_PACKETS | 'ohos.privilege.operate_raw_net_packets' | 操作原始网络包的特权。 |
+| PRIVILEGE_MONITOR_RAW_USB_PACKETS | 'ohos.privilege.monitor_raw_usb_packets' | 监听USB数据包的特权。 |
 
 ## AuthorizationResultCode
 
 枚举授权结果码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -202,7 +272,7 @@ try {
 
 定义授权结果。目前，所有[Privilege](#privilege)的授权有效期均与调用进程的生命周期相绑定（随进程销毁而失效）。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 

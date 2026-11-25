@@ -12,9 +12,9 @@
 
 Defines the functions for obtaining and using OH_NativeImage. The NativeImage module provides the bridging capability between Surface and OpenGL ES textures, and supports the producer-consumer buffer rotation mechanism. Developers can use OH_NativeImage to bind the content of a Surface to an OpenGL ES texture for rendering, or act as a consumer to obtain buffers for processing.
 
-<!--RP1-->
+<!--Del-->
 
-**Sample**: [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--RP1End-->
+**Sample**: [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--DelEnd-->
 
 **File to include**: <native_image/native_image.h>
 

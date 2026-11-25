@@ -136,7 +136,7 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  否  |  否  | API版本23仅支持触发类型0，指定碎片清理的触发类型，表示执行存储器件碎片清理功能，清理碎片空间以改善存储性能，其他取值返回参数错误。<br>API版本26.1.0开始，支持指定IO存储优化的触发类型1、2和3。<br>1代表打开IO空间换性能策略；<br>2代表关闭IO空间换性能策略；<br>3代表查询IO空间换性能策略；<br>其他取值返回参数错误。|
+| triggerType | number |  否  |  否  | API版本23仅支持触发类型0，指定碎片清理的触发类型，表示执行存储器件碎片清理功能，清理碎片空间以改善存储性能，其他取值返回参数错误。<br>API版本26.0.1开始，支持指定IO存储优化的触发类型1、2和3。<br>1代表打开IO空间换性能策略；<br>2代表关闭IO空间换性能策略；<br>3代表查询IO空间换性能策略；<br>其他取值返回参数错误。|
 | writeSize   | number |  否  |  否  | 触发类型为0时代表碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。<br>触发类型为1、2和3时代表IO存储优化的目标，预期目标大小超过多少时进行存储优化。<br>单位：MB，取值范围：0-2097152MB，超出范围返回参数错误。|
 | waitTime    | number |  否  |  否  | 触发类型为0时代表执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：s，取值范围：[0, 300]，超出范围返回参数错误。<br>触发类型为1、2时不关注该参数。<br>触发类型为3时代表IO存储优化的间隔查询时间，每次达到间隔查询时间后触发一次查询IO空间换性能策略。单位：ms，取值范围：[0, +∞)。|
 
@@ -1661,7 +1661,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
@@ -2991,7 +2991,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
@@ -3885,7 +3885,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;void&gt;
 
-添加需要增量备份的应用。当前整个流程中，触发Release接口之前都可以进行appendBundles的调用。使用Promise异步回调。
+添加需要增量备份的应用。当前整个流程中，触发release接口之前都可以进行appendBundles的调用。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -4357,7 +4357,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍窗口画布及CPU、GPU离屏画布的创建方法，以及通过XComponent显示绘制结果的流程。"
+keywords: [Canvas, CPU后端Canvas, GPU后端Canvas, Bitmap, 离屏绘制]
+doctype: guide
+status: active
+---
+
 # 画布的获取与绘制结果的显示（C/C++）
 
 <!--Kit: ArkGraphics 2D-->
@@ -200,7 +208,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    ```
 
 
-3. 需要通过OH_Drawing_PixelMapGetFromOhPixelMapNative()接口创建一个像素图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasCreateWithPixelMap()接口借助像素图对象创建Canvas。
+3. 需要通过OH_Drawing_PixelMapGetFromOhPixelMapNative()接口创建一个像素图对象（具体可参考[图片绘制](pixelmap-drawing-c.md)），并通过OH_Drawing_CanvasDrawPixelMapRect()接口将像素图对象绘制到Canvas上。
 
    <!-- @[ndk_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
@@ -382,7 +390,7 @@ GPU后端Canvas指画布是基于GPU进行绘制的，GPU的并行计算能力�
            return -1;
        }
    
-       SAMPLE_LOGE("Init success.");
+       SAMPLE_LOGI("Init success.");
        return 0;
    }
    ```

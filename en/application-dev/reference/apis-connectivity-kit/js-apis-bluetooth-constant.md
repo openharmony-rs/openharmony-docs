@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:40:31.244Z pushedAt=2026-09-16T02:33:11.313Z -->
 
-The **constant** module provides constant definitions related to Bluetooth [profiles](../../connectivity/terminology.md#profile) and device types.
+This module provides constant definitions related to Bluetooth [profiles](../../connectivity/bluetooth/terminology.md#profile) and device types. You can use these constants to determine the Bluetooth profile connection status and identify device types. This module is applicable to scenarios such as Bluetooth device pairing, connection management, and device classification and filtering. By using the constant values of standard protocols and device types, you can improve code readability and maintainability.
 
 > **NOTE**
 >
@@ -21,16 +22,16 @@ import { constant } from '@kit.ConnectivityKit';
 
 ## ProfileId
 
-Enumerates the Bluetooth [profile](../../connectivity/terminology.md#profile) IDs.
+Enumerates the Bluetooth profile IDs.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name                              | Value   | Description             |
 | -------------------------------- | ------ | --------------- |
-| PROFILE_A2DP_SOURCE              | 1 | [A2DP source](../../connectivity/terminology.md#a2dp-source) profile, which is used to send audio data.|
-| PROFILE_HANDSFREE_AUDIO_GATEWAY | 4 | [HFP AG](../../connectivity/terminology.md#hfp-ag) profile, which is used to send call audio data. |
-| PROFILE_HID_HOST | 6 | [HID host](../../connectivity/terminology.md#hid-host) profile, which is used to establish communication with the [HID device](../../connectivity/terminology.md#hid-device) and exchange data. |
-| PROFILE_PAN_NETWORK | 7 | [NAP](../../connectivity/terminology.md#nap) profile, which is used to implement network sharing. |
+| PROFILE_A2DP_SOURCE              | 1 | [A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source) profile, which is used to send audio data. |
+| PROFILE_HANDSFREE_AUDIO_GATEWAY | 4 | [HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag) profile, which is used to send call audio data.  |
+| PROFILE_HID_HOST | 6 | [HID Host](../../connectivity/bluetooth/terminology.md#hid-host) profile, which is used to establish communication with the [HID Device](../../connectivity/bluetooth/terminology.md#hid-device) and exchange data.  |
+| PROFILE_PAN_NETWORK | 7 | [NAP](../../connectivity/bluetooth/terminology.md#nap) profile, which is used to implement network sharing.  |
 
 ## ProfileConnectionState
 
@@ -98,7 +99,7 @@ Enumerates the Bluetooth device subclasses, which are further subdivided based o
 | NETWORK_83_TO_99_UTILIZED                | 0x03C0 | Network device with a network load of 83% to 99%. |
 | NETWORK_NO_SERVICE                       | 0x03E0 | Network device with a network load of 100%.    |
 | AUDIO_VIDEO_UNCATEGORIZED                | 0x0400 | Unclassified audio or video device.   |
-| AUDIO_VIDEO_WEARABLE_HEADSET             | 0x0404 | Wearable audio or video headset.  |
+| AUDIO_VIDEO_WEARABLE_HEADSET             | 0x0404 | Wearable audio or video headset.   |
 | AUDIO_VIDEO_HANDSFREE                    | 0x0408 | Hands-free audio or video device.    |
 | AUDIO_VIDEO_MICROPHONE                   | 0x0410 | Audio or video microphone.   |
 | AUDIO_VIDEO_LOUDSPEAKER                  | 0x0414 | Audio or video loudspeaker.   |
@@ -108,24 +109,24 @@ Enumerates the Bluetooth device subclasses, which are further subdivided based o
 | AUDIO_VIDEO_SET_TOP_BOX                  | 0x0424 | Audio or video STB device.   |
 | AUDIO_VIDEO_HIFI_AUDIO                   | 0x0428 | High-fidelity audio or video device.     |
 | AUDIO_VIDEO_VCR                          | 0x042C | Video cassette recording (VCR) device.   |
-| AUDIO_VIDEO_VIDEO_CAMERA                 | 0x0430 | Video camera.   |
+| AUDIO_VIDEO_VIDEO_CAMERA                 | 0x0430 | Video camera.    |
 | AUDIO_VIDEO_CAMCORDER                    | 0x0434 | Camcorder.   |
 | AUDIO_VIDEO_VIDEO_MONITOR                | 0x0438 | Video monitor.   |
 | AUDIO_VIDEO_VIDEO_DISPLAY_AND_LOUDSPEAKER | 0x043C | Video device with a display and speaker. |
 | AUDIO_VIDEO_VIDEO_CONFERENCING           | 0x0440 | Video conference device.    |
 | AUDIO_VIDEO_VIDEO_GAMING_TOY             | 0x0448 | Video gaming toy.  |
 | PERIPHERAL_NON_KEYBOARD_NON_POINTING     | 0x0500 | Non-keyboard or non-pointing peripheral device.  |
-| PERIPHERAL_KEYBOARD                      | 0x0540 | Keyboard device.      |
+| PERIPHERAL_KEYBOARD                      | 0x0540 | Peripheral keyboard.       |
 | PERIPHERAL_POINTING_DEVICE               | 0x0580 | Pointing peripheral device.    |
 | PERIPHERAL_KEYBOARD_POINTING             | 0x05C0 | Keyboard pointing device.    |
 | PERIPHERAL_UNCATEGORIZED                 | 0x0500 | Unclassified peripheral device.     |
-| PERIPHERAL_JOYSTICK                      | 0x0504 | Peripheral joystick.     |
-| PERIPHERAL_GAMEPAD                       | 0x0508 | Peripheral game pad     |
-| PERIPHERAL_REMOTE_CONTROL                | 0x05C0 | Peripheral remote control device    |
-| PERIPHERAL_SENSING_DEVICE                | 0x0510 | Peripheral sensing device.    |
+| PERIPHERAL_JOYSTICK                      | 0x0504 | Peripheral joystick.      |
+| PERIPHERAL_GAMEPAD                       | 0x0508 | Peripheral game pad.      |
+| PERIPHERAL_REMOTE_CONTROL                | 0x05C0 | Peripheral remote control device.    |
+| PERIPHERAL_SENSING_DEVICE                | 0x0510 | Peripheral sensing device.     |
 | PERIPHERAL_DIGITIZER_TABLET              | 0x0514 | Peripheral digitizer tablet.|
 | PERIPHERAL_CARD_READER                   | 0x0518 | Peripheral card reader.     |
-| PERIPHERAL_DIGITAL_PEN                   | 0x051C | Peripheral digital pen.     |
+| PERIPHERAL_DIGITAL_PEN                   | 0x051C | Peripheral digital pen.      |
 | PERIPHERAL_SCANNER_RFID                  | 0x0520 | Peripheral RFID scanner. |
 | PERIPHERAL_GESTURAL_INPUT                | 0x0522 | Gesture input device.    |
 | IMAGING_UNCATEGORIZED                    | 0x0600 | Unclassified imaging device.    |
@@ -147,15 +148,15 @@ Enumerates the Bluetooth device subclasses, which are further subdivided based o
 | TOY_GAME                                 | 0x0814 | Toy gaming device.      |
 | HEALTH_UNCATEGORIZED                     | 0x0900 | Unclassified health devices.     |
 | HEALTH_BLOOD_PRESSURE                    | 0x0904 | Blood pressure device.      |
-| HEALTH_THERMOMETER                       | 0x0908 | Thermometer     |
+| HEALTH_THERMOMETER                       | 0x0908 | Thermometer.     |
 | HEALTH_WEIGHING                          | 0x090C | Body scale.      |
 | HEALTH_GLUCOSE                           | 0x0910 | Blood glucose monitor.     |
 | HEALTH_PULSE_OXIMETER                    | 0x0914 | Pulse oximeter.   |
 | HEALTH_PULSE_RATE                        | 0x0918 | Heart rate monitor.     |
 | HEALTH_DATA_DISPLAY                      | 0x091C | Health data display.    |
-| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.   |
+| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.    |
 | HEALTH_BODY_COMPOSITION_ANALYZER         | 0x0924 | Body composition analyzer. |
-| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Hygrometer.     |
+| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Peak flow monitor.      |
 | HEALTH_MEDICATION_MONITOR                | 0x092C | Medication monitor.   |
 | HEALTH_KNEE_PROSTHESIS                   | 0x0930 | Prosthetic knee.    |
 | HEALTH_ANKLE_PROSTHESIS                  | 0x0934 | Prosthetic ankle.    |
@@ -165,7 +166,7 @@ Enumerates the Bluetooth device subclasses, which are further subdivided based o
 
 ## ProfileUuids<sup>12+</sup>
 
-Enumerates the [Universally Unique Identifiers (UUIDs)](../../connectivity/terminology.md#uuid) of Bluetooth profiles, which are defined by [Bluetooth Special Interest Group](../../connectivity//terminology.md#bluetooth-sig).
+Enumerates the [Universally Unique Identifiers (UUIDs)](../../connectivity/bluetooth/terminology.md#uuid) of Bluetooth profiles, which are defined by [Bluetooth Special Interest Group](../../connectivity/bluetooth/terminology.md#bluetooth-sig).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

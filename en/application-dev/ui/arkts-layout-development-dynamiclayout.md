@@ -2,18 +2,19 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=667150c701d96df1dfdd0322f92fec9e3a7d842c translatedAt=2026-11-12T03:40:16.021Z pushedAt=2026-11-13T06:13:42.802Z nl=1 -->
 
 ## Overview
 
-Since API version 24, the [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md) component is supported. **DynamicLayout** supports dynamically switching between different layout algorithms at runtime without changing the status of child components. With **DynamicLayout**, you can flexibly implement multiple layout presentations for the same content in different scenarios. The **DynamicLayout** component supports the following layout algorithm classes: [RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm), [ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm), and custom layout algorithm class [CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm).
+Since API version 24, the [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md) component is supported. **DynamicLayout** supports dynamically switching between different layout algorithms at runtime without changing the status of child components. With **DynamicLayout**, you can flexibly implement multiple layout presentations for the same content in different scenarios. The **DynamicLayout** component supports the following layout algorithm classes: [RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm), [ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm), [StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm), and custom layout algorithm class [CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm).
 
 ## Constraints
 1. Layout algorithm classes are decorated with [@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md) and do not support the [@State](./state-management/arkts-state.md) decorator.
 2. When switching layout algorithms, the state of child components (such as input box content and scroll position) remains unchanged.
-3. In the [onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout) methods of a custom layout algorithm, state variables must not be modified to avoid unexpected behavior.
+3. In the [onMeasure()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout) methods of a custom layout algorithm, state variables must not be modified to avoid unexpected behavior.
 
 ## Creating a DynamicLayout
 
@@ -23,7 +24,7 @@ Create a [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamicla
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute,RowLayoutAlgorithm, ColumnLayoutAlgorithm, LayoutAlgorithm
+  DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm, LayoutAlgorithm
 } from '@kit.ArkUI';
 
 @Entry
@@ -79,7 +80,7 @@ Starting from API version 24, the [space](../reference/apis-arkui/js-apis-arkui-
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, LengthMetrics
+  DynamicLayout, RowLayoutAlgorithm, LengthMetrics
 } from '@kit.ArkUI';
 
 @Entry
@@ -157,7 +158,7 @@ Starting from API version 24, the [space](../reference/apis-arkui/js-apis-arkui-
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, ColumnLayoutAlgorithm, LengthMetrics
+  DynamicLayout, ColumnLayoutAlgorithm, LengthMetrics
 } from '@kit.ArkUI';
 
 @Entry
@@ -235,7 +236,7 @@ Since API version 24, the [alignContent](../reference/apis-arkui/js-apis-arkui-l
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, StackLayoutAlgorithm
+  DynamicLayout, StackLayoutAlgorithm
 } from '@kit.ArkUI';
 
 @Entry
@@ -307,7 +308,7 @@ Since API version 24, the [columnsTemplate](../reference/apis-arkui/js-apis-arku
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, GridLayoutAlgorithm, LengthMetrics
+  DynamicLayout, GridLayoutAlgorithm, LengthMetrics
 } from '@kit.ArkUI';
 
 export class GridDataSource implements IDataSource {
@@ -406,17 +407,17 @@ struct GridLayoutExample {
 
 ## Custom Layout Algorithms
 
-A custom layout algorithm is implemented by extending the [CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm) class and overriding the [onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout) methods. You can customize the measurement and positioning of child components according to specific business requirements, achieving personalized layout effects that built‑in algorithms cannot satisfy, such as waterfall flows, tag clouds, and other irregular layouts.
+A custom layout algorithm is implemented by inheriting the [CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm) class and overriding the [onMeasure()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout) methods. Based on specific business requirements, you can customize the size measurement and position arrangement of child components to achieve personalized layout effects that built-in layout algorithms cannot satisfy, such as irregular layouts like waterfall flow and tag clouds.
 
 ### Guide to Implementing a Custom Layout Algorithm
 
-You can obtain all child **FrameNode**s by calling the [getChildrenCount()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12) and [getChild()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12) methods of [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1). In the **onMeasure** method, you can call the [measure()](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12) method to customize the size of the child component. In the **onLayout** method, you can call the [getMeasuredSize()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12) method to obtain the measured dimensions of the child component, and call the [layout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12) method to customize the position of the child components. The following example demonstrates how to override the [onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout) methods and call the relevant methods of [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1) to achieve a horizontal linear layout effect.
+You can obtain all child **FrameNode**s by calling the [getChildrenCount()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12) and [getChild()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12) methods of [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1). In the **onMeasure()** method, you can call the [measure()](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12) method to customize the size of the child component. In the **onLayout()** method, you can call the [getMeasuredSize()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12) method to obtain the measured dimensions of the child component, and call the [layout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12) method to customize the position of the child components. The following example demonstrates how to override the [onMeasure()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure) and [onLayout()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout) methods and call the relevant methods of [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1) to achieve a horizontal linear layout effect.
 
 <!-- @[CustomLayoutBasic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/CustomLayoutBasic.ets) -->
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, FrameNode, LayoutConstraint, Position, LayoutAlgorithm
+  DynamicLayout, CustomLayoutAlgorithm, FrameNode, LayoutConstraint, Position, LayoutAlgorithm
 } from '@kit.ArkUI';
 
 // Custom layout algorithm class.
@@ -509,13 +510,13 @@ struct CustomLayoutBasic {
 
 ### Waterfall Layout
 
-The following example implements a custom waterfall flow layout algorithm that arranges child components in columns, stacking them sequentially within each column. This is suitable for product display scenarios.
+The following example implements a custom waterfall layout algorithm that arranges child components in columns, stacking them sequentially within each column. This is suitable for product display scenarios.
 
 <!-- @[WaterFlowLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/WaterFlowLayout.ets) -->
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
+  DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
 } from '@kit.ArkUI';
 
 // Waterfall layout algorithm.
@@ -680,7 +681,7 @@ The following example implements a custom grid layout algorithm that arranges ch
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
+  DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
 } from '@kit.ArkUI';
 
 // 2x2 grid layout algorithm.
@@ -837,7 +838,7 @@ The following example implements a custom tag cloud layout that automatically wr
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
+  DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position
 } from '@kit.ArkUI';
 
 // Tag cloud layout algorithm.
@@ -852,6 +853,7 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
     let currentLineWidth = 0;
     let totalHeight = 0;
     let maxLineWidth = 0;
+    let currentLineHeight = 0;
 
     for (let i = 0; i < childCount; i++) {
       const child = self.getChild(i);
@@ -864,23 +866,25 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
         };
         child.measure(childConstraint);
         const childSize = child.getMeasuredSize();
+
         // Check whether a line break is required.
         if (currentLineWidth + childSize.width > maxWidth && currentLineWidth > 0) {
-          // Line break.
-          totalHeight += this.verticalGap;
-          currentLineWidth = childSize.width;
-          totalHeight += childSize.height;
+          // Before the line break, accumulate the height of the previous row.
+          totalHeight += currentLineHeight + this.verticalGap;
+          currentLineWidth = childSize.width + this.horizontalGap;
+          currentLineHeight = childSize.height;
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         } else {
           // Continue the current line.
           currentLineWidth += childSize.width + this.horizontalGap;
-          if (i === 0) {
-            totalHeight = childSize.height;
-          }
+          currentLineHeight = Math.max(currentLineHeight, childSize.height);
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         }
       }
     }
+    // Accumulate the height of the last row.
+    totalHeight += currentLineHeight;
+
     self.setMeasuredSize({
       width: Math.min(maxLineWidth, maxWidth),
       height: totalHeight
@@ -985,7 +989,7 @@ When switching layout algorithms, **DynamicLayout** preserves the state of child
 
 ``` TypeScript
 import {
-  DynamicLayout, DynamicLayoutAttribute, ColumnLayoutAlgorithm, LayoutAlgorithm, curves, LengthMetrics,
+  DynamicLayout, ColumnLayoutAlgorithm, LayoutAlgorithm, curves, LengthMetrics,
   GridLayoutAlgorithm
 } from '@kit.ArkUI';
 
@@ -1011,7 +1015,7 @@ struct StatePreservationExample {
             .fontWeight(FontWeight.Bold)
             .fontColor(0x333333)
             .margin({ bottom: 8 })
-          TextInput({ placeholder: 'Enter'})
+          TextInput({ placeholder: 'Enter' })
             .width('100%')
             .height(36)
             .fontSize(12)
@@ -1122,16 +1126,16 @@ struct StatePreservationExample {
 
 - Switch the layout algorithm using a state variable.
 
-  You can use the @Local decorator to decorate layout algorithm variables to dynamically switch the layout at runtime.
+  You can use the [@Local](./state-management/arkts-new-local.md) decorator to decorate the layout algorithm variable, which enables dynamic switching of the layout at runtime.
 
   <!-- @[ChangeLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutAlgorithm.ets) -->
-
+  
   ``` TypeScript
   import {
-    DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, ColumnLayoutAlgorithm,
+    DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm,
     StackLayoutAlgorithm, GridLayoutAlgorithm, LayoutAlgorithm, LengthMetrics
   } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct LayoutSwitchExample {
@@ -1141,7 +1145,7 @@ struct StatePreservationExample {
     });
     @Local childWidth: string = '20%'
     @Local childHeight: string = '20%'
-
+  
     build() {
       Column() {
         // Use the state variable to control the layout algorithm.
@@ -1184,7 +1188,7 @@ struct StatePreservationExample {
         .backgroundColor(0xEFEFEF)
         .borderRadius(12)
         .padding(10)
-
+  
         Column({ space: 10 }) {
           Row({ space: 10 }) {
             Button('Row layout')
@@ -1236,22 +1240,22 @@ struct StatePreservationExample {
 
   ![](figures/dynamiclayout_change_layoutalgorithm.gif)
 
-- Switch the layout algorithm using the condition operator.
+- Switch the layout algorithm using the conditional operator.
 
   You can use conditional operators to select a proper layout algorithm based on the value of the state variable.
 
   <!-- @[ChangeLayoutWithConditionVariable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithConditionVariable.ets) -->
-
+  
   ``` TypeScript
-  import { 
-    DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, ColumnLayoutAlgorithm, LengthMetrics 
+  import {
+    DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm, LengthMetrics
   } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct ConditionalLayoutExample {
     @Local isHorizontal: boolean = true;
-
+  
     build() {
       Column() {
         // Use the ternary operator to select a layout algorithm based on conditions.
@@ -1279,7 +1283,7 @@ struct StatePreservationExample {
         .width('100%')
         .height(150)
         .backgroundColor(0xEFEFEF)
-
+  
         Button('Switch direction')
           .onClick(() => {
             this.isHorizontal = !this.isHorizontal;
@@ -1297,12 +1301,12 @@ struct StatePreservationExample {
   Layout algorithm classes are decorated with [@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md), and layout algorithm member attributes are decorated with [@Trace](./state-management/arkts-new-observedV2-and-trace.md). Modifying the attribute values can trigger the **DynamicLayout** component to perform layout again.
 
   <!-- @[ChangeAlgorithmProperties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeAlgorithmProperties.ets) -->
-
+  
   ``` TypeScript
   import {
-    DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, LengthMetrics
+    DynamicLayout, RowLayoutAlgorithm, LengthMetrics
   } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct PropertyChangeExample {
@@ -1310,7 +1314,7 @@ struct StatePreservationExample {
       space: LengthMetrics.vp(10),
       justifyContent: FlexAlign.Start
     });
-
+  
     build() {
       Column() {
         DynamicLayout(this.algorithm) {
@@ -1333,23 +1337,23 @@ struct StatePreservationExample {
         .width('100%')
         .height(80)
         .backgroundColor(0xEFEFEF)
-
+  
         Row({ space: 10 }) {
           Button('Increase spacing')
-            .fontSize(11)
+            .fontSize(14)
             .onClick(() => {
               // Modify the space attribute to trigger re-layout.
               const currentSpace = this.algorithm.space?.value;
               this.algorithm.space = LengthMetrics.vp(currentSpace as number + 5);
             })
           Button('Center')
-            .fontSize(11)
+            .fontSize(14)
             .onClick(() => {
               // Modify the justifyContent attribute to trigger re-layout.
               this.algorithm.justifyContent = FlexAlign.Center;
             })
           Button('Space between')
-            .fontSize(11)
+            .fontSize(14)
             .onClick(() => {
               this.algorithm.justifyContent = FlexAlign.SpaceBetween;
             })
@@ -1367,14 +1371,16 @@ struct StatePreservationExample {
 
   You can use the [mediaquery](../reference/apis-arkui/arkts-apis-uicontext-mediaquery.md) API to listen for screen orientation changes and automatically switch the layout mode of the product list. In portrait mode, use the list view (one product per row). In landscape mode, use the grid view (2x2 grid layout).
 
-  <!-- @[ChangeLayoutWithMediaQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithMediaQuery.ets) -->
+  Before running this example, configure "orientation": "auto_rotation" in the abilities field of the project configuration file [module.json5](../quick-start/module-configuration-file.md).
 
+  <!-- @[ChangeLayoutWithMediaQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithMediaQuery.ets) -->
+  
   ``` TypeScript
   import {
-    DynamicLayout, DynamicLayoutAttribute, ColumnLayoutAlgorithm, LayoutAlgorithm, LengthMetrics, mediaquery,
+    DynamicLayout, ColumnLayoutAlgorithm, LayoutAlgorithm, LengthMetrics, mediaquery,
     GridLayoutAlgorithm
   } from '@kit.ArkUI';
-
+  
   // Product data model.
   interface Product {
     id: string;
@@ -1382,14 +1388,14 @@ struct StatePreservationExample {
     price: string;
     image: string;
   }
-
+  
   @Entry
   @ComponentV2
   struct ProductListExample {
     @Local algorithm: LayoutAlgorithm = new ColumnLayoutAlgorithm({
       space: LengthMetrics.vp(12)
     });
-    @Local currentOrientation: string = 'Portrait'
+    @Local currentOrientation: string = 'Portrait';
     // Product data.
     private products: Product[] = [
       { id: '1', name: 'Smartphone Pro', price: '¥5999', image: 'Product' },
@@ -1397,10 +1403,10 @@ struct StatePreservationExample {
       { id: '3', name: 'Smart watch', price: '¥1999', image: 'Product' },
       { id: '4', name: 'Tablet', price: '¥3999', image: 'Product' }
     ];
-
+  
     // Listens for landscape orientation events.
     listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
-
+  
     // The callback is triggered when the query is valid.
     onOrientationChange(mediaQueryResult: mediaquery.MediaQueryResult) {
       if (mediaQueryResult.matches) {
@@ -1410,28 +1416,28 @@ struct StatePreservationExample {
           columnsGap: LengthMetrics.vp(10),
           rowsGap: LengthMetrics.vp(10)
         });
-        this.currentOrientation = 'Landscape mode'
+        this.currentOrientation = 'Landscape mode';
       } else {
         // Portrait mode: list layout (one product per row)
         this.algorithm = new ColumnLayoutAlgorithm({
           space: LengthMetrics.vp(12)
         });
-        this.currentOrientation = 'Portrait mode'
+        this.currentOrientation = 'Portrait mode';
       }
     }
-
+  
     aboutToAppear() {
       // Register the callback.
       this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
         this.onOrientationChange(mediaQueryResult);
       });
     }
-
+  
     aboutToDisappear() {
       // Unregister the callback in the listener.
       this.listener.off('change');
     }
-
+  
     // Product widget component.
     @Builder ProductCard(product: Product) {
       Row() {
@@ -1462,7 +1468,7 @@ struct StatePreservationExample {
       .borderRadius(8)
       .border({ width: 1, color: 0xE0E0E0 })
     }
-
+  
     build() {
       Column() {
         // Title bar.
@@ -1482,7 +1488,7 @@ struct StatePreservationExample {
         .width('100%')
         .padding({ left: 16, right: 16, top: 12, bottom: 12 })
         .backgroundColor(Color.White)
-
+  
         // Product list.
         Scroll() {
           DynamicLayout(this.algorithm) {
@@ -1497,7 +1503,7 @@ struct StatePreservationExample {
         .layoutWeight(1)
         .width('100%')
         .backgroundColor(0xF5F5F5)
-
+  
         // Prompt message.
         Text('Rotate the device to view different layout effects.')
           .fontSize(12)
@@ -1514,3 +1520,4 @@ struct StatePreservationExample {
   ```
 
   ![](figures/dynamiclayout_mediaquery.gif)
+

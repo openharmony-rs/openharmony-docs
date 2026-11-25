@@ -55,15 +55,22 @@
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function doRand() {
+    try {
       let rand = cryptoFramework.createRandom();
       let seed = new Uint8Array([1, 2, 3]);
       rand.setSeed({ data: seed });
       let len = 12;
       let randOutput = await rand.generateRandom(len);
       console.info('rand output: ' + randOutput.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
+  }
   ```
 
 
@@ -77,17 +84,19 @@
   
   function doRandBySync() {
     let rand = cryptoFramework.createRandom();
-    let len = 24; // Generate a 24-byte random number.
+    let len = 24; // 生成一个24字节的随机数。
     try {
       let randData = rand.generateRandomSync(len);
       if (randData.data.length !== 0) {
         console.info('[Sync]: rand result: ' + randData.data);
       } else {
         console.error('[Sync]: get rand result: fail!');
+        // ...
       }
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`do rand failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```

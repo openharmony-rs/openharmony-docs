@@ -6,20 +6,21 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T03:38:57.915Z pushedAt=2026-11-20T06:09:53.340Z nl=1 -->
 
 This topic walks you through on how to create a certificate chain object, obtain information about the certificates of the certificate chain, and validate the certificate chain using a trust anchor.
 
 ## How to Develop
 
-1. Import the [certFramework](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. Use [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11) to create an X.509 certificate chain (**X509CertChain**) object and return the result.
+2. Based on the existing certificate data, call [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11) to create an X.509 certificate chain object and return the result.
 
-3. Use [x509CertChain.getCertList](../../reference/apis-device-certificate-kit/js-apis-cert.md#getcertlist11) to obtain information about the X.509 certificates of the certificate chain.
+3. Use [x509CertChain.getCertList](../../reference/apis-device-certificate-kit/js-apis-cert.md#getcertlist11) to obtain the X.509 certificate list from the certificate chain.
 
 4. Use [x509CertChain.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11) to validate the certificate chain and return the result.
 
@@ -100,6 +101,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 
   try {
@@ -107,6 +109,7 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`X509CertChain getCertList failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 
   // Certificate chain verification data, which needs to be assigned by the service.
@@ -130,6 +133,8 @@ async function sample() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`X509CertChain validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```
+

@@ -29,9 +29,11 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上返回801错误码。
 
 **返回值：**
 
@@ -46,7 +48,7 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -87,9 +89,11 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上返回801错误码。
 
 **返回值：**
 
@@ -104,7 +108,7 @@ createMouseController(): Promise&lt;MouseController&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -145,9 +149,11 @@ createTouchController(): Promise&lt;TouchController&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上返回801错误码。
 
 **返回值：**
 
@@ -162,7 +168,7 @@ createTouchController(): Promise&lt;TouchController&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 801  | Capability not supported.  |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 3800001  | Input service exception.  |
 
 **示例：**
@@ -211,9 +217,11 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -282,9 +290,11 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -333,9 +343,11 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -402,9 +414,11 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -473,9 +487,11 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -515,9 +531,11 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -591,9 +609,11 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -634,9 +654,11 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -700,9 +722,11 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -792,9 +816,11 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 
@@ -834,9 +860,11 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限**：ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，需设备镜像已开启输入注入模拟能力（产品配置项，具体产品以版本说明为准），且调用方持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上调用不生效。
 
 **参数：**
 

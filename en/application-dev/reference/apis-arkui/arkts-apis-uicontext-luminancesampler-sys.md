@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a4248678452afff1be5fab68a427f6f250658122 translatedAt=2026-11-02T12:44:47.424Z pushedAt=2026-11-05T08:24:53.725Z nl=1 -->
 
 Sets the background luminance color picking parameters, registers the luminance change listening callback, and unregisters the listening callback.
 
@@ -16,13 +17,13 @@ Sets the background luminance color picking parameters, registers the luminance 
 >
 > - In the following API examples, you must first use [getLuminanceSampler](js-apis-arkui-UIContext-sys.md#getluminancesampler23) in **UIContext** to obtain a **LuminanceSampler** object, and then call the APIs using the obtained object.
 
-## setBackgroundLuminanceSamplingConfigs<sup>23+</sup>
+## setBackgroundLuminanceSamplingConfigs
 
 setBackgroundLuminanceSamplingConfigs(configs: BackgroundLuminanceSamplingConfigs): void
 
 Sets the color picking parameters. If the luminance threshold is not within the specified range or the dark threshold is greater than the luminance threshold, an exception is thrown.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -34,27 +35,27 @@ Sets the color picking parameters. If the luminance threshold is not within the 
 | --- | --- | --- | --- |
 | configs | [BackgroundLuminanceSamplingConfigs](arkts-apis-uicontext-i-sys.md#backgroundluminancesamplingconfigs23) | Yes| Color picking parameters.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------- |
-| 100001 | 1. Incorrect parameter values. <br> 2. Incorrect parameters types.  |
+| 100001 | Internal error. 1. Incorrect parameter values. <br> 2. Incorrect parameters types.  |
 
-**Example**
+**Example** 
 
-For details, see the example of [offBackgroundLuminanceChange](#offbackgroundluminancechange23).
+For details, see the example of [offBackgroundLuminanceChange](#offbackgroundluminancechange).
 
-## onBackgroundLuminanceChange<sup>23+</sup>
+## onBackgroundLuminanceChange
 
 onBackgroundLuminanceChange(samplingCallback: Callback&lt;number&gt;): void
 
 Registers the callback for listening to color picking.
 
-The background luminance is divided into three ranges based on the luminance threshold and dark threshold set by the [setBackgroundLuminanceSamplingConfigs](./arkts-apis-uicontext-luminancesampler-sys.md#setbackgroundluminancesamplingconfigs23) API: [0, Dark threshold], (Dark threshold, Luminance threshold], and (Luminance threshold, 255]. The callback is triggered when the background luminance range changes (or the listener callback is registered for the first time) and the interval between the current color picking and the last color picking reaches the specified interval, and the current background luminance is returned.
+The background luminance is divided into three ranges based on the luminance threshold and dark threshold set by [setBackgroundLuminanceSamplingConfigs](./arkts-apis-uicontext-luminancesampler-sys.md#setbackgroundluminancesamplingconfigs23): [0, Dark threshold), [Dark threshold, Luminance threshold], and (Luminance threshold, 255]. The callback is triggered when the background luminance range changes (or the listening callback is registered for the first time) and the interval between the current color picking and the last color picking reaches the specified interval, and the current background luminance is returned.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -64,19 +65,19 @@ The background luminance is divided into three ranges based on the luminance thr
 
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
-| samplingCallback | Callback&lt;number&gt; | Yes| Callback used to return the current background luminance.<br>Note: [offBackgroundLuminanceChange](#offbackgroundluminancechange23) cannot be called in the listening callback.|
+| samplingCallback | Callback&lt;number&gt; | Yes | Callback used to return the current background luminance.<br/>**Note:** [offBackgroundLuminanceChange](#offbackgroundluminancechange) cannot be called in the listening callback. |
 
-**Example**
+**Example** 
 
-For details, see the example of [offBackgroundLuminanceChange](#offbackgroundluminancechange23).
+For details, see the example of [offBackgroundLuminanceChange](#offbackgroundluminancechange).
 
-## offBackgroundLuminanceChange<sup>23+</sup>
+## offBackgroundLuminanceChange
 
 offBackgroundLuminanceChange(samplingCallback?: Callback&lt;number&gt;): void
 
 Unregisters the callback for listening to color picking. If no callback is specified, all listeners are canceled.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -90,11 +91,10 @@ Unregisters the callback for listening to color picking. If no callback is speci
 
 **Example**
 
-Since API version 23, the [setBackgroundLuminanceSamplingConfigs](#setbackgroundluminancesamplingconfigs23), [onBackgroundLuminanceChange](#onbackgroundluminancechange23), and [offBackgroundLuminanceChange](#offbackgroundluminancechange23) APIs are added. This example calls these three APIs to obtain the color picker of the corresponding component, set the color picking parameters and color picking callback for the component through the color picker, and implement the custom background-color-based inversion effect through the color picking callback.
+Since API version 23, the [setBackgroundLuminanceSamplingConfigs](#setbackgroundluminancesamplingconfigs), [onBackgroundLuminanceChange](#onbackgroundluminancechange), and [offBackgroundLuminanceChange](#offbackgroundluminancechange) APIs are added. This example calls these three APIs to obtain the color picker of the corresponding component, set the color picking parameters and color picking callback for the component through the color picker, and implement the custom background-color-based inversion effect through the color picking callback.
 
 ```ts
-import { LengthMetrics } from '@kit.ArkUI';
-import { Edges } from '@ohos.arkui.node';
+import { LengthMetrics, Edges } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -180,3 +180,5 @@ struct PagePicker {
 ```
 
 ![](figures/StatusBarLuminance100.gif)
+
+<!--no_check-->

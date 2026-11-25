@@ -1,18 +1,18 @@
 # @ohos.multimodalAwareness.userStatus (User Status Awareness)
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:30:17.391Z pushedAt=2026-06-25T01:35:11.434Z -->
+<!-- md-trans-meta sourceCommit=e98d9dbb00880c3983b0d3e888a32f6a37b9f2fd translatedAt=2026-11-03T06:06:17.246Z pushedAt=2026-11-03T12:08:25.590Z nl=1 -->
 
 The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 20. This API is deprecated since API version 24. No substitute API is provided.
+
 
 ## Modules to Import
 
@@ -41,6 +41,7 @@ Defines the user age group detection result.
 | ------------------- | ---- |----|----| ---------------------- |
 | ageGroup  | [UserAgeGroup](#useragegroupdeprecated)   |No|Yes| User age group, for example, child or adult.|
 | confidence  | float    |No|Yes| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
+
 
 ## userStatus.on('userAgeGroupDetected')<sup>(deprecated)</sup>
 
@@ -71,7 +72,7 @@ For details about the error codes, see [User Status Awareness Error Codes](error
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status.|
 | 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
@@ -90,6 +91,8 @@ try {
     console.error("Failed on and err code is " + error.code);
 }
 ```
+
+
 
 ## userStatus.off('userAgeGroupDetected')<sup>(deprecated)</sup>
 
@@ -118,7 +121,7 @@ For details about the error codes, see [User Status Awareness Error Codes](error
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | 33900003 | Unsubscription failed. Possible causes: <br>1. Callback failure. <br>2. Node-API invocation exception, such as invalid Node-API status. <br>3. IPC request exception.|
 

@@ -26,11 +26,11 @@ FileUri提供了关于文件URI的基本操作，将URI转换成对应的沙箱�
 
 | 接口名称 | 描述 |
 | -------- |-------|
-| FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int length, char **result)| 通过传入的path生成应用自己的URI。将path转URI时，path中的中文及非数字字母的特殊字符会被编码为对应的ASCII码，并拼接在URI中。|
-| FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int length, char **result) | 将uri转换成对应的沙箱路径。 <br>1. uri转路径过程中会将uri中存在的ASCII码进行解码后拼接在原处，非系统接口生成的uri中可能存在ASCII码解析范围之外的字符，导致字符串无法正常拼接。<br>2. 转换处理遵循系统约定的字符串替换规则（规则可能随系统演进而变化），转换过程中不进行路径校验操作，无法保证转换结果的可访问性。 |
+| FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int length, char **result)| 通过传入的path生成应用自己的URI。将path转URI时，path中的中文及非数字字母的特殊字符将会被百分号编码，并拼接在URI中。|
+| FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int length, char **result) | 将uri转换成对应的沙箱路径。 <br>1. uri转路径过程中会将uri中存在的百分号编码字符进行解码后拼接在原处，非系统接口生成的uri中可能存在不符合编码规范的字符，导致字符串无法正常拼接。<br>2. 转换处理遵循系统约定的字符串替换规则（规则可能随系统演进而变化），转换过程中不进行路径校验操作，无法保证转换结果的可访问性。 |
 | FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned int length, char **result) | 获取所在路径uri。<br>1. uri指向文件则返回所在路径的uri。<br>2. uri指向目录则不处理直接返回原串。<br>3. uri指向的文件不存在或属性获取失败则返回空串。|
 | bool OH_FileUri_IsValidUri(const char *uri, unsigned int length) | 判断传入的uri的格式是否正确。仅校验uri是否满足系统定义的格式规范，不校验uri的有效性。|
-| FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int length, char **result) | 通过传入的uri获取到对应的文件名称（如果文件名中存在ASCII码将会被解码处理后拼接在原处）。|
+| FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int length, char **result) | 通过传入的uri获取到对应的文件名称（如果文件名中存在百分号编码字符，将会被解码处理后拼接在原处）。|
 
 ## 开发步骤
 
@@ -50,37 +50,30 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 1. 调用OH_FileUri_GetUriFromPath接口，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示：
 
-   <!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetUriFromPathExample(napi_env env, napi_callback_info info)
    {   
        // ...
-       // 为 char* uri 分配内存
+       // 为char* uri分配内存
        char *path = new char[strLength + 1]; // +1 for null terminator
-       // 将 JavaScript 字符串复制到 uri
+       // 将JavaScript字符串复制到uri
        // ...
        unsigned int length = strlen(path);
        // 输出传入路径字符串
        // ...
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult);
+       delete[] path;
        // 输出结果uri字符串
        // ...
-       if (ret == 0 && uriResult != nullptr) {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(uriResult);
-               return nullptr;
-           }
-           free(uriResult); // 释放临时字符串
-       } else {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, "Hello World", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // 创建返回值后统一释放接口分配的内存，包括错误路径。
+       const char *value = (ret == 0 && uriResult != nullptr) ? uriResult : "Hello World";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(uriResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
@@ -89,37 +82,30 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 2. 调用OH_FileUri_GetPathFromUri通过URI转成对应的路径，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示。
 
-   <!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetPathFromUriExample(napi_env env, napi_callback_info info)
    {
        // ...
        char *uri = new char[strLength + 1]; // +1 for null terminator
-       // 将 JavaScript 字符串复制到 uri
+       // 将JavaScript字符串复制到uri
        napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetPathFromUri input URI: %{public}s", uri);
        char *pathResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
+       delete[] uri;
        // 输出获取路径结果字符串
        // ...
-       if (ret == 0 && pathResult != nullptr) {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, pathResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(pathResult);
-               return nullptr;
-           }
-           free(pathResult); // 释放临时字符串
-       } else {
-           // 将空字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // 创建返回值后统一释放接口分配的内存，包括错误路径。
+       const char *value = (ret == 0 && pathResult != nullptr) ? pathResult : "";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(pathResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }
@@ -128,21 +114,22 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 3. 调用OH_FileUri_GetFullDirectoryUri获取URI所在路径的URI，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示。
 
-   <!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetFullDirectoryUriExample(napi_env env, napi_callback_info info)
    {
        // ...
        char *uri = new char[strLength + 1]; // +1 for null terminator
-       // 将 JavaScript 字符串复制到 uri
+       // 将JavaScript字符串复制到uri
        napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetFullDirectoryUri input URI: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
+       delete[] uri;
        // 输出所在路径uri字符串
        // ...
        if (ret == 0 && uriResult != nullptr) {
@@ -162,19 +149,20 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 4. 可以调用OH_FileUri_IsValidUri接口进行URI格式验证。 示例代码如下所示。
 
-   <!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_IsValidUriExample(napi_env env, napi_callback_info info)
    {
        // ...
        char *uri = new char[strLength + 1]; // +1 for null terminator
-       // 将 JavaScript 字符串复制到 uri
+       // 将JavaScript字符串复制到uri
        napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_IsValidUri input URI: %{public}s", uri);
        bool flags = OH_FileUri_IsValidUri(uri, length);
+       delete[] uri;
        // ...
    }
    ```
@@ -182,37 +170,30 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 5. 调用OH_FileUri_GetFileName获取URI中的文件名称，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示。
 
-   <!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetFileNameExample(napi_env env, napi_callback_info info)
    {
        // ...
        char *uri = new char[strLength + 1]; // +1 for null terminator
-       // 将 JavaScript 字符串复制到 uri
+       // 将JavaScript字符串复制到uri
        napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
    
        unsigned int length = strlen(uri);
        // 输出传入uri字符串
-       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       OH_LOG_INFO(LogType::LOG_APP, "OH_FileUri_GetFileName input URI: %{public}s", uri);
        char *uriResult = nullptr;
        FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
+       delete[] uri;
        // 输出获取到的文件名称
        // ...
-       if (ret == 0 && uriResult != nullptr) {
-           // 将C字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               free(uriResult);
-               return NULL;
-           }
-           free(uriResult); // 释放临时字符串
-       } else {
-           // 将空字符串转换为napi_value
-           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-           if (status != napi_ok) {
-               return nullptr;
-           }
+       // 创建返回值后统一释放接口分配的内存，包括错误路径。
+       const char *value = (ret == 0 && uriResult != nullptr) ? uriResult : "";
+       napi_status status = napi_create_string_utf8(env, value, NAPI_AUTO_LENGTH, &result);
+       free(uriResult);
+       if (status != napi_ok) {
+           return nullptr;
        }
        return result;
    }

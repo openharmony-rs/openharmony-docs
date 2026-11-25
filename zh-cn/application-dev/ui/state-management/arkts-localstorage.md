@@ -15,7 +15,7 @@ LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参�
 
 在阅读本文档前，需要开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
-LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合[LocalStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合[LocalStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)阅读。
 
 > **说明：**
 >
@@ -389,7 +389,7 @@ let linkToPropA: SubscribedAbstractProperty<number> = storageOne.link('PropA');
 @Entry(storageOne)
 @Component
 struct ParentTwo {
-  // @LocalStorageLink('PropA')在ParentTwo自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给"PropA"设置47
+  // @LocalStorageLink('PropA')在ParentTwo自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给“PropA”设置47
   @LocalStorageLink('PropA') storageLink: number = 1;
 
   build() {
@@ -645,7 +645,7 @@ struct PageFiveShareChange {
 }
 ```
 
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为PageFiveShareChange页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/router_map.json，并替换pageSourceFile为PageFiveShareChange页面的路径，并且在module.json5中添加："routerMap": "$profile:router_map"。
 ```json
 {
   "routerMap": [

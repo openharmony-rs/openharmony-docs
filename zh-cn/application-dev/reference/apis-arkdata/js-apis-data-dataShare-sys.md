@@ -514,7 +514,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
@@ -596,7 +596,7 @@ off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCal
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
@@ -714,6 +714,56 @@ let template: dataShare.Template = {
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).addTemplate(uri, subscriberId, template);
   (dataShareHelper as dataShare.DataShareHelper).delTemplate(uri, subscriberId);
+}
+```
+
+### cleanInvalidData
+
+cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
+
+清理订阅者ID不在有效订阅者ID列表中的服务端模板。仅支持静默访问。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**参数：**
+
+| 参数名     | 类型        | 必填 | 说明                       |
+| -------- | -------------| ---- | ------------------------- |
+| validSubscribers | Array&lt;string&gt; | 是   | 有效的订阅者ID列表，取值为调用[addTemplate](#addtemplate10)时传入的subscriberId。<br>最大长度为50且不能为空。 |
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。                         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 15700013 | The DataShareHelper instance is already closed. |
+| 15700016 | Parameter error. Possible causes:<br>1. The array parameter exceeds the allowed length.<br>2. The array parameter is empty. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 传入当前有效的订阅者ID列表，列表外的模板数据将被清理
+let validSubscribers: Array<string> = ['11', '12'];
+if (dataShareHelper != undefined) {
+  (dataShareHelper as dataShare.DataShareHelper).cleanInvalidData(validSubscribers).then(() => {
+    console.info("cleanInvalidData success");
+  }).catch((err: BusinessError) => {
+    console.error(`cleanInvalidData fail, code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -1698,7 +1748,7 @@ batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Pro
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700000 | Inner error. Possible causes: 1.The internal status is abnormal; 2.The interface is incorrectly used; 3.Permission configuration error; 4.A system error. |
 | 15700013 | The DataShareHelper instance is already closed.|
@@ -2186,7 +2236,7 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 

@@ -619,7 +619,7 @@ try {
 
 ## distributedBundleManager.getRemoteMetadata
 
-getRemoteMetadata(deviceId: string, bundleName: string): Promise\<Array\<[ModuleMetadata](js-apis-bundleManager-applicationInfo.md#modulemetadata10)\>\>
+getRemoteMetadata(deviceId: string, bundleName: string): Promise\<Array\<ModuleMetadata>>
 
 获取指定远程设备上指定包名的应用元数据信息。使用Promise异步回调。
 
@@ -631,7 +631,7 @@ getRemoteMetadata(deviceId: string, bundleName: string): Promise\<Array\<[Module
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -655,9 +655,10 @@ getRemoteMetadata(deviceId: string, bundleName: string): Promise\<Array\<[Module
 | 201 | Permission denied. |
 | 202 | Permission denied, non-system app called system api. |
 | 801 | Capability not supported. |
-| 17700001 | The specified bundle name is not found. |
+| 17700001 | The specified bundle is not found. |
 | 17700007 | The specified device ID is not found. |
 | 17700027 | The distributed service is not running. |
+| 17700101 | Bundle manager service is excepted. |
 
 **示例：**
 

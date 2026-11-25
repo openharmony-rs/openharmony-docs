@@ -23,7 +23,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 isSupported\(slotId: number\): boolean
 
-获取指定卡槽是否支持eSIM功能。
+获取指定卡槽是否支持eSIM功能。debug版本下eSIM.isSupported固定返回false，release版本下根据设备实际支持情况返回。
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
@@ -62,7 +62,7 @@ console.info(`the esim is Supported:` + isSupported);
 
 addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
-当用户需要激活新eSIM（如新开卡或换卡）时，调用此接口引导完成配置文件的下载与添加流程。
+当用户需要激活新eSIM（如新开卡或换卡）时，调用此接口引导完成配置文件的下载与添加流程。使用Promise异步回调。
 
 **需要权限**：ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 

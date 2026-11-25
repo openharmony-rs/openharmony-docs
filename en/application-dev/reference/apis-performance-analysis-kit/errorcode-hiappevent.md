@@ -1,4 +1,4 @@
-# Application Event Logging Error Codes
+# HiAppEvent Error Codes
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=5c6e03ec7cfff0172ce10c87fa36d9c242ac74fb translatedAt=2026-11-03T06:15:00.437Z pushedAt=2026-11-03T12:08:25.606Z nl=1 -->
 
 > **NOTE**
 >
@@ -15,7 +16,7 @@
 
 **Error Message**
 
-Function disabled. Possible caused by the param disable in ConfigOption is true.
+Function disabled. Possibly caused by the param disable in ConfigOption is true.
 
 **Description**
 
@@ -87,7 +88,7 @@ Specify a valid event name.
 
 **Error Message**
 
-Invalid number of event parameters. Possible caused by the number of parameters is over 32.
+Invalid number of event parameters. Possibly caused by the number of parameters is over 32.
 
 **Description**
 
@@ -114,7 +115,7 @@ Invalid string length of the event parameter.
 
 **Possible Causes**
 
-- The length of the string of the event parameter value passed by the **write** API exceeds 8 × 1024.
+- The length of the string in the event parameter value passed by the **write** API exceeds 8*1024 characters.
 - The length of the custom event parameter value passed by the **setEventParam** API exceeds 1024 characters.
 
 **Solution**
@@ -228,7 +229,7 @@ Specify a valid filtering event domain name.
 
 **Error Message**
 
-Invalid row value. Possible caused by the row value is less than zero.
+Invalid row value. Possibly caused by the row value is less than zero.
 
 **Description**
 
@@ -246,7 +247,7 @@ Specify a valid event number.
 
 **Error Message**
 
-Invalid size value. Possible caused by the size value is less than zero.
+Invalid size value. Possibly caused by the size value is less than zero.
 
 **Description**
 
@@ -264,7 +265,7 @@ Specify a valid event size.
 
 **Error Message**
 
-Invalid timeout value. Possible caused by the timeout value is less than zero.
+Invalid timeout value. Possibly caused by the timeout value is less than zero.
 
 **Description**
 
@@ -282,7 +283,7 @@ Specify a valid timeout value.
 
 **Error Message**
 
-Invalid max storage quota value. Possible caused by incorrectly formatted.
+Invalid max storage quota value. Possibly caused by incorrectly formatted.
 
 **Description**
 
@@ -303,7 +304,7 @@ Specify a valid maximum storage quota.
 
 **Error Message**
 
-Invalid size value. Possible caused by the size value is less than or equal to zero.
+Invalid size value. Possibly caused by the size value is less than or equal to zero.
 
 **Description**
 
@@ -335,3 +336,21 @@ When the **hiAppEvent** API is called to set the input parameter, the system ign
 **Solution**
 
 Input a parameter value that meets the specifications.
+
+## 11106001 Failed to Register the external_log Log Manager
+
+**Error Message**
+
+State error. Possible causes: 1. Log manager already registered.
+
+**Description**
+
+Before the external_log log manager is registered, it has already been registered by another service in the application.
+
+**Possible Causes**
+
+The external_log log manager has already been registered.
+
+**Solution**
+
+Call the query API to check whether the external_log log manager has already been registered. If it has, there is no need to register it again; if it has not, try to register it again.

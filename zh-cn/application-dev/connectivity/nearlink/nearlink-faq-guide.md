@@ -10,19 +10,19 @@
 
 通用唯一标识（UUID）用于标识星闪服务及其成员（属性、方法、事件等）。根据标识的分配方式，星闪中的UUID分为两类：
 
-- **标准UUID（Standard UUID）**：长度为16比特，由星闪联盟统一分配，具有全局唯一性，用于标识标准服务或标准服务成员（例如标准服务、标准属性）。完整UUID形式为128比特，其中前112比特由固定基础标识决定，128比特基础标识为固定值37BEA880-FC70-11EA-B720-000000000000，后16比特为标准标识，例如37BEA880-FC70-11EA-B720-00000000FDEE。通过标识，客户端可以明确条目承载的是某一个服务、属性、方法或事件等，详情可查阅[星闪标准服务标识](https://www.isla.org.cn/trial/identCid/identListSsid)。
-- **自定义UUID（Custom UUID）**：长度为128比特，由开发者自行定义，用于标识自定义服务或自定义服务成员。开发者可在128比特范围内自行规划，例如FFFFFFFF-1234-5678-ABCD-000000001234。自定义UUID的前112比特不能与标准UUID的基础标识一致（即不能以37BEA880-FC70-11EA-B720-00000000为前缀），否则将被识别为标准UUID。
+- **标准UUID（Standard UUID）**：长度为16比特，由星闪联盟统一分配，具有全局唯一性，用于标识标准服务或标准服务成员（例如标准服务、标准属性）。完整UUID形式为128比特，由基础标识（Base UUID，固定值37BEA880-FC70-11EA-B720-000000000000）的前112比特与16比特标准标识拼接而成，例如37BEA880-FC70-11EA-B720-00000000FDEE。通过标识，客户端可以明确条目承载的是某一个服务、属性、方法或事件等，详情可查阅[星闪标准服务标识](https://www.isla.org.cn/trial/identCid/identListSsid)。
+- **自定义UUID（Custom UUID）**：长度为128比特，由开发者自行定义，用于标识自定义服务或自定义服务成员。开发者可在128比特范围内自行规划，例如FFFFFFFF-1234-5678-ABCD-000000001234。自定义UUID不能以基础标识的前112比特为前缀（即不能以37BEA880-FC70-11EA-B720-00000000开头），否则将被识别为标准UUID。
 
 > **说明：**
 >
 > 自定义服务必须使用自定义UUID，禁止使用标准UUID。
 
-自定义服务的[ssap.Service.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#service)、[ssap.Property.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#property)等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用星闪标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
+自定义服务的[ssap.Service.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#service)、[ssap.Property.serviceUuid](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#property)等用于标识服务及服务成员的UUID字段，取值必须为128比特的自定义UUID；使用标准UUID时，接口将返回[36100044 禁止使用星闪标准服务UUID](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid)错误。
 
 
 ## 事件订阅类接口的权限要求问题
 
-星闪的事件类接口采用onXXX / offXXX成对形式：
+星闪的事件订阅类接口采用onXXX / offXXX成对形式：
 
 - onXXX(callback) 订阅某类事件，当事件发生时回调callback；
 - offXXX(callback?) 取消订阅；不传callback时取消该类型全部回调。
@@ -49,6 +49,22 @@
 
 当属性支持通知（NOTIFY）操作时，需要为其声明客户端属性值配置描述符：客户端通过[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)开启或关闭该属性的通知，服务端通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)向已开启通知的客户端推送属性变化。
 
+## 客户端如何接收属性变化通知
+
+客户端接收属性变化通知（即收到[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)回调）需同时满足以下条件：
+
+1. 服务端在创建该属性时声明了通知（NOTIFY）操作和客户端属性值配置描述符（CLIENT_PROPERTY_CONFIG）；
+2. 客户端已与服务端成功建立SSAP连接；
+3. 客户端已通过[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)获取到该属性；
+4. 客户端已调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用该属性的通知；
+5. 客户端已调用[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)注册属性变化回调。
+
+满足上述条件后，服务端调用[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)更新属性值时，会向客户端发送属性变化通知。若上述任一条件不满足，客户端将收不到通知。
+
+> **说明：**
+>
+> 连接断开后，已启用的通知会失效，重新连接后需重新调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用。
+
 ## 什么是星闪设备随机地址
 
 星闪设备地址为6字节的媒体接入层标识（MAC地址），字符串由12位十六进制字符与冒号分隔符组成（共17个字符），例如：11:22:33:AA:BB:FF。
@@ -56,6 +72,20 @@
 扫描结果（scan.ScanResults.address）中返回的设备地址是随机地址：系统为保护设备隐私，不直接暴露设备的真实地址，而是将其转换为随机地址后上报，并维护真实地址与随机地址的映射关系。同一设备的随机地址在映射保留周期内保持不变（已配对设备的映射长期保留），映射被清理后重新扫描会生成新的随机地址。
 
 应用不宜将扫描到的地址作为长期标识持久化使用。需要长期识别设备时，应结合设备名称、配对关系等信息综合判断，已配对设备的地址可通过manager.[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取。随机地址不影响设备连接：可通过扫描获取的当前地址发起连接（如[SSAP连接](nearlink-ssap-connection-guide.md)、[端口数据传输](nearlink-data-transfer-guide.md)）。
+
+## 什么是帧类型
+
+星闪设备之间通过无线方式发送数据时，会按一定格式将数据打包成无线帧后发送。帧类型（Frame Type）用于指定无线帧的发送格式，不同帧类型的传输能力和适用场景不同。
+
+当前支持以下两种帧类型：
+
+- **FRAME_TYPE_1（基础帧）**：默认帧类型，适用于大多数低功耗、低成本的基础交互场景。
+- **FRAME_TYPE_4（扩展覆盖帧）**：对传输数据增加了纠错保护，在信号较弱时仍能保持稳定通信，适合设备间距离较远的场景。使用该帧类型需要设备芯片支持。
+
+广播参数、扫描参数和端口连接参数中的frameType字段用于指定帧类型，取值为nearlinkConstant.FrameType的枚举成员；扫描结果的frameType字段表示收到的广播包所用的帧类型。使用时需注意：
+
+- 广播与扫描需使用相同的帧类型才能互相发现。例如外围设备使用FRAME_TYPE_4广播时，中心设备的扫描参数也需配置为FRAME_TYPE_4。
+- 使用FRAME_TYPE_4前，先调用[isFrameType4Supported()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询设备是否支持；在不支持的设备上启动广播、扫描或发起连接将返回[801 API功能在部分设备不支持](../../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 ## 星闪数据传输方式如何选择
 

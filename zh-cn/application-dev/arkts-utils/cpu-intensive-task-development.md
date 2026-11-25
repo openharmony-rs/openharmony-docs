@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "提供CPU密集型任务的开发指导：以TaskPool执行图像直方图处理、Worker执行长时间数据分析为例，演示如何将高计算量任务放入子线程运行，避免阻塞UI主线程造成卡顿。"
+keywords: [CPU密集型任务, 图像直方图处理, 长时间数据分析, TaskPool, Worker, 子线程执行, 避免主线程阻塞]
+doctype: guide
+status: active
+---
+
 # CPU密集型任务开发指导 (TaskPool和Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -112,7 +120,7 @@ struct Index {
    
    // 接收Worker子线程的结果
    workerInstance.onmessage = (() => {
-     console.info('MyWorker.ets onmessage');
+     console.info('MyWorker1.ets onmessage');
      if (!done) {
        // 执行预测，传入预测条件
        workerInstance.postMessage({ 'type': 1, 'area': 80, 'room': 4 });

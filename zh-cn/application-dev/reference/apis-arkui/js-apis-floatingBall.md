@@ -3,10 +3,14 @@
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
-该模块提供闪控球的基础功能，包括判断设备是否支持闪控球功能，以及创建闪控球控制器来启动、更新或停止闪控球。适用于跨应用的题目搜索、账单记录、商品比价、抢单、翻译场景，以及金融类应用的实时盯盘场景，以小窗模式呈现内容。闪控球以悬浮小组件形式显示在其他应用之上，即时呈现应用的关键信息。
+该模块提供闪控球的基础功能，包括判断设备是否支持闪控球功能，以及创建闪控球控制器来启动、更新或停止闪控球。
+
+适用于跨应用的题目搜索、账单记录、商品比价、抢单、翻译场景，以及金融类应用的实时盯盘场景，以小窗模式呈现内容。闪控球以悬浮小组件形式显示在其他应用之上，即时呈现应用的关键信息。
+
+闪控球和闪控窗的对比与联动使用可见[窗口类型开发概述](../../windowmanager/window-type-overview.md#闪控球和闪控窗的对比)。
 
 > **说明：**
 >
@@ -15,14 +19,6 @@
 > - 在OpenHarmony 7.0.0之前，支持在Tablet设备的非[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)、Phone设备使用闪控球功能，其他设备不可用；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet设备使用闪控球功能，其他设备不可用。
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
-
-**闪控球和闪控窗对比**
-
-- 共同点：闪控球和[闪控窗](js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI。
-- 区别：
-  - 显示形式不同。闪控球以小圆球的形式展现，适用于展示关键信息。闪控窗以小型窗口展示，展示区域较大，可以持续展示应用内容或提供快捷操作。
-  - 闪控球只能贴边展示，闪控窗则没有此限制。
-  - 闪控球模板固定，应用不能定制UI。闪控窗同样存在模板，并由系统管理并统一绘制UI，但是提供了可绘制的区域，可供应用加载指定页面内容。
 
 **与闪控窗联动：**
 
@@ -85,8 +81,8 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 801 | Capability not supported.Failed to call the API due to limited device capabilities. |
-| 1300019 | Wrong parameters for operating the floating ball. |
-| 1300023 | Floating ball internal error. |
+| 1300019 | Wrong parameters for operating the floating ball. Possible causes: 1. The context parameter is null. 2. The FloatingBallConfiguration parameter is null. |
+| 1300023 | Floating ball internal error. Possible causes: 1. The application context or main window is invalid. 2. System internal error, such as null pointer or insufficient memory. |
 
 **示例：**
 
@@ -163,13 +159,13 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 201 | Permission verification failed, usually returned by VerifyAccessToken. |
-| 1300019 | Wrong parameters for operating the floating ball. |
-| 1300020 | Failed to create the floating ball window. |
+| 1300019 | Wrong parameters for operating the floating ball. Possible causes: 1. FloatingBallParams parameter is null. 2. Parameter is invalid, such as invalid icon object, template type, or title (empty or exceeds 64 bytes). |
+| 1300020 | Failed to create the floating ball window. Possible cause: The main window is not shown.|
 | 1300021 | Failed to start multiple floating ball windows. |
 | 1300022 | Repeated floating ball operation. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
-| 1300025 | The floating ball state does not support this operation. |
+| 1300023 | Floating ball internal error. Possible causes: 1.The floating ball controller has been destroyed. 2.Internal error, failed to show the floating ball window. Such as insufficient resources or abnormal window service.|
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window is not created or has been destroyed.|
+| 1300025 | The floating ball state does not support this operation. Possible cause: The floating ball state is stopping. |
 | 1300034 | This operation conflicts with other floating windows. Possible cause: App has already started float view.</br>适用版本：26.0.0+ |
 
 **示例：**
@@ -221,13 +217,13 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300019 | Wrong parameters for operating the floating ball. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
-| 1300025 | The floating ball state does not support this operation. |
+| 1300002 | This window state is abnormal. Possible cause: Internal error, the window type is not a floating ball.|
+| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error.|
+| 1300004 | Unauthorized operation. Possible cause: The process ID calling the API does not match the process ID of the session that created the floating ball.|
+| 1300019 | Wrong parameters for operating the floating ball. Possible causes: 1.FloatingBallParams parameter is null. 2.Parameter is invalid, such as invalid icon object, template type, or title (empty or exceeds 64 bytes).|
+| 1300023 | Floating ball internal error. Possible cause:  System error, such as a null pointer, insufficient memory.|
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window is not created or has been destroyed.|
+| 1300025 | The floating ball state does not support this operation. Possible cause: The floating ball is not started.|
 | 1300027 | When updating the floating ball, the template type cannot be changed. |
 | 1300028 | Updating static template-based floating balls is not supported. |
 
@@ -275,8 +271,8 @@ stopFloatingBall(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 1300022 | Repeated floating ball operation. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory.|
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window is not created or has been destroyed. |
 
 **示例：**
 
@@ -312,10 +308,10 @@ on(type: 'stateChange', callback: Callback&lt;FloatingBallState&gt;): void
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 1300019 | Wrong parameters for operating the floating ball. |
+| 1300019 | Wrong parameters for operating the floating ball. Possible causes:  1.Mandatory parameters are left unspecified. 2.Callback is null or not callable.|
 | 1300022 | Repeated floating ball operation. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory.|
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed.|
 
 **示例：**
 
@@ -353,9 +349,9 @@ off(type: 'stateChange', callback?: Callback&lt;FloatingBallState&gt;): void
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 1300019 | Wrong parameters for operating the floating ball. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
+| 1300019 | Wrong parameters for operating the floating ball. Possible causes: 1.Mandatory parameters are left unspecified. 2.Callback is null or not callable.|
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory.|
+| 1300024 | The floating ball window state is abnormal.  Possible cause: The floating ball controller has been destroyed.|
 
 **示例：**
 
@@ -393,10 +389,10 @@ on(type: 'click', callback: Callback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 1300019 | Wrong parameters for operating the floating ball. |
+| 1300019 | Wrong parameters for operating the floating ball. Possible causes: 1.Mandatory parameters are left unspecified. 2.Callback is null or not callable.|
 | 1300022 | Repeated floating ball operation. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory.|
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed.|
 
 **示例：**
 
@@ -434,9 +430,9 @@ off(type: 'click', callback?: Callback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 1300019 | Wrong parameters for operating the floating ball. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
+| 1300019 | Wrong parameters for operating the floating ball. Possible causes: 1.Mandatory parameters are left unspecified. 2.Callback is null or not callable.|
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory.|
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed.|
 
 **示例：**
 
@@ -473,12 +469,12 @@ getFloatingBallWindowInfo(): Promise&lt;FloatingBallWindowInfo&gt;
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
-| 1300025 | The floating ball state does not support this operation. |
+| 1300002 | This window state is abnormal.  Possible cause:  Internal error, the window type is not a floating ball. |
+| 1300003 | This window manager service works abnormally.  Possible cause: Internal IPC error.|
+| 1300004 | Unauthorized operation. Possible cause: The process ID calling the API does not match the process ID of the session that created the floating ball.|
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory.|
+| 1300024 | The floating ball window state is abnormal.  Possible causes: 1. The floating ball controller has been destroyed. 2. The floating ball window is not created or has been destroyed.|
+| 1300025 | The floating ball state does not support this operation. Possible cause: The floating ball is not started.|
 
 **示例：**
 
@@ -522,13 +518,13 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 201 | Permission verification failed, usually returned by VerifyAccessToken. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300019 | Wrong parameters for operating the floating ball. |
-| 1300023 | Floating ball internal error. |
-| 1300024 | The floating ball window state is abnormal. |
-| 1300025 | The floating ball state does not support this operation. |
+| 1300002 | This window state is abnormal. Possible cause: Internal error, the window type is not a floating ball.|
+| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error.|
+| 1300004 | Unauthorized operation. Possible cause: The process ID calling the API does not match the process ID of the session that created the floating ball.|
+| 1300019 | Wrong parameters for operating the floating ball. Possible cause: Want parameter is null or invalid. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
+| 1300024 | The floating ball window state is abnormal. Possible causes: 1.The floating ball controller has been destroyed. 2.The floating ball window is not created or has been destroyed.|
+| 1300025 | The floating ball state does not support this operation.  Possible cause: The floating ball is not started.|
 | 1300026 | Failed to restore the main window. Possible causes: </br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.</br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
 
 **示例：**

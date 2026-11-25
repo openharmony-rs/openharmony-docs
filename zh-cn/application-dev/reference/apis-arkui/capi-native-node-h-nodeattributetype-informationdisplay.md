@@ -36,13 +36,13 @@ NODE_LOADING_PROGRESS_COLOR = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LOADING_PROGRESS =
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 前景颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。默认值：跟随主题。 |
+| .value[0].u32 | 前景颜色数值，0xARGB格式，形如 0xFFFF0000 表示红色。默认值：跟随主题。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 前景颜色数值，0xargb格式。 |
+| .value[0].u32 | 前景颜色数值，0xARGB格式。 |
 
 ## NODE_LOADING_PROGRESS_ENABLE_LOADING
 
@@ -90,7 +90,7 @@ NODE_PROGRESS_VALUE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PROGRESS = 10000
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 进度条当前值，取值范围为[0, total]，默认值为0。 |
+| .value[0].f32 | 进度条当前值，取值范围为[0, total]。|
 
 ## NODE_PROGRESS_TOTAL
 
@@ -114,7 +114,7 @@ NODE_PROGRESS_TOTAL = 10001
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 进度条总长，取值范围为(0, +∞)，默认值为100。 |
+| .value[0].f32 | 进度条总长，取值范围为(0, +∞)。 |
 
 ## NODE_PROGRESS_COLOR
 
@@ -132,13 +132,13 @@ NODE_PROGRESS_COLOR = 10002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。默认值：跟随主题。 |
+| .value[0].u32 | 颜色数值，0xARGB格式，形如 0xFFFF0000 表示红色。默认值：跟随主题。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 颜色数值，0xargb格式。 |
+| .value[0].u32 | 颜色数值，0xARGB格式。 |
 
 ## NODE_PROGRESS_TYPE
 

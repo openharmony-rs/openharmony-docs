@@ -1,11 +1,11 @@
 # Managing the Notification Badge
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3e6a64491cc90c6990b3231ac614d6d55ecbf6a5 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 The system provides APIs for setting the notification badge, which is displayed in the upper right corner of the application icon on the home screen to notify the user of the count of unread notifications.
 
@@ -16,7 +16,7 @@ After a notification is read, the count on the badge is decremented by 1. If the
 
 ## Available APIs
 
-If **badgeNumber** is set to **0**, badges are cleared; if the value is greater than **99**, **99+** is displayed on the badge.
+When the badge count is set to a value less than or equal to 0, the badge is cleared. When the value is greater than 99, the [notification badge](notification-glossary.md#notification-badge) displays 99+.
 
 - You can use either of the following methods to increase the count on the badge:
 
@@ -35,7 +35,7 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
 
 1. Import the **NotificationManager** module.
 
-   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -48,7 +48,7 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
    
 2. Increase the count on the badge.
 
-   When publishing a notification, pass the **badgeNumber** parameter in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). For details, see [Publishing a Text Notification](text-notification.md).
+   When publishing a notification, you can carry the related information in the **badgeNumber** field of [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). For details, see [Publishing a Text Notification](text-notification.md).
    
    In this example, the **setBadgeNumber** API is called to add a badge. This API is called after a new notification is published.
 

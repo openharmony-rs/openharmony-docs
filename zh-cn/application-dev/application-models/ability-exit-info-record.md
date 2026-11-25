@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何通过UIAbility的LaunchParam参数获取应用异常退出原因及进程运行信息，帮助开发者分析问题并优化业务逻辑。"
+keywords: [异常退出, lastExitReason, LaunchParam, LastExitDetailInfo, 退出原因]
+doctype: guide
+status: active
+---
 # 获取应用异常退出原因
 
 <!--Kit: Ability Kit-->
@@ -11,11 +18,11 @@
 
 ## 约束限制
 
-仅[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)和[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)支持获取上次的退出原因。
+仅[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)和[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)支持获取上次的退出原因。
 
 ## 接口说明
 
-接口详情参见[API参考](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)。
+接口详情参见[LaunchParam](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)。
 
 | **接口名**  | **描述** |
 | -------- | -------- |

@@ -15,7 +15,7 @@ typedef enum OH_TrafficFilter_PacketCopyMode {...} OH_TrafficFilter_PacketCopyMo
 
 报文复制模式枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)
 

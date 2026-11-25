@@ -37,7 +37,7 @@ getRdbStore(context: Context, config: StoreConfig, version: number, callback: As
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context  | Context                                    | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。 |
+| context  | Context                                    | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config   | [StoreConfig](#storeconfig)                | 是   | 与此RDB存储相关的数据库配置。                                |
 | version  | number                                     | 是   | 数据库版本。<br>目前暂不支持通过version自动识别数据库升级降级操作，只能由开发者自行维护。                                                 |
 | callback | AsyncCallback&lt;[RdbStore](#rdbstore)&gt; | 是   | 回调函数。当操作成功，err为undefined，data为RdbStore对象；否则为错误对象。                     |
@@ -95,7 +95,7 @@ getRdbStore(context: Context, config: StoreConfig, version: number): Promise&lt;
 
 | 参数名  | 类型                        | 必填 | 说明                                                         |
 | ------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                     | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。 |
+| context | Context                     | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 | version | number                      | 是   | 数据库版本。<br>目前暂不支持通过version自动识别数据库升级降级操作，只能由开发者自行维护。                                                 |
 
@@ -156,7 +156,7 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| context  | Context                   | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。 |
+| context  | Context                   | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | name     | string                    | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当操作成功，err为undefined；否则为错误对象。                                       |
 
@@ -210,7 +210,7 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| context | Context | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。 |
+| context | Context | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | name    | string  | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
 
 **返回值：**
@@ -380,9 +380,9 @@ deviceManager.createDeviceManager("com.example.appdatamgrverify", (err: Business
   }
   dmInstance = manager;
   devices = dmInstance.getTrustedDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].deviceId;
-  }
+  devices.forEach((item) => {
+    deviceIds.push(item.deviceId);
+  });
 })
 
 let predicates = new data_rdb.RdbPredicates("EMPLOYEE");
@@ -1587,7 +1587,6 @@ query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCa
 | -------- | -------- | -------- | -------- |
 | predicates | [RdbPredicates](#rdbpredicates) | 是 | RdbPredicates的实例对象指定的查询条件。 |
 | columns | Array&lt;string&gt; | 是 | 表示要查询的列。如果值为空，则查询应用于所有列。 |
-| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | 是 | 回调函数。当查询成功，err为undefined，data为获取到的ResultSet对象；否则为错误对象。 |
 | callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | 是 | 回调函数。当操作成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **示例：**
@@ -1654,7 +1653,6 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 | -------- | -------- | -------- | -------- |
 | sql | string | 是 | 指定要执行的SQL语句，不能为空字符串。 |
 | bindArgs | Array&lt;[ValueType](#valuetype)&gt; | 是 | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
-| callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | 是 | 回调函数。当查询成功，err为undefined，data为获取到的ResultSet对象；否则为错误对象。 |
 | callback | AsyncCallback&lt;[ResultSet](js-apis-data-resultset.md#resultset)&gt; | 是 | 回调函数。当操作成功，err为undefined，data为ResultSet对象；否则为错误对象。 |
 
 **示例：**
@@ -2075,9 +2073,9 @@ deviceManager.createDeviceManager("com.example.appdatamgrverify", (err: Business
   }
   dmInstance = manager;
   let devices: Array<string> = dmInstance.getTrustedDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    let deviceIds: Array<string> = devices[i].deviceId;
-  }
+  devices.forEach((item) => {
+    let deviceIds: Array<string> = item.deviceId;
+  });
 })
 
 let predicates = new data_rdb.RdbPredicates('EMPLOYEE')
@@ -2088,9 +2086,9 @@ rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates, (err: BusinessError,
     return
   }
   console.info('Sync done.')
-  for (let i = 0; i < result.length; i++) {
-    console.info('device=' + result[i][0] + ' status=' + result[i][1])
-  }
+  result.forEach((item) => {
+    console.info('device=' + item[0] + ' status=' + item[1])
+  })
 })
 ```
 
@@ -2131,9 +2129,9 @@ deviceManager.createDeviceManager("com.example.appdatamgrverify", (err: Business
   }
   dmInstance = manager;
   let devices: Array<string> = dmInstance.getTrustedDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    let deviceIds: Array<string> = devices[i].deviceId;
-  }
+  devices.forEach((item) => {
+    let deviceIds: Array<string> = item.deviceId;
+  });
 })
 
 let predicates = new data_rdb.RdbPredicates('EMPLOYEE')
@@ -2141,9 +2139,9 @@ predicates.inDevices(deviceIds)
 let promise: void = rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates)
 promise.then((result: void) =>{
   console.info('Sync done.')
-  for (let i = 0; i < result.length; i++) {
-    console.info('device=' + result[i][0] + ' status=' + result[i][1])
-  }
+  result.forEach((item) => {
+    console.info('device=' + item[0] + ' status=' + item[1])
+  })
 }).catch((err: BusinessError) => {
   console.error('Sync failed')
 })
@@ -2172,9 +2170,9 @@ let devices: Array<string>;
 
 try {
   rdbStore.on('dataChange', data_rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (storeObserver: Array<string>) => {
-    for (let i = 0; i < devices.length; i++) {
-      console.info('device=' + devices[i] + ' data changed')
-    }
+    devices.forEach((device) => {
+      console.info('device=' + device + ' data changed')
+    })
   })
 } catch (err) {
   console.error('Register observer failed')
@@ -2204,9 +2202,9 @@ let devices: Array<string>;
 
 try {
   rdbStore.off('dataChange', data_rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (storeObserver: Array<string>) => {
-    for (let i = 0; i < devices.length; i++) {
-      console.info('device=' + devices[i] + ' data changed')
-    }
+    devices.forEach((device) => {
+      console.info('device=' + device + ' data changed')
+    })
   })
 } catch (err) {
   console.error('Unregister observer failed')

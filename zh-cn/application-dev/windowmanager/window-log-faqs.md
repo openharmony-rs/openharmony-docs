@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @liangryan-->
 <!--Designer: @liangryan-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 使用窗口hidumper命令查看窗口信息定位问题
@@ -27,7 +27,12 @@ hdc shell hidumper -s WindowManagerService -a '<参数>'
 | `-w {WinId} {ArkUI option}` | 查看指定窗口的ArkUI渲染信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 需要查看窗口UI节点数量、渲染状态等信息。 |
 | `-p` | 查看窗口父子树结构 | `hidumper -s WindowManagerService -a '-p'` | 排查窗口父子关系、层级树结构等问题。 |
 | `-c` | 查看窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 高级调试场景（截图相关信息）。 |
+| `-user all` | 查看所有前台用户的窗口信息 | `hidumper -s WindowManagerService -a '-user all -a'` | 多用户或多屏多用户场景下，需要分用户查看所有前台用户各自的窗口信息。<br>针对搭载<!--RP2-->OpenHarmony 7.1<!--RP2End-->及以上版本的设备，新增支持此参数。 |
+| `-user {userId}` | 查看指定前台用户的窗口信息 | `hidumper -s WindowManagerService -a '-user 100 -a'` | 多用户场景下，已知用户ID，需要查看特定前台用户名下的窗口信息。<br>针对搭载<!--RP2-->OpenHarmony 7.1<!--RP2End-->及以上版本的设备，新增支持此参数。 |
 
+> **说明：**
+>
+> `-user`参数只能打印当前处于前台（活跃状态）用户的窗口信息，若指定的用户不在前台或不存在，会提示用户不在前台或不存在。
 
 ### 查看所有窗口列表
 
@@ -71,12 +76,25 @@ total window num: 12
 | DisplayId | 显示设备ID | 屏幕设备的唯一标识，0表示主屏幕，多屏场景下可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕的DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
-| Type | 窗口类型 | 应用窗口：1表示应用主窗口，2表示应用子窗口；系统窗口：值为2000+。该值是系统内部标识，不直接对应[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举值。 |
+| Type | 窗口类型 | 应用主窗口为1；应用子窗口为1000+（1001表示普通应用子窗）；系统窗口为2000+。该值是系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同。 |
 | Mode | 窗口模式 | 1表示全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
 | Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
 | Orientation | 窗口方向 | 窗口方向标识值。当前该字段为预留字段，无实际意义。 |
 | [ x y w h ] | 窗口矩形区域 | 窗口位置和大小，坐标以屏幕左顶点为原点。如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
+
+Type字段取值与窗口类型的对应关系如下表所示：
+
+| Type取值 | 窗口类型 | 说明 |
+|------|------|------|
+| 1 | 应用主窗口 | 应用默认创建的主窗口，如示例中的note0（备忘录）、camera0（相机）。 |
+| 1001 | 普通应用子窗 | 通过createSubWindow()等接口创建的子窗口，如确认弹窗、菜单等。 |
+| 2000+ | 系统窗口 | 由系统应用创建并使用，开发者不可创建，仅用于调试时识别窗口归属。 |
+
+> **说明：**
+>
+> - 上表仅列出调试中开发者可感知的常见取值，系统内部还存在其他窗口类型，此处不一一列举。
+> - 该取值为系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同，开发时请勿在应用代码中使用该数值。
 
 ### 查看获焦窗口
 
@@ -142,7 +160,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | DisplayId | 显示设备ID     | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕信息。   |
 | WinId | 窗口唯一标识符    | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。                                                                                                       |
 | Pid | 进程ID       | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。                                                                                                      |
-| Type | 窗口类型       | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。                                                                                         |
+| Type | 窗口类型       | 窗口类型标识。1：表示为应用主窗口；1000+：表示为应用子窗口（1001：表示为普通应用子窗）；2000+：表示为系统窗口。该值是系统内部窗口类型标识，与[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举取值不同。 |
 | Mode | 窗口模式       | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
 | Flag | 状态标志位      | 状态标识值。当前该字段为预留字段，无实际意义。                                                                                                             |
 | Orientation | 窗口方向       | 窗口方向标识值。当前该字段为预留字段，无实际意义。                                                                                                           |
@@ -152,7 +170,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | Focusable | 是否可获焦      | true：表示窗口可以获焦；false：表示窗口不可获焦。                                                                                                       |
 | DecoStatus | 装饰状态       | true：表示窗口装饰已启用（有标题栏等）；false：表示窗口无装饰。                                                                                                |
 | IsPrivacyMode | 是否隐私模式     | 窗口隐私模式。true：表示为隐私窗口；false：表示为正常窗口。隐私窗口在不同设备上的截屏表现不同，详见[隐私模式](./screenshot-and-privacy-mode.md#规格表现)。                                |
-| isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容。                                                                                            |
+| isSnapshotSkip | 截屏时是否跳过该窗口 | 标识截屏时是否跳过该窗口。0：表示截屏时不跳过该窗口；1：表示截屏时跳过该窗口。 |
 | WindowRect | 窗口矩形区域     | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。                                              |
 | TouchHotAreas | 触摸热区       | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。                                                                                      |
 <!--RP1End-->
@@ -167,7 +185,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 <!--Del-->
 截屏时窗口内容未隐藏
 
-- 确认窗口是否为非隐私窗口且设置了截图时显示窗口内容，即`IsPrivacyMode`为false且`isSnapshotSkip`为0，截图时不会隐藏。
+- 确认窗口是否为非隐私窗口且截屏时未跳过该窗口，即`IsPrivacyMode`为false且`isSnapshotSkip`为0，截屏时不会隐藏。
 - 若需要截屏时隐藏窗口内容，调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)传入true启用隐私模式。
 <!--DelEnd-->
 
@@ -203,7 +221,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
    <!--Del-->
    - VisibilityState：确认窗口是否显示
    <!--DelEnd-->
-   - ZOrder：确认层级关系
+   - ZOrd：确认层级关系
    - WindowRect：确认窗口大小和位置
 
 > **说明：**

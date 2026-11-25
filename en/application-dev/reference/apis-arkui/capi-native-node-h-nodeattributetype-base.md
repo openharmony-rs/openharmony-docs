@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Basic Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @wangyang2022; @zju_ljz-->
 <!--Designer: @hehongyang3; @wangyang2022; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0bfa5619d73331e1954e3ffb456d2d3524a5513a translatedAt=2026-08-21T12:12:06.484Z pushedAt=2026-08-24T08:46:13.301Z -->
+<!-- md-trans-meta sourceCommit=226fc0bc5a34115f5bd52ff7532081d7f6c2cf3b translatedAt=2026-11-18T08:45:34.845Z pushedAt=2026-11-19T02:05:40.801Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -160,8 +159,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Position along the x-axis, in px.|
 | .value[1].f32 | Position along the y-axis, in px.|
-| .value[2]?.i32 | Alignment mode. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**. This parameter is supported since API version 21.|
-| .value[3]?.i32 | Layout direction. This parameter is optional. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**. In most scenarios, you are advised to set this parameter to **AUTO**, so that the system automatically handles the layout direction. If a fixed direction is required, set this parameter to **LTR** or **RTL**. This parameter is supported since API version 21.|
+| .value[2].?i32 | Alignment mode. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**. This parameter is supported since API version 21. |
+| .value[3].?i32 | Layout direction. This parameter is optional. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**. In most scenarios, you are advised to set this parameter to **AUTO**, so that the system automatically handles the layout direction. If a fixed direction is required, set this parameter to **LTR** or **RTL**. This parameter is supported since API version 21. |
 
 **Returns**
 
@@ -206,7 +205,13 @@ The component ID is read-only and unique in a process.<br>
 
 **Since**: 12
 
-This API is supported since API version 12 and deprecated since API version 20. You are advised to use [OH_ArkUI_NodeUtils_GetNodeUniqueId](capi-native-node-h.md#oh_arkui_nodeutils_getnodeuniqueid) instead.
+**Deprecated version**: This API is supported since API version 12 and deprecated since API version 20. You are advised to use [OH_ArkUI_NodeUtils_GetNodeUniqueId](capi-native-node-h.md#oh_arkui_nodeutils_getnodeuniqueid) instead.
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Component ID.|
 
 ## NODE_CLICK_DISTANCE
 
@@ -235,6 +240,7 @@ Inspector label, which helps you distinguish nodes of the same type to improve d
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 26.0.0
+
 
 **Parameters**
 

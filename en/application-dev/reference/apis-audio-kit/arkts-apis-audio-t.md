@@ -1,12 +1,11 @@
 # Types
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1961de06e85063963f633ec54a8a4baaf5cb7dc8 translatedAt=2026-07-21T03:49:03.883Z pushedAt=2026-07-21T07:08:51.761Z -->
+<!-- md-trans-meta sourceCommit=580a074854091a041e4616f08efd09eca7c8d3f5 translatedAt=2026-11-03T03:44:22.006Z pushedAt=2026-11-04T03:11:46.935Z nl=1 -->
 
 > **NOTE**
 >
@@ -24,6 +23,7 @@ Defines an AudioRendererChangeInfo array, which is read-only.
 |---------|---------------------------------------------------------------|
 | Array&lt;Readonly&lt;AudioRendererChangeInfo&gt;&gt; | An [AudioRendererChangeInfo](arkts-apis-audio-i.md#audiorendererchangeinfo9) array, which is read-only.|
 
+
 ## AudioCapturerChangeInfoArray<sup>9+</sup>
 
 type AudioCapturerChangeInfoArray = Array&lt;Readonly&lt;AudioCapturerChangeInfo&gt;&gt;
@@ -35,6 +35,7 @@ Defines an AudioCapturerChangeInfo array, which is read-only.
 | Type     | Description                                                             |
 |---------|-----------------------------------------------------------------|
 | Array&lt;Readonly&lt;AudioCapturerChangeInfo&gt;&gt; | An [AudioCapturerChangeInfo](arkts-apis-audio-i.md#audiocapturerchangeinfo9) array, which is read-only.|
+
 
 ## AudioEffectInfoArray<sup>10+</sup>
 
@@ -62,11 +63,12 @@ Defines an [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) 
 |---------|---------------------------------------------------------------|
 | Array&lt;Readonly&lt;AudioDeviceDescriptor&gt;&gt; | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) array, which is read-only.|
 
+
 ## AudioRendererWriteDataCallback<sup>12+</sup>
 
 type AudioRendererWriteDataCallback = (data: ArrayBuffer) => AudioDataCallbackResult | void
 
-Callback function type used for writing data to the audio renderer. After the callback ends, the audio service places the data pointed to by **data** into a queue for playback. Therefore, do not modify the data pointed to by **data** outside the callback, and ensure that **data** is fully filled with the data to be played. Otherwise, noise may occur during audio playback.
+Callback function type used for writing data to the audio renderer. After the callback function returns, the audio service places the data pointed to by data into a queue for playback. Therefore, do not modify the data pointed to by data outside the callback, and ensure that data is fully filled with the data to be played. Otherwise, noise may occur during audio playback.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -76,7 +78,7 @@ Callback function type used for writing data to the audio renderer. After the ca
 | :--------------| :--------| :----- | :------------ |
 | data           | ArrayBuffer  | Yes| Data to be written to the buffer.|
 
-**Return value**
+**Return value** 
 
 | Type                                                          | Description                                                                                                         |
 |--------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|

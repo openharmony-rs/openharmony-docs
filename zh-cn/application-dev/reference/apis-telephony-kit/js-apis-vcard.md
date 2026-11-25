@@ -6,7 +6,7 @@
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
 
-VCard是电子名片的文件格式标准，它可包含的信息有：姓名、地址资讯、电话号码、URL、logo、相片等。VCard模块提供了VCard能力，包括将VCard文件导入联系人数据库和将联系人数据导出为VCard文件等。
+VCard是电子名片的文件格式标准，它可包含的信息有：姓名、地址信息、电话号码、URL、logo、相片等。VCard模块提供了VCard能力，包括将VCard文件导入联系人数据库和将联系人数据导出为VCard文件等。
 
 >**说明：**
 >
@@ -34,7 +34,7 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(VCard file)文件地址。 |
-| accountId | number | 是                  | 联系人账户ID。|
+| accountId | number | 是                  | 联系人账户ID。<br>取值限定为整数。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。   |
 
 **错误码：**
@@ -84,8 +84,8 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
-| filePath   | string                      | 是   | VCF(VCard file)文件地址。 |
-| accountId   | number                      | 否   | 联系人账户ID。不传入时使用默认账户。|
+| filePath   | string                      | 是   | VCF(VCard file)文件地址。|
+| accountId   | number                      | 否   | 联系人账户ID。不传入时使用默认账户。<br>取值限定为整数。|
 
 **返回值：**
 

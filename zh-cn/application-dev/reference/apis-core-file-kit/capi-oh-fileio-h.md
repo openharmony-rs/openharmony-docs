@@ -75,13 +75,13 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 | 参数项 | 描述 |
 | -- | -- |
 | char *uri | URI字符串的指针，用于指定需要查询存储位置的文件。 |
-| int uriLength | URI字符串的长度，不包含字符串结束符'\0'，单位为Byte。取值范围为(0，4096]。 |
+| int uriLength | URI字符串的长度，不包含字符串结束符'\0'，单位为Byte。取值范围为(0, 4096]。 |
 | [FileIO_FileLocation](capi-oh-fileio-h.md#fileio_filelocation) *location | 文件存储位置的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。 |
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | 返回FileManagement模块错误码[FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode)。  <br>401 - Invalid input parameter, pointer is null. <br>ERR_ENOENT 13900002 - No such file or directory. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 

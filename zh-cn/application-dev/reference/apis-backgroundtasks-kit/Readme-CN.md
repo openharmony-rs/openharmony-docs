@@ -21,11 +21,12 @@
   - [@ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口)](js-apis-resourceschedule-deviceUsageStatistics-sys.md)
   - [@ohos.resourceschedule.workScheduler (延迟任务调度)(系统接口)](js-apis-resourceschedule-workScheduler-sys.md)
   - [@ohos.resourceschedule.backgroundProcessManager (后台子进程管控)(系统接口)](js-apis-backgroundProcessManager-sys.md)
+  - [@ohos.resourceschedule.suspendManager (冻结管理模块)(系统接口)](js-apis-resourceschedule-suspendManager-sys.md)
   <!--DelEnd-->
   - application<!--background-tasks-arkts-application-->
-    - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)
+    - [WorkSchedulerExtensionContext (延迟任务调度回调上下文)](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext（系统接口）](js-apis-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (后台任务管理)](js-apis-backgroundTaskManager.md)
@@ -51,6 +52,9 @@
   - [backgroundProcessManager错误码](errorcode-backgroundProcessManager.md)
   <!--Del-->
   - [DeviceUsageStatistics错误码](errorcode-DeviceUsageStatistics.md)
+  - [suspendManager错误码](errorcode-suspendManager.md)
   <!--DelEnd-->
   - [reminderAgentManager错误码](errorcode-reminderAgentManager.md)
   - [workScheduler错误码](errorcode-workScheduler.md)
+- 附录<!--background-tasks-appendix-->
+  - [长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)

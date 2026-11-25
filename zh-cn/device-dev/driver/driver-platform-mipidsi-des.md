@@ -22,7 +22,7 @@ DSI标准对应D-PHY、DSI、DCS规范，可分为四层：
 
 - Lane Management层
 
-    负责发送和收集数据流到每条Lane。数据Lane的三种操作模式 ：espace mode，High-Speed(Burst) mode，Control mode。
+    负责发送和收集数据流到每条Lane。数据Lane的三种操作模式 ：Escape mode，High-Speed(Burst) mode，Control mode。
 
 - Low Level Protocol层
 
@@ -42,7 +42,9 @@ MIPI DSI软件模块各分层的作用为：
 
 - 适配层：实现其它具体的功能。
 
-![](../public_sys-resources/icon-note.gif) **说明：**<br>核心层可以调用接口层的函数，核心层通过钩子函数调用适配层函数，从而适配层可以间接的调用接口层函数，但是不可逆转接口层调用适配层函数。
+>**说明：**
+>
+>核心层可以调用接口层的函数，核心层通过钩子函数调用适配层函数，从而适配层可以间接的调用接口层函数，但是不可逆转接口层调用适配层函数。
 
 **图 2** DSI无服务模式结构图
 
@@ -73,7 +75,7 @@ MIPI DSI模块提供的主要接口如表1所示，具体API[详见](https://git
 | void MipiDsiSetLpMode(DevHandle handle) | 设置MIPI&nbsp;DSI进入Low&nbsp;power模式 |
 | void MipiDsiSetHsMode(DevHandle handle) | 设置MIPI&nbsp;DSI进入High&nbsp;speed模式 |
 | int32_t MipiDsiTx(DevHandle handle, struct DsiCmdDesc \*cmd) | DSI发送指令 |
-| int32_t MipiDsiRx(DevHandle handle, struct DsiCmdDesc \*cmd, int32_t readLen, uint8_t \*out) | MIPI&nbsp;DSI按期望长度回读数据 |
+| int32_t MipiDsiRx(DevHandle handle, struct DsiCmdDesc \*cmd, uint32_t readLen, uint8_t \*out) | MIPI&nbsp;DSI按期望长度回读数据 |
 
 ### 开发步骤
 
@@ -93,12 +95,14 @@ DevHandle MipiDsiOpen(uint8_t id);
 
 **表 2** MipiDsiOpen的参数和返回值描述
 
-| **参数** | **参数描述** | 
+| **参数** | **参数描述** |
 | -------- | -------- |
-| id | uint8_t类型，MIPI&nbsp;DSI通道ID | 
-| **返回值** | **返回值描述** | 
-| NULL | 获取失败 | 
-| 设备句柄 | 获取到指令通道的操作句柄,&nbsp;类型为DevHandle | 
+| id | uint8_t类型，MIPI&nbsp;DSI通道ID |
+
+| **返回值** | **返回值描述** |
+| -------- | -------- |
+| NULL | 获取失败 |
+| 设备句柄 | 获取到指令通道的操作句柄,&nbsp;类型为DevHandle |
 
 假设系统中的MIPI DSI通道为0，获取该通道操作句柄的示例如下：
 
@@ -125,13 +129,15 @@ if (mipiDsiHandle == NULL) {
 
     **表 3** MipiDsiSetCfg的参数和返回值描述
   
-    | **参数** | **参数描述** | 
+    | **参数** | **参数描述** |
     | -------- | -------- |
-    | handle | DevHandle类型，操作句柄 | 
-    | cfg | 结构体指针类型，MIPI&nbsp;DSI相应配置buf&nbsp;指针 | 
-    | **返回值** | **返回值描述** | 
-    | HDF_SUCCESS | 设置MIPI DSI配置成功 | 
-    | 负数 | 设置MIPI DSI配置失败 | 
+    | handle | DevHandle类型，操作句柄 |
+    | cfg | 结构体指针类型，MIPI&nbsp;DSI相应配置buf&nbsp;指针 |
+
+    | **返回值** | **返回值描述** |
+    | -------- | -------- |
+    | HDF_SUCCESS | 设置MIPI DSI配置成功 |
+    | 负数 | 设置MIPI DSI配置失败 |
 
     ```c
     int32_t ret;
@@ -168,13 +174,15 @@ if (mipiDsiHandle == NULL) {
 
     **表 4** MipiDsiGetCfg的参数和返回值描述
 
-    | **参数** | **参数描述** | 
+    | **参数** | **参数描述** |
     | -------- | -------- |
-    | handle | DevHandle类型，操作句柄 | 
-    | cfg | 结构体指针，MIPI&nbsp;DSI相应配置buf&nbsp;指针 | 
-    | **返回值** | **返回值描述** | 
-    | HDF_SUCCESS | 获取当前MIPI DSI的配置成功 | 
-    | 负数 | 获取当前MIPI DSI的配置失败 | 
+    | handle | DevHandle类型，操作句柄 |
+    | cfg | 结构体指针，MIPI&nbsp;DSI相应配置buf&nbsp;指针 |
+
+    | **返回值** | **返回值描述** |
+    | -------- | -------- |
+    | HDF_SUCCESS | 获取当前MIPI DSI的配置成功 |
+    | 负数 | 获取当前MIPI DSI的配置失败 |
 
     ```c
     int32_t ret;
@@ -182,7 +190,7 @@ if (mipiDsiHandle == NULL) {
     memset(&cfg, 0, sizeof(struct MipiCfg));
     ret = MipiDsiGetCfg(mipiDsiHandle, &cfg);
     if (ret != HDF_SUCCESS) {
-        HDF_LOGEMipiDsiGetCfg: get mipi cfg fail, ret:%d!\n", ret);
+        HDF_LOGE("MipiDsiGetCfg: get mipi cfg fail, ret:%d!\n", ret);
         return ret;
     }
     ```
@@ -192,18 +200,20 @@ if (mipiDsiHandle == NULL) {
 - 发送指令
 
     ```c
-    int32_t MipiDsiTx(PalHandle handle, struct DsiCmdDesc *cmd);
+    int32_t MipiDsiTx(DevHandle handle, struct DsiCmdDesc *cmd);
     ```
 
     **表 5** MipiDsiTx的参数和返回值描述
 
-    | **参数** | **参数描述** | 
+    | **参数** | **参数描述** |
     | -------- | -------- |
-    | handle | DevHandle类型，操作句柄 | 
-    | cmd | 结构体指针类型，需要发送的指令数据指针 | 
-    | **返回值** | **返回值描述** | 
-    | HDF_SUCCESS | 发送成功 | 
-    | 负数 | 发送失败 | 
+    | handle | DevHandle类型，操作句柄 |
+    | cmd | 结构体指针类型，需要发送的指令数据指针 |
+
+    | **返回值** | **返回值描述** |
+    | -------- | -------- |
+    | HDF_SUCCESS | 发送成功 |
+    | 负数 | 发送失败 |
 
     ```c
     int32_t ret;
@@ -240,15 +250,17 @@ if (mipiDsiHandle == NULL) {
 
     **表 6** MipiDsiRx的参数和返回值描述
   
-    | **参数** | **参数描述** | 
+    | **参数** | **参数描述** |
     | -------- | -------- |
-    | handle | DevHandle类型，操作句柄 | 
-    | cmd | 结构体指针类型，需要回读的指令数据指针 | 
-    | readLen | uint32_t类型，期望回读的数据长度 | 
-    | out | uint8_t类型指针，回读的数据 | 
-    | **返回值** | **返回值描述** | 
-    | HDF_SUCCESS | 获取成功 | 
-    | 负数 | 获取失败 | 
+    | handle | DevHandle类型，操作句柄 |
+    | cmd | 结构体指针类型，需要回读的指令数据指针 |
+    | readLen | uint32_t类型，期望回读的数据长度 |
+    | out | uint8_t类型指针，回读的数据 |
+
+    | **返回值** | **返回值描述** |
+    | -------- | -------- |
+    | HDF_SUCCESS | 获取成功 |
+    | 负数 | 获取失败 |
   
     ```c
     int32_t ret;

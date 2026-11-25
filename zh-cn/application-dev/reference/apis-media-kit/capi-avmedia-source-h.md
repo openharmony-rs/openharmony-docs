@@ -468,6 +468,12 @@ OH_AVMediaSourceLoader *OH_AVMediaSourceLoader_Create(void)
 
 **起始版本：** 23
 
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md) | 函数执行结果。<br> 成功时返回OH_AVMediaSourceLoader指针。 <br>  失败时返回空指针。 |
+
 ### OH_AVMediaSourceLoader_Destroy()
 
 ```c

@@ -2,9 +2,10 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:41:43.764Z pushedAt=2026-11-12T08:24:28.804Z nl=1 -->
 
 To download files on the web page, you can use the following method to invoke the web APIs.
 
@@ -12,7 +13,7 @@ To download files on the web page, you can use the following method to invoke th
 
 Call [setDownloadDelegate()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setdownloaddelegate11) to register a **DownloadDelegate** object with the **Web** component to listen for downloads initiated from pages. While the **Web** component downloads resources as requested, it notifies the application of the download progress through the **DownloadDelegate** object.
 
-In the following example, the **index.html** and **download.html** files are added to the **rawfile** folder of the application. After the application is started, a **Web** component is created and the **index.html** file is loaded. After **setDownloadDelegate** is clicked, a **DownloadDelegate** object is registered with the **Web** component. This **DownloadDelegate** object listens for any downloads initiated by clicking the download button on the page.
+In the following example, create `index.html` in the `rawfile` directory of the app. After the app starts, a Web component is created and `index.html` is loaded. Click the `setDownloadDelegate` button to register a `DownloadDelegate` with the Web component. When the download button on the page is clicked, a download task is triggered, and the download progress can be monitored in `DownloadDelegate`.
 
 By default, the download path is in the web directory of the application sandbox and cannot be viewed by users. If users need to view it, change the download path to a directory with access permission, for example, the **Download** directory. For details, see [Initiating a Download Task](#initiating-a-download-task).
 
@@ -76,23 +77,12 @@ HTML file to be loaded:
 <!DOCTYPE html>
 <html>
 <body>
-// Click the download button in the lower right corner of the video to trigger a download task.
+<!-- Clicking the download button in the menu at the lower right of the video triggers a download task.-->
 <video controls="controls" width="800px" height="580px"
        src="http://vjs.zencdn.net/v/oceans.mp4"
        type="video/mp4">
 </video>
-<a href='data:text/html,%3Ch1%3EHello%2C%20World%21%3C%2Fh1%3E' download='download.html'>Download the download.html</a>
-</body>
-</html>
-```
-
-HTML file to be downloaded:
-```html
-<!-- download.html -->
-<!DOCTYPE html>
-<html>
-<body>
-<h1>download test</h1>
+<a href='data:text/html,%3Ch1%3EHello%2C%20World%21%3C%2Fh1%3E' download='download.html'>Download download.html</a>
 </body>
 </html>
 ```
@@ -149,7 +139,7 @@ struct WebComponent {
       Button('startDownload')
         .onClick(() => {
           try {
-            // The specified download address here is https://www.example.com/. 
+            // The specified download address here is https://www.example.com/.
             // Replace it with the URL from which you want to download files.
             this.controller.startDownload('https://www.example.com/');
           } catch (error) {
@@ -164,8 +154,10 @@ struct WebComponent {
 ```
 
 Use [DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to obtain the default download directory and set it as the download directory.
-```ts
-// xxx.ets
+
+<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker, fileUri } from  '@kit.CoreFileKit';
@@ -181,7 +173,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // Use DocumentViewPicker() to obtain the default download directory and set it as the download directory.
               getDownloadPathFromPicker().then((downloadPath) => {
                 webDownloadItem.start(downloadPath + '/' + webDownloadItem.getSuggestedFileName());
@@ -190,19 +182,19 @@ struct WebComponent {
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               // Unique ID of a download task.
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
               // Download progress.
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               // Current download speed.
-              console.info("download update speed: " + webDownloadItem.getCurrentSpeed())
+              console.info('download update speed: ' + webDownloadItem.getCurrentSpeed())
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // Error code of a download task failure.
-              console.error("download failed last error code: " + webDownloadItem.getLastErrorCode());
+              console.error('download failed last error code: ' + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -245,16 +237,16 @@ function getDownloadPathFromPicker(): Promise<string> {
 
 > **NOTE**
 >
->Call [WebDownloadItem.start](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11) to specify the path for storing downloaded files.
+> The download feature of the Web component requires the application to specify the save path of the downloaded file by calling [WebDownloadItem.start()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11).
 >
->Note that **WebDownloadItem.start** does not start the download. The download process starts when the user clicks the page link. **WebDownloadItem.start** is used to move the content that has been downloaded to the temporary directory (**/data/storage/el2/base/cache/web/Temp/**) to the specified path, and directly save the remaining content to the specified path. Call[WebDownloadItem.cancel](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11) to cancel the current download task. In this case, the temporary file is deleted.
+> It is worth noting that WebDownloadItem.start() does not start the download. The download process actually begins when the user taps the page link. The role of WebDownloadItem.start() is to move the portion that has already been downloaded to a temporary file to the specified target path. The content of the subsequent unfinished download is saved directly to the specified target path. The temporary directory is located at `/data/storage/el2/base/cache/web/Temp/`. To cancel the current download, call [WebDownloadItem.cancel()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11), which deletes the temporary file.
 >
->If you do not want to download the file to the temporary directory before **WebDownloadItem.start**, you can also use **WebDownloadItem.cancel** to interrupt the download. In addition, the interrupted download can be resumed using [WebDownloadManager.resumeDownload](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11).
+> To avoid downloading the file to the temporary directory before WebDownloadItem.start(), the download can be interrupted through WebDownloadItem.cancel(). The interrupted download can then be resumed through [WebDownloadManager.resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11).
 
 ## Resuming Unfinished Download Tasks Due to Process Exit
 When the **Web** component is started, you can resume the unfinished download task through the [resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11) API.
 
-In the following example, the **record** button is used to save the current download task to a persistent file. After the application is restarted, the **recovery** button can be used to resume the persistent download task. If multiple download tasks need to be saved, the application can adjust the persistence time and mode as required.
+In the following example, the **record** button is used to save the current download task to a persistence file. After the application is restarted, the **recovery** button can be used to resume the persistence download task. If multiple download tasks need to be saved, the application can adjust the persistence time and mode as required.
 
 <!-- @[recovery_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ResumeDownload.ets) -->
 
@@ -309,7 +301,7 @@ struct WebComponent {
       Button('startDownload')
         .onClick(() => {
           try {
-            // The specified download address here is https://www.example.com/. 
+            // The specified download address here is https://www.example.com/.
             // Replace it with the URL from which you want to download files.
             this.controller.startDownload('https://www.example.com/');
           } catch (error) {
@@ -322,7 +314,7 @@ struct WebComponent {
       Button('record')
         .onClick(() => {
           try {
-            // Save the downloaded data to a persistent file.
+            // Save the downloaded data to a persistence file.
             DownloadUtil.saveDownloadInfo(DownloadUtil.uint8ArrayToStr(this.download.serialize()));
           } catch (error) {
             console.error(
@@ -351,12 +343,13 @@ struct WebComponent {
 }
 ```
 
-Download the task information persistence utility file.
-<!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->
+Download task information persistence utility file.
+<!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->    
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const helper = new util.Base64Helper();
 
@@ -386,7 +379,7 @@ export namespace  DownloadUtil {
 
   export function fileExists(filePath: string): boolean {
     try {
-      return fs.accessSync(filePath);
+      return fileIo.accessSync(filePath);
     } catch (error) {
       return false;
     }
@@ -394,19 +387,33 @@ export namespace  DownloadUtil {
 
   export function mkDirectorySync(directoryPath: string, recursion?: boolean): void {
     try {
-      fs.mkdirSync(directoryPath, recursion ?? false);
+      fileIo.mkdirSync(directoryPath, recursion ?? false);
     } catch (error) {
       console.error(`mk dir error. err message: ${error.message}, err code: ${error.code}`);
     }
   }
 
   export function writeToFileSync(dir: string, fileName: string, msg: string): void {
-    let file = fs.openSync(dir + '/' + fileName, fs.OpenMode.WRITE_ONLY | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, msg);
+    let file: fileIo.File | null = null;
+    try {
+      file = fileIo.openSync(dir + '/' + fileName, fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.CREATE);
+      fileIo.writeSync(file.fd, msg);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+    } finally {
+      if (file) {
+        fileIo.closeSync(file);
+      }
+    }
   }
 
   export function readFileSync(dir: string, fileName: string): string {
-    return fs.readTextSync(dir + '/' + fileName);
+    try {
+      return fileIo.readTextSync(dir + '/' + fileName);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+      return '';
+    }
   }
 
 }

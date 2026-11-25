@@ -5,6 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=31661175150dbd26aebd7a7c4c7a32ee3048209a translatedAt=2026-11-13T12:20:14.468Z pushedAt=2026-11-16T02:06:53.371Z nl=1 -->
 
 The unpacking tool is a commissioning tool used to unpack HAP (an application package), HSP (dynamically shared library), and APP (application set to launch to the application market) files. It also provides Java APIs to parse the HAP, HSP, and APP files.
 
@@ -229,7 +230,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | label                          | String  | Label of an application. | NA          |
 | description                    | String  | Description of the application.   | New in the stage model.  |
 | minCompatibleVersionCode       | int     | Earliest compatible version of the application. | NA          |
-| distributedNotificationEnabled | boolean | Whether the distributed notification feature is enabled for the application. The value **true** indicates that the feature is enabled, and **false** indicates the opposite.  | New in the stage model.  |
+| distributedNotificationEnabled | boolean | Identifies whether distributed notifications are enabled for the application. The value true indicates enabled, and false indicates disabled.   | New in the stage model.   |
 | bundleType                     | String  | Bundle type.<br>- **app**: The bundle is used for an application.<br>- **atomicService**: The bundle is used for an atomic service.<br>- **shared**: The bundle is used for a shared library.| NA   |
 | compileSdkVersion              | String  | SDK version used for compiling the application.  | This field is valid only for API version 10 and later.  |
 | compileSdkType                 | String  | SDK type used for compiling the application.  | This field is valid only for API version 10 and later.  |
@@ -288,6 +289,7 @@ For details, see [alternateIcons](../quick-start/app-configuration-file.md#alter
 | originalSize         | long                        | Original size of the HAP, in bytes.        | NA             |
 | isModuleAbcCompressed  | boolean                   | Whether the [modules.abc](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build) file is compressed. The value **true** indicates that the file is compressed, and **false** indicates that the opposite.        | NA             |
 | skillProfiles    | List\<[SkillProfileInfo](#skillprofileinfo)\>  | Skill configuration information of the current module and is used to define the skill capabilities of an AI agent.  | Supported since API version 26.0.0. |
+| anyOfDeviceFeatures  | Map\<String, List\<String>> | Identifies the specific device features required for the current module to run. Any one of the device features is sufficient. | Supported from API version 26.1.0. |
 <!--RP1--><!--RP1End-->
 
 ### AbilityInfo Struct
@@ -491,9 +493,10 @@ For details, see [alternateIcons](../quick-start/app-configuration-file.md#alter
 | Field               | Type                    | Description                                                        | Remarks       |
 | ------------------- | -------------------------| ------------------------------------------------------------ |-----------|
 | name                | String                   | Name of the widget.                                             | NA        |
+| formManagerAnimatedImages | List\<String> | Indicates the list of parsing results of the dynamic image resources of the card. The original reference is retained when the resource is not matched. | Supported only in the Stage model. Returns an empty list when the field is missing or the array is empty. Starts to support since API version 26.1.0. |
 | type                | String                   | Type of the widget.                                          | NA        |
 | updateEnabled       | boolean                  | Whether the widget supports scheduled refresh. **true** to support, **false** otherwise.                                  | NA        |
-| scheduledUpdateTime | String                   | Scheduled time to update the widget. The value is in 24-hour format and accurate to the minute.      | NA        |
+| scheduledUpdateTime | String                   | Identifies the time for scheduled card refresh, using a 24-hour format and accurate to the minute.       | NA        |
 | updateDuration      | int                      | Interval to update the widget. The unit is 30 minutes. The value is a multiple of 30.  | NA        |
 | supportDimensions   | List\<String>            | Dimensions supported by the widget, which can be **1 * 2**, **2 * 2**, **2 * 4**, or **4 * 4**.  | NA        |
 | defaultDimension    | String                   | Default dimensions of the widget. The value must be available in the **supportDimensions** array of the widget.| NA        |

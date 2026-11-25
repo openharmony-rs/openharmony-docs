@@ -1,7 +1,7 @@
 # 触摸测试控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -224,7 +224,7 @@ struct BlockDescendants {
 @Entry
 @Component
 struct Index {
-  @State @Watch('onModeChange') mode: number = HitTestMode.None;
+  @State @Watch('onModeChange') mode: HitTestMode = HitTestMode.None;
   @State modeStr: string = 'None';
 
   onModeChange() {

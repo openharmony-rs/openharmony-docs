@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVScreenCapture的C API进行屏幕录制的基础流程，涵盖实例创建、音视频参数配置、回调设置、录屏启停及资源释放等步骤，适用于屏幕录制、会议共享、直播等场景。"
+keywords: [AVScreenCapture, OH_AVScreenCaptureConfig, 屏幕录制, 码流输出, 文件输出]
+doctype: guide
+status: active
+---
+
 # AVScreenCapture录屏基础流程
 
 <!--Kit: Media Kit-->
@@ -34,6 +42,8 @@
 - 使用AVScreenCapture时需明确其状态变化。创建实例后，调用方法可进入指定状态。在错误状态下执行方法会导致AVScreenCapture出错。开发者应在状态转换前进行检查以避免异常。
 
 - 在录屏取码流场景中，屏幕录制启动时会弹出隐私保护弹框，包含“屏幕隐私保护”选项。勾选后，隐私信息（如横幅通知、控制中心、通话界面等）将被屏蔽。不同产品上的隐私信息可能有差异，以实际录制结果为准。
+
+- 当显示内容未发生变化时，系统不输出新的视频帧。
 
   隐私保护弹框：
 
@@ -83,7 +93,7 @@ g_avCapture = OH_AVScreenCapture_Create();
 如果配置了采集麦克风音频数据，需：
 
 - 配置麦克风权限ohos.permission.MICROPHONE，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)。
-- 申请长时任务，申请方式请参见[申请长时任务](../../task-management/continuous-task.md)。
+- 申请长时任务，申请方式请参见[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
 录屏存文件时默认只开启内录。录制过程中，麦克风可以动态开启/关闭，开启后，可同时启动内外录制。
 
@@ -192,7 +202,7 @@ config = {
 void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)
 {
     (void)capture;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnError errorCode is %{public}d", errorCode);
+    OH_LOG_ERROR(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnError errorCode is %{public}d", errorCode);
     (void)userData;
 }
 
@@ -244,7 +254,7 @@ void HandleVideoBuffer(OH_AVBuffer *buffer)
     }
     OH_NativeBuffer_Unreference(nativebuffer);
     buffer = nullptr;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable inner audio");
+    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable Video");
 }
 
 void HandleAudioBuffer(OH_AVBuffer *buffer, FILE *file, const char *logMsg)
@@ -285,7 +295,7 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 void OnDisplaySelected(struct OH_AVScreenCapture *capture, uint64_t displayId, void *userData)
 {
     (void)capture;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnError errorCode is %{public}uld", displayId);
+    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== OnDisplaySelected displayId is %{public}uld", displayId);
     (void)userData;
 }
 
@@ -346,7 +356,7 @@ void HandleVideoBuffer(OH_AVBuffer *buffer)
     }
     OH_NativeBuffer_Unreference(nativebuffer);
     buffer = nullptr;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable inner audio");
+    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable Video");
 }
 
 void HandleAudioBuffer(OH_AVBuffer *buffer, FILE *file, const char *logMsg)
@@ -545,6 +555,32 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 // 在配置参数结束后执行"g_missionIds2.clear()"。
 ```
 
+### 录制虚拟扩展屏幕
+
+从API版本26.0.1开始，支持[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN模式，即可以创建虚拟扩展屏幕并对其内容进行录制。
+
+在此模式下，系统会创建一个虚拟扩展屏幕，应用可对其内容进行录制。关于虚拟屏和扩展屏的概念说明请参见[屏幕管理开发术语](../../displaymanager/display-terminology.md)。
+
+<!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
+
+``` C++
+// 在config中配置待录制的虚拟扩展屏幕的宽度、高度。
+int32_t width = 1920;
+int32_t height = 1080;
+config.videoInfo.videoCapInfo.videoFrameWidth = width;
+config.videoInfo.videoCapInfo.videoFrameHeight = height;
+
+// 设置录屏模式为虚拟扩展屏幕录制。
+config.captureMode = OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN;
+// 创建的虚拟扩展屏幕绑定到displayId为0的屏幕上。
+config.videoInfo.videoCapInfo.displayId = 0;
+```
+
+> **说明：**
+>
+> - 无论[OH_AVScreenCapture_StrategyForPickerPopUp()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值，该模式下都不会弹出Picker。
+> - 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制。针对有内置屏的设备，只能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
+
 
 
 ## 弹窗模式说明
@@ -606,6 +642,10 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
   - **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口ID时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口ID时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
 
 - 在Phone/Tablet设备上，不同录屏模式下统一不弹出Picker，仅弹出隐私保护弹窗。
+
+> **说明：**
+>
+> 从API版本26.0.1开始，当录屏模式为[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
 
 ## 更多资源
 

@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者在非实时场景下使用OHAudioSuite离线编辑管线组合输入、效果、输出节点处理PCM音频数据，涵盖基础均衡器编辑、音源分离、多路混音与级联等场景的完整开发步骤。"
+keywords: [OHAudioSuite, 离线编辑, 均衡器, 混音, 级联, 音源分离, AUDIOSUITE_PIPELINE_EDIT_MODE, OH_AudioSuiteEngine_RenderFrame, OH_AudioSuiteEngine_MultiRenderFrame]
+doctype: guide
+status: active
+---
+
 # 离线编辑(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -14,9 +22,12 @@
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### 添加头文件
 开发者通过引入头文件<[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>和<[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>，使用音频编创相关API。
 
@@ -128,7 +139,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    void *userData = static_cast<void *>(audioInfo);
    OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
    // 创建输入节点。
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.inputNode);
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.inputNode);
    
    // 重置构造器配置，创建效果节点。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
@@ -164,7 +175,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    audioFormatOutput.encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW;
    OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatOutput);
    // 创建输出节点。
-   OH_AudioSuiteEngine_CreateNode(audioSuiteEngine, nodeBuilder, &nodes.outputNode);
+   OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.outputNode);
    
    // 销毁节点构造器。
    OH_AudioSuiteNodeBuilder_Destroy(nodeBuilder);
@@ -539,7 +550,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    // 重置构造器配置并设置为声场节点类型。
    OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
    OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_SOUND_FIELD);
-   // 创建声场节点并设置声场模式为聆听。
+   // 创建声场节点并设置声场模式为前置。
    OH_AudioSuiteEngine_CreateNode(audioSuitePipeline, nodeBuilder, &nodes.fieldNode);
    OH_AudioSuiteEngine_SetSoundFieldType(nodes.fieldNode, SOUND_FIELD_FRONT_FACING);
    

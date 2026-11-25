@@ -25,7 +25,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
-Requests efficiency resources.
+Whether the request is used to apply for or release the efficiency resources. The release operation takes effect only for the resources allocated in this request.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -33,7 +33,7 @@ Requests efficiency resources.
 
 **Parameters**
 
-| Name    | Type     | Mandatory  | Description                                      |
+| Name| Type| Mandatory| Description|
 | ------- | ------- | ---- | ---------------------------------------- |
 | request | [EfficiencyResourcesRequest](#efficiencyresourcesrequest) | Yes   | Necessary information carried in the request, including the resource type and timeout interval.|
 
@@ -60,17 +60,17 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
-    resourceTypes: backgroundTaskManager.ResourceType.CPU,
-    isApply: true,
-    timeOut: 0,
-    reason: "apply",
-    isPersist: true,
-    isProcess: false,
+    resourceTypes: backgroundTaskManager.ResourceType.CPU, // The request is used to apply for the CPU resources.
+    isApply: true, // The request is used to apply for the resources.
+    timeOut: 0, // Duration for which the resource will be used, in milliseconds
+    reason: 'apply', // Reason for applying for the resources.
+    isPersist: true, // The resources are permanently held.
+    isProcess: false, // The request is initiated by an app.
     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU // The application's background task runs on the small CPU core. This parameter is supported since API version 23.
 };
 try {
     backgroundTaskManager.applyEfficiencyResources(request);
-    console.info("applyEfficiencyResources success. ");
+    console.info('applyEfficiencyResources success.');
 } catch (error) {
     console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
@@ -94,7 +94,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| 401 | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
 | 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9800003 | Internal transaction failed. |
@@ -128,7 +128,7 @@ Obtains all information about the requested efficiency resources, including the 
 
 | Type                                           | Description         |
 |-----------------------------------------------|-------------|
-|  Promise&lt;[EfficiencyResourcesInfo](#efficiencyresourcesinfo20)[]&gt; | Promise used to return all information about efficiency resources.|
+|  Promise&lt;[EfficiencyResourcesInfo](#efficiencyresourcesinfo20)[]&gt; | Promise used to return the array of power efficiency resource information obtained.|
 
 **Error codes**
 
@@ -234,7 +234,7 @@ Obtains the authorization information of a continuous task.
 
 | Type                                           | Description         |
 |-----------------------------------------------|-------------|
-|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | Authorization result.|
+|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | Authorization result, indicating the authorization status of a continuous task.|
 
 **Error codes**
 
@@ -285,7 +285,7 @@ Obtains all continuous task information, including the task ID and type. This AP
 
 | Type                                           | Description         |
 |-----------------------------------------------|-------------|
-|  Promise&lt;[ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt; | Promise that returns all continuous task information.|
+|  Promise&lt;[ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt; | Promise that returns an array of all continuous task information.|
 
 **Error codes**
 
@@ -333,7 +333,7 @@ Registers a callback to listen for the continuous task change events.
 
 | Name    | Type     | Mandatory  | Description                   |
 | ------- | ------- | ---- |-----------------------|
-| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | Yes   | Background task listener that listens for continuous task state changes, including start, update and stop events.|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | Yes   | Subscriber for continuous task state changes, which is called when a continuous task is started, updated, or stopped.|
 
 **Error codes**
 
@@ -390,7 +390,7 @@ Unregisters the callback for continuous task changes.
 
 | Name    | Type     | Mandatory  | Description                   |
 | ------- | ------- | ---- |-----------------------|
-| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | Yes   | Background task listener that listens for continuous task state changes, including start, update and stop events.|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | Yes   | Subscriber for continuous task state changes, which is called when a continuous task is started, updated, or stopped.|
 
 **Error codes**
 
@@ -449,11 +449,11 @@ Describes the parameters for requesting efficiency resources.
 
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| resourceTypes   | number  | No   | No   | Type of the resource to request.                              |
+| resourceTypes   | number  | No   | No   | Type of the resource to request. For details, see [ResourceType](#resourcetype).                              |
 | isApply         | boolean | No   | No   | Whether the request is used to apply for resources.<br>- **true**: The request is used to apply for resources.<br>- **false**: The request is used to release resources.|
-| timeOut         | number  | No   | No   | Duration for which the resource will be used, in milliseconds.               |
+| timeOut         | number  | No   | No   | Duration for which the resource will be used, in milliseconds. After this parameter is set, the power efficiency resources will be automatically released after the specified time. This parameter does not take effect when **isPersist** is set to **true**.            |
 | isPersist       | boolean | No   | Yes   | Whether the resource is permanently held. The default value is **false**.<br>- **true**: The resource is permanently held.<br>- **false**: The resource is held for a limited period of time.|
-| isProcess       | boolean | No   | Yes   | Whether the request is initiated by a process. The default value is **false**.<br>- **true**: The request is initiated by a process.<br>- **false**: The request is initiated by an application.        |
+| isProcess       | boolean | No   | Yes   | Whether the request is initiated by a process. The default value is **false**.<br>- **true**: The request is initiated by a process. The power efficiency resource is valid only for the current process.<br>- **false**: The request is initiated by an app. The power efficiency resource is valid for all processes of the app.        |
 | reason          | string  | No   | No   | Reason for requesting the resource.               |
 | cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23) | No   | Yes   | CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off).|
 
@@ -490,11 +490,11 @@ Defines the efficiency resource information.
 | [resourceTypes](#resourcetype) | number  | No   | No   | Enumerates the efficiency resource types.    |
 | timeout                        | number  | No   | No   | Timeout, in milliseconds.|
 | isPersistent                   | boolean | No   | No   | Whether the resource is permanently held. The default value is **false**. The value **true** indicates the resource is permanently held. The value **false** indicates that the resource is held within a limited time.     |
-| isForProcess                   | boolean | No   | No   | Whether the resource is requested by a process or an application. The value **true** indicates that the resource is requested by a process. The value **false** indicates that the resource is requested by an application.  |
+| isForProcess                   | boolean | No   | No   | Process or app request. The value **true** indicates that a process requests the power efficiency resource. The power efficiency resource is valid only for the current process. The value **false** indicates that an app requests the power efficiency resource. The power efficiency resource is valid for all processes of the app.  |
 | reason                         | string  | No   | No   | Reason for requesting the resource.      |
 | uid                            | number  | No   | No   | Application UID.    |
 | pid                            | number  | No   | No   | Application PID.  |
-| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | No   | Yes   |  CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off).|
+| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | No   | Yes   | CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off).|
 
 ## EfficiencyResourcesCpuLevel<sup>23+</sup>
 
@@ -537,7 +537,7 @@ Defines the authorization information of a continuous task.
 | userId | number                              | No   | No | User ID.  |
 | bundleName | string                              | No   | No | Application bundle name.  |
 | appIndex | number                              | No   | No | Index of an application clone.|
-| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | No   | Yes | Authorization result.  |
+| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | No   | Yes | Authorization result, indicating the authorization status of a continuous task.  |
 
 ## BackgroundTaskSubscriber<sup>23+</sup>
 

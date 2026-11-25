@@ -1310,6 +1310,58 @@ A property decorated by \'xxx\' cannot define a set method.
 **处理步骤**<br>
 按照@Computed规范正确使用，只能装饰get方法。
 
+## 10905131 @Builder装饰器使用位置校验异常
+**错误信息**<br>
+Only global functions decorated with @Builder support parameter passing.
+
+**错误描述**<br>
+携带实参的@Builder装饰器仅支持装饰全局函数。
+
+**可能原因**<br>
+开发者在自定义组件的成员方法或成员变量上使用携带实参的@Builder装饰器导致报错。
+
+**处理步骤**<br>
+将携带实参的@Builder装饰器用于装饰全局函数，或去除装饰器实参改为不携带实参的@Builder。
+
+## 10905132 @Builder装饰器实参校验异常
+**错误信息**<br>
+The @Builder decorator supports passing only object literals.
+
+**错误描述**<br>
+@Builder装饰器仅支持传入单个对象字面量实参。
+
+**可能原因**<br>
+开发者为全局@Builder装饰器传入的实参不是单个对象字面量导致报错。
+
+**处理步骤**<br>
+为全局@Builder装饰器传入单个对象字面量实参。
+
+## 10905133 @Builder配置项isPlaceholder校验异常
+**错误信息**<br>
+The \'isPlaceholder\' option of the @Builder decorator only supports passing boolean literal.
+
+**错误描述**<br>
+@Builder装饰器配置项中的isPlaceholder属性仅支持取值true或false。
+
+**可能原因**<br>
+开发者传入的对象字面量中isPlaceholder键缺失、拼写错误，或取值不是显式的布尔字面量（如变量、枚举值、undefined、null）导致报错。
+
+**处理步骤**<br>
+将isPlaceholder的取值改为显式布尔字面量true或false，并检查键名拼写是否正确。
+
+## 10905134 占位构建函数参数校验异常
+**错误信息**<br>
+An @Builder function with placeholder capabilities does not support parameter passing.
+
+**错误描述**<br>
+@Builder函数作为占位构建函数时不能声明参数。
+
+**可能原因**<br>
+开发者使用isPlaceholder为true的@Builder装饰器声明占位构建函数时，为函数声明了参数导致报错。
+
+**处理步骤**<br>
+去除占位构建函数的参数，或将isPlaceholder改为false后按普通@Builder使用。
+
 ## 10905358 !!语法校验异常
 **错误信息**<br>
 When the two-way binding syntax is used, do not assign a value to \'xxx\' variable \'yyy\' because the framework generates the default assignment.
@@ -1445,7 +1497,7 @@ reuseId属性不能用于@ReusableV2装饰的@ComponentV2自定义组件。
 The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
 
 **错误描述**<br>
-ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：[\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management//arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management//arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md)。
+ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：[\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management/arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md)。
 
 **可能原因**<br>
 开发者在Function类型或者() => void类型的变量上使用了V1装饰器。

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=1b0db3ca24f88b8a35055898204d6f512cd41949 translatedAt=2026-11-20T03:25:44.770Z pushedAt=2026-11-20T06:43:36.467Z nl=1 -->
 
 This topic walks you through on how to import an ECC key. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms).
 
@@ -72,9 +73,6 @@ napi_value ImportAesKey(napi_env env, napi_callback_info info)
     do {
         ohResult = InitParamSet(&testImportKeyParamSet, g_testImportKeyParam,
                                 sizeof(g_testImportKeyParam) / sizeof(OH_Huks_Param));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
@@ -238,9 +236,6 @@ napi_value ImportX25519Key(napi_env env, napi_callback_info info)
     do {
         ohResult = InitParamSet(&testImportKeyParamSet, g_testImportKeyParam,
                                 sizeof(g_testImportKeyParam) / sizeof(OH_Huks_Param));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-            break;
-        }
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }

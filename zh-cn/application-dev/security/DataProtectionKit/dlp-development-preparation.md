@@ -15,7 +15,7 @@
 
 1. 密钥初始化
 
-    - 生成服务器公私钥对（1对Ed25519密钥对serverSignPubKey和serverSignPriKey，一对X25519密钥对serverEncPubKey 和serverEncPriKey）。
+    - 生成服务器公私钥对（一对Ed25519密钥对serverSignPubKey和serverSignPriKey，一对X25519密钥对serverEncPubKey 和serverEncPriKey）。
 
     - 在服务器已经有上述两对密钥的情况下，不需要对这两对密钥再次进行生成。两对密钥通过调用OpenSSL算法库生成。
 
@@ -66,3 +66,5 @@
     - 生成一对临时加解密公私钥，使用临时私钥与从证书链中获取的端侧临时公钥做密钥协商，并用协商后的密钥重新加密策略明文。
 
     - 将必要信息封装到报文中，回传给端侧客户端，用于端侧解密文件并处理权限管控。
+
+<!--RP1--><!--RP1End-->

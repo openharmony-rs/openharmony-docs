@@ -505,12 +505,11 @@ BackupExtensionAbility不支持以下模块的引用。
 | <!--DelRow--> Core File Kit | [@ohos.file.fileAccess (公共文件访问与管理)(系统接口)](js-apis-fileAccess-sys.md) |
 | <!--DelRow--> Form Kit | [@ohos.app.form.formHost (formHost)(系统接口)](../apis-form-kit/js-apis-app-form-formHost-sys.md) |
 | Form Kit | [@ohos.application.formError (formError)](../apis-form-kit/js-apis-application-formError.md) |
-| Form Kit | [@ohos.application.formError (formError)](../apis-form-kit/js-apis-application-formError.md) |
 | <!--DelRow--> Form Kit | [@ohos.application.formHost (formHost)(系统接口)](../apis-form-kit/js-apis-application-formHost-sys.md) |
 | IME Kit | [@ohos.inputMethod (输入法框架)](../apis-ime-kit/js-apis-inputmethod.md) |
 | <!--DelRow--> Input Kit | [@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../apis-input-kit/js-apis-inputmonitor-sys.md) |
 | Location Kit | [@ohos.geolocation (位置服务)](../apis-location-kit/js-apis-geolocation.md) |
-| MDM Kit | [@ohos.enterprise.adminManager（admin权限管理）](../apis-mdm-kit/js-apis-enterprise-adminManager.md) |
-| <!--DelRow--> MDM Kit | [@ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
+| MDM Kit | [@ohos.enterprise.adminManager (admin权限管理)](../apis-mdm-kit/js-apis-enterprise-adminManager.md) |
+| <!--DelRow--> MDM Kit | [@ohos.enterprise.dateTimeManager (系统时间管理)(系统接口)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
 | <!--DelRow--> Media Kit | [@ohos.multimedia.media (媒体服务)(系统接口)](../apis-media-kit/js-apis-media-sys.md) |
 | Sensor Service Kit | [@ohos.sensor (传感器)](../apis-sensor-service-kit/js-apis-sensor.md) |

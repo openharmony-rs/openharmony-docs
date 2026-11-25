@@ -5,7 +5,7 @@
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b88f768a950fb79d03f45e2d155aa3b232dec3fd translatedAt=2026-09-14T01:56:45.425Z pushedAt=2026-09-14T03:34:01.129Z -->
+<!-- md-trans-meta sourceCommit=6f13428e2aca01ac569b614097453a4a3721432e translatedAt=2026-11-03T04:26:23.886Z pushedAt=2026-11-03T12:08:25.486Z nl=1 -->
 
 The **inputMethod** module is oriented to common foreground applications (system applications such as Notes, Messaging, and Settings). It provides input method control and management capabilities, including displaying or hiding the soft keyboard, switching between input methods, and obtaining the list of all input methods.
 
@@ -23,6 +23,10 @@ import { inputMethod } from '@kit.IMEKit';
 switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 
 Switches the input method. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> When [Assessment Management](../apis-assessment-kit/js-apis-customization-assessment.md) is enabled, this API cannot switch to another input method application.
 
 **Required permissions**: ohos.permission.CONNECT_IME_ABILITY
 
@@ -49,8 +53,8 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -124,7 +128,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **Example**
 
@@ -162,7 +166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 
 **Example**
@@ -247,7 +251,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -300,7 +304,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -354,8 +358,8 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails. |
-| 202      | not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception.  |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -421,7 +425,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800003 | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
 | 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -468,7 +472,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **Example**
@@ -522,8 +526,8 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -575,7 +579,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -629,7 +633,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -690,7 +694,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -742,7 +746,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **Example**
 
@@ -781,7 +785,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **Example**
 
@@ -834,8 +838,8 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -888,8 +892,8 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -938,7 +942,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -990,7 +994,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1016,6 +1020,10 @@ try {
 switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
 
 Switches the input method. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> When [Assessment Management](../apis-assessment-kit/js-apis-customization-assessment.md) is enabled, this API cannot switch to another input method application.
 
 **Since**: 26.0.0
 
@@ -1047,8 +1055,8 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -1099,7 +1107,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1151,7 +1159,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1211,3 +1219,4 @@ For more properties of the input method soft keyboard window information, see [I
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | userId | number | No | Yes | ID of the user that displays the input method window.<br>This attribute can be used only by system applications.|
+<!--no_check-->

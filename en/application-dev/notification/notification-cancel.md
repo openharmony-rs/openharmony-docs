@@ -1,11 +1,11 @@
 # Canceling a Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 When a user taps a notification to bring the application to the foreground, the application may cancel one, multiple, or all notifications.
 
@@ -13,9 +13,9 @@ When a user launches the application from the home screen icon and views in-app 
 
 Examples:
 
-- Scenario 1: The user receives an instant message from a friend. After they tap the notification to open the application and view the message, the application cancels the corresponding notification.
+Scenario 1: The user receives an instant message from a friend. After they tap the notification to open the application and view the message, the application cancels the corresponding notification.
 
-- Scenario 2: The user receives an instant message from a friend. After they launch the application from the home screen icon and view the message, the application cancels the corresponding notification.
+Scenario 2: The user receives an instant message from a friend. After they launch the application from the home screen icon and view the message, the application cancels the corresponding notification.
 
 ## Available APIs
 

@@ -1,4 +1,4 @@
-# FunctionInfo (系统接口)
+# FunctionInfo (Function信息)(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->

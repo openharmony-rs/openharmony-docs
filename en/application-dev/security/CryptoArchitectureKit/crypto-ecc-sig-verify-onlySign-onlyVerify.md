@@ -1,4 +1,4 @@
-# Signing and Verification with the ECC Key Pair (ArkTS)
+# Signing and Signature Verification with an ECC Key Pair (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=71a9c24c930904b17deb97103d1dfffd94b342e3 translatedAt=2026-08-07T03:27:28.414Z pushedAt=2026-08-10T08:16:26.338Z -->
+<!-- md-trans-meta sourceCommit=9fca4748e6758305b5cd265dfe627a1972198ec1 translatedAt=2026-11-20T09:24:51.634Z pushedAt=2026-11-23T07:57:11.079Z nl=1 -->
 
 ## OnlySign and OnlyVerify Modes
 
@@ -22,7 +22,7 @@ Signing and signature verification supports the **OnlySign** and **OnlyVerify** 
 
 4. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key object (KeyPair), which includes a public key (**PubKey**) and a private key (**PriKey**). The key algorithm is **ECC** and curve type is **ECC224**.
 
-To learn how to generate an ECC asymmetric key pair, refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ from the current example in input parameters.
+   To learn how to generate an ECC asymmetric key pair, refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ from the current example in input parameters.
 
 5. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'ECC|SHA1|OnlySign'** to create a **Sign** instance. The asymmetric key type is **ECC**, digest algorithm is **SHA1**, and signature mode is **OnlySign**.
 
@@ -41,10 +41,11 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
 - Example (using asynchronous APIs):
 
   <!-- @[ecc_onlysign_onlyverify_signature_verification_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/ecc_onlysign_onlyverify_signature_verification_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
@@ -65,34 +66,43 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
   }
   
   async function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    // Use Md to compute the SHA1 digest (20 bytes).
-    let md = cryptoFramework.createMd('SHA1');
-    await md.update(messageData);
-    let digestBlob = await md.digest();
-    let keyGenAlg = 'ECC224';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = await generator.generateKeyPair();
-    let signData = await signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
+      // First use Md to calculate the SHA1 digest (20 bytes).
+      let md = cryptoFramework.createMd('SHA1');
+      await md.update(messageData);
+      let digestBlob = await md.digest();
+      let keyGenAlg = 'ECC224';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey, digestBlob);
+      let verifyResult = await verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
   <!-- @[ecc_onlysign_onlyverify_signature_verification_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/ecc_onlysign_onlyverify_signature_verification_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
-  function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
+  function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
@@ -100,7 +110,7 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
     return signData;
   }
   
-  function verifyMessagePromise(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
+  function verifyMessageSync(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
     pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'ECC|SHA1|OnlyVerify';
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -111,22 +121,27 @@ To learn how to generate an ECC asymmetric key pair, refer to the following exam
   }
   
   function main() {
-    let messageData: cryptoFramework.DataBlob =
-      { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    let md = cryptoFramework.createMd('SHA1');
-    md.updateSync(messageData);
-    let digestBlob = md.digestSync();
-    let keyGenAlg = 'ECC224';
-    let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
-    let keyPair = generator.generateKeyPairSync();
-    let signData = signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
-    if (verifyResult === true) {
-      console.info('verify result: success.');
-    } else {
-      console.error('verify result: failed.');
+    try {
+      let messageData: cryptoFramework.DataBlob =
+        { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
+      let md = cryptoFramework.createMd('SHA1');
+      md.updateSync(messageData);
+      let digestBlob = md.digestSync();
+      let keyGenAlg = 'ECC224';
+      let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey, digestBlob);
+      let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+      } else {
+        console.error('verify result: failed.');
+        // ...
+      }
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`verify failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
-  
-  <!--no_check-->

@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d09068c013deef462b1019892f5d3232cec8f4e1 translatedAt=2026-09-01T11:54:27.319Z -->
+<!-- md-trans-meta sourceCommit=1fae569789b0180afcf935decdce548f024328ce translatedAt=2026-11-03T03:10:15.839Z pushedAt=2026-11-13T01:06:00.056Z nl=1 -->
 
 **geometryTransition** is used to create a smooth, seamless transition between views. By specifying the frame and position of the **in** and **out** components through **geometryTransition**, you can create a spatial linkage between the transition effects (such as opacity and scale) defined through the **transition** mechanism. In this way, you can guide the visual focus from the previous view (**out** component) to the new view (**in** component).
 
@@ -25,13 +25,15 @@
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | -------- | ---- | ---- | --------------------------------------------------------------------- |
-| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | No   | Yes | <br>Determines the strategy for moving the in/out components in the component hierarchy during the shared element transition. Default value: TransitionHierarchyStrategy.ADAPTIVE.<br>This parameter actually affects the front-to-back overlapping relationship between the bound in/out components and other components. Modify it with caution in normal cases.<br>It is recommended to set this parameter only when the front-to-back overlapping relationship between components is incorrect during the shared element transition and needs to be adjusted.<br>**System interface:** This is a system interface.<br/>**Model constraint:** This API can be used only in the Stage model.|
+| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | No   | Yes | <br>Movement strategy of the in/out components' hierarchical position in the component tree during the shared element transition. Default value: **TransitionHierarchyStrategy.ADAPTIVE**.<br>It actually affects the front-to-back overlapping relationship between the bound in/out components and other components. Modify it with caution under normal circumstances.<br>It is recommended to adjust and set this parameter only when an incorrect front-to-back overlapping relationship between components is found during the shared element transition.<br>**System API:** This is a system API.<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services. Since API version 13, this API is not supported in atomic services.|
 
 ## TransitionHierarchyStrategy<sup>12+</sup>
 
 Enumerates the strategies for the hierarchical position movement of **in**/**out** components in the component tree during the shared element transition process.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API is supported in atomic services since API version 12. Since API version 13, this API is not supported in atomic services.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

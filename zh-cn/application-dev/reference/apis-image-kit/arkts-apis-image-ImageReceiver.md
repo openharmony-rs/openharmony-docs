@@ -417,7 +417,7 @@ setMemoryName(name: string): void
 >
 > - 若希望传入值与实际生效的内存标识符完全一致，建议名称中至少包含一个非数字字符。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -435,7 +435,7 @@ setMemoryName(name: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 7900201  | Invalid parameter. Possible causes:<br>Name is empty.<br>Name contains no visible characters after filtering.<br>The length of name exceeds 256 bytes.<br>Ensure the name parameter contains visible ASCII characters. |
+| 7900201  | Invalid parameter. Possible causes:<br>Name is empty.<br>Name contains no visible characters after filtering.<br>The length of name exceeds 255 bytes.<br>Ensure the name parameter contains visible ASCII characters. |
 
 **示例：**
 
@@ -447,8 +447,8 @@ function setMemoryNameSync(receiver: image.ImageReceiver) {
     // 建议在注册imageArrival回调并读取图片前设置内存标识符。
     receiver.setMemoryName('ImageReceiverNameTest');
     console.info('Succeeded in setting memory name.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set memory name. Code: ${err.code}, message: ${err.message}`);
     return;
   }

@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=99f27ed5372b3353f2b572028e1a2823f9d04616 translatedAt=2026-09-04T02:44:41.909Z pushedAt=2026-09-09T09:11:03.651Z -->
+<!-- md-trans-meta sourceCommit=2ef7a1e44e8b87b446030917cb226504c52da997 translatedAt=2026-11-16T01:22:42.803Z pushedAt=2026-11-20T07:26:50.454Z nl=1 -->
 
 Provides APIs for managing databases in transaction mode. A transaction object is created by using [createTransaction](arkts-apis-data-relationalStore-RdbStore.md#createtransaction14). Operations on different transaction objects are isolated. For details about the transaction types, see [TransactionType](arkts-apis-data-relationalStore-e.md#transactiontype14).
 
@@ -199,7 +199,7 @@ A single string type field supports writing a maximum of 8 MB. The excess part w
 
 | Type                 | Description                                             |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise object that returns the row ID of the inserted data. |
+| Promise&lt;number&gt; | Promise used to return the row ID of the inserted data. |
 
 **Error codes**
 
@@ -2100,7 +2100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -2176,7 +2176,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                                                |
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000     | Inner error.                                                 |
 | 14800011     | The current operation failed because the database is corrupted.                                          |
 | 14800014     | The target instance is already closed.                                              |

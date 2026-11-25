@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T02:36:59.809Z pushedAt=2026-09-09T09:11:03.629Z -->
+<!-- md-trans-meta sourceCommit=a344fa18476f0d16c0d531be44b7138a04f15161 translatedAt=2026-11-16T01:21:40.519Z pushedAt=2026-11-20T07:24:34.411Z nl=1 -->
 
 Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
@@ -272,7 +272,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 Obtains the column type based on the specified column index or column name. This API returns the result synchronously.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core 
 
 **Parameters**
 
@@ -1337,11 +1337,9 @@ For details about the definition of **this.context** in the sample code, see the
 ```ts
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';
-import { UIAbility } from '@kit.AbilityKit';
-import { relationalStore } from '@kit.ArkData';
+import { UIAbility, common } from '@kit.AbilityKit';
+import { relationalStore, sendableRelationalStore } from '@kit.ArkData';
 import { taskpool } from '@kit.ArkTS';
-import { common } from '@kit.AbilityKit';
-import { sendableRelationalStore } from '@kit.ArkData';
 
 @Concurrent
 async function getDataByName(name: string, context: common.UIAbilityContext) {

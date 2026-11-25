@@ -20,6 +20,7 @@
     - [系统账号特权列表](appendix-osAccount-authorization-privileges.md)
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
+    - [@ohos.boardInfo (板级硬件信息)](js-apis-board-info.md)
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
@@ -119,15 +120,17 @@
   - 模块<!--basic-services-module-->
     - [OH_CommonEvent](capi-oh-commonevent.md)
     - [DeviceInfo](capi-deviceinfo.md)
+    - [BoardInfo](capi-boardinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [OH_Scan](capi-oh-scan.md)
-    - [OH_Print](capi-oh-print.md)
+    - [Scan](capi-oh-scan.md)
+    - [Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
     - [UsbManager](capi-usbmanager.md)
   - 头文件<!--basic-services-headerfile-->
     - [deviceinfo.h](capi-deviceinfo-h.md)
+    - [boardinfo.h](capi-boardinfo-h.md)
     - [ohbattery_info.h](capi-ohbattery-info-h.md)
     - [oh_commonevent.h](capi-oh-commonevent-h.md)
     - [oh_commonevent_support.h](capi-oh-commonevent-support-h.md)

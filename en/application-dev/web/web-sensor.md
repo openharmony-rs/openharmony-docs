@@ -5,6 +5,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=c825e6a7cc75a67ea652eb38bec0a2c70e07052c translatedAt=2026-11-12T04:46:57.422Z pushedAt=2026-11-12T08:43:33.042Z nl=1 -->
 
 ## Overview
 
@@ -18,8 +19,8 @@ To access the motion and orientation sensors, invoke the following W3C standards
 | ------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Accelerometer             | Accelerometer      | Obtains acceleration data in the X, Y, and Z axes.                                                                                                                   |
 | Gyroscope                 | Gyroscope      | Obtains angular velocity data in the X, Y, and Z axes.                                                                                                                   |
-| AbsoluteOrientationSensor | Absolute orientation    | Obtains the quaternion including the X, Y, Z, and W components that indicates the absolute orientation of the device.                                                                                                |
-| RelativeOrientationSensor | Relative orientation    | Obtains the quaternion including the X, Y, Z, and W components that indicates the relative orientation of the device.                                                                                                |
+| AbsoluteOrientationSensor | Absolute orientation | Obtains a quaternion that represents the absolute orientation of the device, including the X, Y, Z, and W components. |
+| RelativeOrientationSensor | Relative orientation | Obtains a quaternion that represents the relative orientation of the device, including the X, Y, Z, and W components. |
 | DeviceMotionEvent         | Device motion event| Listens for the device motion events to obtain the acceleration data of the device in the X, Y, and Z axes, acceleration data that contains gravity in the X, Y, and Z axes, and rotation rate data of the device in the alpha, beta, and gamma axes.|
 | DeviceOrientationEvent    | Device orientation event| Listens for the device orientation events to obtain the angles of the device around the X, Y, and Z axes.                                                                                                           |
 
@@ -27,17 +28,20 @@ To access the motion and orientation sensors, invoke the following W3C standards
 
 To use the preceding APIs, you need to declare the corresponding sensor permissions in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-
-```json
-    "requestPermissions":[
-      {
-        "name" : "ohos.permission.ACCELEROMETER" // Accelerometer permission
-      },
-      {
-        "name" : "ohos.permission.GYROSCOPE"     // Gyroscope permission
-      }
-    ]
-```
+  <!-- @[declare_the_appropriate_sensor_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/module.json5) --> 
+  
+  ``` JSON5
+  "requestPermissions": [
+    // ...
+    {
+      "name" : "ohos.permission.ACCELEROMETER" // Accelerometer permission
+    },
+    {
+      "name" : "ohos.permission.GYROSCOPE"     // Gyroscope permission
+    }
+  ]
+  ```
+  
 
 When the **Web** component is connected to a motion or orientation sensor, configure [onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9) to receive permission request notifications.
 
@@ -45,7 +49,9 @@ When the **Web** component is connected to a motion or orientation sensor, confi
 
 1. In the application code, configure [onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9) for the **Web** component and use the [getAccessibleResource](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md#getaccessibleresource9) API of [PermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md) to obtain the resource type of the request permission. When the resource type is **TYPE_SENSOR**, the sensor is authorized.
 
-   ```ts
+   <!-- @[the_type_of_resource_for_which_permission_is_requested](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UseMotionDirSensor.ets) -->  
+   
+   ``` TypeScript
    import { UIContext } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
@@ -56,7 +62,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    struct WebComponent {
      controller: webview.WebviewController = new webview.WebviewController();
      uiContext: UIContext = this.getUIContext();
-
+   
      aboutToAppear() {
        // Enable web frontend page debugging.
        webview.WebviewController.setWebDebuggingAccess(true);
@@ -110,8 +116,8 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    ```
 
 2. In the frontend page code, use JavaScript to call the W3C standards-compliant API related to the sensor.
-
-   ```html
+   
+   ``` HTML
    <!DOCTYPE HTML>
    <html>
    <head>
@@ -120,7 +126,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
        <meta name="msapplication-tap-highlight" content="no" />
        <meta name="HandheldFriendly" content="true" />
        <meta name="MobileOptimized" content="320" />
-       <title>Motion and direction sensor</title>
+       <title>Motion and orientation sensor</title>
        <style>
            body {
                font-family: Arial, sans-serif;
@@ -129,9 +135,9 @@ When the **Web** component is connected to a motion or orientation sensor, confi
        <script type="text/javascript">
            // Access the accelerometer of the device and obtain its data.
            function getAccelerometer() {
-               var acc = new Accelerometer({frequency: 60});
+               let acc = new Accelerometer({frequency: 60});
                acc.addEventListener('activate', () => console.info('Ready to measure.'));
-               acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               acc.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                acc.addEventListener('reading', () => {
                    console.info(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
                });
@@ -140,9 +146,9 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    
            // Access the gyroscope of the device and obtain its data.
            function getGyroscope() {
-               var gyr = new Gyroscope({frequency: 60});
+               let gyr = new Gyroscope({frequency: 60});
                gyr.addEventListener('activate', () => console.info('Ready to measure.'));
-               gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               gyr.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                gyr.addEventListener('reading', () => {
                    console.info(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
                });
@@ -151,9 +157,9 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    
            // Access the orientation sensor of the device and obtain its data.
            function getAbsoluteOrientationSensor() {
-               var aos = new AbsoluteOrientationSensor({frequency: 60});
+               let aos = new AbsoluteOrientationSensor({frequency: 60});
                aos.addEventListener('activate', () => console.info('Ready to measure.'));
-               aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               aos.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                aos.addEventListener('reading', () => {
                    console.info(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
                });
@@ -206,7 +212,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                }
            }
    
-           // Listen for the device orientation events and execute the corresponding processing logic.
+           // Listen for device orientation changes and execute the corresponding processing logic.
            function listenDeviceOrientationEvent2() {
                removeDeviceOrientationEvent2();
                if ('DeviceOrientationEvent' in window) {
@@ -216,7 +222,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
                }
            }
    
-           // Remove the device orientation event listener.
+           // Remove the previously added device orientation event listener.
            function removeDeviceOrientationEvent2() {
                if ('DeviceOrientationEvent' in window) {
                  window.removeEventListener('deviceorientationabsolute', handleOrientationEvent, false);

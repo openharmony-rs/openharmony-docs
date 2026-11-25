@@ -1,10 +1,11 @@
-# ArkUI_Context\*
+# ArkUI_Context*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2495040792c8da8de232a60f3eafa9d33ca50fa6 translatedAt=2026-11-09T11:40:56.335Z pushedAt=2026-11-10T01:59:43.134Z nl=1 -->
 
 ```c
 typedef struct ArkUI_Context* ArkUI_ContextHandle

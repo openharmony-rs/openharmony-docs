@@ -62,7 +62,7 @@ struct Page {
 
 $rawfile(value: string): Resource
 
-获取工程rawfile目录下的资源信息，适用于加载本地音频、视频、配置文件等原始资源文件。$r通过资源标识符访问，支持多语言适配、深色/浅色模式切换、不同设备分辨率适配；$rawfile通过文件路径访问，不支持上述适配能力，适用于直接访问原始资源文件的场景。$rawfile会在编译期由工具链转换为[Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9)对象。更多信息可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。
+获取工程rawfile目录下的资源信息，适用于加载本地音频、视频、配置文件等原始资源文件。\$r通过资源标识符访问，支持多语言适配、深色/浅色模式切换、不同设备分辨率适配；\$rawfile通过文件路径访问，不支持上述适配能力，适用于直接访问原始资源文件的场景。\$rawfile会在编译期由工具链转换为[Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9)对象。更多信息可参考[资源分类与访问](../../quick-start/resource-categories-and-access.md)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -81,6 +81,8 @@ $rawfile(value: string): Resource
 | 类型                              | 说明                                                       |
 | --------------------------------- | ---------------------------------------------------------- |
 | [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) | 资源相关信息，包括应用包名、应用模块名、资源id等。 |
+
+**示例：**
 
 ```ts
 // src/main/resources/rawfile目录下添加startIcon.png。

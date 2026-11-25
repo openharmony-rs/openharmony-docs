@@ -145,7 +145,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用[offPropertyRead()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertyread)、[offPropertyWrite()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertywrite)取消订阅。
+7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用[offPropertyWrite()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertywrite)取消订阅。
 
     <!-- @[ssap_server_on_property_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
     
@@ -196,11 +196,12 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 | 接口名 | 描述 |
 | -------- | -------- |
 | createClient(address: string): Client | 创建SSAP客户端实例。 |
-| connect(): Promise&lt;void&gt; | 向服务端发起连接。 |
+| connect(): Promise&lt;void&gt; | 向服务端发起连接。使用Promise异步回调。 |
+| disconnect(): Promise&lt;void&gt; | 向服务端发起断连，断开已有连接或者终止正在建立的连接。使用Promise异步回调。 |
 | getServices(): Promise&lt;Array&lt;Service&gt;&gt; | 获取服务端支持的服务列表。使用Promise异步回调。 |
 | readProperty(property: Property): Promise&lt;Property&gt; | 读取服务端属性。使用Promise异步回调。 |
 | writeProperty(property: Property, writeType: PropertyWriteType): Promise&lt;void&gt; | 写入服务端属性。使用Promise异步回调。 |
-| setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt; | 启用或禁用属性变化的通知。 |
+| setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt; | 启用或禁用属性变化的通知。使用Promise异步回调。 |
 | onPropertyChange(callback: Callback&lt;Property&gt;): void | 订阅属性变化事件。使用callback异步回调。 |
 | onConnectionStateChange(callback: Callback&lt;ConnectionChangeState&gt;): void | 订阅连接状态变化事件。使用callback异步回调。 |
 
@@ -212,6 +213,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     import { ssap } from '@kit.ConnectivityKit';
     ```
 
@@ -268,7 +270,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-6. 向服务端发起连接。连接成功后将触发步骤4订阅的连接状态事件，可在回调中确认连接结果。
+6. 向服务端发起连接。连接成功后将触发步骤4订阅的连接状态变化事件，可在回调中确认连接结果。
 
     <!-- @[ssap_client_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
     
@@ -297,7 +299,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-8. 设置属性变化通知。仅当服务端对应属性支持通知（NOTIFY）操作并声明了客户端属性值配置描述符时，通知才能生效，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。
+8. 启用属性变化通知。调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用指定属性的通知；服务端对应属性需声明通知（NOTIFY）操作和客户端属性值配置描述符，否则客户端将收不到属性变化通知。完整条件参见[星闪常见问题 > 客户端如何接收属性变化通知](nearlink-faq-guide.md#客户端如何接收属性变化通知)。
 
     <!-- @[ssap_client_set_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
     

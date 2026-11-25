@@ -24,6 +24,8 @@ MDM Kit（企业设备管理服务）为企业MDM（Mobile Device Management）�
 
 ## 约束与限制
 
+### 规格限制
+
 - SDK版本为5.0.0（API 12）及以上。
 
 - 仅支持Stage模型。

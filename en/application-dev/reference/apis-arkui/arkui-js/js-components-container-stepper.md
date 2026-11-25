@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:41.011Z pushedAt=2026-06-23T10:39:59.679Z -->
+<!-- md-trans-meta sourceCommit=d1e4d0c1349312557d4315ff2b1c5d57de74d862 translatedAt=2026-11-12T04:39:17.157Z pushedAt=2026-11-18T03:44:45.172Z nl=1 -->
 
 >  **NOTE**
 >
@@ -52,11 +52,11 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 | Name    | Parameter                                      | Description                                      |
 | ------ | ---------------------------------------- | ---------------------------------------- |
-| finish | -                                       | Triggered when the last step on the navigator is complete.                   |
+| finish | - | Triggered when the last step of the step navigator is complete. |
 | skip   | -                                       | Triggered when users click the skip button to skip steps.|
 | change | { prevIndex: prevIndex, index: index} | Triggered when users click the left or right (text) button of the step navigator to switch between steps. **prevIndex** indicates the index of the previous step, and **index** indicates that of the current step.|
 | next   | { index: index, pendingIndex: pendingIndex } | Triggered when users click the next (text) button. **index** indicates the index of the current step, and **pendingIndex** indicates that of the step to go. The return value is in { pendingIndex: pendingIndex } format. You can use **pendingIndex** to specify a **\<stepper-item>** child component as the next step to go. |
-| back   | { index: index, pendingIndex: pendingIndex } | Triggered when users click the previous (text) button. **index** indicates the index of the current step, and **pendingIndex** indicates that of the step to go. The return value is in Object: { pendingIndex: pendingIndex } format. You can use **pendingIndex** to specify a **\<stepper-item>** child component as the previous step. |
+| back | {&nbsp;index: index,&nbsp;pendingIndex:&nbsp;pendingIndex&nbsp;} | Triggered when users click the previous (text) button. **index** indicates the index of the current step, and **pendingIndex** indicates that of the step to go. The return value is in {&nbsp;pendingIndex: pendingIndex&nbsp;} format. You can use **pendingIndex** to specify a **\<stepper-item>** child component as the previous step. |
 
 
 ## Methods

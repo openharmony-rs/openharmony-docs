@@ -579,7 +579,7 @@ Obtains the information about all child processes of the current application, in
 
 After the obtained `infos` is no longer needed, call [OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos) to release it and avoid memory leaks.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 

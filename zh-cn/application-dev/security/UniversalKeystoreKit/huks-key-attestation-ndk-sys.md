@@ -7,7 +7,9 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-在使用本功能前，需申请权限：[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)。请开发者根据应用的APL等级，参考具体的操作路径[权限申请](../AccessToken/determine-application-mode.md)。
+在使用本功能前，需申请权限[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)或[ohos.permission.ENTERPRISE_ATTEST_KEY](../AccessToken/permissions-for-mdm-apps.md#ohospermissionenterprise_attest_key)，两者具备其一即可。请开发者根据应用类型及APL等级，参考具体的操作路径[权限申请](../AccessToken/determine-application-mode.md)。
+
+从API版本26.1.0开始，设备管理应用可申请ohos.permission.ENTERPRISE_ATTEST_KEY权限，以使用非匿名密钥证明能力。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -18,13 +20,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 初始化参数集：通过[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)、[OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams)、[OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集paramSet，通过[OH_HUKS_TAG_ALGORITHM](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg)、[OH_HUKS_TAG_KEY_SIZE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize)、[OH_HUKS_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose)分别指定算法、密钥大小、密钥用途属性。
+2. 初始化参数集：通过[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)、[OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams)、[OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集paramSet，参数集中必须包含[OH_Huks_KeyAlg](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg)，[OH_Huks_KeySize](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize)，[OH_Huks_KeyPurpose](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose)属性。
 
 3. 生成非对称密钥，具体请参考[密钥生成](huks-key-generation-ndk.md)。
 
 4. 将密钥别名与参数集作为参数传入[OH_Huks_AttestKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_attestkeyitem)方法中，即可证明密钥。
 
-## 开发步骤
+## 开发案例
 <!-- @[non_anonymized_key_proof_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++

@@ -1,12 +1,13 @@
 # @ohos.file.environment (Directory Environment Capability) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=983ba0100f5f5d011705e0e23088346963f80eee translatedAt=2026-11-03T04:26:28.922Z pushedAt=2026-11-04T03:11:33.514Z nl=1 -->
 
-This module provides ArkTS APIs for obtaining the root directories of the storage and public files.
+This module provides directory environment capabilities: ArkTS APIs for obtaining the memory storage root directory, public file root directory, external card root directory, and the internal card directory of the application sandbox path under the current user.
 
 > **NOTE**
 >
@@ -21,9 +22,9 @@ import { Environment } from '@kit.CoreFileKit';
 
 ## environment.getStorageDataDir
 
-getStorageDataDir():Promise&lt;string&gt;
+getStorageDataDir(): Promise&lt;string&gt;
 
-Obtains the root directory of the memory. This API uses a promise to return the result.
+Obtains the path of the memory storage root directory. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.FileManagement.File.Environment
 
@@ -33,7 +34,7 @@ Obtains the root directory of the memory. This API uses a promise to return the 
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;string&gt; | Promise used to return the root directory of the memory.|
+| Promise&lt;string&gt; | Promise object, returns the path of the storage root directory. |
 
 **Error codes**
 
@@ -57,9 +58,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 ## environment.getStorageDataDir
 
-getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
+getStorageDataDir(callback: AsyncCallback&lt;string&gt;):void
 
-Obtains the root directory of the memory. This API uses an asynchronous callback to return the result.
+Obtains the path of the memory storage root directory. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.Environment
 
@@ -69,7 +70,7 @@ Obtains the root directory of the memory. This API uses an asynchronous callback
 
 | Name  | Type                       | Mandatory| Description                            |
 | -------- | --------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the root directory of the memory.|
+| callback | AsyncCallback&lt;string&gt; | Yes | Callback function that returns the path of the memory storage root directory. |
 
 **Error codes**
 
@@ -95,9 +96,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 ## environment.getUserDataDir
 
-getUserDataDir():Promise&lt;string&gt;
+getUserDataDir(): Promise&lt;string&gt;
 
-Obtains the root directory of public files. This API uses a promise to return the result.
+Obtains the path of the public file root directory. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.FileManagement.File.Environment
 
@@ -107,7 +108,7 @@ Obtains the root directory of public files. This API uses a promise to return th
 
 | Type                 | Description              |
 | --------------------- | ------------------ |
-| Promise&lt;string&gt; | Promise used to return the root directory of user files.|
+| Promise&lt;string&gt; | Promise object, returns the path of the public file root directory. |
 
 **Error codes**
 
@@ -131,9 +132,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 ## environment.getUserDataDir
 
-getUserDataDir(callback:AsyncCallback&lt;string&gt;): void
+getUserDataDir(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains the root directory of user files. This API uses an asynchronous callback to return the result.
+Obtains the path of the public file root directory. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.Environment
 
@@ -143,7 +144,7 @@ Obtains the root directory of user files. This API uses an asynchronous callback
 
 | Name  | Type                       | Mandatory| Description                            |
 | -------- | --------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the root directory of public files.|
+| callback | AsyncCallback&lt;string&gt; | Yes | Callback function, returns the path of the public file root directory. |
 
 **Error codes**
 
@@ -177,6 +178,10 @@ Obtains the sandbox path of the root directory of an external storage card. This
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
 
+**Device behavior differences**
+- Since API version 26.0.0, this API can be called on PCs, 2-in-1 devices, and tablets only. If it is called on other device types, error code 801 is returned.
+- Before API version 26.0.0, this API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
+
 **System API**: This is a system API.
 
 **Return value**
@@ -199,7 +204,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 function getExternalStorageDirExample() {
   try {
     let path = Environment.getExternalStorageDir();
@@ -214,11 +218,15 @@ function getExternalStorageDirExample() {
 
 getUserHomeDir(): string
 
-Obtains the sandbox path of the built-in card directory of the current user. This API is available only to the devices with the SystemCapability.FileManagement.File.Environment.FolderObtain system capability.
+Obtains the path of the internal card directory of the application sandbox path under the current user. This API is available only on devices with the corresponding system capability.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
+**Device behavior differences**
+- Since API version 26.0.0, this API can be called on PCs, 2-in-1 devices, and tablets only. If it is called on other device types, error code 801 is returned.
+- Before API version 26.0.0, this API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **System API**: This is a system API.
 
@@ -226,7 +234,7 @@ Obtains the sandbox path of the built-in card directory of the current user. Thi
 
 | Type                 | Description             |
 | --------------------- |-----------------|
-| string | Sandbox path of the built-in card directory obtained.|
+| string | Returns the internal storage directory path of the application sandbox path under the current user. |
 
 **Error codes**
 
@@ -242,7 +250,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 function getUserHomeDirExample() {
   try {
     let path = Environment.getUserHomeDir();

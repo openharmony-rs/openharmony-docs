@@ -815,13 +815,16 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function UpdateDatay(imageSourceObj : image.ImageSource) {
+async function UpdateData(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
-  imageSourceObj.updateData(array, false, 0, 10).then(() => {
+  try {
+    // 该接口为异步接口，调用时需保证执行时序。
+    await imageSourceObj.updateData(array, false, 0, 10);
     console.info('Succeeded in updating data.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to update data.code is ${err.code},message is ${err.message}`);
-  })
+  } catch (err) {
+    const e: BusinessError = err as BusinessError;
+    console.error(`Failed to update data.code is ${e.code},message is ${e.message}`);
+  }
 }
 ```
 
@@ -849,7 +852,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function UpdateDatay(imageSourceObj : image.ImageSource) {
+async function UpdateData(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
   imageSourceObj.updateData(array, false, 0, 10, (err: BusinessError) => {
     if (err) {
@@ -958,7 +961,7 @@ async function CreatePictures(imageSourceObj : image.ImageSource) {
     try {
       let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
       console.info('Succeeded in creating picture for frame: ' + index);
-    } catch (e) {
+    } catch (error) {
       console.error('Failed to create picture for frame: ' + index);
     }
   }
@@ -971,7 +974,7 @@ createPixelMap(options?: DecodingOptions): Promise\<PixelMap>
 
 通过图片解码参数创建PixelMap对象。使用Promise异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
+系统自动选择共享内存或DMA内存。从API version 15开始，需要指定内存类型时，应调用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，将allocatorType设置为image.AllocatorType.DMA或image.AllocatorType.SHARE_MEMORY。相关说明请参见[系统默认的内存分配方式](../../media/image/image-allocator-type.md#系统默认的内存分配方式)。
 
 > **说明：**
 >
@@ -1017,7 +1020,7 @@ createPixelMap(callback: AsyncCallback\<PixelMap>): void
 
 通过默认参数创建PixelMap对象。使用callback异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
+系统自动选择共享内存或DMA内存。从API version 15开始，需要指定内存类型时，应调用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，将allocatorType设置为image.AllocatorType.DMA或image.AllocatorType.SHARE_MEMORY。相关说明请参见[系统默认的内存分配方式](../../media/image/image-allocator-type.md#系统默认的内存分配方式)。
 
 > **说明：**
 >
@@ -1059,7 +1062,7 @@ createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap>): vo
 
 通过图片解码参数创建PixelMap对象。使用callback异步回调。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
+系统自动选择共享内存或DMA内存。从API version 15开始，需要指定内存类型时，应调用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，将allocatorType设置为image.AllocatorType.DMA或image.AllocatorType.SHARE_MEMORY。相关说明请参见[系统默认的内存分配方式](../../media/image/image-allocator-type.md#系统默认的内存分配方式)。
 
 > **说明：**
 >
@@ -1117,7 +1120,7 @@ createPixelMapSync(options?: DecodingOptions): PixelMap
 
 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-从API version 15开始，推荐使用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
+系统自动选择共享内存或DMA内存。从API version 15开始，需要指定内存类型时，应调用[createPixelMapUsingAllocatorSync](#createpixelmapusingallocatorsync15)，将allocatorType设置为image.AllocatorType.DMA或image.AllocatorType.SHARE_MEMORY。相关说明请参见[系统默认的内存分配方式](../../media/image/image-allocator-type.md#系统默认的内存分配方式)。
 
 > **说明：**
 >
@@ -1382,7 +1385,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 | 参数名        | 类型                                 | 必填 | 说明                     |
 | ------------- | ------------------------------------ | ---- | ------------------------ |
 | options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
-| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
+| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | PixelMap的内存类型。默认值为AllocatorType.AUTO，由系统自动选择共享内存或DMA内存。需要指定内存类型时，设置为AllocatorType.DMA或AllocatorType.SHARE_MEMORY。 |
 
 **返回值：**
 
@@ -1453,7 +1456,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 | 参数名        | 类型                                 | 必填 | 说明                     |
 | ------------- | ------------------------------------ | ---- | ------------------------ |
 | options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。               |
-| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
+| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | PixelMap的内存类型。默认值为AllocatorType.AUTO，由系统自动选择共享内存或DMA内存。需要指定内存类型时，设置为AllocatorType.DMA或AllocatorType.SHARE_MEMORY。 |
 
 **返回值：**
 
@@ -1479,7 +1482,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 **示例：**
 
 ```ts
-async function CreatePixelMapUsingAllocator(context : Context) {
+async function CreatePixelMapUsingAllocatorSync(context : Context) {
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);
@@ -1896,6 +1899,8 @@ release(callback: AsyncCallback\<void>): void
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **参数：**
@@ -1929,6 +1934,8 @@ release(): Promise\<void>
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用该方法，及时释放内存。
 
 释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

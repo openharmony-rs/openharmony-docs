@@ -111,7 +111,7 @@
         napi_value args[ConstIde::NUMBER_1] = {nullptr};
         napi_status st = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         if (st != napi_ok || argc < ConstIde::NUMBER_1) {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s napi_get_cb_info failed",
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s napi_get_cb_info failed",
                          who);
             return nullptr;
         }

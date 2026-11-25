@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2041fbedbdac475325c766ada1b1f6cc4b3c8b40 translatedAt=2026-11-03T03:28:03.633Z pushedAt=2026-11-03T06:04:35.301Z nl=1 -->
 
 The **reminderAgent** module provides APIs for publishing scheduled reminders through the reminder agent.
 
@@ -588,7 +589,7 @@ Defines a reminder for an alarm.
 | -------- | -------- | -------- | -------- | -------- |
 | hour | number | No| No| Hour portion of the reminder time.|
 | minute | number | No| No| Minute portion of the reminder time.|
-| daysOfWeek | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
+| daysOfWeek | Array\<number> | No | Yes | Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday. |
 
 
 ## ReminderRequestTimer<sup>(deprecated)</sup>

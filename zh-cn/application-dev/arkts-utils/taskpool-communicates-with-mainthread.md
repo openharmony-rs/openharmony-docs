@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍TaskPool任务与宿主线程的通信方法：任务中通过sendData()向宿主线程发送消息，宿主线程经onReceiveData()接收，实现任务状态通知与数据变化上报，支持从数据库等场景分段返回大量数据。"
+keywords: [宿主线程通信, sendData, onReceiveData, 任务状态通知, 分段返回数据, TaskPool, 实时数据上报]
+doctype: guide
+status: active
+---
+
 # TaskPool任务与宿主线程通信
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -10,7 +18,7 @@
 
 下面以多个图片加载任务结果实时返回为例说明。
 
-在需要执行的Task中，添加sendData()接口将消息发送给宿主线程。在宿主线程通过onReceiveData()接口接收消息。这样宿主线程就可以通过notice()接口接收到Task发送的数据。
+在需要执行的Task中，添加sendData()接口将消息发送给宿主线程。在宿主线程通过onReceiveData()接口接收消息。这样宿主线程就可以通过notice()方法接收到Task发送的数据。
 
    <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
    
@@ -31,6 +39,7 @@
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
    import { IconItemSource } from './IconItemSource';
+   import { BusinessError } from '@kit.BasicServicesKit';
    // 实现接收Task消息的方法
    function notice(data: number): void {
      console.info('子线程已加载数据，共加载图片: ', data);

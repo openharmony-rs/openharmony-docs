@@ -80,14 +80,14 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 |hdc|被其他设备通过hdc连接、调试的能力。设置禁用后，其他设备无法通过hdc连接、调试此设备。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |microphone|设备麦克风能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |fingerprint|设备指纹认证能力。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)设置了某用户禁用设备指纹认证能力时，再通过本接口启用设备指纹认证能力，会报策略冲突。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|usb|设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。<br/>以下四种情况再通过本接口禁用设备USB能力，会报策略冲突。<br/>1）通过[addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。<br/>4）通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。<br/>5）通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口（feature参数传入usbSerial）禁用了USB转串口。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|usb|设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。<br/>以下六种情况再通过本接口禁用设备USB能力，会报策略冲突。<br/>1）通过[addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。<br/>4）通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。<br/>5）通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口（feature参数传入usbSerial）禁用了USB转串口。<br/>6）通过[setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口启用了外置存储设备挂载拦截。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |wifi|设备Wi-Fi能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |tethering<sup>14+</sup>|网络共享能力（设备已有网络共享给其他设备的能力，即共享热点能力）。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |inactiveUserFreeze<sup>14+</sup>|非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |camera<sup>14+</sup>|设备相机能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |mtpClient<sup>18+</sup>|MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。<!--RP7--><!--RP7End-->MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)设置了某用户禁用MTP客户端写入能力时，再通过本接口禁用MTP客户端能力，会报策略冲突。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |mtpServer<sup>18+</sup>|MTP服务端能力，当前仅支持手机、平板设备使用。|API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
-|sambaClient<sup>20+</sup>|samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Message Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sambaClient<sup>20+</sup>|samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Message Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。管控策略在文件管理器初始化时加载，文件管理器运行时下发策略需重启文件管理器生效。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|samba服务端能力，当前仅支持PC/2in1设备使用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |backupAndRestore<sup>20+</sup>|备份和恢复能力，禁用后设备的"设置--系统--备份和恢复"、"设置--云空间"置灰，当前仅支持手机、平板使用。如果要完全禁用设备的备份和恢复能力，建议同时调用[applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)接口禁止具备备份和恢复能力的应用运行，如备份和恢复、手机助手、云空间应用。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |maintenanceMode<sup>20+</sup>|设备维修模式能力。|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -270,7 +270,7 @@ setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, a
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
-| feature  | string                                                  | 是   | feature名称。<br/>- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：<br/>1. 通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用了设备指纹认证能力，再使用本接口传入此参数，会报策略冲突。<br/>2. 通过本接口设置禁用/启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。此后再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口启用设备指纹认证能力，则所有用户都允许使用设备指纹认证能力。<br/>- print<sup>20+</sup>：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用本接口禁用了指定用户的设备打印能力，再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口启用设备打印能力，该用户下的设备打印能力仍然被禁用。<br/>- mtpClient<sup>20+</sup>：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用了设备MTP客户端能力时，再通过本接口禁用某用户MTP客户端写入能力，会报策略冲突。<br/>- usbStorageDeviceWrite<sup>20+</sup>：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<!--RP5--><!--RP5End--><br/>  以下三种情况再通过本接口禁用某用户USB存储设备写入能力，会报策略冲突。<br/>  1）通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口设置了设备USB能力禁用。<br/>  2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>  3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了存储类型的USB设备禁用。 <br/>- diskRecoveryKey<sup>20+</sup>：恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br/>- sudo<sup>20+</sup>：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。<br/>- distributedTransmissionOutgoing<sup>20+</sup>：设备间分布式单向传输数据的能力（仅包含向其他设备传输数据）。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)接口禁用了分布式服务，再通过本接口禁用设备间分布式单向传输数据的能力，会报策略冲突。<br/>- openFileBoost<sup>23+</sup>：<!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
+| feature  | string                                                  | 是   | feature名称。<br/>- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：<br/>1. 通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用了设备指纹认证能力，再使用本接口传入此参数，会报策略冲突。<br/>2. 通过本接口设置禁用/启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。此后再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口启用设备指纹认证能力，则所有用户都允许使用设备指纹认证能力。<br/>- print<sup>20+</sup>：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用本接口禁用了指定用户的设备打印能力，再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口启用设备打印能力，该用户下的设备打印能力仍然被禁用。<br/>- mtpClient<sup>20+</sup>：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用了设备MTP客户端能力时，再通过本接口禁用某用户MTP客户端写入能力，会报策略冲突。<br/>- usbStorageDeviceWrite<sup>20+</sup>：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<!--RP5--><!--RP5End--><br/>  以下三种情况再通过本接口禁用某用户USB存储设备写入能力，会报策略冲突。<br/>  1）通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口设置了设备USB能力禁用。<br/>  2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>  3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了存储类型的USB设备禁用。 <br/>- diskRecoveryKey<sup>20+</sup>：恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br/>- sudo<sup>20+</sup>：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。如果已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicy24)接口禁用设备级sudo能力，再调用本接口禁用用户级sudo能力，会发生策略冲突，抛出9200010错误码。<br/>- distributedTransmissionOutgoing<sup>20+</sup>：设备间分布式单向传输数据的能力（仅包含向其他设备传输数据），<!--RP8--><!--RP8End-->当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)接口禁用了分布式服务，再通过本接口禁用设备间分布式单向传输数据的能力，会报策略冲突。<br/>- openFileBoost<sup>23+</sup>：<!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
 | disallow | boolean                                                 | 是   | true表示禁用，false表示启用。                        |
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -330,7 +330,7 @@ getDisallowedPolicyForAccount(admin: Want | null, feature: string, accountId: nu
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。API version 20之前，调用本接口获取指定用户的某特性状态。当设备存在多个MDM应用时，传入admin查询对应admin设置的策略。从API version 20开始，admin新增支持传入null，传入null时查询整机实际生效的策略。                                   |
-| feature | string                                                  | 是   | feature名称。<br/>- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口设置禁用/启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。即此时调用本接口结果为false。<br/>- mtpClient<sup>20+</sup>：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。<br/>- usbStorageDeviceWrite<sup>20+</sup>：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<br/>- diskRecoveryKey<sup>20+</sup>：恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br/>- sudo<sup>20+</sup>：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。<br/>- distributedTransmissionOutgoing<sup>20+</sup>：设备间单向传输数据的能力（仅包含向其他设备传输数据）。<br/>- print<sup>20+</sup>：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用了设备打印能力，再通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口启用某用户下的设备打印能力，通过本接口查询结果是该用户已启用打印能力，但实际打印能力已被禁用。<br/>- openFileBoost<sup>23+</sup>：<!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
+| feature | string                                                  | 是   | feature名称。<br/>- fingerprint：设备指纹认证能力，当前仅支持PC/2in1设备使用。使用此参数时有以下规则：当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口设置禁用/启用指定用户的设备指纹认证能力后，再通过[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用设备指纹认证能力时，后者会覆盖前者的策略。即此时调用本接口结果为false。<br/>- mtpClient<sup>20+</sup>：MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。<br/>- usbStorageDeviceWrite<sup>20+</sup>：USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<br/>- diskRecoveryKey<sup>20+</sup>：恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br/>- sudo<sup>20+</sup>：superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。<br/>- distributedTransmissionOutgoing<sup>20+</sup>：设备间分布式单向传输数据的能力（仅包含向其他设备传输数据），<!--RP8--><!--RP8End--><br/>- print<sup>20+</sup>：设备打印能力，在API version 23之前仅支持PC/2in1设备使用，从API version 23开始支持PC/2in1、Phone、Tablet设备。如果使用[setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated)接口禁用了设备打印能力，再通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口启用某用户下的设备打印能力，通过本接口查询结果是该用户已启用打印能力，但实际打印能力已被禁用。<br/>- openFileBoost<sup>23+</sup>：<!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -818,7 +818,7 @@ setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| feature  | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要禁用或允许的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口设置以下特性：[FeatureForDevice.WIFI_P2P](#featurefordevice24)。 |
+| feature  | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要禁用或允许的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口设置[FeatureForDevice](#featurefordevice24)中“支持BDA调用”的特性。 |
 | disallow | boolean                                                 | 是   | true表示禁止使用，false表示允许使用。                        |
 
 **错误码**：
@@ -871,7 +871,7 @@ getDisallowedPolicy(admin: Want \| null, feature: FeatureForDevice): boolean
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| feature | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要查询的设备特性。 |
+| feature | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要查询的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取[FeatureForDevice](#featurefordevice24)中“支持BDA调用”的特性状态。 |
 
 **返回值：**
 
@@ -933,7 +933,7 @@ setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow:
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| feature   | [FeatureForAccount](#featureforaccount)                 | 是   | 要禁用或允许的用户特性。<br>当feature值为SUPER_HUB时，如果已经通过[addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22)接口将中转站添加到当前用户下不可关停的应用列表中，再调用本接口禁用中转站，会发生策略冲突，抛出9200010错误码。可以通过[removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22)接口将中转站从当前用户下不可关停的应用列表中移除来解决冲突。<br>当feature值为DISTRIBUTED_TRANSMISSION时，如果已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用设备间分布式单向传输数据的能力，再调用本接口禁用分布式管理服务，会发生策略冲突，抛出9200010错误码。可以通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口取消禁用设备间分布式单向传输数据来解决冲突。 |
+| feature   | [FeatureForAccount](#featureforaccount)                 | 是   | 要禁用或允许的用户特性。<br>当feature值为SUPER_HUB时，如果已经通过[addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22)接口将中转站添加到当前用户下不可关停的应用列表中，再调用本接口禁用中转站，会发生策略冲突，抛出9200010错误码。可以通过[removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22)接口将中转站从当前用户下不可关停的应用列表中移除来解决冲突。<br>当feature值为DISTRIBUTED_TRANSMISSION时，如果已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用设备间分布式单向传输数据的能力，再调用本接口禁用分布式管理服务，会发生策略冲突，抛出9200010错误码。可以通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口取消禁用设备间分布式单向传输数据来解决冲突。<br> 当feature值为SUDO时，如果已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicy24)接口禁用设备级sudo能力，再调用本接口禁用用户级sudo能力，会发生策略冲突，抛出9200010错误码。 |
 | disallow  | boolean                                                 | 是   | true表示禁用，false表示启用。                                |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br>当feature值为SUPER_HUB时，accountId仅支持传入当前用户的用户ID，不支持跨用户设置。否则会抛出9200012错误码。 |
 
@@ -1261,6 +1261,113 @@ try {
 }
 ```
 
+## restrictions.setDisallowedPolicy
+
+setDisallowedPolicy(feature: FeatureForDevice, disallow: boolean): void
+
+设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| feature  | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要禁用或允许的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口设置[FeatureForDevice](#featurefordevice24)中“支持BDA调用”的特性。 |
+| disallow | boolean                                                 | 是   | true表示禁止使用，false表示允许使用。                        |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
+| 9200012  | Parameter verification failed. |
+| 9200013  | The enterprise management policy has been successfully set, but the function has not taken effect in real time. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { restrictions } from '@kit.MDMKit';
+
+try {
+  // 需根据实际情况进行替换
+  restrictions.setDisallowedPolicy(restrictions.FeatureForDevice.WIFI_P2P, true);
+  console.info('Succeeded in setting Wi-Fi P2P disabled');
+} catch (err) {
+  console.error(`Failed to set Wi-Fi P2P disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## restrictions.getDisallowedPolicy
+
+getDisallowedPolicy(feature: FeatureForDevice, queryPolicy?: common.QueryPolicy): boolean
+
+查询指定设备特性是否被禁用。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| feature | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要查询的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取[FeatureForDevice](#featurefordevice24)中“支持BDA调用”的特性状态。 |
+| queryPolicy | [common.QueryPolicy](./js-apis-enterprise-common.md#querypolicy) | 否   | 查询策略。如果不指定该参数，则默认使用[common.QueryPolicy.SELF](./js-apis-enterprise-common.md#querypolicy)，即查询当前设备管理应用设置的策略；传入[common.QueryPolicy.ALL](./js-apis-enterprise-common.md#querypolicy)时，可查询当前设备设置的策略。|
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 返回true表示feature对应的设备特性被禁用，false表示feature对应的设备特性未被禁用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { common, restrictions } from '@kit.MDMKit';
+
+try {
+  // 需根据实际情况进行替换
+  let result: boolean = restrictions.getDisallowedPolicy(restrictions.FeatureForDevice.WIFI_P2P, common.QueryPolicy.ALL);
+  console.info(`Succeeded in querying whether Wi-Fi P2P is disabled. Disabled status: ${result}`);
+} catch (err) {
+  console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## FeatureForDevice<sup>24+</sup>
 
 设备特性枚举。
@@ -1270,27 +1377,29 @@ try {
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                        | 值  | 说明    |
-| ----------------------------| ----| ------------------------------- |
-| WIFI_P2P   | 0   | Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直接相互连接。禁用后，设备无法通过Wi-Fi P2P进行点对点连接，影响文件传输、游戏联机、屏幕共享等需要直接Wi-Fi连接的应用功能。 |
-| X_KEY   | 1   | X键能力。禁用后将无法使用X键直达应用或服务（例如开启相机、手电筒、计算器等）。<br>**起始版本：** 26.1.0 |
+| ----------------------------| ---- | ------------------------------- |
+| WIFI_P2P   | 0   | Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直接相互连接。禁用后，设备无法通过Wi-Fi P2P进行点对点连接，影响文件传输、游戏联机、屏幕共享等需要直接Wi-Fi连接的应用功能。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。 |
+| X_KEY   | 1   | X键能力。禁用后将无法使用X键直达应用或服务（例如开启相机、手电筒、计算器等）。<br>**起始版本：** 26.0.1 |
 | LOCAL_INPUT   | 2   | 本地输入（包含键盘、鼠标、触控板、触摸屏等）被禁用后，无法通过本地输入进行操作。重启设备可解除禁用。在息屏状态下禁用会导致屏幕无法唤醒，若禁用后屏幕自动息屏，同样会导致无法唤醒屏幕。<br>**起始版本：** 26.0.0 |
-| TRAFFIC_REDIRECTION   | 5   | 网络流量重定向管控策略。禁用后，无法将TCP流量重定向到其它端口，取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
+| PACKET_FILTERING   | 3   | 网络报文过滤管控策略，即按预设规则决定网络数据包的放行或丢弃，详见[net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md)。禁用后，通过[OH_TrafficFilter_AddPacketRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)接口添加的报文过滤规则仍可添加成功，但不再生效。取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.1 |
+| SUDO   | 4   | 设备级SUDO管控策略。当前仅支持PC/2in1设备使用。禁用后，无法使用sudo命令。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用sudo能力时，再启用sudo能力，会报策略冲突。<br>**起始版本：** 26.0.1 |
+| TRAFFIC_REDIRECTION   | 5   | 网络流量重定向管控策略，即按预设规则将匹配的TCP流量转发到其它端口，详见[net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md)。禁用后，通过[OH_TrafficFilter_AddRedirectRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)接口添加的重定向规则仍可添加成功，但不再生效。取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 | CORE_DUMP   | 6   | 创建文件转储。禁用后，无法通过任务管理器创建文件转储。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 | RS232   | 7   | RS-232串口管控策略。禁用后，无法通过RS-232串口传输数据。当前仅支持PC/2in1设备使用（部分设备不支持RS-232串口）。<br>**起始版本：** 26.0.0 |
 | DISK_ERASURE   | 8   | 磁盘擦除能力。禁用后，"磁盘擦除"入口将被置灰。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
-| BLUETOOTH   | 9   | 设备蓝牙能力。当已经通过[addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20)接口或者[addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices)接口设置了蓝牙设备禁用名单或者允许名单，再禁用设备蓝牙能力，会优先生效禁用设备蓝牙能力。直到设备蓝牙能力启用后，禁止或允许名单才会生效。<br>**起始版本：** 26.0.0 |
+| BLUETOOTH   | 9   | 设备蓝牙能力。当已经通过[addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20)接口或者[addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices)接口设置了蓝牙设备禁用名单或者允许名单，再禁用设备蓝牙能力，会优先生效禁用设备蓝牙能力。直到设备蓝牙能力启用后，禁止或允许名单才会生效。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | MODIFY_DATE_TIME   | 10   | 设备修改系统时间能力。<br>**起始版本：** 26.0.0 |
 | PRINTER   | 11   | 设备打印能力。禁用了设备打印能力时，通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)接口开启某用户的打印能力，该用户下的打印能力仍然被禁用。<br>**起始版本：** 26.0.0 |
-| HDC   | 12   | 被其他设备通过hdc连接、调试的能力。设置禁用后，其他设备无法通过hdc连接、调试此设备。<br>**起始版本：** 26.0.0 |
-| MICROPHONE   | 13   | 设备麦克风能力。<br>**起始版本：** 26.0.0 |
+| HDC   | 12   | 被其他设备通过hdc连接、调试的能力。设置禁用后，其他设备无法通过hdc连接、调试此设备。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
+| MICROPHONE   | 13   | 设备麦克风能力。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | FINGERPRINT   | 14   | 设备指纹认证能力。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用设备指纹认证能力时，再启用设备指纹认证能力，会报策略冲突。<br>**起始版本：** 26.0.0 |
-| USB   | 15   | 设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。<br/>以下五种情况再禁用设备USB能力，会报策略冲突。<br/>1）通过[addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。<br/>4）通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)接口禁用了某用户USB存储设备写入能力。<br/>5）禁用USB转串口（[USB_SERIAL](#featurefordevice24)）。<br>**起始版本：** 26.0.0 |
-| WIFI   | 16   | 设备Wi-Fi能力。<br>**起始版本：** 26.0.0 |
-| TETHERING   | 17   | 网络共享能力（设备已有网络共享给其他设备的能力，即共享热点能力）。<br>**起始版本：** 26.0.0 |
+| USB   | 15   | 设备USB能力。禁用后外接的USB设备无法使用，即在当前设备为HOST模式时，无法外接其他DEVICE设备。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br/>以下六种情况再禁用设备USB能力，会报策略冲突。<br/>1）通过[addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。<br/>4）通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)接口禁用了某用户USB存储设备写入能力。<br/>5）禁用USB转串口（[USB_SERIAL](#featurefordevice24)）。<br/>6）通过[setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口启用了外置存储设备挂载拦截。<br>**起始版本：** 26.0.0 |
+| WIFI   | 16   | 设备Wi-Fi能力。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
+| TETHERING   | 17   | 网络共享能力（设备已有网络共享给其他设备的能力，即共享热点能力）。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | INACTIVE_USER_FREEZE   | 18   | 非活跃用户运行能力。禁用后，非UIAbility进程一般不会被冻结，UIAbility申请短时任务、长时任务、延迟任务或能效资源等后台运行任务也不会被冻结。当前仅支持PC/2in1设备使用。企业空间场景下，系统切换到企业空间用户，个人空间用户属于非活跃用户。<br>**起始版本：** 26.0.0 |
-| CAMERA   | 19   | 设备相机能力。<br>**起始版本：** 26.0.0 |
+| CAMERA   | 19   | 设备相机能力。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | MTP_CLIENT   | 20   | MTP客户端能力（包含读取和写入），当前仅支持PC/2in1设备使用。<!--RP7--><!--RP7End-->MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用MTP客户端写入能力时，再禁用MTP客户端能力，会报策略冲突。<br>**起始版本：** 26.0.0 |
-| MTP_SERVER   | 21   | MTP服务端能力，当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.0 |
+| MTP_SERVER   | 21   | MTP服务端能力，当前仅支持手机、平板设备使用。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | SAMBA_CLIENT   | 22   | samba客户端能力，当前仅支持PC/2in1设备使用。samba是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。SMB（Server Message Block，信息服务块）是一种在局域网上共享文件和打印机的一种通信协议，它为局域网内的不同计算机之间提供文件及打印机等资源的共享服务。SMB协议是客户机/服务器型协议，客户机通过该协议可以访问服务器上的共享文件系统、打印机及其他资源。<br>**起始版本：** 26.0.0 |
 | SAMBA_SERVER   | 23   | samba服务端能力，当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 | BACKUP_AND_RESTORE   | 24   | 备份和恢复能力，禁用后设备的"设置--系统--备份和恢复"、"设置--云空间"置灰，当前仅支持手机、平板使用。如果要完全禁用设备的备份和恢复能力，建议同时调用[applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)接口禁止具备备份和恢复能力的应用运行，如备份和恢复、手机助手、云空间应用。<br>**起始版本：** 26.0.0 |
@@ -1311,15 +1420,21 @@ try {
 | HDC_REMOTE   | 39   | 设备通过hdc调试其他设备的能力，当前仅支持PC/2in1设备设置。设置禁用后，无法通过hdc调试手机、平板、PC、智能手表等设备。<br>**起始版本：** 26.0.0 |
 | VIRTUAL_SERVICE   | 40   | 设备虚拟化服务能力，即利用硬件资源的冗余，以虚拟化方式运行其他平台（如Linux、Windows）的能力。设置禁用设备虚拟化服务能力时，建议同时卸载与虚拟化服务相关的应用，并禁止其再次安装。<br>**起始版本：** 26.0.0 |
 | USB_SERIAL   | 41   | 设备USB转串口能力。禁用后外接的USB转串口设备无法使用。以下两种情况再禁用设备USB转串口能力，会报策略冲突。<br/>1）通过[addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。<br/>2）禁用设备USB能力（[USB](#featurefordevice24)）。<br>**起始版本：** 26.0.0 |
-| SCREEN_SHOT   | 42   | 截屏能力，禁用后无法进行截屏操作。<br>**起始版本：** 26.0.0 |
-| SCREEN_RECORD   | 43   | 录屏能力，禁用后无法进行录屏操作。<br>**起始版本：** 26.0.0 |
+| SCREEN_SHOT   | 42   | 截屏能力，禁用后无法进行截屏操作。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
+| SCREEN_RECORD   | 43   | 录屏能力，禁用后无法进行录屏操作。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | DISK_RECOVERY_KEY   | 44   | 恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
-| NEAR_LINK   | 45   | 星闪（NearLink）能力。<br>**起始版本：** 26.0.0 |
+| NEAR_LINK   | 45   | 星闪（NearLink）能力。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | DEVELOPER_MODE   | 46   | 开发者模式，禁用后设备重启生效。<br>**起始版本：** 26.0.0 |
-| RESET_FACTORY   | 47   | 恢复出厂设置能力。<br>**起始版本：** 26.0.0 |
+| RESET_FACTORY   | 47   | 恢复出厂设置能力。支持[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)调用。<br>**起始版本：** 26.0.0 |
 | REMOTE_DESK   | 48   | 远程桌面能力。<br>**起始版本：** 26.0.0 |
 | REMOTE_DIAGNOSIS   | 49   | 远程诊断能力。<br>**起始版本：** 26.0.0 |
 | OTA_UPDATE   | 50   | 公网系统升级能力。<br>**起始版本：** 26.0.0 |
+| SYSTEM_ROLLBACK   | 51   | 系统回退能力，禁用后无法回退系统版本。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.1 |
+| SATA_ODD_BURN   | 52   | 内置光驱刻录能力。禁用后无法通过内置光驱进行刻录。当前仅支持PC/2in1设备使用；其他设备调用设置接口返回801错误码，调用查询接口返回默认值。<br>**起始版本：** 26.0.1 |
+| SUPER_PRIVACY   | 53   | 超级隐私模式。禁用后无法打开超级隐私模式。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.1 |
+| POWER_SAVING_MODE | 57   | 省电模式。禁用后，在手机设备上无法打开省电模式、超级省电模式、户外探索模式。若省电模式、超级省电模式或户外探索模式已开启，禁用后会关闭省电模式、超级省电模式或户外探索模式，控制中心中省电模式、户外探索模式入口置灰不可操作，设置中省电模式、超级省电模式、户外探索模式入口置灰不可操作；在平板设备上无法打开省电模式或超级省电模式。若省电模式或超级省电模式已开启，禁用后会关闭省电模式或超级省电模式，控制中心中省电模式入口置灰不可操作，设置中省电模式、超级省电模式入口置灰不可操作；在PC/2in1设备上无法打开省电模式。若省电模式已开启，禁用后会关闭省电模式，控制中心中省电模式入口不可操作，设置中省电模式入口置灰不可操作。<br>**起始版本：** 26.1.0 |
+| CONTROL_CENTER   | 59   | 控制中心。禁用后手机、平板设备无法通过屏幕右上方下滑手势打开控制中心，PC/2in1设备无法通过点击任务栏控制中心图标方式进入，也无法使用控制中心中的快捷开关（如Wi-Fi、蓝牙、音量、亮度调节等）功能。<br>**起始版本：** 26.1.0 |
+| NOTIFICATION_CENTER   | 60   | 通知中心。禁用后手机、平板设备无法通过屏幕左上方下滑手势打开通知中心，PC/2in1设备无法通过点击任务栏通知中心图标方式进入，也无法查看、清除通知中心的通知消息。<br>**起始版本：** 26.1.0 |
 
 ## FeatureForAccount
 
@@ -1338,12 +1453,13 @@ try {
 | SUPER_HUB | 2    | 中转站。当前仅支持手机、平板设备使用，禁用后无法使用中转站功能。若中转站已开启，本次使用不受影响，但关闭后将无法再次使用。 |
 | FINGERPRINT | 3    | 设备指纹认证能力，当前仅支持PC/2in1设备使用。使用时有以下规则：<br/>1. 禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](#featurefordevice24)）后，再禁用某用户的设备指纹认证能力，会报策略冲突。<br/>2. 禁用/启用指定用户的设备指纹认证能力后，再禁用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](#featurefordevice24)）时，后者会覆盖前者的策略。此后再启用设备指纹认证能力（[FeatureForDevice.FINGERPRINT](#featurefordevice24)），则所有用户都允许使用设备指纹认证能力。 |
 | PRINT | 4    | 设备打印能力。如果禁用了指定用户的设备打印能力，再启用设备打印能力（[FeatureForDevice.PRINTER](#featurefordevice24)），该用户下的设备打印能力仍然被禁用。 |
-| MTP_CLIENT | 5    | MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。当已禁用设备MTP客户端能力（[FeatureForDevice.MTP_CLIENT](#featurefordevice24)）时，再禁用某用户MTP客户端写入能力，会报策略冲突。 |
+| MTP_CLIENT | 5    | MTP客户端能力（仅包含写入），当前仅支持PC/2in1设备使用。MTP（Media Transfer Protocol，媒体传输协议），该协议允许用户在移动设备上线性访问媒体文件。以手机为例，针对文件操作，手机可以拖动到电脑，电脑无法拖动到手机。当已禁用设备MTP客户端能力（[FeatureForDevice.MTP_CLIENT](#featurefordevice24)）时，再禁用某用户MTP客户端写入能力，会报策略冲突。 |
 | USB_STORAGE_DEVICE_WRITE | 6    | USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<!--RP5--><!--RP5End--><br/>以下三种情况再禁用某用户USB存储设备写入能力，会报策略冲突。<br/>1）已禁用设备USB能力（[FeatureForDevice.USB](#featurefordevice24)）。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了存储类型的USB设备禁用。 |
 | DISK_RECOVERY_KEY | 7    | 恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。 |
-| SUDO | 8    | superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。 |
-| DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | 设备间分布式单向传输数据的能力（仅包含向其他设备传输数据）。当已禁用分布式管理服务（[DISTRIBUTED_TRANSMISSION](#featureforaccount)），再禁用设备间分布式单向传输数据的能力，会报策略冲突。 |
+| SUDO | 8    | superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。如果已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicy24)接口禁用设备级sudo能力，再调用本接口禁用用户级sudo能力，会发生策略冲突，抛出9200010错误码。 |
+| DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | 设备间分布式单向传输数据的能力（仅包含向其他设备传输数据），<!--RP8--><!--RP8End-->当已禁用分布式管理服务（[DISTRIBUTED_TRANSMISSION](#featureforaccount)），再禁用设备间分布式单向传输数据的能力，会报策略冲突。 |
 | OPEN_FILE_BOOST | 10    | <!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
+| FREE_WINDOW | 14    | 自由多窗模式。禁用后无法打开[自由多窗模式](../../windowmanager/freeform-window-overview.md#自由多窗模式)。若自由多窗模式已开启，禁用后会关闭自由多窗模式，已打开的自由多窗窗口立即关闭，控制中心中自由多窗入口置灰不可操作。当前仅支持手机、平板设备使用；其他设备调用设置接口返回801错误码，调用查询接口返回false。<br>**起始版本：** 26.1.0 |
 
 ## SettingsForDevice
 

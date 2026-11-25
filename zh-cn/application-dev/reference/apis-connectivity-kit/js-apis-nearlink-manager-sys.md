@@ -14,7 +14,7 @@
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.manager (星闪基础管理能力)](js-apis-nearlink-manager.md)。
 
 
 ## 导入模块
@@ -30,9 +30,13 @@ enable(): void
 
 打开星闪。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：**  此接口为系统接口。
 
@@ -46,19 +50,69 @@ enable(): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 203 | EDM denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 203 | This function is prohibited by enterprise management policies. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.enable();
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## manager.enableWithOptions
+
+enableWithOptions(options?: EnableOptions): void
+
+以指定选项打开星闪。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：**  此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_NEARLINK 和 ohos.permission.MANAGE_NEARLINK
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [EnableOptions](#enableoptions) | 否 | 打开星闪时使用的选项。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 203 | This function is prohibited by enterprise management policies. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { manager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  manager.enableWithOptions({ autoConnPolicy: manager.AutoConnectPolicy.AUTO_CONN_EXCEPT_AUDIO_DEVICES });
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -70,9 +124,13 @@ disable(): void
 
 关闭星闪。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：**  此接口为系统接口。
 
@@ -86,15 +144,15 @@ disable(): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.disable();
@@ -109,9 +167,13 @@ getLocalAddress(): string
 
 查询本机MAC地址。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：**  此接口为系统接口。
 
@@ -131,16 +193,16 @@ getLocalAddress(): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = manager.getLocalAddress();
@@ -156,9 +218,13 @@ factoryReset(): Promise&lt;void&gt;
 
 恢复出厂设置。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：**  此接口为系统接口。
 
@@ -178,15 +244,15 @@ factoryReset(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.factoryReset().then(() => {
@@ -207,6 +273,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -216,15 +284,57 @@ try {
 | SLE_MODE_UNCONNECTABLE | 0 | 表示该设备不可连接。 |
 | SLE_MODE_CONNECTABLE | 1 | 表示该设备可连接。 |
 
+## AutoConnectPolicy
+
+表示打开星闪时的自动连接策略，为枚举值。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| AUTO_CONN_GENERAL | 0 | 打开星闪后，自动回连所有已配对设备。 |
+| AUTO_CONN_EXCEPT_AUDIO_DEVICES | 1 | 打开星闪后，自动回连除音频设备外的所有已配对设备。 |
+| AUTO_CONN_EXCEPT_USER_DISCONNECTED_DEVICES | 2 | 打开星闪后，自动回连除用户主动断连设备外的所有已配对设备。 |
+
+## EnableOptions
+
+打开星闪时使用的选项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| autoConnPolicy | [AutoConnectPolicy](#autoconnectpolicy) | 否 | 打开星闪时使用的自动连接策略。默认值为**AUTO_CONN_GENERAL**。 |
+
 ## manager.setConnectionMode
 
 setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
 设置连接模式。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：**  此接口为系统接口。
 
@@ -251,9 +361,9 @@ setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Integer out of range. |
 | 36100099 | Operation failed. |
@@ -261,7 +371,7 @@ setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let mode: manager.ConnectionMode = manager.ConnectionMode.SLE_MODE_CONNECTABLE;

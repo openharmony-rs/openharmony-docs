@@ -1,7 +1,7 @@
 # Class (ScrollActionProposal)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -53,7 +53,7 @@ constructor(node: FrameNode, distance: number)
 import {
   BaseGestureHandlingProposal,
   GestureHandlingResolution,
-  ScrollActionProposal,
+  ScrollActionProposal
 } from '@kit.ArkUI';
 
 @Entry

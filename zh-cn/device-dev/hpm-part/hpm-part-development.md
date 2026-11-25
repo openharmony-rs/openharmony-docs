@@ -5,7 +5,7 @@
 
 通常情况下，[DevEco Marketplace](https://repo.harmonyos.com)中能找到您开发常用的资源，可以通过依赖将所需的资源引入工程中。若现有的资源不能完全满足，可以自己开发并将其以HPM Part的格式发布。安装好hpm-cli工具后，就可以进行Part的开发了。
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
 > 下述操作建议在Ubuntu 18.04及以上版本运行。
 
 
@@ -17,25 +17,26 @@
 ### 安装Node.js及hpm-cli
 
 1. 安装Node.js。
+
    从官网下载并在本地安装Node.js.
 
    推荐安装[Node.js](https://nodejs.org/)最新的LTS版本 (不低于12.x)。
 
 2. 通过Node.js自带的npm安装hpm-cli命令行工具。执行以下命令：
      
-   ```
+   ```text
    npm install -g @ohos/hpm-cli
    ```
 
 3. 安装完成后执行如下命令，显示hpm版本，即安装成功。
      
-   ```
+   ```shell
    hpm -V  或 hpm --version
    ```
 
 4. （可选）如果需要升级hpm版本，请执行如下命令：
      
-   ```
+   ```text
    npm update -g @ohos/hpm-cli
    ```
 
@@ -45,14 +46,14 @@
 安装完hpm命令行工具后，如果需要更改配置信息（如代理，shell路径），可执行以下命令可以查看hpm配置：
 
   
-```
+```shell
 hpm config
 ```
 
   上述命令执行后将会显示hpm的默认配置，您可以根据自己需要对默认配置进行修改，以下是hpm的常用配置：
   
-```
-registry = https://hpm.harmonyos.com
+```text
+registry = `https://hpm.harmonyos.com`
 ### login Settings
 # loginUser = invitation_code
 
@@ -83,16 +84,16 @@ shellPath = C:\WINDOWS\System32\cmd.exe
 
 1. 请执行如下命令创建目录：
      
-   ```
+   ```shell
    hpm init -t default  mybundle
    ```
 
-   > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+   > **说明：**
    > -t后的default表示使用名为'default'模板创建（也可以换作其他的模板，如simple、dist等）
 
      生成目录结构如下：
      
-   ```
+   ```text
    /
    ├── headers            # 头文件（样例）
    │   └── main.h
@@ -107,11 +108,11 @@ shellPath = C:\WINDOWS\System32\cmd.exe
 
 2. 接下来根据需要，实现Part内部的功能代码，以及编译脚本。
      
-   ```
+   ```shell
    hpm init -t {templatename} -d {dir} {name}
    ```
 
-   > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+   > **说明：**
    > - -t {templatename} ：指的是模板名称。
    > 
    > - -d {dir}：是要创建的Part所存放的路径。
@@ -128,17 +129,17 @@ hpm-cli除了提供了少量默认模板之外，其他模板均存储在[DevEco
 如果您已经有了代码工程，需要分发的hpm平台，只需要在当前工程目录下（例如mybundle2），执行如下命令，系统会引导您输入组件名称和版本等信息。
 
   
-```
+```shell
 hpm init
 ```
 
 1. 输入名称后回车（如mybundle2）。
 
-2. 接下来依次输入版本、描述等信息后，会在当前目录下会生成一个bundle.json文件。
+2. 接下来依次输入版本、描述等信息，完成后会在当前目录下生成一个bundle.json文件。
 
 3. 也可以打开bundle.json文件。
      
-   ```
+   ```shell
    $ hpm init
    Your bundle will be created in directory ~\demo\mybundle2
    ? bundle name mybundle2
@@ -149,7 +150,7 @@ hpm init
 
 4. 打开bundle.json文件修改其他信息（如作者、代码仓库、代码目录、命令脚本、依赖组件等），如下（仅示意）：
      
-   ```
+   ```json
    {
    "name": "mybundle2",
    "version": "1.0.0",
@@ -178,7 +179,7 @@ hpm init
 下方以bundle.json中定义为示例，以下示例的编译命令dist，采用hb编译框架描述。
 
   
-```
+```text
 {
   "name": "@your/dist_name",
   "version": "2.2.0",
@@ -226,7 +227,7 @@ hpm-cli具备命令集成的能力，开发者可以选择任意的适合项目�
 以编译一个app目录下helloworld可执行文件为例：
 
   
-```
+```text
 app
 ├── BUILD.gn
 ├── include
@@ -238,7 +239,7 @@ app
 在helloworld.c同级目录下新建一个BUILD.gn
 
   
-```
+```text
 touch BUILD.gn
 vim BUILD.gn
 ```
@@ -246,7 +247,7 @@ vim BUILD.gn
 以下是BUILD.gn的样例，仅供参考
 
   
-```
+```text
 executable("hello_world") {
     sources = [
         "src/helloworld.c"
@@ -258,7 +259,7 @@ executable("hello_world") {
 }
 ```
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
 > - “executable”是gn内置模板，可以用“gn help executable ”查看使用方法。
 > 
 > - “sources ”是源码路径，“include_dirs ”是头文件路径。
@@ -269,7 +270,7 @@ executable("hello_world") {
 在当前文件夹下，执行编译命令：
 
   
-```
+```shell
 hpm build
 ```
 
@@ -283,14 +284,14 @@ hpm build
 在当前发行版根目录下，执行如下命令。
 
   
-```
+```shell
 hpm dist
 ```
 
 hpm-cli工具会自动执行编译，生成镜像文件，如：
 
   
-```
+```text
 out
 |-xxdist.img
 |-xx.file
@@ -304,7 +305,7 @@ out
 完成账号申请和组织创建（或者加入一个现有的组织）后，您需要根据个人的邀请码（在[DevEco Marketplace](https://repo.harmonyos.com)的个人中心页查看），在本机生成公钥，并在[DevEco Marketplace](https://repo.harmonyos.com)的个人中心进行配置。
 
   
-```
+```shell
 hpm config set loginUser {your-invitation-code}
 hpm gen-keys
 ```
@@ -316,11 +317,11 @@ hpm gen-keys
 在Part所在目录，执行命令hpm publish，将会完成组件的打包发布操作。
 
   
-```
+```shell
 hpm publish
 ```
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
 > - 为避免Part名称冲突，发布的Part的名称需限定在组织范围内，即命名为\@org_name/bundle_name的格式。
 > 
 > - 你的账号也必须是org_name内的成员，才可以发布或更新组织内的Part。
@@ -341,19 +342,19 @@ hpm publish
 
 2. 使用hpm install &lt;name&gt;命令安装依赖（依赖写入bundle.json的dependencies字段）。
 
-3. 代码中共引用头文件，实现功能。
+3. 在代码中引用组件提供的头文件，调用其接口实现所需功能。
 
 4. 使用hpm build命令执行编译，输出编译结果。
 
   在您的Part工程中（工程目录中必须包含bundle.json文件）执行如下命令：
   
-```
+```shell
 $ hpm install @scope/the_bundle
 ```
 
   引用的Part将会被安装到你的工程所在的目录的ohos_bundle下
   
-```
+```text
 project
 ├── ohos_bundle            
 │   └── scope
@@ -369,7 +370,7 @@ project
 打开bundle.json文件，可以看到Part已经被引入到您的工程的依赖中。
 
   
-```
+```json
 {
   "dependencies": {
     "@scope/the_bundle": "^1.0.0"
@@ -380,7 +381,7 @@ project
 您也可以一次性在此文件中编辑多个Part的依赖
 
   
-```
+```json
 {
   "dependencies": {
     "@scope/the_bundle1": "^1.0.0",
@@ -391,7 +392,7 @@ project
 }
 ```
 
-再执行hpm install命令，将会一次性将所有未安装的Part一次性全部下载并安装完成。
+再执行hpm install命令，即可一次性将所有未安装的Part下载并安装完成。
 
 
 ### 安装全局Part
@@ -400,43 +401,43 @@ project
 
   在您的Part工程中（工程目录中必须包含bundle.json文件）执行如下命令：
   
-```
+```shell
 $ hpm install -g @scope/the_tool
 ```
 
   引用的Part将会被安装到你在hpm config中设置的globalRepo所指定的目录下：
   
-```
+```text
 ~\.hpm\global\ohos_bundles            
 │   └── scope
 │    └─ the_tool     # <---引用的组件将会出现在这
 ```
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
 > - 在项目安装的Part，在执行hpm编译命令时可以通过引用环境变量DEP_SCOPE_bundle_name，例如：
 >     通过hpm i \@opensource/gn安装后，可以编辑bundle.json中的编译脚本，如下：
 >     
->   ```
->   "scripts": {
->       "build": "${DEP_OPENSOURCE_gn}/gn  --version"
->     },
+>   ```text
+>    "scripts": {
+>    "build": "${DEP_OPENSOURCE_gn}/gn  --version"
+>    },
 >   ```
 > 
 >   然后就可以通过执行hpm build将调用gn的功能。
 > 
 > - 在全局安装的Part，可以通过设置系统环境变量，直接调用，或者hpm config set key value的方式，通过${key}/tool_name的方式引用，例如：
 >     
->   ```
->   hpm i -g @ohos/opensource/gn
->   hpm config BUILD_SYS_GN ~/.hpm/global/ohos_bundles/opensource/gn
+>   ```text
+>    hpm i -g @ohos/opensource/gn
+>    hpm config BUILD_SYS_GN ~/.hpm/global/ohos_bundles/opensource/gn
 >   ```
 > 
 >     可以编辑bundle.json中的编译脚本，如下：
 >     
->   ```
->   "scripts": {
->       "build": "${BUILD_SYS_GN}/gn  --version"
->     },
+>   ```text
+>    "scripts": {
+>    "build": "${BUILD_SYS_GN}/gn  --version"
+>    },
 >   ```
 > 
 >   然后就可以通过执行hpm build将调用gn的功能。

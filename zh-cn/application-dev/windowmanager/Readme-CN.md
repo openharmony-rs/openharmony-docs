@@ -4,7 +4,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 - [窗口开发概述](window-overview.md)
@@ -26,7 +26,11 @@
   - 窗口旋转与实践案例<!--rotation-->
     - [窗口旋转](window-rotation.md)
     - [窗口旋转实践案例](window-rotation-practical-case.md)
-  - [窗口布局](window-layout.md)
+  - 窗口布局<!--window-layout-development-->
+    - [窗口布局开发概述](window-layout-overview.md)
+    - [管理窗口位置与大小](window-layout.md)
+    - [窗口自由缩放开发实践案例 (PC/2in1)](window-freeform-resize-practical-case.md)
+    - [窗口自适应布局开发实践案例 (PC/2in1)](window-adaptive-practical-case.md)
   - [窗口焦点](window-focus-guide.md)
   - [窗口层级](window-zorder-guide.md)
   - [窗口沉浸式](immersive-window-feature.md)
@@ -44,3 +48,4 @@
 - [窗口开发术语](window-terminology.md)
 - [窗口开发常见问题](window-faqs.md)
 - [窗口开发常见日志问题与定位](window-log-faqs.md)
+- [ohos-window CLI工具](window-cli.md)

@@ -46,7 +46,7 @@ Performance Analysis Kit承载着HarmonyOS DFX子系统面向应用开发者提�
 
 - [应用灰度采集](hiretrieval-intro.md)，提供开发者应用灰度采集能力，可以选取少量设备打开全量日志采集获取更详细的故障日志，帮助开发者更好的定位故障。
 
-- 调试命令提供包含[hdc](hdc.md)、[hilog](hilog.md)、[hidumper](hidumper.md)、[hitrace](hitrace.md)、[hiperf](hiperf.md)等工具用于调试系统和应用。
+- 调试命令提供包含[hdc](hdc.md)、[hilog](hilog.md)、[hidumper](hidumper.md)、[hitrace](hitrace.md)、[hiperf](hiperf.md)、[hiprofiler](hiprofiler.md)等工具用于调试系统和应用。
 
 
 ## 亮点/特征
@@ -76,3 +76,5 @@ Performance Analysis Kit承载着HarmonyOS DFX子系统面向应用开发者提�
 - 支持追踪进程轨迹，进行程序性能分析。
 
 <!--RP1--><!--RP1End-->
+
+<!--RP2--><!--RP2End-->

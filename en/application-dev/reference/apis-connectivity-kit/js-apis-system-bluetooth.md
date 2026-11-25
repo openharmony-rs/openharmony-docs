@@ -3,9 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=0696df2d657eb478e7d8df47ead106f4348f33ac translatedAt=2026-09-15T03:04:11.278Z pushedAt=2026-09-16T10:31:17.312Z -->
 
 > **NOTE**
 >
@@ -17,7 +18,7 @@
 ## Modules to Import
 
 
-```
+```js
 import bluetooth from '@system.bluetooth';
 ```
 
@@ -39,17 +40,17 @@ Scans for Bluetooth Low Energy (BLE) devices nearby. This operation consumes sys
 
 **Example**
 
-  ```
+  ```js
   bluetooth.startBLEScan({
     interval:0,
     success() {
-      console.log('call bluetooth.startBLEScan success.');
+      console.info('call bluetooth.startBLEScan success.');
     },
     fail(code, data) {
-      console.log('call bluetooth.startBLEScan failed, code:' + code + ', data:' + data);
+      console.info('call bluetooth.startBLEScan failed, code:' + code + ', data:' + data);
     },
     complete() {
-      console.log('call bluetooth.startBLEScan complete.');
+      console.info('call bluetooth.startBLEScan complete.');
     }
   });
   ```
@@ -72,16 +73,16 @@ Stops scanning for BLE devices nearby. This API is used with [bluetooth.startBLE
 
 **Example**
 
-  ```
+  ```js
   bluetooth.stopBLEScan({
     success() {
-      console.log('call bluetooth.stopBLEScan success.');
+      console.info('call bluetooth.stopBLEScan success.');
     },
     fail(data, code) {
-      console.log('call bluetooth.stopBLEScan fail, code:' + code + ', data:' + data);
+      console.info('call bluetooth.stopBLEScan fail, code:' + code + ', data:' + data);
     },
     complete() {
-      console.log('call bluetooth.stopBLEScan complete.');
+      console.info('call bluetooth.stopBLEScan complete.');
     }
   });
   ```
@@ -119,13 +120,13 @@ Subscribes to the newly detected BLE device. If this API is called multiple time
 
 **Example**
 
-  ```
+  ```js
   bluetooth.subscribeBLEFound({
     success(data) {
-      console.log('call bluetooth.subscribeBLEFound success, data: ${data}.');
+      console.info('call bluetooth.subscribeBLEFound success, data: ${data}.');
     },
     fail(data, code) {
-      console.log('call bluetooth.startBLEScan failed, code:' + code + ', data:' + data);
+      console.info('call bluetooth.startBLEScan failed, code:' + code + ', data:' + data);
     }
   });
   ```
@@ -139,7 +140,7 @@ Unsubscribes from the newly detected devices.
 
 **Example**
 
-  ```
+  ```js
   bluetooth.unsubscribeBLEFound();
   ```
 
