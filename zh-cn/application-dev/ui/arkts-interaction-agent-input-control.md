@@ -22,16 +22,12 @@ Agent输入事件包括系统Agent生成的输入事件，以及具有[ohos.perm
 | 接口 | 说明 |
 | --- | --- |
 | [agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode) | 设置组件对Agent输入事件的管控级别。 |
-| [AgentControlMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#agentcontrolmode) | 管控级别枚举，ALLOW允许Agent输入，DENY阻止Agent输入。 |
-| [onNodeSensitiveInput](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onnodesensitiveinput) | 注册敏感节点输入监听，在事件分发前触发回调。 |
-| [offNodeSensitiveInput](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#offnodesensitiveinput) | 注销敏感节点输入监听。 |
-| [NodeSensitiveInputInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#nodesensitiveinputinfo) | 监听回调携带的输入事件信息。 |
-| [NodeSensitiveInputCallback](../reference/apis-arkui/arkts-apis-uicontext-t.md#nodesensitiveinputcallback) | 敏感节点输入监听的回调类型。 |
-| [NodeSensitiveInputEventType](../reference/apis-arkui/arkts-apis-uicontext-e.md#nodesensitiveinputeventtype) | 敏感节点输入的事件类型枚举。 |
+| [onNodeSensitiveInput](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onnodesensitiveinput) | 注册节点输入监听，在事件分发前触发回调。 |
+| [offNodeSensitiveInput](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#offnodesensitiveinput) | 注销节点输入监听。 |
 
 ## 与相关Kit的关系
 
-本能力依赖多模输入子系统。Agent输入事件由多模输入框架在注入链路上标识，ArkUI依据该标识区分Agent输入事件与用户输入事件，进而执行管控与监听。应用使用本指南时无需直接调用多模输入接口。如需了解输入事件注入能力，可参考多模输入的[输入事件注入](../reference/apis-input-kit/js-apis-inputeventclient.md)。
+Agent生成的事件包括系统Agent生成的事件，以及具有ohos.permission.CONTROL_DEVICE权限的应用注入的事件。其中具有权限的应用注入的事件可参考[输入事件注入](../reference/apis-input-kit/js-apis-inputeventclient.md)。
 
 ## 设置Agent输入管控
 
@@ -51,21 +47,10 @@ Agent输入事件包括系统Agent生成的输入事件，以及具有[ohos.perm
 }
 ```
 
-声明权限后，开发者可根据实际业务场景完成如下功能实现。
-
-- 设置Agent输入管控策略：在目标组件上设置[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)，选择允许或阻止Agent输入。
-- 监听节点交互事件：注册敏感节点输入监听，获取节点的输入事件通知，包括被管控阻止的输入事件。
 
 ### 设置Agent输入管控策略
 
 声明权限后，可以在目标组件上通过[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)接口，设置允许或阻止Agent输入事件。
-
-- ALLOW：允许Agent生成的输入操作，无需用户确认。
-- DENY：阻止Agent生成的输入操作。
-
-传入undefined或不设置该属性时，组件默认允许Agent生成事件。
-
-例如，容器组件设置DENY、其子按钮保持ALLOW时，Agent点击子按钮，子按钮仍可响应，但该容器及其祖先组件被阻止响应。
 
 以下示例通过三个按钮切换目标组件的Agent输入管控级别。使用用户输入操作目标组件时，仍可触发其点击回调。
 
@@ -103,20 +88,7 @@ struct AgentControlModeExample {
 }
 ```
 
-### 策略作用域与优先级
-
-[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)是组件属性，作用于命中该组件的Agent输入，并沿手势树影响其祖先组件的响应。
-
-Agent输入沿手势树从最深（最先命中）的组件向外逐层派发，因此管控级别按以下规则生效：
-
-- 某组件设置为DENY时，该组件及其所有祖先组件被阻止响应该次Agent输入。
-- 比该组件更深、且自身为ALLOW（或默认允许）的组件不受该DENY影响，仍可响应该次Agent输入。
-
 ## 监听节点交互事件
-
-通过监听敏感节点输入，在输入事件分发到节点前获取通知。
-
-### 注册与注销监听
 
 监听主要分为如下几步：
 
@@ -124,10 +96,6 @@ Agent输入沿手势树从最深（最先命中）的组件向外逐层派发，
 2. 节点创建后，通过UIContext的[getUIObserver()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getuiobserver11)获取UIObserver，调用[onNodeSensitiveInput](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onnodesensitiveinput)注册监听，并保存回调函数引用。
 3. 在回调中读取[NodeSensitiveInputInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#nodesensitiveinputinfo)，根据type读取对应的touchEvent、mouseEvent或keyEvent，并通过isAgent判断是否为Agent输入。
 4. 不再需要监听时，调用[offNodeSensitiveInput](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#offnodesensitiveinput)并传入原回调注销。不传回调时，注销该节点的全部敏感输入监听。页面退出时也应清理监听。
-
-- 监听在输入事件分发到节点前触发。收到监听通知表示发生了输入尝试，不代表目标组件已执行其业务回调。
-- 仅监听命中目标为节点自身的事件，不汇总其子节点的输入。需要监听子节点时，应为该子节点单独注册。
-- 同一节点可注册多个回调，所有回调均在事件分发前执行。节点不存在时注册不生效，应确认节点已创建且标识正确。
 
 以下示例点击“注册监听”后，可操作“被监听节点”查看输入日志。即使Agent输入被DENY阻止，监听仍可获取该次输入通知；点击注销按钮后，不再接收对应监听通知。
 
