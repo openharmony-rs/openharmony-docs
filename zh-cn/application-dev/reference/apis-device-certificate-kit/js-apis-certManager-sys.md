@@ -1155,16 +1155,6 @@ try {
 }
 ```
 
-## CMResult
-
-CMResult的公开字段参见[CMResult](js-apis-certManager.md#cmresult)，以下为系统接口字段。
-
-**系统能力：** SystemCapability.Security.CertificateManager
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| certStoreInfo | [CertStoreInfo](#certstoreinfo) | 否 | 是 | 表示证书库信息。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-
 ## CertStoreInfo
 
 表示证书库信息。
