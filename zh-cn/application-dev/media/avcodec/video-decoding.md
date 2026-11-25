@@ -298,9 +298,9 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
-   - OH_AVCodecOnError解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
-   - OH_AVCodecOnStreamChanged码流信息变化，如码流宽、高变化；
-   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
+   - OH_AVCodecOnError解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
+   - OH_AVCodecOnStreamChanged码流信息变化回调，解码输入码流的分辨率发生变化时触发。
+   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即解码器已准备好，可以输入数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即解码完成。
 
    开发者可以通过处理该回调报告的信息，确保解码器正常运转。
@@ -946,9 +946,9 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
-   - OH_AVCodecOnError解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
-   - OH_AVCodecOnStreamChanged码流信息变化，如码流宽、高变化；
-   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即解码器已准备好，可以输入数据；
+   - OH_AVCodecOnError解码器运行错误，返回的错误码详情请参见：[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
+   - OH_AVCodecOnStreamChanged码流信息变化回调，解码输入码流的分辨率发生变化时触发。
+   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即解码器已准备好，可以输入数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即解码完成。
 
    开发者可以通过处理该回调报告的信息，确保解码器正常运转。

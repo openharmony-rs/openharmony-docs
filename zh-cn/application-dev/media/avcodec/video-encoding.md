@@ -294,7 +294,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
    - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
-   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等。
+   - OH_AVCodecOnStreamChanged码流信息变化回调，编码输入码流的分辨率发生变化时触发。
    - OH_AVCodecOnNeedInputBuffer输入回调无作用，开发者通过获取的surface来输入数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即编码完成。
 
@@ -779,7 +779,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
    - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
-   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等。
+   - OH_AVCodecOnStreamChanged码流信息变化回调，编码输入码流的分辨率发生变化时触发。
    - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即编码器已准备好，可以输入YUV/RGB数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即编码完成。
 
