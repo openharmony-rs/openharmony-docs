@@ -1,10 +1,11 @@
 # Module Description
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-23T06:54:20.984Z pushedAt=2026-11-24T09:18:27.920Z nl=1 -->
 
 The module provides basic window management capabilities, such as creating and destroying the current window, setting properties for the current window, and managing and scheduling windows.
 

@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5575f73d326abf87cc6dda50f211ca34472d98c2 translatedAt=2026-09-20T08:57:38.786Z pushedAt=2026-09-20T10:57:26.736Z -->
+<!-- md-trans-meta sourceCommit=174be54c52bb8e9adbbb1e84f7fc5998aa5714d8 translatedAt=2026-11-23T07:05:41.054Z pushedAt=2026-11-24T09:24:52.626Z nl=1 -->
 
 ```c
 typedef struct ArkUI_ListItemSwipeActionOption ArkUI_ListItemSwipeActionOption
@@ -20,5 +20,5 @@ Defines a configuration of a swipe action on a list item.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [list_item.h](capi-list-item-h.md)
 

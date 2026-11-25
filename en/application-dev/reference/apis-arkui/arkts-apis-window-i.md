@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=eb9a1ac1820d6095563ab7b47412817f2ff131a6 translatedAt=2026-09-09T03:33:39.825Z pushedAt=2026-09-09T03:46:46.981Z -->
+<!-- md-trans-meta sourceCommit=de02d8c1d4b2b22459087b35d47bd594e08378f5 translatedAt=2026-11-23T06:46:43.292Z pushedAt=2026-11-24T08:41:57.626Z nl=1 -->
 
 > **NOTE**
 >
@@ -87,13 +87,13 @@ Enumerates the metrics for frame performance.
 
 Describes the rectangular area of the window.
 
+> **NOTE** 
+>
+> Compared with [RectInVP](#rectinvp23), **Rect** uses pixels (px) as the unit and is suitable for scenarios where precise pixel control is required. **RectInVP** uses virtual pixels as the unit and can automatically adapt to different screen densities. Therefore, RectInVP is recommended for most UI scenarios.
+
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
-
-> **NOTE**
-
-> Compared with [RectInVP](#rectinvp23), **Rect** uses pixels (px) as the unit and is suitable for scenarios where precise pixel control is required. **RectInVP** uses virtual pixels as the unit and can automatically adapt to different screen densities. Therefore, **RectInVP** is recommended for most UI scenarios.
 
 | Name  | Type| Read-Only| Optional| Description              |
 | ------ | -------- | ---- | ---- | ------------------ |
@@ -106,7 +106,7 @@ Describes the rectangular area of the window.
 
 Describes the rectangular area of the window, in vp.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -200,7 +200,7 @@ Describes the window size, in px.
 
 Describes the window size, in vp.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -256,7 +256,7 @@ Describes the window properties.
 | drawableRect<sup>11+</sup>            | [Rect](arkts-apis-window-i.md#rect7)             | No  | No  | Size of the rectangle that can be drawn in the window. The upper boundary and left boundary are calculated relative to the top-left vertex of the window. In the stage model, this property should be obtained after [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) is called to load the page content.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core|
 | type<sup>(deprecated)</sup>                     | [WindowType](arkts-apis-window-e.md#windowtype7) | No  | No  | Window type.<br>Currently, the type returned by the [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) API for the main window is inaccurate. This parameter has been deprecated since API version 26.0.0. You can use the [windowType](#windowproperties) parameter instead.<br>**Since:** 7<br>**Deprecated since:** 26.0.0<br>**Substitutes:** [windowType](#windowproperties)<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core|
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | No  | Yes  | Window type. The default value is [TYPE_MAIN](arkts-apis-window-e.md#windowtype7).<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core|
-| isFullScreen                          | boolean                   | No   | No   |Whether the window is in [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout) and the status bar is hidden.<br> **Atomic service API:** Since API version 12, this interface is supported in atomic services.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core<br>**Device behavior differences:**<br>- On PC/2-in-1 devices or in PC mode of other devices:<br>Before OpenHarmony 6.1.1, if the main window or a subwindow is in immersive layout (that is, isLayoutFullScreen is true) and has entered full screen, true is returned; in other cases, the return value is false.<br>Since OpenHarmony 6.1.1, if the main window calls an interface (such as [setSpecificSystemBarEnabled](arkts-apis-window-Window.md#setspecificsystembarenabled11) or [setWindowSystemBarEnable](arkts-apis-window-Window.md#setwindowsystembarenable9)) to hide the status bar and is in immersive layout (that is, isLayoutFullScreen is true), the return value is true; in other cases, the return value is false.<br>- On other devices or in other modes:<br>If the main window calls an interface (such as [setSpecificSystemBarEnabled](arkts-apis-window-Window.md#setspecificsystembarenabled11) or [setWindowSystemBarEnable](arkts-apis-window-Window.md#setwindowsystembarenable9)) to hide the status bar and is in immersive layout (that is, isLayoutFullScreen is true), the return value is true; in other cases, the return value is false.|
+| isFullScreen                          | boolean                   | No   | No   |Whether the window is in [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout) and the status bar is hidden.<br> **Atomic service API:** Since API version 12, this interface is supported in atomic services.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core<br>**Device behavior differences:**<br>- On PC/2-in-1 devices or in desktop mode of other devices:<br>Before OpenHarmony 6.1.1, if the main window or a subwindow is in immersive layout (that is, isLayoutFullScreen is true) and has entered full screen, true is returned; in other cases, the return value is false.<br>Since OpenHarmony 6.1.1, if the main window calls an interface (such as [setSpecificSystemBarEnabled](arkts-apis-window-Window.md#setspecificsystembarenabled11) or [setWindowSystemBarEnable](arkts-apis-window-Window.md#setwindowsystembarenable9)) to hide the status bar and is in immersive layout (that is, isLayoutFullScreen is true), the return value is true; in other cases, the return value is false.<br>- On other devices or in other modes:<br>If the main window calls an interface (such as [setSpecificSystemBarEnabled](arkts-apis-window-Window.md#setspecificsystembarenabled11) or [setWindowSystemBarEnable](arkts-apis-window-Window.md#setwindowsystembarenable9)) to hide the status bar and is in immersive layout (that is, isLayoutFullScreen is true), the return value is true; in other cases, the return value is false.|
 | isLayoutFullScreen<sup>7+</sup>       | boolean                   | No   | No   | Whether the window is in [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout). For a subwindow, if immersive layout is set, the return value is true.<br>For the main window, if immersive layout is set and the window is in full-screen mode, the return value is true.<br>In other cases, false is returned.<br> **Atomic service API:** Since API version 12, this interface is supported in atomic services.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core|
 | focusable<sup>7+</sup>                | boolean                   | No  | No  | Whether the window is focusable. **true** if focusable, **false** otherwise.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core|
 | touchable<sup>7+</sup>                | boolean                   | No  | No  | Whether the window is touchable. **true** if touchable, **false** otherwise.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>**System capability:** SystemCapability.WindowManager.WindowManager.Core|
@@ -294,7 +294,7 @@ The actual window size limits applied are determined by the intersection of the 
 
 1. Window size limits configured by the application via [setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11).
 2. Window size limits specified by the application via [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) when the application starts the window through [startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2). (This approach is supported since API version 17.)
-3. Window size limits configured by the application in [abilities in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).
+3. Window size limits specified by the application in [abilities in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).
 4. Default system limits (which vary depending on the product and window type).
 
 **System capability**: SystemCapability.Window.SessionManager
@@ -308,14 +308,15 @@ The actual window size limits applied are determined by the intersection of the 
 > - The default value is **0**, indicating that the property does not change.
 > - The lower bound of the effective range is the minimum height/width limited by the system.
 > - The upper bound of the effective range is the maximum height/width limited by the system.
+> - When the window is larger than the system maximum or smaller than the system minimum, it is automatically adjusted to the system-specified maximum or minimum value.
 
 | Name     | Type  | Read-Only| Optional| Description                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | No  | Yes  | Maximum window width.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| maxHeight | number | No  | Yes  | Maximum window height.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| minWidth  | number | No  | Yes  | Minimum window width.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| minHeight | number | No  | Yes  | Minimum window height.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | No| Yes| Unit of the window size limits. The default value is **px**. The value can be **px** or **vp**.|
+| maxWidth  | number | No   | Yes   | Maximum window width. The default unit is px. <br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>Before <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is mandatory.<br>Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is optional, and the default value is **0**. |
+| maxHeight | number | No   | Yes   | Maximum window height. The default unit is px. <br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>Before <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is mandatory.<br>Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is optional, and the default value is **0**. |
+| minWidth  | number | No   | Yes   | Minimum window width. The default unit is px. <br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>Before <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is mandatory.<br>Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is optional, and the default value is **0**. |
+| minHeight | number | No   | Yes   | Minimum window height. The default unit is px. <br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>Before <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is mandatory.<br>Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this parameter is optional, and the default value is **0**. |
+| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | No | Yes | Unit of the window size limits. The default value is **px**. The value can be **px** or **vp**. |
 
 ## TitleButtonRect<sup>11+</sup>
 
@@ -358,12 +359,29 @@ Describes the information about the display density of the screen where the wind
 | defaultDensity | number   | No  | No  | Default display size scale factor for the screen where the window is located. The value ranges from 0.5 to 4.0 and varies with the screen.|
 | customDensity | number   | No  | No  | Custom display size scale factor of the window. The value ranges from 0.5 to 4.0. If this parameter is left unspecified, the system's display size scale factor is used. This parameter takes effect only for main windows. For child windows, modal windows, global floating windows, or system windows, it is equivalent to the system's display size scale factor (**systemDensity**).|
 
+## WindowFocusState
+
+Describes the information about the change of the window focus state.
+
+**Since**: 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name                | Type                                                          | Read-Only | Optional | Description                                                                                                            |
+| ------------------- | ------------------------------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------- |
+| isFocused           | boolean                                                       | No   | No   | Whether the window is focused. **true** if focused, **false** otherwise. |
+| focusChangeReason   | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | No   | No   | Reason for the focus state change.                                                                                    |
+| nextFocusedWindowId | number                                                        | No   | Yes  | ID of the next focused window. This parameter is valid only when the current window is not focused and the next focused window is in the same process as the current window. The default value is **undefined**. |
+| prevFocusedWindowId | number                                                        | No   | Yes  | ID of the previous focused window. This parameter is valid only when the current window is focused and the previous focused window is in the same process as the current window. The default value is **undefined**. |
+
 ## WindowInfoOptions
 Describes the window layout information filtering options.
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
@@ -384,7 +402,22 @@ Describes the information about the window layout.
 | Name  | Type  | Read-Only| Optional| Description                                      |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | windowRect | [Rect](arkts-apis-window-i.md#rect7)  | No| No| Window rectangle, that is, the position and size of the window on the display.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| windowAlpha | number  | No| Yes| Window opacity. The value range is [0.0, 1.0], where **0.0** indicates completely transparent, and **1.0** indicates completely opaque. The default value is **-1.0**, indicating that the window opacity is not obtained or the query fails.<br>Note: This opacity does not refer to the window background color opacity (which can be set via [setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)).<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model constraint**: This API can be used only in the stage model.|
+| windowAlpha | number  | No| Yes| Window opacity. The value range is [0.0, 1.0], where **0.0** indicates completely transparent, and **1.0** indicates completely opaque. The default value is **-1.0**, indicating that the window opacity is not obtained or the query fails.<br>Note: This opacity does not refer to the window background color opacity (which can be set via [setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)).<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+
+## WindowPositionParams
+
+Describes the position parameters used when adjusting the z-index of the main window.
+
+**Since**: 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name        | Type | Read-Only | Optional | Description  |
+| ----------- | ---- | ---- | ---- | ---------- |
+| windowId    | number | No   | No   | ID of the main window whose z-index is to be adjusted. The window must be the main window in the current application process.<br>The value must be an integer greater than 0. It is recommended to use the [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) API to obtain the window ID.|
+| insertAfter | number | No   | No   | Position to which the window is adjusted. When the value is greater than 0, it indicates the ID of another main window, and the main window whose z-index is to be adjusted will be placed below that main window. For the z-index adjustment operations corresponding to other values, see [WindowPosition](arkts-apis-window-e.md#windowposition).|
 
 ## KeyboardInfo<sup>18+</sup>
 
@@ -422,16 +455,16 @@ Describes the configuration for window animation.
 | Name    | Type                                                     | Read-Only| Optional| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | curve    | [WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)           |  No |  No  | Type of animation curve.                                              |
-| duration | number                                                    |  No |  Yes  | Duration for playing the animation, in milliseconds (ms).<br>The default value is 0, and the maximum value is 3000.<br>Whether it is required depends on the animation curve type.|
-| param    | [WindowAnimationCurveParam](arkts-apis-window-t.md#windowanimationcurveparam20) |  No |  Yes  | Parameters for the animation curve. Whether it is required depends on the animation curve type.                |
+| duration | number                                                    |  No |  Yes  | Duration for playing the animation, in milliseconds (ms).<br/>The value range is [0, 3000]. If the value exceeds the range, error code 1300016 is returned. The default value is **0**, indicating that the animation is not played.<br/>Whether it is required depends on the animation curve type.|
+| param    | [WindowAnimationCurveParam](arkts-apis-window-t.md#windowanimationcurveparam20) |  No |  Yes  | Parameters for the animation curve. Whether it is required depends on the animation curve type. If not set, the default value is empty.               |
 
 ## WindowSnapshotAnimationConfig
 
-Window screenshot animation configuration. This parameter can be configured only when the maximizeWithOptions() or recover() API is called.
+Window screenshot animation configuration. This parameter can be configured only when the [maximizeWithOptions()](arkts-apis-window-Window.md#maximizewithoptions) or [recover()](arkts-apis-window-Window.md#recover) API is called.
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -446,14 +479,14 @@ Maximum configuration options.
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name  | Type  | Read-Only| Optional| Description                                      |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | maximizePresentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12)  |  No |  Yes | Layout mode when the window is maximized. The default value is [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12).ENTER_IMMERSIVE.|
-| acrossDisplayPresentation | AcrossDisplayPresentation  |  No |  Yes | Cross-screen policy for foldable devices. The default value is AcrossDisplayPresentation.FOLLOW_ACROSS_DISPLAY_SETTING. This parameter can be set only for the main window. Using it for non-main windows results in error code 1300004. **Device behavior differences**: This API is supported on 2-in-1 devices with folding capabilities. On other device types, this API does not take effect.|
+| acrossDisplayPresentation | [AcrossDisplayPresentation](arkts-apis-window-e.md#acrossdisplaypresentation)  |  No |  Yes | Cross-screen policy for foldable devices. The default value is [AcrossDisplayPresentation](arkts-apis-window-e.md#acrossdisplaypresentation).FOLLOW_ACROSS_DISPLAY_SETTING. This parameter can be set only for the main window. Using it for non-main windows results in error code 1300004. **Device behavior differences**: This API is supported on 2-in-1 devices with folding capabilities. On other device types, this API does not take effect.|
 | snapshotAnimationConfig | [WindowSnapshotAnimationConfig](#windowsnapshotanimationconfig)  |  No |  Yes | Screenshot animation configuration. When a window is maximized or restored to a [freeform window](../../windowmanager/window-terminology.md#freeform-window), the system uses a screenshot animation to mask the transition of application layout changes. You can use this property to specify the delay and duration of the screenshot fade-out animation. This setting can only be applied to the main window. If not specified for the main window, the system default animation is used. Child windows have no screenshot animation by default, meaning both duration and delay are **0**. Passing other animation parameters to child windows will return error code 1300004. When duration is set to **0**, the screenshot animation is disabled.|
 
 ## WindowInfo<sup>18+</sup>
@@ -469,10 +502,10 @@ Describes the window information.
 | abilityName | string   | No  | No  | Ability name.              |
 | windowId | number | No  | No  | Window ID.  |
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | No  | No  | Window mode.  |
-| isFocused | boolean | No  | Yes  | Whether the window gains focus. **true** if the window gains focus, **false** otherwise. The return value is the same as that of the [isFocused()](arkts-apis-window-Window.md#isfocused12) API.  |
-| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | No  | Yes  | Window dimensions in the global coordinate system. The width and height are the original values that are not scaled. In extended screen scenarios, the top-left corner of the primary screen is used as the coordinate origin. In virtual screen scenarios, the top-left corner of the virtual screen is used as the coordinate origin. The default value is [0, 0, 0, 0].|
-| displayId | number | No| Yes| ID of the screen where the window is located. By default, the ID of the main screen is returned. The value is an integer.<br>**Since**: 26.0.0<br> **Model constraint**: This API can be used only in the stage model.|
-| globalRect | [Rect](arkts-apis-window-i.md#rect7) | No| Yes| Actual display area of the window on the physical screen, with the upper left corner of the screen as the coordinate origin. If the window has been resized, the actual on-screen location and size of the window after resizing are returned. The default value is [0, 0, 0, 0].<br>**Since**: 26.0.0<br> **Model constraint**: This API can be used only in the stage model.|
+| isFocused | boolean | No  | Yes  | Whether the window gains focus. **true** if the window gains focus, **false** otherwise. The default value is **false**. The return value is the same as that of the [isFocused()](arkts-apis-window-Window.md#isfocused12) API.  |
+| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | No  | Yes  | Window size in the global coordinate system. The width and height are the original values that are not scaled. In extended screen scenarios, the top-left corner of the primary screen is used as the coordinate origin. In virtual screen scenarios, the top-left corner of the virtual screen is used as the coordinate origin. The default value is [0, 0, 0, 0].|
+| displayId | number | No| Yes| ID of the screen where the window is located. By default, the ID of the main screen is returned. The value is an integer.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
+| globalRect | [Rect](arkts-apis-window-i.md#rect7) | No| Yes| Actual display area of the window on the physical screen, with the upper left corner of the screen as the coordinate origin. If the window has been resized, the actual on-screen location and size of the window after resizing are returned. The default value is [0, 0, 0, 0].<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## TransitionAnimation<sup>20+</sup>
 
@@ -485,7 +518,7 @@ Describes the window transition animation.
 | Name   | Type                                             | Read-Only| Optional| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | config  | [WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20) |  No |  No  | Transition animation configuration.                                          |
-| opacity | number                                            |  No |  Yes  | Opacity of the window during the transition animation. If this parameter is set to **0**, the window is completely transparent. The default value is **1.0**. When the animation type is **WindowTransitionType.DESTROY**, this represents the opacity at the end of the animation. The value ranges from 0 to 1.0. The value is reset to **1.0** when the animation ends.|
+| opacity | number                                            |  No |  Yes  | Opacity of the window during the transition animation. If this parameter is set to **0**, the window is completely transparent. The default value is **1.0**. When the animation type is **WindowTransitionType.DESTROY**, this represents the opacity at the end of the animation. The value range is [0, 1.0]. If the value is out of range, error code 1300016 is returned. The value is reset to **1.0** when the animation ends. <br/>This parameter is stored with float32 precision. The value obtained through [getWindowTransitionAnimation()](arkts-apis-window-Window.md#getwindowtransitionanimation20) may differ slightly from the input value due to precision truncation caused by double-to-float conversion in the system. |
 
 ## StartAnimationParams<sup>20+</sup>
 
@@ -495,7 +528,7 @@ The configuration is valid only for transitions between different abilities with
 
 The configuration is valid only full-screen applications.
 
-**Device behavior differences**: The API is supported on phones that are not working in [free window](../../windowmanager/window-terminology.md#free-windows) mode and tablets that are working in neither freeform window nor PC mode. On phones and tablets in freeform window or PC mode and other devices, this API neither takes effect nor returns an error.
+**Device behavior differences**: The API is supported on phones that are not working in [free windows](../../windowmanager/window-terminology.md#free-windows) mode and tablets that are working in neither free windows nor desktop mode. On phones and tablets in free windows or desktop mode and other devices, this API neither takes effect nor returns an error.
 
 **System capability**: SystemCapability.Window.SessionManager
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
@@ -510,7 +543,10 @@ Describes the window parameters during application startup.
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | No  | Yes  | Parameters for the startup animation. The default value is **undefined**. If this parameter is not set, the default animation of the system is used.|
-| needAnimation<sup>23+</sup> | boolean | No| Yes| Whether to enable the window creation animation.<br>If this parameter is set to **true**, the system's default animation will be used. If this parameter is set to **false**, the window creation animation is disabled. This value takes effect for [freeform windows](../../windowmanager/window-terminology.md#freeform-window) only.<br>If this parameter is not set, it defaults to **undefined** and the system's default animation will be used.<br> **Model constraint**: This API can be used only in the stage model.|
+| needAnimation<sup>23+</sup> | boolean | No| Yes| Whether to enable the window creation animation.<br>If this parameter is set to **true**, the system's default animation will be used. If this parameter is set to **false**, the window creation animation is disabled. This value takes effect for [freeform windows](../../windowmanager/window-terminology.md#freeform-window) only.<br>If this parameter is not set, it defaults to **undefined** and the system's default animation will be used.<br> **Model restriction**: This API can be used only in the stage model.|
+| minimizeOnStart| boolean | No | Yes | Whether the window starts in the minimized state.<br>**true** indicates that the current window starts in the minimized state, and **false** indicates that the window starts in the foreground. The default value is **false**.<br>This parameter takes effect only when it is passed between the processes within the same application. If the main window to be started is already in the foreground, passing **true** or **false** does not take effect and no error is reported. If the main window to be started is already in the background, passing **true** does not take effect and no error is reported, while passing **false** takes effect. If the main window is started for the first time, both **true** and **false** take effect.<br> **Device behavior differences:** This parameter can be used properly on PC/2-in-1 devices and on other devices in desktop mode. When used as an input parameter on other devices and in other modes, it does not take effect and no error is reported.<br> **Since:** 26.0.1 <br> **Model restriction:** This API can be used only in the stage model.|
+| excludeFromDock| boolean | No | Yes | Whether to hide the dock bar icon and preview window.<br>**true** indicates that the current window hides the dock bar icon and preview window, and **false** indicates that the window displays the dock bar icon and preview window normally. The default value is **undefined**, which does not change the display of the dock bar icon and preview window.<br>This parameter takes effect only when it is passed between the processes within the same application. The party to be started needs to add the application icon to the status bar. The setting is invalid when the main window to be started is in the foreground.<br> **Device behavior differences:** This parameter can be used properly on PCs/2-in-1 devices and on other devices in desktop mode. When used as an input parameter on other devices and in other modes, it does not take effect and no error is reported.<br> **Since:** 26.0.1 <br> **Model restriction:** This API can be used only in the stage model.|
+| excludeFromRecent| boolean | No | Yes | Whether to hide the preview window in the recent tasks view.<br>**true** indicates that the current window hides the preview window in the recent tasks view, and **false** indicates that the window displays the preview window in the recent tasks view normally. The default value is **undefined**, which does not change the display of the preview window in the recent tasks view.<br>This parameter takes effect only when it is passed between the processes within the same application. The party to be started needs to add the application icon to the status bar. The setting is invalid when the main window to be started is in the foreground.<br>**Device behavior differences:** This parameter can be used properly on PCs/2-in-1 devices and other devices in desktop mode. When used as an input parameter on other devices and in other modes, it does not take effect and no error is reported.<br> **Since:** 26.0.1 <br> **Model restriction:** This API can be used only in the stage model.|
 
 ## Callback<sup>15+</sup>
 
@@ -576,7 +612,7 @@ Enumerates the result of setting the window display orientation.
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
@@ -594,15 +630,15 @@ Describes the parameters used for creating a child window.
 
 | Name     | Type | Read-Only| Optional| Description        |
 | ---------- | ---- | ---- | ---- | ----------- |
-| title<sup>11+</sup>    | string | No| No| Title of the child window. The title display area should not go past the left side of the three-button area of the system. Any part that goes beyond will show as an ellipsis.<br>**Atomic service API:** This API can be used in atomic services since API version 12.     |
+| title<sup>11+</sup>    | string | No| No| Title of the child window. The rightmost end of the title display area should not go past the leftmost end of the three-button area of the system. Any part that goes beyond will show as an ellipsis.<br>**Atomic service API:** This API can be used in atomic services since API version 12.     |
 | decorEnabled<sup>11+</sup> | boolean | No| No| Whether to show the title bar of the child window. The value **true** indicates yes, and the value **false** indicates no.<br>**Atomic service API:** This API can be used in atomic services since API version 12.      |
-| isModal<sup>12+</sup>    | boolean | No| Yes| Whether the modal property is enabled for the child window. **true** if enabled, **false** otherwise. The default value is **false**.<br>**Atomic service API:** This API can be used in atomic services since API version 12.     |
-| modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | No| Yes| Modality type of the child window. This parameter takes effect only when the modal property is enabled for the child window. The default value is **WINDOW_MODALITY**.<br>**Atomic service API:** This API can be used in atomic services since API version 14.      |
-| windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | No| Yes| Rectangle of the child window, and the size of the child window is limited. For details, see [resize()](arkts-apis-window-Window.md#resize9). If this parameter is not set and [showWindow()](arkts-apis-window-Window.md#showwindow9) is not called, the default value {left: 0, top: 0, width: 0, height: 0} is used. For details, see [Subwindow Development](../../windowmanager/subwindow-guide.md).<br>**Atomic service API:** This API can be used in atomic services since API version 18.|
+| isModal<sup>12+</sup>    | boolean | No | Yes | Whether the modal property is enabled for the child window. It takes effect only when the independent child window property is not enabled for the child window, that is, when **zLevelAboveParentLoosened** is not set. **true** if enabled, **false** otherwise. The default value is **false**.<br>**Atomic service API:** This API can be used in atomic services since API version 12.      |
+| modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | No | Yes | Modality type of the child window. It can be set and takes effect only when the modality property is enabled for the child window (that is, [isModal](#subwindowoptions11) is set to **true**). Otherwise, setting this parameter throws an exception (error code [401](../errorcode-universal.md#401-parameter-check-failed)). If not set, the default value is **WINDOW_MODALITY**.<br>**Atomic service API:** This API can be used in atomic services since API version 14.       |
+| windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | No| Yes| Rectangle of the child window. The size of the child window is limited. For details, see [resize()](arkts-apis-window-Window.md#resize9). If this parameter is not set and [showWindow()](arkts-apis-window-Window.md#showwindow9) is not called, the default value {left: 0, top: 0, width: 0, height: 0} is used. For details, see [Subwindow Development](../../windowmanager/subwindow-guide.md).<br>**Atomic service API:** This API can be used in atomic services since API version 18.|
 | zLevel<sup>18+</sup>    | number | No| Yes| Z-level of the child window. This parameter is valid only when the modal property is not enabled for the child window, that is, **isModal** is not set. The value is an integer in the range [-10000, 10000]. Floating-point numbers will be rounded down. The default value is **0**.<br>**Atomic service API:** This API can be used in atomic services since API version 18.|
 | maximizeSupported<sup>19+</sup>    | boolean | No| Yes| Whether the child window supports maximization. **true** if supported, **false** otherwise. The default value is **false**.<br>**Atomic service API:** This API can be used in atomic services since API version 19.<br> **Device behavior differences:** This parameter can be used properly on devices that support the [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and are currently in that mode. On devices that do not support the freeform window mode, the API call will neither take effect nor report an error when this parameter is used as an input. On devices that support the freeform window mode but are not currently in that mode, the API call will neither take effect nor report an error when this parameter is used as an input, and the setting will take effect after the devices switch to that mode.|
-| outlineEnabled<sup>20+</sup>    | boolean | No| Yes| Whether the child window displays an outline. **true** if displayed, **false** otherwise. The default value is **false**.<br>**Atomic service API:** This API can be used in atomic services since API version 20.<br> **Device behavior differences:** This parameter works properly on PCs/2-in-1 devices, and on other devices in PC mode. If it is used as an input parameter in other scenarios, the corresponding API neither takes effect nor reports an error.|
-| zLevelAboveParentLoosened | boolean | No | Yes | Whether the child window is an [independent child window](../../windowmanager/window-type-overview.md#auxiliary-window). The value true indicates that the child window is an independent child window, and false indicates that the child window is not an independent child window. If not set, it defaults to false.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.|
+| outlineEnabled<sup>20+</sup>    | boolean | No| Yes| Whether the child window displays an outline. **true** if displayed, **false** otherwise. The default value is **false**.<br>**Atomic service API:** This API can be used in atomic services since API version 20.<br> **Device behavior differences:** This parameter can be used properly on PCs/2-in-1 devices and other devices in desktop mode. When it is used as an input parameter on other devices and in other modes, the corresponding API does not take effect and no error is reported.|
+| zLevelAboveParentLoosened | boolean | No | Yes | Whether the child window is an [independent child window](../../windowmanager/window-type-overview.md#auxiliary-window). The value **true** indicates that the child window is an independent child window, and **false** indicates that the child window is not an independent child window. If not set, it defaults to false.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## KeyFramePolicy<sup>20+</sup>
 

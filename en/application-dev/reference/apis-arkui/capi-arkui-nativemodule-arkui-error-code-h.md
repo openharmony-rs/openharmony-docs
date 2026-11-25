@@ -1,12 +1,11 @@
 # error_code.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8d89821f92b220ca7659a1de29fb1e3b0412c5b translatedAt=2026-08-12T07:59:04.864Z pushedAt=2026-08-13T02:01:02.968Z -->
+<!-- md-trans-meta sourceCommit=6bee69ad1f71b64e1b34a12b770f09026486f433 translatedAt=2026-11-23T07:00:13.443Z pushedAt=2026-11-24T06:09:14.040Z nl=1 -->
 
 ## Overview
 
@@ -72,6 +71,12 @@ Enumerates error codes of ArkUI native APIs, which are used to indicate the resu
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  The node cannot be accepted as an auxiliary node. For details about the error code, see [106208 The Node Cannot Be Accepted as an Auxiliary Node](errorcode-adopt.md#106208-the-node-cannot-be-accepted-as-an-auxiliary-node).<br>**Since:** 22 |
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  The node cannot accept other nodes. For details about the error code, see [106209 The Node Cannot Accept Other Nodes](errorcode-adopt.md#106209-the-node-cannot-accept-other-nodes).<br>**Since:** 22 |
 | ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  The node is not an auxiliary node accepted by the target node. For details about the error code, see [106210 The Node Is Not an Affiliated Node Accepted by the Target Node](errorcode-adopt.md#106210-the-node-is-not-an-affiliated-node-accepted-by-the-target-node).<br>**Since:** 22 |
+| ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND = 106211 | Unable to obtain the attribute because it was not set previously. For details about the error code, see [106211 Attribute Not Found](errorcode-animation.md#106211-attribute-not-found).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID = 106212 | Invalid child animation parameter. For details about the error code, see [106212 Invalid Sub-animation Parameter](errorcode-animation.md#106212-invalid-sub-animation-parameter).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | The specified animation group is not found on [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md). For details about the error code, see [106213 Specified Animation Group Not Found on the UIContext](errorcode-animation.md#106213-specified-animation-group-not-found-on-the-uicontext).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | A re-entrant call to the animation group API is detected on the same thread. For details about the error code, see [106214 Re-entrant Call to Animation Group APIs Detected on the Same Thread](errorcode-animation.md#106214-re-entrant-call-to-animation-group-apis-detected-on-the-same-thread).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | The animation group is not in the required state for operation. For details about the error code, see [106215 Animation Group Not in the Required State for the Operation](errorcode-animation.md#106215-animation-group-not-in-the-required-state-for-the-operation).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT = 106216 | The resolved target node does not belong to the UIContext of the context passed in when registering the animation group. For details about the error code, see [106216 Resolved Target Node Not Belong to the UIContext of the Context Passed for Registering the Animation Group](errorcode-animation.md#106216-resolved-target-node-not-belong-to-the-uicontext-of-the-context-passed-for-registering-the-animation-group).<br>**Since:** 26.0.1 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  The current node is not a custom node. For details, see [Render Node Error Codes](errorcode-node-render.md).<br>**Since:** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  The current node already has child nodes. For details, see [Render Node Error Codes](errorcode-node-render.md).<br>**Since:** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details, see [Render Node Error Codes](errorcode-node-render.md).<br>**Since:** 20 |
@@ -84,8 +89,8 @@ Enumerates error codes of ArkUI native APIs, which are used to indicate the resu
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  An ancestor of the current node is not focusable. For details about the error code, see [150002 Ancestor Component Not Focusable](errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since:** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  The current node does not exist. For details about the error code, see [150003 Component Does Not Exist](errorcode-focus.md#150003-component-does-not-exist).<br>**Since:** 15 |
 | ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 |  Snapshot timed out. For details, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 15 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | The color space or dynamic range mode set in the screenshot options is not supported. For details about the error code, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23 |
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | The **isAuto** parameter corresponding to the color space or dynamic range mode cannot be set to **true** for offscreen node screenshots. For details about the error code, see [Screenshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | The color space or dynamic range mode set in the snapshot options is not supported. For details about the error code, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | The **isAuto** parameter corresponding to the color space or dynamic range mode cannot be set to **true** for offscreen node snapshots. For details about the error code, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23 |
 | ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | The component is not a scrollable container. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 12 |
 | ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | The buffer is not large enough. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 12 |
 | ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 |  The event is not a cloned event. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 15 |
@@ -97,3 +102,5 @@ Enumerates error codes of ArkUI native APIs, which are used to indicate the resu
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  Invalid callback function. For details about the error code, see [UI Context Error Codes](errorcode-uicontext.md).<br>**Since:** 18 |
 | ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  The gesture recognizer type is not supported. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 18 |
 | ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | The requested operation is not allowed in the current drag and drop event processing phase. For details about the error code, see [Drag Event Error Codes](errorcode-drag-event.md).<br>**Since:** 19 |
+| ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 |  The node fails to be mounted, so the dialog box cannot be opened. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 |  The child window fails to be created, so the dialog box cannot be opened. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.0.1 |

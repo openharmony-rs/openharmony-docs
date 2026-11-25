@@ -1,11 +1,11 @@
 # ArkUI_EventModule
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-18T11:18:43.856Z pushedAt=2026-09-20T07:30:35.030Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T06:54:57.303Z pushedAt=2026-11-24T09:18:38.552Z nl=1 -->
 
 ## Overview
 

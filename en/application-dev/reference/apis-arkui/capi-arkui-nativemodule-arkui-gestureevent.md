@@ -1,11 +1,11 @@
 # ArkUI_GestureEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-20T08:47:55.379Z pushedAt=2026-09-20T09:06:01.392Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T07:04:11.286Z pushedAt=2026-11-24T09:22:56.930Z nl=1 -->
 
 ```c
 typedef struct ArkUI_GestureEvent ArkUI_GestureEvent

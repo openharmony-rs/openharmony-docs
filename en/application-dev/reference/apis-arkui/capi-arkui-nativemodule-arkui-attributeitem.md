@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1f9dad1f3e6c22cc389887f8092a3a1fbc7dc9a2 translatedAt=2026-09-18T11:24:23.095Z pushedAt=2026-09-20T07:47:57.563Z -->
+<!-- md-trans-meta sourceCommit=2ef784f0bdab28245033ef8be92f653a500e646d translatedAt=2026-11-23T06:55:16.931Z pushedAt=2026-11-24T09:18:43.309Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_AttributeItem
@@ -19,7 +19,7 @@ Defines the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#seta
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_node.h](capi-native-node-h.md)
+**Header file**: [common_type.h](capi-common-type-h.md)
 
 ## Summary
 

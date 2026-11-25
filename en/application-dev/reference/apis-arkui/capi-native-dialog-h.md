@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f93180b49ffa38d77f2f7dd55510107f410f8c41 translatedAt=2026-09-23T09:27:55.660Z pushedAt=2026-09-24T09:09:39.393Z -->
+<!-- md-trans-meta sourceCommit=5e114c216749dc35d8cfe05f82a6a8e53d302eae translatedAt=2026-11-23T07:11:31.458Z pushedAt=2026-11-24T06:36:51.042Z nl=1 -->
 
 ## Overview
 
@@ -50,11 +50,13 @@ Declares a set of custom dialog box APIs of ArkUI on the native side. These APIs
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef bool (\*ArkUI_OnWillDismissEvent)(int32_t reason)](#arkui_onwilldismissevent) | ArkUI_OnWillDismissEvent | Defines a pointer to the callback invoked when the dialog box is closed.|
+| [typedef void (\*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData)](#arkui_opendialogcallback) | ArkUI_OpenDialogCallback | Defines a pointer to the callback invoked when the dialog box is displayed. |
 | [void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)](#oh_arkui_dialogdismissevent_setshouldblockdismiss) | - | Sets whether to block the system behavior of dismissing a dialog box.|
 | [void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getuserdata) | - | Obtains the pointer to user data in a dialog box dismiss event object.|
 | [int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getdismissreason) | - | Obtains the dismissal reason from a dialog box dismiss event object. |
 | [int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (\*callback)(int32_t dialogId))](#oh_arkui_customdialog_opendialog) | - | Displays a custom dialog box.|
-| [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | Updates a custom dialog box.|
+| [void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* options, void* userData, ArkUI_OpenDialogCallback callback)](#oh_arkui_customdialog_opendialogwithcallback) | - | Displays a custom dialog box and returns the result and dialog box ID through the callback. |
+| [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (\*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | Updates a custom dialog box. |
 | [int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)](#oh_arkui_customdialog_closedialog) | - | Closes a custom dialog box.|
 | [ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)](#oh_arkui_customdialog_createoptions) | - | Creates custom dialog box options.|
 | [void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_disposeoptions) | - | Disposes of the custom dialog box options.|
@@ -309,13 +311,54 @@ Displays a custom dialog box.
 | Name                                   | Description|
 |----------------------------------------| -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box configuration.|
-| void (*callback)(int32_t dialogId)                               | Pointer to the callback invoked when the dialog box is displayed, which returns the dialog box ID. |
+| void (\*callback)(int32_t dialogId)                               | Pointer to the callback invoked when the dialog box is displayed, which returns the dialog box ID. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | int32_t  | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
+
+### ArkUI_OpenDialogCallback()
+
+```c
+typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData)
+```
+
+**Description**
+
+
+Defines a pointer to the callback invoked when the dialog box is displayed.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| int32_t errorCode | Result of displaying the dialog box.<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode): The operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode): A parameter error occurs.<br>         [ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode): The dialog box cannot be displayed because the node fails to be mounted.<br>         [ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode): The dialog box cannot be displayed because the subwindow fails to be created.|
+| int32_t dialogId | ID of the dialog box. The value **-1** is returned when the dialog box cannot be displayed.|
+| void* userData | Pointer to the user-defined data.|
+
+### OH_ArkUI_CustomDialog_OpenDialogWithCallback()
+
+```c
+void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* options, void* userData, ArkUI_OpenDialogCallback callback)
+```
+
+**Description**
+
+Displays a custom dialog box.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box configuration. |
+| void* userData | Pointer to the user-defined data.|
+| [ArkUI_OpenDialogCallback](#arkui_opendialogcallback) callback | Callback invoked when the dialog box is displayed. The input parameters are the error code and the dialog box ID.|
 
 ### OH_ArkUI_CustomDialog_UpdateDialog()
 
@@ -336,7 +379,7 @@ Updates a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box configuration.|
-| void (*callback)(int32_t dialogId)                               | Callback invoked when the dialog box is updated, which returns the dialog box ID. |
+| void (\*callback)(int32_t dialogId)                               | Pointer to the callback for updating the dialog box, which returns the dialog box ID. |
 
 **Returns**
 
@@ -427,7 +470,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, A
 
 Sets the display level of the dialog box.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
@@ -458,7 +501,7 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 
 Sets the ID of the node under the dialog box's display level.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 

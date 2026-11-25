@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=0afe452e603bfead1a3f4dee1688f24b1fb6467f translatedAt=2026-11-23T07:14:06.111Z pushedAt=2026-11-24T09:14:24.680Z nl=1 -->
 
 Represents a window instance, which is the basic unit managed by the window manager.
 
@@ -304,6 +305,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.destroyWindow((err) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -344,6 +346,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.destroyWindow();
 promise.then(() => {
   console.info('Succeeded in destroying the window.');
@@ -398,6 +401,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -462,6 +466,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.moveWindowTo(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -527,7 +532,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.moveWindowToAsync(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -600,7 +605,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.moveWindowToAsync(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -662,7 +667,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.moveWindowToGlobal(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -729,7 +734,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.moveWindowToGlobal(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -792,6 +797,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.moveWindowToGlobalDisplay(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window in global display.');
@@ -841,7 +847,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let position = windowClass.clientToGlobalDisplay(100, 100);
   console.info(`Succeeded in converting the position in the current window to the position in global display. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -887,7 +893,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let position = windowClass.globalDisplayToClient(100, 100);
   console.info(`Succeeded in converting in the position in global display to the position in the current window. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -925,8 +931,8 @@ This API takes effect only when the window is in floating window mode (**window.
 
 | Name| Type| Mandatory| Description|
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 will be reported. The actual size set is limited by the minimum and maximum width configured for the window. Values outside the range are automatically corrected to the boundary values.|
-| height   | number                    | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 will be reported. The actual size set is limited by the minimum and maximum height configured for the window. Values outside the range are automatically corrected to the boundary values.|
+| width    | number                    | Yes | Target width of the current window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown). The actual size set is limited by the minimum and maximum width configured for the window. Values outside the range are automatically corrected to the boundary values. |
+| height   | number                    | Yes | Target height of the current window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown). The actual size set is limited by the minimum and maximum height configured for the window. Values outside the range are automatically corrected to the boundary values. |
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -945,7 +951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   windowClass.resize(500, 1000, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -989,8 +995,8 @@ This API takes effect only when the window is in floating window mode (**window.
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | -- | ------------------------ |
-| width  | number | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 will be reported. The actual size set is limited by the minimum and maximum width configured for the window. Values outside the range are automatically corrected to the boundary values.|
-| height | number | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 will be reported. The actual size set is limited by the minimum and maximum height configured for the window. Values outside the range are automatically corrected to the boundary values.|
+| width  | number | Yes | Target width of the current window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown). The actual size set is limited by the minimum and maximum width configured for the window. Values outside the range are automatically corrected to the boundary values. |
+| height | number | Yes | Target height of the current window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown). The actual size set is limited by the minimum and maximum height configured for the window. Values outside the range are automatically corrected to the boundary values. |
 
 **Return value**
 
@@ -1014,6 +1020,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.resize(500, 1000);
   promise.then(() => {
     console.info('Succeeded in changing the window size.');
@@ -1055,8 +1062,8 @@ This API takes effect only when the window is in floating window mode (**window.
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | -- | ------------------------ |
-| width  | number | Yes| New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 will be reported. The actual size set is limited by the minimum and maximum width configured for the window. Values outside the range are automatically corrected to the boundary values.|
-| height | number | Yes| New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code 401 will be reported. The actual size set is limited by the minimum and maximum height configured for the window. Values outside the range are automatically corrected to the boundary values.|
+| width  | number | Yes | Target width of the current window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown). The actual size set is limited by the minimum and maximum width configured for the window. Values outside the range are automatically corrected to the boundary values. |
+| height | number | Yes | Target height of the current window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown). The actual size set is limited by the minimum and maximum height configured for the window. Values outside the range are automatically corrected to the boundary values. |
 
 **Return value**
 
@@ -1082,7 +1089,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.resizeAsync(500, 1000);
   promise.then(() => {
     console.info('Succeeded in changing the window size.');
@@ -1124,6 +1131,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let properties = windowClass.getWindowProperties();
 } catch (exception) {
   console.error(`Failed to obtain the window properties. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1159,6 +1167,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let densityInfo = windowClass.getWindowDensityInfo();
 } catch (exception) {
   console.error(`Failed to obtain the window densityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1343,7 +1352,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
-  // Obtain windowClass by calling getLastWindow(), createWindow(), or findWindow().
+  // windowClass is the created/obtained Window instance.
   let rect = windowClass.getGlobalRect();
   console.info(`Succeeded in getting window rect: ` + JSON.stringify(rect));
 } catch (exception) {
@@ -1398,6 +1407,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let type = window.AvoidAreaType.TYPE_SYSTEM;
 try {
+  // windowClass is the created/obtained Window instance.
   let avoidArea = windowClass.getWindowAvoidArea(type);
 } catch (exception) {
   console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1447,6 +1457,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let type = window.AvoidAreaType.TYPE_SYSTEM;
 try {
+  // windowClass is the created/obtained Window instance.
   let avoidArea = windowClass.getWindowAvoidAreaIgnoringVisibility(type);
 } catch (exception) {
   console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1806,6 +1817,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 try {
   let enabled = false;
+  // windowClass is the created/obtained Window instance.
   windowClass.setImmersiveModeEnabledState(enabled);
 } catch (exception) {
   console.error(`Failed to set the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1844,6 +1856,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let isEnabled = windowClass.getImmersiveModeEnabledState();
 } catch (exception) {
   console.error(`Failed to get the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1893,6 +1906,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 try {
   let enabled = false;
+  // windowClass is the created/obtained Window instance.
   windowClass.setFloatNavigationAvoidAreaEnabled(enabled);
 } catch (exception) {
   console.error(`Failed to set the window float navigation avoid area enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1931,6 +1945,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let isEnabled = windowClass.isFloatNavigationAvoidAreaEnabled();
 } catch (exception) {
   console.error(`Failed to check if the window is enabled float navigation avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1963,6 +1978,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let isEnabled = windowClass.isImmersiveLayout();
 } catch (exception) {
   console.error(`Failed to check if the window layout is in immersive mode. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -2004,6 +2020,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.setWindowDelayRaiseOnDrag(true);
 } catch (exception) {
   console.error(`Failed to set window delay raise. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -2540,6 +2557,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.getWindowStateSnapshot().then((data) => {
     let jsonObj: Record<string, Object> = JSON.parse(data);
     console.info(`Succeeded, data=${data}, isPcMode=${jsonObj["isPcMode"]}`);
@@ -2564,7 +2582,7 @@ Sets the preferred orientation for the main window. This API uses an asynchronou
 **Device behavior differences**:
 
 - On a device that supports sensor rotation and is not in the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state: The setting takes effect immediately.
-- On a device that supports sensor rotation and is in the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state: This API neither takes effect nor returns an error. It will take effect once the device exits the freeform window state.
+- On a device that supports sensor rotation and is in the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state: The call does not take effect and does not report an error. It will take effect once the device exits the freeform window state.
 - In other cases: This API neither takes effect nor returns an error.
 
 **Parameters**
@@ -2922,6 +2940,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.setUIContent('pages/page2/page3', (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -2973,6 +2992,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setUIContent('pages/page2/page3');
   promise.then(() => {
     console.info('Succeeded in loading the content.');
@@ -3025,6 +3045,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass is the created/obtained Window instance.
 windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -3081,6 +3102,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.loadContent('pages/page2', storage);
 promise.then(() => {
   console.info('Succeeded in loading the content.');
@@ -3222,6 +3244,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import * as Index from '../pages/Index'; // Import the named route page.
 
 try {
+  // windowClass is the created/obtained Window instance.
   (windowClass as window.Window).loadContentByName(Index.entryName, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -3304,6 +3327,7 @@ import * as Index from '../pages/Index'; // Import the named route page.
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = (windowClass as window.Window).loadContentByName(Index.entryName, storage);
   promise.then(() => {
     console.info('Succeeded in loading the content.');
@@ -3365,6 +3389,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // windowClass is a created/obtained Window instance.
   let data = windowClass.isWindowShowing();
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
 } catch (exception) {
@@ -3405,6 +3430,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('windowSizeChange', (data) => {
     console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
   });
@@ -3445,6 +3471,7 @@ const callback = (size: window.Size) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('windowSizeChange', callback);
   // Disable the listening of a specified callback.
@@ -3494,6 +3521,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('avoidAreaChange', (data) => {
     console.info('Succeeded in enabling the listener for system avoid area changes. type:' +
     JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
@@ -3539,6 +3567,7 @@ const callback = (data: Param) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('avoidAreaChange', callback);
 
   windowClass.off('avoidAreaChange', callback);
@@ -3580,6 +3609,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardHeightChange', (data) => {
     console.info('Succeeded in enabling the listener for keyboard height changes. Data: ' + JSON.stringify(data));
   });
@@ -3622,6 +3652,7 @@ const callback = (height: number) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardHeightChange', callback);
 
   windowClass.off('keyboardHeightChange', callback);
@@ -3671,6 +3702,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardWillShow', callback);
   console.info(`Register keyboard will show animation success`);
 } catch (exception) {
@@ -3715,6 +3747,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass is a created/obtained Window instance.
   windowClass.on('keyboardWillShow', callback);
   windowClass.off('keyboardWillShow', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -3764,6 +3797,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardWillHide', callback);
   console.info(`Register keyboard will hide animation success`);
 } catch (exception) {
@@ -3808,6 +3842,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardWillHide', callback);
   windowClass.off('keyboardWillHide', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -3854,6 +3889,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardDidShow', (keyboardInfo) => {
     console.info('keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
   });
@@ -3899,6 +3935,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardDidShow', callback);
   windowClass.off('keyboardDidShow', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -3944,6 +3981,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardDidHide', (keyboardInfo) => {
     console.info('keyboard hide animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
   });
@@ -3989,6 +4027,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('keyboardDidHide', callback);
   windowClass.off('keyboardDidHide', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -4027,6 +4066,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('touchOutside', () => {
     console.info('touch outside');
   });
@@ -4067,6 +4107,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('touchOutside', callback);
   windowClass.off('touchOutside', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -4105,6 +4146,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('screenshot', () => {
     console.info('screenshot happened');
   });
@@ -4145,6 +4187,7 @@ let callback = () => {
   console.info('screenshot happened');
 };
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('screenshot', callback);
   windowClass.off('screenshot', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -4185,6 +4228,7 @@ const callback = (eventType: window.ScreenshotEventType) => {
   console.info(`screenshotAppEvent happened. Event: ${eventType}`);
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('screenshotAppEvent', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4222,6 +4266,7 @@ const callback = (eventType: window.ScreenshotEventType) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('screenshotAppEvent', callback);
   // Disable the listening of a specified callback.
@@ -4237,7 +4282,7 @@ try {
 
 on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
-Subscribes to click or touch events on the masked area of a modal window. This API takes effect only when it is called by a modal window.
+Subscribes to the click or touch event on the mask area of a window of the **TYPE_DIALOG** type, a modal subwindow (that is, a subwindow whose modal attribute is enabled by using [setSubWindowModal](#setsubwindowmodal12)), or a modal main window (that is, a main window whose modal attribute is enabled by using [setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)). Calling this API on any other window does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4247,8 +4292,8 @@ Subscribes to click or touch events on the masked area of a modal window. This A
 
 | Name  | Type                | Mandatory| Description                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'dialogTargetTouch'**, indicating the click or touch event on the masked area of a modal window.|
-| callback | Callback&lt;void&gt;| Yes  | Callback which is triggered when a click or touch event occurs on the masked area of a modal window.|
+| type     | string              | Yes   | Event type. The value is fixed at **'dialogTargetTouch'**, which indicates the click or touch event on the area masked by a window of the **TYPE_DIALOG** type, a modal subwindow, or a modal main window. |
+| callback | Callback&lt;void&gt;| Yes   | Callback invoked when a click or touch event occurs on the area masked by a window of the **TYPE_DIALOG** type, a modal subwindow, or a modal main window. |
 
 **Error codes**
 
@@ -4262,6 +4307,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('dialogTargetTouch', () => {
     console.info('touch dialog target');
   });
@@ -4274,7 +4320,7 @@ try {
 
 off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the click or touch events on the masked area of a modal window.
+Unsubscribes from the click or touch event on the mask area of a window of the **TYPE_DIALOG** type, a modal subwindow (that is, a subwindow whose modal attribute is enabled by using [setSubWindowModal](#setsubwindowmodal12)), or a modal main window (that is, a main window whose modal attribute is enabled by using [setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4284,8 +4330,8 @@ Unsubscribes from the click or touch events on the masked area of a modal window
 
 | Name  | Type                   | Mandatory| Description                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'dialogTargetTouch'**, indicating the click or touch event on the masked area of a modal window.|
-| callback | Callback&lt;void&gt;      | No  | Callback which is triggered when a click or touch event occurs on the masked area of a modal window. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| type     | string                 | Yes   | Event type. The value is fixed at **'dialogTargetTouch'**, which indicates the click or touch event on the masked area of a window of the **TYPE_DIALOG** type, a modal subwindow, or a modal main window. |
+| callback | Callback&lt;void&gt;      | No   | Callback invoked when a click or touch event occurs on the masked area of a window of the **TYPE_DIALOG** type, a modal subwindow, or a modal main window. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Error codes**
 
@@ -4302,6 +4348,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('dialogTargetTouch', callback);
   windowClass.off('dialogTargetTouch', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -4340,6 +4387,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('windowEvent', (data) => {
     console.info('Window event happened. Event:' + JSON.stringify(data));
   });
@@ -4380,6 +4428,7 @@ const callback = (windowEventType: window.WindowEventType) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('windowEvent', callback);
   // Disable the listening of a specified callback.
@@ -4422,6 +4471,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('displayIdChange', (data) => {
     console.info('Window displayId changed, displayId=' + JSON.stringify(data));
   });
@@ -4463,6 +4513,7 @@ const callback = (displayId: number) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('displayIdChange', callback);
   // Disable the listening of a specified callback.
@@ -4510,6 +4561,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('windowVisibilityChange', (boolean) => {
     console.info('Window visibility changed, isVisible=' + boolean);
   });
@@ -4553,6 +4605,7 @@ const callback = (bool: boolean) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('windowVisibilityChange', callback);
   // Disable the listening of a specified callback.
@@ -4600,6 +4653,7 @@ try {
   let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
+  // windowClass is the created/obtained Window instance.
   windowClass.on('occlusionStateChanged', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4638,6 +4692,7 @@ try {
   let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('occlusionStateChanged', callback);
   // Disable the listening of a specified callback.
@@ -4682,6 +4737,7 @@ try {
   let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
     console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
   };
+  // windowClass is the created/obtained Window instance.
   windowClass.on('frameMetricsMeasured', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4719,6 +4775,7 @@ try {
   let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
     console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
   };
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('frameMetricsMeasured', callback);
   // Disable the listening of a specified callback.
@@ -4770,6 +4827,7 @@ const callback = (density: number) => {
   let px = vp * density;
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('systemDensityChange', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4811,6 +4869,7 @@ const callback = (density: number) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('systemDensityChange', callback);
   // Disable the listening of a specified callback.
@@ -4855,6 +4914,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('noInteractionDetected', 60, () => {
     console.info('no interaction in 60s');
   });
@@ -4898,6 +4958,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('noInteractionDetected', 60, callback);
   windowClass.off('noInteractionDetected', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -4943,6 +5004,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+    // windowClass is the created/obtained Window instance.
     windowClass.on('windowStatusChange', (WindowStatusType) => {
         console.info('Succeeded in enabling the listener for window status changes. Data: ' + JSON.stringify(WindowStatusType));
     });
@@ -4984,6 +5046,7 @@ const callback = (windowStatusType: window.WindowStatusType) => {
     // ...
 }
 try {
+    // windowClass is the created/obtained Window instance.
     windowClass.on('windowStatusChange', callback);
     windowClass.off('windowStatusChange', callback);
     // Unregister all the callbacks that have been registered through on().
@@ -5021,6 +5084,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+    // windowClass is the created/obtained Window instance.
     windowClass.on('windowStatusDidChange', (WindowStatusType) => {
         console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
     });
@@ -5060,6 +5124,7 @@ const callback = (windowStatusType: window.WindowStatusType) => {
     // ...
 }
 try {
+    // windowClass is the created/obtained Window instance.
     windowClass.on('windowStatusDidChange', callback);
     windowClass.off('windowStatusDidChange', callback);
     // Unregister all the callbacks that have been registered through on().
@@ -5107,6 +5172,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
   if (error.code) {
     console.error(`Failed to set the content. Cause code: ${error.code}`);
@@ -5159,6 +5225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// windowClass is the created/obtained Window instance.
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     windowClass?.on('windowTitleButtonRectChange', (titleButtonRect) => {
@@ -5200,6 +5267,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// windowClass is the created/obtained Window instance.
 windowClass.setUIContent('pages/WindowPage').then(() => {
     const callback = (titleButtonRect: window.TitleButtonRect) => {
         // ...
@@ -5249,6 +5317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('windowRectChange', (data: window.RectChangeOptions) => {
       console.info(`Succeeded in enabling the listener for window rect changes. Data: ${JSON.stringify(data)}`);
   });
@@ -5293,6 +5362,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('windowRectChange', callback);
   windowClass.off('windowRectChange', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -5335,6 +5405,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('rectChangeInGlobalDisplay', callback);
 } catch (exception) {
   console.error(`Failed to enable the listener for window rect changes in global display. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5374,6 +5445,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('rectChangeInGlobalDisplay', callback);
   windowClass.off('rectChangeInGlobalDisplay', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -5428,6 +5500,7 @@ const callback = () => {
   return true;
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('subWindowClose', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5470,6 +5543,7 @@ const callback = () => {
   return true;
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('subWindowClose', callback);
   windowClass.off('subWindowClose', callback);
   // Unregister all the callbacks that have been registered through on().
@@ -5635,13 +5709,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('windowHighlightChange', (data: boolean) => {
     console.info(`Window highlight Change: ${data}`);
   });
@@ -5685,12 +5760,101 @@ const callback = (data: boolean) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('windowHighlightChange', callback);
   // Disable the listening of a specified callback.
   windowClass.off('windowHighlightChange', callback);
   // Unregister all the callbacks that have been registered through on().
   windowClass.off('windowHighlightChange');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## onWindowFocusStateChange
+
+onWindowFocusStateChange(callback: Callback&lt;WindowFocusState&gt;): void
+
+Subscribes to the window focus state change event. When the window focus state changes, the callback is triggered to return the focus state change information of the window.
+
+**Since**: 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name     | Type                                                                        | Mandatory | Description                                   |
+| -------- | --------------------------------------------------------------------------- | --------- | --------------------------------------------- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | Yes       | Callback used to return the focus state change information of the window. |
+
+**Error code**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID | Error Message |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
+}
+try {
+  // Enable listening through the onWindowFocusStateChange API.
+  windowClass.onWindowFocusStateChange(callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowFocusStateChange
+
+offWindowFocusStateChange(callback?: Callback&lt;WindowFocusState&gt;): void
+
+Unsubscribes from the window focus state change event.
+
+**Since**: 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name     | Type                                                                        | Mandatory | Description                                                                           |
+| -------- | --------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | No        | Callback used to return the window focus state change. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID | Error Message |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  // ...
+}
+try {
+  // Enable listening through the onWindowFocusStateChange API.
+  windowClass.onWindowFocusStateChange(callback);
+  // Disable the listening for a specified callback.
+  windowClass.offWindowFocusStateChange(callback);
+  // If multiple callbacks are enabled for listening through the onWindowFocusStateChange API, disable all of them at the same time:
+  windowClass.offWindowFocusStateChange();
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -5852,6 +6016,7 @@ const callback = (info: window.RotationChangeInfo): window.RotationChangeResult 
   return;
 }
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.off('rotationChange', callback);
   // Unregister all the callbacks that have been registered through on().
   windowClass.off('rotationChange');
@@ -5891,6 +6056,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('uiExtensionSecureLimitChange', (data: boolean) => {
     console.info(`Window secure limit Change: ${data}`);
   });
@@ -5933,6 +6099,7 @@ const callback = (data: boolean) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('uiExtensionSecureLimitChange', callback);
   // Disable the listening of a specified callback.
@@ -5973,6 +6140,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 windowClass.isWindowSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -6012,6 +6180,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.isWindowSupportWideGamut();
 promise.then((data) => {
   console.info(`Succeeded in checking whether the window support WideGamut. Data: ${data}`);
@@ -6052,6 +6221,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6102,6 +6272,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT);
   promise.then(() => {
     console.info('Succeeded in setting window colorspace.');
@@ -6143,6 +6314,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let colorSpace = windowClass.getWindowColorSpace();
   console.info(`Succeeded in getting the window color space. ColorSpace: ${colorSpace}`);
 } catch (exception) {
@@ -6154,7 +6326,7 @@ try {
 
 setWindowBackgroundColor(color: string | ColorMetrics): void
 
-Sets the background color for this window.
+Sets the background color of the window content area.
 
 If this API is not called, the default background color of the window is `'#FFF0F0F0'` in light mode and `'#FF1A1A1A'` in dark mode.
 
@@ -6186,6 +6358,7 @@ import { ColorMetrics } from '@kit.ArkUI';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass is the created/obtained Window instance.
 windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
@@ -6287,20 +6460,20 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 Sets the brightness of the main window. The window brightness takes effect only when the window is in the foreground and has focus. This API uses an asynchronous callback to return the result.
 
-Setting the brightness of the main window only affects the built-in screen of the current device. It cannot modify the brightness of external screens or virtual screens(../../displaymanager/display-terminology.md#virtual-screen) (such as screens used for projection). For details on built-in and external screens, see [Physical Screen](../../displaymanager/display-terminology.md#physical-screen).
+Setting the brightness of the main window only affects the built-in screen of the current device. It cannot modify the brightness of external screens or [virtual screens](../../displaymanager/display-terminology.md#virtual-screen) (such as screens used for projection). For details on built-in and external screens, see [Physical Screen](../../displaymanager/display-terminology.md#physical-screen).
 
-If the input parameter is set to **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
-
-When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are advised not to call this API consecutively or when the window is moved to the background. Otherwise, timing issues may occur.
+It is not recommended to call this API consecutively or when the window moves to the background. Otherwise, timing issues may occur.
 
 **Device behavior differences**:
 - On TVs: This API neither takes effect nor returns an error.
 - On non-2-in-1 devices (excluding TVs):
+  - If the input parameter is **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
+  - When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys.
   - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, when the window brightness of the current window is active, adjusting the system screen brightness from the Control Panel does not take effect.
   - Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when the window brightness of the current window is active. Doing so will automatically reset that window's brightness to match the new system brightness.
 - On 2-in-1 devices:
   - Before OpenHarmony 5.0.2, when the screen brightness set by a window is active, adjusting the system screen brightness from the Control Panel or a shortcut key does not take effect.
-  - Since OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
+  - Since OpenHarmony 5.0.2, the window brightness is consistent with the system screen brightness. You can set the system screen brightness through this API, Control Panel, or shortcut keys. However, setting the brightness to **-1** through this API to restore the system screen brightness is not supported. When **-1** is passed in, the call does not take effect and does not report an error. In addition, the system screen brightness that has been set remains effective after the current window moves to the background and is not restored to the brightness before the setting.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -6310,7 +6483,7 @@ When the window moves to the background, the setting becomes invalid, and bright
 
 | Name| Type| Mandatory| Description                                       |
 | ---------- | ------------------------- | -- |-------------------------------------------|
-| brightness | number                    | Yes| Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
+| brightness | number                    | Yes | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **0.0** means the darkest, **1.0** means the brightest, and the special value **-1.0** means that the window brightness resets to the original brightness set through Control Panel. |
 | callback   | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.                                    |
 
 **Error codes**
@@ -6373,20 +6546,20 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 Sets the brightness of the main window. The window brightness takes effect only when the window is in the foreground and has focus. This API uses a promise to return the result.
 
-Setting the brightness of the main window only affects the built-in screen of the current device. It cannot modify the brightness of external screens or virtual screens(../../displaymanager/display-terminology.md#virtual-screen) (such as screens used for projection). For details on built-in and external screens, see [Physical Screen](../../displaymanager/display-terminology.md#physical-screen).
+Setting the brightness of the main window only affects the built-in screen of the current device. It cannot modify the brightness of external screens or [virtual screens](../../displaymanager/display-terminology.md#virtual-screen) (such as screens used for projection). For details on built-in and external screens, see [Physical Screen](../../displaymanager/display-terminology.md#physical-screen).
 
-If the input parameter is set to **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
-
-When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are advised not to call this API consecutively or when the window is moved to the background. Otherwise, timing issues may occur.
+It is not recommended to call this API consecutively or when the window moves to the background. Otherwise, timing issues may occur.
 
 **Device behavior differences**:
 - On TVs: This API neither takes effect nor returns an error.
 - On non-2-in-1 devices (excluding TVs):
+  - If the input parameter is **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
+  - When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys.
   - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, when the window brightness of the current window is active, adjusting the system screen brightness from the Control Panel does not take effect.
   - Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when the window brightness of the current window is active. Doing so will automatically reset that window's brightness to match the new system brightness.
 - On 2-in-1 devices:
   - Before OpenHarmony 5.0.2, when the screen brightness set by a window is active, adjusting the system screen brightness from the Control Panel or a shortcut key does not take effect.
-  - Since OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
+  - Since OpenHarmony 5.0.2, the window brightness is consistent with the system screen brightness. You can set the system screen brightness through this API, Control Panel, or shortcut keys. However, setting the brightness to **-1** through this API to restore the system screen brightness is not supported. When **-1** is passed in, the call does not take effect and does not report an error. In addition, the system screen brightness that has been set remains effective after the current window moves to the background and is not restored to the brightness before the setting.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -6396,7 +6569,7 @@ When the window moves to the background, the setting becomes invalid, and bright
 
 | Name| Type| Mandatory| Description                                    |
 | ---------- | ------ | -- |----------------------------------------|
-| brightness | number | Yes| Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
+| brightness | number | Yes | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **0.0** means the darkest, **1.0** means the brightest, and the special value **-1.0** means that the window brightness resets to the original brightness set through Control Panel. |
 
 **Return value**
 
@@ -6492,6 +6665,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.setWindowFocusable(isFocusable, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6546,6 +6720,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setWindowFocusable(isFocusable);
   promise.then(() => {
     console.info('Succeeded in setting the window to be focusable.');
@@ -6593,6 +6768,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance
   windowClass.setWindowKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6647,6 +6823,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setWindowKeepScreenOn(isKeepScreenOn);
   promise.then(() => {
     console.info('Succeeded in setting the screen to be always on.');
@@ -6699,6 +6876,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance
   windowClass.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6758,6 +6936,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setWindowPrivacyMode(isPrivacyMode);
   promise.then(() => {
     console.info('Succeeded in setting the window to privacy mode.');
@@ -6805,6 +6984,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.setWindowTouchable(isTouchable, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6859,6 +7039,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setWindowTouchable(isTouchable);
   promise.then(() => {
     console.info('Succeeded in setting the window to be touchable.');
@@ -6900,6 +7081,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.snapshot((err: BusinessError, pixelMap: image.PixelMap) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -6941,6 +7123,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.snapshot();
 promise.then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -6983,6 +7166,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let pixelMap = windowClass.snapshotSync();
   console.info(`Succeeded in snapshotting window`);
   pixelMap.release(); // Release the memory in time after the PixelMap is used.
@@ -7022,6 +7206,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.snapshotIgnorePrivacy();
 promise.then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -7374,6 +7559,10 @@ The behavior of this API varies based on the caller:
 
 This API can be called only by the main window, child window, or global floating window. If it is called by other windows, error code 1300002 is reported. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> - When the window has been created but is not in the foreground, calling this API does not take effect and does not report an error. It is recommended that you ensure the window has been created and is in the foreground before calling this API.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
@@ -7399,6 +7588,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 windowClass.minimize((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -7420,6 +7610,10 @@ The behavior of this API varies based on the caller:
 - Hides the caller window if it is a child window or a global floating window. You can call [showWindow()](#showwindow9) to restore it.
 
 This API can be called only by the main window, child window, or global floating window. If it is called by other windows, error code 1300002 is reported. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - When the window has been created but is not in the foreground, calling this API does not take effect and does not report an error. It is recommended that you ensure the window has been created and is in the foreground before calling this API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7446,6 +7640,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.minimize();
 promise.then(() => {
   console.info('Succeeded in minimizing the window.');
@@ -7700,6 +7895,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 try {
   let enabled = false;
+  // windowClass is the created/obtained Window instance.
   windowClass.setResizeByDragEnabled(enabled, (err) => {
     if (err.code) {
       console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${err.code}, message: ${err.message}`);
@@ -7755,6 +7951,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let enabled = false;
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setResizeByDragEnabled(enabled);
   promise.then(() => {
     console.info(`Succeeded in setting the function of disabling the resize by drag window.`);
@@ -8129,6 +8326,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let windowLimits = windowClass.getWindowLimits();
 } catch (exception) {
   console.error(`Failed to obtain the window limits of window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8164,6 +8362,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is a created/obtained Window instance.
   let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
 } catch (exception) {
   console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8225,6 +8424,7 @@ try {
     minWidth: 500,
     minHeight: 400
   };
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setWindowLimits(windowLimits);
     promise.then((data) => {
     console.info('Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
@@ -8240,7 +8440,7 @@ try {
 
 setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;WindowLimits&gt;
 
-Sets the size limits for the current window. This API uses a promise to return the result.
+Sets the size limits of the current window. The parameter **isForcible** specifies whether the limits take effect forcibly. This API uses a promise to return the result.
 
 By default, system size limits are provided. They are determined by the product configuration and cannot be modified.
 
@@ -8300,6 +8500,7 @@ try {
     minWidth: 100,
     minHeight: 100
   };
+  // windowClass is a created/obtained Window instance.
   let promise = windowClass.setWindowLimits(windowLimits, true);
   promise.then((data) => {
     console.info(`Succeeded in changing the window limits. Cause: ${JSON.stringify(data)}`);
@@ -8337,7 +8538,7 @@ Error code 1300002 may be returned only when multiple threads operate the same w
 
 | Type                                        | Description                               |
 | :------------------------------------------- | :---------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -8356,6 +8557,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass is the created/obtained Window instance.
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
@@ -8423,6 +8625,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass is the created/obtained Window instance.
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = new Uint8Array(maskWidth * maskHeight);
@@ -8473,6 +8676,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass is the created/obtained Window instance.
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
@@ -8550,6 +8754,7 @@ const touchableRects: Array<window.Rect> = [
   { left: 0, top: 50, width: 150, height: 200 }
 ];
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.setTouchableAreas(touchableRects).then(() => {
     console.info('Succeeded in setting the touchable areas.');
   }).catch((err: BusinessError) => {
@@ -8591,6 +8796,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.keepKeyboardOnFocus(true);
 } catch (exception) {
   console.error(`Failed to keep keyboard onFocus. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8634,6 +8840,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass is the created/obtained Window instance.
 windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
@@ -8682,6 +8889,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let isVisible: boolean | undefined = undefined;
+// windowClass is the created/obtained Window instance.
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     isVisible = windowClass?.getWindowDecorVisible();
@@ -8743,6 +8951,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let title = "title";
+  // windowClass is the created/obtained Window instance.
   windowClass.setWindowTitle(title).then(() => {
     console.info('Succeeded in setting the window title.');
   }).catch((err: BusinessError) => {
@@ -8888,7 +9097,7 @@ Sets whether the modality attribute of the child window is enabled and specifies
 
 When the child window's modality type is [WINDOW_MODALITY](arkts-apis-window-e.md#modalitytype14), its parent window cannot respond to user interactions until the child window is closed or the child window's modality type is disabled.
 
-When the child window's modality type is [APPLICATION_MODALITY](arkts-apis-window-e.md#modalitytype14), its parent window and the windows from other instances of the application cannot respond to user interactions until the child window is closed or the child window's modality type is disabled.
+When the child window's modality type is [APPLICATION_MODALITY](arkts-apis-window-e.md#modalitytype14), its parent window, other main windows in the same application process, and the child windows of those main windows cannot respond to user operations until the child window is closed or the child window's modality type is disabled.
 
 This API is used to set the modality type. To disable the modal property, you are advised to use [setSubWindowModal<sup>12+</sup>](#setsubwindowmodal12).
 
@@ -8994,6 +9203,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// windowClass is the created/obtained Window instance.
 windowClass.setUIContent('pages/WindowPage').then(() => {
   let height: number = 50;
   try {
@@ -9107,6 +9317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let decorButtonStyle = windowClass.getDecorButtonStyle();
   console.info(`Succeeded in getting the style of button. Data: ${JSON.stringify(decorButtonStyle)}`);
 } catch (exception) {
@@ -9146,6 +9357,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// windowClass is the created/obtained Window instance.
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     let height = windowClass?.getWindowDecorHeight();
@@ -9245,6 +9457,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let windowStatusType = windowClass.getWindowStatus();
 } catch (exception) {
   console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -9351,6 +9564,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let focus = windowClass.isFocused();
   console.info(`Succeeded in checking whether the window is focused. Data: ${focus}`);
 } catch (exception) {
@@ -9412,6 +9626,7 @@ try {
     decorEnabled: true,
     isModal: true
   };
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.createSubWindowWithOptions('mySubWindow', options);
   promise.then((data) => {
     console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
@@ -10085,6 +10300,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.enableDrag(true).then(() => {
     console.info('succeeded in setting window draggable');
   }).catch((err: BusinessError) => {
@@ -10517,6 +10733,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enabled = false;
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setSeparationTouchEnabled(enabled);
   promise.then(() => {
     console.info('Succeeded in setting the window to be separationTouchEnabled.');
@@ -10561,6 +10778,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let isSeparationTouchEnabled = windowClass.isSeparationTouchEnabled();
   console.info(`Succeeded in getting the window separationTouchEnabled status: ${isSeparationTouchEnabled}`);
 } catch (exception) {
@@ -10611,6 +10829,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enabled = false;
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setReceiveDragEventEnabled(enabled);
   promise.then(() => {
     console.info('Succeeded in setting the window to be WindowReceiveDragEventEnabled.');
@@ -10655,6 +10874,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let isReceiveDragEventEnabled = windowClass.isReceiveDragEventEnabled();
   console.info(`Succeeded in getting the window receiveDragEvent status: ${isReceiveDragEventEnabled}`);
 } catch (exception) {
@@ -10670,7 +10890,7 @@ Sets the blur radius of the shadow on the edges of a child window or global floa
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**:
+**Device behavior differences**: 
 
 Before OpenHarmony 5.1.0, this API is supported on tablets and PCs/2-in-1 devices. On other device types, it returns error code 801.
 
@@ -10699,6 +10919,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.setWindowShadowRadius(4.0);
 } catch (exception) {
   console.error(`Failed to set shadow. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -10755,6 +10976,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setWindowCornerRadius(1.0);
   promise.then(() => {
     console.info('Succeeded in setting window corner radius.');
@@ -10803,6 +11025,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let cornerRadius = windowClass.getWindowCornerRadius();
 } catch (exception) {
   console.error(`Failed to get corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -10852,6 +11075,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let exclusivelyHighlighted: boolean = true;
 try {
+  // windowClass is the created/obtained Window instance.
   let promise = windowClass.setExclusivelyHighlighted(exclusivelyHighlighted);
   promise.then(() => {
     console.info('Succeeded in setting the window to be exclusively highlight.');
@@ -10896,6 +11120,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass is the created/obtained Window instance.
   let isHighlighted = windowClass.isWindowHighlighted();
   console.info(`Succeeded in getting the window highlight status: ${isHighlighted}`);
 } catch (exception) {
@@ -10915,7 +11140,7 @@ However, calling this API on the child window enables it to span multiple screen
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**:
+**Device behavior differences**: 
 
 Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, this API returns error code 801 when called.
 
@@ -10978,7 +11203,7 @@ Sets whether the layout information (position and size) of a child window or mod
 
 3. If this API is called on a child window or modal window, subsequent calls to APIs like **moveTo** or **resize** to modify the layout information will not take effect.
 
-4. When a child window or modal window stops using this functionality, its layout information (position and size) may not be a specific value. The application needs to reset it.
+4. When a child window or modal window stops using this functionality, its layout information (**position** and **size**) may not be a specific value. The application needs to reset it.
 
 Once this API is successfully called, the [setRelativePositionToParentWindowEnabled()](#setrelativepositiontoparentwindowenabled20) API will no longer take effect.
 
@@ -11170,7 +11395,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally.                                                                     |
-| 1300004 | Unauthorized operation.                                                                                           |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                                          |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length.                         |
 
 **Example**
@@ -11253,7 +11478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.   |
 | 1300003 | This window manager service works abnormally.                                                                       |
-| 1300004 | Unauthorized operation.                                                                                             |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                                             |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range.                                                        |
 
 **Example**
@@ -11448,6 +11673,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
+// windowClass is the created/obtained Window instance.
 let isInFreeWindowMode: boolean = windowClass.isInFreeWindowMode();
 console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
 ```
@@ -11482,6 +11708,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.on('freeWindowModeChange', (data) => {
     console.info('Succeeded in enabling the listener for free window mode changes. Data: ' + JSON.stringify(data));
   });
@@ -11523,6 +11750,7 @@ const callback = (isInFreeWindowMode: boolean) => {
   // ...
 }
 try {
+  // windowClass is the created/obtained Window instance.
   // Enable listening through the on API.
   windowClass.on('freeWindowModeChange', callback);
   // Disable the listening of a specified callback.
@@ -11550,7 +11778,7 @@ Checks whether the window is in the specified window posture mode.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| mode | WindowPostureMode | Yes| Window posture mode.|
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | Yes| Window posture mode.|
 
 **Return value**
 
@@ -11572,6 +11800,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   let isInDesktopMode: boolean = windowClass.isInWindowPostureMode(window.WindowPostureMode.DESKTOP_MODE);
   console.info(`isInDesktopMode: ${isInDesktopMode}`);
 } catch (exception) {
@@ -11595,8 +11824,8 @@ Enables listening for changes in the specified window posture mode.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| mode | WindowPostureMode | Yes| Window posture mode to monitor.|
-| callback | Callback&lt;boolean&gt; | Yes| Callback triggered when the specified window posture mode changes, returning whether the current window is in the specified posture mode. The value **true** indicates yes and the value **false** indicates no|
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | Yes| Window posture mode to monitor.|
+| callback | Callback&lt;boolean&gt; | Yes| Callback triggered when the specified window posture mode changes, returning whether the current window is in the specified posture mode. The value **true** indicates yes and the value **false** indicates no.|
 
 **Error codes**
 
@@ -11612,6 +11841,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 ```ts
 try {
+  // windowClass is the created/obtained Window instance.
   windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, (isInDesktopMode: boolean) => {
     console.info(`Succeeded in enabling the listener for window posture mode changes. isInDesktopMode: ${isInDesktopMode}`);
   });
@@ -11636,7 +11866,7 @@ Unregisters the listener for changes in the specified window posture mode.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| mode | WindowPostureMode | Yes| Window posture mode to monitor.|
+| mode | [WindowPostureMode](arkts-apis-window-e.md#windowposturemode) | Yes| Window posture mode to monitor.|
 | callback | Callback&lt;boolean&gt; | No| Callback used to return whether the window is in the specified window posture mode. If a value is passed in, the corresponding listener is deregistered. If no value is passed in, all registered listeners for window posture mode changes are deregistered.|
 
 **Error codes**
@@ -11656,11 +11886,12 @@ const callback = (isInDesktopMode: boolean) => {
   // ...
 }
 try {
-  // Enable listening through the on API.
+  // windowClass is the created/obtained Window instance.
+  // Enable listening through the onWindowPostureModeChange API.
   windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
   // Disable the listening of a specified callback.
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
-  // Unregister all the callbacks that have been registered through on().
+  // If multiple callbacks are enabled through the onWindowPostureModeChange API for listening, disable all listening at the same time.
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
 } catch (exception) {
   console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -11681,12 +11912,12 @@ Window orientation refers to the direction of the screen where the window reside
 >
 >  ![orientationAndRotation](figures/orientationAndRotation.PNG)
 >
-  | Screen Angle| Screen Orientation| Window Orientation|
-  | -------  | ------- | ------- |
-  | 0        | PORTRAIT  | PORTRAIT   |
-  | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
-  | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
-  | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
+  | value | WINDOW_ORIENTATION<br>(Window Orientation) | DISPLAY_ORIENTATION<br>(Screen Orientation) | DISPLAY_ROTATION<br>(Screen Angle) |
+  | ----- | ---------------------------------- | ----------------------------------- | --------------------------------- |
+  | 0     | PORTRAIT                   | PORTRAIT                    | Clockwise rotation 0°                      |
+  | 1     | LANDSCAPE_INVERTED     | LANDSCAPE                   | Clockwise rotation 90°                     |
+  | 2     | PORTRAIT_INVERTED      | PORTRAIT_INVERTED       | Clockwise rotation 180°                    |
+  | 3     | LANDSCAPE                  | LANDSCAPE_INVERTED      | Clockwise rotation 270°                    |
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -11698,13 +11929,13 @@ Window orientation refers to the direction of the screen where the window reside
 | -------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | Yes  | Type of the value to convert.|
 | to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | Yes  | Type of the target value.|
-| value    | number               | Yes  | Value to convert. The value is an integer. If a floating-point number is passed, the value is rounded down. The value range is [0, 3]. Values outside this range are invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown).|
+| value    | number               | Yes   | Value to convert. The value is an integer. If a floating-point number is passed in, the value is rounded down. The value range is [0, 3]. Values outside this range are invalid (error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown). The meaning of the value depends on the type of the **from** parameter. For details about the specific mapping, see the table above.|
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| number | Converted value of the target type.|
+| number | Converted value of the target type. The value is an integer, and the value range is [0, 3]. The meaning of the value depends on the type of the **to** parameter. For the specific mapping, see the table above. |
 
 **Error codes**
 
@@ -11723,6 +11954,7 @@ try {
   let originalValue: number = 0;
   let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
   let toType: window.RotationInfoType = window.RotationInfoType.DISPLAY_ORIENTATION;
+  // windowClass is the created/obtained Window instance.
   let convertedValue: number = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
   console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
 } catch (exception) {
@@ -11984,6 +12216,7 @@ Shows this window. This API uses an asynchronous callback to return the result.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.show((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12017,6 +12250,7 @@ Shows this window. This API uses a promise to return the result.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.show();
 promise.then(() => {
   console.info('Succeeded in showing the window.');
@@ -12048,6 +12282,7 @@ Destroys this window. This API uses an asynchronous callback to return the resul
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 windowClass.destroy((err: BusinessError) => {
   const errCode: number = err.code;
   if (err.code) {
@@ -12081,6 +12316,7 @@ Destroys this window. This API uses a promise to return the result.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.destroy();
 promise.then(() => {
   console.info('Succeeded in destroying the window.');
@@ -12116,6 +12352,7 @@ This operation is not supported in a window in full-screen mode.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.moveTo(300, 300, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12158,6 +12395,7 @@ This operation is not supported in a window in full-screen mode.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.moveTo(300, 300);
 promise.then(() => {
   console.info('Succeeded in moving the window.');
@@ -12205,6 +12443,7 @@ This operation is not supported in a window in full-screen mode.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.resetSize(500, 1000, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12259,6 +12498,7 @@ This operation is not supported in a window in full-screen mode.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 let promise = windowClass.resetSize(500, 1000);
 promise.then(() => {
   console.info('Succeeded in changing the window size.');
@@ -12290,6 +12530,7 @@ Obtains the properties of this window. This API uses an asynchronous callback to
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.getProperties((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12323,6 +12564,7 @@ Obtains the properties of this window. This API uses a promise to return the res
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.getProperties();
 promise.then((data) => {
   console.info('Succeeded in obtaining the window properties. Data: ' + JSON.stringify(data));
@@ -12360,6 +12602,7 @@ Global floating window, modal window, or system window:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let type = window.AvoidAreaType.TYPE_SYSTEM;
+// windowClass is the created/obtained Window instance.
 windowClass.getAvoidArea(type, (err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12404,6 +12647,7 @@ Global floating window, modal window, or system window:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let type = window.AvoidAreaType.TYPE_SYSTEM;
+// windowClass is the created/obtained Window instance
 let promise = windowClass.getAvoidArea(type);
 promise.then((data) => {
   console.info('Succeeded in obtaining the area. Data:' + JSON.stringify(data));
@@ -12916,6 +13160,7 @@ The execution context of the current UI may be unclear. Therefore, you are advis
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12959,6 +13204,7 @@ The execution context of the current UI may be unclear. Therefore, you are advis
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 let promise = windowClass.loadContent('pages/page2/page3');
 promise.then(() => {
   console.info('Succeeded in loading the content.');
@@ -12990,6 +13236,7 @@ Checks whether this window is displayed. This API uses an asynchronous callback 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.isShowing((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13023,6 +13270,7 @@ Checks whether this window is displayed. This API uses a promise to return the r
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.isShowing();
 promise.then((data) => {
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
@@ -13054,6 +13302,7 @@ Subscribes to events indicating changes to the system avoid area of the current 
 **Example**
 
 ```ts
+// windowClass is the created/obtained Window instance.
 windowClass.on('systemAvoidAreaChange', (data) => {
   console.info('Succeeded in enabling the listener for system avoid area changes. Data: ' + JSON.stringify(data));
 });
@@ -13084,6 +13333,7 @@ Unsubscribes from the events indicating changes to the system avoid area of the 
 const callback = (avoidArea: window.AvoidArea) => {
   // ...
 }
+// windowClass is the created/obtained Window instance.
 windowClass.on('systemAvoidAreaChange', callback);
 windowClass.off('systemAvoidAreaChange', callback);
 // Unregister all the callbacks that have been registered through on().
@@ -13113,6 +13363,7 @@ Checks whether this window supports the wide-gamut color space. This API uses an
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.isSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13146,6 +13397,7 @@ Checks whether this window supports the wide-gamut color space. This API uses a 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.isSupportWideGamut();
 promise.then((data) => {
   console.info('Succeeded in checking whether the window support WideGamut. Data: ' + JSON.stringify(data));
@@ -13179,6 +13431,7 @@ Sets the color space of the current window. This API uses an asynchronous callba
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13219,6 +13472,7 @@ Sets the color space of the current window. This API uses a promise to return th
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT);
 promise.then(() => {
   console.info('Succeeded in setting window colorspace.');
@@ -13250,6 +13504,7 @@ Obtains the color space of this window. This API uses an asynchronous callback t
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 windowClass.getColorSpace((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13283,6 +13538,7 @@ Obtains the color space of this window. This API uses a promise to return the re
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.getColorSpace();
 promise.then((data) => {
   console.info('Succeeded in getting window color space. Cause:' + JSON.stringify(data));
@@ -13317,6 +13573,7 @@ Sets the background color for this window. This API uses an asynchronous callbac
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let color: string = '#00ff33';
+// windowClass is the created/obtained Window instance
 windowClass.setBackgroundColor(color, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13358,6 +13615,7 @@ Sets the background color for this window. This API uses a promise to return the
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let color: string = '#00ff33';
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.setBackgroundColor(color);
 promise.then(() => {
   console.info('Succeeded in setting the background color.');
@@ -13394,6 +13652,7 @@ When the screen brightness setting for the window takes effect, Control Panel ca
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let brightness: number = 1;
+// windowClass is the created/obtained Window instance.
 windowClass.setBrightness(brightness, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13437,6 +13696,7 @@ When the screen brightness setting for the window takes effect, Control Panel ca
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let brightness: number = 1;
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.setBrightness(brightness);
 promise.then(() => {
   console.info('Succeeded in setting the brightness.');
@@ -13469,6 +13729,7 @@ Sets the dimness of the window that is not on top. This API uses an asynchronous
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 windowClass.setDimBehind(0.5, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13508,6 +13769,7 @@ Sets the dimness of the window that is not on top. This API uses a promise to re
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.setDimBehind(0.5);
 promise.then(() => {
   console.info('Succeeded in setting the dimness.');
@@ -13542,6 +13804,7 @@ Sets whether this window is focusable, that is, whether the window can gain focu
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
+// windowClass is the created/obtained Window instance.
 windowClass.setFocusable(isFocusable, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13583,6 +13846,7 @@ Sets whether this window is focusable, that is, whether the window can gain focu
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
+// windowClass is the created/obtained Window instance
 let promise = windowClass.setFocusable(isFocusable);
 promise.then(() => {
   console.info('Succeeded in setting the window to be focusable.');
@@ -13617,6 +13881,7 @@ Sets whether to keep the screen always on. This API uses an asynchronous callbac
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
+// windowClass is the created/obtained Window instance.
 windowClass.setKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13657,6 +13922,7 @@ Sets whether to keep the screen always on. This API uses a promise to return the
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
+// windowClass is the created/obtained Window instance
 let promise = windowClass.setKeepScreenOn(isKeepScreenOn);
 promise.then(() => {
   console.info('Succeeded in setting the screen to be always on.');
@@ -13691,6 +13957,7 @@ Sets whether the area outside the child window is touchable. This API uses an as
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance
 windowClass.setOutsideTouchable(true, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13732,6 +13999,7 @@ Sets whether the area outside the child window is touchable. This API uses a pro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.setOutsideTouchable(true);
 promise.then(() => {
   console.info('Succeeded in setting the area to be touchable.');
@@ -13765,6 +14033,7 @@ Sets whether this window is in privacy mode. This API uses an asynchronous callb
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
+// windowClass is the created/obtained Window instance.
 windowClass.setPrivacyMode(isPrivacyMode, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13805,6 +14074,7 @@ Sets whether this window is in privacy mode. This API uses a promise to return t
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.setPrivacyMode(isPrivacyMode);
 promise.then(() => {
   console.info('Succeeded in setting the window to privacy mode.');
@@ -13839,6 +14109,7 @@ Sets whether this window is touchable. This API uses an asynchronous callback to
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
+// windowClass is the created/obtained Window instance.
 windowClass.setTouchable(isTouchable, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13880,6 +14151,7 @@ Sets whether this window is touchable. This API uses a promise to return the res
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
+// windowClass is the created/obtained Window instance.
 let promise = windowClass.setTouchable(isTouchable);
 promise.then(() => {
   console.info('Succeeded in setting the window to be touchable.');

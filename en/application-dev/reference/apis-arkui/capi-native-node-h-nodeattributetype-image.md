@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e4d6dbcdca3073c04cc290f436d3c624978d2e49 translatedAt=2026-09-23T10:18:36.057Z pushedAt=2026-10-10T08:19:48.997Z -->
+<!-- md-trans-meta sourceCommit=81e4ce72932f96c23e7118ddd73d6d4439cdf079 translatedAt=2026-11-23T07:28:29.092Z pushedAt=2026-11-25T04:06:13.115Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -838,3 +838,27 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Number of times that the animation is played.|
+
+## NODE_IMAGE_ANIMATOR_INTERPOLATION
+
+```c
+NODE_IMAGE_ANIMATOR_INTERPOLATION = 19007
+```
+
+Interpolation effect for scaling frame images in the frame-by-frame animation. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].i32 | Interpolation effect for scaling frame images. The parameter type is [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation). The default value is **ARKUI_IMAGE_INTERPOLATION_LOW**. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Interpolation effect for scaling frame images. The parameter type is [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation). |

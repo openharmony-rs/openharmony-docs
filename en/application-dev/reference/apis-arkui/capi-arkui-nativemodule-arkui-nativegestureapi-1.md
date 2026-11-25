@@ -1,11 +1,11 @@
 # ArkUI_NativeGestureAPI_1
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ea6a8d62bacae30e2c1e783234c6e760940e37e1 translatedAt=2026-09-20T09:11:18.397Z pushedAt=2026-09-21T12:10:49.154Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T07:05:50.834Z pushedAt=2026-11-25T01:11:53.116Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_NativeGestureAPI_1
@@ -440,7 +440,7 @@ int32_t (*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkU
 
 Sets the parallel inner gesture event callback, for scenarios where internal gestures of a component and external custom gestures need to be recognized in parallel. You need to create a custom gesture recognizer through APIs such as **createPanGesture()** first, bind the gesture to the node through **addGestureToNode()**, and call **setInnerGestureParallelTo()** to set the parallel inner gesture event callback. The gesture recognizer returned by the callback function **parallelInnerGesture** should be a custom gesture recognizer created through the **create** series APIs, used for parallel recognition with the inner gestures of the component.
 
-> **NOTE**
+> **NOTE** 
 > This callback is triggered only when the gestures bound to the node include a pan gesture (created by **createPanGesture**). If the node has no pan gesture bound, this callback is not triggered.
 
 **Parameters**

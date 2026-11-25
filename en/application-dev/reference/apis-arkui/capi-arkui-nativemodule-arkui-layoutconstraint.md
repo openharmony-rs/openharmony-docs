@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-09-20T08:55:23.743Z pushedAt=2026-09-20T10:56:09.647Z -->
+<!-- md-trans-meta sourceCommit=2ef784f0bdab28245033ef8be92f653a500e646d translatedAt=2026-11-23T07:05:12.283Z pushedAt=2026-11-24T09:24:35.279Z nl=1 -->
 
 ```c
 typedef struct ArkUI_LayoutConstraint ArkUI_LayoutConstraint
@@ -19,5 +19,4 @@ Defines the layout constraint, which is used to limit the size range during comp
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
-
+**Header file**: [common_type.h](capi-common-type-h.md)

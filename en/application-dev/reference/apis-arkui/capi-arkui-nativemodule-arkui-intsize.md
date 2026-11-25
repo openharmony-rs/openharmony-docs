@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-09-20T08:55:00.426Z pushedAt=2026-09-20T10:49:09.409Z -->
+<!-- md-trans-meta sourceCommit=2ef784f0bdab28245033ef8be92f653a500e646d translatedAt=2026-11-23T07:05:03.945Z pushedAt=2026-11-24T09:24:23.766Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_IntSize
@@ -19,7 +19,7 @@ Describes the width and height of a component.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [common_type.h](capi-common-type-h.md)
 
 ## Summary
 
@@ -29,5 +29,4 @@ Describes the width and height of a component.
 | -- | -- |
 | int32_t width | Width, in px.|
 | int32_t height | Height, in px.|
-
 

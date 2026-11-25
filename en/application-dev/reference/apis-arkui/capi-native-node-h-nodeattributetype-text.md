@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f591a4e488f57c0e85bc666bbc867ec6b4d2ed64 translatedAt=2026-10-10T10:06:03.288Z pushedAt=2026-10-13T07:03:56.245Z -->
+<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-23T07:35:38.630Z pushedAt=2026-11-25T06:34:34.058Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -62,13 +62,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Font color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Font color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Font color, in 0xARGB format.|
+| .value[0].u32 | Font color, in 0xARGB format. |
 
 ## NODE_FONT_SIZE
 
@@ -183,7 +183,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Text decorative line type. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype). Default value: **ARKUI_TEXT_DECORATION_TYPE_NONE**, indicating no decorative line. |
-| .value[1]?.u32 | Text decorative line color, in 0xARGB format. For example, **0xFFFF0000** indicates red. This parameter is optional. Default value: **0xFF000000**, indicating black. |
+| .value[1]?.u32 | Text decorative line color, in 0xARGB format. This is an optional parameter. For example, **0xFFFF0000** indicates red. Default value: **0xFF000000**, indicating black. |
 | .value[2]?.i32 | Text decorative line style. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle). Default value: **ARKUI_TEXT_DECORATION_STYLE_SOLID**, indicating a solid decorative line. |
 | .value[3]?.f32 | Thickness of the text decorative line. This parameter is optional. The default value is **1.0**. The value range is [0, +∞). If a negative value is passed, the setting does not take effect. |
 
@@ -192,7 +192,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Text decorative line type. The value is an enumerated value of [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype). |
-| .value[1].u32 | Text decorative line color, in 0xARGB format.|
+| .value[1].u32 | Decoration color, in 0xARGB format. |
 | .value[2].i32 | Text decorative line style. The value is an enumerated value of [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle). |
 | .value[3].f32 | Thickness of the text decorative line.|
 
@@ -405,7 +405,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp. Value range: [0, +∞). The default value is **0**, indicating no blur effect. |
 | .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**, indicating a color shadow. |
-| .value[2].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[2].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
 
@@ -415,7 +415,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
 | .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype).|
-| .value[2].u32 | Shadow color, in 0xARGB format.|
+| .value[2].u32 | Shadow color, in 0xARGB format. |
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
 
@@ -610,12 +610,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Line spacing, in fp. Value range: [0, +∞). If a negative value is passed, the setting does not take effect. |
+| ?.object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to set line spacing options. This is an optional parameter, and is supported since API version 26.0.1. Use [OH_ArkUI_NativeModule_LineSpacingOptions_Create](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_create) to create the object and [OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy) to destroy it. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Line spacing, in fp. |
+| .object | Pointer to the [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) object, used to obtain the line spacing options. This parameter is supported since API version 26.0.1. |
 
 ## NODE_FONT_FEATURE
 
@@ -705,13 +707,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_TEXT_CONTENT_WITH_STYLED_STRING
 
@@ -847,7 +849,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
 | .value[2].i32 | Whether to repeat the colors. The value **1** means to repeat the gradient colors, and **0** means the opposite. The default value is **0**. |
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.|
 | size | Number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
 
@@ -859,7 +861,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the colors are repeated. The value **0** means that the colors are not repeated, and **1** means the opposite. The default value is **0**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. |
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.|
 | size | Number of effective gradient colors.|
 
@@ -884,7 +886,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Radius of the radial gradient. The default value is **0**. Value range: [0, +∞). If a negative value is passed, the setting does not take effect. |
 | .value[3]?.i32 | Whether to repeat the colors. The value **1** means to repeat the gradient colors, and **0** means the opposite. The default value is **0**. |
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. |
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.|
 | size | Number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
 
@@ -897,7 +899,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Radius of the radial gradient, in vp. The default value is **0**. |
 | .value[3]?.i32 | Whether the colors are repeated. The value **0** means that the colors are not repeated, and **1** means the opposite. The default value is **0**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. |
-| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red. |
 | stops | Stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.|
 | size | Number of effective gradient colors.|
 
@@ -1436,7 +1438,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Text background color, in 0xARGB format.|
+| .value[0].u32 | Text background color, in 0xARGB format. |
 | .value[1].f32 | Radius of the upper left corner, in vp.|
 | .value[2].f32 | Radius of the upper right corner, in vp.|
 | .value[3].f32 | Radius of the lower left corner, in vp.|
@@ -1675,3 +1677,34 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether the new SVG parsing capability is enabled. The value **1** indicates the new SVG parsing capability is enabled, and **0** indicates the original SVG parsing capability is retained. |
+
+## NODE_IMAGE_SPAN_RESIZABLE
+
+```c
+NODE_IMAGE_SPAN_RESIZABLE = 3006
+```
+
+Resizes the image of the **ImageSpan** component by setting the edge widths or using a lattice object when it is stretched. This attribute can be set, reset, and obtained as required through APIs. When calling the APIs, ensure that the parameter types for setting and obtaining are the same.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Left edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .value[1].f32 | Top edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .value[2].f32 | Right edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .value[3].f32 | Bottom edge width, in vp. The value range is [0, +∞). If a negative value is passed, the default value **0** is used. |
+| .object | Lattice object. The parameter type is [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].f32 | Left edge width, in vp. |
+| .value[1].f32 | Top edge width, in vp. |
+| .value[2].f32 | Right edge width, in vp. |
+| .value[3].f32 | Bottom edge width, in vp. |
+| .object | Lattice object. The parameter type is [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md). |
