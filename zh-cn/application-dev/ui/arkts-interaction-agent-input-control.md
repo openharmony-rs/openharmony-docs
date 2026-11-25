@@ -35,7 +35,7 @@ Agent生成的事件包括系统Agent生成的事件，以及具有[ohos.permiss
 
 本能力依赖多模输入子系统。Agent生成的事件由多模输入框架在注入链路上标识，ArkUI依据该标识区分Agent事件与用户输入事件，进而执行管控与监听。应用使用本指南时无需直接调用多模输入接口。如需了解输入事件注入能力，可参考多模输入的[输入事件注入](../reference/apis-input-kit/js-apis-inputeventclient.md)。
 
-## Agent输入管控开发流程
+## Agent输入管控开发指导
 
 使用Agent输入管控前，需要在entry模块的module.json5中声明[ohos.permission.CONTROL_COMPONENT](../security/AccessToken/restricted-permissions.md#ohospermissioncontrol_component)权限，以下仅展示相关字段。
 
