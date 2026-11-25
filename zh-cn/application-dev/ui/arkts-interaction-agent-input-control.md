@@ -51,7 +51,7 @@ Agent生成的事件包括系统Agent生成的事件，以及具有[ohos.permiss
 }
 ```
 
-声明权限后，即可按需完成以下两项：
+声明权限后，开发者可根据实际业务场景完成如下功能实现。
 
 - 设置Agent输入管控策略：在目标组件上设置[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)，选择允许或阻止Agent输入。
 - 监听节点交互事件：注册敏感节点输入监听，获取节点的输入事件通知，包括被管控阻止的输入事件。
