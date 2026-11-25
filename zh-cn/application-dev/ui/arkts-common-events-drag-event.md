@@ -2713,6 +2713,18 @@ struct GridEts {
    ArkTS-Sta示例：
 
    <!-- @[virtual_drag_sta_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Udmf/VirtualFileDrag-Sta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   .onDragStart((event: DragEvent): DragItemInfo => {
+     try {
+       event.setData(this.createDragData());
+     } catch (error) {
+       logSampleError('Set drag data', error);
+       this.getUIContext().getPromptAction().showToast({ message: $r('app.string.drag_failed') });
+     }
+     return {};
+   })
+   ```
 
 4. 配置落入节点。
 
