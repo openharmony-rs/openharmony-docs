@@ -76,7 +76,7 @@ typedef bool (*OH_AudioAccessory_OpenInputStreamCallback)(OH_AudioAccessory *acc
 
 **参考：**
 
-[OH_AudioAccessoryInputStreamManager_RegisterStartCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessoryinputstreammanager_registerstartcallback)
+[OH_AudioAccessoryInputStreamManager_RegisterStartCallback()](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessoryinputstreammanager_registerstartcallback)
 
 ### OH_AudioAccessoryInputStream_StartCallback()
 
