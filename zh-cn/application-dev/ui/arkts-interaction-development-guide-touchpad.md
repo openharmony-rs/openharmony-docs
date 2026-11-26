@@ -34,11 +34,26 @@ UIContext.enableTouchPadEvent(true);
 
 ### 监听触控板原始事件
 
-使能后，可在组件上通过[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接口注册回调，接收[TouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadevent)对象。该对象包含当前事件上报的全部触点（contacts）、本次发生变化的触点（changedContact）、光标坐标、触控板设备尺寸等信息。每个触点（[TouchPadEventContact](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadeventcontact)）包含触点唯一标识（id）、触点阶段（phase，取值为BEGIN/MOVE/END/CANCEL）以及在触控板上的百分比位置（positionX/positionY，取值范围[0, 1]）。
+使能后，可在组件上通过[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接口注册回调，接收[TouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadevent)对象。该对象的关键属性如下：
+
+- **contacts**：当前事件上报的全部触点数组。触点数量取决于硬件能力，使用前需校验是否为空。
+- **changedContact**：本次发生变化并触发事件的触点，使用前需校验是否为空。
+- **deviceWidth / deviceHeight**：触控板的物理尺寸（单位：mm），可用于坐标换算。
+
+每个触点（[TouchPadEventContact](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadeventcontact)）包含以下信息：
+
+| 名称 | 说明 |
+| -------- | -------- |
+| id | 触点的唯一标识，在触点按下至抬起或取消期间保持不变。 |
+| phase | 触点阶段，取值为[TouchPadEventPhase](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#touchpadeventphase)：BEGIN（开始接触）、MOVE（移动）、END（结束接触）、CANCEL（取消）。 |
+| positionX | 触点在触控板X轴的百分比位置，取值范围[0, 1]，0表示最左侧，1表示最右侧。 |
+| positionY | 触点在触控板Y轴的百分比位置，取值范围[0, 1]，0表示最上侧，1表示最下侧。 |
+
+触点阶段遵循 **BEGIN → MOVE → END/CANCEL** 的生命周期：手指接触触控板时上报BEGIN，移动时持续上报MOVE，抬起时上报END，事件被打断（如被系统手势接管）时上报CANCEL。通过判断`changedContact.phase`可区分手势的按下、移动、抬起阶段。
 
 如果需要拦截触控板事件的命中测试，可通过[onTouchPadEventIntercept](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadeventintercept)接口设置自定义拦截回调，返回[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9)决定组件在触控板事件链中的命中测试行为。
 
-以下示例演示了使能触控板原始事件上报，并在组件上监听触点信息：
+以下示例演示了使能触控板原始事件上报，并基于双指触点数据实现自定义手势跟随：双指滑动驱动组件平移、双指张开/捏合驱动组件缩放，抬手后动画还原至原位。
 
 ```ts
 import { UIContext, display } from '@kit.ArkUI';
@@ -247,6 +262,14 @@ struct TouchPadEventActualApplication {
   }
 }
 ```
+
+上面的示例中，点击 Enable 按钮调用`UIContext.enableTouchPadEvent(true)`开启上报，在 childStack 组件上绑定`onTouchPadEvent`接收事件。回调处理流程如下：
+
+1. **阶段判断**：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画将组件还原至原位与初始缩放。
+2. **双指识别**：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板归一化坐标[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
+3. **平移跟随**：计算两指中点相对上一帧的位移（`midX/midY`差值），乘以屏幕增益后累加到组件的`translate`偏移量上，实现双指滑动驱动组件平移。
+4. **缩放跟随**：计算两指间距相对上一帧的比例（`ratio`），累乘到组件的`scale`上，实现双指张开放大、捏合缩小，并限制缩放范围在[0.3, 3.0]。
+5. **防跳变**：在触点集发生增减（BEGIN/CANCEL）或触点数少于2时，清除基线并等待下次双指重新建立，避免手势跳变。
 
 ## 触控板生成事件
 
