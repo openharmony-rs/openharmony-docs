@@ -1407,7 +1407,7 @@ CONFIG
 
 > **注意：**
 >
-> 每次调优开始时会自动清理/data/local/tmp/目录下上一次的memleak-native-orphansnapshot-*.txt快照文件，仅保留最新一份；文件内容格式为二进制，需要使用十六进制编辑器查看，其中数值为小端字节序编码。
+> 开启NativeLeaks特性后每次调优开始时会自动清理/data/local/tmp/目录下上一次的memleak-native-orphansnapshot-*.txt快照文件，仅保留最新一份；文件内容格式为二进制，需要使用十六进制编辑器查看，其中数值为小端字节序编码。
 
 快照文件解析说明：
 
