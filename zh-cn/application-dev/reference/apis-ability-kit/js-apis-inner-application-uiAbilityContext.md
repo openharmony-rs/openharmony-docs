@@ -2564,11 +2564,13 @@ struct Index {
 
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise&lt;void&gt;
 
-> **说明：**
->
-> 从API version 12开始支持，从API版本26.1.0开始废弃，建议使用[backToCallerAppWithResult](#backtocallerappwithresult)替代。
-
 当通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与[terminateSelfWithResult](#terminateselfwithresult)不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。仅支持在主线程调用。
+
+**起始版本：** 12
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [backToCallerAppWithResult](#backtocallerappwithresult)
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4133,8 +4135,6 @@ backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string): Pr
 > **说明：**
 >
 > 本接口返回结果时不会额外触发调用方的[onNewWant](js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调，无需通过[setOnNewWantSkipScenarios](#setonnewwantskipscenarios20)配置跳过场景。
->
-> 如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND权限（该权限仅系统应用可申请）。
 
 **起始版本：** 26.1.0
 
@@ -4143,6 +4143,8 @@ backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string): Pr
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND（在后台调用本接口时需要，该权限仅系统应用可申请）。
 
 **参数：**
 
