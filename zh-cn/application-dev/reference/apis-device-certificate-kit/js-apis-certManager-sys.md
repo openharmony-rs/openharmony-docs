@@ -323,17 +323,17 @@ getSystemTrustedCertificateList(certAlg: CertAlgorithm): Promise\<CMResult>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| certAlg | [CertAlgorithm](js-apis-certManager.md#certalgorithm20) | 是   | 表示系统根证书库的证书算法类型。 |
+| certAlg | [CertAlgorithm](js-apis-certManager.md#certalgorithm20) | 是   | 表示系统根证书库的证书算法类型。海外设备不支持SM算法。 |
 
 **返回值**：
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取系统信任CA证书列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的certList属性。 |
+| Promise\<[CMResult](js-apis-certManager.md#cmresult)> | Promise对象，返回获取系统信任CA证书列表的结果，返回值为[CMResult](js-apis-certManager.md#cmresult)对象中的certList和certStoreInfo属性。 |
 
 **错误码：**
 
@@ -354,6 +354,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const certAlg: certificateManager.CertAlgorithm = certificateManager.CertAlgorithm.INTERNATIONAL;
 certificateManager.getSystemTrustedCertificateList(certAlg)
   .then((cmResult: certificateManager.CMResult) => {
+    if (cmResult === undefined) {
+      console.info('The count of system trusted certificates is 0.');
+      return;
+    }
     if (cmResult.certList === undefined) {
       console.info('certList is undefined.');
       return;
@@ -1154,6 +1158,16 @@ try {
   console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+## CMResult
+
+CMResult的公开字段参见[CMResult](js-apis-certManager.md#cmresult)，以下为系统接口字段。
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| certStoreInfo | [CertStoreInfo](#certstoreinfo) | 否 | 是 | 表示证书库信息。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CertStoreInfo
 
