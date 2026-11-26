@@ -353,7 +353,7 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | 是   | 扩展菜单选项。 |
+| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions12) | 是   | 扩展菜单选项。 |
 
 ### enterKeyType<sup>12+</sup>
 
@@ -3167,9 +3167,10 @@ struct SelectionMenu {
     let sysBoard = pasteboard.getSystemPasteboard();
     let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, '');
     if (richEditorSelection.spans && richEditorSelection.spans.length > 0) {
-      let count = richEditorSelection.spans.length;
-      for (let i = count - 1; i >= 0; i--) {
-        let item = richEditorSelection.spans[i]
+      const spans = richEditorSelection.spans;
+      spans.map((_: RichEditorImageSpanResult | RichEditorTextSpanResult, i: number) => i).reverse()
+        .forEach((i: number) => {
+        let item = spans[i]
         if ((item as RichEditorTextSpanResult)?.textStyle) {
           let span = item as RichEditorTextSpanResult;
           let style = span.textStyle;
@@ -3188,7 +3189,7 @@ struct SelectionMenu {
           pasteData.addRecord(data);
           pasteData.setProperty(prop);
         }
-      }
+      })
     }
     sysBoard.clearData()
     sysBoard.setData(pasteData).then(() => {
@@ -3214,7 +3215,7 @@ struct SelectionMenu {
         return;
       }
       let count = data.getRecordCount();
-      for (let i = 0; i < count; i++) {
+      new Array(count).fill(0).map((_: number, i: number) => i).forEach((i: number) => {
         const element = data.getRecord(i);
         let textStyleConfig: RichEditorTextStyle = {
           fontSize: 16,
@@ -3260,7 +3261,7 @@ struct SelectionMenu {
           );
           moveOffset += element.plainText.length;
         }
-      }
+      })
       if (this.controller) {
         this.controller.setCaretOffset(start + moveOffset);
         this.controller.closeSelectionMenu();
@@ -4348,6 +4349,7 @@ struct Index {
 通过[addBuilderSpan](#addbuilderspan11)接口添加用户自定义布局Span。
 
 ``` ts
+// xxx.ets
 @Builder
 function placeholderBuilder2() {
   Row({ space: 2 }) {
@@ -4357,7 +4359,6 @@ function placeholderBuilder2() {
   }.width('20%').height(50).padding(10).backgroundColor(Color.Red)
 }
 
-// xxx.ets
 @Entry
 @Component
 struct Index {
@@ -4729,19 +4730,20 @@ struct Index {
     let allSpans = this.controller.getSpans();
     let result: number[] = [];
     let chipBuilderIndex = 0;
-    for (let spanIndex = 0; spanIndex < allSpans.length; spanIndex++) {
-      if (!this.isBuilderSpanResult(allSpans[spanIndex])) {
-        continue;
+    allSpans.some((span: RichEditorImageSpanResult | RichEditorTextSpanResult) => {
+      if (!this.isBuilderSpanResult(span)) {
+        return false;
       }
       if (this.builderArray.length <= chipBuilderIndex) {
-        break;
+        return true;
       }
       if (this.builderArray[chipBuilderIndex].id === builderId) {
-        result = allSpans[spanIndex].spanPosition.spanRange;
-        break;
+        result = span.spanPosition.spanRange;
+        return true;
       }
       chipBuilderIndex++;
-    }
+      return false;
+    });
     return result;
   }
 
@@ -4752,7 +4754,7 @@ struct Index {
   private isBuilderSpanResult(item: RichEditorImageSpanResult | RichEditorTextSpanResult): boolean {
     return typeof (item as RichEditorImageSpanResult)['imageStyle'] != 'undefined'
       && ((item as RichEditorImageSpanResult).valueResourceStr == " "
-      || (item as RichEditorImageSpanResult).valueResourceStr == "");
+        || (item as RichEditorImageSpanResult).valueResourceStr == "");
   }
 
   build() {
@@ -4773,38 +4775,41 @@ struct Index {
       // 添加Builder时，记录builder的相对顺序，以及builder信息
       // getSpans接口valueResourceStr == " "或""的Span是builderSpan，并且会按顺序返回builder
       // 可以根据上面两点，在查询时还原builder信息
-      Button("addImageTextBuilder")
-        .onClick(() => {
-          let insertOffset = this.controller.getCaretOffset();
-          // 'app.media.startIcon'需要替换为开发者所需的图像资源文件。
-          let builder = new BuilderObject('Custom PopUP ' + this.builderId, 'imageTextBuilder', 'app.media.startIcon');
-          this.customBuilder = () => {
-            this.imageTextBuilder(builder);
-          }
-          let addIndex = this.addBuilderByIndex(insertOffset);
-          console.info(TAG, "add imageTextBuilder index = " + addIndex);
-          this.builderArray.splice(addIndex, 0, builder);
-          this.controller.addBuilderSpan(this.customBuilder, { offset: insertOffset });
-          this.builderId++;
-          console.info(TAG, "add imageTextBuilder success");
-        })
-      Button("addChipBuilder")
-        .onClick(() => {
-          let insertOffset = this.controller.getCaretOffset();
-          let builder = new BuilderObject('Hello World ' + this.builderId, 'chipBuilder', '',
-            'chipBuilder' + this.builderId);
-          this.customBuilder = () => {
-            this.chipBuilder(builder);
-          }
-          let addIndex = this.addBuilderByIndex(insertOffset);
-          console.info(TAG, "add addChipBuilder index = " + addIndex);
-          this.builderArray.splice(addIndex, 0, builder);
-          this.controller.addBuilderSpan(this.customBuilder, { offset: insertOffset });
-          this.builderId++;
-          console.info(TAG, "add chipBuilder success");
-        })
+      Row({ space:5 }){
+        Button("addImageTextBuilder")
+          .onClick(() => {
+            let insertOffset = this.controller.getCaretOffset();
+            // 'app.media.startIcon'需要替换为开发者所需的图像资源文件。
+            let builder = new BuilderObject('Custom PopUP ' + this.builderId, 'imageTextBuilder', 'app.media.startIcon');
+            this.customBuilder = () => {
+              this.imageTextBuilder(builder);
+            }
+            let addIndex = this.addBuilderByIndex(insertOffset);
+            console.info(TAG, "add imageTextBuilder index = " + addIndex);
+            this.builderArray.splice(addIndex, 0, builder);
+            this.controller.addBuilderSpan(this.customBuilder, { offset: insertOffset });
+            this.builderId++;
+            console.info(TAG, "add imageTextBuilder success");
+          })
+        Button("addChipBuilder")
+          .onClick(() => {
+            let insertOffset = this.controller.getCaretOffset();
+            let builder = new BuilderObject('Hello World ' + this.builderId, 'chipBuilder', '',
+              'chipBuilder' + this.builderId);
+            this.customBuilder = () => {
+              this.chipBuilder(builder);
+            }
+            let addIndex = this.addBuilderByIndex(insertOffset);
+            console.info(TAG, "add addChipBuilder index = " + addIndex);
+            this.builderArray.splice(addIndex, 0, builder);
+            this.controller.addBuilderSpan(this.customBuilder, { offset: insertOffset });
+            this.builderId++;
+            console.info(TAG, "add chipBuilder success");
+          })
+      }
+      .margin({ top: 5 })
 
-      Row() {
+      Row({ space:5 }) {
         Button("getSpans").onClick(() => {
           console.info(TAG, "getSpans = " + JSON.stringify(this.controller.getSpans()));
           this.content = "";
@@ -4837,9 +4842,9 @@ struct Index {
             } else {
               let imageResult = (item as RichEditorImageSpanResult);
               console.info(TAG, "image span " + imageResult.valueResourceStr + ", index: " +
-              imageResult.spanPosition.spanIndex + ", range: " +
-              imageResult.offsetInSpan[0] + ", " + imageResult.offsetInSpan[1] + ", size: " +
-              imageResult.imageStyle.size[0] + ", " + imageResult.imageStyle.size[1]);
+                imageResult.spanPosition.spanIndex + ", range: " +
+                imageResult.offsetInSpan[0] + ", " + imageResult.offsetInSpan[1] + ", size: " +
+                imageResult.imageStyle.size[0] + ", " + imageResult.imageStyle.size[1]);
             }
           })
         })
@@ -4852,28 +4857,25 @@ struct Index {
             }
             let allSpans = this.controller.getSpans();
             let needRemoveIndex = 0;
-            for (let i = 0; i < allSpans.length; i++) {
-              if (!this.isBuilderSpanResult(allSpans[i])) {
-                continue;
+            allSpans.forEach((span: RichEditorImageSpanResult | RichEditorTextSpanResult) => {
+              if (!this.isBuilderSpanResult(span)) {
+                return;
               }
-              let builderIndex = (allSpans[i] as RichEditorImageSpanResult).spanPosition.spanRange[0];
+              let builderIndex = (span as RichEditorImageSpanResult).spanPosition.spanRange[0];
               if (builderIndex < this.start || builderIndex >= this.end) {
                 needRemoveIndex++;
-                continue;
+                return;
               }
               this.indicesToRemove.push(needRemoveIndex);
               needRemoveIndex++;
-            }
+            })
             console.info(TAG, "deleteSpans indicesToRemove = " + this.indicesToRemove.toString());
             this.deleteBuilderByIndices();
             console.info(TAG, "deleteSpans builderArray = " + this.builderArray.length);
             this.controller.deleteSpans({ start: this.start, end: this.end });
           })
       }
-      .borderWidth(1)
-      .borderColor(Color.Red)
-      .width("100%")
-      .height("5%")
+      .margin({ top: 5 })
 
       Column() {
         RichEditor(this.option)
@@ -4911,13 +4913,9 @@ struct Index {
   }
 
   private isBuilderAboutToDelete(value: RichEditorDeleteValue): boolean {
-    let flag = false;
-    for (let i = 0; i < value.richEditorDeleteSpans.length; i++) {
-      if (this.isBuilderSpanResult(value.richEditorDeleteSpans[i])) {
-        flag = true;
-        break;
-      }
-    }
+    let flag = value.richEditorDeleteSpans.some((span: RichEditorImageSpanResult | RichEditorTextSpanResult) => {
+      return this.isBuilderSpanResult(span);
+    });
     return flag;
   }
 
@@ -4926,36 +4924,36 @@ struct Index {
       return
     }
     let allSpans = this.controller.getSpans();
-    for (let i = 0; i < value.richEditorDeleteSpans.length; i++) {
+    value.richEditorDeleteSpans.forEach((item: RichEditorImageSpanResult | RichEditorTextSpanResult) => {
       let needRemoveIndex = 0;
-      let item = value.richEditorDeleteSpans[i];
       if (!this.isBuilderSpanResult(item)) {
-        continue;
+        return;
       }
       let aboutToDeleteBuilderIndex = (item as RichEditorImageSpanResult).spanPosition.spanIndex
-      for (let j = 0; j < allSpans.length; j++) {
-        if (!this.isBuilderSpanResult(allSpans[j])) {
-          continue;
+      allSpans.some((span: RichEditorImageSpanResult | RichEditorTextSpanResult) => {
+        if (!this.isBuilderSpanResult(span)) {
+          return false;
         }
-        let builderIndex = (allSpans[j] as RichEditorImageSpanResult).spanPosition.spanIndex
+        let builderIndex = (span as RichEditorImageSpanResult).spanPosition.spanIndex
         if (builderIndex == aboutToDeleteBuilderIndex) {
           this.indicesToRemove.push(needRemoveIndex);
-          break;
+          return true;
         }
         needRemoveIndex++;
-      }
-    }
+        return false;
+      })
+    })
   }
 
   private deleteBuilderByIndices(): void {
     let indicesSet: Set<number> = new Set(this.indicesToRemove);
     let newLength = 0;
-    for (let i = 0; i < this.builderArray.length; i++) {
+    this.builderArray.forEach((item: BuilderObject, i: number) => {
       if (!indicesSet.has(i)) {
-        this.builderArray[newLength] = this.builderArray[i];
+        this.builderArray[newLength] = item;
         newLength++;
       }
-    }
+    })
     this.builderArray.length = newLength;
     this.indicesToRemove.length = 0;
   }
@@ -4966,17 +4964,17 @@ struct Index {
     }
     let allSpans = this.controller.getSpans();
     let addIndex = 0;
-    for (let i = 0; i < allSpans.length; i++) {
-      if (!this.isBuilderSpanResult(allSpans[i])) {
-        continue;
+    allSpans.some((span: RichEditorImageSpanResult | RichEditorTextSpanResult) => {
+      if (!this.isBuilderSpanResult(span)) {
+        return false;
       }
-      let builderIndex = (allSpans[i] as RichEditorImageSpanResult).spanPosition.spanRange[0];
+      let builderIndex = (span as RichEditorImageSpanResult).spanPosition.spanRange[0];
       if (builderIndex < insertOffset) {
         addIndex++;
-        continue;
+        return false;
       }
-      break;
-    }
+      return true;
+    });
     return addIndex;
   }
 }
@@ -7636,10 +7634,10 @@ struct RichEditorBuilderSpanPage {
           let spans = this.controller.getRichEditorBuilderSpans();
           if (spans) {
             this.addLog('getRichEditorBuilderSpans() count: ' + spans.length);
-            for (let i = 0; i < spans.length; i++) {
-              this.addLog('  span[' + i + ']: id=' + (spans[i].id ?? 'undefined') + ', offset=' +
-                (spans[i].offset ?? 'undefined'), true);
-            }
+            spans.forEach((span: BuilderSpanInfo, i: number) => {
+              this.addLog('  span[' + i + ']: id=' + (span.id ?? 'undefined') + ', offset=' +
+                (span.offset ?? 'undefined'), true);
+            })
           } else {
             this.addLog('getRichEditorBuilderSpans() => undefined');
           }

@@ -37,7 +37,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 ## 属性
 
-属性继承自[BaseSpan](ts-basic-components-span.md#basespan)，通用属性方法支持[尺寸设置](ts-universal-attributes-size.md)、[背景设置](ts-universal-attributes-background.md)、[边框设置](ts-universal-attributes-border.md)。
+属性继承自[BaseSpan](ts-basic-components-span.md#basespan11)，通用属性方法支持[尺寸设置](ts-universal-attributes-size.md)、[背景设置](ts-universal-attributes-background.md)、[边框设置](ts-universal-attributes-border.md)。
 
 ### verticalAlign
 
