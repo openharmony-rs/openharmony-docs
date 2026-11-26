@@ -17,6 +17,8 @@
 
 ## 接口说明
 
+关键接口如下表所示。具体API说明详见API参考。
+
 | 接口 | 说明 |
 | --- | --- |
 | [agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode) | 设置组件对Agent输入事件的管控级别。 |
@@ -44,9 +46,6 @@ Agent生成的事件包括系统Agent生成的事件，以及具有ohos.permissi
   }
 }
 ```
-
-
-### 设置Agent输入管控策略
 
 声明权限后，可以在目标组件上通过[agentControlMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)接口，设置允许或阻止Agent输入事件。
 
