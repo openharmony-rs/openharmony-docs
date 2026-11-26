@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍Stage模型应用程序包在开发态、编译态、发布态三种形态的结构变化，涵盖工程目录、Module编译产物以及App Pack发布形态与pack.info描述文件。"
+keywords: [包结构, 三态结构, App Pack, pack.info, AppScope, module.json, HAP, HSP]
+doctype: guide
+status: active
+---
 # 应用程序包结构
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

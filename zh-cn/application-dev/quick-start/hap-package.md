@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍HAP（Harmony Ability Package）包的概念、entry与feature两种类型、单/多HAP使用场景、约束限制以及创建、开发、调试方法。"
+keywords: [HAP, Harmony Ability Package, Module类型, 多HAP, 签名一致性, DevEco Studio, hdc, App Pack]
+doctype: guide
+status: active
+---
 # HAP
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

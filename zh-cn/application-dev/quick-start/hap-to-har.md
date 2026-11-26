@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过修改module.json5、hvigorfile.ts、oh-package.json5、build-profile.json5等配置，将HAP工程转换为HAR工程以导出接口或ArkUI组件的步骤。"
+keywords: [HAP转HAR, module.json5, type, hvigorfile.ts, harTasks, Index.ets, oh-package.json5, build-profile, 导出组件]
+doctype: guide
+status: active
+---
 # HAP转HAR指导
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

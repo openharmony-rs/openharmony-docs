@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍从API version 26起Ability Kit提供的Skill能力，开发者通过Skill描述文件与ArkTS入口脚本将应用内业务能力开放给系统智能体调用。"
+keywords: [Skill, ArkTS脚本, scriptManager, 智能体, 能力外化, skillProfiles, SKILL.md, Ability Kit, 意图匹配]
+doctype: guide
+status: active
+---
 # 基于ArkTS脚本的应用Skill开发指导
 
 <!--Kit: Ability Kit-->

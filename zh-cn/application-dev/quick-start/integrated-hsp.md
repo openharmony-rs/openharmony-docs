@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍集成态HSP的概念与使用方法，作为应用内HSP的中间编译产物，解决使用方bundleName与签名强耦合问题，支持多应用共享基础能力并自动重签名。"
+keywords: [集成态HSP, HSP, bundleName, 重签名, OHMUrl, Stage模型, build-profile, integratedHsp, 多应用共享]
+doctype: guide
+status: active
+---
 # 集成态HSP
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用级配置文件app.json5的结构与全部字段，涵盖bundleName、版本号与版本声明、应用图标、多开模式、启动模式等全局配置信息及配置示例。"
+keywords: [app.json5, bundleName, 版本声明, multiAppMode, startMode, AppScope, 应用图标, alternateIcons]
+doctype: guide
+status: active
+---
 # app.json5配置文件
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

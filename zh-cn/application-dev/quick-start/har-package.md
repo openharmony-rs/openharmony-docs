@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍HAR（Harmony Archive）静态共享包的概念、使用场景、约束限制以及创建、开发、构建发布方法，支持应用内共享与发布到OHPM仓。"
+keywords: [HAR, Harmony Archive, 静态共享包, OHPM三方库, 混淆, 导出ArkUI组件, 循环依赖]
+doctype: guide
+status: active
+---
 # HAR
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

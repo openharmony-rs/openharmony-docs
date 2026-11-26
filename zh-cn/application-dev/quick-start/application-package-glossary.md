@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "应用程序包术语表，按字母顺序汇总App Pack、Bundle、HAP、HAR、HSP、Module、集成态HSP等概念的中文定义与说明，便于开发者查阅。"
+keywords: [App Pack, Bundle, HAP, HAR, HSP, Module, 集成态HSP, bm]
+doctype: glossary
+status: active
+---
 # 应用程序包术语
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
