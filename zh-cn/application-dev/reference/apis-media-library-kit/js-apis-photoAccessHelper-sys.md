@@ -8346,6 +8346,10 @@ getFaceId(): Promise\<string>
 
 获取人像相册或合影相册的封面人脸标识。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，支持宠物相册、人和宠物合影相册、宠物和宠物合影相册返回脸部标识。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.READ\_IMAGEVIDEO
@@ -8356,7 +8360,7 @@ getFaceId(): Promise\<string>
 
 | 类型                | 说明                                |
 | :------------------ | :---------------------------------- |
-| Promise&lt;string&gt; | Promise对象，人像相册返回tag_id，合影相册返回group_tag，未找到返回空字符串。 |
+| Promise&lt;string&gt; | Promise对象，人像相册返回tag_id，合影相册返回group_tag，未找到返回空字符串。<br>从API版本26.1.0开始，宠物相册返回tag_id，人和宠物合影相册、宠物和宠物合影相册返回group_tag。 |
 
 **错误码：**
 
@@ -11147,6 +11151,10 @@ setDisplayLevel(displayLevel: number): void
 
 设置人像相册的显示级别。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，支持设置宠物相册的显示级别。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -11155,7 +11163,7 @@ setDisplayLevel(displayLevel: number): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| displayLevel | number | 是    | 设置人像相册的显示级别。<br>0表示取消该人像相册收藏、1表示设置人像相册为首界面、2表示设置人像相册为更多界面、3表示设置人像相册为收藏界面。 |
+| displayLevel | number | 是    | 设置人像相册或宠物相册的显示级别。<br>0表示取消该相册收藏、1表示设置该相册为首界面、2表示设置该相册为更多界面、3表示设置该相册为收藏界面。 |
 
 **错误码：**
 
@@ -11247,6 +11255,10 @@ dismissAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 从该人像相册或合影相册中移除指定图片。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，支持从宠物相册、人和宠物合影相册、宠物和宠物合影相册中移除指定图片。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -11309,6 +11321,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 mergeAlbum(target: Album): void
 
 将两个人像相册合并。
+
+> **说明：**
+>
+> 从API版本26.1.0开始，支持合并两个宠物相册。
 
 **系统接口**：此接口为系统接口。
 
@@ -14506,6 +14522,9 @@ async function example(context: Context) {
 | GROUP_PHOTO<sup>13+</sup>         | 4103       | 合影相册。**系统接口**：此接口为系统接口。         |
 | HIGHLIGHT<sup>12+</sup>           | 4104       | 时刻相册。**系统接口**：此接口为系统接口。         |
 | HIGHLIGHT_SUGGESTIONS<sup>12+</sup> | 4105     | 时刻建议相册。**系统接口**：此接口为系统接口。         |
+| PET                               | 4106     | 宠物相册。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。         |
+| HUMAN_PET_GROUP_PHOTO             | 4112     | 人和宠物合影相册。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。         |
+| PET_GROUP_PHOTO                   | 4113     | 宠物和宠物合影相册。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。         |
 | CLOUD_ENHANCEMENT<sup>13+</sup> | 1032     | AI云增强相册。**系统接口**：此接口为系统接口。         |
 | SHARE                             | 8193     | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。         |
 
