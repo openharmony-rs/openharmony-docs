@@ -51522,13 +51522,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h",
-				"functions":[
-					{
-						"end_line":110,
-						"name":"buffer_clean",
-						"start_line":104
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp",
