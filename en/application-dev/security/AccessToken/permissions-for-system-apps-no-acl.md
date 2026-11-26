@@ -11,7 +11,7 @@ Before requesting permissions for your application, read and understand the [per
 
 > **NOTE**
 >
-> - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
+> - The permissions listed in this topic are available to system_basic or higher-level applications, but not to normal applications.
 > - The authorization mode of these permissions is system_grant.
 > - The following permissions cannot be requested across application levels via ACL.
 
@@ -67,7 +67,7 @@ Allows an application to call interfaces of the DeviceAuthCredMgr application.
 
 ## ohos.permission.ACCESS_AUTH_RESPOOL
 
-Allows an SA to register the executor.
+Allows an SA to register the authentication executor.
 
 **Permission level**: system_core
 
@@ -173,9 +173,9 @@ With this permission, an application can call APIs provided by the system layer 
 
 **Certificate-based authorization**: false
 
- **Supported devices**: phones | TVs | tablets
+**Supported devices**: phones | TVs | tablets
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.ENFORCE_USER_IDM
 
@@ -200,3 +200,31 @@ Allows a system service to enable distributed hardware resources.
 **Certificate-based authorization**: false
 
 **Valid since**: 11
+
+## ohos.permission.EXECUTE_HISHELL_COMMAND
+
+Allows an application to start the HiShell command-line terminal to execute commands or scripts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: false
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
+## ohos.permission.GET_SUSPEND_STATE
+
+Allows a system application to obtain changes in suspended state.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: false
+
+**Supported devices**:  phones | TVs | PCs/2-in-1 devices | tablets | cars | wearables
+
+**Since**: 26.1.0
