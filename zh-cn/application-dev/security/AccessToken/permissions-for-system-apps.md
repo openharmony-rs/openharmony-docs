@@ -9986,6 +9986,36 @@
 
 **起始版本**：26.1.0
 
+## ohos.permission.PROMOTE_BACKGROUND_PROCESS_PRIORITY
+
+允许系统应用提升后台进程优先级。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.SUPPORT_HIGH_PRIORITY_STARTUP
+
+允许系统应用以高优先级启动。
+
+当其他应用（拉起方）持有权限[ohos.permission.PROMOTE_BACKGROUND_PROCESS_PRIORITY](#ohospermissionpromote_background_process_priority)时，可高优先级启动本应用（被拉起方）。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.MANAGE_DAEMON_SERVICE
  
 允许系统应用管理daemon服务。
