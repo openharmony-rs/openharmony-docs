@@ -704,6 +704,7 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -788,6 +789,7 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -874,6 +876,7 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, c
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -967,6 +970,7 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): 
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1311,6 +1315,7 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1391,6 +1396,7 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1472,6 +1478,7 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, ca
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1560,6 +1567,7 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): P
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1758,6 +1766,7 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 
 **示例：**
 
@@ -1907,6 +1916,7 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 
 **示例：**
 
@@ -3353,6 +3363,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 | 16000013 | The application is controlled by EDM.               |
 | 16000019 | No matching ability is found.                       |
 | 16000050 | Internal error.                                     |
+| 16000073 | The app clone index is invalid. |
 | 16200001 | The caller has been released.                       |
 
 **示例：**

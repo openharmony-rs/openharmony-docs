@@ -1054,6 +1054,7 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. <br>适用版本：10+ |
 | 16000055 | Installation-free timed out. <br>适用版本：10+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
 
 **示例：**
 
@@ -3764,6 +3765,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 | 16000013 | The application is controlled by EDM.                                                                       |
 | 16000019 | No matching ability is found.                                                                               |
 | 16000050 | Internal error.                                                                                             |
+| 16000073 | The app clone index is invalid. |
 | 16200001 | The caller has been released.                                                                               |
 
 **示例：**
@@ -3903,6 +3905,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 | 16000013 | The application is controlled by EDM.                                               |
 | 16000050 | Internal error.                                                                     |
 | 16000055 | Installation-free timed out.                                                        |
+| 16000073 | The app clone index is invalid. |
 
 **示例：**
 
@@ -4647,6 +4650,7 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 | 16000013 | The application is controlled by EDM.       |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. |
 | 16000200 | The caller is not in the appIdentifierAllowList of the target application. |
 
 **示例：**
@@ -4729,6 +4733,7 @@ stopAppServiceExtensionAbility(want: Want): Promise\<void>
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. |
 | 16000200 | The caller is not in the appIdentifierAllowList of the target application. |
 
 **示例：**
@@ -4813,6 +4818,7 @@ ArkTS-Sta: connectAppServiceExtensionAbility(want: Want, callback: ConnectOption
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. |
 | 16000201 | The target service has not been started yet. |
 
 **示例：**

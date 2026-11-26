@@ -174,6 +174,7 @@ connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
+| 16000073 | The app clone index is invalid. |
 
 **示例：**
 
