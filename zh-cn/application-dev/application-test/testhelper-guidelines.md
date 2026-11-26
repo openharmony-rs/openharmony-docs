@@ -433,14 +433,18 @@ hdc shell testhelper disable-location-mock
 
 ### testhelper set-mocked-locations
 
-从GPX文件设置模拟位置。
+从GPX文件设置模拟位置。模拟位置注入成功后，需同时满足以下条件，应用才能获取模拟位置信息：
+
+1. 设备开启开发者模式。
+2. 设备连接 USB。
+3. 应用为<!--RP2-->[调试应用](../quick-start/app-configuration-file.md#配置文件标签)<!--RP2End-->（app.json5 中 `debug` 为 `true`）。
 
 **参数说明：**
 
 | 参数 | 必填 | 说明 |
 |-----|------|------|
-| path | 是 | GPX文件的绝对路径。<br>**路径要求：**<br>- 路径必须为`/data/local/tmp`下的绝对路径。<br>- 文件格式：仅支持`.gpx`扩展名。<br>- 不支持包含`..`的路径。<br>- 最大位置数量：1000个。|
-| interval | 否 | 位置更新间隔，单位为秒。<br>- 取值范围：1-3600（整数）。<br>- 默认值：1。|
+| path | 是 | GPX文件的绝对路径。<br>**路径要求：**<br>- 路径必须为`/data/local/tmp/`下的绝对路径。<br>- 文件格式：仅支持`.gpx`扩展名。<br>- 不支持包含`..`的路径。<br>- 最大位置数量：1000个（含）。|
+| interval | 否 | 位置更新间隔，单位为秒。<br>- 取值范围：1-3600（整数，含边界）。<br>- 默认值：1。|
 
 **使用示例：**
 
@@ -452,17 +456,22 @@ hdc shell testhelper set-mocked-locations /data/local/tmp/locations.gpx 2
 
 **GPX文件格式：**
 
-testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
+testhelper兼容标准GPX 1.1的写法，支持以下三种位置点类型（仅校验根元素为`<gpx>`，不校验`version`属性和命名空间）：
 - `<wpt>`（waypoint）：航点。
 - `<trk>`（track）：轨迹，包含`<trkseg>`和`<trkpt>`。
 - `<rte>`（route）：路线，包含`<rtept>`。
 
 每个位置点支持以下属性：
 - `lat`和`lon`：经纬度坐标（必填），纬度范围-90到90，经度范围-180到180。
-- `<ele>`：海拔高度（可选，单位：米）。
-- `<time>`：时间戳（可选，ISO 8601格式）。
-- `<speed>`：速度（可选，单位：米/秒，必须≥0）。
-- `<direction>`或`<course>`：方向（可选，单位：度，范围0-360）。
+- `<ele>`：海拔高度（可选，单位：米，默认值0；非法值按0处理，不报错）。
+- `<speed>`：速度（可选，单位：米/秒，默认值0，必须≥0）。
+- `<direction>`或`<course>`：方向（可选，单位：度，默认值0，范围0-360）。
+- 每个位置点的定位精度固定为10米，不支持通过GPX配置。
+
+> **说明：**
+>
+> - 位置点按文件中的顺序解析，任意一个位置点的必填属性缺失或数值非法时，整份文件解析失败，已解析的位置点不会生效。
+> - 位置点数量在解析完成后统一校验，超过1000个时整份文件不生效。
 
 **GPX文件模板示例：**
 
@@ -473,13 +482,11 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
 <gpx version="1.1" creator="TestHelper" xmlns="http://www.topografix.com/GPX/1/1">
   <wpt lat="22.5431" lon="114.0579">
     <ele>8.0</ele>
-    <time>2024-01-15T09:00:00Z</time>
     <speed>25.0</speed>
     <direction>90.0</direction>
   </wpt>
   <wpt lat="22.5531" lon="114.0679">
     <ele>10.0</ele>
-    <time>2024-01-15T09:01:00Z</time>
     <speed>28.0</speed>
     <direction>95.0</direction>
   </wpt>
@@ -499,13 +506,11 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
     <trkseg>
       <trkpt lat="22.5431" lon="114.0579">
         <ele>8.0</ele>
-        <time>2024-01-15T09:00:00Z</time>
         <speed>25.0</speed>
         <direction>90.0</direction>
       </trkpt>
       <trkpt lat="22.5531" lon="114.0679">
         <ele>10.0</ele>
-        <time>2024-01-15T09:01:00Z</time>
         <speed>28.0</speed>
         <direction>95.0</direction>
       </trkpt>
@@ -538,11 +543,10 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
 
 | 场景 | 打印信息 |
 |-----|----------|
-| 路径无效（非`/data/local/tmp`下的绝对路径）。| `Error: Invalid path. Please provide a valid gpx file path under the /data/local/tmp` |
-| GPX文件扩展名无效（非`.gpx`）。| `Error: Invalid path. Please provide a valid gpx file path under the /data/local/tmp` |
-| GPX文件格式无效（XML格式错误、根元素错误、缺少有效位置点等）。| `Error: The parameter validation in gpx file has failed. xxx`（具体错误信息） |
-| 时间间隔无效（≤0或>3600）。| `Error: The parameter validation has failed. timeInterval must be greater than 0.` 或 `timeInterval must be less than 3600.` |
+| 路径无效（如非`/data/local/tmp/`下的绝对路径或含`..`）或GPX文件扩展名无效。| `Error: Invalid path. Please provide a valid gpx file path under the /data/local/tmp` |
+| GPX文件内容校验失败（XML格式错误、根元素错误、缺少有效位置点、位置点属性缺失或非法等）。| `Error: The parameter validation in gpx file has failed. xxx`（具体原因） |
 | GPX文件位置数量超过限制（>1000）。| `Error: The parameter validation in gpx file has failed. locations size must be less than 1000.` |
+| 时间间隔非法（非正整数或大于3600）。| `Error: The parameter validation in timeInterval has failed. Integer value is required.`、`Error: The parameter validation has failed. timeInterval must be greater than 0.` 或 `Error: The parameter validation has failed. timeInterval must be less than 3600.` |
 | 设备不支持位置模拟功能。| `Error: Operation is not supported. Location mock is not supported on this device.` |
 | 服务不可用。| `Error: Service is not available.` |
 
