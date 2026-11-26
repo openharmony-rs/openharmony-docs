@@ -55,6 +55,8 @@ UIContext.enableTouchPadEvent(true);
 
 以下示例演示了使能触控板原始事件上报，并基于双指触点数据实现自定义手势跟随：双指滑动驱动组件平移、双指张开/捏合驱动组件缩放，抬手后动画还原至原位。
 
+<!-- @[touchpad_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/touchpadEvent/TouchPadEventActualApplication.ets) -->
+
 ```ts
 import { UIContext, display } from '@kit.ArkUI';
 
