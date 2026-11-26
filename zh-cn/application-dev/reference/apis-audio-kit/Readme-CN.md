@@ -126,6 +126,11 @@
     - [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)
     - [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)
     - [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md)
+    <!--Del-->
+    - [OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md)
+    - [OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo-sys.md)
+    - [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo-sys.md)
+    <!--DelEnd-->
     - [OH_MIDIEvent](capi-ohmidi-oh-midievent.md)
     - [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md)
     - [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md)
