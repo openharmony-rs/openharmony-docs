@@ -1700,7 +1700,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBuffer(JSVM_Env env, size_t byt
 
 创建一个指定大小的SharedArrayBuffer对象。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1727,7 +1727,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsSharedArrayBuffer(JSVM_Env env, JSVM_Value val
 
 判断一个对象是否为SharedArrayBuffer类型对象。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1753,7 +1753,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferInfo(JSVM_Env env, JSVM_Valu
 
 检索SharedArrayBuffer的底层数据缓冲区、当前字节长度与最大字节长度。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1781,7 +1781,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferBackingStore(JSVM_Env env, J
 
 获取SharedArrayBuffer底层共享内存的JSVM_BackingStore句柄。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1807,7 +1807,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_RetainBackingStore(JSVM_BackingStore backingStor
 
 复制一个JSVM_BackingStore句柄，新句柄独立持有引用。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1832,7 +1832,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseBackingStore(JSVM_BackingStore backingSto
 
 释放一个JSVM_BackingStore句柄持有的引用。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1856,7 +1856,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetBackingStoreInfo(JSVM_BackingStore backingSto
 
 检索JSVM_BackingStore句柄的数据指针、长度及共享/可增长属性。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -1885,7 +1885,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBufferFromBackingStore(JSVM_Env
 
 基于已有的JSVM_BackingStore句柄，在当前环境创建一个新的SharedArrayBuffer对象。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **参数：**
 

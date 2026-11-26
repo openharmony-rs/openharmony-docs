@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "指导申请JSVM JIT功能所需的受限ACL权限ohos.permission.kernel.ALLOW_EXECUTABLE_FORT_MEMORY，说明AGC申请流程、profile证书更新与适配注意事项。"
 keywords: [JIT权限, ACL, ALLOW_EXECUTABLE_FORT_MEMORY, profile证书, AGC, 应用市场, 权限申请, JSVM]
 doctype: guide
