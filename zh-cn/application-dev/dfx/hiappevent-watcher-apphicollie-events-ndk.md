@@ -52,6 +52,8 @@
 
 3. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加所需源文件及动态库。
 
+   <!-- @[hicoliesub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
    ``` Text
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
@@ -67,7 +69,6 @@
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
-   # 新增动态库依赖libohhicollie.so（HiCollie对外检测接口）
    target_link_libraries(entry PUBLIC libohhicollie.so)
    ```
 
