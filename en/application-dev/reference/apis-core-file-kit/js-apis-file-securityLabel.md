@@ -5,7 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6c0893247bd78c129e32a38e52ccc47805b1914a translatedAt=2026-11-03T04:38:32.848Z pushedAt=2026-11-04T05:56:42.496Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fb0c828c07a3fdd7fc9af131e650822131509628 translatedAt=2026-11-26T07:33:15.363Z pushedAt=2026-11-26T08:05:21.559Z nl=1 -->
 
 This module provides functions related to file data security levels: it provides ArkTS APIs for applications to query and set file data security levels. This function helps applications implement hierarchical management and access control for files of different security levels, addressing the need for data security control and improving the data security compliance of applications.
 
@@ -176,7 +176,11 @@ securityLabel.setSecurityLabelSync(filePath, "s0");
 
 getSecurityLabel(path:string):Promise&lt;string&gt;
 
-Obtains the data security level of a file or directory. If no data security level has been set, **s3** is returned by default. This API uses a promise to return the result.
+Obtains the data security level of a file or directory. If no data security level has been set or the file or directory at the specified path does not exist, **s3** is returned by default. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> When the file or directory at the specified path does not exist, this API does not throw an exception. You are advised to use this function in a conditional statement that evaluates to true for [fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync).
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -223,7 +227,11 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
-Obtains the data security level of a file or directory. If no data security level has been set, **s3** is returned by default. This API uses an asynchronous callback to return the result.
+Obtains the data security level of a file or directory. If no data security level has been set or the file or directory at the specified path does not exist, **s3** is returned by default. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> When the file or directory at the specified path does not exist, this API does not throw an exception. You are advised to use this function in a conditional statement that evaluates to true for [fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync).
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -267,7 +275,11 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 getSecurityLabelSync(path:string):string
 
-Obtains the data security level of a file or directory in synchronous mode. If no data security level has been set, **s3** is returned by default.
+Obtains the data security level of a file or directory in synchronous mode. If no data security level has been set or the file or directory at the specified path does not exist, **s3** is returned by default.
+
+> **NOTE**
+>
+> When the file or directory at the specified path does not exist, this API does not throw an exception. You are advised to use this function in a conditional statement that evaluates to true for [fileIo.access](js-apis-file-fs.md#fileioaccess) /[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync).
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
