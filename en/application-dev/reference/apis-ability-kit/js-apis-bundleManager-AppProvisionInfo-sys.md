@@ -5,6 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=237dbe5ba2f3350597af7253327d6cd79caefee3 translatedAt=2026-11-25T11:23:46.265Z pushedAt=2026-11-26T02:51:21.403Z nl=1 -->
 
 The module provides information in the [HarmonyAppProvision configuration file](../../security/app-provision-structure.md). The information can be obtained through [getAppProvisionInfo](./js-apis-bundleManager-sys.md#bundlemanagergetappprovisioninfo10).
 
@@ -41,6 +42,10 @@ import { bundleManager } from '@kit.AbilityKit';
 |appIdentifier<sup>11+</sup>| string         | Yes  | No  | Unique ID of the application. For details, see [What Is appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier).  |
 | organization<sup>12+</sup> | string | Yes  | No  | Organization of the application.|
 | bundleName<sup>23+</sup> | string | Yes  | Yes  | Bundle name of the application.|
+| appServiceCapabilities | string | Yes   | Yes   | Service capability of the application.<br/>**Since:** 26.0.1 <br/>**Model restriction:** This API can be used only in the stage model. |
+| appIndex | number | Yes   | Yes   | Clone index of the application.<br/>**Since:** 26.0.1 <br/>**Model restriction:** This API can be used only in the stage model.|
+| specifiedDistributionType | string | Yes   | Yes   | Distribution type of the application.<br/>**Since:** 26.0.1 <br/>**Model restriction:** This API can be used only in the stage model. |
+| additionalInfo | string | Yes   | Yes   | Additional information of the application.<br/>**Since:** 26.0.1 <br/>**Model restriction:** This API can be used only in the stage model. |
 
 ## Validity
 
@@ -50,5 +55,5 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | Name                     | Type  | Read-Only| Optional| Description                |
 | ------------------------- | ------ | ---- | ---- | -------------------- |
-| notBefore                 | number | Yes  | No  | Start time of the validity period of the configuration file.|
-| notAfter                  | number | Yes  | No  | End time of the validity period of the configuration file.|
+| notBefore                 | number | Yes   | No   | Indicates the start time of the validity period of the configuration file, in s. |
+| notAfter                  | number | Yes   | No   | Indicates the end time of the validity period of the configuration file, in s. |

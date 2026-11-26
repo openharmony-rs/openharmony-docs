@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=14b72ddf869de3f3c39d4e82220102199a232a2f translatedAt=2026-11-25T11:24:22.904Z pushedAt=2026-11-26T02:52:48.085Z nl=1 -->
 
 The module provides APIs for obtaining resource information, including [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md) and [LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md).
 
@@ -12,9 +13,9 @@ The module provides APIs for obtaining resource information, including [BundleRe
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> Starting from API version 12, this module supports query of icons and names of disabled applications and applications installed by all users.
+> Since API version 12, this module supports querying the icon and name resources of disabled applications and applications installed on the device (regardless of user).
 >
-> The APIs provided by this module are system APIs.
+> This module is a system API.
 
 ## Modules to Import
 
@@ -30,14 +31,14 @@ Enumerates the resource information flags, which indicate the type of resource i
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.Resource
+**System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 | Name                                                    | Value        | Description                                                        |
 | -------------------------------------------------------- | ---------- | ------------------------------------------------------------ |
 | GET_RESOURCE_INFO_ALL                                    | 0x00000001 | Both the application icon and label are obtained.                               |
 | GET_RESOURCE_INFO_WITH_LABEL                             | 0x00000002 | Only the application label is obtained.                     |
 | GET_RESOURCE_INFO_WITH_ICON                              | 0x00000004 | Only the application icon is obtained.                     |
-| GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL                   | 0x00000008 | The obtained information is sorted by label. It must be used together with **GET_RESOURCE_INFO_ALL** or **GET_RESOURCE_INFO_WITH_LABEL**.|
+| GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL                   | 0x00000008 | Used to obtain information sorted by label. It cannot be used separately and must be used together with GET_RESOURCE_INFO_ALL or GET_RESOURCE_INFO_WITH_LABEL. |
 | GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR<sup>12+</sup> | 0x00000010 | The [drawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md) object of the application icon is obtained.|
 | GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY<sup>20+</sup>   | 0x00000020 | The resource information about abilities that show icons only on the home screen is obtained. It is valid only in the [getLauncherAbilityResourceInfo](#bundleresourcemanagergetlauncherabilityresourceinfo) and [getAllLauncherAbilityResourceInfo](#bundleresourcemanagergetalllauncherabilityresourceinfo) APIs.|
 
@@ -46,9 +47,9 @@ Enumerates the resource information flags, which indicate the type of resource i
 
 ### bundleResourceManager.getBundleResourceInfo
 
-getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
+getBundleResourceInfo(bundleName: string, resourceFlags?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
-Obtains the resource information of an application based on the given bundle name and resource flags. This API returns the result synchronously.
+Synchronously obtains the application's BundleResourceInfo based on the given bundleName and resourceFlags.
 
 **System API**: This is a system API.
 
@@ -61,7 +62,7 @@ Obtains the resource information of an application based on the given bundle nam
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | Yes  | Bundle name of the application.|
-| resourceFlags | [number](#resourceflag) | No  | Type of the resource information to obtain.|
+| resourceFlags | number | No | Information contained in the BundleResourceInfo specified to return. |
 
 **Return value**
 
@@ -103,9 +104,9 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-Obtains the bundle information of the entry ability of an application based on the given bundle name and resource flags. This API returns the result synchronously.
+Synchronously obtains the application's LauncherAbilityResourceInfo based on the given bundleName and resourceFlags.
 
 **System API**: This is a system API.
 
@@ -118,7 +119,7 @@ Obtains the bundle information of the entry ability of an application based on t
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | Yes  | Bundle name of the application.|
-| resourceFlags | [number](#resourceflag) | No  | Type of the resource information to obtain. The default value is **[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL**.|
+| resourceFlags | number | No | Information contained in the LauncherAbilityResourceInfo specified to return. The default value is [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL. |
 
 **Return value**
 
@@ -159,7 +160,7 @@ try {
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-getAllBundleResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>): void
+getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>): void
 
 Obtains the bundle resource information of all applications based on the given resource flags. This API uses an asynchronous callback to return the result.
 
@@ -173,8 +174,8 @@ Obtains the bundle resource information of all applications based on the given r
 
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
-| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a BundleResourceInfo array. Otherwise, **err** is an error object.|
+| resourceFlags | number | Yes | Information contained in the BundleResourceInfo specified to return. |
+| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the operation is successful, err is undefined and data is the array of BundleResourceInfo objects obtained; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -205,12 +206,13 @@ try {
   });
 } catch (err) {
   let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
 
 ### bundleResourceManager.getAllBundleResourceInfo
 
-getAllBundleResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>;
+getAllBundleResourceInfo(resourceFlags: number): Promise<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>>;
 
 Obtains the bundle resource information of all applications based on the given resource flags. This API uses a promise to return the result.
 
@@ -224,7 +226,7 @@ Obtains the bundle resource information of all applications based on the given r
 
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
+| resourceFlags | number | Yes | Information contained in the BundleResourceInfo specified to return. |
 
 **Return value**
 
@@ -265,7 +267,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>): void
+getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>): void
 
 Obtains the resource information of the entry abilities of the current application based on the given resource flags. This API uses an asynchronous callback to return the result.
 
@@ -279,8 +281,8 @@ Obtains the resource information of the entry abilities of the current applicati
 
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a LauncherAbilityResourceInfo array. Otherwise, **err** is an error object.|
+| resourceFlags | number | Yes | Information contained in the LauncherAbilityResourceInfo specified to return. |
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the operation is successful, **err** is **undefined**, and data is the array of LauncherAbilityResourceInfo obtained. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -317,7 +319,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>
+getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>
 
 Obtains the resource information of the entry abilities of the current application based on the given resource flags. This API uses a promise to return the result.
 
@@ -331,7 +333,7 @@ Obtains the resource information of the entry abilities of the current applicati
 
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
-| resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
+| resourceFlags | number | Yes | Information contained in the LauncherAbilityResourceInfo specified to return. |
 
 **Return value**
 
@@ -371,9 +373,9 @@ try {
 
 ### bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
 
-getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
+getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
-Obtains the resource information of an application based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
+Synchronously based on the given bundleName, resourceFlags, and appIndex, obtain the application's or application clone's BundleResourceInfo.
 
 **System API**: This is a system API.
 
@@ -386,7 +388,7 @@ Obtains the resource information of an application based on the given bundle nam
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | Yes  | Bundle name of the application.|
-| resourceFlags | [number](#resourceflag) | No  | Type of the resource information to obtain.|
+| resourceFlags | number | No | Information contained in the BundleResourceInfo specified to return. |
 | appIndex | number | No  | Index of the application clone. The default value is **0**.|
 
 **Return value**
@@ -431,9 +433,9 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-Obtains the launcher ability resource information of an application based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
+Synchronously based on the given bundleName, resourceFlags, and appIndex, obtain the application's or application clone's LauncherAbilityResourceInfo.
 
 **System API**: This is a system API.
 
@@ -446,7 +448,7 @@ Obtains the launcher ability resource information of an application based on the
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | bundleName | string | Yes  | Bundle name of the application.|
-| resourceFlags | [number](#resourceflag) | No  | Type of the resource information to obtain. The default value is **[ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL**.|
+| resourceFlags | number | No | Information contained in the LauncherAbilityResourceInfo specified to return. The default value is [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ALL. |
 | appIndex | number | No  | Index of the application clone. The default value is **0**.|
 
 **Return value**
@@ -530,6 +532,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { bundleManager, bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = "com.example.myapplication";
 let extensionAbilityType = bundleManager.ExtensionAbilityType.INPUT_METHOD;
@@ -537,11 +540,12 @@ let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
   let resourceInfo =
     bundleResourceManager.getExtensionAbilityResourceInfo(bundleName, extensionAbilityType, resourceFlag);
-  console.info('getExtensionAbilityResourceInfo successfully. Data label: ' + JSON.stringify(resourceInfo[0].label));
+  hilog.info(0x0000, 'testTag', 'getExtensionAbilityResourceInfo successfully. Data label: %{public}s',
+    JSON.stringify(resourceInfo[0].label));
 } catch (err) {
   let message = (err as BusinessError).message;
   let code = (err as BusinessError).code;
-  console.error(`getExtensionAbilityResourceInfo failed, err code:${code}, err msg: ${message}`);
+  hilog.error(0x0000, 'testTag', 'getExtensionAbilityResourceInfo failed: %{public}d %{public}s', code, message);
 }
 ```
 
@@ -611,6 +615,8 @@ Obtains the launcher ability resource information of each application correspond
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Resource
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name       | Type                                                        | Mandatory| Description                                                        |
@@ -669,6 +675,72 @@ try {
 }
 ```
 
+### bundleResourceManager.getBundleResourceArchiveInfo
+
+getBundleResourceArchiveInfo(filePath: string, resourceFlags?: number): Promise\<BundleResourceInfo>
+
+Obtains the BundleResourceInfo of the application based on the given bundle file path and resourceFlags. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.GET_BUNDLE_RESOURCES
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Resource
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ----------- | ------ | ---- | --------------------- |
+| filePath | string | Yes | Path to the stored bundle file. Both the absolute path of the current application and the sandbox path of the data directory are supported. |
+| resourceFlags | number | No | Information contained in the BundleResourceInfo specified to return. The value is a [ResourceFlag](#resourceflag) enum value, and the default value is GET_RESOURCE_INFO_ALL. |
+
+**Return value**
+
+| Type | Description |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise\<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)> | Promise object used to return the BundleResourceInfo of the specified application. |
+
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID | Error Message |
+| -------- | ------------------------------------- |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed. A non-system application calls a system api. |
+| 17700022 | The filePath is invalid. |
+| 17700101 | Bundle manager service is excepted. |
+
+
+**Example**
+
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Replace it with the actual application to query path.
+
+let filePath = "/data/storage/el2/base/files/entry.hap";
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  bundleResourceManager.getBundleResourceArchiveInfo(filePath, resourceFlag).then(data => {
+    hilog.info(0x0000, 'testTag', 'getBundleResourceArchiveInfo successfully. Data label: %{public}s',
+      JSON.stringify(data.label));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getBundleResourceArchiveInfo failed. err: %{public}s', err.message);
+  })
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceArchiveInfo failed: %{public}s', message);
+}
+```
+
 ## BundleResourceInfo
 
 type BundleResourceInfo = _BundleResourceInfo
@@ -696,5 +768,3 @@ Defines the entry icon and name of an application.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo) |Defines the entry icon and name of an application.|
-
-<!--no_check-->
