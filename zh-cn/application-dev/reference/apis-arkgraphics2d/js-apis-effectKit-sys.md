@@ -735,6 +735,251 @@ struct Index {
 }
 ```
 
+### halftone
+
+halftone(halftoneParam: HalftoneParam, outlineWidth?: number, shadowOptions?: ShadowOptions): Filter
+
+将网点效果、描边和阴影效果添加到效果链表中，并返回链表头节点。该效果将原图划分为规则网格，根据各网格中心的采样颜色及其亮度生成网点。每个网格以白色为背景，网点由黑色内圈和彩色圆环组成。
+
+> **说明：** 
+> 
+> 输入图像应为仅包含单个主体、轮廓清晰的抠图图像，主体部分完全不透明，背景区域完全透明，不符合该标准的输入图像可能产生异常效果。
+>
+> 输入PixelMap的像素格式应为RGBA_8888、BGRA_8888、RGBA_F16或RGBA_1010102，不符合该标准的像素格式会导致输出异常。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| halftoneParam | [HalftoneParam](#halftoneparam) | 是 | 网点的配置参数。 |
+| outlineWidth | number | 否 | 可选参数，描边宽度，单位为px。主体向外扩展出宽度为outlineWidth的白色边缘，超过作用的图像范围时自动截断。取值范围为[0, +∞)，超出取值范围时按边界值截断。默认值为0.0。 |
+| shadowOptions | [ShadowOptions](#shadowoptions) | 否 | 可选参数，阴影的配置参数，不传时使用默认阴影配置。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
+
+**示例：**
+
+``` ts
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 传入读取的抠图图像数据，添加网点效果
+function imageHalftone(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(imageBuffer);
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
+      // 配置网点参数
+      let halftoneParam: effectKit.HalftoneParam = {
+        gridSize: 8,
+        maxRadiusRatio: 1,
+        lumCoeff: 0,
+        colorWidthRatio: 0.5,
+        saturation: 1,
+        smoothness: 0.1,
+        angle: -0.2
+      };
+      // 设置描边宽度
+      let outlineWidth = 9;
+      // 配置阴影参数
+      let shadowOptions: effectKit.ShadowOptions = {
+        radius: 16,
+        lightDirection: [0, 1],
+        shadowDistance: 9,
+        color: [0, 0, 0, 26]
+      };
+      // 创建Filter实例
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加网点效果，同时配置描边宽度和阴影
+        headFilter.halftone(halftoneParam, outlineWidth, shadowOptions);
+        // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+        headFilter.getEffectPixelMap(false).then(imageData => {
+          resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
+        });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
+      }
+    }).catch((err: BusinessError) => {
+      reject(err);
+    }).finally(() => {
+      imageSource.release();
+    });
+  });
+}
+
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的抠图图像文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try {
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('picture.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    } catch (err) {
+      return undefined;
+    }
+  }
+
+  async aboutToAppear(): Promise<void> {
+    this.imageBuffer = await this.getFileBuffer();
+    if (this.imageBuffer == undefined) {
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await imageHalftone(this.imageBuffer);
+  }
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### outline
+
+outline(outlineWidth: number, shadowOptions?: ShadowOptions): Filter
+
+将描边和阴影效果添加到效果链表中，并返回链表的头节点。该效果提取图像中非透明区域的轮廓生成描边，并根据阴影配置生成投影。
+
+> **说明：** 
+> 
+> 输入图像应为仅包含单个主体、轮廓清晰的抠图图像，主体部分完全不透明，背景区域完全透明，不符合该标准的输入图像可能产生异常效果。
+>
+> 输入PixelMap的像素格式应为RGBA_8888、BGRA_8888、RGBA_F16或RGBA_1010102，不符合该标准的像素格式会导致输出异常。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| outlineWidth | number | 是 | 描边宽度，单位为px。主体向外扩展出宽度为outlineWidth的白色边缘，超过作用的图像范围时自动截断。取值范围为[0, +∞)，超出取值范围时按边界值截断。 |
+| shadowOptions | [ShadowOptions](#shadowoptions) | 否 | 可选参数，阴影的配置参数，不传时使用默认阴影配置。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
+
+**示例：**
+
+``` ts
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 传入读取的抠图图像数据，添加描边和阴影效果
+function imageOutline(imageBuffer: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(imageBuffer);
+    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+      // 图像源使用完毕后及时释放
+      imageSource.release();
+      // 设置描边宽度
+      let outlineWidth = 9;
+      // 配置阴影参数
+      let shadowOptions: effectKit.ShadowOptions = {
+        radius: 16,
+        lightDirection: [0, 1],
+        shadowDistance: 9,
+        color: [0, 0, 0, 26]
+      };
+      // 创建Filter实例
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加描边和阴影效果
+        headFilter.outline(outlineWidth, shadowOptions);
+        // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+        headFilter.getEffectPixelMap(false).then(imageData => {
+          resolve(imageData);
+        }).catch((err: BusinessError) => {
+          reject(err);
+        });
+      } else {
+        // 创建Filter实例失败，通过reject将错误传递给调用方
+        reject(new Error('Failed to create filter.'));
+      }
+    }).catch((err: BusinessError) => {
+      reject(err);
+    }).finally(() => {
+      imageSource.release();
+    });
+  });
+}
+
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的抠图图像文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try {
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('picture.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    } catch (err) {
+      return undefined;
+    }
+  }
+
+  async aboutToAppear(): Promise<void> {
+    this.imageBuffer = await this.getFileBuffer();
+    if (this.imageBuffer == undefined) {
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await imageOutline(this.imageBuffer);
+  }
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## EllipticalMaskRadius<sup>23+</sup>
 
 type EllipticalMaskRadius = [ number, number ]
@@ -765,3 +1010,48 @@ type EllipticalMaskCenter = [ number, number ]
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
 | [ number, number ] | 椭圆形遮罩的中心点坐标。<br>第一个值表示X轴坐标，取值为正表示在原点右方，取值为负表示在原点左方。<br>第二个值表示Y轴坐标，取值为正表示在原点下方，取值为负表示在原点上方。<br>原点坐标为[0,0]，对应为组件的左上角，[1, 1]对应为组件的右下角。|
+
+## HalftoneParam
+
+网点的配置参数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| gridSize | number | 否 | 否 | 网格单元边长，即相邻网点的中心间距，单位为px。取值范围为[3, +∞)，超出取值范围时按边界值截断。值越大，网点整体尺寸越大，排列越稀疏。 |
+| maxRadiusRatio | number | 否 | 是 | 可选参数，外圆直径上限与网格边长的比值。取值范围为[0, 1]，默认值为1，超出取值范围时按边界值截断。外圆直径会被maxRadiusRatio * gridSize截断。值为1时，允许的外圆最大直径等于网格边长。 |
+| lumCoeff | number | 否 | 是 | 可选参数，亮度对外圆半径的影响系数，取值范围为[0, +∞)，默认值为0，超出取值范围时按边界值截断。实际外圆半径为clamp(1 - lum * lumCoeff, 0, maxRadiusRatio) * gridSize / 2，其中lum为网格中心采样颜色的亮度，该值为采样所得，不需要设置。其他参数不变时，lumCoeff越大，亮度对外圆半径的缩小作用越强。 |
+| colorWidthRatio | number | 否 | 是 | 可选参数，彩色圆环宽度系数，取值范围为[0, 1]，默认值为0.5，超出取值范围时按边界值截断。设定宽度为colorWidthRatio * gridSize / 2。黑色内圆半径为实际外圆半径减去该宽度，结果小于0时按0处理。值为0时无彩色圆环；设定宽度大于或等于外圆半径时，效果等同于外圆半径内全部为彩色区域。 |
+| saturation | number | 否 | 是 | 可选参数，彩色区域的饱和度插值系数，用于在采样颜色对应的灰度颜色与采样颜色之间进行插值。取值范围为[0, 1]，默认值为1，超出取值范围时按边界值截断。值为0时使用灰度颜色，值为1时保留采样颜色。 |
+| smoothness | number | 否 | 是 | 可选参数，边缘过渡带半宽与gridSize的比值，取值范围为[0, +∞)，默认值为0，超出取值范围时按边界值截断。分别以内圆和外圆的边界为中心，向两侧各延伸smoothness * gridSize，形成总宽度为2 * smoothness * gridSize的过渡带，先处理内圆边缘，再处理外圆边缘。值为0时无过渡带，边缘无平滑过渡，值越大，过渡带越宽，边缘越柔和。 |
+| angle | number | 否 | 是 | 可选参数，网格坐标的旋转角度，以逆时针为正方向，单位为rad（弧度），用于调整网点排列方向。取值范围为(-∞, +∞)，默认值为0。值为0时网格不旋转，网点排列方向为水平向右。 |
+
+## ShadowOptions
+
+阴影的配置参数。
+
+> **说明：** 
+> 
+> 超出图像范围的阴影会被截断。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| radius | number | 否 | 是 | 可选参数，阴影模糊半径，单位为px，取值范围为[0, +∞)，默认值为0，超出取值范围时按边界值截断。值为0时无阴影效果，值越大阴影边缘越柔和。 |
+| lightDirection | [common2D.Point](js-apis-graphics-common2D.md#point12) | 否 | 是 | 可选参数，光照方向向量，默认值为(0, 0)，取值范围为(-∞, +∞)。X轴向右为正，Y轴向下为正。光照方向向量表示阴影偏移的方向。当向量为(0, 0)时，shadowDistance取任何值，阴影均不发生偏移。 |
+| shadowDistance | number | 否 | 是 | 可选参数，阴影偏移距离，单位为px，取值范围为[0, +∞)，默认值为0，超出取值范围时按边界值截断。该参数决定阴影偏移距离，与lightDirection共同确定阴影覆盖区域，当值为0时，lightDirection为任意方向时，阴影均不发生偏移。 |
+| color | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 可选参数，阴影颜色，默认值为黑色{red:0, green:0, blue:0, alpha:26}。可通过Alpha通道设置阴影透明度。 |
