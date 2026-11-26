@@ -61,7 +61,7 @@ registerTask(taskInfo: TaskInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | No permission. |
+| 201 | Permission denied. |
 | 9700003 | System service operation failed. |
 | 9700004 | Check on taskInfo failed. |
 
@@ -150,7 +150,7 @@ unregisterTask(taskInfo: TaskInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | No permission. |
+| 201 | Permission denied. |
 | 9700003 | System service operation failed. |
 | 9700004 | Check on taskInfo failed. |
 
@@ -246,7 +246,7 @@ ArkTs-Sta: getTaskInfo(taskId: int): Promise\<TaskInfo>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | No permission. |
+| 201 | Permission denied. |
 | 9700003 | System service operation failed. |
 | 9700004 | Check on taskId failed. |
 
@@ -312,7 +312,7 @@ finishTask(taskInfo: TaskInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | No permission. |
+| 201 | Permission denied. |
 | 9700003 | System service operation failed. |
 | 9700004 | Check on taskInfo failed. |
 
