@@ -47,7 +47,9 @@
 
   minHeight：窗口的最小高度，默认单位为px。
 
-  ```ts
+  <!-- @[freeWindow_setWindowLimits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimits/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+  ``` TypeScript
   import { UIAbility } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   export default class EntryAbility extends UIAbility {
@@ -56,8 +58,8 @@
         let windowClass = windowStage.getMainWindowSync();
         try {
           let windowLimits: window.WindowLimits = {
-            maxWidth: 1500,
-            maxHeight: 1000,
+            maxWidth: 800,
+            maxHeight: 600,
             minWidth: 600,
             minHeight: 500
           };
@@ -85,22 +87,12 @@
 
   maxWindowHeight：窗口的最大高度，单位为vp。
 
-  ```ts
-  // ets/entryability/EntryAbility.ets
-  // 示例应用的入口
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      windowStage.loadContent('pages/Index', (err) => {});
-    }
-  }
-  ```
-
-  ```ts
-  // ets/pages/Index.ets
+  <!-- @[freeWindow_setWindowLimitsByStartOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByStartOptions/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   // 示例应用的主页面，用于创建按钮调用接口启动目标Ability
-  import { common, StartOptions } from '@kit.AbilityKit';
+  import { common, StartOptions, Want } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   @Entry
   @Component
   struct Index {
@@ -113,7 +105,7 @@
               // 定义目标Ability的want参数
               let want: Want = {
                 deviceId: '',
-                bundleName: 'com.example.myapplication',
+                bundleName: 'com.example.setwindowlimitsbystartoptions',
                 moduleName: 'entry',
                 abilityName: 'WindowTestAbility',
               }
@@ -121,8 +113,8 @@
                 displayId: 0,
                 minWindowWidth: 600,
                 minWindowHeight: 500,
-                maxWindowWidth: 1500,
-                maxWindowHeight: 1000,
+                maxWindowWidth: 800,
+                maxWindowHeight: 600,
               };
               try {
                 // 启动目标Ability
@@ -150,29 +142,19 @@
   }
   ```
 
-  ```ts
-  // ets/windowtestability/WindowTestAbility.ets
-  // 新创建的UIAbility
-  import { window } from '@kit.ArkUI';
-  import { UIAbility } from '@kit.AbilityKit';
+- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制主窗口处于自由窗口状态下的最大和最小尺寸。
 
-  export default class WindowTestAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      // Main window is created, set main page for this ability
-      windowStage.loadContent('pages/Index', (err) => {
-        if (err.code) {
-          console.info(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
-          return;
-        }
-        console.info('Succeeded in loading the content.');
-      });
-    }
-  }
-  ```
+  maxWindowWidth：当前UIAbility组件支持的最大的窗口宽度，单位为vp。
 
-  ```json5
-  // ets/module.json5
-  // module.json5配置文件，用于配置UIAbility的name，路径等属性
+  minWindowWidth：当前UIAbility组件支持的最小的窗口宽度，单位为vp。
+
+  maxWindowHeight：当前UIAbility组件支持的最大的窗口高度，单位为vp。
+
+  minWindowHeight：当前UIAbility组件支持的最小的窗口高度，单位为vp。
+
+  <!-- @[freeWindow_setWindowLimitsByModuleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByModuleJson5/entry/src/main/module.json5) -->
+  
+  ``` JSON5
   {
     "module": {
       "name": "entry",
@@ -187,66 +169,6 @@
       "deliveryWithInstall": true,
       "installationFree": false,
       "pages": "$profile:main_pages",
-      "abilities": [
-        {
-          "name": "EntryAbility",
-          "srcEntry": "./ets/entryability/EntryAbility.ets",
-          "description": "$string:EntryAbility_desc",
-          "icon": "$media:layered_image",
-          "label": "$string:EntryAbility_label",
-          "startWindowIcon": "$media:startIcon",
-          "startWindowBackground": "$color:start_window_background",
-          "exported": true,
-          "skills": [
-            {
-              "entities": [
-                "entity.system.home"
-              ],
-              "actions": [
-                "ohos.want.action.home"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "WindowTestAbility",
-          "srcEntry": "./ets/windowtestability/WindowTestAbility.ets",
-          "icon": "$media:layered_image",
-          "startWindowIcon": "$media:startIcon",
-          "startWindowBackground": "$color:start_window_background"
-        }
-      ],
-      "extensionAbilities": [
-        {
-          "name": "EntryBackupAbility",
-          "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
-          "type": "backup",
-          "exported": false,
-          "metadata": [
-            {
-              "name": "ohos.extension.backup",
-              "resource": "$profile:backup_config"
-            }
-          ],
-        }
-      ]
-    }
-  }
-  ```
-
-- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制主窗口处于自由窗口状态下的最大和最小尺寸。
-
-  maxWindowWidth：当前UIAbility组件支持的最大的窗口宽度，单位为vp。
-
-  minWindowWidth：当前UIAbility组件支持的最小的窗口宽度，单位为vp。
-
-  maxWindowHeight：当前UIAbility组件支持的最大的窗口高度，单位为vp。
-
-  minWindowHeight：当前UIAbility组件支持的最小的窗口高度，单位为vp。
-
-  ```json5
-  {
-    // ...
       "abilities": [
         {
           "name": "EntryAbility",
@@ -286,8 +208,8 @@
           "maxWindowRatio": 3.5,
           "minWindowRatio": 0.5,
           "maxWindowWidth": 2560,
-          "minWindowWidth": 1400,
-          "maxWindowHeight": 300,
+          "minWindowWidth": 400,
+          "maxWindowHeight": 1300,
           "minWindowHeight": 200,
           "excludeFromMissions": false,
           "preferMultiWindowOrientation": "default",
@@ -303,7 +225,21 @@
           "process": ":processTag"
         }
       ],
-      // ...
+      "extensionAbilities": [
+        {
+          "name": "EntryBackupAbility",
+          "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
+          "type": "backup",
+          "exported": false,
+          "metadata": [
+            {
+              "name": "ohos.extension.backup",
+              "resource": "$profile:backup_config"
+            }
+          ],
+        }
+      ]
+    }
   }
   ```
 
@@ -360,124 +296,126 @@
 
 2. 通过[getTitleButtonRect()](../reference/apis-arkui/arkts-apis-window-Window.md#gettitlebuttonrect11)接口或[on('windowTitleButtonRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowtitlebuttonrectchange11)接口获取到窗口三键的位置和尺寸，在页面顶部元素布局时，去除窗口三键的区域。
 
-   ```ts
-    // EntryAbility.ets
-    // 示例应用的入口
-    import { UIAbility } from '@kit.AbilityKit';
-    import { window } from '@kit.ArkUI';
-    export default class EntryAbility extends UIAbility {
-      onWindowStageCreate(windowStage: window.WindowStage): void {
-        windowStage.loadContent('pages/Index', (err) => {
-          if (err.code) {
-            console.info('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-            return;
-          }
-          AppStorage.setOrCreate<window.WindowStage>('windowStage', windowStage);
-        });
-      }
+<!-- @[freeWindow_avoidWindowTitleButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/AvoidWindowTitleButton/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 示例应用的主页面 index.ets
+import { window } from '@kit.ArkUI';
+
+const DEFAULT_WINDOW_DECOR_HEIGHT: number = 50;
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Top layout area, do not hide the title bar.';
+  private mainWindow: window.Window | null = null;
+  @State private topAreaHeight: number = DEFAULT_WINDOW_DECOR_HEIGHT;
+  @State private topAreaWidth: number | string = '100%';
+  @State private titleButtonRect: window.TitleButtonRect = {
+    right: 0,
+    top: 0,
+    width: 0,
+    height: 0
+  };
+  @State private windowSize: window.Size = { width: 0, height: 0 }
+
+  aboutToAppear(): void {
+    let windowStage = AppStorage.get<window.WindowStage>('windowStage');
+    if (!windowStage) {
+      return;
     }
-   ```
+    this.mainWindow = windowStage.getMainWindowSync();
+    try {
+      this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
+    } catch (error) {
+      this.topAreaHeight = DEFAULT_WINDOW_DECOR_HEIGHT;
+    }
+    this.mainWindow.on("windowSizeChange", (data) => {
+      this.windowSize = data;
+      this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
+    })
+  }
 
-   ```ts
-    // Index.ets
-    // 示例应用的主页面
-    import { window } from '@kit.ArkUI';
+  private updateTitleButtonRect(): void {
+    if (!this.mainWindow) {
+      return;
+    }
+    try {
+      let windowProperties = this.mainWindow.getWindowProperties();
+      this.windowSize.width = windowProperties.drawableRect.width;
+      this.titleButtonRect = this.mainWindow.getTitleButtonRect();
+      this.topAreaHeight = this.titleButtonRect.height;
+      this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
+      console.info(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
+    } catch (exception) {
+      console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
 
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'Top layout area, do not hide the title bar.';
-      private mainWindow: window.Window | null = null;
-      @State private topAreaHeight: number = 50;
-      @State private topAreaWidth: number | string = '100%';
-      @State private titleButtonRect: window.TitleButtonRect = {
-        right: 0,
-        top: 0,
-        width: 0,
-        height: 0
-      };
-      @State private windowSize: window.Size = { width: 0, height: 0 }
-
-      aboutToAppear(): void {
-        let windowStage = AppStorage.get<window.WindowStage>('windowStage');
-        if (!windowStage) {
-          return;
-        }
-        this.mainWindow = windowStage.getMainWindowSync();
-        this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
-        this.mainWindow.on("windowSizeChange", (data) => {
-          this.windowSize = data;
-          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
-        })
-      }
-
-      private updateTitleButtonRect(): void {
-        if (!this.mainWindow) {
-          return;
-        }
-        try {
-          let WindowProperties = this.mainWindow.getWindowProperties();
-          this.windowSize.width = WindowProperties.drawableRect.width;
-          this.titleButtonRect = this.mainWindow.getTitleButtonRect();
-          this.topAreaHeight = this.titleButtonRect.height;
-          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
-          console.info(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
-        } catch (exception) {
-          console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);
-        }
-      }
-
-      build() {
-        RelativeContainer() {
-          Row() {
+  build() {
+    RelativeContainer() {
+      Row() {
+        Row() {
+          Stack() {
             Row() {
-              Stack() {
-                Row() {
-                  Text(this.message)
-                }.width('100%').height('100%')
-                .justifyContent(FlexAlign.Center)
-                .backgroundColor(Color.Pink)
-              }.position({ x: 0, y: 0 })
-              .width(this.topAreaWidth)
-            }
-            .position({ x: 0, y: 0 })
-            .height(this.topAreaHeight)
-            .width('100%')
-
-            Row() {
-              Button('hide the title bar and avoid the three buttons.')
-                .onClick(() => {
-                  if (!this.mainWindow) {
-                    return;
-                  }
-                  this.message = 'Top layout area, hide the title bar and avoid the three buttons.';
-                  this.mainWindow.setWindowDecorVisible(false);
-                  this.updateTitleButtonRect();
-                })
-              Button('do not hide the title bar.')
-                .onClick(() => {
-                  if (!this.mainWindow) {
-                    return;
-                  }
-                  this.message = 'Top layout area, do not hide the title bar.';
-                  this.mainWindow.setWindowDecorVisible(true);
-                  this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
-                  this.topAreaWidth = '100%';
-                })
-                .margin(20)
-            }.height('50%')
-            .width('100%')
-            .alignItems(VerticalAlign.Center)
+              Text(this.message)
+            }.width('100%').height('100%')
             .justifyContent(FlexAlign.Center)
-          }
-          .height('100%')
-          .width('100%')
+            .backgroundColor(Color.Pink)
+          }.position({ x: 0, y: 0 })
+          .width(this.topAreaWidth)
         }
-        .height('100%')
+        .position({ x: 0, y: 0 })
+        .height(this.topAreaHeight)
         .width('100%')
+
+        Row() {
+          Button('hide the title bar and avoid the three buttons.')
+            .onClick(() => {
+              if (!this.mainWindow) {
+                return;
+              }
+              this.message = 'Top layout area, hide the title bar and avoid the three buttons.';
+              try {
+                this.mainWindow.setWindowDecorVisible(false);
+              } catch (error) {
+                console.info('setWindowDecorVisible(false) is not supported on this device');
+              }
+              this.updateTitleButtonRect();
+            })
+          Button('do not hide the title bar.')
+            .onClick(() => {
+              if (!this.mainWindow) {
+                return;
+              }
+              this.message = 'Top layout area, do not hide the title bar.';
+              try {
+                this.mainWindow.setWindowDecorVisible(true);
+              } catch (error) {
+                console.info('setWindowDecorVisible(true) is not supported on this device');
+              }
+              try {
+                this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
+              } catch (error) {
+                this.topAreaHeight = DEFAULT_WINDOW_DECOR_HEIGHT;
+              }
+              this.topAreaWidth = '100%';
+            })
+            .margin(20)
+        }.height('50%')
+        .width('100%')
+        .alignItems(VerticalAlign.Center)
+        .justifyContent(FlexAlign.Center)
       }
+      .height('100%')
+      .width('100%')
     }
-   ```
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 示例代码效果图如下：
 
 下图表示不隐藏标题栏时，应用最顶部的布局区域（粉色区域）只能在标题栏之下。
@@ -506,6 +444,6 @@
 > 
 > 在进入全屏播放后，如果需要退出全屏播放，有以下两种方式：
 > 
-> - 调用[recover()](../reference/apis-arkui/arkts-apis-window-Window.md#recover11)接口将窗口从全屏模式下还原为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING），并恢复到进入该模式之前的大小和位置。
+> - 调用[recover()](../reference/apis-arkui/arkts-apis-window-Window.md#recover11)接口将窗口从全屏模式下还原为自由悬浮窗口模式（即窗口模式为window.[WindowStatusType](../reference/apis-arkui/arkts-apis-window-e.md#windowstatustype11).FLOATING），并恢复到进入该模式之前的大小和位置。
 > 
 > - 调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[EXIT_IMMERSIVE](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)，将窗口从全屏改变为最大化状态。
