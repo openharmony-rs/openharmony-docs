@@ -1,10 +1,11 @@
 # NativeDisplayManager_DisplayHdrFormat
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-25T10:40:05.512Z pushedAt=2026-11-26T03:49:31.117Z nl=1 -->
 
 ```c
 typedef struct {...} NativeDisplayManager_DisplayHdrFormat
@@ -26,5 +27,7 @@ Describes all the HDR formats supported by a display.
 
 | Name| Description|
 | -- | -- |
-| uint32_t hdrFormatLength | Number of HDR formats supported by a display.|
-| uint32_t* hdrFormats | Pointer to the HDR format array supported by a display.|
+| uint32_t hdrFormatLength | Number of the HDR formats supported by a display.|
+| uint32_t* hdrFormats | Pointer to the HDR format array supported by a display. |
+
+

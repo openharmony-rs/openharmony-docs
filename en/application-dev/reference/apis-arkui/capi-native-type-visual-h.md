@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6b9e2dfd7d607cbb7d094ec3e168bfb774582658 translatedAt=2026-11-11T08:07:23.129Z pushedAt=2026-11-11T08:47:26.250Z nl=1 -->
+<!-- md-trans-meta sourceCommit=64fbbc62637f649b69243bf7f43e21d299760f87 translatedAt=2026-11-25T10:34:40.383Z pushedAt=2026-11-26T04:03:21.843Z nl=1 -->
 
 ## Overview
 
@@ -115,7 +115,7 @@ Defines the visual types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)](#oh_arkui_matrix4_transformpoint) | - | Calculates the new coordinates of a point after matrix transformation.|
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)](#oh_arkui_matrix4_setpolytopoly) | - | Maps the vertex coordinates of a polygon to those of another polygon and calculates the required matrix. The value of **pointCount** determines the type of transformation to be calculated: The value **0** indicates an identity matrix transformation, **1** indicates translation, **2** indicates rotation or scaling, **3** indicates an affine transformation, and **4** indicates a perspective transformation. If any other value is passed, [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)](#oh_arkui_matrix4_getelements) | - | Obtains the 16 elements of a fourth-order matrix. The array is stored in row-major order. The length must be greater than or equal to 16. Otherwise, undefined behavior occurs.|
-| [ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()](#oh_arkui_motionpathoptions_create) | - | Create a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](#oh_arkui_motionpathoptions_dispose) to dispose of it.|
+| [ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()](#oh_arkui_motionpathoptions_create) | - | Creates a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](#oh_arkui_motionpathoptions_dispose) to dispose of it.|
 | [void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)](#oh_arkui_motionpathoptions_dispose) | - | Disposes of a motion path option of path animation.|
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)](#oh_arkui_motionpathoptions_setpath) | - | Sets the motion path of path animation.|
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)](#oh_arkui_motionpathoptions_getpath) | - | Obtains the motion path string stored in the motion path configuration item of the path animation.|
@@ -127,7 +127,7 @@ Defines the visual types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)](#oh_arkui_motionpathoptions_getrotatable) | - | Obtains whether a component rotates along the motion path.|
 | [OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()](#oh_arkui_shadowoptions_create) | - | Creates a shadow option object. In the newly created object, the default value of the blur radius (**radius**) is 0, the default value of the shadow type (**type**) is **ARKUI_SHADOW_TYPE_COLOR**, the default value of the shadow color (**color**) is **0xFF000000**, the default value of the x-axis offset (**offsetX**) is 0, the default value of the y-axis offset (**offsetY**) is 0, and the default value of **isFill** is **false**. If the object is no longer used, call [OH_ArkUI_ShadowOptions_Destroy](#oh_arkui_shadowoptions_destroy) to destroy it.|
 | [void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)](#oh_arkui_shadowoptions_destroy) | - | Destroys the shadow option object.|
-| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)](#oh_arkui_shadowoptions_setradius) | - | Sets the blur radius for the shadow options. The value range is [0, +∞), in vp. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
+| [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)](#oh_arkui_shadowoptions_setradius) | - | Sets the blur radius for the shadow options. The value range is (-∞, +∞), in vp. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. |
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)](#oh_arkui_shadowoptions_getradius) | - | Obtains the blur radius of the shadow options.|
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType type)](#oh_arkui_shadowoptions_settype) | - | Sets the shadow type for the shadow options.|
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType* type)](#oh_arkui_shadowoptions_gettype) | - | Obtains the shadow type of the shadow options.|
@@ -1759,7 +1759,7 @@ ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
 
 **Description**
 
-Create a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](#oh_arkui_motionpathoptions_dispose) to dispose of it.
+Creates a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](#oh_arkui_motionpathoptions_dispose) to dispose of it.
 
 **Since**: 23
 
@@ -2078,7 +2078,7 @@ Obtains the blur radius of the shadow options.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)* options | Pointer to the [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) object.|
-| float* radius | Pointer to the blur radius of the shadow, in px. The value **0** indicates no blur effect is applied.|
+| float* radius | Pointer to the blur radius of the shadow, in vp. The value **0** indicates no blur effect is applied. |
 
 **Returns**
 
