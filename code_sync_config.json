@@ -15831,9 +15831,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":57,
 						"name":"entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs",
-						"start_line":48
+						"start_line":47
 					}
 				]
 			},
