@@ -113,6 +113,15 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;void&gt;  | 是   | 回调函数。当销毁输入法应用成功时，err为undefined；否则为错误对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16000011 | The context does not exist. |
+| 16000050 | Ability management request failed. Possible causes include failure to connect to the system service or failure of the system service to communicate with a dependent module. |
+
 **示例：**
 
 ```ts
@@ -160,6 +169,15 @@ destroy(): Promise&lt;void&gt;
 | 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt;  | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 16000011 | The context does not exist. |
+| 16000050 | Ability management request failed. Possible causes include failure to connect to the system service or failure of the system service to communicate with a dependent module. |
 
 **示例：**
 
