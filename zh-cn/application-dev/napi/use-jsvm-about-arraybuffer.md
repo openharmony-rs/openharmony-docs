@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用JSVM-API创建ArrayBuffer二进制缓冲区，获取底层数据指针与长度，执行Detach分离操作并判断分离状态；并介绍如何使用SharedArrayBuffer与JSVM_BackingStore句柄实现跨线程、跨虚拟机共享二进制数据。"
 keywords: [OH_JSVM_CreateArraybuffer, OH_JSVM_GetArraybufferInfo, OH_JSVM_DetachArraybuffer, OH_JSVM_IsArraybuffer, OH_JSVM_IsDetachedArraybuffer, OH_JSVM_CreateSharedArrayBuffer, OH_JSVM_IsSharedArrayBuffer, JSVM_BackingStore, ArrayBuffer, SharedArrayBuffer, 二进制数据缓冲区, TypedArray, DataView]
 doctype: guide

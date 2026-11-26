@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用JSVM-API创建private key并在JavaScript对象上设置、获取和删除private属性，结合数据引用持久化保存private key。"
 keywords: [OH_JSVM_CreatePrivate, OH_JSVM_SetPrivate, OH_JSVM_GetPrivate, OH_JSVM_DeletePrivate, OH_JSVM_CreateDataReference, OH_JSVM_GetReferenceData, private属性, private key]
 doctype: guide
