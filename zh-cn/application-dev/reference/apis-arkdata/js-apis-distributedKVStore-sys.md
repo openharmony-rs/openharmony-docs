@@ -28,6 +28,14 @@
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+## Options
+
+用于提供创建数据库的配置信息。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| dumpStackOnFileDeletion | boolean | 否 | 是 | 是否启用数据库文件删除时的调用栈打印功能，用于定位数据库文件被意外删除的问题。<br>true表示启用，直接通过文件接口删除数据库文件（db、wal、shm）时，打印删除操作的调用栈信息。<br>false表示不启用，且不改变已生效的调用栈打印开关。<br>默认值为false。仅对数据库的db、wal、shm文件生效。<br>该配置不会被保存，每次调用[getKVStore()](js-apis-distributedKVStore.md#getkvstore)打开数据库时需传入该参数。<br>通过数据库自身接口进行的删除、恢复、重建等操作不触发调用栈打印。<br>该参数依赖设备文件系统的文件删除调用栈打印能力，文件系统不支持时该参数不生效，且不影响数据库的打开。<br>**系统接口：** 此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+
 ## SingleKVStore
 
 SingleKVStore数据库实例，提供增加数据、删除数据、订阅数据变更和订阅数据同步完成的方法。
