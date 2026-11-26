@@ -1,12 +1,11 @@
 # text_common.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9d935c682ca66fcb6cb6ddce38110a22b9819131 translatedAt=2026-08-11T09:12:26.689Z pushedAt=2026-08-12T07:29:27.102Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-11-25T10:49:15.538Z pushedAt=2026-11-26T07:43:22.509Z nl=1 -->
 
 ## Overview
 
@@ -32,7 +31,7 @@ Defines common text enumerations and APIs, covering text alignment, decoration l
 | -- | -- | -- |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines the styled string descriptor object supported by the text component, enabling style configuration and management of text content. This struct is applicable when rich text display and style customization are required. |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md) | ArkUI_ShowCounterConfig | Defines the text input character counter configuration for managing character counting. This struct is applicable when character count limits and real-time prompts are needed for user input, helping users track input progress and prevent exceeding character limits. |
-| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | ArkUI_TextContentBaseController | Defines a basic controller for text content, providing content control capabilities for text components. This struct supports operations such as obtaining, setting, and updating text content. It is applicable when dynamic content management and real-time control of text components are needed, helping you manage displayed text content more flexibly. |
+| [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md) | ArkUI_TextContentBaseController | Defines a base controller for text content, providing content control capabilities for text components. This struct supports operations such as obtaining, setting, and updating text content. It is applicable when dynamic content management and real-time control of text components are needed, helping you manage displayed text content more flexibly. |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md) | ArkUI_TextMenuItem | Defines a text menu item for setting attributes such as a title, icon, and enabled state, supporting text selection menus customization. |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | Defines a text menu item array for carrying multiple text menu item data in text selection menu or context menu scenarios. |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | Defines text menu extension options for extending the functionality of the text editing menu. This struct is applicable when you need to customize text editing menu operations. |
@@ -432,6 +431,7 @@ Enumerates the response types of a custom text selection menu.
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected. |
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type is displayed when the operation of another type is triggered. If this type is set but other types are not set, the menu corresponding to this type is displayed when the operation of another type is triggered. For example, if there are two menus whose response types are **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** and **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** is displayed when you right-click the menu, and the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** is displayed when you hold down the right mouse button. |
 
+
 ## Function Description
 
 ### ArkUI_TextCreateMenuCallback()
@@ -444,7 +444,7 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 Callback for the text menu creation event. This callback is triggered when a text menu is created, allowing you to set menu data in it.
 
-> **NOTE**
+> **NOTE** 
 >
 > This callback and **ArkUI_TextPrepareMenuCallback** are both used for menu data setting, but their trigger timings differ: this callback is triggered when a menu is created, while **ArkUI_TextPrepareMenuCallback** is triggered after the text selection area changes and before the menu is displayed. Both can be registered simultaneously to handle menu initialization and selection change scenarios respectively.
 
@@ -791,6 +791,7 @@ Deletes the character before the cursor in editing state; deletes the last chara
 | -- | -- |
 | [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the text content base controller object. It must be created through **OH_ArkUI_TextContentBaseController_Create()** before use. |
 
+
 ### OH_ArkUI_TextContentBaseController_ScrollToVisible()
 
 ```c
@@ -846,3 +847,5 @@ Destroys the decoration style object created by [OH_ArkUI_DecorationStyleOptions
 | Name | Description |
 | -- | -- |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | Pointer to the option object to be destroyed. |
+
+
