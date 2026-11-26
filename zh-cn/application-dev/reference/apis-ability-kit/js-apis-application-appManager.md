@@ -27,7 +27,9 @@ isRunningInStabilityTest(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 稳定性测试场景指为验证应用在复杂、极端或长期运行条件下的可靠性而设计的特定测试环境。
+> - 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.isRunningInStabilityTest](js-apis-app-ability-appManager.md#appmanagerisrunninginstabilitytest)替代。
+>
+> - 稳定性测试场景指为验证应用在复杂、极端或长期运行条件下的可靠性而设计的特定测试环境。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,7 +62,9 @@ isRunningInStabilityTest(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 稳定性测试场景指为验证应用在复杂、极端或长期运行条件下的可靠性而设计的特定测试环境。
+> - 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.isRunningInStabilityTest](js-apis-app-ability-appManager.md#appmanagerisrunninginstabilitytest-1)替代。
+>
+> - 稳定性测试场景指为验证应用在复杂、极端或长期运行条件下的可靠性而设计的特定测试环境。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -199,7 +203,9 @@ getProcessRunningInfos(): Promise\<Array\<ProcessRunningInfo>>
 
 获取有关运行进程的信息。使用Promise异步回调。
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)替代。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
 
@@ -230,7 +236,9 @@ getProcessRunningInfos(callback: AsyncCallback\<Array\<ProcessRunningInfo>>): vo
 
 获取有关运行进程的信息。使用callback异步回调。
 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation-1)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation-1)替代。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
 
