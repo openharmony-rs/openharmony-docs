@@ -63,7 +63,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | isActive             | boolean                                                            | 否   | 否   | 表示元素是否处于活动状态。true表示元素处于活动状态，false表示元素不处于活动状态，默认值为true。 |
 | isEnable             | boolean                                                            | 否   | 否   | 表示元素是否启用。true表示元素已启用，false表示元素未启用，默认值为false。 |
 | isHint               | boolean                                                            | 否   | 否   | 表示元素是否为提示状态。true表示元素处于提示状态，false表示元素不处于提示状态，默认值为false。 |
-| isFocused            | boolean                                                            | 否   | 否   | 表示元素是否聚焦。true表示元素处于聚焦状态，false表示元素不处于聚焦状态，默认值为false。 |
+| isFocused            | boolean                                                            | 否   | 否   | 表示元素是否处于聚焦状态。true表示元素处于聚焦状态，false表示元素不处于聚焦状态，默认值为false。 |
 | isPassword           | boolean                                                            | 否   | 否   | 表示元素是否为密码。true表示元素为密码，false表示元素不为密码，默认值为false。 |
 | isVisible            | boolean                                                            | 否   | 否   | 表示元素是否可见。true表示元素可见，false表示元素不可见，默认值为false。 |
 | itemCount            | number                                                             | 否   | 否   | 项目的总数，取值范围大于等于0。默认值为0。 |

@@ -1251,14 +1251,14 @@ export default class AccessibilityManager {
 | editable<sup>20+</sup> | boolean | 否 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值：false。|
 | endIndex<sup>20+</sup> | number                                                             | 否  | 是  | 屏幕上显示的最后一个列表项的索引。<br>默认值：0。|
 | error<sup>20+</sup> | string                                                             | 否  | 是  | 元素的错误状态。|
-| focusable<sup>20+</sup> | boolean | 否 | 是 | 元素是否可获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示可获得焦点，false表示不可获得焦点。<br>默认值：false。|
+| focusable<sup>20+</sup> | boolean | 否 | 是 | 表示元素是否可聚焦。true表示元素可聚焦，false表示元素不可聚焦。<br>默认值：false。|
 | hintText<sup>20+</sup> | string                                                             | 否  | 是  | 提示文本。|
 | inputType<sup>20+</sup> | number                                                             | 否  | 是  | 输入文本的类型，不同数值对应不同的输入模式：0表示无特定类型；1表示文本；2表示邮箱；3表示日期；4表示时间；5表示数字；6表示密码；7表示电话号码；8表示用户名；9表示新密码。<br>默认值：0。|
 | inspectorKey<sup>20+</sup> | string                                                             | 否  | 是  | 检查器键。|
 | isActive<sup>20+</sup> | boolean | 否 | 是 | 元素是否处于活动状态。true表示活动状态，false表示非活动状态。<br>默认值：true。|
 | isEnable<sup>20+</sup> | boolean | 否 | 是 | 元素是否启用。true表示启用，false表示未启用。<br>默认值：false。|
 | isHint<sup>20+</sup> | boolean | 否 | 是 | 元素是否为提示信息。true表示元素是提示信息，false表示非提示信息。<br>默认值：false。|
-| isFocused<sup>20+</sup> | boolean | 否 | 是 | 表示元素是否已获得焦点（此处指无障碍焦点，与输入焦点不同）。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
+| isFocused<sup>20+</sup> | boolean | 否 | 是 | 表示元素是否处于聚焦状态。true表示元素处于聚焦状态，false表示元素不处于聚焦状态。<br>默认值：false。|
 | isPassword<sup>20+</sup> | boolean                                                            | 否  | 是  | 元素是否为密码。true表示元素是密码，false表示不是密码。<br>默认值：false。|
 | isVisible<sup>20+</sup> | boolean | 否 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值：false。|
 | itemCount<sup>20+</sup> | number                                                             | 否  | 是  | 项目总数。<br>默认值：0。|
@@ -2355,7 +2355,7 @@ build() {
 
 // AccessibilityExtAbility.ets
 
-import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
+import { AccessibilityElement, FocusRuleType, FocusMoveResult } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
