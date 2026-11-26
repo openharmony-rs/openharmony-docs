@@ -359,7 +359,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
     ```html
     <body>
       <div id = "1">
-        <div id = "2"><div style = "height: 20px"><div/></div>
+        <div id = "2"><div style = "height: 20px"></div></div>
         <div id = "3" style = "height: 20px">子dom</div>
       </div>
     </body>
@@ -435,11 +435,11 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 
 **问题现象：**
 
-用WebView加载H5在Phone上表现正常，但是在Tablet/PC/2in1上白屏。
+用WebView加载H5在Phone上表现正常，但是在Tablet/2in1上白屏。
 
 **可能原因：**
 
-Tablet/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
+Tablet/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
 
 **解决措施：**
 
