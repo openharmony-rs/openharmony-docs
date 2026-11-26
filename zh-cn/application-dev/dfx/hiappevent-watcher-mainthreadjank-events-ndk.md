@@ -52,10 +52,9 @@
 
 3. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件及动态库。
 
-   ```cmake
-   add_library(entry SHARED napi_init.cpp)
-   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # 检查是否存在entry/build目录
@@ -63,7 +62,10 @@
    # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-
+   
+   add_library(entry SHARED napi_init.cpp)
+   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
@@ -163,11 +165,20 @@
 
    编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，将RegisterMainThreadJankWatcher注册为ArkTS接口：
 
-   <!-- @[MainThreadJank_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[MainThreadJank_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
-   { "RegisterMainThreadJankWatcher", nullptr, RegisterMainThreadJankWatcher, nullptr, nullptr, nullptr,
-       napi_default, nullptr },
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           // ...
+           { "RegisterMainThreadJankWatcher", nullptr, RegisterMainThreadJankWatcher, nullptr, nullptr, nullptr,
+               napi_default, nullptr },
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
    ```
 
    编辑工程中的“entry > src > main > cpp > types > libentry > Index.d.ts”文件，定义ArkTS接口：
