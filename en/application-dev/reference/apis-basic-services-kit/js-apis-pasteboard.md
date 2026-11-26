@@ -1243,7 +1243,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **Example**
@@ -1358,7 +1358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -1391,7 +1391,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
