@@ -21,7 +21,7 @@
 1. [模块加载失败，Error message: is not callable NativeModule调用报错？](napi-faq-about-common-basic.md)  
 2. [是否有保序的线程通信推荐写法？](napi-faq-about-common-basic.md#在大量需要调用arkts方法进行通信的场景中如何保证异步任务的有序性)  
 3. [是否存在便捷的NAPI回调ArkTS的方式？](napi-faq-about-common-basic.md#是否存在便捷的回调arkts的方式)  
-4. [如何在C++调用从ArkTS传递过来的function？](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-26)  
+4. [如何在C++调用从ArkTS传递过来的function？](https://developer.huawei.com/consumer/cn/doc/doccenter-dev-faq/ndk-development-faq-0006)  
 5. [如何在遵循 Node-API 单一返回值约束的前提下，安全、高效地将多个返回值（包括结构化数据和指针信息）传递给 ArkTS 运行时环境，并确保数据类型的正确映射与内存管理的安全性？](napi-faq-about-common-basic.md#如何确保数据类型的正确映射与内存管理的安全性)  
 6. [Node-API调用三方so](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-dynamic-link-library)  
 7. [napi_get_uv_event_loop接口错误码说明](napi-faq-about-common-basic.md#napi_get_uv_event_loop接口错误码说明)  
