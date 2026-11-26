@@ -2143,6 +2143,177 @@ notificationManager.getSlotNumByBundle(bundle).then((data: long) => {
 });
 ```
 
+## notificationManager.setSlotFlagsByBundle
+
+ArkTS-Dyn: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number, notificationType: NotificationType): Promise\<void\>
+
+ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long, notificationType: NotificationType): Promise\<void\>
+
+设定指定应用中通知类型的提醒方式开关。使用Promise异步回调。
+
+**系统能力：**SystemCapability.Notification.Notification
+
+**设备行为差异：**该接口在Phone、Tablet可正常调用，在其他设备类型中返回801错误码。
+
+**需要权限：**ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口：**此接口为系统接口。
+
+**ArkTS-Dyn起始版本：**26.1.0
+
+**ArkTS-Sta起始版本：**26.1.0
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明       |
+| ------ | ------------ | ---- | ---------- |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。 |
+| slotFlags | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 通知提醒方式开关。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| notificationType | [NotificationType](#notificationtype) | 是 | 通知类型。 |
+
+**返回值：**
+
+| 类型      | 说明        |
+|---------|-----------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ---------------------------------------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Not system application to call the interface. |
+| 801      | Capability not supported. Possible causes: <br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 1600001  | Internal error.                          |
+| 1600002  | Marshalling or unmarshalling error.      |
+| 1600003  | Failed to connect to the service.        |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleOption: notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+let slotFlags: number = 1;
+let notificationType: notificationManager.NotificationType =
+    notificationManager.NotificationType.PRIORITY_NOTIFICATION;
+try {
+    notificationManager.setSlotFlagsByBundle(bundleOption, slotFlags, notificationType).then(() => {
+        console.info(`setSlotFlagsByBundle success`);
+    })
+} catch (e) {
+    let error: BusinessError = e as BusinessError
+    console.error(`setSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleOption: notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+let slotFlags: long = 1;
+let notificationType: notificationManager.NotificationType =
+    notificationManager.NotificationType.PRIORITY_NOTIFICATION;
+try {
+    notificationManager.setSlotFlagsByBundle(bundleOption, slotFlags, notificationType).then(() => {
+        console.info(`setSlotFlagsByBundle success`);
+    })
+} catch (e) {
+    let error: BusinessError = e as BusinessError;
+    console.error(`setSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## notificationManager.getSlotFlagsByBundle
+
+ArkTS-Dyn: getSlotFlagsByBundle(bundle: BundleOption, notificationType: NotificationType): Promise\<number\>
+
+ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption, notificationType: NotificationType): Promise\<long\>
+
+获取指定应用中通知类型的提醒方式开关。使用Promise异步回调。
+
+**系统能力：**SystemCapability.Notification.Notification
+
+**设备行为差异：**该接口在Phone、Tablet可正常调用，在其他设备类型中返回801错误码。
+
+**需要权限：**ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口：**此接口为系统接口。
+
+**ArkTS-Dyn起始版本：**26.1.0
+
+**ArkTS-Sta起始版本：**26.1.0
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明       |
+| ------ | ------------ | ---- | ---------- |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。 |
+| notificationType | [NotificationType](#notificationtype) | 是 | 通知类型。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                                                         |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| ArkTS-Dyn: Promise\<number\><br/>ArkTS-Sta: Promise\<long\> | Promise对象，返回通知提醒方式开关。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ---------------------------------------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Not system application to call the interface. |
+| 801      | Capability not supported. Possible causes: <br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 1600001  | Internal error.                          |
+| 1600002  | Marshalling or unmarshalling error.      |
+| 1600003  | Failed to connect to the service.        |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleOption: notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+let notificationType: notificationManager.NotificationType =
+    notificationManager.NotificationType.PRIORITY_NOTIFICATION;
+try {
+    notificationManager.getSlotFlagsByBundle(bundleOption, notificationType).then((data: number) => {
+        console.info(`getSlotFlagsByBundle success data: ${data}`);
+    })
+} catch (e) {
+    let error: BusinessError = e as BusinessError
+    console.error(`getSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleOption: notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+let notificationType: notificationManager.NotificationType =
+    notificationManager.NotificationType.PRIORITY_NOTIFICATION;
+try {
+    notificationManager.getSlotFlagsByBundle(bundleOption, notificationType).then((data: long) => {
+        console.info(`getSlotFlagsByBundle success data: ${data}`);
+    })
+} catch (e) {
+    let error: BusinessError = e as BusinessError;
+    console.error(`getSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
 ## notificationManager.getAllActiveNotifications
 
 getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>): void
@@ -10501,6 +10672,25 @@ type MonitorEvent = _MonitorEvent
 | STATUS_USER_DEFINED | 1<<3 | 仅用户自定义。 |
 | STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
 | STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
+
+## NotificationType
+
+描述通知类型。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+| 名称                 | 值  | 说明                              |
+| ------------------- | --- | --------------------------------- |
+| NOTIFICATION | 0 | 表示普通通知类型。 |
+| PRIORITY_NOTIFICATION | 1 | 表示优先通知类型。 |
 
 ## GroupInfo
 
