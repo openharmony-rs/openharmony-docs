@@ -680,7 +680,7 @@ json统计结果：
 
 ## 备用包（alternateModule）
 
-用于应用市场快速发布提前准备的可用替换版本。将[module.json5](../quick-start/module-configuration-file.md#配置文件标签)中的alternateModule字段配置为true的模块称为备用包（该字段仅对Stage模型的HSP生效，默认值为false）。
+用于应用市场快速发布提前准备的可用替换版本。将[module.json5](../quick-start/module-configuration-file.md#配置文件标签)中的alternateModule字段配置为true的模块称为备用包（该字段从API版本26.1.0开始支持，仅对Stage模型的HSP生效，默认值为false）。
 
 执行[App打包指令](#app打包指令)、[fastApp打包指令](#fastapp模式打包指令)或[多工程打包指令](#多工程打包指令)时，打包工具会对备用包进行如下校验，任一项不通过均会导致打包失败：
 
