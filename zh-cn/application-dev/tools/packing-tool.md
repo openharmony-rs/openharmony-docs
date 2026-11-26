@@ -191,13 +191,11 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 | --deduplist-sdk-path | 否 | NA | 指定deduplist_sdk.json文件路径，用于在打包时删除HAP/HSP包内与系统预置so重复的so，上架应用市场及安装到ROM内的HAP/HSP均不含被删除的so。<br/>去重完成后，将在发生去重的HAP/HSP根目录下生成去重报告dedupfiles.json，并在日志中打印去重结果。deduplist_sdk.json和dedupfiles.json的详细说明请参见[SDK清单so去重](#sdk清单so去重)。<br/>去重策略：<br/>- 当App包中存在与系统预置so重复的so，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了SDK清单so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.1.0开始支持该参数。|
 
-## installer模式打包指令
+## installer模式打包指令（本地安装）
 
-从API版本26.0.1开始支持installer模式。
+从API版本26.0.1开始，新增installer模式，支持将一个或多个应用的HAP、HSP和应用描述文件打包为一个.app包，用于本地安装。
 
-installer模式用于将一个或多个应用的HAP、HSP和应用描述文件打包为一个.app包，供安装器读取。生成的包采用ZIP格式，根目录包含manifest.json和Contents目录，Contents下按应用目录存放原始HAP、HSP文件。
-
-该包与[App打包指令](#app打包指令)生成的包具有不同的内部结构，使用时需要安装器支持installer包格式。打包工具负责生成容器，不执行应用安装或签名、验签。
+生成的.app包采用ZIP格式，其根目录包含manifest.json和Contents目录，Contents目录下按应用目录存放原始HAP和HSP文件。
 
 从API版本26.1.0开始，同一应用内所有HAP（包括entry和feature模块）的keepDataOnUninstall字段取值必须保持一致（未配置时默认按false处理），否则会导致打包失败。该一致性校验仅限同一应用内部，不同应用之间无此要求。
 
