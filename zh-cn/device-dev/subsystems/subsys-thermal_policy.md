@@ -49,7 +49,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     | 配置项名称 | 配置项描述 | 配置项类型 | 配置项范围 |
     | -------- | -------- | -------- | -------- |
-    | scene	| 使用场景 | string | 对应[热场景文档](../subsystems/subsys-thermal_scene.md)中定义的使用场景 |
+    | scene | 使用场景 | string | 对应[热场景文档](../subsystems/subsys-thermal_scene.md)中定义的使用场景 |
     | charge | 是否在充电 | int | 0（不在充电），1（正在充电） |
     | screen | 是否亮屏 | int | 0（灭屏），1（亮屏） |
 
@@ -93,7 +93,6 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
             <voltage_buck>3000</voltage_buck>
             <volume>1.0</volume>
         </config>
-    <policy>
         <config name="base_safe" level="2">
             <lcd>0.90</lcd>
             <lcd scene="cam">0.89</lcd>
@@ -178,7 +177,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
                     "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
                     "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
                     "//vendor/hihope/rk3568/etc:product_etc_conf",
-                    "//vendor/hihope/rk3568/thermal/profile:thermal_service_config", // 添加thermal_service_config的编译
+                    "//vendor/hihope/rk3568/thermal/profile:thermal_service_config" // 添加thermal_service_config的编译
                 ]
             }
         },
@@ -213,49 +212,49 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 
     ----------------------------------ThermalService---------------------------------
-    name: base_safe	level: 1
-    actionName: lcd	actionValue: 1.00	isProp: 0
-    actionName: lcd	actionValue: 0.99	scene: cam	isProp: 1
-    actionName: lcd	actionValue: 0.98	scene: call	isProp: 1
-    actionName: lcd	actionValue: 0.95	scene: game	isProp: 1
-    actionName: cpu_big	actionValue: 1992000	isProp: 0
-    actionName: cpu_med	actionValue: 1991500	isProp: 0
-    actionName: cpu_lit	actionValue: 1991200	isProp: 0
-    actionName: process_ctrl	actionValue: 3	isProp: 0
-    actionName: cpu_big	actionValue: 1991800	charge: 1	scene: cam	isProp: 1
-    actionName: cpu_big	actionValue: 1991600	charge: 0	scene: cam	isProp: 1
-    actionName: gpu	actionValue: 524288	screen: 0	isProp: 1
-    actionName: gpu	actionValue: 512000	screen: 1	isProp: 1
-    actionName: thermallevel	actionValue: 1	isProp: 0
-    actionName: current_sc	actionValue: 1800	isProp: 0
-    actionName: current_sc	actionValue: 1200	scene: cam	isProp: 1
-    actionName: current_buck	actionValue: 1200	isProp: 0
-    actionName: voltage_sc	actionValue: 4000	isProp: 0
-    actionName: voltage_buck	actionValue: 3000	isProp: 0
-    actionName: volume	actionValue: 1.0	isProp: 0
-    actionName: boost	actionValue: 1	isProp: 0
+    name: base_safe    level: 1
+    actionName: lcd    actionValue: 1.00    isProp: 0
+    actionName: lcd    actionValue: 0.99    scene: cam    isProp: 1
+    actionName: lcd    actionValue: 0.98    scene: call    isProp: 1
+    actionName: lcd    actionValue: 0.95    scene: game    isProp: 1
+    actionName: cpu_big    actionValue: 1992000    isProp: 0
+    actionName: cpu_med    actionValue: 1991500    isProp: 0
+    actionName: cpu_lit    actionValue: 1991200    isProp: 0
+    actionName: process_ctrl    actionValue: 3    isProp: 0
+    actionName: cpu_big    actionValue: 1991800    charge: 1    scene: cam    isProp: 1
+    actionName: cpu_big    actionValue: 1991600    charge: 0    scene: cam    isProp: 1
+    actionName: gpu    actionValue: 524288    screen: 0    isProp: 1
+    actionName: gpu    actionValue: 512000    screen: 1    isProp: 1
+    actionName: thermallevel    actionValue: 1    isProp: 0
+    actionName: current_sc    actionValue: 1800    isProp: 0
+    actionName: current_sc    actionValue: 1200    scene: cam    isProp: 1
+    actionName: current_buck    actionValue: 1200    isProp: 0
+    actionName: voltage_sc    actionValue: 4000    isProp: 0
+    actionName: voltage_buck    actionValue: 3000    isProp: 0
+    actionName: volume    actionValue: 1.0    isProp: 0
+    actionName: boost    actionValue: 1    isProp: 0
 
     level: 2
-    actionName: lcd	actionValue: 0.90	isProp: 0
-    actionName: lcd	actionValue: 0.89	scene: cam	isProp: 1
-    actionName: lcd	actionValue: 0.88	scene: call	isProp: 1
-    actionName: lcd	actionValue: 0.87	scene: game	isProp: 1
-    actionName: cpu_big	actionValue: 1991000	isProp: 0
-    actionName: cpu_med	actionValue: 1990500	isProp: 0
-    actionName: cpu_lit	actionValue: 1990200	isProp: 0
-    actionName: process_ctrl	actionValue: 2	isProp: 0
-    actionName: cpu_big	actionValue: 1990800	charge: 1	scene: cam	isProp: 1
-    actionName: cpu_big	actionValue: 1990600	charge: 0	scene: cam	isProp: 1
-    actionName: gpu	actionValue: 499712	screen: 0	isProp: 1
-    actionName: gpu	actionValue: 487424	screen: 1	isProp: 1
-    actionName: thermallevel	actionValue: 2	isProp: 0
-    actionName: current_sc	actionValue: 1500	isProp: 0
-    actionName: current_sc	actionValue: 1000	scene: cam	isProp: 1
-    actionName: current_buck	actionValue: 1000	isProp: 0
-    actionName: voltage_sc	actionValue: 3000	isProp: 0
-    actionName: voltage_buck	actionValue: 2000	isProp: 0
-    actionName: volume	actionValue: 0.8	isProp: 0
-    actionName: boost	actionValue: 1	isProp: 0
+    actionName: lcd    actionValue: 0.90    isProp: 0
+    actionName: lcd    actionValue: 0.89    scene: cam    isProp: 1
+    actionName: lcd    actionValue: 0.88    scene: call    isProp: 1
+    actionName: lcd    actionValue: 0.87    scene: game    isProp: 1
+    actionName: cpu_big    actionValue: 1991000    isProp: 0
+    actionName: cpu_med    actionValue: 1990500    isProp: 0
+    actionName: cpu_lit    actionValue: 1990200    isProp: 0
+    actionName: process_ctrl    actionValue: 2    isProp: 0
+    actionName: cpu_big    actionValue: 1990800    charge: 1    scene: cam    isProp: 1
+    actionName: cpu_big    actionValue: 1990600    charge: 0    scene: cam    isProp: 1
+    actionName: gpu    actionValue: 499712    screen: 0    isProp: 1
+    actionName: gpu    actionValue: 487424    screen: 1    isProp: 1
+    actionName: thermallevel    actionValue: 2    isProp: 0
+    actionName: current_sc    actionValue: 1500    isProp: 0
+    actionName: current_sc    actionValue: 1000    scene: cam    isProp: 1
+    actionName: current_buck    actionValue: 1000    isProp: 0
+    actionName: voltage_sc    actionValue: 3000    isProp: 0
+    actionName: voltage_buck    actionValue: 2000    isProp: 0
+    actionName: volume    actionValue: 0.8    isProp: 0
+    actionName: boost    actionValue: 1    isProp: 0
     ```
 
 ## 参考 

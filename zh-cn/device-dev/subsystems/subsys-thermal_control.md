@@ -109,7 +109,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
                     "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
                     "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
                     "//vendor/hihope/rk3568/etc:product_etc_conf",
-                    "//vendor/hihope/rk3568/thermal/profile:thermal_service_config", // 添加thermal_service_config的编译
+                    "//vendor/hihope/rk3568/thermal/profile:thermal_service_config" // 添加thermal_service_config的编译
                 ]
             }
         },
@@ -140,30 +140,30 @@ OpenHarmony从5.0.0 Release版本起，支持温度模拟调测功能。下述�
     hidumper -s 3303 -a -a
     ```
 
-    查看定制后的热管控结果如下： 
+    查看当前热管控结果如下： 
     ```shell
     -------------------------------[ability]-------------------------------
 
 
     ----------------------------------ThermalService---------------------------------
-    name: airplane	strict: 0	enableEvent: 0
-    name: cpu_big	strict: 0	enableEvent: 0
-    name: cpu_med	strict: 0	enableEvent: 0
-    name: cpu_lit	strict: 0	enableEvent: 0
-    name: gpu	strict: 0	enableEvent: 0
-    name: boost	strict: 0	enableEvent: 1
-    name: isolate	strict: 0	enableEvent: 1
-    name: lcd	strict: 0	enableEvent: 0
-    name: volume	uid: 2001,2002	strict: 0	enableEvent: 0
-    name: current_sc    params: sc	protocol: current	strict: 0	enableEvent: 1
-    name: current_buck    params: buck	protocol: current	strict: 0	enableEvent: 1
-    name: voltage_sc   params: sc	protocol: voltage	strict: 0	enableEvent: 1
-    name: voltage_buck   params: buck	protocol: voltage	strict: 0	enableEvent: 1
-    name: process_ctrl  params: 32,64,128,256	strict: 0	enableEvent: 0
-    name: shut_down	strict: 0	enableEvent: 0
-    name: thermallevel	strict: 0	enableEvent: 1
-    name: popup	strict: 0	enableEvent: 0
-    name: test	strict: 0	enableEvent: 0
+    name: airplane    strict: 0    enableEvent: 0
+    name: cpu_big    strict: 0    enableEvent: 0
+    name: cpu_med    strict: 0    enableEvent: 0
+    name: cpu_lit    strict: 0    enableEvent: 0
+    name: gpu    strict: 0    enableEvent: 0
+    name: boost    strict: 0    enableEvent: 1
+    name: isolate    strict: 0    enableEvent: 1
+    name: lcd    strict: 0    enableEvent: 0
+    name: volume    uid: 2001,2002    strict: 0    enableEvent: 0
+    name: current_sc    params: sc    protocol: current    strict: 0    enableEvent: 1
+    name: current_buck    params: buck    protocol: current    strict: 0    enableEvent: 1
+    name: voltage_sc   params: sc    protocol: voltage    strict: 0    enableEvent: 1
+    name: voltage_buck   params: buck    protocol: voltage    strict: 0    enableEvent: 1
+    name: process_ctrl  params: 32,64,128,256    strict: 0    enableEvent: 0
+    name: shut_down    strict: 0    enableEvent: 0
+    name: thermallevel    strict: 0    enableEvent: 1
+    name: popup    strict: 0    enableEvent: 0
+    name: test    strict: 0    enableEvent: 0
     ```
 
 3. 停止自动上报温度。

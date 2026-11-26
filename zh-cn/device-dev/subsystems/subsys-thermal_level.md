@@ -77,6 +77,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
             <item level="4" threshold="48000,46000,36000,46000" threshold_clr="46000,44000,34000,44000"/>
         </sensor_cluster>
     </level>
+    </thermal>
     ```
 
 4. 参考[默认热等级配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_thermal_manager/blob/master/services/native/profile/BUILD.gn)编写BUILD.gn文件，将thermal_service_config.xml打包到`/vendor/etc/thermal_config`目录下：
@@ -104,7 +105,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
                     "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
                     "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
                     "//vendor/hihope/rk3568/etc:product_etc_conf",
-                    "//vendor/hihope/rk3568/thermal/profile:thermal_service_config", // 添加thermal_service_config的编译
+                    "//vendor/hihope/rk3568/thermal/profile:thermal_service_config" // 添加thermal_service_config的编译
                 ]
             }
         },
@@ -149,11 +150,11 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 
     ----------------------------------ThermalService---------------------------------
-    name: base_safe	level: 2
-    name: cold_safe	level: 0
-    name: high_safe	level: 0
-    name: warm_5G	level: 0
-    name: warm_safe	level: 1
+    name: base_safe    level: 2
+    name: cold_safe    level: 0
+    name: high_safe    level: 0
+    name: warm_5G    level: 0
+    name: warm_safe    level: 1
     ```
 
 ## 参考 

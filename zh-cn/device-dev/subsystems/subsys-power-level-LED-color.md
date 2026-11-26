@@ -9,6 +9,7 @@ OpenHarmony默认提供了电量与LED灯颜色的映射关系。对于部分产
 ### 约束与限制
 
 配置策略：
+
 产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以/vendor进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
@@ -91,19 +92,19 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     ```json
     {
-    "parts": {
-        "product_rk3568": {
-        "module_list": [
-            "//vendor/hihope/rk3568/default_app_config:default_app_config",
-            "//vendor/hihope/rk3568/image_conf:custom_image_conf",
-            "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
-            "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
-            "//vendor/hihope/rk3568/etc:product_etc_conf",
-            "//vendor/hihope/rk3568/battery/profile:battery_config" #添加battery_config的编译
-        ]
-        }
-    },
-    "subsystem": "product_hihope"
+        "parts": {
+            "product_rk3568": {
+                "module_list": [
+                    "//vendor/hihope/rk3568/default_app_config:default_app_config",
+                    "//vendor/hihope/rk3568/image_conf:custom_image_conf",
+                    "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
+                    "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
+                    "//vendor/hihope/rk3568/etc:product_etc_conf",
+                    "//vendor/hihope/rk3568/battery/profile:battery_config" //添加battery_config的编译
+                ]
+            }
+        },
+        "subsystem": "product_hihope"
     }
     ```
     “//vendor/hihope/rk3568/battery/”为文件夹路径，“profile”为创建的文件夹名字，“battery_config”为编译目标。
@@ -119,46 +120,46 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 ### 调测验证 
 
 1. 开机后，进入shell命令行。
-    ```
+    ```shell
     hdc shell
     ```
 
-2. 进入电池电量的节点路径（以当前DAYU开发版路径为例）。
-    ```
+2. 进入电池电量的节点路径（以当前DAYU开发板路径为例）。
+    ```shell
     cd /data/service/el0/battery/battery
     ```
 
 3. 以默认的电量与LED灯颜色的映射配置数据为例，修改电量数值，模拟电池信息上报，并观察LED亮灯颜色变化。
     
     1. 修改电量数值
-    ```
-    echo 5 > capacity
-    ```
+        ```shell
+        echo 5 > capacity
+        ```
     2. 上报电量信息改变，触发LED灯映射
-    ```
-    hidumper -s 3302 -a -r
-    ```
-    ![low_power_led](figures/low_power_led.jpg)
-    
+        ```shell
+        hidumper -s 3302 -a -r
+        ```
+        ![low_power_led](figures/low_power_led.jpg)
+
     3. 修改电量数值
-    ```
-    echo 50 > capacity
-    ```
+        ```shell
+        echo 50 > capacity
+        ```
     4. 上报电量信息改变，触发LED灯映射
-    ```
-    hidumper -s 3302 -a -r
-    ```
-    ![normal_power_led](figures/normal_power_led.jpg)
-    
+        ```shell
+        hidumper -s 3302 -a -r
+        ```
+        ![normal_power_led](figures/normal_power_led.jpg)
+
     5. 修改电量数值
-    ```
-    echo 100 > capacity
-    ```
+        ```shell
+        echo 100 > capacity
+        ```
     6. 上报电量信息改变，触发LED灯映射
-    ```
-    hidumper -s 3302 -a -r
-    ```
-    ![high_power_led](figures/high_power_led.jpg)
+        ```shell
+        hidumper -s 3302 -a -r
+        ```
+        ![high_power_led](figures/high_power_led.jpg)
 
 4. 以新的电量与LED灯颜色的映射配置数据为例，更改之后：
     ```json
@@ -181,34 +182,34 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ```
 
     1. 修改电量数值
-    ```
-    echo 15 > capacity
-    ```
+        ```shell
+        echo 15 > capacity
+        ```
     2. 上报电量信息改变，触发LED灯映射
-    ```
-    hidumper -s 3302 -a -r
-    ```
-    ![low_power_led_alter](figures/normal_power_led_alter.jpg)
+        ```shell
+        hidumper -s 3302 -a -r
+        ```
+        ![low_power_led_alter](figures/normal_power_led_alter.jpg)
 
     3. 修改电量数值
-    ```
-    echo 95 > capacity
-    ```
+        ```shell
+        echo 95 > capacity
+        ```
     4. 上报电量信息改变，触发LED灯映射
-    ```
-    hidumper -s 3302 -a -r
-    ```
-    ![normal_power_led_alter](figures/low_power_led_alter.jpg)
+        ```shell
+        hidumper -s 3302 -a -r
+        ```
+        ![normal_power_led_alter](figures/low_power_led_alter.jpg)
 
     5. 修改电量数值
-    ```
-    echo 99 > capacity
-    ```
+        ```shell
+        echo 99 > capacity
+        ```
     6. 上报电量信息改变，触发LED灯映射
-    ```
-    hidumper -s 3302 -a -r
-    ```
-    ![high_power_led_alter](figures/high_power_led_alter.jpg)
+        ```shell
+        hidumper -s 3302 -a -r
+        ```
+        ![high_power_led_alter](figures/high_power_led_alter.jpg)
 
 ## 参考 
 开发过程中可参考的配置文件路径：[系统默认亮度范围配置源码路径](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/) 

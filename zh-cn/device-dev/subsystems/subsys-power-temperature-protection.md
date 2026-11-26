@@ -9,6 +9,7 @@ OpenHarmony默认提供了电池温度保护的特性。终端设备会在不同
 ### 约束与限制
 
 配置策略：
+
 产品定制的配置路径，需要根据[配置策略](https://gitcode.com/openharmony/customization_config_policy)决定。本开发指导中的定制路径以/vendor进行举例，请开发者根据具体的产品配置策略，修改定制路径。
 
 ## 开发指导
@@ -71,19 +72,19 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     ```json
     {
-    "parts": {
-        "product_rk3568": {
-        "module_list": [
-            "//vendor/hihope/rk3568/default_app_config:default_app_config",
-            "//vendor/hihope/rk3568/image_conf:custom_image_conf",
-            "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
-            "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
-            "//vendor/hihope/rk3568/etc:product_etc_conf",
-            "//vendor/hihope/rk3568/battery/profile:battery_config" #添加battery_config的编译
-        ]
-        }
-    },
-    "subsystem": "product_hihope"
+        "parts": {
+            "product_rk3568": {
+                "module_list": [
+                    "//vendor/hihope/rk3568/default_app_config:default_app_config",
+                    "//vendor/hihope/rk3568/image_conf:custom_image_conf",
+                    "//vendor/hihope/rk3568/preinstall-config:preinstall-config",
+                    "//vendor/hihope/rk3568/resourceschedule:resourceschedule",
+                    "//vendor/hihope/rk3568/etc:product_etc_conf",
+                    "//vendor/hihope/rk3568/battery/profile:battery_config" //添加battery_config的编译
+                ]
+            }
+        },
+        "subsystem": "product_hihope"
     }
     ```
     “//vendor/hihope/rk3568/battery/”为文件夹路径，“profile”为创建的文件夹名字，“battery_config”为编译目标。
@@ -99,32 +100,32 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 ### 调测验证 
 
 1. 开机后，进入shell命令行。
-    ```
+    ```shell
     hdc shell
     ```
 
-2. 进入电源温度的节点路径（以当前DAYU开发版路径为例）。
-    ```
+2. 进入电源温度的节点路径（以当前DAYU开发板路径为例）。
+    ```shell
     cd /data/service/el0/battery/battery
     ```
 
 3. 以默认的电源温度保护配置数据为例，修改电池温度的模拟节点数值。
 
-    ```
+    ```shell
     echo 700 > temp
     ```
 4. 上报电池信息改变，触发温度保护。
-    ```
+    ```shell
     hidumper -s 3302 -a -r
     ```
     设备进入关机状态
 
 5. 重新开机进入shell命令行,进入电源温度的节点路径。
-    ```
+    ```shell
     echo -600 > temp
     ```
 6. 上报电池信息改变，触发温度保护。
-    ```
+    ```shell
     hidumper -s 3302 -a -r
     ```
     设备进入关机状态
@@ -141,23 +142,23 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ```
 
 8. 修改电池温度的模拟节点数值。
-    ```
+    ```shell
     echo 550 > temp
     ```
 
 9. 上报电池信息改变，触发温度保护。
-    ```
+    ```shell
     hidumper -s 3302 -a -r
     ```
     设备进入关机状态
 
 10. 重新开机进入shell命令行,进入电源温度的节点路径。
-    ```
+    ```shell
     echo -450 > temp
     ```
 
 11. 上报电池信息改变，触发温度保护。
-    ```
+    ```shell
     hidumper -s 3302 -a -r
     ```
     设备进入关机状态

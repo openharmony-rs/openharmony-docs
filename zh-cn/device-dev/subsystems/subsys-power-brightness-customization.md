@@ -9,9 +9,11 @@ OpenHarmony默认的亮度范围为0 ~ 255（0代表最小亮度，255代表最�
 ### 基本概念 
 
 系统亮度：
+
 OpenHarmony系统全局的亮度，调节后会使所有应用窗口亮度范围更改为定制的系统亮度范围。 
 
 窗口亮度：
+
 某个应用窗口的亮度，调节后只影响此窗口，窗口退出后，恢复为系统亮度。当设置窗口亮度后，此窗口的亮度不受系统亮度的影响。
 
 ### 约束与限制
@@ -28,7 +30,7 @@ OpenHarmony系统全局的亮度，调节后会使所有应用窗口亮度范围
 
 环境要求：
 
-Linux调测环境，相关要求和配置可参考《[快速入门](../quick-start/Readme-CN.md)》。
+Linux调测环境，相关要求和配置可参考《[快速入门](../quick-start/quickstart-overview.md)》。
 
 ### 开发步骤 
 
@@ -94,7 +96,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ``` 
     “//base/powermgr/display_manager/service”为文件夹路径，“etc”为创建的文件夹名字。
 
-6. 参考《[快速入门](../quick-start/Readme-CN.md)》编译定制版本，以编译DAYU200为例，编译命令如下：
+6. 参考《[快速入门](../quick-start/quickstart-overview.md)》编译定制版本，以编译DAYU200为例，编译命令如下：
 
     ```shell
     ./build.sh --product-name rk3568 --ccache
@@ -155,7 +157,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     # Brightness limits is 0-255.
     const.display.brightness.min=50
     const.display.brightness.default=75
-    const.display.brightness.max=150# 
+    const.display.brightness.max=150
     # 
     # cd
     # hidumper -s 3308 -a -a
@@ -188,4 +190,4 @@ const.display.brightness.default=102
 const.display.brightness.max=255
 ``` 
 
-打包路径：/system/etc/param 
+默认打包路径：/system/etc/param 
