@@ -161,7 +161,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 将当前AutoFillExtensionAbility连接到指定的ServiceExtensionAbility。连接成功后，可通过options的onConnect回调获取remote对象，并与其进行IPC通信；具体可调用的服务由目标ServiceExtensionAbility的remote接口定义，返回的连接ID用于断开连接。
 
-ServiceExtensionAbility是一类由系统提供的特殊[ExtensionAbility](../../application-models/extensionability-overview.md)组件（不支持开发者自定义），主要用于提供特定场景的后台服务。其他组件可与之建立连接，由其在后台根据调用者的请求信息处理相关事务。
+ServiceExtensionAbility是一类由系统提供的特殊[ExtensionAbility](../../application-models/extensionability-overview.md)组件（不支持三方应用自定义），主要用于提供特定场景的后台服务。其他组件可与之建立连接，由其在后台根据调用者的请求信息处理相关事务。
 
 > **说明：**
 >
