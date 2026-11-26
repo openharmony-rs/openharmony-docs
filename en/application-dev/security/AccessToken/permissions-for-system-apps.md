@@ -9950,7 +9950,7 @@ With this permission, the system application can query daemon service informatio
 
 ## ohos.permission.SCAN_SIDELOAD_ABILITY
  
-Allowing an application to initiate virus scanning for freely distributable applications.
+Allows an application to initiate virus scanning for freely distributable applications.
  
 **Permission level**: system_basic
  
