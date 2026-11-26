@@ -90,7 +90,7 @@ InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProx
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。此时*inputMethodProxy有效，可用于后续交互。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示参数错误。检查textEditorProxy、options、inputMethodProxy是否为有效指针。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端错误。可能是输入法服务未就绪或连接异常。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法服务错误。可能是系统输入法管理服务异常。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。textEditorProxy、options或inputMethodProxy为NULL时返回。<br>错误处理建议：若返回非IME_ERR_OK，应检查参数有效性后重试；若返回IME_ERR_IMCLIENT或IME_ERR_IMMS，说明服务异常，建议稍后重试。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。此时*inputMethodProxy有效，可用于后续交互。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示参数错误。检查textEditorProxy、options、inputMethodProxy是否为有效指针。options句柄未注册或已失效时也返回此错误码。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端错误。可能是输入法服务未就绪或连接异常。原生会话任务无法进入队列或等待执行超时时，也返回此错误码，且不会执行该任务。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法服务错误。可能是系统输入法管理服务异常。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。textEditorProxy、options或inputMethodProxy为NULL时返回。<br>错误处理建议：若返回非IME_ERR_OK，应检查参数有效性后重试；若返回IME_ERR_IMCLIENT或IME_ERR_IMMS，建议稍后重试。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_InputMethodController_AttachWithUIContext()
 
@@ -146,7 +146,7 @@ InputMethod_ErrorCode OH_InputMethodController_AttachWithUIContext(ArkUI_Context
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。此时*inputMethodProxy有效，可用于后续交互。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示参数错误。检查context、textEditorProxy、options、inputMethodProxy是否为有效指针。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端错误。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法服务错误。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。context、textEditorProxy、options或inputMethodProxy为NULL时返回。<br>错误处理建议：若返回非IME_ERR_OK，应检查参数有效性后重试；若返回IME_ERR_IMCLIENT或IME_ERR_IMMS，说明服务异常，建议稍后重试。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。此时*inputMethodProxy有效，可用于后续交互。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示参数错误。检查context、textEditorProxy、options、inputMethodProxy是否为有效指针。options句柄未注册或已失效时也返回此错误码。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法客户端错误。原生会话任务无法进入队列或等待执行超时时，也返回此错误码，且不会执行该任务。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 输入法服务错误。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。context、textEditorProxy、options或inputMethodProxy为NULL时返回。<br>错误处理建议：若返回非IME_ERR_OK，应检查参数有效性后重试；若返回IME_ERR_IMCLIENT或IME_ERR_IMMS，建议稍后重试。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_InputMethodController_Detach()
 
@@ -167,7 +167,7 @@ InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodPro
 - OH_InputMethodController_Detach完成后，可安全销毁TextEditorProxy（通过OH_TextEditorProxy_Destroy）。
 
 错误处理：
-- 如果inputMethodProxy无效或未绑定，调用OH_InputMethodController_Detach会返回IME_ERR_NULL_POINTER或IME_ERR_IMCLIENT。
+- inputMethodProxy为NULL时返回IME_ERR_NULL_POINTER；当前无已绑定的输入法客户端时返回IME_ERR_DETACHED；inputMethodProxy与当前代理不匹配时返回IME_ERR_PARAMCHECK。客户端内部错误返回IME_ERR_IMCLIENT。
 - 重复调用OH_InputMethodController_Detach使用同一个inputMethodProxy可能导致未定义行为，应避免。
 - OH_InputMethodController_Detach失败后不应继续使用inputMethodProxy。
 
@@ -190,7 +190,7 @@ InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodPro
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。解绑完成，inputMethodProxy不再有效。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示输入法客户端错误。可能是客户端连接异常或已断开。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示输入法服务错误。可能是服务端异常。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。inputMethodProxy为NULL时返回。<br>错误处理建议：若返回IME_ERR_OK，解绑成功，后续可安全销毁所有创建的对象；若返回IME_ERR_IMCLIENT，说明客户端状态异常，建议记录日志并销毁相关对象；若返回IME_ERR_NULL_POINTER，说明传入的指针无效，应检查是否已OH_InputMethodController_Detach或指针已失效。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。解绑完成，inputMethodProxy不再有效。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - inputMethodProxy与当前代理不匹配。<br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 当前无已绑定的输入法客户端。<br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示输入法客户端错误。可能是客户端连接异常或已断开。原生会话任务无法进入队列或等待执行超时时，也返回此错误码，且不会执行该任务。<br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示输入法服务错误。可能是服务端异常。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。inputMethodProxy为NULL时返回。<br>错误处理建议：若返回IME_ERR_OK，解绑成功，后续可安全销毁所有创建的对象；若返回IME_ERR_IMCLIENT，建议记录日志，确认已解绑后再销毁相关对象；若返回IME_ERR_NULL_POINTER，检查传入的指针是否为NULL。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_InputMethod_InputMethodController_GetCurrentInputMethod()
 
