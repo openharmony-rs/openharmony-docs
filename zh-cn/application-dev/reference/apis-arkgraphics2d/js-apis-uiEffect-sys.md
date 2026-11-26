@@ -35,6 +35,12 @@ createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 
 创建BrightnessBlender实例用于给组件添加提亮效果。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createBrightnessBlender()](#createbrightnessblender)替代本接口。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本:** 12
@@ -46,13 +52,13 @@ createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 **参数：**
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
-| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数。 |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度和混合比例等配置项。 |
 
 **返回值：**
 
 | 类型                                     | 说明                     |
 | ---------------------------------------- | ----------------------- |
-| [BrightnessBlender](#brightnessblender) | 返回设置了提亮效果参数的BrightnessBlender。 |
+| [BrightnessBlender](#brightnessblender) | 返回提亮效果的BrightnessBlender混合器。 |
 
 **示例：**
 
@@ -96,6 +102,10 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 
 创建[HdrBrightnessBlender](#hdrbrightnessblender20)实例用于给组件添加支持HDR的提亮效果。
 
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createBrightnessBlender()](#createbrightnessblender)替代本接口，使用时需将hdrEnabled参数设置为true。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本:** 20
@@ -107,7 +117,7 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 **参数：**
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
-| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数。 |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 实现提亮效果的参数，包含灰度调整系数、饱和度和混合比例等配置项，用于配置提亮效果。 |
 
 **返回值：**
 
@@ -146,11 +156,73 @@ struct example {
 }
 ```
 
+## uiEffect.createHdrDarkenBlender
+
+createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, number, number]): HdrDarkenBlender
+
+创建[HdrDarkenBlender](#hdrdarkenblender)实例用于HDR图层的压暗混合效果。
+
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createHdrDarkenBlender()](#createhdrdarkenblender)替代本接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名               | 类型                        | 必填  | 说明                                                              |
+| ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]，超出边界时会自动截断。<br>当取值等于1.0时，为组件原本亮度。<br>设备当前支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
+| grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
+
+**返回值：**
+
+| 类型                                   | 说明                       |
+| ---------------------------------------- | ------------------------- |
+| [HdrDarkenBlender](#hdrdarkenblender) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
+
+**示例：**
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// 创建HDR压暗混合器实例
+let blender: uiEffect.HdrDarkenBlender =
+  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]);
+
+@Entry
+@Component
+struct Example {
+  build() {
+    RelativeContainer() {
+      Stack(){
+          Text('TextWord')
+          Image($r('app.media.screenshot'))
+            .width('100%')
+            .height('100%')
+            .advancedBlendMode(blender)
+      }
+    }
+  }
+}
+```
+
 ## uiEffect.createColorfulBrightnessBlender
 
 createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender
 
 创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
+
+> **说明：**
+>
+> 从API版本26.1.0开始，建议使用[uiEffect.BlenderBase.createColorfulBrightnessBlender()](#createcolorfulbrightnessblender)替代本接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -167,7 +239,7 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 | 参数名  | 类型                                              | 必填 | 说明                        |
 | ------ | ------------------------------------------------- | ---- | --------------------------- |
 | brightnessBlenderParam  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。|
-| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
+| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。此参数不填时，使用ColorfulBrightnessBlenderOptions各字段的默认值。 |
 
 **返回值：**
 
@@ -178,23 +250,24 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 **示例：**
 
 ```ts
-import { uiEffect } from "@kit.ArkGraphics2D"
+import { uiEffect } from '@kit.ArkGraphics2D'
 
-let blender : uiEffect.ColorfulBrightnessBlender =
+// 创建ColorfulBrightnessBlender实例
+let blender: uiEffect.ColorfulBrightnessBlender =
   uiEffect.createColorfulBrightnessBlender({
-    cubicRate:1.0,
-    quadraticRate:1.0,
-    linearRate:1.0,
-    degree:1.0,
-    saturation:1.0,
-    positiveCoefficient:[2.3, 4.5, 2.0],
-    negativeCoefficient:[0.5, 2.0, 0.5],
-    fraction:0.0}, {
+    cubicRate: 1.0,
+    quadraticRate: 1.0,
+    linearRate: 1.0,
+    degree: 1.0,
+    saturation: 1.0,
+    positiveCoefficient: [2.3, 4.5, 2.0],
+    negativeCoefficient: [0.5, 2.0, 0.5],
+    fraction: 0.0}, {
     darkenWeight: 0.6,
     vibrancyStrength: 0.5,
     lumaDiff: 0.4,
     hdrEnabled: true,
-    tintedColorPercent: 1.0})
+    tintedColorPercent: 1.0});
 
 @Entry
 @Component
@@ -2513,7 +2586,9 @@ struct GlassMarbleMinimalDemo {
 
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlender
+ArkTS-Dyn: type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | ColorfulBrightnessBlender | BlenderBase
+
+ArkTS-Sta: type Blender = BrightnessBlender | HdrBrightnessBlender
 
 混合器类型，用于描述混合效果。
 
@@ -2527,7 +2602,9 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。<br>**ArkTS-Dyn起始版本**: 12<br>**ArkTS-Sta起始版本**: 23 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。<br>**ArkTS-Dyn起始版本**: 20<br>**ArkTS-Sta起始版本**: 23 |
+| [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**: 26.0.0 |
 | [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本**: 26.1.0 |
+| [BlenderBase](#blenderbase) | 混合器基础类型，提供包含但不限于以上所有混合效果的统一创建入口。推荐统一使用本类型的方法创建混合器。<br>**ArkTS-Dyn起始版本**: 26.1.0<br>**ArkTS-Sta起始版本**: 26.1.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -2542,14 +2619,14 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
-| quadraticRate       | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
-| linearRate          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
-| degree              | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
-| saturation          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
-| positiveCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| quadraticRate       | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| linearRate          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| degree              | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的比例。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                            |
+| saturation          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围为[0, 20]，超出边界会在实现时自动截断。                            |
+| positiveCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
 
 ## HdrBrightnessBlender<sup>20+</sup>
 支持HDR的提亮混合器（继承自[BrightnessBlender](#brightnessblender)），用于将提亮效果添加到指定的组件上。在调用HdrBrightnessBlender前，需要先通过[createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20)创建一个HdrBrightnessBlender实例。
@@ -2564,6 +2641,25 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 
 **系统接口：** 此接口为系统接口。
 
+
+## HdrDarkenBlender
+
+支持HDR的压暗混合器，用于将压暗效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过[createHdrDarkenBlender](#uieffectcreatehdrdarkenblender)创建一个HdrDarkenBlender实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称  | 类型   | 只读 | 可选 | 说明                                     |
+| ----- | ------ | ---- | ---- | ---------------------------------------- |
+| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]，超出边界时会自动截断。<br>当取值等于1.0时，为组件原本亮度。<br>设备当前支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
+| grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
 
 ## ColorfulBrightnessBlender
 
@@ -2582,7 +2678,206 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | ColorfulBrightnessBlen
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
 | brightnessBlenderParam   | [BrightnessBlenderParam](#brightnessblenderparam) | 否   | 否   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。 |
-| options | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   | 是   | 提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。 |
+| options | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   | 是   | 提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。此参数不填时，使用ColorfulBrightnessBlenderOptions各字段的默认值。 |
+
+## BlenderBase
+
+混合器基础类型，提供各类混合效果的统一创建入口。推荐统一使用本类型的方法创建混合器。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+### createBrightnessBlender
+
+static createBrightnessBlender(param: BrightnessBlenderParam, hdrEnabled?: boolean): BlenderBase
+
+输入提亮混合器参数创建提亮混合的BlenderBase实例。可选参数hdrEnabled为false时效果与调用[uiEffect.createBrightnessBlender()](#uieffectcreatebrightnessblender)相同，为true时效果与调用[uiEffect.createHdrBrightnessBlender()](#uieffectcreatehdrbrightnessblender20)相同。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| param  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮混合器参数，包含灰度调整系数、饱和度和混合比例等配置项，用于配置提亮混合效果。 |
+| hdrEnabled | boolean                                      | 否   | 是否为提亮混合效果开启HDR。设置为true时，提亮混合效果开启HDR；设置为false时，提亮混合效果不开启HDR。默认值为false。 |
+
+**返回值：**
+
+| 类型                                     | 说明                     |
+| ---------------------------------------- | ----------------------- |
+| [BlenderBase](#blenderbase) | 返回带有提亮混合效果的BlenderBase实例。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// 创建提亮混合的BlenderBase实例（开启HDR）
+let blender: uiEffect.BlenderBase = uiEffect.BlenderBase.createBrightnessBlender({
+  cubicRate: 1.0, quadraticRate: 1.0, linearRate: 1.0, degree: 1.0, saturation: 1.0,
+  positiveCoefficient: [2.3, 4.5, 2.0], negativeCoefficient: [0.5, 2.0, 0.5], fraction: 0.0}, true);
+```
+
+ArkTS-Sta示例：
+```ts
+import { uiEffect, BrightnessBlenderParam } from '@kit.ArkGraphics2D'
+
+// 创建提亮混合的BlenderBase实例（开启HDR）
+let blender: uiEffect.BlenderBase = uiEffect.BlenderBase.createBrightnessBlender({
+  cubicRate: 1.0, quadraticRate: 1.0, linearRate: 1.0, degree: 1.0, saturation: 1.0,
+  positiveCoefficient: [2.3, 4.5, 2.0] as [double, double, double],
+  negativeCoefficient: [0.5, 2.0, 0.5] as [double, double, double],
+  fraction: 0.0
+} as BrightnessBlenderParam, true);
+```
+
+### createHdrDarkenBlender
+
+ArkTS-Dyn: static createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, number, number]): BlenderBase
+
+ArkTS-Sta: static createHdrDarkenBlender(hdrBrightnessRatio: double, grayscaleFactor?: [double, double, double]): BlenderBase
+
+创建HDR压暗混合的BlenderBase实例，用于HDR图层的压暗混合效果。效果与调用[uiEffect.createHdrDarkenBlender()](#uieffectcreatehdrdarkenblender)相同。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名               | 类型                        | 必填  | 说明                                                              |
+| ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
+| hdrBrightnessRatio           | ArkTS-Dyn: number<br>ArkTS-Sta: double                    | 是   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]，超出边界时会自动截断。<br>当取值等于1.0时，为组件原本亮度。<br>设备当前支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
+| grayscaleFactor       | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]                      | 否   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
+
+**返回值：**
+
+| 类型                                   | 说明                       |
+| ---------------------------------------- | ------------------------- |
+| [BlenderBase](#blenderbase) | 返回带有HDR压暗混合效果的BlenderBase实例，用于将压暗效果添加到指定的组件上。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// 创建HDR压暗混合的BlenderBase实例
+let blender: uiEffect.BlenderBase = uiEffect.BlenderBase.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]);
+```
+
+ArkTS-Sta示例：
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D'
+
+// 创建HDR压暗混合的BlenderBase实例
+let blender: uiEffect.BlenderBase = uiEffect.BlenderBase.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114] as [double, double, double]);
+```
+
+### createColorfulBrightnessBlender
+
+static createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, options?: ColorfulBrightnessBlenderOptions): BlenderBase
+
+创建BlenderBase实例，用于给组件添加基于保持色相的提亮压暗效果。效果与调用[uiEffect.createColorfulBrightnessBlender()](#uieffectcreatecolorfulbrightnessblender)相同。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| brightnessBlenderParam  | [BrightnessBlenderParam](#brightnessblenderparam) | 是   | 提亮压暗的常规参数，用于配置亮度映射、饱和度曲线等基础属性。 |
+| options  | [ColorfulBrightnessBlenderOptions](#colorfulbrightnessblenderoptions) | 否   |  提亮压暗的增强参数，用于控制提亮压暗方向、色彩增强强度、可读性阈值及HDR开关。此参数不填时，使用ColorfulBrightnessBlenderOptions各字段的默认值。 |
+
+**返回值：**
+
+| 类型                                     | 说明                     |
+| ---------------------------------------- | ----------------------- |
+| [BlenderBase](#blenderbase)  | 返回带有基于保持色相的提亮压暗混合效果的BlenderBase实例。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D'
+
+// 创建保持色相的提亮压暗混合的BlenderBase实例
+let blender: uiEffect.BlenderBase =
+  uiEffect.BlenderBase.createColorfulBrightnessBlender({
+    cubicRate: 1.0,
+    quadraticRate: 1.0,
+    linearRate: 1.0,
+    degree: 1.0,
+    saturation: 1.0,
+    positiveCoefficient: [2.3, 4.5, 2.0],
+    negativeCoefficient: [0.5, 2.0, 0.5],
+    fraction: 0.0}, {
+    darkenWeight: 0.6,
+    vibrancyStrength: 0.5,
+    lumaDiff: 0.4,
+    hdrEnabled: true,
+    tintedColorPercent: 1.0});
+```
+
+ArkTS-Sta示例：
+```ts
+import { uiEffect, BrightnessBlenderParam, ColorfulBrightnessBlenderOptions } from '@kit.ArkGraphics2D'
+
+// 创建保持色相的提亮压暗混合的BlenderBase实例
+let blender: uiEffect.BlenderBase =
+  uiEffect.BlenderBase.createColorfulBrightnessBlender({
+    cubicRate: 1.0, quadraticRate: 1.0, linearRate: 1.0, degree: 1.0, saturation: 1.0,
+    positiveCoefficient: [2.3, 4.5, 2.0] as [double, double, double],
+    negativeCoefficient: [0.5, 2.0, 0.5] as [double, double, double],
+    fraction: 0.0
+  } as BrightnessBlenderParam, {
+    darkenWeight: 0.6,
+    vibrancyStrength: 0.5,
+    lumaDiff: 0.4,
+    hdrEnabled: true,
+    tintedColorPercent: 1.0
+  } as ColorfulBrightnessBlenderOptions);
+```
+
 ## Color<sup>20+</sup>
 
 RGBA格式的颜色描述。
@@ -3909,7 +4204,7 @@ struct AtlasFrameMaskDemoTaihe {
 ```
 
 ## BrightnessBlenderParam
-BrightnessBlender参数列表。
+BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包括灰度调整系数、饱和度和混合比例等参数。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -3923,36 +4218,38 @@ BrightnessBlender参数列表。
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围[-20, 20]。                        |
-| quadraticRate       | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围[-20, 20]。                        |
-| linearRate          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围[-20, 20]。                        |
-| degree              | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的比例。<br/>取值范围[-20, 20]。                            |
-| saturation          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围[0, 20]。                            |
-| positiveCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
-| fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的三阶系数。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| quadraticRate       | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的二阶系数。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| linearRate          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的线性系数。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| degree              | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 灰度调整的比例。<br/>取值范围为[-20, 20]，超出边界会在实现时自动截断。                            |
+| saturation          | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮的基准饱和度。<br/>取值范围为[0, 20]，超出边界会在实现时自动截断。                            |
+| positiveCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
 
 ## ColorfulBrightnessBlenderOptions
 
 基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 26.1.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
 
 **系统接口：** 此接口为系统接口。
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景，前景倾向亮于背景以保证可读性；取1时压暗前景，前景倾向暗于背景；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
-| vibrancyStrength    | number                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
-| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差，可读性约束最弱；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| darkenWeight        | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景，前景倾向亮于背景以保证可读性；取1时压暗前景，前景倾向暗于背景；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会自动截断。 |
+| vibrancyStrength    | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会自动截断。 |
+| lumaDiff            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差，可读性约束最弱；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会自动截断。 |
 | hdrEnabled          | boolean                    | 否   | 是   | 是否主动开启HDR。取true时主动开启HDR，结果亮度可超出SDR范围（>1.0），在HDR设备上呈现更高亮度，适合HDR内容；取false时不主动开启HDR，结果限制在SDR范围（≤1.0），但当前景或背景本身为HDR时仍可能被动触发HDR。<br>默认值为false。 |
-| tintedColorPercent  | number                     | 否   | 是   | 输入色彩影响度，控制输入色参与提亮压暗计算的程度。取1时输入色完全参与计算，输出结果保留输入色的色彩倾向；取0时输入色不参与计算，输出结果不受输入色的影响，直接基于背景颜色做提亮压暗；0到1之间为两者的插值过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| tintedColorPercent  | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 是   | 输入色彩影响度，控制输入色参与提亮压暗计算的程度。取1时输入色完全参与计算，输出结果保留输入色的色彩倾向；取0时输入色不参与计算，输出结果不受输入色的影响，直接基于背景颜色做提亮压暗；0到1之间为两者的插值过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会自动截断。 |
 
 ## HeatDistortionEffectParam
 
