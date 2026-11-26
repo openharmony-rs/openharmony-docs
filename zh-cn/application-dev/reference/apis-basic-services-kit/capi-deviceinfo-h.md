@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于查询终端设备信息的API。该模块提供了获取设备类型、制造商、品牌、型号、版本信息等设备基础信息的能力，适用于需要根据设备特性进行适配、统计设备信息或进行设备管理的场景。这些API通过读取系统属性获取设备信息，返回值为指向常量字符串的指针。该指针指向系统内部存储的数据，调用者无需释放内存。
+声明用于查询终端设备信息的API。该模块提供了获取设备类型、品牌、型号、系统版本、安全补丁级别、设备唯一标识等设备基础信息的能力，适用于需要根据设备特性进行适配、统计设备信息或进行设备管理的场景。这些API通过读取系统属性获取设备信息，返回值为指向常量字符串的指针。该指针指向系统内部存储的数据，调用者无需释放内存。
 
 **引用文件：** <deviceinfo.h>
 
@@ -35,7 +35,7 @@
 | [const char *OH_GetSoftwareModel(void)](#oh_getsoftwaremodel) | 获取内部软件子型号。 |
 | [const char *OH_GetHardwareModel(void)](#oh_gethardwaremodel) | 获取硬件版本号。 |
 | [const char *OH_GetBootloaderVersion(void)](#oh_getbootloaderversion) | 获取Bootloader版本号。 |
-| [const char *OH_GetAbiList(void)](#oh_getabilist) | 获取应用二进制接口（Abi）。 |
+| [const char *OH_GetAbiList(void)](#oh_getabilist) | 获取应用二进制接口（ABI）。 |
 | [const char *OH_GetSecurityPatchTag(void)](#oh_getsecuritypatchtag) | 获取安全补丁级别。 |
 | [const char *OH_GetDisplayVersion(void)](#oh_getdisplayversion) | 获取产品版本。 |
 | [const char *OH_GetIncrementalVersion(void)](#oh_getincrementalversion) | 获取差异版本。 |
@@ -55,7 +55,7 @@
 | [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | 获取ISV发行版系统版本号。 |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | 获取ISV发行版系统API版本。 |
 | [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | 获取ISV发行版系统类型。 |
-| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | 获取磁盘序列号。 |
+| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | 获取磁盘序列号。参数缓冲区容量不能低于65字节。 |
 | [const char *OH_GetOdid(void)](#oh_getodid) | 获取开发者匿名设备标识符。 |
 
 ## 函数说明
@@ -230,7 +230,7 @@ const char *OH_GetAbiList(void)
 
 **描述**
 
-获取应用二进制接口（Abi）。
+获取应用二进制接口（ABI）。
 
 **起始版本：** 10
 
@@ -238,7 +238,7 @@ const char *OH_GetAbiList(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 字符串类型的应用二进制接口（Abi）。返回支持的ABI列表，多个取值以英文逗号分隔。常见的取值包括："arm64-v8a"等。 |
+| const char* | 字符串类型的应用二进制接口（ABI）。返回支持的ABI列表，多个取值以英文逗号分隔。常见的取值包括："arm64-v8a"等。 |
 
 ### OH_GetSecurityPatchTag()
 
@@ -590,7 +590,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 **描述**
 
-获取磁盘序列号。
+获取磁盘序列号。参数缓冲区容量不能低于65字节。
 
 **需要权限：** ohos.permission.ACCESS_DISK_PHY_INFO
 
@@ -598,7 +598,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 | 参数名 | 说明 |
 | --  | -- |
-| char* diskSn | 磁盘序列号。 |
+| char* diskSn | 磁盘序列号。参数缓冲区容量不能低于65字节。 |
 
 **起始版本：** 26.1.0
 
@@ -606,7 +606,7 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 | 类型 | 说明                                                                              |
 | -- |---------------------------------------------------------------------------------|
-| int32_t | <ul><li>如果操作成功，则返回0。</li><li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li></ul> |
+| int32_t | <ul><li>如果操作成功，则返回0。</li><li>201如果调用者没有ohos.permission.ACCESS_DISK_PHY_INFO。</li><li>401如果调用者传入的入参非法。</li></ul> |
 
 ### OH_GetOdid()
 
