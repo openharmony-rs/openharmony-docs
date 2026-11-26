@@ -1,12 +1,11 @@
 # SMS Service Development
-
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
 <!--Owner: @shao-yikai-->
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f9a9b9785e9bcc5cb366299e64289f5600fae304 translatedAt=2026-08-14T10:11:28.905Z pushedAt=2026-08-16T01:50:38.861Z -->
+<!-- md-trans-meta sourceCommit=19c9444166009ad94c59fc6875df927989144e53 translatedAt=2026-11-26T02:28:39.143Z pushedAt=2026-11-26T02:43:25.241Z nl=1 -->
 
 ## When to Use
 
@@ -15,11 +14,8 @@ The Short Messaging Service (SMS) module provides basic SMS management functions
 Typical development scenarios are as follows:
 
 - On web pages:
-
   - The **Send Message** button is displayed when user opens a web page. After the user taps the button, the SMS application is started, and the user can then enter the recipient number and SMS message content to send an SMS message.
-
 - On applications:
-
   - When a user taps the **Send Message** button on a mobile application, the application calls the system function to start the SMS application, and the user can then enter the recipient number and SMS message content to send an SMS message.
 
 ## Basic Concepts
@@ -27,19 +23,16 @@ Typical development scenarios are as follows:
 - SMS
 
   A service capable of SMS message storage and forwarding. It enables mobile phones to send and receive SMS messages. The content of the SMS message can be text, digits, or binary non-text data. The information about the sender is stored in the Short Message Service Center (SMSC) and forwarded to the recipient.
-
 - SMSC
-
+  
   An entity that relays, stores, or forwards SMS messages between base stations and mobile devices. It uses the GSM 03.40 protocol for sending SMS messages to or receiving SMS messages from mobile phones.
-
 - PDU
-
+  
   Protocol data unit, which uses the following encoding schemes to send and receive SMS messages: 7-bit, 8-bit, and UCS-2. 7-bit encoding is used to send common ASCII characters, 8-bit encoding to send data messages, and UCS-2 encoding to send Unicode characters.
 
 ## Constraints
 
 1. The SMS service is available only on standard-system devices.
-
 2. An available SIM card must be present on the device, and the permission to send SMS messages must be granted.
 
 ## Available APIs
@@ -62,38 +55,36 @@ Typical development scenarios are as follows:
 1. Declare the required permission:
 
    - To send SMS messages, call the **sendShortMessage** API and declare the **ohos.permission.SEND\_MESSAGES** permission. The permission is of the **system\_basic** level.
-
    - To set the SMSC address, call the **setSmscAddr** API and declare the **ohos.permission.SET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
-
    - To obtain the SMSC address, call the **getSmscAddr** API and declare the **ohos.permission.GET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
-
+  
      Before requesting the permission, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
-
 2. Import the required modules.
 
 3. Send an SMS message.
 
-```ts
+<!-- @[SmsService_SendSMS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_SendSMS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Sample code
 import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
-
-let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
-}
-let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
-}
-let slotId: number = 0;
-let content: string = 'Message content';
-let destinationHost: string = '+861xxxxxxxxxx';
-let serviceCenter: string = '+861xxxxxxxxxx';
-let destinationPort: number = 1000;
-let options: sms.SendMessageOptions = {slotId, content, destinationHost, serviceCenter, destinationPort, sendCallback, deliveryCallback};
-sms.sendShortMessage(options, (err: BusinessError) => {
-    console.error(`callback: err->${JSON.stringify(err)}`);
-});
-
+// ...
+          let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
+              console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+          }
+          let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
+              console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+          }
+          let slotId: number = 0;
+          let content: string = 'SMS message content';
+          let destinationHost: string = '+861xxxxxxxxxx';
+          let serviceCenter: string = '+861xxxxxxxxxx';
+          let destinationPort: number = 1000;
+          let options: sms.SendMessageOptions = {slotId, content, destinationHost, serviceCenter, destinationPort, sendCallback, deliveryCallback};
+          sms.sendShortMessage(options, (err: BusinessError) => {
+              console.error(`callback: err->${JSON.stringify(err)}`);
+          });
 ```
 
 <!--DelEnd-->
@@ -102,19 +93,20 @@ sms.sendShortMessage(options, (err: BusinessError) => {
 
 The API for sending SMS messages requires system permissions to call. If a third-party app needs to send SMS messages, it must implement the function of redirecting to the SMS message editing page within the app, and carry the message content and recipient number. This can be implemented by calling the `startAbility` API of the Ability framework to specify the number and redirect to the SMS message sending page. After [obfuscation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation) is enabled, `contactsName` and `telephone` may be obfuscated. It is recommended that you retain the property names in `-keep-property-name`.
 
-```ts
+<!-- @[SmsService_App](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_App/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Sample code
 import { common, Want } from '@kit.AbilityKit';
 
-const MMS_BUNDLE_NAME = "com.ohos.mms";
-const MMS_ABILITY_NAME = "com.ohos.mms.MainAbility";
-const MMS_ENTITIES = "entity.system.home";
+const MMS_BUNDLE_NAME = 'com.ohos.mms';
+const MMS_ABILITY_NAME = 'com.ohos.mms.MainAbility';
 
 export class Contact {
     contactsName: string;
-    telephone: number;
+    telephone: string;
 
-    constructor(contactsName: string, telephone: number) {
+    constructor(contactsName: string, telephone: string) {
         this.contactsName = contactsName;
         this.telephone = telephone;
     }
@@ -127,23 +119,23 @@ struct JumpMessage {
 
     startMMSAbilityExplicit() {
         // Complete the contact and number. You can query the contact name based on the phone number. Therefore, the phone number is mainly used in this mode.
-        let params: Array<Object> = [new Contact("Tom", 133XXXXXXXX)];
+        let params: Array<Object> = [new Contact('Zhang San', '13333333333')];
 
         let want: Want = {
-            bundleName: "com.ohos.mms",
-            abilityName: "com.ohos.mms.MainAbility",
+            bundleName: MMS_BUNDLE_NAME,
+            abilityName: MMS_ABILITY_NAME,
             parameters: {
-                contactObjects: JSON.stringify(params), // After obfuscation is enabled, contactsName and telephone may be obfuscated. It is recommended that you preserve the property names in -keep-property-name.
-                pageFlag: "conversation",
+                contactObjects: JSON.stringify(params), // After obfuscation is enabled, contactsName and telephone may be obfuscated. It is recommended to retain the reserved property names in -keep-property-name.
+                pageFlag: 'conversation',
                 // Enter the SMS message content.
-                content: "SMS message content"
+                content: 'This is the specific content of the SMS message.'
             }
         };
 
         this.context.startAbilityForResult(want).then((data) => {
-            console.info("Success" + JSON.stringify(data));
+            console.info('Success' + JSON.stringify(data));
         }).catch(() => {
-            console.error("error");
+            console.error('error');
         });
     }
 
@@ -160,7 +152,6 @@ struct JumpMessage {
         .height('100%')
     }
 }
-
 ```
 
 ## Redirecting to the SMS Message Editing Page in SMS Mode
@@ -178,11 +169,8 @@ sms:106XXXXXXXXXX?body=SMS message content
 ```
 
 + `sms:`: SMS scheme, which is mandatory.
-
 + `106XXXXXXXXXX`: recipient number, which is optional. If there are multiple addresses, separate them with commas (,).
-
 + `?`: start declaration character of the SMS message content. This parameter is mandatory if the SMS message content is present.
-
 + `body-value`: SMS message content, which is optional.
 
 ### Developing a Caller Application
@@ -201,7 +189,9 @@ In actual development, replace the recipient number with the actual number. The 
 
 Pass the sms string to the **uri** parameter. In the application, the context can be obtained through **this.getUIContext().getHostContext()** for a page and through **this.context** for an ability.
 
-```ts
+<!-- @[SmsService_Web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_Web/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Sample code
 import { common, Want } from '@kit.AbilityKit';
 
@@ -211,10 +201,10 @@ struct Index {
 
   build() {
     Column() {
-      Button ('Send SMS')
+      Button('Send SMS')
         .onClick(() => {
           let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-          let exampleUrl = "sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9";
+          let exampleUrl = 'sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9';
         
           let want: Want = {
               bundleName: 'com.ohos.mms',
@@ -223,9 +213,9 @@ struct Index {
             }
         
           context.startAbility(want).then((data) => {
-              console.info("Success" + JSON.stringify(data));
+              console.info('Success' + JSON.stringify(data));
           }).catch(() => {
-              console.error("error");
+              console.error('error');
           });
 
         })
