@@ -183,7 +183,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | async_stack_enable | bool | 是否抓取异步栈。<br/>true：表示开启抓取异步栈功能。<br/>false：表示关闭抓取异步栈功能。 | 默认为false。<br/>**说明**：从API version 24开始，支持该参数。|
 | async_type | AsyncFlagType | 当前系统支持的异步栈类型。 | async_stack_enable为true时，该参数才有效。<br/>默认抓取所有的异步栈。当前支持的类型见表[async_type参数介绍](#async_type参数介绍)。<br/>**说明**：从API version 24开始，支持该参数。|
 | discard_destroyed_traces | bool | 是否丢弃已释放内存的调用栈数据。<br>true：尽量丢弃已释放的调用栈数据，保留未释放的调用栈数据；<br>false：保留全部申请和释放内存调用栈数据。<br>默认为false。 | 设置为true时，可减少被调优应用的性能影响。<br>注意：<br>此功能仅在统计周期或文件缓存周期内生效，本插件会尽量匹配并丢弃已释放内存的调用栈数据；如果数据已持久化，则无法丢弃。<br>在共享内存模式（use_file_cache_mode为false）与详情模式（statistics_interval为0）同时开启的场景下，将无法丢弃已释放内存调用栈数据。<br>**说明**：从API版本26.0.0开始，支持该参数。|
-| native_orphansnapshots_enable | bool | 是否开启NativeLeaks（采集不可达内存数据）特性。<br>true：表示开启NativeLeaks特性；<br>false：表示关闭NativeLeaks特性。<br>默认为false。 | 开启NativeLeaks特性后，在调优结束时会将调优期间未释放的堆内存地址信息生成不可达内存快照文件，保存至/data/local/tmp/memleak-native-orphansnapshot-&lt;pid&gt;.txt中，文件名中的pid为目标进程的进程ID，startup_mode为true时pid为0。<br>该快照文件为二进制格式，记录了调优期间未释放的堆内存分配地址和大小。可将快照文件与调优htrace文件配合使用，精确定位可疑泄漏内存的调用栈。<br>每次调优开始时会自动清理上一次的不可达内存快照文件。<br>**说明**：从API版本26.0.0开始，支持该参数。|
+| native_orphansnapshots_enable | bool | 是否开启NativeLeaks（采集不可达内存数据）特性。<br>true：表示开启NativeLeaks特性。<br>false：表示关闭NativeLeaks特性。<br>默认为false。 | 开启NativeLeaks特性后，在调优结束时会将调优期间未释放的堆内存地址信息生成不可达内存快照文件，保存至/data/local/tmp/memleak-native-orphansnapshot-&lt;pid&gt;.txt中，文件名中的pid为目标进程的进程ID，startup_mode为true时pid为0。<br>该快照文件为二进制格式，记录了调优期间未释放的堆内存分配地址和大小。可将该快照文件与调优htrace文件配合使用，精确定位可疑泄漏内存的调用栈。<br>每次调优开始时会自动清理上一次的不可达内存快照文件。<br>**说明**：从API版本26.0.0开始，支持该参数。|
 
 ### restrace_tag参数介绍
 
@@ -1359,7 +1359,7 @@ CONFIG
 
 ### 开启NativeLeaks特性
 
-从API版本26.0.0开始支持NativeLeaks（采集不可达内存数据）特性。开启NativeLeaks特性后，在调优结束时会将调优期间未释放的堆内存分配信息生成不可达内存快照文件，保存至/data/local/tmp/memleak-native-orphansnapshot-&lt;pid&gt;.txt中。其中pid为目标进程的进程ID，startup_mode为true时pid为0。
+从API版本26.0.0开始支持NativeLeaks（采集不可达内存数据）特性。开启NativeLeaks特性后，在调优结束时会将调优期间未释放的堆内存分配信息生成不可达内存快照文件，保存至/data/local/tmp/memleak-native-orphansnapshot-&lt;pid&gt;.txt中。文件名中的pid为目标进程的进程ID，startup_mode为true时pid为0。
 
 > **说明：**
 >
