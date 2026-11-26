@@ -74,7 +74,7 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | 否 | - | 宫格视图进入到大图视图、大图浏览切换时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | onError<sup>23+</sup> | [ErrorCallback](#errorcallback23) | 否 | - | 使用图片选择器组件发生错误时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | onPhotoBrowserZoom| [PhotoBrowserZoomCallback](#photobrowserzoomcallback) | 否 | - | 图片选择器组件进入大图后，双指放大缩小时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0 |
-| onUnselectableItemClicked| [UnselectableItemClickedCallback](#unselectableitemclickedcallback) | 否 | - | 在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.1.0 |
+| onUnselectableItemClicked| [UnselectableItemClickedCallback](#unselectableitemclickedcallback) | 否 | - | 在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.1 |
 
 ## PickerOptions
 
@@ -895,7 +895,7 @@ completed(): Promise\<CompletedResult>
 | isRepeatSelectSupported         | boolean                         | 否   | 是 | 是否支持单张图片重复选择。<br>true表示支持，false表示不支持。当不设置该参数时，默认为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | preselectedUris | Array&lt;string&gt;                             | 否   | 是 | 预选择图片的URI列表。数组长度受[BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions).maxSelectNumber、[BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions).maxPhotoSelectNumber和[BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions).maxVideoSelectNumber共同限制，取值范围[0, 500]，默认50，否则超出部分不生效。若不配置，则默认不预选择任何图片。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | checkBoxColor                   | string                          | 否  | 是 | 勾选框的背景色。<br>格式为8位十六进制颜色代码。 <br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                                  |
-| backgroundColor                 | string                          | 否  | 是 | 图片选择器组件宫格页面背景色。格式为8位十六进制颜色代码。前2位表示透明度，后6位表示RGB颜色值。<br>示例：'#FFFFFFFF'表示白色不透明背景。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| backgroundColor                 | string                          | 否  | 是 | 图片选择器组件宫格页面背景色。格式为8位十六进制颜色代码。前2位表示透明度，后6位表示RGB颜色值。<br>示例：'#FFFFFFFF'表示白色不透明背景。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                           |
 | checkboxTextColor               | string                          | 否  | 是 | 勾选框内文本颜色。<br>格式为8位十六进制颜色代码。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode) | 否  | 是 | 大图背景颜色。<br>包括跟随系统、浅色模式以及深色模式，默认为跟随系统。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                                      |
 | uiComponentColorMode            | [PickerColorMode](#pickercolormode) | 否  | 是 | Picker UI组件的颜色模式。<br>图片选择器组件宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性设置为PickerColorMode.LIGHT时，一般不与深颜色的backgroundColor搭配；设置为PickerColorMode.DARK时，不与浅颜色的backgroundColor搭配，避免出现组件背景或文字无法看清楚的问题。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
