@@ -311,7 +311,7 @@ try {
 
 getSystemTrustedCertificateList(certAlg: CertAlgorithm): Promise\<CMResult>
 
-获取系统信任的CA证书列表，仅证书管理应用调用。使用Promise异步回调。
+获取系统信任的CA证书列表。此接口仅供证书管理应用调用。该接口使用promise返回结果。
 
 **起始版本：** 26.1.0
 
@@ -327,7 +327,7 @@ getSystemTrustedCertificateList(certAlg: CertAlgorithm): Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| certAlg | [CertAlgorithm](js-apis-certManager.md#certalgorithm20) | 是   | 表示系统根证书库的证书算法类型。海外设备不支持SM算法。 |
+| certAlg | [CertAlgorithm](js-apis-certManager.md#certalgorithm20) | 是   | 该参数表示系统根证书库的证书算法类型。海外设备不支持SM算法。 |
 
 **返回值**：
 
@@ -1167,7 +1167,7 @@ CMResult的公开字段参见[CMResult](js-apis-certManager.md#cmresult)，以�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| certStoreInfo | [CertStoreInfo](#certstoreinfo) | 否 | 是 | 表示证书库信息。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| certStoreInfo | [CertStoreInfo](#certstoreinfo) | 否 | 是 | 证书库信息。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CertStoreInfo
 
