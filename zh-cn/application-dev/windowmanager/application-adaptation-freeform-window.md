@@ -59,6 +59,34 @@ export default class EntryAbility extends UIAbility {
       try {
         let windowLimits: window.WindowLimits = {
           maxWidth: 800,
+          maxHeight: 600,
+          minWidth: 600,
+          minHeight: 500
+        };
+        let promise = windowClass.setWindowLimits(windowLimits);
+        promise.then((data) => {
+          console.info('Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
+- 应用在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定主窗口尺寸限制。  
+
+  minWindowWidth：窗口的最小宽度，单位为vp。
+
+  minWindowHeight：窗口的最小高度，单位为vp。
+
+  maxWindowWidth：窗口的最大宽度，单位为vp。
+
+  maxWindowHeight：窗口的最大高度，单位为vp。
+
   <!-- @[freeWindow_setWindowLimitsByStartOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByStartOptions/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
@@ -99,6 +127,31 @@ export default class EntryAbility extends UIAbility {
                   // 执行正常业务
                   console.info('startAbility succeed');
                 });
+              } catch (err) {
+                // 处理入参错误异常
+                let code = (err as BusinessError).code;
+                let message = (err as BusinessError).message;
+                console.error(`startAbility failed, code is ${code}, message is ${message}`);
+              }
+            })
+        }
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制主窗口处于自由窗口状态下的最大和最小尺寸。
+
+  maxWindowWidth：当前UIAbility组件支持的最大的窗口宽度，单位为vp。
+
+  minWindowWidth：当前UIAbility组件支持的最小的窗口宽度，单位为vp。
+
+  maxWindowHeight：当前UIAbility组件支持的最大的窗口高度，单位为vp。
+
+  minWindowHeight：当前UIAbility组件支持的最小的窗口高度，单位为vp。
+
   <!-- @[freeWindow_setWindowLimitsByModuleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByModuleJson5/entry/src/main/module.json5) -->
   
   ``` JSON5
@@ -189,24 +242,60 @@ export default class EntryAbility extends UIAbility {
     }
   }
   ```
-                // 处理入参错误异常
-                let code = (err as BusinessError).code;
-                let message = (err as BusinessError).message;
-                console.error(`startAbility failed, code is ${code}, message is ${message}`);
-              }
-            })
-        }
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-  ```
-          minWidth: 600,
-          minHeight: 500
-        };
-        let promise = windowClass.setWindowLimits(windowLimits);
-        promise.then((data) => {
+
+> **说明：**
+> 
+> - 如果开发者希望针对不同设备类型配置不同的最小值，可通过[多HAP工程](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-modular-design#section1260019161216)实现。
+> 
+> - 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为：
+>
+>   1. 应用通过[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)设置自由窗口尺寸限制。
+>
+>   2. 应用使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定自由窗口尺寸限制。
+>
+>   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制自由窗口的最大和最小尺寸。
+>
+>   4. 默认系统限制（对于不同产品和窗口类型，windowLimits系统默认限制存在差异）。
+> 
+> - 自由窗口状态下，主窗口可通过[setAspectRatio(ratio: number)](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10)设置窗口内容布局的比例，如果先设置了[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码401；如果先设置了ratio，后设置的[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。
+
+## 调整布局避让标题栏和窗口三键
+
+自由窗口状态下，应用根据窗口尺寸动态布局时，如果适配得当，可让页面元素合理显示，还能解决不同设备上的兼容性问题。
+
+但需注意，自由窗口状态下窗口尺寸包含了标题栏区域和窗口内的可绘制区域，当需要计算页面元素相对于窗口的位置时，需要考虑避让标题栏。
+
+**标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域。
+
+示意图中，windowRect为窗口尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；drawableRect为可绘制区域尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number；w为窗口宽度，类型为number，单位为px；h为窗口高度，类型为number，单位为px。
+
+![window](figures/window.png)
+
+典型场景及对应方案如下：
+
+如果应用页面底部是固定高度的功能按钮，在计算底部功能按钮位置时，若只用窗口高度减去底部功能按钮高度，则会导致底部功能按钮向下偏移一个标题栏高度的位置，从而出现显示不全的情况。
+
+有以下三种方式解决以上问题：
+- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11)获取，单位为vp。
+
+- 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
+
+- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
+
+**窗口三键**是指窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。
+
+如果应用希望在窗口内有更大的可绘制区域，可以通过隐藏标题栏，并适配窗口三键的位置和尺寸。
+
+![button](figures/button.png)
+
+典型场景及对应方案如下：
+
+应用在页面顶部绘制与窗口三键并排的自定义工具栏或者是页签栏，可以按以下步骤进行适配。
+
+1. 通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏标题栏。
+
+2. 通过[getTitleButtonRect()](../reference/apis-arkui/arkts-apis-window-Window.md#gettitlebuttonrect11)接口或[on('windowTitleButtonRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowtitlebuttonrectchange11)接口获取到窗口三键的位置和尺寸，在页面顶部元素布局时，去除窗口三键的区域。
+
 <!-- @[freeWindow_avoidWindowTitleButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/AvoidWindowTitleButton/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -326,95 +415,6 @@ struct Index {
   }
 }
 ```
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
-
-- 应用在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定主窗口尺寸限制。  
-
-  minWindowWidth：窗口的最小宽度，单位为vp。
-
-  minWindowHeight：窗口的最小高度，单位为vp。
-
-  maxWindowWidth：窗口的最大宽度，单位为vp。
-
-  maxWindowHeight：窗口的最大高度，单位为vp。
-
-  <!-- @[freeWindow_setWindowLimitsByStartOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByStartOptions/entry/src/main/ets/pages/Index.ets) -->
-
-- 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制主窗口处于自由窗口状态下的最大和最小尺寸。
-
-  maxWindowWidth：当前UIAbility组件支持的最大的窗口宽度，单位为vp。
-
-  minWindowWidth：当前UIAbility组件支持的最小的窗口宽度，单位为vp。
-
-  maxWindowHeight：当前UIAbility组件支持的最大的窗口高度，单位为vp。
-
-  minWindowHeight：当前UIAbility组件支持的最小的窗口高度，单位为vp。
-
-  <!-- @[freeWindow_setWindowLimitsByModuleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByModuleJson5/entry/src/main/module.json5) -->
-
-> **说明：**
-> 
-> - 如果开发者希望针对不同设备类型配置不同的最小值，可通过[多HAP工程](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-modular-design#section1260019161216)实现。
-> 
-> - 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为：
->
->   1. 应用通过[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)设置自由窗口尺寸限制。
->
->   2. 应用使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定自由窗口尺寸限制。
->
->   3. 使用[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制自由窗口的最大和最小尺寸。
->
->   4. 默认系统限制（对于不同产品和窗口类型，windowLimits系统默认限制存在差异）。
-> 
-> - 自由窗口状态下，主窗口可通过[setAspectRatio(ratio: number)](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10)设置窗口内容布局的比例，如果先设置了[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)，后设置的ratio与其冲突，会返回错误码401；如果先设置了ratio，后设置的[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)与其冲突，窗口的宽高比可能会不跟随设置的宽高比（ratio）。
-
-## 调整布局避让标题栏和窗口三键
-
-自由窗口状态下，应用根据窗口尺寸动态布局时，如果适配得当，可让页面元素合理显示，还能解决不同设备上的兼容性问题。
-
-但需注意，自由窗口状态下窗口尺寸包含了标题栏区域和窗口内的可绘制区域，当需要计算页面元素相对于窗口的位置时，需要考虑避让标题栏。
-
-**标题栏**是指窗口左上角的应用图标、标题以及与窗口等宽的顶部区域。
-
-示意图中，windowRect为窗口尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；drawableRect为可绘制区域尺寸，类型为[Rect](../reference/apis-arkui/arkts-apis-window-i.md#rect7)；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number；w为窗口宽度，类型为number，单位为px；h为窗口高度，类型为number，单位为px。
-
-![window](figures/window.png)
-
-典型场景及对应方案如下：
-
-如果应用页面底部是固定高度的功能按钮，在计算底部功能按钮位置时，若只用窗口高度减去底部功能按钮高度，则会导致底部功能按钮向下偏移一个标题栏高度的位置，从而出现显示不全的情况。
-
-有以下三种方式解决以上问题：
-- 当应用按照窗口尺寸进行布局时，页面元素的Y轴坐标需额外减去标题栏高度，标题栏高度可通过接口[getWindowDecorHeight()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowdecorheight11)获取，单位为vp。
-
-- 通过接口[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取窗口内的可绘制区域尺寸进行布局。
-
-- 通过接口[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)隐藏标题栏，实现自由窗口的[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
-
-**窗口三键**是指窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。
-
-如果应用希望在窗口内有更大的可绘制区域，可以通过隐藏标题栏，并适配窗口三键的位置和尺寸。
-
-![button](figures/button.png)
-
-典型场景及对应方案如下：
-
-应用在页面顶部绘制与窗口三键并排的自定义工具栏或者是页签栏，可以按以下步骤进行适配。
-
-1. 通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏标题栏。
-
-2. 通过[getTitleButtonRect()](../reference/apis-arkui/arkts-apis-window-Window.md#gettitlebuttonrect11)接口或[on('windowTitleButtonRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowtitlebuttonrectchange11)接口获取到窗口三键的位置和尺寸，在页面顶部元素布局时，去除窗口三键的区域。
-
-<!-- @[freeWindow_avoidWindowTitleButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/AvoidWindowTitleButton/entry/src/main/ets/pages/Index.ets) -->
 
 示例代码效果图如下：
 
