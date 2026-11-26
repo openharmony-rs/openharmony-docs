@@ -311,7 +311,7 @@ try {
 
 getSystemTrustedCertificateList(certAlg: CertAlgorithm): Promise\<CMResult>
 
-获取系统信任的CA证书列表。此接口仅供证书管理应用调用。该接口使用promise返回结果。
+获取系统信任的CA证书列表。此接口仅供证书管理应用调用。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
