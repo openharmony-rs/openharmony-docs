@@ -99,7 +99,96 @@ export default class EntryAbility extends UIAbility {
                   // 执行正常业务
                   console.info('startAbility succeed');
                 });
-              } catch (err) {
+  <!-- @[freeWindow_setWindowLimitsByModuleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByModuleJson5/entry/src/main/module.json5) -->
+  
+  ``` JSON5
+  {
+    "module": {
+      "name": "entry",
+      "type": "entry",
+      "description": "$string:module_desc",
+      "mainElement": "EntryAbility",
+      "deviceTypes": [
+        "phone",
+        "tablet",
+        "2in1"
+      ],
+      "deliveryWithInstall": true,
+      "installationFree": false,
+      "pages": "$profile:main_pages",
+      "abilities": [
+        {
+          "name": "EntryAbility",
+          "srcEntry": "./ets/entryability/EntryAbility.ets",
+          "launchType": "singleton",
+          "description": "$string:description_main_ability",
+          "icon": "$media:layered_image",
+          "label": "$string:EntryAbility_label",
+          "permissions": [],
+          "metadata": [],
+          "exported": true,
+          "continuable": true,
+          "skills": [
+            {
+              "actions": [
+                "ohos.want.action.home"
+              ],
+              "entities": [
+                "entity.system.home"
+              ],
+              "uris": []
+            }
+          ],
+          "backgroundModes": [
+            "dataTransfer"
+          ],
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:red",
+          "removeMissionAfterTerminate": true,
+          "allowSelfRedirect": true,  // 从API version 23开始，支持该标签
+          "orientation": "$string:orientation",
+          "supportWindowMode": [
+            "fullscreen",
+            "split",
+            "floating"
+          ],
+          "maxWindowRatio": 3.5,
+          "minWindowRatio": 0.5,
+          "maxWindowWidth": 2560,
+          "minWindowWidth": 400,
+          "maxWindowHeight": 1300,
+          "minWindowHeight": 200,
+          "excludeFromMissions": false,
+          "preferMultiWindowOrientation": "default",
+          "isolationProcess": false,
+          "continueType": [
+            "continueType1",
+            "continueType2"
+          ],
+          "continueBundleName": [
+            "com.example.myapplication1",
+            "com.example.myapplication2"
+          ],
+          "process": ":processTag"
+        }
+      ],
+      "extensionAbilities": [
+        {
+          "name": "EntryBackupAbility",
+          "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
+          "type": "backup",
+          "exported": false,
+          "metadata": [
+            {
+              "name": "ohos.extension.backup",
+              "resource": "$profile:backup_config"
+            }
+          ],
+        }
+      ]
+    }
+  }
+  ```
                 // 处理入参错误异常
                 let code = (err as BusinessError).code;
                 let message = (err as BusinessError).message;
