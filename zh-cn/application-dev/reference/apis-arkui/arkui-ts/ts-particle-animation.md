@@ -676,7 +676,7 @@ type Vector2T\<T> = import('../api/arkui/Graphics').Vector2T\<T>
 
 ## PositionT\<T><sup>12+</sup>
 
-type PositionT\<T> = import('../api/arkui/Graphics').Position\<T>
+type PositionT\<T> = import('../api/arkui/Graphics').PositionT\<T>
 
 用于设置或返回组件的位置。
 
