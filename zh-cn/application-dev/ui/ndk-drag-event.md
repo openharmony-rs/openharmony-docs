@@ -518,7 +518,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 4. 配置落入节点。
 
-   通过[OH_ArkUI_SetNodeAllowedDropDataTypes](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodealloweddropdatatypes)配置接收节点，并注册[NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
+   通过[OH_ArkUI_SetNodeAllowedDropDataTypes](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodealloweddropdatatypes)配置落入节点，并注册[NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件。
 
    <!-- @[virtual_drag_c_drop_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/VirtualFileDrag_C/entry/src/main/cpp/napi_init.cpp) -->
    

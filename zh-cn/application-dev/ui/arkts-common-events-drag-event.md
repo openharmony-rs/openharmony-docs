@@ -2157,7 +2157,7 @@ struct GridEts {
 
 ### 虚拟文件拖拽
 
-从API版本26.1.0开始，支持通过[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri15)提供虚拟文件拖拽能力。网络文件尚未完整下载、压缩包内文件尚未解压时，起拖方可以先提供文件信息，在落入方读取时提供文件内容。
+从API版本26.1.0开始，支持通过[FileUri.virtualEntry](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#fileuri15)提供虚拟文件拖拽能力。起拖方先声明文件信息，在落入方读取时提供内容，适用于网络文件尚未完整下载、压缩内容尚未解压等场景。
 
 以下以拖拽文件或目录为例，介绍虚拟文件拖拽的实现步骤。
 
