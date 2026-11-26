@@ -28743,6 +28743,16 @@
 						"start_line":511
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":33,
+						"name":"hicoliesub_cmake_code",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -51953,6 +51963,16 @@
 						"start_line":333
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"eventsub_cmake_code",
+						"start_line":14
+					}
+				]
 			}
 		]
 	},
@@ -53270,6 +53290,16 @@
 						"start_line":832
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"eventsub_cmake_code",
+						"start_line":14
+					}
+				]
 			}
 		]
 	},
@@ -53288,6 +53318,11 @@
 						"end_line":417,
 						"name":"FreezeEvent_ArkTS_Add_Watcher",
 						"start_line":346
+					},
+					{
+						"end_line":43,
+						"name":"Appfreeze_Click_ArkTS_Header",
+						"start_line":19
 					}
 				]
 			},
@@ -53368,6 +53403,16 @@
 						"end_line":569,
 						"name":"AppfreezeEvent_Button",
 						"start_line":553
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"eventsub_cmake_code",
+						"start_line":14
 					}
 				]
 			}
@@ -55833,6 +55878,211 @@
 						"end_line":81,
 						"name":"input_case_input_shift_focus_to_main_window",
 						"start_line":63
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hicollie-guidelines-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"hicollie_cmake_code",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"hicollie_NapiInit_JankDetection_Inc",
+						"start_line":20
+					},
+					{
+						"end_line":52,
+						"name":"hicollie_NapiInit_JankDetection_BeginEnd_Func",
+						"start_line":48
+					},
+					{
+						"end_line":76,
+						"name":"hicollie_NapiInit_JankDetection_Init_BeginEnd_Func",
+						"start_line":53
+					},
+					{
+						"end_line":118,
+						"name":"hicollie_NapiInit_JankDetection_Test",
+						"start_line":77
+					},
+					{
+						"end_line":362,
+						"name":"hicollie_NapiInit_JankDetection_Init",
+						"start_line":325
+					},
+					{
+						"end_line":383,
+						"name":"hicollie_NapiInit_demoModule",
+						"start_line":368
+					},
+					{
+						"end_line":43,
+						"name":"hicollie_NapiInit_StuckDetection_Inc",
+						"start_line":19
+					},
+					{
+						"end_line":135,
+						"name":"hicollie_NapiInit_StuckDetection_BlockTime_Flag",
+						"start_line":121
+					},
+					{
+						"end_line":179,
+						"name":"hicollie_NapiInit_StuckDetection_Report_Set_Timer",
+						"start_line":139
+					},
+					{
+						"end_line":200,
+						"name":"hicollie_NapiInit_StuckDetection_Test",
+						"start_line":182
+					},
+					{
+						"end_line":363,
+						"name":"hicollie_NapiInit_StuckDetection_Init",
+						"start_line":324
+					},
+					{
+						"end_line":44,
+						"name":"hicollie_NapiInit_StuckDetectionWithTimeout_Inc",
+						"start_line":18
+					},
+					{
+						"end_line":136,
+						"name":"hicollie_NapiInit_StuckDetectionWithTimeout_BlockTime_Flag",
+						"start_line":120
+					},
+					{
+						"end_line":252,
+						"name":"hicollie_NapiInit_StuckDetectionWithTimeout_Report_Set_Timer",
+						"start_line":213
+					},
+					{
+						"end_line":274,
+						"name":"hicollie_NapiInit_StuckDetectionWithTimeout_Test",
+						"start_line":254
+					},
+					{
+						"end_line":364,
+						"name":"hicollie_NapiInit_StuckDetectionWithTimeout_Init",
+						"start_line":323
+					},
+					{
+						"end_line":45,
+						"name":"hicollie_NapiInit_InputBlock_Inc",
+						"start_line":17
+					},
+					{
+						"end_line":137,
+						"name":"hicollie_NapiInit_InputBlock_BlockTime_Flag",
+						"start_line":119
+					},
+					{
+						"end_line":180,
+						"name":"hicollie_NapiInit_InputBlock_Report_Set_Timer",
+						"start_line":138
+					},
+					{
+						"end_line":211,
+						"name":"hicollie_NapiInit_InputBlock_Test",
+						"start_line":181
+					},
+					{
+						"end_line":365,
+						"name":"hicollie_NapiInit_InputBlock_Init",
+						"start_line":322
+					},
+					{
+						"end_line":46,
+						"name":"hicollie_NapiInit_Callback_Inc",
+						"start_line":16
+					},
+					{
+						"end_line":319,
+						"name":"hicollie_NapiInit_Callback_Test",
+						"start_line":276
+					},
+					{
+						"end_line":366,
+						"name":"hicollie_NapiInit_Callback_Init",
+						"start_line":321
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":18,
+						"name":"hicollie_Index_d_ts_JankDetection",
+						"start_line":16
+					},
+					{
+						"end_line":27,
+						"name":"hicollie_Index_d_ts_StuckDetection",
+						"start_line":25
+					},
+					{
+						"end_line":22,
+						"name":"hicollie_Index_d_ts_StuckDetectionWithTimeout",
+						"start_line":20
+					},
+					{
+						"end_line":29,
+						"name":"hicollie_Index_d_ts_InputBlock",
+						"start_line":24
+					},
+					{
+						"end_line":34,
+						"name":"hicollie_Index_d_ts_Callback",
+						"start_line":31
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":104,
+						"name":"hicollie_Index_ets_IndexStruct",
+						"start_line":16
+					},
+					{
+						"end_line":37,
+						"name":"hicollie_Index_ets_JankDetection",
+						"start_line":27
+					},
+					{
+						"end_line":48,
+						"name":"hicollie_Index_ets_StuckDetection",
+						"start_line":38
+					},
+					{
+						"end_line":59,
+						"name":"hicollie_Index_ets_StuckDetectionWithTimeout",
+						"start_line":49
+					},
+					{
+						"end_line":77,
+						"name":"hicollie_Index_ets_InputBlock",
+						"start_line":60
+					},
+					{
+						"end_line":95,
+						"name":"hicollie_Index_ets_Callback",
+						"start_line":78
 					}
 				]
 			}
