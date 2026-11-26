@@ -1,9 +1,9 @@
 # @ohos.file.storageStatistics (应用空间统计)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @gzhuangzhuang-->
-<!--Designer: @renguang1116; @wang_zhangjun-->
-<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @renguang1116-->
+<!--Tester: @zsyztt; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供应用空间统计相关的常用功能，包括：对内置存储和外置存储设备的空间查询、对应用分类数据统计的查询、对应用数据的查询、对系统数据空间大小的查询、对系统应用或系统服务空间占用的上报与查询，以及对用户设备目录空间占用详情的查询等。适用于系统应用中需要在“设置-存储”界面展示空间占用详情或进行存储空间管理的场景。
