@@ -69,6 +69,7 @@
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
+   # 新增动态库依赖libohhicollie.so（HiCollie对外检测接口）
    target_link_libraries(entry PUBLIC libohhicollie.so)
    ```
 
