@@ -65,3 +65,31 @@ type CreateNativeMediaPlayerCallback = (handler: NativeMediaPlayerHandler, media
 **示例：**
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
+
+## OnQueryWebSiteConfigCallback
+
+type OnQueryWebSiteConfigCallback = (params: WebSiteConfigParams) => WebSiteConfigResult
+
+[setWebSiteConfigCallback](./arkts-apis-webview-WebviewController.md#setwebsiteconfigcallback)或[setGlobalWebSiteConfigCallback](./arkts-apis-webview-WebviewController.md#setglobalwebsiteconfigcallback)注册的站点配置查询回调，ArkWeb内核通过该回调获取站点配置。通过Web组件级回调触发时，[WebSiteConfigParams](./arkts-apis-webview-i.md#websiteconfigparams)的所有可选字段均会填充；通过全局站点配置查询回调触发时，仅填充url和source字段。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| params | [WebSiteConfigParams](./arkts-apis-webview-i.md#websiteconfigparams) | 是 | 站点配置查询参数，包含请求URL及触发查询的来源。可选字段仅在Web组件级回调触发时填充。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [WebSiteConfigResult](./arkts-apis-webview-i.md#websiteconfigresult) | 回调的返回结果，表示应用向ArkWeb内核提供的站点配置。 |
+
+**示例：**
+
+完整示例代码参考[setWebSiteConfigCallback](./arkts-apis-webview-WebviewController.md#setwebsiteconfigcallback)和[setGlobalWebSiteConfigCallback](./arkts-apis-webview-WebviewController.md#setglobalwebsiteconfigcallback)。

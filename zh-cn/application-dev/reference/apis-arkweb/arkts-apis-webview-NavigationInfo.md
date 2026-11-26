@@ -26,7 +26,7 @@
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | url | string | 否 | 否 | 导航请求的URL。在willRedirectRequest阶段为重定向目标URL；在willFailRequest阶段为失败导航的URL。 |
-| pageTransition | number | 否 | 否 | 页面跳转值，由`webview.PageTransition`中定义的核心类型与修饰标志按位或得到。可使用掩码常量（`CORE_MASK`、`QUALIFIER_MASK`、`IS_REDIRECT_MASK`）进行拆解。 |
+| pageTransition | number | 否 | 否 | 页面跳转值，由`webview.PageTransition`中定义的核心类型与修饰标志按位或得到。可使用掩码常量（`CORE_MASK`、`QUALIFIER_MASK`）进行拆解。 |
 | isMainFrame | boolean | 否 | 否 | 导航是否发生在主框架。为false时表示子框架（iframe）导航，主框架文档不变。 |
 | hasUserGesture | boolean | 否 | 否 | 导航是否由用户手势（触摸、点击等真实手势）触发。通过JavaScript修改location.href等程序化跳转为false。 |
 | isRedirect | boolean | 否 | 否 | 导航是否处于服务端重定向链中。仅在willRedirectRequest阶段为true，其余阶段为false。 |
