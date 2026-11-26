@@ -2956,6 +2956,119 @@ try {
 }
 ```
 
+## securityManager.getCredentialId
+
+getCredentialId(authToken: Uint8Array, allowableDuration: number): Promise&lt;bigint&gt;
+
+解析认证令牌，并获取用户凭据ID（如人脸、指纹ID等）。企业可通过本接口获取用户凭据ID，用于企业设备安全审计、身份核验等场景。使用Promise异步回调。
+
+> **说明：**
+>
+> 本接口返回的用户凭据ID为系统用户认证框架签发的数字ID，与[getUserExtendCredential](#securitymanagergetuserextendcredential)返回的用户扩展凭据信息中的credentialId（Uint8Array类型）含义不同，请注意区分。
+>
+> 用户凭据ID涉及用户的敏感信息，请遵循隐私合规要求，在告知用户并获得授权后使用，并对用户凭据ID进行加密存储和安全传输，避免泄露。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| authToken | Uint8Array | 是 | 认证令牌，用户通过人脸、指纹等认证成功后由[用户认证](../apis-user-authentication-kit/js-apis-useriam-userauth.md)模块签发。最大长度为1024字节。 |
+| allowableDuration | number | 是 | 解析认证令牌的有效时长，单位为毫秒。取值需大于0且小于等于86400000。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;bigint&gt; | Promise对象，返回用户凭据ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201057  | Invalid authentication token. |
+| 9201058  | The authentication token parsing duration is out of the allowed range. |
+
+**示例：**
+
+```ts
+import { userAuth } from '@kit.UserAuthenticationKit';
+import { securityManager } from '@kit.MDMKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 先调用用户认证模块完成用户认证并获取authToken，再调用getCredentialId接口获取用户凭据ID。
+
+/**
+ * 步骤1：调用认证模块接口完成用户认证，获取authToken。
+ */
+function getAuthToken(): Promise<Uint8Array> {
+  return new Promise<Uint8Array>((resolve, reject) => {
+    try {
+      // 步骤1.1：设置认证参数。challenge为随机数，长度不超过32字节，用于防重放攻击。
+      const challenge: Uint8Array = cryptoFramework.createRandom().generateRandomSync(16).data;
+      const authParam: userAuth.AuthParam = {
+        challenge: challenge,
+        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL3
+      };
+      // 步骤1.2：配置认证界面。
+      const widgetParam: userAuth.WidgetParam = {
+        title: '身份认证'
+      };
+      // 步骤1.3：获取认证对象。
+      const userAuthInstance: userAuth.UserAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+      // 步骤1.4：订阅认证结果。
+      userAuthInstance.on('result', {
+        onResult: (result: userAuth.UserAuthResult) => {
+          userAuthInstance.off('result');
+          if (result.result === userAuth.UserAuthResultCode.SUCCESS && result.token !== undefined) {
+            resolve(result.token);
+          } else {
+            reject(new Error(`Authentication failed. result: ${result.result}`));
+          }
+        }
+      });
+      // 步骤1.5：启动认证。
+      userAuthInstance.start();
+    } catch (error) {
+      reject(error as BusinessError);
+    }
+  });
+}
+
+/**
+ * 步骤2：使用authToken调用getCredentialId获取用户凭据ID。
+ */
+async function queryCredentialId(): Promise<void> {
+  try {
+    // 步骤2.1：获取authToken。
+    const authToken: Uint8Array = await getAuthToken();
+    // 步骤2.2：设置allowableDuration并调用getCredentialId接口。allowableDuration单位为毫秒，取值范围(0, 86400000]。
+    const allowableDuration: number = 60000;
+    const credentialId: bigint = await securityManager.getCredentialId(authToken, allowableDuration);
+    // 步骤2.3：用户凭据ID涉及敏感信息，实际开发中请勿打印明文。
+    console.info('Succeeded in getting credentialId.');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to get credentialId. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
 ## CertBlob
 
 证书信息。

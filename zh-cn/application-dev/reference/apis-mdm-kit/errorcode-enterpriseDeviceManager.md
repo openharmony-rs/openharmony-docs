@@ -1441,3 +1441,41 @@ Invalid external storage mount policy.
 **处理步骤**
 
 先将该外置存储设备卸载，再传入相应的挂载策略进行挂载。
+
+## 9201057 认证令牌无效
+
+**错误信息**
+
+Invalid authentication token.
+
+**错误描述**
+
+当传入的认证令牌无效时，会产生此错误码。
+
+**可能原因**
+
+1. 认证令牌已过期。
+2. 认证令牌被篡改或不满足有效格式。
+
+**处理步骤**
+
+1. 认证令牌已过期：请重新调用用户认证模块完成用户认证，获取新的认证令牌后再调用接口。
+2. 认证令牌被篡改或不满足有效格式：请检查传入的认证令牌是否为用户认证模块认证成功后返回的原始令牌。
+
+## 9201058 认证令牌解析时长超出允许范围
+
+**错误信息**
+
+The authentication token parsing duration is out of the allowed range.
+
+**错误描述**
+
+当认证令牌解析时长（即[allowableDuration](js-apis-enterprise-securityManager.md#securitymanagergetcredentialid)）超出允许范围时，会产生此错误码。
+
+**可能原因**
+
+allowableDuration取值超出允许范围。
+
+**处理步骤**
+
+请检查allowableDuration取值，需大于0且小于等于86400000毫秒。
