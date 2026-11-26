@@ -27,7 +27,7 @@
 
 ## 与相关Kit的关系
 
-Agent生成的事件包括系统Agent生成的事件，以及具有ohos.permission.CONTROL_DEVICE权限的应用注入的事件。其中具有权限的应用注入的事件可参考[输入事件注入](../reference/apis-input-kit/js-apis-inputeventclient.md)。
+Agent生成的事件包括系统Agent生成的事件，以及具有ohos.permission.CONTROL_DEVICE权限的应用注入的指定事件。其中具有ohos.permission.CONTROL_DEVICE权限的应用注入的事件包括Input Kit中[输入事件注入](../reference/apis-input-kit/js-apis-inputeventclient.md)文档中的所有事件。
 
 ## 设置Agent输入管控
 
