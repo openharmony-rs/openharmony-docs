@@ -14594,6 +14594,7 @@ async function example(context: Context) {
 | LOCAL_ENHANCEMENT_ABILITY | 'local_enhancement_ability' | 本地AI增强任务类型。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 | LOCAL_ENHANCEMENT_STATUS | 'local_enhancement_status' | 本地AI增强任务状态。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 | PHOTO_VISIBILITY | 'photo_visibility' | 资产的可见性。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| PHOTO_XT_STYLE_TEMPLATE_NUMBER | 'xt_style_template_number' | 相机个性色卡拍照类型。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
