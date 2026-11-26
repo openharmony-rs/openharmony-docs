@@ -48,7 +48,7 @@
   minHeight：窗口的最小高度，默认单位为px。
 
   <!-- @[freeWindow_setWindowLimits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimits/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+  
   ``` TypeScript
   import { UIAbility } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
