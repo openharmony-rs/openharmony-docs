@@ -50,7 +50,7 @@ import { window } from '@kit.ArkUI';
         console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
-      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      let windowClass: window.Window = windowStage.getMainWindowSync();
       if (!windowClass) {
         console.error('windowClass is null');
         return;
@@ -202,7 +202,7 @@ import { createNWeb } from '../pages/Common';
         console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
-      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      let windowClass: window.Window = windowStage.getMainWindowSync();
       if (!windowClass) {
         console.error('windowClass is null');
         return;
@@ -382,7 +382,7 @@ import { window } from '@kit.ArkUI';
         console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
-      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
+      let windowClass: window.Window = windowStage.getMainWindowSync();
       if (!windowClass) {
         console.error('windowClass is null');
         return;
@@ -643,13 +643,11 @@ export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
 
 ``` TypeScript
 onForeground(): void {
-  // Ability has brought to foreground
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
   restoreNWebs()
 }
 
 onBackground(): void {
-  // Ability has back to background
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
   recycleNWebs()
 }
