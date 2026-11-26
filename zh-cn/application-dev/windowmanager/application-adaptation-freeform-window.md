@@ -49,6 +49,34 @@
 
 <!-- @[freeWindow_setWindowLimits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimits/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      let windowClass = windowStage.getMainWindowSync();
+      try {
+        let windowLimits: window.WindowLimits = {
+          maxWidth: 800,
+          maxHeight: 600,
+          minWidth: 600,
+          minHeight: 500
+        };
+        let promise = windowClass.setWindowLimits(windowLimits);
+        promise.then((data) => {
+          console.info('Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
+
 - 应用在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定主窗口尺寸限制。  
 
   minWindowWidth：窗口的最小宽度，单位为vp。
