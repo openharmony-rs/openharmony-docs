@@ -1370,7 +1370,7 @@ httpRequest.off("dataSendProgress");
 | inactivityMs | number | 否 | 是 | 连接池中的连接最大空闲时间，超过该时间后连接将被关闭。单位为毫秒（ms），默认配置值为118秒。系统内部比较时间时会先计算连接空闲时间的差值，然后向下取整到秒，再与配置的值进行比较。<br/>- 取值范围是(0, 2147483647]，传入小于等于0的数值时系统使用默认值118秒。当reuseConnections配置为false时，该参数不生效。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | usingSocks5Proxy | [Socks5Proxy](#socks5proxy) | 否 | 是 | SOCKS5代理配置，该项不配置时不启动SOCKS5代理。<br />当该项被正确配置时，如果同时配置了usingProxy，usingProxy不生效。<br />**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | enablePartialChain | boolean | 否 | 是 | 是否允许在证书链验证时使用信任库中的中间CA证书作为信任锚点。设置为false时，证书链必须逐级验证至受信任的根CA证书。设置为true时，若信任库中存在中间CA证书，则证书链验证到该中间CA时即可视为通过，无需继续追溯至根CA证书。当[SslType](#ssltype20)使用默认值或设置为TLS时，默认值为true；当[SslType](#ssltype20)设置为TLCP时，默认值为false。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| followRedirectPostToGet | boolean | 否 | 是 | 跟随301/302/303重定向时，是否将POST请求转换为GET请求。该选项仅对POST请求生效，收到307/308及其他3xx响应时保持原请求方法和请求体转发，不受此选项约束。<br />- true：转换为GET请求，并丢弃请求体。<br />- false：保持原有行为，不转换请求方法。<br />- 默认值为false。<br/>**起始版本：** 26.1.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| followRedirectPostToGet | boolean | 否 | 是 | 自动跟随301、302或303重定向时，是否将POST请求转换为GET请求。该参数仅对POST请求生效。<br/>- true：转换为GET请求并丢弃请求体。使用拦截器时，还会移除Content-Type和Content-Length请求头。<br/>- false：不转换请求方法，并保留请求体。<br/>- 默认值为false。<br/>- 收到307、308或其他3xx响应时，将保留原请求方法和请求体，不受该参数影响。<br/>- 该参数依据method字段判断请求是否为POST请求。使用customMethod字段自定义POST请求时，需同时将method字段设置为POST。<br/>- 该参数仅在自动跟随重定向时生效。当maxRedirects设置为0（关闭自动重定向），或重定向次数达到上限时，不会转换请求方法，并返回错误码2300047。<br/>**起始版本：** 26.1.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## RequestMethod
 
