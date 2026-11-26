@@ -30,7 +30,7 @@
 | [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md) | OH_AudioConverter | 声明音频格式转换器。<br> 音频格式转换器的句柄用于执行与其相关的功能。 |
 |<!--DelRow--> [OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex-sys.md) | OH_AudioSuite_ConverterFormatEx | 定义扩展音频转换器格式信息结构体。<br>**系统接口：** 此接口为系统接口。 |
 |<!--DelRow--> [OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo-sys.md) | OH_AudioSuite_ConverterInputInfo | 定义音频转换器输入数据结构体。<br>**系统接口：** 此接口为系统接口。 |
-|<!--DelRow--> [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo-sys.md) | OH_AudioSuite_ConverterOutputInfo | 定义音频转换器输出数据结构体，用于直接处理模式接收转换后的音频数据。<br>**系统接口：** 此接口为系统接口。 |
+|<!--DelRow--> [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo-sys.md) | OH_AudioSuite_ConverterOutputInfo | 定义音频转换器输出数据结构体。<br>**系统接口：** 此接口为系统接口。 |
 
 ### 枚举
 
