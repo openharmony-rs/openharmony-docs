@@ -1161,7 +1161,7 @@ try {
 
 ## CMResult
 
-CMResult定义，CMResult其余公开字段参见[CMResult](js-apis-certManager.md#cmresult)。
+表示接口的返回结果。以下为系统接口字段，其余公开字段参见[CMResult](js-apis-certManager.md#cmresult)。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
