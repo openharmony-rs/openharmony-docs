@@ -83,6 +83,7 @@
       - [自定义Native Transferable对象的多线程操作场景](napi-coerce-to-native-binding-object.md)
       - [自定义Native Sendable对象的多线程操作场景](napi-define-sendable-object.md)
       - [Worker常驻线程通过TaskPool进行多任务并发处理](worker-and-taskpool.md)
+      - [Sendable对象改造实践](sendable-trans-guide.md)
   - [并发常见问题](concurrency-faq.md)
 - 并发 (ArkTS-Sta)<!--arkts-sta-concurrency-->
   - [并发概述 (ArkTS-Sta)](arkts-sta-concurrency-overview.md)
