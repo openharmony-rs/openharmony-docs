@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=451e36dee22d047833da6215878b888c723693f0 translatedAt=2026-11-25T08:33:03.494Z pushedAt=2026-11-25T12:02:10.725Z nl=1 -->
+<!-- md-trans-meta sourceCommit=451e36dee22d047833da6215878b888c723693f0 translatedAt=2026-11-25T08:33:03.494Z pushedAt=2026-11-26T00:59:33.384Z nl=1 -->
 
 The **DriverExtensionAbility** module provides the ExtensionAbility related to drivers. It provides lifecycle callbacks to be invoked when a driver is created, destroyed, connected, or disconnected.
 
@@ -53,7 +53,7 @@ Called when a DriverExtensionAbility is created to initialize the service logic.
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| want |  [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Want information related to the wallpaper extension ability, including the ability name and bundle name. |
+| want |  [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Want information related to the driver extension ability, including the ability name and bundle name. |
 
 **Example**
 
@@ -102,7 +102,7 @@ Called following [onCreate](../apis-ability-kit/js-apis-app-ability-abilityStage
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| want |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)| Yes | Want information related to the wallpaper extension ability, including the ability name and bundle name. |
+| want |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)| Yes | Want information related to the driver extension ability, including the ability name and bundle name. |
 
 **Return value**
 
@@ -177,7 +177,7 @@ Called when a client is disconnected from this **DriverExtensionAbility**.
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| want |[Want](../apis-ability-kit/js-apis-app-ability-want.md)| Yes | Want information related to the wallpaper extension ability, including the ability name and bundle name. |
+| want |[Want](../apis-ability-kit/js-apis-app-ability-want.md)| Yes | Want information related to the driver extension ability, including the ability name and bundle name. |
 
 **Return value**
 
