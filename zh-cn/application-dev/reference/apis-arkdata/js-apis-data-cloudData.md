@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -20,7 +20,7 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-## StrategyType
+## StrategyType<sup>12+</sup>
 
 云同步策略类型枚举。
 
@@ -30,7 +30,7 @@ import { cloudData } from '@kit.ArkData';
 | --------- |---|-----------|
 | NETWORK | 0 | 通过网络同步策略。 |
 
-## NetWorkStrategy
+## NetWorkStrategy<sup>12+</sup>
 
 网络策略参数枚举。
 
@@ -73,7 +73,7 @@ import { cloudData } from '@kit.ArkData';
 |------|------|------|------|------|
 | mode | [AutoSyncTriggerMode](#autosynctriggermode) | 否 | 否 | 自动同步触发模式。 |
 
-## cloudData.setCloudStrategy
+## cloudData.setCloudStrategy<sup>12+</sup>
 
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
