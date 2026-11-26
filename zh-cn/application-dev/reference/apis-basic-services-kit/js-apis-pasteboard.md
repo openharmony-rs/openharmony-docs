@@ -1284,7 +1284,7 @@ getRecord(index: number): PasteDataRecord
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1399,7 +1399,7 @@ removeRecord(index: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1432,7 +1432,7 @@ replaceRecord(index: number, record: PasteDataRecord): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
