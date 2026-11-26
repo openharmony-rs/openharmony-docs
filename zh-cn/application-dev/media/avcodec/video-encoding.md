@@ -293,9 +293,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
 
-   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
-   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等；
-   - OH_AVCodecOnNeedInputBuffer输入回调无作用，开发者通过获取的surface来输入数据；
+   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
+   - OH_AVCodecOnStreamChanged码流信息变化回调，编码输入码流的分辨率发生变化时触发。
+   - OH_AVCodecOnNeedInputBuffer输入回调无作用，开发者通过获取的surface来输入数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即编码完成。
 
    示例如下所示：
@@ -541,8 +541,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     以下示例中，bufferInfo的成员变量：
 
-    - bufferIndex：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
-    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针；
+    - bufferIndex：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识。
+    - buffer：回调函数OnNewOutputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口得到共享内存地址的指针。
     - attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
 
     编码器出帧处理循环：
@@ -778,9 +778,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 3. 调用OH_VideoEncoder_RegisterCallback()设置回调函数。
 
    注册回调函数指针集合OH_AVCodecCallback，包括：
-   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
-   - OH_AVCodecOnStreamChanged码流信息变化，如格式变化等；
-   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即编码器已准备好，可以输入YUV/RGB数据；
+   - OH_AVCodecOnError编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)。
+   - OH_AVCodecOnStreamChanged码流信息变化回调，编码输入码流的分辨率发生变化时触发。
+   - OH_AVCodecOnNeedInputBuffer运行过程中需要新的输入数据，即编码器已准备好，可以输入YUV/RGB数据。
    - OH_AVCodecOnNewOutputBuffer运行过程中产生了新的输出数据，即编码完成。
 
    开发者可以通过处理该回调报告的信息，确保编码器正常运转。
