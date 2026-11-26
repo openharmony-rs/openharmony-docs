@@ -69,28 +69,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 2. 定义全局变量（仅作示例，具体参数值，请根据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
-   struct CodecUserData {
-   public:
-       bool isDecFirstFrame = false;
-
-       int32_t width = 0;
-       int32_t height = 0;
-       int32_t widthStride = 0;
-       int32_t heightStride = 0;
-
-       std::shared_mutex codecMutex;
-       uint32_t inputFrameCount = 0;
-       std::mutex inputMutex;
-       uint32_t outputFrameCount = 0;
-       std::mutex outputMutex;
-
-       void ClearQueue()
-       {
-           inputBufferQueue.Flush();
-           outputBufferQueue.Flush();
-       }
-   };
-
    struct VideoSampleInfo {
        // 解码器MIME类型。
        std::string videoCodecMime;
@@ -121,7 +99,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    OH_AVCodec *decoder_ = nullptr;
    // 输出保存文件。
    std::unique_ptr<std::ofstream> outputFile_ = nullptr;
-   std::unique_ptr<CodecUserData> videoDecContext_ = nullptr;
    std::unique_ptr<VideoDecoder> videoDecoder_ = nullptr;
    ```
 
@@ -358,7 +335,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            default: {
@@ -446,7 +422,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGD("Get output buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            case AV_ERR_STREAM_CHANGED: {
@@ -539,18 +514,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    }
    ```
 
-   输入、输出buffer清理：
-
-   <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
-
-   ```c++
-   void ClearQueue()
-   {
-       inputBufferQueue.Flush();
-       outputBufferQueue.Flush();
-   }
-   ```
-
    若需重新开始解码，可参考上述[Surface模式](#surface模式)-步骤5启动解码器，[Surface模式](#surface模式)-步骤6重新推送视频帧PPS/SPS数据。
 
 9. （可选）调用OH_VideoDecoder_Reset()重置解码器。
@@ -568,18 +531,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        const int32_t ret = OH_VideoDecoder_Reset(decoder_);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Reset failed, ret: %{public}d", ret);
        return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
-
-   输入、输出buffer清理：
-
-   <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
-
-   ```c++
-   void ClearQueue()
-   {
-       inputBufferQueue.Flush();
-       outputBufferQueue.Flush();
    }
    ```
 
@@ -603,18 +554,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         const int32_t ret = OH_VideoDecoder_Stop(decoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Stop failed, ret: %{public}d", ret);
         return AVCODEC_SAMPLE_ERR_OK;
-    }
-    ```
-
-    输入、输出buffer清理：
-
-    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
-
-    ```c++
-    void ClearQueue()
-    {
-        inputBufferQueue.Flush();
-        outputBufferQueue.Flush();
     }
     ```
 
@@ -654,8 +593,10 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     int32_t VideoDecoder::Release()
     {
         if (decoder_ != nullptr) {
-            OH_VideoDecoder_Destroy(decoder_);
+            const int32_t ret = OH_VideoDecoder_Destroy(decoder_);
             decoder_ = nullptr;
+            CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                "Destroy video decoder failed, ret: %{public}d", ret);
         }
         return AVCODEC_SAMPLE_ERR_OK;
     }
@@ -833,7 +774,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            default: {
@@ -921,7 +861,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGD("Get output buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            case AV_ERR_STREAM_CHANGED: {
