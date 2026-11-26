@@ -259,7 +259,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 ![菜单栏](figures/菜单栏.jpg)
 
-竖屏状态下菜单栏，最多支持显示3个按钮，当按钮超过3个时，多余的按钮会被折叠。
+竖屏状态下菜单栏，最多支持显示3个图标，当图标超过3个时，多余的图标会被放入自动生成的更多图标。
 
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
    
