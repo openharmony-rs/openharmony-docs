@@ -2855,7 +2855,7 @@ Sets pasteable range of pasteboard data for applications.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](#shareoption9) | Yes| Pasteable range. Only the enumeretion values defined in **pasteboard.ShareOption** are allowed. If other values are passed, error code 401 is returned.|
+| shareOptions | [ShareOption](#shareoption9) | Yes| Pasteable range. Only the enumeration values defined in **pasteboard.ShareOption** are allowed. If other values are passed, error code 401 is returned.|
 
 **Error codes**
 
