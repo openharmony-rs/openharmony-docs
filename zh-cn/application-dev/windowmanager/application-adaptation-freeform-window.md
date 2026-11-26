@@ -59,7 +59,60 @@ export default class EntryAbility extends UIAbility {
       try {
         let windowLimits: window.WindowLimits = {
           maxWidth: 800,
-          maxHeight: 600,
+  <!-- @[freeWindow_setWindowLimitsByStartOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByStartOptions/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // 示例应用的主页面，用于创建按钮调用接口启动目标Ability
+  import { common, StartOptions, Want } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  @Entry
+  @Component
+  struct Index {
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext
+    build() {
+      Row() {
+        Row() {
+          Button('启动测试窗口')
+            .onClick(() => {
+              // 定义目标Ability的want参数
+              let want: Want = {
+                deviceId: '',
+                bundleName: 'com.example.setwindowlimitsbystartoptions',
+                moduleName: 'entry',
+                abilityName: 'WindowTestAbility',
+              }
+              let options: StartOptions = {
+                displayId: 0,
+                minWindowWidth: 600,
+                minWindowHeight: 500,
+                maxWindowWidth: 800,
+                maxWindowHeight: 600,
+              };
+              try {
+                // 启动目标Ability
+                this.context.startAbility(want, options, (err: BusinessError) => {
+                  if (err.code) {
+                    // 处理业务逻辑错误
+                    console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+                    return;
+                  }
+                  // 执行正常业务
+                  console.info('startAbility succeed');
+                });
+              } catch (err) {
+                // 处理入参错误异常
+                let code = (err as BusinessError).code;
+                let message = (err as BusinessError).message;
+                console.error(`startAbility failed, code is ${code}, message is ${message}`);
+              }
+            })
+        }
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
           minWidth: 600,
           minHeight: 500
         };
