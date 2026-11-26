@@ -92,7 +92,7 @@
 
    > **注意：**
    >
-   > 通过Canvas相关接口绘制PixelMap时，仅支持像素格式为PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_ALPHA_8和PIXEL_FORMAT_RGBA_F16的PixelMap。
+   > 通过Canvas相关接口绘制PixelMap时，仅支持像素格式为PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_ALPHA_8、PIXEL_FORMAT_RGBA_F16和PIXEL_FORMAT_RGBA_1010102的PixelMap。
 
    <!-- @[ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
