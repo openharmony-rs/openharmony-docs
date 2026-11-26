@@ -490,3 +490,57 @@ WebviewController与Web组件的绑定状态。
 | PROCEED | 0 | 允许导航继续。当回调未实现或返回无效值时，默认使用该动作。 |
 | CANCEL  | 1 | 取消导航。需要拦截导航时使用该动作。 |
 | DEFER   | 2 | 挂起决策。导航暂停，直到在[DeferThrottleCallback](./arkts-apis-webview-DeferThrottleCallback.md)上调用proceed()或cancel()。 |
+
+## WebSiteSource
+
+触发站点配置查询的来源。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| WEB_PAGE | 1 | 网页导航触发。 |
+| SERVICE_WORKER | 2 | ServiceWorker请求触发。 |
+| DOWNLOAD | 3 | 下载请求触发。 |
+| EXTENSIONS | 4 | 扩展触发。 |
+| OTHER | 5 | 其他来源触发。 |
+
+## PageTransition
+
+页面跳转类型。PageTransition值由两部分组成：
+
+**核心类型**（低字节，取值0-10）：表示导航的主要原因，如LINK、TYPED、AUTO_SUBFRAME、FORM_SUBMIT、RELOAD等。每次导航有且仅有一个核心类型。
+
+**限定标志**（高位）：表示导航的其他特征，如FORWARD_BACK（前进/后退导航）、FROM_API（API触发）、CLIENT_REDIRECT（JavaScript/meta重定向）等。一次导航可以不携带或携带多个限定标志。
+
+组合跳转值由核心类型与限定标志按位或得到。可使用掩码常量拆解：CORE_MASK提取核心类型，QUALIFIER_MASK提取限定标志。
+
+例如`TYPED | FROM_ADDRESS_BAR`得到组合值`0x02000001`。使用`combined & CORE_MASK`（结果为`0x01`）可提取核心类型TYPED；使用`combined & QUALIFIER_MASK`（结果为`0x02000000`）可提取限定标志FROM_ADDRESS_BAR；使用`(combined & FROM_ADDRESS_BAR) !== 0`可判断本次导航是否由地址栏触发。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| LINK | 0 | 用户点击其他页面上的链接跳转到本页面。 |
+| TYPED | 1 | 用户在地址栏输入地址跳转到本页面。 |
+| AUTO_SUBFRAME | 3 | 子frame导航，即在非顶层frame中自动加载的内容。 |
+| MANUAL_SUBFRAME | 4 | 用户显式发起的子frame导航，会在前进/后退列表中生成新的导航条目。 |
+| AUTO_TOPLEVEL | 6 | 顶层frame导航，即在顶层frame中自动加载的内容。 |
+| FORM_SUBMIT | 7 | 用户填写表单并提交。 |
+| RELOAD | 8 | 用户刷新页面，点击刷新按钮或在地址栏按回车。 |
+| CORE_MASK | 0xFF | 掩码，用于从组合跳转值中提取核心跳转类型，按位与运算的结果为PageTransition核心类型枚举值。 |
+| FORWARD_BACK | 0x01000000 | 用户使用前进或后退按钮在浏览历史中导航。 |
+| FROM_ADDRESS_BAR | 0x02000000 | 用户通过地址栏触发本次导航。 |
+| FROM_API | 0x08000000 | 本次跳转由API调用或外部应用触发。 |
+| CHAIN_START | 0x10000000 | 重定向链的起点。 |
+| CHAIN_END | 0x20000000 | 重定向链的最后一跳。 |
+| CLIENT_REDIRECT | 0x40000000 | 由页面上的JavaScript或meta refresh标签引发的重定向。 |
+| QUALIFIER_MASK | -256 | 掩码，对应十六进制0xFFFFFF00，用于从组合跳转值中提取限定标志位。 |

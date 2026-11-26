@@ -12111,3 +12111,170 @@ struct WebComponent {
   }
 }
 ```
+
+## setWebSiteConfigCallback
+
+setWebSiteConfigCallback(callback: OnQueryWebSiteConfigCallback): void
+
+注册Web组件级站点配置查询回调，主要用于普通网页导航场景。ArkWeb内核执行此类导航时会以[WebSiteConfigParams](./arkts-apis-webview-i.md#websiteconfigparams)为入参同步调用该回调来获取站点配置。回调必须返回[WebSiteConfigResult](./arkts-apis-webview-i.md#websiteconfigresult)作为站点配置。
+
+> **说明：**
+>
+> - 此回调在UI线程同步调用，请勿在回调中执行耗时操作。
+>
+> - 回调返回结果中的userAgent字段为空字符串时，使用ArkWeb默认User-Agent。
+>
+> - 回调返回结果中的viewportWidth字段为0时，使用默认视口宽度。
+>
+> - 仅保留一个回调，再次调用本接口将替换先前注册的回调；传入**null**表示清除当前已注册的回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | [OnQueryWebSiteConfigCallback](./arkts-apis-webview-t.md#onquerywebsiteconfigcallback) | 是 | 站点配置查询回调。传入**null**表示清除当前已注册的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('clearWebSiteConfigCallback')
+        .onClick(() => {
+          try {
+            // 传入null清除已注册的回调
+            this.controller.setWebSiteConfigCallback(null);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            // 注册Web组件级站点配置查询回调
+            this.controller.setWebSiteConfigCallback(
+              (params: webview.WebSiteConfigParams): webview.WebSiteConfigResult => {
+                console.info(`query url: ${params.url}, source: ${params.source}`);
+                const result: webview.WebSiteConfigResult = {
+                  userAgent: 'Mozilla/5.0 (Phone; OpenHarmony) AppleWebKit/537.36 (KHTML, like Gecko) CustomUA/1.0',
+                  viewportWidth: 360
+                };
+                return result;
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .width('100%')
+        .height('100%')
+    }
+  }
+}
+```
+
+## setGlobalWebSiteConfigCallback
+
+static setGlobalWebSiteConfigCallback(callback: OnQueryWebSiteConfigCallback): void
+
+注册全局站点配置查询回调，主要用于无法确定具体Web组件的场景，如ServiceWorker请求、独立下载等。ArkWeb内核执行此类请求时会以[WebSiteConfigParams](./arkts-apis-webview-i.md#websiteconfigparams)为入参同步调用该回调来获取站点配置。回调必须返回[WebSiteConfigResult](./arkts-apis-webview-i.md#websiteconfigresult)作为站点配置。
+
+> **说明：**
+>
+> - 此回调在UI线程同步调用，请勿在回调中执行耗时操作。
+>
+> - 回调返回结果中的userAgent字段为空字符串时，使用ArkWeb默认User-Agent。
+>
+> - 回调返回结果中的viewportWidth字段为0时，使用默认视口宽度。
+>
+> - 仅保留一个回调，再次调用本接口将替换先前注册的回调；传入**null**表示清除当前已注册的回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | [OnQueryWebSiteConfigCallback](./arkts-apis-webview-t.md#onquerywebsiteconfigcallback) | 是 | 全局站点配置查询回调。传入**null**表示清除当前已注册的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      // 注册全局站点配置查询回调，覆盖 ServiceWorker、独立下载与扩展等无明确 Web 组件绑定的场景
+      webview.WebviewController.setGlobalWebSiteConfigCallback(
+        (params: webview.WebSiteConfigParams): webview.WebSiteConfigResult => {
+          console.info(`global query url: ${params.url}, source: ${params.source}`);
+          const result: webview.WebSiteConfigResult = {
+            userAgent: 'Mozilla/5.0 (Phone; OpenHarmony) AppleWebKit/537.36 (KHTML, like Gecko) CustomUA/1.0',
+            viewportWidth: 0
+          };
+          return result;
+        });
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  aboutToDisappear(): void {
+    try {
+      // 传入null清除已注册的全局回调
+      webview.WebviewController.setGlobalWebSiteConfigCallback(null);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+    }
+  }
+}
+```

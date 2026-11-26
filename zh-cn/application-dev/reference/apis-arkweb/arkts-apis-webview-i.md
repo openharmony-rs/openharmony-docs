@@ -266,3 +266,38 @@ cookie的相关字段。
 | isHttpOnly | boolean | 否 | 否 | 标记该cookie是否只能通过HTTP请求访问。<br>true表示仅能通过HTTP访问，不能通过JavaScript访问，false表示可以通过JavaScript访问。 |
 | isSecure | boolean | 否 | 否 | 标记该cookie是否只能通过HTTPS发送。<br>true表示仅能通过HTTPS发送，不能通过HTTP发送，false表示可以通过HTTP发送。 |
 | domain | string | 否 | 否 | 指定哪些域名可以访问该cookie。 |
+
+## WebSiteConfigParams
+
+[OnQueryWebSiteConfigCallback](./arkts-apis-webview-t.md#onquerywebsiteconfigcallback)回调的入参，包含触发站点配置查询的请求信息。url和source字段总是存在；可选字段仅在Web组件级回调触发时填充，全局站点配置查询回调触发时不提供。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | --- | ---- | ---- | ---- |
+| url | string | 否 | 否 | 完整的请求URL。 |
+| source | [WebSiteSource](./arkts-apis-webview-e.md#websitesource) | 否 | 否 | 触发站点配置查询的来源。 |
+| isMainFrame | boolean | 否 | 是 | 是否为主frame导航。<br>true表示主frame导航，false表示子frame导航。仅在Web组件级回调触发时提供。 |
+| topFrameUrl | string | 否 | 是 | 顶层frame的URL。主frame导航时与url相同；子frame导航时为包含该子frame的顶层页面URL。仅在Web组件级回调触发时提供。 |
+| redirectChain | Array\<string\> | 否 | 是 | 重定向链，每个元素为一个URL字符串。仅在Web组件级回调触发时提供。 |
+| referrer | string | 否 | 是 | 来源页面URL。仅在Web组件级回调触发时提供。 |
+| pageTransition | number | 否 | 是 | 页面跳转值，由[PageTransition](./arkts-apis-webview-e.md#pagetransition)中的核心类型与限定标志按位或组成，可使用CORE_MASK、QUALIFIER_MASK掩码常量拆解。仅在Web组件级回调触发时提供。 |
+
+## WebSiteConfigResult
+
+[OnQueryWebSiteConfigCallback](./arkts-apis-webview-t.md#onquerywebsiteconfigcallback)回调的返回结果，表示应用向ArkWeb内核提供的站点配置。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | --- | ---- | ---- | ---- |
+| userAgent | string | 否 | 否 | 完整的User-Agent字符串。为空字符串时表示使用ArkWeb默认User-Agent。 |
+| viewportWidth | number | 否 | 否 | 视口宽度。<br>单位：px。为0时表示使用默认视口宽度。 |
