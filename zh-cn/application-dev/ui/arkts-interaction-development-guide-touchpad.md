@@ -174,7 +174,7 @@ struct TouchPadEventActualApplication {
     }
     const a = event.contacts[0];
     const b = event.contacts[1];
-    // 统一归一化为触控板[0,1]坐标（规范路径；兼容百分比/毫米异常上报）
+    // 统一归一化为触控板[0,1]坐标（通过toFraction兼容百分比和毫米坐标格式）
     const ax = TouchPadEventActualApplication.toFraction(a.positionX, event.deviceWidth);
     const ay = TouchPadEventActualApplication.toFraction(a.positionY, event.deviceHeight);
     const bx = TouchPadEventActualApplication.toFraction(b.positionX, event.deviceWidth);
