@@ -41,7 +41,7 @@ UIContext.enableTouchPadEvent(true);
 可在组件上通过[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接口注册回调，接收[TouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadevent)对象。该对象的关键属性如下：
 
 - **contacts**：当前事件上报的全部触点数组。触点数量取决于硬件能力，使用前需校验是否为空。
-- **changedContact**：本次发生变化并触发事件的触点，使用前需校验是否为空。
+- **changedContact**：本次发生变化并触发事件的触点。
 - **deviceWidth / deviceHeight**：触控板的物理尺寸（单位：mm），可用于坐标换算。
 
 每个触点（[TouchPadEventContact](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadeventcontact)）包含以下信息：
