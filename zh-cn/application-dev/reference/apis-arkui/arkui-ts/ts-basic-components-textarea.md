@@ -1313,7 +1313,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | ArkTS-Dyn: [EditMenuOptions](ts-text-common.md#editmenuoptions)<br>ArkTS-Sta: [EditMenuOptions](ts-text-common.md#editmenuoptions) \| undefined | 是   | 扩展菜单选项，用于自定义文本选择菜单扩展项，允许设置扩展项的文本内容、图标、回调方法。<br>取值为undefined时，显示系统文本选择菜单。 |
+| editMenu  | ArkTS-Dyn: [EditMenuOptions](ts-text-common.md#editmenuoptions12)<br>ArkTS-Sta: [EditMenuOptions](ts-text-common.md#editmenuoptions12) \| undefined | 是   | 扩展菜单选项，用于自定义文本选择菜单扩展项，允许设置扩展项的文本内容、图标、回调方法。<br>取值为undefined时，显示系统文本选择菜单。 |
 
 ### enablePreviewText<sup>12+</sup>
 
@@ -4087,9 +4087,9 @@ struct TextAreaExample {
   }
 
   aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.text += this.text
-    }
+    new Array(5).fill(0).forEach(() => {
+      this.text += this.text;
+    })
   }
 }
 ```

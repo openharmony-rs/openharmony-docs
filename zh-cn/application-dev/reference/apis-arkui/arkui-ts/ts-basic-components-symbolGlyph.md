@@ -122,7 +122,7 @@ fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件字体颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件字体颜色。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ### symbolColor
 

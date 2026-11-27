@@ -537,7 +537,7 @@ equals(id: TextMenuItemId): boolean
 | id | [TextMenuItemId](#textmenuitemid12) |  否   | 否  | 菜单id。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 快捷键提示。<br>该字段仅2in1设备支持。<br>默认值：undefined，不显示快捷键提示。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 
-## EditMenuOptions
+## EditMenuOptions<sup>12+</sup>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1887,7 +1887,7 @@ constructor(options?: NumericTextTransitionOptions)
 | DOWN                  | 0  | 内容往下翻。|
 | UP                    | 1  | 内容往上翻。 |
 
-## TextLayoutOptions对象说明<sup>20+</sup>
+## TextLayoutOptions<sup>20+</sup>对象说明
 
 文本布局选项。
 

@@ -51,7 +51,7 @@ Span(value: string | Resource)
 
 ## 属性
 
-属性继承自[BaseSpan](#basespan)。
+属性继承自[BaseSpan](#basespan11)。
 
 ### decoration
 
@@ -616,7 +616,7 @@ onHover(event: HoverCallback | undefined)
 | -------- | -------- | -------- | -------- |
 | event | [HoverCallback](ts-uicommonevent.md#hovercallback) \| undefined | 是 | 悬浮事件回调。<br>取值为undefined时，不使用回调函数。 |
 
-## BaseSpan
+## BaseSpan<sup>11+</sup>
 
 定义BaseSpan基础类，包含Span的通用属性。
 
@@ -922,7 +922,7 @@ struct SpanExample {
       }
 
       Text() {
-        Span('123456789') // span can inherit text shadow & font size from outer text
+        Span('123456789') // span可以继承外层Text的文本阴影和字体大小
       }.fontSize(50).textShadow(this.textShadows).fontColor(Color.Pink)
     }
   }

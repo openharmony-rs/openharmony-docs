@@ -1441,7 +1441,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | ArkTS-Dyn: [EditMenuOptions](ts-text-common.md#editmenuoptions)<br>ArkTS-Sta: [EditMenuOptions](ts-text-common.md#editmenuoptions) \| undefined | 是   | 扩展菜单选项。<br>取值为undefined时，显示系统文本选择菜单。 |
+| editMenu  | ArkTS-Dyn: [EditMenuOptions](ts-text-common.md#editmenuoptions12)<br>ArkTS-Sta: [EditMenuOptions](ts-text-common.md#editmenuoptions12) \| undefined | 是   | 扩展菜单选项。<br>取值为undefined时，显示系统文本选择菜单。 |
 
 ### enablePreviewText<sup>12+</sup>
 
@@ -3259,41 +3259,43 @@ struct TextInputExample {
     let befNumberNoSpace: string = this.removeSpace(this.text);
     this.actualCh = 0;
     if (befNumberNoSpace.length < this.telNumberNoSpace.length) { // 插入场景
-      for (let i = 0; i < this.lastCaretPosition; i++) {
-        if (this.text[i] != ' ') {
+      this.text.substring(0, this.lastCaretPosition).split('').forEach((ch: string) => {
+        if (ch != ' ') {
           this.actualCh += 1;
         }
-      }
+      })
       this.actualCh += this.telNumberNoSpace.length - befNumberNoSpace.length;
       console.info('actualCh: ' + this.actualCh);
-      for (let i = 0; i < nextText.length; i++) {
-        if (nextText[i] != ' ') {
+      nextText.split('').some((ch: string, i: number) => {
+        if (ch != ' ') {
           this.actualCh -= 1;
           if (this.actualCh <= 0) {
             this.nextCaret = i + 1;
-            break;
+            return true;
           }
         }
-      }
+        return false;
+      })
     } else if (befNumberNoSpace.length > this.telNumberNoSpace.length) { // 删除场景
       if (this.lastCaretPosition === this.text.length) {
         console.info('Caret at last, no need to change');
       } else if (this.lastCaretPosition === this.lastCaretPositionEnd) {
         // 按键盘上回退键逐个删除字符的场景
-        for (let i = this.lastCaretPosition; i < this.text.length; i++) {
-          if (this.text[i] != ' ') {
+        this.text.substring(this.lastCaretPosition).split('').forEach((ch: string) => {
+          if (ch != ' ') {
             this.actualCh += 1;
           }
-        }
-        for (let i = nextText.length - 1; i >= 0; i--) {
-          if (nextText[i] != ' ') {
+        })
+        nextText.split('').reverse().some((ch: string, reversedI: number) => {
+          if (ch != ' ') {
             this.actualCh -= 1;
             if (this.actualCh <= 0) {
-              this.nextCaret = i;
-              break;
+              this.nextCaret = nextText.length - 1 - reversedI;
+              return true;
             }
           }
-        }
+          return false;
+        })
       } else {
         // 剪切或通过手柄选择，一次删除多个字符
         this.nextCaret = this.lastCaretPosition; // 保持光标位置
