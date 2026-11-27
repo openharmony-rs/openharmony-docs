@@ -8508,6 +8508,20 @@ Allows an application on the rear armrest screen to connect to the head unit for
  
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.ACCESS_EXTERNAL_DVR_DATA
+ 
+Allows an application to access data on the external storage card of the dashcam.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 Allows a system application to send the authorization results for model download requests to the model management service.
