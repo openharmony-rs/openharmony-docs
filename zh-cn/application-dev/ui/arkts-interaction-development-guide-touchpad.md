@@ -53,7 +53,7 @@ UIContext.enableTouchPadEvent(true);
 | positionX | 触点在触控板X轴的百分比位置，取值范围[0, 1]，0表示最左侧，1表示最右侧。 |
 | positionY | 触点在触控板Y轴的百分比位置，取值范围[0, 1]，0表示最上侧，1表示最下侧。 |
 
-触点阶段遵循 **BEGIN → MOVE → END/CANCEL** 的生命周期：手指接触触控板时上报BEGIN，移动时持续上报MOVE，抬起时上报END，事件被打断（如被系统手势接管）时上报CANCEL。通过判断`changedContact.phase`可区分手势的按下、移动、抬起阶段。
+触点阶段遵循**BEGIN → MOVE → END/CANCEL**的生命周期：手指接触触控板时上报BEGIN，移动时持续上报MOVE，抬起时上报END，事件被打断（如被系统手势接管）时上报CANCEL。通过判断`changedContact.phase`可区分手势的按下、移动、抬起阶段。
 
 如果需要拦截触控板事件的命中测试，可通过[onTouchPadEventIntercept](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadeventintercept)接口设置自定义拦截回调，返回[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9)决定组件在触控板事件链中的命中测试行为。
 
