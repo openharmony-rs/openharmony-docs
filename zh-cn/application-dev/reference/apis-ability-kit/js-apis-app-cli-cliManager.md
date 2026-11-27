@@ -95,9 +95,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 查询CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -149,9 +147,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 查询CLI工具的详细信息，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -203,9 +199,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 根据工具名称获取单个工具的详细信息，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具，查询private工具时返回错误码35600030。
 
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
