@@ -34,7 +34,7 @@
 1. 导入geoLocationManager模块，所有与正地理编码和逆地理编码能力相关的功能API，都是通过该模块提供的。
 
    <!-- @[geocode_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
-
+   
    ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    ```
@@ -51,66 +51,64 @@
    - 调用isGeocoderAvailable查询正地理编码与逆地理编码服务是否可用，如果服务可用再继续进行步骤3。如果服务不可用，说明该设备不具备地理编码与逆地理编码能力，请勿使用相关接口。
 
      <!-- @[geocode_is_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
-
-      ``` TypeScript
-      try {
-        let isAvailable = geoLocationManager.isGeocoderAvailable();
-        if (!isAvailable) {
-            console.error('current device do not support geocoder');
-        }
-        // ...
-      } catch (err) {
-        console.error('errCode:' + err.code + ', message:'  + err.message);
-        // ...
-      }
-      ```
+     
+     ``` TypeScript
+     try {
+       let isAvailable = geoLocationManager.isGeocoderAvailable();
+       if (!isAvailable) {
+           console.error('current device do not support geocoder');
+       }
+       // ...
+     } catch (err) {
+       console.error('errCode:' + JSON.stringify(err));
+       // ...
+     }
+     ```
 
 4. 获取转化结果。
    - 调用getAddressesFromLocation，把经纬度坐标转化为与此坐标匹配的[GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress)（地理编码地址信息）列表。
      
      <!-- @[geocode_reverse_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
-
-      ``` TypeScript
-      let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {'latitude': latitude, 'longitude': longitude, 'maxItems': 1};
-      try {
-        if (geoLocationManager.isGeocoderAvailable()) {
-          geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
-            if (err) {
-              console.error('getAddressesFromLocation errCode:' + err.code + ', message:'  + err.message);
-            } else {
-              console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
-            }
-            // ...
-          });
-        }
-      } catch (err) {
-        console.error('errCode:' + err.code + ', message:'  + err.message);
-        // ...
-      }
-      ```
+     
+     ``` TypeScript
+     let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = { 'latitude': latitude, 'longitude': longitude, 'maxItems': 1 };
+     try {
+       if (geoLocationManager.isGeocoderAvailable()) {
+         geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
+           if (err) {
+             console.error('getAddressesFromLocation err: ' + JSON.stringify(err));
+           } else {
+             console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
+           }
+           // ...
+         });
+       }
+     } catch (err) {
+       console.error('errCode:' + JSON.stringify(err));
+       // ...
+     }
+     ```
 
    - 调用getAddressesFromLocationName把地理编码（即位置信息）转化为经纬度坐标。
      
      <!-- @[geocode_forward_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
-
-      ``` TypeScript
-      let geocodeRequest: geoLocationManager.GeoCodeRequest = {'description': description, 'maxItems': 1};
-      try {
-        if (geoLocationManager.isGeocoderAvailable()) {
-          geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
-            if (err) {
-              console.error('getAddressesFromLocationName errCode:' + err.code + ', message:'  + err.message);
-            } else {
-              console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
-            }
-            // ...
-          });
-        }
-      } catch (err) {
-          console.error('errCode:' + err.code + ', message:'  + err.message);
-          // ...
-      }
-      ```
+     
+     ``` TypeScript
+     let geocodeRequest: geoLocationManager.GeoCodeRequest = { 'description': this.forwardDescription, 'maxItems': 1 };
+     try {
+       geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+         if (err) {
+           console.error('getAddressesFromLocationName err: ' + JSON.stringify(err));
+         } else {
+           console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
+         }
+         // ...
+       });
+     } catch (err) {
+       console.error('errCode:' + JSON.stringify(err));
+       // ...
+     }
+     ```
 
       应用可以获得与位置信息相匹配的[GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress)（地理编码地址信息）列表，其中包含对应的坐标数据。
 

@@ -30,7 +30,7 @@
 2. 导入geoLocationManager模块、wantAgent模块和BusinessError模块。
 
    <!-- @[geofence_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
-
+   
    ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -40,11 +40,11 @@
 3. 判断是否支持围栏功能
 
    <!-- @[is_gnss_geofence_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
-
+   
    ``` TypeScript
    let isGnssGeoFeceSupported = geoLocationManager.isGnssFenceServiceSupported();
    if (!isGnssGeoFeceSupported) {
-     console.error('Current Device Do not Support GnssGeofence');
+       console.error('Current Device Do not Support GnssGeofence');
    }
    ```
 
@@ -60,7 +60,7 @@
 5. 指定APP需要监听的地理围栏事件类型，这里表示需要监听进入围栏和退出围栏事件。
 
    <!-- @[geofence_transition_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
-
+   
    ``` TypeScript
    let transitionStatusList: geoLocationManager.GeofenceTransitionEvent[] = [
      geoLocationManager.GeofenceTransitionEvent.GEOFENCE_TRANSITION_EVENT_ENTER,
@@ -71,7 +71,7 @@
 6. 创建GEOFENCE_TRANSITION_EVENT_ENTER、GEOFENCE_TRANSITION_EVENT_EXIT事件对应的通知对象。
 
    <!-- @[geofence_notifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
-
+   
    ``` TypeScript
    // GEOFENCE_TRANSITION_EVENT_ENTER事件
    let notificationRequest1: notificationManager.NotificationRequest = {
@@ -102,7 +102,7 @@
 7. 添加围栏。
 
    <!-- @[geofence_add_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
-
+   
    ``` TypeScript
    // 把创建的通知对象存入Array中，存入顺序与transitionStatusList一致
    let notificationRequestList: notificationManager.NotificationRequest[] =
@@ -116,15 +116,15 @@
      // 地理围栏事件对应的通知对象，该参数为可选
      notifications: notificationRequestList,
      // 用于监听围栏事件的callback
-     geofenceTransitionCallback: (err : BusinessError, transition : geoLocationManager.GeofenceTransition) => {
+     geofenceTransitionCallback: (err: BusinessError, transition: geoLocationManager.GeofenceTransition) => {
        if (err) {
          console.error('geofenceTransitionCallback: err=' + JSON.stringify(err));
        }
        if (transition) {
-         console.info('GeofenceTransition: ' + JSON.stringify(transition));
+         console.info('GeofenceTransition: %{public}s', JSON.stringify(transition));
        }
+       // ...
      }
-     // ...
    }
    try {
      // 添加围栏
@@ -132,15 +132,15 @@
        geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
          // 围栏添加成功后返回围栏ID
          console.info('addGnssGeofence success, fence id: ' + id);
-         // ... 
-         fenceId = id;
+         let fenceId = id;
+         // ...
        }).catch((err: BusinessError) => {
          console.error('addGnssGeofence failed, promise errCode:' + (err as BusinessError).code +
            ',errMessage:' + (err as BusinessError).message);
-         // ... 
+         // ...
        });
      }
-   } catch(error) {
+   } catch (error) {
      console.error('addGnssGeofence failed, err:' + JSON.stringify(error));
      // ...
    }
@@ -149,21 +149,23 @@
 8. 删除围栏。
 
    <!-- @[geofence_remove_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeofencePage.ets) -->
-
+   
    ``` TypeScript
    // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
+   let fenceId = this.fenceId;
    try {
      if (geoLocationManager.isGnssFenceServiceSupported()) {
        geoLocationManager.removeGnssGeofence(fenceId).then(() => {
          console.info('removeGnssGeofence success fenceId:' + fenceId);
          // ...
-       }).catch((error : BusinessError) => {
+       }).catch((error: BusinessError) => {
          console.error('removeGnssGeofence: error=' + JSON.stringify(error));
          // ...
        });
      }
-   } catch(error) {
+   } catch (error) {
      console.error('removeGnssGeofence: error=' + JSON.stringify(error));
      // ...
    }
+   // ...
    ```
