@@ -333,13 +333,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is ArkUI_EdgeEffect.<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is ArkUI_EdgeEffect.|
 
 ## NODE_SWIPER_NODE_ADAPTER
 
@@ -1141,13 +1141,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].i32 | Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect). The default value is **ARKUI_EDGE_EFFECT_SPRING**. |
+| .value[0].i32 | Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. The parameter type is ArkUI_EdgeEffect. The default value is **ARKUI_EDGE_EFFECT_SPRING**. |
 
 **Returns**
 
 | Type | Description |
 | -- | -- |
-| .value[0].i32 | Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect). |
+| .value[0].i32 | Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. The parameter type is ArkUI_EdgeEffect. |
 
 ## NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION
 

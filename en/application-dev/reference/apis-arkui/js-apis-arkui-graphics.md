@@ -698,7 +698,7 @@ Instantiates the **ColorMetrics** class using colors in RGB or RGBA format.
 
 static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
-Instantiates the **ColorMetrics** class using [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) and RGBA colorS. Only the red, green, and blue attributes support color configuration in the display-p3 color space, and the alpha attribute is not affected by the color space.
+Instantiates the **ColorMetrics** class using [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) and RGBA colors. Only the red, green, and blue attributes support color configuration in the display-p3 color space, and the alpha attribute is not affected by the color space.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
