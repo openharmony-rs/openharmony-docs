@@ -89,4 +89,4 @@ DatePickerComponent与UIPickerComponent共用的文本样式，用于配置选�
 | font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。仅支持size与weight。默认值：weight为FontWeight.Normal。size因使用组件而异，详见[DatePickerComponent](ohos-arkui-advanced-DatePickerComponent.md)与[UIPickerComponent](ts-container-ui-picker-component.md)。 |
 | minFontSize | number \| [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本最小字号，与maxFontSize配合使用以启用字号缩放。当minFontSize与maxFontSize同时设置时，font中的size不生效。number类型取值范围：大于0。默认值：不设置，不启用字号缩放。详见Text组件的[minFontSize](ts-basic-components-text.md#minfontsize)。 |
 | maxFontSize | number \| [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本最大字号。number类型取值范围：大于0且大于等于minFontSize。默认值：不设置，不启用字号缩放。详见Text组件的[maxFontSize](ts-basic-components-text.md#maxfontsize)。 |
-| overflow | [TextOverflow](ts-appendix-enums.md#textoverflow) | 否 | 是 | 文本溢出处理。设置为MARQUEE时不生效。默认值：TextOverflow.Clip。详见Text组件的[textOverflow](ts-basic-components-text.md#textoverflow)。 |
+| overflow | [TextOverflow](ts-appendix-enums.md#textoverflow) | 否 | 是 | 文本溢出处理。默认值：TextOverflow.Clip。详见Text组件的[textOverflow](ts-basic-components-text.md#textoverflow)。 |
