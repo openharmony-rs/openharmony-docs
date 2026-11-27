@@ -1116,33 +1116,132 @@ ML-DSA（44/65/87）支持三种签名模式，通过`HUKS_TAG_PQC_SIG_MODE`指�
 
 预哈希模式示例：
 
-``` ts
+<!-- @[key_algorithm_MLDSAPQCMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/MLDSAPQCMode.ets) -->
+
+``` TypeScript
+/*
+ * 密钥算法为ML-DSA，签名模式为预哈希模式（preHash），摘要算法为SHA256
+ */
 import { huks } from '@kit.UniversalKeystoreKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let properties: huks.HuksParam[] = [{
-  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-  value: huks.HuksKeyAlg.HUKS_ALG_ML_DSA
-}, {
-  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-  value: huks.HuksKeySize.HUKS_ML_DSA_KEY_PARAM_SET_44
-}, {
-  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
-}, {
-  tag: huks.HuksTag.HUKS_TAG_PQC_SIG_MODE,
-  value: huks.HuksPQCSigMode.HUKS_PQC_SIG_MODE_PREHASH
-}, {
-  tag: huks.HuksTag.HUKS_TAG_DIGEST,
-  value: huks.HuksKeyDigest.HUKS_DIGEST_SHAKE256
-}, {
-  tag: huks.HuksTag.HUKS_TAG_CONTEXT,
-  value: new Uint8Array([0x6d, 0x6c, 0x64, 0x73, 0x61])
-}];
+let keyAlias = 'test_mlDsaKeyAlias';
+let handle: number;
+let plaintext = '123456';
 
-// inData 传入 PH(M)（SHAKE256 摘要，64字节），而不是原始消息
-let options: huks.HuksOptions = { properties: properties, inData: digest };
-let handle: huks.HuksSessionHandle = await huks.initSession(keyAlias, options);
-let result: huks.HuksReturnResult = await huks.finishSession(handle.handle, options);
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: number[] = [];
+  for (let i = 0; i < str.length; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function generateMlDsaKey(): Promise<void> {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ML_DSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ML_DSA_KEY_PARAM_SET_44
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  }];
+  await huks.generateKeyItem(keyAlias, { properties: properties });
+}
+
+async function sha256Digest(message: string): Promise<Uint8Array> {
+  let md = cryptoFramework.createMd('SHA256');
+  await md.update({ data: stringToUint8Array(message) });
+  let digest = await md.digest();
+  return digest.data;
+}
+
+function getMlDsaSignProperties(): huks.HuksParam[] {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ML_DSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ML_DSA_KEY_PARAM_SET_44
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PQC_SIG_MODE,
+    value: huks.HuksPQCSigMode.HUKS_PQC_SIG_MODE_PREHASH
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_CONTEXT,
+    value: stringToUint8Array('ml-dsa')
+  }];
+  return properties;
+}
+
+function getMlDsaVerifyProperties(): huks.HuksParam[] {
+  let properties: huks.HuksParam[] = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ML_DSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ML_DSA_KEY_PARAM_SET_44
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PQC_SIG_MODE,
+    value: huks.HuksPQCSigMode.HUKS_PQC_SIG_MODE_PREHASH
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_CONTEXT,
+    value: stringToUint8Array('ml-dsa')
+  }];
+  return properties;
+}
+
+async function sign(digest: Uint8Array): Promise<Uint8Array> {
+  let options: huks.HuksOptions = {
+    properties: getMlDsaSignProperties(),
+    inData: digest
+  };
+  let session: huks.HuksSessionHandle = await huks.initSession(keyAlias, options);
+  handle = session.handle;
+  let result: huks.HuksReturnResult = await huks.finishSession(handle, options);
+  return result.outData as Uint8Array;
+}
+
+async function verify(digest: Uint8Array, sig: Uint8Array): Promise<void> {
+  let options: huks.HuksOptions = {
+    properties: getMlDsaVerifyProperties(),
+    inData: digest
+  };
+  let session: huks.HuksSessionHandle = await huks.initSession(keyAlias, options);
+  handle = session.handle;
+  await huks.updateSession(handle, options);
+  let verifyOptions: huks.HuksOptions = {
+    properties: getMlDsaVerifyProperties(),
+    inData: sig
+  };
+  await huks.finishSession(handle, verifyOptions);
+}
+
+async function deleteMlDsaKey(): Promise<void> {
+  await huks.deleteKeyItem(keyAlias, { properties: [] });
+}
+
+async function testSignVerify(): Promise<void> {
+  await generateMlDsaKey();
+  let digest: Uint8Array = await sha256Digest(plaintext);
+  let signature: Uint8Array = await sign(digest);
+  await verify(digest, signature);
+  await deleteMlDsaKey();
+}
 ```
 
 外部μ模式只需把`HUKS_TAG_PQC_SIG_MODE`设为`HUKS_PQC_SIG_MODE_EXTERNAL_MU`、去掉`HUKS_TAG_DIGEST`，并在`inData`中传入64字节μ。
