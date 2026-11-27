@@ -18,7 +18,7 @@ ohos-fontManager是OpenHarmony提供的字体管理CLI（Command Line Interface�
 ## 环境要求
 
 - 设备限制：仅支持在PC/2in1设备上使用。
-- 权限要求：调用方需具备[ohos.permission.UPDATE_FONT](../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_font)权限。该权限的权限级别为system_basic，授权方式为system_grant。
+- 权限要求：调用方需具备ohos.permission.UPDATE_FONT权限。该权限的权限级别为system_basic，授权方式为system_grant。
 - 系统服务：需要font_manager_server服务（SA ID：66262）正常运行。该服务按需启动，首次调用时可能需要等待服务加载完成。
 
 ## 输出格式
@@ -60,7 +60,7 @@ ohos-fontManager uninstall --help
 
 ### 约束限制
 
-- 需要权限：[ohos.permission.UPDATE_FONT](../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_font)。
+- 需要权限：ohos.permission.UPDATE_FONT。
 - 设备限制：仅支持在PC/2in1设备上使用。
 - 字体文件必须存在且可读，支持`.ttf`、`.otf`等字体格式。
 - 字体文件路径长度不能超过4096个字符。
@@ -138,7 +138,7 @@ ohos-fontManager install --help
 
 ### 约束限制
 
-- 需要权限：[ohos.permission.UPDATE_FONT](../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_font)。
+- 需要权限：ohos.permission.UPDATE_FONT。
 - 设备限制：仅支持在PC/2in1设备上使用。
 - 字体名称必须与安装时注册的字体全名一致，不能传入文件路径。
 - 字体名称长度不能超过256个字符。
