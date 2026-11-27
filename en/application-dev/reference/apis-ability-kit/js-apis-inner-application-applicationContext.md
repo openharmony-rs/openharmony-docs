@@ -6,7 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=61ad959070e22c282830a1b55fa1ebaedbcf0ce4 translatedAt=2026-09-09T03:11:34.759Z pushedAt=2026-09-09T03:52:08.743Z -->
+<!-- md-trans-meta sourceCommit=8930119bf73ebfc2f2829b95d93d438b219cafb2 translatedAt=2026-11-25T11:26:55.818Z pushedAt=2026-11-26T02:59:35.652Z nl=1 -->
 
 ApplicationContext inherits from [Context](js-apis-inner-application-context.md) and provides application-level management capabilities, such as application lifecycle listening, process management, and application environment setting.
 
@@ -803,6 +803,58 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
+## ApplicationContext.getUIAbilityChildProcessInfos
+
+getUIAbilityChildProcessInfos(): Promise\<Array\<ChildProcessInformation>>
+
+Obtains the UIAbility child process information of the current application. This API uses a promise to return the result.
+
+Returns the processes started through the [startSelfUIAbilityInChildProcess](js-apis-inner-application-uiAbilityContext.md#startselfuiabilityinchildprocess) API, and the child processes started through the [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2) API with [processMode](js-apis-app-ability-contextConstant.md#processmode12) in [StartOptions](js-apis-app-ability-startOptions.md) set to NEW_PROCESS_ATTACH_TO_PARENT. It returns an empty array when there is no child process.
+
+**Since**: 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<Array\<[ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)>> | Promise object used to return the UIAbility child process information of the current application. It returns an empty array when there is no child process. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 16000011 | The context does not exist. |
+| 16000050 | Connect to system service failed. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    // Obtain the UIAbility child process information.
+    applicationContext.getUIAbilityChildProcessInfos().then((data) => {
+      console.info(`getUIAbilityChildProcessInfos success, count: ${data.length}`);
+      for (let info of data) {
+        console.info(`pid: ${info.pid}, parentPid: ${info.parentPid}, processName: ${info.processName}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`getUIAbilityChildProcessInfos failed, code: ${err.code}, msg: ${err.message}`);
+    });
+  }
+}
+```
+
 ## ApplicationContext.killAllProcesses
 
 killAllProcesses(): Promise\<void\>
@@ -1279,6 +1331,8 @@ Sets the font for this application. This API can be called only on the main thre
 > **NOTE**
 >
 > Before calling this API, ensure that the window has been created and the page corresponding to the UIAbility has been loaded (using the [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) API in the [onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate) lifecycle).
+>
+> setFont('null') can restore the default system font type.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
