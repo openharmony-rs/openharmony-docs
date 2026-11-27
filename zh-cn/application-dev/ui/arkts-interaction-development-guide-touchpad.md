@@ -95,7 +95,7 @@ struct TouchPadEventActualApplication {
       }
       console.info(`GestureDebug| screen=${d.width}x${d.height}px density=${density} px/vp gain=(${this.gainX.toFixed(1)}, ${this.gainY.toFixed(1)})vp`);
     } catch (e) {
-      console.info(`GestureDebug| display获取失败，使用默认增益: ${JSON.stringify(e)}`);
+      console.error(`GestureDebug| display获取失败，使用默认增益: ${JSON.stringify(e)}`);
     }
   }
 
