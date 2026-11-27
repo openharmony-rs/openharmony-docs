@@ -63,7 +63,7 @@ import { UIContext, display } from '@kit.ArkUI';
 /**
  * TouchPadEvent 实际应用页：
  * childStack 基于触控板双指手势实现跟随：双指滑动实现平移，双指张开/捏合实现缩放，抬手后动画还原。
- * positionX/Y 为触控板归一化坐标，取值范围为[0, 1]。
+ * positionX/Y 为触控板百分比坐标，取值范围为[0, 1]。
  */
 @Entry
 @Component
@@ -83,7 +83,7 @@ struct TouchPadEventActualApplication {
   private lastMidY: number = 0;
   private lastDist: number = 0;
   private hasBaseline: boolean = false;
-  // 增益：触控板归一化坐标[0,1]位移 -> 屏幕 vp，满幅滑动约移动一个屏幕宽/高
+  // 增益：触控板百分比坐标[0, 1]位移转换为屏幕vp，满幅滑动约移动一个屏幕宽/高
   private gainX: number = 360; // 默认值，aboutToAppear 中按屏幕实际尺寸重算
   private gainY: number = 780;
   // 手势诊断信息
@@ -106,7 +106,7 @@ struct TouchPadEventActualApplication {
     }
   }
 
-  // 单位归一化：positionX/Y 规范取值范围为[0,1]；
+  // 坐标转换：positionX/Y 规范取值范围为[0, 1]；
   // 若上报值为百分比(0~100)或毫米坐标(>100)，
   // 通过 deviceWidth/deviceHeight(触控板物理尺寸mm)折算回[0,1]
   static toFraction(v: number, deviceSpanMm: number): number {
@@ -173,7 +173,7 @@ struct TouchPadEventActualApplication {
     }
     const a = event.contacts[0];
     const b = event.contacts[1];
-    // 统一归一化为触控板[0,1]坐标（通过toFraction兼容百分比和毫米坐标格式）
+    // 统一转换为触控板[0, 1]百分比坐标（通过toFraction兼容百分比和毫米坐标格式）
     const ax = TouchPadEventActualApplication.toFraction(a.positionX, event.deviceWidth);
     const ay = TouchPadEventActualApplication.toFraction(a.positionY, event.deviceHeight);
     const bx = TouchPadEventActualApplication.toFraction(b.positionX, event.deviceWidth);
@@ -267,7 +267,7 @@ struct TouchPadEventActualApplication {
 上面的示例中，点击 Enable 按钮调用UIContext.enableTouchPadEvent(true)开启上报，在 childStack 组件上绑定onTouchPadEvent接收事件。回调处理流程如下：
 
 1. 阶段判断：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画将组件还原至原位与初始缩放。
-2. 双指识别：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板归一化坐标[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
+2. 双指识别：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板百分比坐标，取值范围[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
 3. 平移跟随：计算两指中点相对上一帧的位移（`midX/midY`差值），乘以屏幕增益后累加到组件的`translate`偏移量上，实现双指滑动驱动组件平移。
 4. 缩放跟随：计算两指间距相对上一帧的比例（`ratio`），累乘到组件的`scale`上，实现双指张开放大、捏合缩小，并限制缩放范围在[0.3, 3.0]。
 5. 防跳变：在触点集发生增减（BEGIN/CANCEL）或触点数少于2时，清除基线并等待下次双指重新建立，避免手势跳变。
