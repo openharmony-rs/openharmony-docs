@@ -5,6 +5,7 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a110e197dd55ada77ddf24e68485b5078465980e translatedAt=2026-11-26T02:29:17.446Z pushedAt=2026-11-26T02:44:39.338Z nl=1 -->
 
 ## Scenario Description
 
@@ -36,19 +37,19 @@ You can implement the call service in either of the following ways:
 ## Available APIs
 
 > **NOTE**
-> To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the callback mode. For details about the APIs, see [API Reference](../reference/apis-telephony-kit/js-apis-call.md).
+> To ensure app running efficiency, most API calls are asynchronous. For asynchronous APIs, both callback and promise modes are provided. The following examples use the callback mode. For more methods, see [@ohos.telephony.call (call service)](../reference/apis-telephony-kit/js-apis-call.md).
 
 |                                  Name                                            | Description                                                        |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| hasVoiceCapability(): boolean;                                                      | Checks whether the voice call function is supported. The default value is **false**.<br>- **true**: The voice call function is supported.<br>- **false**: The voice call function is not supported.                                       |
+| hasVoiceCapability(): boolean;                                                      | Checks whether the device has the voice capability. The default value is `true`.<br/>-`true`: yes<br/>-`false`: no                                        |
 |<!--DelRow--> dialCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | Makes a call. This is a system API.                                     |
-| makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | Redirects to the dial screen and displays the called number.                                 |
+| makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | Jumps to the dial interface and displays the number to be dialed.                                  |
 
-The **observer** module provides the functions of subscribing to and unsubscribing from the call service status. For details about the APIs, see [API Reference](../reference/apis-telephony-kit/js-apis-observer.md).
+The observer module provides the function of subscribing to and unsubscribing from call service status. For details about the APIs, see [@ohos.telephony.observer (telephony service status listening)](../reference/apis-telephony-kit/js-apis-observer.md).
 
 | Name                                                      | Description              |
 | ------------------------------------------------------------ | ------------------ |
-| on(type: 'callStateChange', options: { slotId: number }, callback: Callback<{ state: CallState, number: string }>): void; | Listens to call status changes.|
+| on(type: 'callStateChange', options: { slotId: number }, callback: Callback<[CallStateInfo](../reference/apis-telephony-kit/js-apis-observer.md#callstateinfo11)>): void; | Listens for call status changes. |
 
 ## How to Develop
 
@@ -62,31 +63,33 @@ The **observer** module provides the functions of subscribing to and unsubscribi
 3. Invoke the **hasVoiceCapability** API to check whether the device supports the voice call function.
 4. Invoke the **dialCall** API to make a call.
 5. (Optional) Register the observer for call service status changes.
-   ```ts
-    // Import the required modules.
-    import { call, observer } from '@kit.TelephonyKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    // Check whether the voice call function is supported.
-    let isSupport = call.hasVoiceCapability();
-    if (isSupport) {
-        // If the device supports the voice call function, call the following API to make a call.
-        call.dialCall("13xxxx", (err: BusinessError) => {
-            console.error(`callback: dial call err->${JSON.stringify(err)}`);
-        })
-
-        // (Optional) Register the observer for call service status changes.
-        class SlotId {slotId: number = 0}
-        class CallStateCallback {
-            state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
-            number: string = "";
-        }
-        let slotId: SlotId = {slotId: 0}
-        observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.info("call state change, data is:" + JSON.stringify(data));
-        });
-    }
+   <!-- @[DialCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/MakeCall/MakeCall/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { call, observer } from '@kit.TelephonyKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       // Call the query capability API.
+       let isSupport = call.hasVoiceCapability();
+       if (isSupport) {
+           // If the device supports the call capability, call the following API to dial.
+           call.dialCall('13xxxx', (err: BusinessError) => {
+               console.error(`callback: dial call err->${JSON.stringify(err)}`);
+           })
+   
+           // Subscribe to call service status changes (optional).
+           class SlotId {public slotId: number = 0}
+           class CallStateCallback {
+               public state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
+               public number: string = '';
+           }
+           let slotId: SlotId = {slotId: 0}
+           observer.on('callStateChange', slotId, (data: CallStateCallback) => {
+               console.info('call state change, data is:' + JSON.stringify(data));
+           });
+       }
    ```
+
 <!--DelEnd-->
 ### Making a Call by Using the makeCall API
 
@@ -95,34 +98,35 @@ The **observer** module provides the functions of subscribing to and unsubscribi
 3. Call the **makeCall** API to launch the dial screen and display the dialed number.
 4. (Optional) Register the observer for call service status changes.
 
-   ```ts
-    // Import the required modules.
-    import { call, observer } from '@kit.TelephonyKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[MakeCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/MakeCall/MakeCall/entry/src/main/ets/pages/Index.ets) -->
    
-    // Check whether the voice call function is supported.
-    let isSupport = call.hasVoiceCapability();
-    if (isSupport) {
-        // If the voice call function is supported, the user will be redirected to the dial screen and the dialed number is displayed.
-        // The tel URI format is supported since API version 15, for example, tel:13xxxx.
-        call.makeCall("13xxxx", (err: BusinessError) => {
-            if (!err) {
-                console.info("make call success.");
-            } else {
-                console.error("make call fail, err is:" + JSON.stringify(err));
-            }
-        });
-        // (Optional) Register the observer for call service status changes.
-        class SlotId {slotId: number = 0}
-        class CallStateCallback {
-            state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
-            number: string = "";
-        }
-        let slotId: SlotId = {slotId: 0}
-        observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.info("call state change, data is:" + JSON.stringify(data));
-        });
-    }
+   ``` TypeScript
+   import { call, observer } from '@kit.TelephonyKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+         // Call the query capability API.
+         let isSupport = call.hasVoiceCapability();
+         if (isSupport) {
+             // If the device supports the call capability, jump to the dial interface and display the dialed number.
+             // Starting from API 15, phone numbers in tel format are supported, for example, "tel:13xxxx".
+             call.makeCall('13xxxx', (err: BusinessError) => {
+                 if (!err) {
+                     console.info('make call success.');
+                 } else {
+                     console.error('make call fail, err is:' + JSON.stringify(err));
+                 }
+             });
+             // Subscribe to call service status changes (optional).
+             class SlotId {public slotId: number = 0}
+             class CallStateCallback {
+                 public state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
+                 public number: string = '';
+             }
+             let slotId: SlotId = {slotId: 0}
+             observer.on('callStateChange', slotId, (data: CallStateCallback) => {
+                 console.info('call state change, data is:' + JSON.stringify(data));
+             });
+         }
    ```
 
 ## Samples
