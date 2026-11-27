@@ -544,8 +544,6 @@ class SendableClass {
 let sendableClass = new SendableClass(sendableFunc);
 ```
 
-
-
 **反例：**
 
 ```ts
