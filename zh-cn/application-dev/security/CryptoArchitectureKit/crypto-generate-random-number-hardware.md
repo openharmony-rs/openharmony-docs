@@ -48,7 +48,7 @@
 
 1. 调用[cryptoFramework.createRandom](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreaterandom)，生成随机数实例。
 
-2. 调用[rand.enableHardwareEntropy](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#enablehardwareentropy21)，开启硬件熵源。
+2. 调用[Random.enableHardwareEntropy](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#enablehardwareentropy21)，开启硬件熵源。
 
 3. （可选）设置DataBlob数据，调用[Random.setSeed](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setseed)，为随机数生成器设置种子。
 

@@ -19,7 +19,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 **指定签名参数，转换为DER格式**
 1. 调用[OH_CryptoEccSignatureSpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_create)，创建[OH_CryptoEccSignatureSpec](../../reference/apis-crypto-architecture-kit/capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md)对象，用于设置SM2签名参数。
 
-2. 调用[OH_CryptoEccSignatureSpec_SetRAndS](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands)，将R、S设置到OH_CryptoEccSignatureSpec对象中。
+2. 调用[OH_CryptoEccSignatureSpec_SetRAndS](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands)，将r、s设置到OH_CryptoEccSignatureSpec对象中。
 
 3. 调用[OH_CryptoEccSignatureSpec_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_encode)得到转换后的DER格式的签名数据。
 
