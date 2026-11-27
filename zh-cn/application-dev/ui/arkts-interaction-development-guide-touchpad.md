@@ -20,11 +20,11 @@
 
 ## 触控板原始事件
 
-触控板原始事件由用户在触控板上触摸时触发，可用于获取触控板上触点的百分比位置、触点阶段、触控板设备尺寸等信息。使用触控板原始事件，需在应用级使能上报，并在组件上注册监听，使能与注册的先后顺序不影响事件接收。
+触控板原始事件由用户在触控板上触摸时触发，可用于获取触控板上触点的百分比位置、触点阶段、触控板设备尺寸等信息。使用触控板原始事件，需在应用级启用上报，并在组件上注册监听，启用与注册的先后顺序不影响事件接收。
 
-### 使能触控板原始事件
+### 启用触控板原始事件
 
-触控板原始事件默认不上报，需通过[UIContext.enableTouchPadEvent](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#enabletouchpadevent)接口在应用级开启上报，开启后应用才能接收到触控板原始事件。
+触控板原始事件默认不上报，需通过[UIContext.enableTouchPadEvent](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#enabletouchpadevent)接口在应用级启用上报，启用后应用才能接收到触控板原始事件。
 
 > **说明：**
 >
@@ -57,7 +57,7 @@ UIContext.enableTouchPadEvent(true);
 
 如果需要拦截触控板事件的命中测试，可通过[onTouchPadEventIntercept](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadeventintercept)接口设置自定义拦截回调，返回[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9)决定组件在触控板事件链中的命中测试行为。
 
-以下示例演示了使能触控板原始事件上报，并基于双指触点数据实现自定义手势跟随：双指滑动驱动组件平移、双指张开/捏合驱动组件缩放，抬手后动画还原至原位。
+以下示例演示了启用触控板原始事件上报，并基于双指触点数据实现自定义手势跟随：双指滑动驱动组件平移、双指张开/捏合驱动组件缩放，抬手后动画还原至原位。
 
 <!-- @[touchpad_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/touchpadEvent/TouchPadEventActualApplication.ets) -->
 
@@ -112,15 +112,15 @@ struct TouchPadEventActualApplication {
 
   // 坐标转换：positionX/Y 规范取值范围为[0, 1]；
   // 若上报值为百分比(0~100)或毫米坐标(>100)，
-  // 通过 deviceWidth/deviceHeight(触控板物理尺寸mm)折算回[0,1]
+  // 通过 deviceWidth/deviceHeight(触控板物理尺寸mm)折算回[0, 1]
   static toFraction(v: number, deviceSpanMm: number): number {
     if (v >= 0 && v <= 1) {
-      return v; // 规范路径：[0,1]
+      return v; // 规范路径：[0, 1]
     }
     if (v <= 100) {
-      return v / 100; // 百分比格式(0~100)，除以100转换为[0,1]
+      return v / 100; // 百分比格式(0~100)，除以100转换为[0, 1]
     }
-    return deviceSpanMm > 0 ? v / deviceSpanMm : v / 100; // 毫米坐标格式(>100)，按设备尺寸折算为[0,1]
+    return deviceSpanMm > 0 ? v / deviceSpanMm : v / 100; // 毫米坐标格式(>100)，按设备尺寸折算为[0, 1]
   }
 
   appendGestureDebug(line: string): void {
@@ -164,7 +164,7 @@ struct TouchPadEventActualApplication {
       this.appendGestureDebug(`phase=${ph} contacts=${len} 抬手 -> 还原原始位置`);
       return;
     }
-    // 触点集发生增减（BEGIN/CANCEL）时重建基线，防跳变
+    // 触点集发生增减（BEGIN）时重建基线，防跳变
     if (ph !== TouchPadEventPhase.MOVE) {
       this.hasBaseline = false;
     }
@@ -186,7 +186,7 @@ struct TouchPadEventActualApplication {
     const midY = (ay + by) / 2;
     const dist = Math.sqrt((ax - bx) * (ax - bx) + (ay - by) * (ay - by));
     if (this.hasBaseline && this.lastDist > 0) {
-      // 双指滑动：中点位移 -> 平移（[0,1]差值 × 屏幕增益换算为 vp）
+      // 双指滑动：中点位移 -> 平移（[0, 1]差值 × 屏幕增益换算为 vp）
       const dx = midX - this.lastMidX;
       const dy = midY - this.lastMidY;
       this.moveX += dx * this.gainX;
@@ -268,13 +268,13 @@ struct TouchPadEventActualApplication {
 }
 ```
 
-上面的示例中，点击 Enable 按钮调用UIContext.enableTouchPadEvent(true)开启上报，在 childStack 组件上绑定onTouchPadEvent接收事件。回调处理流程如下：
+上面的示例中，点击 Enable 按钮调用UIContext.enableTouchPadEvent(true)启用上报，在 childStack 组件上绑定onTouchPadEvent接收事件。回调处理流程如下：
 
-1. 阶段判断：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画将组件还原至原位与初始缩放。
+1. 阶段判断：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)动画将组件还原至原位与初始缩放。
 2. 双指识别：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板百分比坐标，取值范围[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
 3. 平移跟随：计算两指中点相对上一帧的位移（`midX/midY`差值），乘以屏幕增益后累加到组件的`translate`偏移量上，实现双指滑动驱动组件平移。
 4. 缩放跟随：计算两指间距相对上一帧的比例（`ratio`），累乘到组件的`scale`上，实现双指张开放大、捏合缩小，并限制缩放范围在[0.3, 3.0]。
-5. 防跳变：在触点集发生增减（BEGIN/CANCEL）或触点数少于2时，清除基线并等待下次双指重新建立，避免手势跳变。
+5. 防跳变：在触点集发生增减（BEGIN）或触点数少于2时，清除基线并等待下次双指重新建立，避免手势跳变。
 
 ## 触控板生成事件
 
@@ -284,7 +284,7 @@ struct TouchPadEventActualApplication {
 
 ![touchpad-single](figures/touchpad-single-finger.png)
 
-单指操作触控板与操作鼠标的方式相同。例如，轻触后滑动会产生鼠标移动事件，而重按则会产生鼠标左键按下事件。若需判断鼠标事件是来自触控板还是鼠标设备，可以通过[sourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)和[sourceTool](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetool枚举说明9)信息进行区分。
+单指操作触控板与操作鼠标的方式相同。例如，轻触后滑动会产生鼠标移动事件，而重按则会产生鼠标左键按下事件。若需判断鼠标事件是来自触控板还是鼠标设备，可以通过[sourceTool](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetool枚举说明9)判断事件来源（触控板为SourceTool.TOUCHPAD，鼠标为SourceTool.MOUSE）。
 
 对该种操作产生的事件的处理，请参考[处理鼠标移动](arkts-interaction-development-guide-mouse.md#处理鼠标移动)章节。
 
@@ -293,7 +293,7 @@ struct TouchPadEventActualApplication {
 
 ![touchpad-scroll](figures/touchpad-two-fingers.png)
 
-与鼠标滚轮不同，触控板上双指滑动产生的轴事件上报的数值单位并非角度，而是位移像素，为了区分该点，在处理轴值之前，可以通过sourceType及sourceTool来区分。
+与鼠标滚轮不同，触控板上双指滑动产生的轴事件上报的数值单位并非角度，而是位移像素，为了区分该点，在处理轴值之前，可以通过sourceTool来区分。
 
 当用户使用双指横滑时，可从[BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8)的`axisHorizontal`属性中获取横向轴值（位移像素），向右滑动时，上报数值为负，向左滑动时，上报数值为正。使用双指竖滑时，可从[BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8)的`axisVertical`属性中获取到纵向轴值（位移像素），向上滑动时，上报数值为正，向下滑动时，上报数值为负。
 
@@ -307,4 +307,4 @@ struct TouchPadEventActualApplication {
 
 ![touchpad-pinch](figures/touchpad-pinch.png)
 
-在触控板上通过双指捏合，可以产生捏合缩放值上报，用于触发[PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md)手势。该缩放值表示一个相对缩放比例（scale），以双指开始捏合的那一刻为基准（此时scale为1.0）。当双指向外扩张时，scale从1.0逐渐增大；当双指向内合并时，scale从1.0逐渐减小。应用可通过[GestureEvent](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)的`scale`属性获取该值，用于实现图片、页面内容等对象的缩放交互。
+在触控板上通过双指捏合，可以产生捏合缩放值上报，用于触发[PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md)手势。该缩放值表示一个相对缩放比例（scale），以双指开始捏合的那一刻为基准（此时scale为1.0）。当双指张开时，scale从1.0逐渐增大；当双指捏合时，scale从1.0逐渐减小。应用可通过[GestureEvent](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)的`scale`属性获取该值，用于实现图片、页面内容等对象的缩放交互。
