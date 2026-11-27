@@ -24,7 +24,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 图库端云同步类型，为枚举类型。
 
-**起始版本**：26.0.1
+**起始版本**：26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -493,7 +493,7 @@ startWithType(type: SyncType): Promise&lt;void&gt;
 >
 > Promise的then回调执行仅表示同步启动请求已受理，不表示整轮同步已完成。同步进度可通过[on('progress')](#onprogress)监听。
 
-**起始版本**：26.0.1
+**起始版本**：26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -551,7 +551,7 @@ startWithType(callback: Callback&lt;void&gt;, type: SyncType): void
 >
 > 启动请求提交失败时，接口会立即抛出BusinessError，此时不会调用callback。请求提交成功后，callback会被异步调用，但这不表示整轮同步已完成。同步进度可通过[on('progress')](#onprogress)监听。
 
-**起始版本**：26.0.1
+**起始版本**：26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
