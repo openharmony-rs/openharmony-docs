@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -47,7 +47,7 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOp
 
 **描述**
 
-用于创建一个使用OpenGL作为后端接口的图形处理器上下文对象。创建的图形处理器上下文对象使用完毕后，需要调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)销毁并回收内存。该API从API version 18开始废弃，建议使用[OH_Drawing_GpuContextCreate](#oh_drawing_gpucontextcreate)。
+用于创建一个使用OpenGL作为后端接口的图形处理器上下文对象。创建的图形处理器上下文对象使用完毕后，需要调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)销毁并回收内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

@@ -2700,6 +2700,133 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+### showAbility
+
+showAbility(params: ShowParams): Promise\<void>
+
+显示当前UIAbility。使用Promise异步回调。
+ 
+> **说明：**
+>
+> - 仅支持在主线程中调用。
+>
+> - 调用此接口前，请确保当前应用已添加至系统状态栏。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| params | [ShowParams](js-apis-app-ability-showParams.md) | 是 | 窗口显示配置项，控制窗口是否获焦及置顶显示。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 16000050 | Internal error. |
+| 16000067 | The StartOptions check failed. |
+
+**示例：**
+
+EntryAbility.ts示例请参考[showAbility<sup>12+</sup>](#showability12)
+
+ArkTS-Dyn示例：
+
+```ts
+// Index.ets
+import { common, ShowParams } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State showAbility: string = 'showAbility'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.showAbility)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let params: ShowParams = {
+              windowShowParams: {
+                windowFocused: false,
+                raiseTop: true
+              }
+            };
+
+            // 显示当前UIAbility
+            context.showAbility(params).then(() => {
+              console.info(`showAbility success`);
+            }).catch((err: BusinessError) => {
+              console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, ShowParams } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State showAbility: string = 'showAbility'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.showAbility)
+          .fontSize(30)
+          .fontWeight(700)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let params: ShowParams = {
+              windowShowParams: {
+                windowFocused: false,
+                raiseTop: true
+              }
+            };
+
+            context.showAbility(params).then(() => {
+              console.info(`showAbility success.`);
+            }).catch((err): void => {
+              console.info(`showAbility error: ${JSON.stringify(err)}.`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ### hideAbility<sup>12+</sup>
 
@@ -3258,10 +3385,6 @@ struct Index {
 
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise&lt;void&gt;
 
-> **说明：**
->
-> 从API版本26.1.0开始废弃，建议使用[backToCallerAppWithResult](#backtocallerappwithresult)替代。
-
 当通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink12)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与[terminateSelfWithResult](#terminateselfwithresult)不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。仅支持在主线程调用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
@@ -3271,6 +3394,10 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [backToCallerAppWithResult](#backtocallerappwithresult)
 
 **参数：**
 
@@ -5453,8 +5580,6 @@ backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string): Pr
 > **说明：**
 >
 > 本接口返回结果时不会额外触发调用方的[onNewWant](js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调，无需通过[setOnNewWantSkipScenarios](#setonnewwantskipscenarios20)配置跳过场景。
->
-> 如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND权限（该权限仅系统应用可申请）。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
@@ -5465,6 +5590,8 @@ backToCallerAppWithResult(abilityResult: AbilityResult, requestCode: string): Pr
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **原子化服务API（仅ArkTS-Dyn）**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND（在后台调用本接口时需要，该权限仅系统应用可申请）。
 
 **参数：**
 

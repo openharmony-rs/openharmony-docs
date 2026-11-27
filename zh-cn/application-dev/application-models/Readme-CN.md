@@ -9,6 +9,7 @@
 
 
 - [Ability Kit简介](abilitykit-overview.md)
+- [Ability Kit指南配套示例代码](ability-kit-samples.md)
 - 应用模型<!--application-models-->
   - [应用模型概述](stage-model-development-overview.md)
   - 应用组件<!--stage-model-application-components-->
@@ -127,11 +128,5 @@
   - [使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](modular-object-extension-development.md)
   - [使用Taihe实现ModularObjectExtensionAbility的IPC通信 (C/C++)](modular-object-extension-ability-taihe.md)
   - [使用ModularObjectDispatcher实现动态接口调用 (C/C++)](modular-object-dispatcher-development.md)
-- 面向Agent的CLI命令<!--cli-for-agent-->
-  - [面向Agent的CLI命令概述](cli-for-agent-overview.md)
-  - [CLI命令规范](cli-command-specification.md)
-  - [申请CLI访问权限](cli-permission-guide.md)
-  - [实现CLI调用](cli-invocation-guide.md)
-  - 预置CLI命令<!--preset-cli-commands-->
-  - [启动应用命令（start）](cli-command-start.md)
+- [Ability Kit管理类概览](manager-overview.md)
 - [Ability Kit术语](ability-terminology.md)

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍自定义图形的绘制流程及绘制结果在RenderNode或XComponent上的显示方式，并说明Drawing与Canvas组件的关系。"
+keywords: [自定义绘制, 画布操作, 绘制效果, 图元绘制, Canvas组件, Native Drawing]
+doctype: guide
+status: active
+---
+
 # 图形绘制与显示开发概述
 
 <!--Kit: ArkGraphics 2D-->

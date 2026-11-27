@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过修改module.json5的type字段、删除pages与deliveryWithInstall、替换编译任务，将HSP工程转换为HAR工程，规避多模块集成调试的bundleName与签名一致性问题。"
+keywords: [HSP转HAR, module.json5, type har, hvigorfile.ts, harTasks, oh-package.json5, packageType, deliveryWithInstall, 签名一致性]
+doctype: guide
+status: active
+---
 # HSP转HAR指导
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

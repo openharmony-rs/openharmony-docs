@@ -7,6 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
+struct OH_AuxiliaryPictureNative
 typedef struct OH_AuxiliaryPictureNative OH_AuxiliaryPictureNative
 ```
 

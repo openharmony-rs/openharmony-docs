@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍Stage模型中获取、设置和订阅语言、深浅色、字体大小、屏幕方向等环境变量的接口与开发步骤。"
+keywords: [环境变量, Configuration, 订阅回调, setColorMode, setLanguage, setFontSizeScale, getConfigurationSync]
+doctype: guide
+status: active
+---
 # 获取/设置环境变量
 
 <!--Kit: Ability Kit-->

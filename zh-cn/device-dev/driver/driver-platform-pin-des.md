@@ -74,7 +74,8 @@ PIN模块提供的主要接口如表1所示，具体API[详见](https://gitcode.
 | int32_t PinSetFunc(DevHandle handle, const char \*funcName) | 设置管脚功能 |
 | int32_t PinGetFunc(DevHandle handle, const char \**funcName) | 获取管脚功能 |
 
->![](../public_sys-resources/icon-note.gif) **说明：**<br>
+>**说明：**
+>
 >本文涉及PIN的所有接口，支持内核态及用户态使用。
 
 ### 开发步骤<a name="section9"></a>
@@ -99,7 +100,9 @@ DevHandle PinGet(const char *pinName);
 | 参数 | 描述 |
 | ---------- | ----------------------- |
 | pinName | 字符指针类型，管脚名 |
+
 | **返回值** | **描述** |
+| ---------- | ----------------------- |
 | NULL | 获取PIN管脚描述句柄失败 |
 | handle | PIN管脚描述句柄 |
 
@@ -132,7 +135,9 @@ int32_t PinSetPull(DevHandle handle, enum PinPullType pullType);
 | ---------- | ----------------------- |
 | handle | DevHandle类型，PIN管脚描述句柄 |
 | pullType | 枚举类型，PIN管脚推拉方式 |
+
 | **返回值** | **描述**          |
+| ---------- | ----------------------- |
 | HDF_SUCCESS | PIN设置管脚推拉方式成功 |
 | 负数 | PIN设置管脚推拉方式失败 |
 
@@ -167,7 +172,9 @@ int32_t PinGetPull(DevHandle handle, enum PinPullType *pullType);
 | ---------- | ------------------------- |
 | handle | DevHandle类型，PIN管脚描述句柄 |
 | pullType | 枚举类型指针，接收PIN管脚推拉方式 |
-| **返回值** | **描述**            |
+
+| **返回值** | **描述** |
+| ---------- | ------------------------- |
 | HDF_SUCCESS | PIN获取管脚推拉方式成功 |
 | 负数 | PIN获取管脚推拉方式失败 |
 
@@ -201,7 +208,9 @@ int32_t PinSetStrength(DevHandle handle, uint32_t strength);
 | ---------- | ----------------------- |
 | handle | DevHandle类型，管脚描述句柄 |
 | strength | uint32_t类型，PIN管脚推拉强度 |
-| **返回值** | **描述**          |
+
+| **返回值** | **描述** |
+| ---------- | ----------------------- |
 | HDF_SUCCESS | PIN设置管脚推拉强度成功 |
 | 负数 | PIN设置管脚推拉强度失败 |
 
@@ -234,8 +243,10 @@ int32_t PinGetStrength(DevHandle handle, uint32_t *strength);
 | 参数 | 描述 |
 | ---------- | ------------------------- |
 | handle | DevHandle类型，管脚描述句柄 |
-| strength | uint32_t类型指针，接收PIN管脚推拉强度 
-| **返回值** | **描述**            |
+| strength | uint32_t类型指针，接收PIN管脚推拉强度 |
+
+| **返回值** | **描述** |
+| ---------- | ------------------------- |
 | HDF_SUCCESS | PIN获取管脚推拉强度成功 |
 | 负数 | PIN获取管脚推拉强度失败 |
 
@@ -271,7 +282,9 @@ int32_t PinSetFunc(DevHandle handle, const char *funcName);
 | ---------- | ------------------- |
 | handle | DevHandle类型，管脚描述句柄 |
 | funcName | 字符指针类型，PIN管脚功能名 |
+
 | **返回值** | **描述**      |
+| ---------- | ------------------- |
 | HDF_SUCCESS | PIN设置管脚功能成功 |
 | 负数 | PIN设置管脚功能失败 |
 
@@ -305,7 +318,9 @@ int32_t PinGetFunc(DevHandle handle, const char **funcName);
 | ---------- | --------------------- |
 | handle | DevHandle类型，管脚描述句柄 |
 | funcName | 字符类型双指针，接收PIN管脚功能 |
+
 | **返回值** | **描述**        |
+| ---------- | --------------------- |
 | HDF_SUCCESS | PIN获取管脚功能成功 |
 | 负数 | PIN获取管脚功能失败 |
 
@@ -338,7 +353,9 @@ void PinPut(DevHandle handle);
 | 参数 | 描述 |
 | ---------- | -------------- |
 | handle | DevHandle类型，管脚描述句柄 |
+
 | **返回值** | **描述** |
+| ---------- | -------------- |
 | NA | 无返回值 |
 
 PIN销毁管脚描述句柄实例如下：
@@ -361,11 +378,11 @@ PinPut(handle);
 
 5. 通过PIN管脚描述句柄，并用strengthNum承接获取的管脚推拉强度，如果操作失败则释放PIN管脚描述句柄。
 
-5. 通过PIN管脚描述句柄以及管脚功能名funName设置管脚功能，如果操作失败则释放PIN管脚描述句柄。
+6. 通过PIN管脚描述句柄以及管脚功能名funcName设置管脚功能，如果操作失败则释放PIN管脚描述句柄。
 
-6. 通过PIN管脚描述句柄，并用funName承接获取的管脚功能名，如果操作失败则释放PIN管脚描述句柄。
+7. 通过PIN管脚描述句柄，并用funcName承接获取的管脚功能名，如果操作失败则释放PIN管脚描述句柄。
 
-7. 使用完PIN后，不再对管脚进行操作，释放PIN管脚描述句柄。
+8. 使用完PIN后，不再对管脚进行操作，释放PIN管脚描述句柄。
 
 ```c
 #include "hdf_log.h"                              // 标准日志打印头文件

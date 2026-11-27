@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍模块级配置文件module.json5的结构与全部字段，包含模块基本信息、设备类型、UIAbility与ExtensionAbility组件、权限以及metadata等配置。"
+keywords: [module.json5, UIAbility, ExtensionAbility, deviceTypes, abilities, requestPermissions, skills, pages, metadata]
+doctype: guide
+status: active
+---
 # module.json5配置文件
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
@@ -168,6 +175,8 @@ module.json5配置文件包含以下标签。
 | shareFiles | 标识应用沙箱中分享目录的配置文件路径，用于为应用文件提供有安全保障的开放范围，保护应用资产。只允许entry类型模块配置，取值为长度不超过255字节的字符串。具体使用方式请参考[应用共享目录配置](../file-management/share-app-file-configuration.md)。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | [skillProfiles](#skillprofiles标签) | 标识当前模块的技能配置信息，用于定义AI代理的技能能力。仅允许type字段取值为entry、feature、shared、skill的模块配置，对于skill类型的模块必须配置该标签。<br/>**说明：**<br/>从API版本26.0.0开始，支持该标签。 | 对象数组 | 对于skill类型的模块，该标签不可缺省。对于其他类型的模块，该标签可缺省，缺省值为空。 |
 | [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径及权限控制模式信息。<br/>**说明：** <br/>1. 从API version 24开始，支持该标签。<br/>2. 仅在PC/2in1设备上生效。| 对象数组 | 该标签可缺省，缺省值为空。 |
+| [launchServices](#launchservices标签) | 标识当前模块的启动服务配置信息。每个启动服务必须包含name和binaryPath字段，可选配置runAtLoad、keepAlive、provideIpcService和type字段，最多允许配置64个启动服务。仅允许type字段取值为entry、feature、shared的模块配置该标签。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。 | 对象数组 | 该标签可缺省，缺省值为空。 |
+| alternateModule | 标识当前Module是否为应用间共享HSP的备用模块。<br/>-&nbsp;true：备用模块。<br/>-&nbsp;false：业务模块。<br/>仅支持应用间共享HSP，即module.json5中的type和app.json5中的[bundleType](./app-configuration-file.md#配置文件标签)均为shared。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | uiSyntax<sup>(deprecated)</sup> | 标识当前Module&nbsp;syntax定义该JS&nbsp;Component的语法类型。<br/>-&nbsp;hml：标识该JS&nbsp;Component使用hml/css/js进行开发。<br/>-&nbsp;ets：标识该JS&nbsp;Component使用ArkTS声明式语法进行开发。<br/>**说明：**<br/>该标签从API version 9开始废弃。 | 字符串 | 该标签可缺省，缺省值为hml。 |
 | srcEntrance<sup>(deprecated)</sup> | 标识当前Module所对应的代码路径，标签值为字符串（最长为127字节）。<br/>**说明：**<br/>该标签从API version 9开始废弃，请使用srcEntry字段替代。 | 字符串 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
@@ -1397,5 +1406,45 @@ skillProfiles标签示例：
     ],
     // ...
   }
+}
+```
+
+## launchServices标签
+
+标识当前模块的启动服务配置信息。每个启动服务对应模块内的一个可执行程序，通过配置其属性，可实现模块加载时自启动、常驻保活及提供IPC服务等能力。单模块最多支持配置64个启动服务。仅当模块的type字段取值为entry、feature或shared时，才允许配置该标签。
+
+从API版本26.1.0开始，支持该标签。
+
+**表33** launchServices标签说明
+
+| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+| -------- | -------- | -------- | -------- |
+| name | 标识启动服务的名称。命名规则如下：<br/>-&nbsp;由字母、数字、下划线（_）和点号（.）组成，且必须以字母开头。<br/>-&nbsp;最大长度255字节。 | 字符串 | 否 |
+| binaryPath | 标识启动服务对应的可执行文件的相对路径。取值为长度不超过255字节的字符串，且路径中不允许包含表示上级目录的".."路径段。 | 字符串 | 否 |
+| runAtLoad | 标识模块加载时是否自动启动该服务。<br/>-&nbsp;true：模块加载时启动该服务。<br/>-&nbsp;false：模块加载时不启动该服务。 | 布尔值 | 是，缺省值为false。 |
+| keepAlive | 标识服务启动后是否保持常驻存活。<br/>-&nbsp;true：服务启动后保持存活。<br/>-&nbsp;false：服务启动后不保持存活。 | 布尔值 | 是，缺省值为false。 |
+| provideIpcService | 标识启动服务是否提供IPC服务。<br/>-&nbsp;true：提供IPC服务。<br/>-&nbsp;false：不提供IPC服务。 | 布尔值 | 是，缺省值为false。 |
+| type | 标识启动服务的类型。当前仅支持取值为daemon。 | 字符串 | 是，缺省值为daemon。 |
+
+launchServices标签示例：
+
+<!-- @[module_launchServices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "launchServices": [
+      {
+        "name": "mydaemon",
+        "binaryPath": "mydaemon/testdaemon",
+        "runAtLoad": true,
+        "keepAlive": true,
+        "provideIpcService": false,
+        "type": "daemon"
+      }
+    ],
+    // ...
+  },
 }
 ```

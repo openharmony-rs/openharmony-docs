@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "Longque-JS-API使用注意事项。"
+keywords: [Longque-JS-API, JSVM]
+doctype: guide
+status: active
+---
+
 # Longque-JS-API使用指导
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

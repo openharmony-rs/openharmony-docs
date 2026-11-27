@@ -21,7 +21,7 @@ You can obtain the MindSpore Lite model conversion tool in either of the followi
 
 | Component                                                   | Hardware Platform| OS    | URL                                                        | SHA-256                                                      |
 | ------------------------------------------------------- | -------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| On-device inference and training benchmark tool, converter tool, and cropper tool| CPU      | Linux-x86_64 | [mindspore-lite-2.7.0-linux-x64.tar.gz](https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.7.0/MindSporeLite/lite/release/linux/x86_64/mindspore-lite-2.7.0-linux-x64.tar.gz) | 8bb1097100c9fec12675670ba2d4264a2cd6da3a9be093eb56631d00fc0c455b |
+| On-device inference and training benchmark tool, converter tool, and cropper tool| CPU      | Linux-x86_64 | [mindspore-lite-2.10.0-linux-x64.tar.gz](https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.10.0/MindSporeLite/lite/release/linux/x86_64/mindspore-lite-2.10.0-linux-x64.tar.gz) | 6c9bd48171f8581e9e264a805a9f3839001752451828bafcf3a6212dbc7462bd |
 
 ### Source Code Building
 

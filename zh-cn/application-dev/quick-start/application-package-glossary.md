@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "应用程序包术语表，按字母顺序汇总App Pack、Bundle、HAP、HAR、HSP、Module、集成态HSP等概念的中文定义与说明，便于开发者查阅。"
+keywords: [App Pack, Bundle, HAP, HAR, HSP, Module, 集成态HSP, bm]
+doctype: glossary
+status: active
+---
 # 应用程序包术语
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
@@ -21,6 +28,10 @@
 ### bm (Bundle Manager)；包管理工具
 
 用于应用包管理的命令行工具，支持应用的安装、卸载、查询等操作。
+
+### BOPD (Boot on Pseudo Data)
+ 
+设备的一种异常模式，用于在设备无法正常开机时，通过创建虚拟数据分区实现紧急备份和数据恢复功能。
 
 ## E
 

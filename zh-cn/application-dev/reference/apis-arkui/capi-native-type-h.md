@@ -86,6 +86,7 @@
 | [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)|ArkUI_PickerIndicatorBackground|背景样式指示器的样式参数。|
 | [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)|ArkUI_PickerIndicatorDivider|分割线样式指示器的样式参数。|
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)|ArkUI_PickerIndicatorStyle|选中项指示器的样式。|
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)|ArkUI_PickerComponentTextStyle|选择器组件的文本样式参数。|
 | [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)|ArkUI_Matrix4|定义四阶矩阵对象。|
 | [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)|ArkUI_Matrix4RotationOptions|定义矩阵旋转的旋转对象。|
 | [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)|ArkUI_Matrix4ScaleOptions|定义矩阵缩放的缩放对象。|
@@ -128,7 +129,7 @@
 | [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode)                   | ArkUI_ScrollNestedMode          | 定义嵌套滚动选项。                         |
 | [ArkUI_ScrollEdge](#arkui_scrolledge)                               | ArkUI_ScrollEdge                | 定义滚动到的边缘位置。                       |
 | [ArkUI_ScrollAlignment](#arkui_scrollalignment)                     | ArkUI_ScrollAlignment           | 滚动到具体item时的对齐方式。                  |
-| [OH_ArkUI_FastScrollMode](#oh_arkui_fastscrollmode) | OH_ArkUI_FastScrollMode | 定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)或[NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效，WaterFlow还需使用[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式。 |
+| [OH_ArkUI_FastScrollMode](#oh_arkui_fastscrollmode) | OH_ArkUI_FastScrollMode | 定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)、[NODE_GRID_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_grid_scroll_to_index)或[NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效，WaterFlow还需使用[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式。 |
 | [ArkUI_ScrollState](#arkui_scrollstate)                             | ArkUI_ScrollState               | 定义当前滚动状态。                         |
 | [ArkUI_SliderBlockStyle](#arkui_sliderblockstyle)                   | ArkUI_SliderBlockStyle          | 定义滑块形状。                           |
 | [ArkUI_SliderDirection](#arkui_sliderdirection)                     | ArkUI_SliderDirection           | 定义滑动条滑动方向。                        |
@@ -526,6 +527,14 @@
 | [void  OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)](#oh_arkui_pickerindicatorstyle_dispose) | - | 销毁选中项指示器的样式实例。 |
 | [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | - | 设置背景样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_BACKGROUND](capi-native-type-h.md#arkui_pickerindicatortype)时生效。 |
 | [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | - | 设置分割线样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_DIVIDER](capi-native-type-h.md#arkui_pickerindicatortype)时生效。 |
+| [ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)](#oh_arkui_pickercomponenttextstyle_create) | ArkUI_PickerComponentTextStyle | 创建选择器组件的文本样式实例。 |
+| [void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)](#oh_arkui_pickercomponenttextstyle_dispose) | - | 销毁选择器组件的文本样式实例。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)](#oh_arkui_pickercomponenttextstyle_setcolor) | - | 设置选择器组件文本样式的字体颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)](#oh_arkui_pickercomponenttextstyle_setfontsize) | - | 设置选择器组件文本样式的字号。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)](#oh_arkui_pickercomponenttextstyle_setfontweight) | - | 设置选择器组件文本样式的字体粗细。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)](#oh_arkui_pickercomponenttextstyle_setminfontsize) | - | 设置选择器组件文本样式的最小字号。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)](#oh_arkui_pickercomponenttextstyle_setmaxfontsize) | - | 设置选择器组件文本样式的最大字号。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)](#oh_arkui_pickercomponenttextstyle_setoverflow) | - | 设置选择器组件文本样式的文本溢出处理方式。 |
 | [ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()](#oh_arkui_matrix4scaleoptions_create) | - | 创建指向矩阵运算的缩放参数对象的指针。在新创建的对象中，x、y和z方向的缩放系数默认值，为1。变换中心点的x轴坐标centerX、变换中心点的y轴坐标centerY取默认值，为0。 |
 | [void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)](#oh_arkui_matrix4scaleoptions_dispose) | - | 销毁指向矩阵运算的缩放参数对象的指针。 |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* options, const float scaleX)](#oh_arkui_matrix4scaleoptions_setx) | - | 设置矩阵运算的缩放参数对象x方向的缩放因子。 |
@@ -1322,22 +1331,23 @@ enum OH_ArkUI_FastScrollMode
 
 **描述：**
 
-定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)或[NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效，WaterFlow还需使用[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式。
+定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)、[NODE_GRID_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_grid_scroll_to_index)或[NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效，WaterFlow还需使用[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式。
 
 > **说明：**
 >
 > - 当滚动距离较大且触发跳跃时，通常先从起始位置连续滚动约2屏，再跳到距离最终停靠位置约2屏的位置，继续滚动至最终位置。一屏指滚动组件可视区域在滚动方向上的长度。
 > - 跳过创建或测量只针对上述被跳过的滚动路径；前后两段连续滚动中需要显示的子组件仍会按需创建和测量。实际创建和测量的范围还受对齐方式、额外偏移量和子组件大小等因素影响，并非固定为4屏。
 > - 快速滚动不保证遍历并显示滚动路径上的每一个子组件。
-> - 向NODE_LIST_SCROLL_TO_INDEX或NODE_WATER_FLOW_SCROLL_TO_INDEX传入本枚举未定义的值时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
+> - Grid组件在滚动开始时可能还无法确定目标项和中间项的跨行、跨列信息。使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时，可按需创建中间GridItem来获取这些信息；使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，需通过NODE_GRID_LAYOUT_OPTIONS提前提供完整、准确的跨度信息（包括影响目标位置的所有跨行跨列项），否则不保证滚动到目标位置，也不会自动降级为其他模式。
+> - 向NODE_LIST_SCROLL_TO_INDEX、NODE_GRID_SCROLL_TO_INDEX或NODE_WATER_FLOW_SCROLL_TO_INDEX传入本枚举未定义的值时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
 
 **起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 | 不启用快速滚动优化，与不设置快速滚动模式参数时的行为相同。开启动效时，会在动效开始前创建并测量滚动路径上的所有子组件。 |
-| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型和目标所在行。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。 |
-| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE。<br/>WaterFlow组件建议使用此模式。[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式下，WaterFlow定位目标FlowItem不依赖中间子组件，OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE仍会创建沿途中间子组件，带来多余的创建开销。 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型、目标所在行或GridItem的跨行跨列信息。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。对于Grid组件，可按需创建中间GridItem以确认其跨行或跨列信息。 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE。<br/>WaterFlow组件建议使用此模式。[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式下，WaterFlow定位目标FlowItem不依赖中间子组件，OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE仍会创建沿途中间子组件，带来多余的创建开销。对于Grid组件，如果目标项或中间项的跨行、跨列信息尚未确定，需通过NODE_GRID_LAYOUT_OPTIONS提前提供完整、准确的跨度信息（包括影响目标位置的所有跨行跨列项）；缺少该信息时不保证滚动到目标位置，且不会自动降级为其他模式。 |
 
 ### ArkUI_ScrollState
 
@@ -14782,6 +14792,192 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndic
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_PickerComponentTextStyle_Create()
+
+```c
+ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)
+```
+
+**描述**
+
+创建选择器组件的文本样式实例。使用完毕后，请调用[OH_ArkUI_PickerComponentTextStyle_Dispose](#oh_arkui_pickercomponenttextstyle_dispose)销毁实例。
+
+**起始版本：** 26.1.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* | 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。如果返回空指针，表示创建失败。 |
+
+### OH_ArkUI_PickerComponentTextStyle_Dispose()
+
+```c
+void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)
+```
+
+**描述**
+
+销毁选择器组件的文本样式实例。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [入参] 指向要销毁的[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。如果传入空指针，则不执行任何操作。 |
+
+### OH_ArkUI_PickerComponentTextStyle_SetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)
+```
+
+**描述**
+
+设置选择器组件文本样式的字体颜色。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [入参] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。 |
+| uint32_t color | [入参] 字体颜色，采用0xARGB格式。例如0xFF182431。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) style参数为空指针。 |
+
+### OH_ArkUI_PickerComponentTextStyle_SetFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)
+```
+
+**描述**
+
+设置选择器组件文本样式的字号。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [入参] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。 |
+| float fontSize | [入参] 字号，单位为fp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) style参数为空指针。 |
+
+### OH_ArkUI_PickerComponentTextStyle_SetFontWeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)
+```
+
+**描述**
+
+设置选择器组件文本样式的字体粗细。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [入参] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。 |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) fontWeight | [入参] 字体粗细。取值为ArkUI_FontWeight的枚举值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) style参数为空指针。 |
+
+### OH_ArkUI_PickerComponentTextStyle_SetMinFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)
+```
+
+**描述**
+
+设置选择器组件文本样式的最小字号。与maxFontSize配合使用以启用字号缩放。当minFontSize与maxFontSize同时设置时，fontSize不生效。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [入参] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。 |
+| float minFontSize | [入参] 最小字号，单位为fp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) style参数为空指针。 |
+
+### OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)
+```
+
+**描述**
+
+设置选择器组件文本样式的最大字号。与minFontSize配合使用以启用字号缩放。当minFontSize与maxFontSize同时设置时，fontSize不生效。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [入参] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。 |
+| float maxFontSize | [入参] 最大字号，单位为fp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) style参数为空指针。 |
+
+### OH_ArkUI_PickerComponentTextStyle_SetOverflow()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)
+```
+
+**描述**
+
+设置选择器组件文本样式的文本溢出处理方式。设置为ARKUI_TEXT_OVERFLOW_MARQUEE时不生效。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [入参] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。 |
+| [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow) overflow | [入参] 文本溢出处理方式。取值为ArkUI_TextOverflow的枚举值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) style参数为空指针。 |
 
 ### OH_ArkUI_TextController_SetStyledString()
 

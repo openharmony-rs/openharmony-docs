@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "面向Native层多进程编程，介绍通过C API创建Native子进程、获取启动参数、终止子进程及监听异常退出等能力的开发方法。"
+keywords: [Native子进程, C API, OH_Ability_CreateNativeChildProcessWithConfigs, OH_Ability_StartNativeChildProcessWithConfigs, IPC通信, 子进程退出监听, 进程隔离]
+doctype: guide
+status: active
+---
+
 # 子进程开发指导（C/C++）
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

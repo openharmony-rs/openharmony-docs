@@ -1,6 +1,13 @@
 # \@Local装饰器：组件内部状态
 
-\@Local表示组件内部状态，用于定义在组件内部使用的状态变量。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+[\@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local-static.md#local-1)表示组件内部状态，用于定义在组件内部使用的状态变量。
 
 ## 概述
 

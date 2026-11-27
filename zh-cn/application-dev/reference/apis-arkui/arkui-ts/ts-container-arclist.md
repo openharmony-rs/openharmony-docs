@@ -267,7 +267,7 @@ ArkTS-Dyn: scrollBarWidth(width: Optional\<LengthMetrics>)
 
 ArkTS-Sta: scrollBarWidth(width: LengthMetrics | undefined)
 
-设置ArcList滚动条在按压态下的宽度。未设置时，按压态宽度为LengthMetrics.vp(24)。非按压态宽度固定为LengthMetrics.vp(4)，不受该属性影响。
+设置ArcList滚动条在按压态下的宽度，不支持百分比设置。未设置时，按压态宽度为LengthMetrics.vp(24)。非按压态宽度固定为LengthMetrics.vp(4)，不受该属性影响。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 

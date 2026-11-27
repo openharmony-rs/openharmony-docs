@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用JSVM-API在C/C++与JavaScript之间转换BigInt，支持通过int64、uint64及64位字数组创建和读取任意精度整数。"
 keywords: [OH_JSVM_CreateBigintInt64, OH_JSVM_CreateBigintUint64, OH_JSVM_CreateBigintWords, OH_JSVM_GetValueBigintInt64, OH_JSVM_GetValueBigintUint64, OH_JSVM_GetValueBigintWords, BigInt, 任意精度整数, 符号位]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # 使用JSVM-API接口操作bigint类型值
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

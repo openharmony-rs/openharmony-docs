@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用单层图标与分层图标的配置方法，涵盖app.json5与module.json5中icon和label的配置优先级、生成策略、生效规则以及多入口UIAbility场景。"
+keywords: [应用图标, 应用名称, 分层图标, icon, label, mainElement, 入口UIAbility, app.json5, module.json5]
+doctype: guide
+status: active
+---
 # 配置应用图标和名称
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

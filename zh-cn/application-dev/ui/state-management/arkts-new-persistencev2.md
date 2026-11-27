@@ -59,7 +59,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
    - 从API version 23开始， 提供globalConnect接口，支持`collections.Set`、`collections.Map`和`collections.Array`。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
 
-   如下是新增接口globalConnect支持collections.Array的示例代码:
+   如下是新增接口globalConnect支持collections.Array的示例代码：
     
    <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
    
@@ -875,7 +875,7 @@ struct Page2 {
   }
 }
 ```
-使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/route_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:route_map"。
+使用Navigation时，需要添加配置系统路由表文件src/main/resources/base/profile/router_map.json，并替换pageSourceFile为Page2页面的路径，并且在module.json5中添加："routerMap": "$profile:router_map"。
 ```json
 {
   "routerMap": [

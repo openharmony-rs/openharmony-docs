@@ -62,6 +62,110 @@ import { uiMaterial } from '@kit.ArkUI';
 | THICK_EC_SUB | 13 | 厚样式。模糊效果强。<br/>适用于EffectComponent的子组件。 |
 | ULTRA_THICK_EC_SUB | 14 | 超厚样式。模糊效果很强。<br/>适用于EffectComponent的子组件。 |
 
+## MaterialColorBlendMode
+
+材质颜色混合模式枚举。用于指定材质颜色（[materialColor](arkts-apis-uimaterial.md#immersiveoptions)）与材质背景的混合方式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称     | 值 | 说明              |
+| ------ | --- | --------------- |
+| LINEAR_MIX | 0 | 普通混合模式。材质颜色与材质背景以线性方式混合。 |
+| TINTED_GLASS | 1 | 彩色玻璃模式。材质颜色以彩色玻璃效果呈现，保持背景通透。 |
+
+## ImmersiveOptions
+
+沉浸式材质参数。当前页面仅包含本模块的系统接口，其他公开接口参见[ImmersiveOptions](arkts-apis-uimaterial.md#immersiveoptions)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称       | 类型                                                        | 只读 | 可选 | 说明                                                     |
+| ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
+| colorBlendMode   | [MaterialColorBlendMode](#materialcolorblendmode)                                   | 否 | 是   | 材质颜色混合模式。用于指定材质颜色（[materialColor](arkts-apis-uimaterial.md#immersiveoptions)）与材质背景的混合方式。<br>默认值：uiMaterial.MaterialColorBlendMode.LINEAR_MIX。<br>**说明：**<br>1. 该参数仅对支持沉浸式材质的高算力和中算力设备的显示效果生效。<br>2. TINTED_GLASS仅对部分组件生效，当前支持的组件包括：[Button](arkui-ts/ts-basic-components-button.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)、[ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)，其他组件设置无效。<br>**系统接口：** 此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
+
+**示例：**
+
+本示例介绍如何通过[ImmersiveOptions](#immersiveoptions)中的colorBlendMode属性，设置材质颜色的混合模式。示例在Navigation标题栏中的Button组件上分别展示普通混合模式（LINEAR_MIX）和彩色玻璃模式（TINTED_GLASS）的效果差异。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Styles
+function systemMaterialStyle() {
+  .margin(5)
+  .width(120)
+  .height(50)
+  .borderRadius(25)
+}
+
+@Entry
+@Component
+struct ColorBlendModeDemo {
+  @State myMaterialLinearMix: uiMaterial.ImmersiveMaterial = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+    materialColor: Color.Blue,
+    colorBlendMode: uiMaterial.MaterialColorBlendMode.LINEAR_MIX,
+  });
+  @State myMaterialTintedGlass: uiMaterial.ImmersiveMaterial = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+    materialColor: Color.Blue,
+    colorBlendMode: uiMaterial.MaterialColorBlendMode.TINTED_GLASS,
+  });
+  @State titleHeight: number = 100;
+
+  @Builder
+  CustomMenuBuilder() {
+    Stack() {
+      Row() {
+        // 普通混合模式：材质颜色与材质背景以线性方式混合
+        Button('LINEAR_MIX')
+          .systemMaterialStyle()
+          .systemMaterial(this.myMaterialLinearMix)
+
+        // 彩色玻璃模式：材质颜色以彩色玻璃效果呈现，保持背景通透
+        Button('TINTED_GLASS')
+          .systemMaterialStyle()
+          .systemMaterial(this.myMaterialTintedGlass)
+      }
+      .justifyContent(FlexAlign.End)
+    }
+    .width('100%')
+    .height(this.titleHeight)
+  }
+
+  build() {
+    Stack() {
+      // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+      Image($r('app.media.bg1'))
+        .width('100%')
+        .height('100%')
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.CustomMenuBuilder(), height: this.titleHeight })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![materialColorBlendMode](figures/materialColorBlendMode.png)
+
 ## uiMaterial.convertToECMaterial
 
 convertToECMaterial(material: uiMaterial.ImmersiveMaterial): uiMaterial.ImmersiveMaterial

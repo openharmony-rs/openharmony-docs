@@ -2311,4 +2311,25 @@ napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope)
 如果调用该接口前或调用过程中出现未捕获的ArkTS异常，则返回napi_pending_exception，此时微任务作用域已完成关闭，异常仍保留在环境中。可通过napi_get_and_clear_last_exception处理异常。尚未执行的累积微任务不会丢失，将保留在微任务队列中，待异常处理完成后，在后续微任务队列清空时执行。
 
 如果env为空指针或scope为空指针，或微任务作用域未打开（包括对同一作用域重复关闭），则返回napi_invalid_arg。
+
+### napi_shared_module_register
+
+```cpp
+void napi_shared_module_register(napi_module* mod);
+```
+
+**描述：**
+
+注册Sendable共享NAPI模块。模块的init回调在进程内只执行一次，返回的Sendable导出根对象被缓存并共享给所有Worker。init回调必须返回Sendable对象，返回其他类型将导致模块初始化失败。使用该接口替代`napi_module_register`注册共享模块，详见[使用Node-API实现多Worker/TaskPool共享NAPI模块](../../napi/use-napi-shared-module.md)。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+- [in] mod：指向`napi_module`结构体的指针，描述模块信息。
+
+**返回：**
+
+- void：无返回值。
+
 <!--no_check-->

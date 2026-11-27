@@ -251,9 +251,7 @@ offSteadyStandingDetect(callback?: Callback&lt;SteadyStandingStatus&gt;): void
 
 ## DropDetectionStatus
 
-定义手机跌落检测状态。
-
-表示设备的跌落检测状态，包括正常状态和跌落状态。
+定义设备的跌落检测状态。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -265,14 +263,13 @@ offSteadyStandingDetect(callback?: Callback&lt;SteadyStandingStatus&gt;): void
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| STATUS_NORMAL | 0 | 正常状态，表示设备处于正常握持或放置状态。 |
 | STATUS_DROPPED | 1 | 跌落状态，表示设备检测到跌落事件。 |
 
 ## deviceStatus.onDropDetect
 
 onDropDetect(callback: Callback&lt;DropDetectionStatus&gt;): void
 
-订阅跌落检测事件。建议在不需要监听时调用offDropDetect()取消订阅，释放资源。
+订阅设备跌落检测事件。当应用需要检测设备是否发生跌落时使用。调用onDropDetect订阅后，系统开始监听加速度传感器数据。当检测到符合跌落特征的加速度变化时，触发STATUS_DROPPED回调。同一回调实例不可重复订阅，需先调用offDropDetect取消后再订阅。建议在不需要监听时调用offDropDetect()取消订阅，释放资源。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -286,7 +283,7 @@ onDropDetect(callback: Callback&lt;DropDetectionStatus&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| callback | Callback&lt;[DropDetectionStatus](#dropdetectionstatus)&gt; | 是 | 回调函数，返回手机跌落检测状态信息。 |
+| callback | Callback&lt;[DropDetectionStatus](#dropdetectionstatus)&gt; | 是 | 回调函数，返回设备跌落检测状态信息。 |
 
 **错误码**：
 
@@ -294,7 +291,7 @@ onDropDetect(callback: Callback&lt;DropDetectionStatus&gt;): void
 
 | 错误码ID | 错误信息 |
 | ---- | ---- |
-| 801 | Failed due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 32500001 | Service exception. |
 | 32500002 | Subscription failed. |
 
@@ -306,12 +303,9 @@ onDropDetect(callback: Callback&lt;DropDetectionStatus&gt;): void
       if (status === deviceStatus.DropDetectionStatus.STATUS_DROPPED) {
          console.info('Device drop detected!');
          // 根据业务需要执行相应的保护措施。
-      } else if (status === deviceStatus.DropDetectionStatus.STATUS_NORMAL) {
-         console.info('Device returned to normal state');
       }
    });
-   } catch (error) {
-   const err = error as BusinessError;
+   } catch (err) {
    console.error(`onDropDetect failed. Code: ${err.code}, message: ${err.message}`);
    }
    ```
@@ -320,7 +314,7 @@ onDropDetect(callback: Callback&lt;DropDetectionStatus&gt;): void
 
 offDropDetect(callback?: Callback&lt;DropDetectionStatus&gt;): void
 
-取消订阅跌落检测事件。用于应用在退出页面或不再需要监听跌落事件的场景。调用后释放相关资源。
+取消订阅设备跌落检测事件。用于应用在退出页面或不再需要监听跌落事件的场景。调用后释放相关资源。若未调用onDropDetect()就调用offDropDetect()，该方法会抛出异常。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -334,7 +328,7 @@ offDropDetect(callback?: Callback&lt;DropDetectionStatus&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| callback | Callback&lt;[DropDetectionStatus](#dropdetectionstatus)&gt; | 否 | 回调函数，返回手机跌落检测状态信息。 |
+| callback | Callback&lt;[DropDetectionStatus](#dropdetectionstatus)&gt; | 否 | 回调函数，返回设备跌落检测状态信息。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。|
 
 **错误码**：
 
@@ -342,13 +336,13 @@ offDropDetect(callback?: Callback&lt;DropDetectionStatus&gt;): void
 
 | 错误码ID | 错误信息 |
 | ---- | ---- |
-| 801 | Failed due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 32500001 | Service exception. |
 | 32500003 | Unsubscription failed. |
 
 **示例**：
 
-示例一：取消订阅该客户端订阅跌落检测事件的所有回调。
+示例一：取消订阅该客户端订阅设备跌落检测事件的所有回调。
 
    ```ts
    try {
@@ -358,7 +352,7 @@ offDropDetect(callback?: Callback&lt;DropDetectionStatus&gt;): void
    }
    ```
 
-示例二：取消订阅该客户端订阅跌落检测事件的特定回调。
+示例二：取消订阅该客户端订阅设备跌落检测事件的特定回调。
 
    ```ts
    import { Callback } from '@kit.BasicServicesKit';

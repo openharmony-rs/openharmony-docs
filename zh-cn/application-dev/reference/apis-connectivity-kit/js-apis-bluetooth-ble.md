@@ -1912,6 +1912,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 - 若要实现在远端设备可用时自动重连（即[autoConnect](#gattsetting)为true），需保证client端[createGattClientDevice](#blecreategattclientdevice-1)发起连接，并设置[autoConnect](#gattsetting)为true。
 - server端可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件感知连接状态。
 - 当server端想要断开连接时，可主动调用[disconnect](#disconnect)。
+- 调用该接口进行直接连接（[autoConnect](#gattsetting)为false）时，若连接未成功建立，最多等待30秒后会返回超时失败。
 
 **起始版本**：26.0.0
 
@@ -3047,6 +3048,7 @@ client端主动发起和server蓝牙设备的GATT协议连接。
 
 - 远端设备地址已通过[createGattClientDevice](#blecreategattclientdevice)方法中的deviceId参数指定。
 - client可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件来感知连接是否成功。
+- 调用该接口进行直接连接时，若连接未成功建立，最多等待30秒后会返回超时失败。直接连接的场景包括：<br>1. 通过[createGattClientDevice](#blecreategattclientdevice)方法创建实例后，调用此接口。<br>2. 从API版本26.0.0开始，通过[createGattClientDevice](#blecreategattclientdevice-1)方法创建实例时，将[GattSetting](#gattsetting)参数中的autoConnect设为false，再调用此接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -3213,6 +3215,7 @@ function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
 }
 // callback
 try {
+    gattClient.on('BLEConnectionStateChange', ConnectStateChanged);
     gattClient.connect();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -3348,6 +3351,7 @@ function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
 }
 
 try {
+    device.on('BLEConnectionStateChange', ConnectStateChanged);
     device.connect();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -3406,6 +3410,7 @@ function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
     }
 }
 try {
+    device.on('BLEConnectionStateChange', ConnectStateChanged);
     device.connect();
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);

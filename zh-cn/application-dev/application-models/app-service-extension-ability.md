@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "指导开发者使用AppServiceExtensionAbility为企业应用提供后台服务，支持启动与连接两种调用方式及RPC通信，适用于无界面长期运行场景。"
+keywords: [AppServiceExtensionAbility, 后台服务, 启动服务, 连接服务, RPC通信, 客户端服务端, appIdentifierAllowList, ACL权限]
+doctype: guide
+status: active
+---
+
 # 使用AppServiceExtensionAbility组件实现后台服务
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

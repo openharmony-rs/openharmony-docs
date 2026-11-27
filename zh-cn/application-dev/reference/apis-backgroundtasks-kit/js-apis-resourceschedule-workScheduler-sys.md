@@ -48,7 +48,7 @@ setExecFrequency(info: FrequencyInfo): void
 
 设置应用所在活跃分组的执行频率。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
@@ -102,7 +102,7 @@ resetExecFrequency(uid: number): void
 
 重置应用所在活跃分组的执行频率。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
@@ -152,7 +152,7 @@ try {
 
 FrequencyInfo作为参数设置时，uid、workId、interval为必填项。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 

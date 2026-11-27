@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍JSVM内存泄漏定位方法，先通过hidumper采样定性区分Native内存与JS堆内存泄漏，再分别借助DevEco Studio Profiler与DevTools堆快照对比找到泄漏源头。"
 keywords: [内存泄漏, 定性分析, hidumper, Native内存, JS堆内存, 堆快照对比, OH_JSVM_CreateReference, DevEco Studio, 内存分析]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # JSVM 定位内存泄漏问题指导
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

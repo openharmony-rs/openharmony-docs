@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍应用接管网页媒体播放，使用本地播放器（如AVPlayer）渲染视频、处理播控命令与状态上报，以增强画质等网页媒体播放体验。"
+keywords: [媒体托管, enableNativeMediaPlayer, onCreateNativeMediaPlayer, NativeMediaPlayerBridge, 同层渲染]
+doctype: guide
+status: active
+---
+
 # 托管网页中的媒体播放
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

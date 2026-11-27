@@ -12,15 +12,17 @@
 
 从API版本26.1.0开始，输入法可以在设置预上屏文本时指定无下划线、实线、波浪线或虚线，并选择下划线颜色。系统编辑框由对应组件处理样式，自绘编辑框需要接收样式信息并自行绘制。
 
-输入法负责发送文本、范围和样式，编辑框负责显示。C接口提供自绘编辑框的接收回调和样式对象访问能力。本指南不将编辑框回调当作输入法发送接口使用。
+本指南介绍如何使用ArkTS接口发送带样式的预上屏文本。自绘编辑框接收样式的开发步骤，参见[在自绘编辑框中接收预上屏样式（ArkTS）](preview-text-style-guide-arkts.md)或[在自绘编辑框中接收预上屏样式（C/C++）](preview-text-style-guide-ndk.md)。
 
-## 开发准备
+## 约束与限制
 
-- 使用包含本次接口声明的SDK，运行设备须提供对应实现；仅更新SDK声明不能使设备获得运行能力。
-- 输入法应用已启用，当前编辑框已获焦并与输入法绑定。
-- 自绘编辑框已按[ArkTS开发指导](use-inputmethod-in-custom-edit-box.md)或[C/C++开发指导](use-inputmethod-in-custom-edit-box-ndk.md)实现文本插入、删除等编辑回调和绑定生命周期。
+- 当前编辑框须支持预上屏。输入法可调用`getEditorAttribute()`获取[EditorAttribute](../reference/apis-ime-kit/js-apis-inputmethodengine.md#editorattribute)，通过`isTextPreviewSupported`判断。`true`表示支持，`false`表示不支持。
+- 设置预上屏文本及样式时，当前编辑框须已获焦并与输入法绑定。
+- 以系统编辑组件TextInput为例，[enablePreviewText](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#enablepreviewtext12)默认开启预上屏。若已关闭，可将该属性设为true。
 
 ## 输入法发送预上屏文本
+
+发送前，先启用输入法，并确认当前编辑框已获焦并与输入法绑定。
 
 1. 在DevEco Studio打开下方示例代码所在的PreviewTextStyleJS工程并安装到设备。首次运行前，需启用并切换到本示例的输入法。在设备已开启开发者模式并连接HDC后，依次执行以下命令。
 
@@ -141,190 +143,7 @@
    }
    ```
 
-
-以下为Sample中编辑框接收预上屏文本和样式后的实际运行效果。
-
-![编辑框预上屏样式运行效果](figures/preview-text-style-js.jpeg)
-
-## ArkTS自绘编辑框接收样式
-
-自绘编辑框保存文本、范围和样式，在UI上绘制下划线。仅在提供`underlineColor`时使用其RGB值，否则由编辑框处理，默认跟随光标颜色。如果同时订阅[on('setPreviewText')](../reference/apis-ime-kit/js-apis-inputmethod.md#onsetpreviewtext17)和[onSetPreviewTextWithStyle](../reference/apis-ime-kit/js-apis-inputmethod.md#onsetpreviewtextwithstyle)，两种回调都会触发，应避免重复处理预上屏文本内容。
-
-styledCallback保存文本、范围和下划线样式，并通过runScopedTask更新界面状态。legacyCallback处理setPreviewText事件，通过比较文本和范围，避免同一请求重复插入文本或覆盖已收到的样式。
-
-<!-- @[preview_style_js_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets) -->
-
-```typescript
-// 保留同一回调对象，用于解绑时取消本编辑框的订阅。
-private styledCallback: inputMethod.SetPreviewTextWithStyleCallback =
-  (text: string, range: inputMethod.Range, style: inputMethod.PreviewTextStyle): void => {
-    if (!this.alive || !this.listening) {
-      return;
-    }
-    this.getUIContext().runScopedTask((): void => {
-      this.applyPreview(text, range);
-      this.underline = style.underlineStyle;
-      this.color = style.underlineColor === undefined ? $r('app.color.accent') :
-        0xFF000000 + (style.underlineColor & 0x00FFFFFF);
-      this.styledText = text;
-      this.styledRangeStart = range.start;
-      this.styledRangeEnd = range.end;
-      this.status = $r('app.string.preview_displayed');
-    });
-  };
-
-private legacyCallback: inputMethod.SetPreviewTextCallback = (text: string, range: inputMethod.Range): void => {
-  if (!this.alive || !this.legacyListening) {
-    return;
-  }
-  this.getUIContext().runScopedTask((): void => {
-    // setPreviewText事件回调不覆盖同一请求已经收到的样式。
-    if (text === this.styledText && range.start === this.styledRangeStart &&
-      range.end === this.styledRangeEnd && this.previewStart >= 0) {
-      return;
-    }
-    this.applyPreview(text, range);
-    this.underline = inputMethod.UnderlineStyle.SOLID;
-    this.color = $r('app.color.accent');
-  });
-};
-```
-
-在[attach](../reference/apis-ime-kit/js-apis-inputmethod.md#attach10)之前调用[onSetPreviewTextWithStyle](../reference/apis-ime-kit/js-apis-inputmethod.md#onsetpreviewtextwithstyle)注册样式回调。解绑或页面销毁时，调用[offSetPreviewTextWithStyle](../reference/apis-ime-kit/js-apis-inputmethod.md#offsetpreviewtextwithstyle)，使用注册时的同一回调对象取消订阅。
-
-listening记录样式事件是否已订阅，防止重复注册；取消订阅时传入原先保存的styledCallback。
-
-<!-- @[preview_style_js_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets) -->
-
-```typescript
-private subscribeStyle(): void {
-  if (!this.listening) {
-    this.controller.onSetPreviewTextWithStyle(this.styledCallback);
-    this.listening = true;
-  }
-}
-
-private unsubscribeStyle(): void {
-  if (this.listening) {
-    this.controller.offSetPreviewTextWithStyle(this.styledCallback);
-    this.listening = false;
-  }
-}
-```
-
-工程中的`connectEditor()`在绑定前注册预上屏及结束回调，绑定成功后订阅getTextIndexAtCursor、insertText和deleteLeft事件；离开页面时清理监听、解绑并丢弃过期更新。结束预上屏时保留文字并清除预上屏范围的下划线。
-
-预上屏及结束事件先于attach注册；getTextIndexAtCursor用于提供光标位置，insertText和deleteLeft分别处理文本插入和向左删除。若绑定期间页面已经销毁，则立即解绑。
-
-<!-- @[preview_style_js_attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets) -->
-
-```typescript
-private async connectEditor(): Promise<void> {
-  this.controller.on('setPreviewText', this.legacyCallback);
-  this.legacyListening = true;
-  this.subscribeStyle();
-  this.controller.on('finishTextPreview', this.finishCallback);
-  this.finishListening = true;
-  await this.controller.attach(true, {
-    inputAttribute: { textInputType: inputMethod.TextInputType.TEXT, enterKeyType: inputMethod.EnterKeyType.DONE }
-  });
-  this.attached = true;
-  if (!this.alive) {
-    await this.disconnectEditor();
-    return;
-  }
-  // 以下编辑回调需要在编辑框绑定成功后注册。
-  this.controller.on('getTextIndexAtCursor', this.cursorCallback);
-  this.cursorListening = true;
-  this.controller.on('insertText', this.insertCallback);
-  this.insertListening = true;
-  this.controller.on('deleteLeft', this.deleteCallback);
-  this.deleteListening = true;
-  this.status = $r('app.string.editor_connected_hint');
-}
-```
-
-## C/C++自绘编辑框接收样式
-
-PreviewTextStyleJS示例工程中的C页面包含一个自绘编辑框和绑定/解绑按钮，可从默认页面点击“打开C编辑器”进入。工程链接libohinputmethod.so并包含相应公开头文件；文本插入、删除等回调及资源清理见[C/C++开发指导](use-inputmethod-in-custom-edit-box-ndk.md)。
-
-以下函数读取框架传入的样式对象。本示例使用g_textMutex互斥锁保护共享文本与样式状态的更新，页面随后读取该状态并绘制。样式对象是借用对象，不保存其指针，也不调用[OH_InputMethod_PreviewTextStyle_Destroy](../reference/apis-ime-kit/capi-inputmethod-preview-text-style-capi-h.md#oh_inputmethod_previewtextstyle_destroy)。该最小示例每次展示当前预上屏文本，光标固定在末尾；实际开发的自绘编辑框应结合start、end范围更新相应文本区间。
-
-函数先检查指针并读取下划线样式、颜色及颜色是否已设置；任一步失败即返回对应结果。读取成功后，将文本和样式数值复制到本示例的共享显示状态中。
-
-<!-- @[preview_style_c_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
-
-```cpp
-int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, uint32_t length,
-    int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)
-{
-    if (text == nullptr || style == nullptr) {
-        return IME_ERR_NULL_POINTER;
-    }
-    OH_InputMethod_UnderlineStyle kind = OH_INPUTMETHOD_UNDERLINE_STYLE_NONE;
-    uint32_t color = 0;
-    bool hasColor = false;
-    // 读取框架传入的样式对象，其生命周期由输入法框架管理。
-    // C接口接收非const指针，但此处仅读取框架持有的对象。
-    auto *readStyle = const_cast<OH_InputMethod_PreviewTextStyle *>(style);
-    auto result = OH_InputMethod_PreviewTextStyle_GetUnderlineStyle(readStyle, &kind);
-    if (result != IME_ERR_OK) {
-        return result;
-    }
-    result = OH_InputMethod_PreviewTextStyle_GetUnderlineColor(readStyle, &color);
-    if (result != IME_ERR_OK) {
-        return result;
-    }
-    result = OH_InputMethod_PreviewTextStyle_HasUnderlineColor(readStyle, &hasColor);
-    if (result != IME_ERR_OK) {
-        return result;
-    }
-    std::lock_guard<std::mutex> lock(g_textMutex);
-    g_display.ApplyStyled(text, length, static_cast<int32_t>(kind), color, hasColor);
-    return IME_ERR_OK;
-}
-```
-
-以下代码位于ConstructTextEditorProxy函数中，在其他必要编辑回调注册完成、调用[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前执行。示例同时调用OH_TextEditorProxy_SetSetPreviewTextFunc和OH_TextEditorProxy_SetSetPreviewTextWithStyleFunc注册回调。SetPreviewTextFunc不更新显示状态，文本和样式由SetPreviewTextWithStyleFunc处理，避免同一请求重复更新。
-
-注册后读取样式回调并核对函数指针，确认注册结果；原有预上屏回调和结束预上屏回调仍然保留。
-
-<!-- @[preview_style_c_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
-
-```cpp
-auto result = OH_TextEditorProxy_SetSetPreviewTextFunc(textEditorProxy, SetPreviewTextFunc);
-if (result != IME_ERR_OK) {
-    return result;
-}
-result = OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc(
-    textEditorProxy, SetPreviewTextWithStyleFunc);
-if (result != IME_ERR_OK) {
-    return result;
-}
-OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc registered = nullptr;
-result = OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc(textEditorProxy, &registered);
-if (result != IME_ERR_OK) {
-    return result;
-}
-if (registered != SetPreviewTextWithStyleFunc) {
-    return IME_ERR_UNDEFINED;
-}
-return OH_TextEditorProxy_SetFinishTextPreviewFunc(textEditorProxy, FinishTextPreviewFunc);
-```
-
-[OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc](../reference/apis-ime-kit/capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_getsetpreviewtextwithstylefunc)返回已注册的函数指针，不发送预上屏文本，也不代表完成绘制。[OH_TextEditorProxy_FinishTextPreviewFunc](../reference/apis-ime-kit/capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc)清除预上屏显示状态；解绑或离开页面时调用ReleaseCEditor释放输入连接和应用拥有的对象。
-
-以下为同一Sample中C编辑框的实际运行效果。
-
-![C编辑框预上屏样式运行效果](figures/preview-text-style-c.jpeg)
-
-## ArkTS-Sta自绘编辑框接收样式
-
-ArkTS-Sta使用静态输入法事件接口和int类型的颜色值。以下说明补充静态Sample的调用方式；预上屏文本、范围和下划线颜色的含义与前文一致。
-
-在[attach](../reference/apis-ime-kit/js-apis-inputmethod.md#attach10)之前调用[onSetPreviewTextWithStyle](../reference/apis-ime-kit/js-apis-inputmethod.md#onsetpreviewtextwithstyle)注册样式回调。解绑或页面销毁时，调用[offSetPreviewTextWithStyle](../reference/apis-ime-kit/js-apis-inputmethod.md#offsetpreviewtextwithstyle)，使用注册时的同一回调对象取消订阅。
-
-[PreviewTextStyle](../reference/apis-ime-kit/js-apis-inputmethod.md#previewtextstyle)的`underlineStyle`指定下划线样式。`underlineColor`为可选颜色值，颜色格式为0xRRGGBB。透明度通道无效，由编辑框忽略。省略时默认跟随光标颜色，显式传入0表示黑色。颜色字段为可选项，ArkTS-Sta的颜色值使用int类型，未指定颜色时设为undefined。
+## ArkTS-Sta输入法发送预上屏文本
 
 完整工程见[静态预上屏样式示例](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/PreviewTextStyleStatic)。工程包含一个自绘编辑页面和一个静态输入法发送页面，源文件使用`use static`指令。安装后，在设备已开启开发者模式并连接HDC的情况下，执行以下命令启用并切换到示例输入法，再返回应用并点击编辑区完成绑定。点击输入法面板上的“发送预上屏”显示红色波浪线，点击“结束预上屏”保留文字并清除下划线。
 
@@ -338,10 +157,6 @@ hdc shell ime -g
 ```
 
 输入法通过`onInputStart`监听绑定成功事件，并取得当前[InputClient](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputclient9)。输入法扩展从`app.string.preview_text`读取示例文本，交由`PreviewSender`保存，异步与同步发送共用该文本。
-
-静态回调通过`EAWorker.postToMain`切换到主线程，再更新实际文本模型并绘制下划线。结束预上屏时保留文字并清除预上屏范围的下划线。以下片段位于对应类中，应结合完整工程使用。
-
-自动化测试请参见[示例工程测试说明](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/PreviewTextStyleStatic/ohosTest.md)。静态主应用使用`default`产品，测试HAP使用独立的`uiTest`产品。
 
 ### 获取输入连接
 
@@ -361,77 +176,6 @@ onCreate(_want: Want): void {
   });
   ability.onInputStop(this.inputStopCallback);
   this.createKeyboard();
-}
-```
-
-### 处理预上屏及结束回调
-
-以下为片段使用的颜色常量。
-
-颜色常量定义见同一Sample的[PreviewEditor.ets](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/PreviewTextStyleStatic/entry/src/main/ets/components/PreviewEditor.ets)。
-
-<!-- @[preview_style_sta_receive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/PreviewTextStyleStatic/entry/src/main/ets/components/PreviewEditor.ets) -->
-
-```typescript
-private onStyledPreview: inputMethod.SetPreviewTextWithStyleCallback =
-  (text: string, range: inputMethod.Range, rawStyle: Object): void => {
-    const style = rawStyle as inputMethodEngine.PreviewTextStyle;
-    if (!this.alive || !this.listening) {
-      return;
-    }
-    EAWorker.postToMain<void>((): void => {
-      if (!this.alive || !this.listening) {
-        return;
-      }
-      if (!this.applyPreview(text, range)) {
-        this.status = $r('app.string.invalid_preview_range');
-        return;
-      }
-      this.underline = style.underlineStyle.valueOf();
-      const requestedColor: int | undefined = style.underlineColor;
-      this.color = requestedColor === undefined ? DEFAULT_UNDERLINE_COLOR : requestedColor | OPAQUE_ALPHA_MASK;
-      this.status = $r('app.string.static_preview_received');
-    });
-  };
-
-private onFinishPreview: () => void = (): void => {
-  if (this.alive && this.listening) {
-    EAWorker.postToMain<void>((): void => {
-      if (!this.alive || !this.listening) {
-        return;
-      }
-      this.finishPreview();
-      this.status = $r('app.string.preview_finished_text_kept');
-    });
-  }
-};
-```
-
-### 订阅和取消订阅
-
-<!-- @[preview_style_sta_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/PreviewTextStyleStatic/entry/src/main/ets/components/PreviewEditor.ets) -->
-
-```typescript
-private subscribeStyledPreview(): void {
-  if (!this.listening) {
-    this.controller.onSetPreviewTextWithStyle(this.onStyledPreview);
-    this.listening = true;
-  }
-  if (!this.finishing) {
-    this.controller.onFinishTextPreview(this.onFinishPreview);
-    this.finishing = true;
-  }
-}
-
-private unsubscribeStyledPreview(): void {
-  if (this.listening) {
-    this.controller.offSetPreviewTextWithStyle(this.onStyledPreview);
-    this.listening = false;
-  }
-  if (this.finishing) {
-    this.controller.offFinishTextPreview(this.onFinishPreview);
-    this.finishing = false;
-  }
 }
 ```
 

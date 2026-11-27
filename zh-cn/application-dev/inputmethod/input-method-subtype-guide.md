@@ -1,4 +1,4 @@
-# 输入法子类型开发指南
+# 开发输入法应用的子类型
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

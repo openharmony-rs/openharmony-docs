@@ -29,10 +29,10 @@
 
 | 名称   | 类型               | 只读|  可选| 说明                                                    |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
-| pixels | ArrayBuffer        | 否 |   否  | 像素数据缓冲区。                                        |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |   否  | 偏移量。单位：字节（Byte）。                             |
-| stride | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节（Byte）。       |
-| region | [Region](#region8) | 否 |   否  | 区域信息，用于按区域进行图像数据的读写。指定的区域宽度加X坐标不能大于原图的宽度，指定的区域高度加Y坐标不能大于原图的高度。 |
+| pixels | ArrayBuffer        | 否 |   否  | 区域像素数据缓冲区。                                        |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |   否  | `pixels`缓冲区内第一个像素的字节偏移量，即区域像素数据在缓冲区中的起始位置。<br>读写区域数据时，从`pixels[offset]`处开始读取或写入。<br>单位：字节（Byte）。 |
+| stride | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |   否  | 跨距，内存中每行像素（含行末填充字节）所占的空间。单位：字节（Byte）。       |
+| region | [Region](#region8) | 否 |   否  | 区域信息，用于按区域进行图像数据的读写。<br>指定区域的宽度加X坐标不能大于原图的宽度。<br>指定区域的高度加Y坐标不能大于原图的高度。 |
 
 ## ImageInfo
 
@@ -131,7 +131,7 @@ PixelMap的初始化选项。
 
 | 名称                     | 类型                               | 只读 |可选 |  说明           |
 | ------------------------ | ---------------------------------- | ----| -----|  -------------- |
-| alphaType<sup>9+</sup>   | [AlphaType](arkts-apis-image-e.md#alphatype9)           | 否   | 是 | 透明度类型。默认值为IMAGE_ALPHA_TYPE_PREMUL。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23      |
+| alphaType<sup>9+</sup>   | [AlphaType](arkts-apis-image-e.md#alphatype9)           | 否   | 是 | 透明度类型。默认值为AlphaType.PREMUL。仅对[RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式的PixelMap生效，对[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式不生效。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23      |
 | editable                 | boolean                            | 否   | 是 | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。设为false时，可提升图像的渲染和传输性能，但是图像不可被二次编辑，例如，writePixels操作将失败。默认值为false。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 8</br>**ArkTS-Sta起始版本：** 23|
 | srcPixelFormat<sup>12+</sup>  | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是 | 传入的缓冲区数据的像素格式。默认值为BGRA_8888。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23 |
 | pixelFormat               | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是| 生成的PixelMap的像素格式。默认值为RGBA_8888。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 8</br>**ArkTS-Sta起始版本：** 23     |
@@ -189,7 +189,7 @@ PixelMap的初始化选项。
 
 ## Region<sup>8+</sup>
 
-表示区域信息。
+表示区域信息。区域坐标以图像左上角像素为原点（即(0, 0)），X轴正方向向右，Y轴正方向向下。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -204,8 +204,8 @@ PixelMap的初始化选项。
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
 | size | [Size](#size) | 否   | 否   | 区域尺寸。    |
-| x    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否  | 区域左上角像素的横坐标（X坐标）。单位：像素（px）。 |
-| y    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否  | 区域左上角像素的纵坐标（Y坐标）。单位：像素（px）。 |
+| x    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否  | 区域左上角像素的横坐标（X坐标），以图像左上角像素为原点。单位：像素（px）。 |
+| y    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 否  | 区域左上角像素的纵坐标（Y坐标），以图像左上角像素为原点。单位：像素（px）。 |
 
 ## PackingSizeLimit
 

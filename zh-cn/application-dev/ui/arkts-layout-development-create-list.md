@@ -2970,7 +2970,9 @@ ListItem() {
 >- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange)回调中保存选择结果。
 >- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
 
-## List手指从上往下滑时页面抖动
+## 常见问题
+
+### List手指从上往下滑时页面抖动
 
 **问题现象**
 
@@ -3086,10 +3088,44 @@ export struct ScrollLazyDemo {
 }
 ```
 
+### List回到顶部后currentOffset等值比较仍返回false
+
+**问题现象**
+
+使用如下方式判断滚动组件是否已经回到顶部，滚动组件已回到顶部（视觉上列表的第一项完整可见、再向下拖也拖不动），但返回false，导致依赖该判断的逻辑（如“回到顶部”按钮的显隐、下拉刷新的状态切换、埋点上报）失效。
+
+``` TypeScript
+if (this.scroller.currentOffset().yOffset === 0) {
+  // 认为已经滚动到顶部
+}
+```
+
+**可能原因**
+
+ArkTS中number是浮点数和整型的集合，浮点数值不应使用`==`/`===`做精准相等比较，而应使用近似相等的容差法：设定一个足够小、又不影响业务语义的阈值，差值落在阈值范围内即视为相等。
+
+[currentOffset](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#currentoffset)返回的OffsetResult中，xOffset/yOffset是number类型的浮点数，其值并非“数学意义上的0”，存在精度差异。
+
+滚动偏移量在底层为浮点类型存储，参与布局计算、惯性滚动衰减、弹簧回弹等多次浮点数运算后，结果很难精准落在`0`上。例如一次回弹结束后偏移量可能是`1.38e-14`这类极小的值，不影响任何视觉表现，但在数值比较上与`0`并不相等。
+
+**解决措施**
+
+使用容差法判断滚动组件是否回到顶部，即设定一个足够小且不影响业务语义的阈值。当滚动偏移量与`0`的差值绝对值小于或等于该阈值时，视为滚动组件已经回到顶部。
+
+``` TypeScript
+const EPSILON = 1e-6
+
+// 判断是否在顶部：不比较是否等于0，而是比较是否足够接近0
+if (Math.abs(this.scroller.currentOffset().yOffset) <= EPSILON) {
+  // 认为已经滚动到顶部
+}
+```
+
 ## 相关实例
 
 如需详细了解ArkUI中列表的创建与使用，请参考以下示例：
 
+<!--RP2-->
 - [新闻数据加载](https://gitcode.com/openharmony/codelabs/tree/master/NetworkManagement/NewsDataArkTS)
 
 - [常用组件和容器低代码开发示例（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/EfficiencyEnhancementKit/SuperVisualSample)
@@ -3102,4 +3138,4 @@ export struct ScrollLazyDemo {
 
 - [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)
 
-<!--RP2--><!--RP2End-->
+<!--RP2End-->

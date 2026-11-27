@@ -349,8 +349,8 @@ setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise&lt;vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| mode | [DevicePowerMode](js-apis-power.md#devicepowermode9) | 是 | 电源模式；该参数类型是一个枚举类。 |
-| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。仅在 mode 为 MODE_EXTREME_POWER_SAVE 时有效。 |
+| mode | [DevicePowerMode](js-apis-power.md#devicepowermode9) | 是 | 电源模式。各模式含义请参见DevicePowerMode枚举说明。 |
+| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。各模式含义请参见DevicePowerSubMode枚举说明。仅 MODE_EXTREME_POWER_SAVE（603）支持电源模式子模式，subMode 默认值为 SUB_MODE_EMERGENCY（603002）。 |
 
 **返回值：**
 
@@ -1139,7 +1139,6 @@ registerHibernateCallback(callback: HibernateCallback): void
 | 4900101 | Failed to connect to the service. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 4900400 | Parameter error. Possible causes: <br>The callback object is missing onHibernate or onWakeup function members. |
 
 **示例：**
 

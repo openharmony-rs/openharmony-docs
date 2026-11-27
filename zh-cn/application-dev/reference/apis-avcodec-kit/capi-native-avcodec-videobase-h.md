@@ -99,7 +99,7 @@ OH_AVErrCode OH_VideoMetadata_AppendRoiString(char **roiStrInOut, OH_AVFormat *f
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | AV_ERR_OK：表示字符串成功转化并追加。<br> AV_ERR_INVALID_VAL：表示roiStrInOut指针或format句柄为NULL，或者格式缺少必需的ROI键。<br> AV_ERR_NO_MEMORY：表示内部内存分配或重新分配失败。 |
+| OH_AVErrCode | AV_ERR_OK：表示字符串成功格式化并追加。<br> AV_ERR_INVALID_VAL：表示roiStrInOut指针或format句柄为NULL，或者格式缺少必需的ROI键。<br> AV_ERR_NO_MEMORY：表示内部内存分配或重新分配失败。 |
 
 ### OH_VideoMetadata_GetRoiCount()
 

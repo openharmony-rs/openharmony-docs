@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用OH_JSVM_AdjustExternalMemory登记JS对象持有的外部分配内存，并通过内存压力通知接口告知虚拟机内存不足，优化内存与垃圾回收控制。"
 keywords: [OH_JSVM_AdjustExternalMemory, OH_JSVM_MemoryPressureNotification, 外部内存, 内存压力通知, 垃圾回收, 内存管理]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # 使用JSVM-API进行内存管理
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

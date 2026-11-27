@@ -299,6 +299,9 @@ OH_Crypto_ErrCode DoTestRsaSignatureRecover()
     }
     Crypto_DataBlob rawSignData = {.data = nullptr, .len = 0};
     ret = OH_CryptoVerify_Recover(verify, (Crypto_DataBlob *)&signBlob, &rawSignData);
+    if (rawSignData.data != nullptr) {
+        OH_Crypto_FreeDataBlob(&rawSignData);
+    }
     CleanupRsaRecoverResources(keyCtx, keyPair, verify);
     return ret;
 }

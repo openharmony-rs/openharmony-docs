@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过资源配置文件与module.json5的metadata标签创建应用静态桌面快捷方式的方法，实现长按图标快速直达相机拍照、新建便签等特定功能页面。"
+keywords: [静态快捷方式, shortcuts, 桌面快捷方式, metadata, module.json5, shortcutManager, 长按图标, 一键直达, shortcutId]
+doctype: guide
+status: active
+---
 # 创建应用静态快捷方式
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

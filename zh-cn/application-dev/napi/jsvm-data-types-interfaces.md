@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "汇总JSVM-API支持的数据类型与接口，包括JSVM_Value、JSVM_Status等类型定义，以及引擎生命周期、JS编译执行、属性函数操作、内存管理、Promise、JSON等场景接口说明，供开发时查阅。"
 keywords: [JSVM_Value, JSVM_Status, JSVM_Env, 数据类型, 接口说明, 内存管理, Promise操作, JSON操作, 任务队列]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # JSVM-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -2575,3 +2575,26 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
 | -------- | -------- |
 | OH_JSVM_BackgroundDeserialize | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
 | OH_JSVM_ReleaseDeserializeResult | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|
+
+### 共享内存
+
+**场景介绍**
+
+SharedArrayBuffer用于表示可共享的、固定长度的原始二进制数据缓冲区，其底层内存可被多个线程或同一进程内的多个JSVM虚拟机实例同时引用。通过 *JSVM_BackingStore* 句柄可以在native侧持有共享内存的独立引用，并在虚拟机销毁后依然存活，实现跨虚拟机共享内存。
+
+**接口说明**
+
+| 接口 | 功能说明 |
+| -------- | -------- |
+| OH_JSVM_CreateSharedArrayBuffer | 创建一个指定大小的SharedArrayBuffer对象。 |
+| OH_JSVM_IsSharedArrayBuffer | 判断一个对象是否为SharedArrayBuffer类型对象。 |
+| OH_JSVM_GetSharedArrayBufferInfo | 检索SharedArrayBuffer的底层数据缓冲区及其长度。 |
+| OH_JSVM_GetSharedArrayBufferBackingStore | 获取SharedArrayBuffer底层共享内存的JSVM_BackingStore句柄。 |
+| OH_JSVM_RetainBackingStore | 复制一个JSVM_BackingStore句柄，新句柄独立持有引用。 |
+| OH_JSVM_ReleaseBackingStore | 释放一个JSVM_BackingStore句柄持有的引用。 |
+| OH_JSVM_GetBackingStoreInfo | 检索JSVM_BackingStore句柄的数据指针、长度及共享/可增长属性。 |
+| OH_JSVM_CreateSharedArrayBufferFromBackingStore | 基于已有的JSVM_BackingStore句柄，在当前环境创建一个新的SharedArrayBuffer对象。 |
+
+场景示例：
+
+[使用JSVM-API接口进行ArrayBuffer相关开发](use-jsvm-about-arraybuffer.md)

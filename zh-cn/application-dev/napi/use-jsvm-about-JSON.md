@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍如何使用JSVM-API解析JSON字符串并将JavaScript对象字符串化，实现Native侧JSON数据的解析与生成。"
 keywords: [OH_JSVM_JsonParse, OH_JSVM_JsonStringify, JSON解析, 字符串化, JSON对象, JSON字符串, 数据交换格式]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # 使用JSVM-API接口进行JSON操作
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

@@ -120,7 +120,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-类型)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
+| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordk-v-类型)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
 
 **返回值：**
 
@@ -187,7 +187,7 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types;  3. Parameter verification failed. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **示例1：**
 
@@ -537,7 +537,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-类型)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
+| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/arkts-language-guide-collection-types.md#recordk-v-类型)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | tag | string | 否 | 否 | 用户自定义标签， 默认为空。**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | timestamp | ArkTS-Dyn: number </br> ArkTS-Sta: long | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
@@ -1558,7 +1558,7 @@ let count: int = pasteData.getRecordCount();
 
 getTag(): string
 
-获取剪贴板内容中用户自定义的标签内容，如果没有设置用户自定义的标签内容将返回空。
+获取剪贴板内容中用户自定义的标签内容，如果没有设置用户自定义的标签内容将返回空字符串。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1572,7 +1572,7 @@ getTag(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回用户自定义的标签内容，如果没有设置用户自定义的标签内容，将返回空。 |
+| string | 返回用户自定义的标签内容，如果没有设置用户自定义的标签内容，将返回空字符串。 |
 
 **示例：**
 
@@ -2456,7 +2456,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 getData(): Promise&lt;PasteData&gt;
 
-读取系统剪贴板内容，使用Promise异步回调。
+读取系统剪贴板内容，将剪贴板数据封装为PasteData对象返回，使用Promise异步回调。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程
 
 应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
 
@@ -3536,7 +3536,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。|
+| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption中定义的枚举值。传入其他值时返回错误码401。|
 
 **错误码：**
 

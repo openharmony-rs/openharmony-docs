@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用DevTools在电脑上调试Web组件加载的前端页面，涵盖无线调试与USB连接调试两种流程及端口转发配置，并汇总常见调试问题的解决方法。"
+keywords: [DevTools, 前端页面调试, setWebDebuggingAccess, 无线调试, USB调试, chrome://inspect, hdc fport, 端口转发]
+doctype: guide
+status: active
+---
+
 # 使用DevTools工具调试前端页面
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -21,7 +29,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
    1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
 
       ArkTS-Dyn示例：
-      <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
+      <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->  
       ``` TypeScript
       import { webview } from '@kit.ArkWeb';
       import { BusinessError } from '@kit.BasicServicesKit';
@@ -37,7 +45,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
             // 配置Web开启无线调试模式，指定TCP Socket的端口。
             webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         }
       

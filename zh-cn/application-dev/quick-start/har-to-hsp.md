@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍通过修改module.json5的type字段、新增pages配置、删除consumerFiles及替换hvigorfile.ts编译任务，将HAR工程转换为HSP工程以解决包体积膨胀问题。"
+keywords: [HAR转HSP, module.json5, type shared, deliveryWithInstall, pages, hvigorfile.ts, hspTasks, consumerFiles, main_pages]
+doctype: guide
+status: active
+---
 # HAR转HSP指导
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

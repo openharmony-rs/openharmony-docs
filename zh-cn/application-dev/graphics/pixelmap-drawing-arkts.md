@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍PixelMap的创建和像素编辑方法，以及如何通过Canvas将图片绘制到指定位置。"
+keywords: [PixelMap, 位图, 像素编辑, Canvas, drawImage, 采样选项, 图片解码]
+doctype: guide
+status: active
+---
+
 # 图片绘制（ArkTS）
 
 <!--Kit: ArkGraphics 2D-->
@@ -176,6 +184,10 @@
    绘制PixelMap时需要通过Canvas相关接口绘制位图，下文以drawImage()为例。更多方式和接口的使用请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
    drawImage()函数接受4个参数，第一个就是上文中创建的PixelMap，第二个是绘制图片位置的左上角x轴坐标，第三个是左上角y轴坐标，第四个为采样选项对象，默认为不使用任何参数构造的原始采样选项对象。
+
+   > **注意：**
+   >
+   > 通过Canvas相关接口绘制PixelMap时，仅支持像素格式为RGB_565、RGBA_8888、BGRA_8888、ALPHA_8和RGBA_F16的PixelMap。
 
    ArkTS-Dyn示例：
 

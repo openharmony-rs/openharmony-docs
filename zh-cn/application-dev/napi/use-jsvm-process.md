@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "讲解使用JSVM-API实现JS与C/C++交互的开发流程：创建NDK工程、链接libjsvm.so、注册Native方法并由ArkTS侧导入so库调用。"
 keywords: [JSVM-API, 开发流程, libjsvm.so, NDK工程, Native模块注册, CMake, ArkTS调用, 跨语言交互]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # 使用JSVM-API实现JS与C/C++语言交互开发流程
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

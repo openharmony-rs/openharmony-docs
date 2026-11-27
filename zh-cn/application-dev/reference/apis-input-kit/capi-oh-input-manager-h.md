@@ -41,6 +41,8 @@
 | [Input_CustomCursor](capi-input-input-customcursor.md) | Input_CustomCursor | 自定义鼠标光标像素图资源。 |
 | [Input_CursorConfig](capi-input-input-cursorconfig.md) | Input_CursorConfig | 自定义鼠标光标配置。 |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md) | Input_CursorInfo | 定义鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。|
+| [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md) | OH_Input_EventHandler | 定义输入事件处理的handler。 |
+| [OH_Input_Event](capi-input-oh-input-event.md) | OH_Input_Event | 定义handler接收的统一输入事件对象。该对象在当前版本为只读。 |
 
 ### 枚举
 
@@ -57,6 +59,7 @@
 | [Input_KeyboardType](#input_keyboardtype) | Input_KeyboardType | 输入设备的键盘类型。 |
 | [Input_Result](#input_result) | Input_Result | 返回值枚举值。 |
 | [Input_TouchEventToolType](#input_toucheventtooltype) | Input_TouchEventToolType | 输入设备的触屏事件工具类型。 |
+| [OH_Input_EventType](#oh_input_eventtype) | OH_Input_EventType | 处理handler接收的输入事件类型。 |
 
 ### 函数
 
@@ -246,6 +249,18 @@
 | [int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventdowntime) | - | 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。|
 | [Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)](#oh_input_settoucheventtooltype) | - | 设置触屏输入事件的工具类型。|
 | [Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventtooltype) | - | 获取触屏输入事件的工具类型。 |
+| [typedef const OH_Input_Event* (\*OH_Input_EventHandler_OnEventFunc)(OH_Input_EventHandler* handler, const OH_Input_Event* event)](#oh_input_eventhandler_oneventfunc) | OH_Input_EventHandler_OnEventFunc | 定义handler接收到输入事件时调用的函数。 |
+| [typedef void (\*OH_Input_EventHandler_OnDisabledFunc)(OH_Input_EventHandler* handler)](#oh_input_eventhandler_ondisabledfunc) | OH_Input_EventHandler_OnDisabledFunc | 定义handler禁用时调用的函数。 |
+| [Input_Result OH_Input_EventHandler_Create(OH_Input_EventTypeMask mask, OH_Input_EventHandler_OnEventFunc onEventFunc, OH_Input_EventHandler_OnDisabledFunc onDisabledFunc, OH_Input_EventHandler** handler)](#oh_input_eventhandler_create) | - | 创建输入事件handler。 |
+| [void OH_Input_EventHandler_Destroy(OH_Input_EventHandler* handler)](#oh_input_eventhandler_destroy) | - | 销毁输入事件的handler并释放资源。 |
+| [Input_Result OH_Input_EventHandler_Enable(OH_Input_EventHandler* handler, bool enable)](#oh_input_eventhandler_enable) | - | 启用或禁用输入事件handler。每个进程只允许启用一个handler。 |
+| [Input_Result OH_Input_EventHandler_IsEnabled(const OH_Input_EventHandler* handler, bool* enabled)](#oh_input_eventhandler_isenabled) | - | 查询是否启用了handler。 |
+| [Input_Result OH_Input_EventHandler_GetMask(const OH_Input_EventHandler* handler, OH_Input_EventTypeMask* mask)](#oh_input_eventhandler_getmask) | - | 查询输入事件handler的事件类型掩码。 |
+| [Input_Result OH_Input_Event_GetType(const OH_Input_Event* event, OH_Input_EventType* type)](#oh_input_event_gettype) | - | 获取输入事件的类型。 |
+| [Input_Result OH_Input_Event_AsKeyEvent(const OH_Input_Event* event, const Input_KeyEvent** keyEvent)](#oh_input_event_askeyevent) | - | 从输入事件中获取只读的[Input_KeyEvent](capi-input-input-keyevent.md)。 |
+| [Input_Result OH_Input_Event_AsMouseEvent(const OH_Input_Event* event, const Input_MouseEvent** mouseEvent)](#oh_input_event_asmouseevent) | - | 从输入事件中获取只读的[Input_MouseEvent](capi-input-input-mouseevent.md)。 |
+| [Input_Result OH_Input_Event_AsTouchEvent(const OH_Input_Event* event, const Input_TouchEvent** touchEvent)](#oh_input_event_astouchevent) | - | 从输入事件中获取只读的[Input_TouchEvent](capi-input-input-touchevent.md)。 |
+| [Input_Result OH_Input_Event_AsAxisEvent(const OH_Input_Event* event, const Input_AxisEvent** axisEvent)](#oh_input_event_asaxisevent) | - | 从输入事件中获取只读的[Input_AxisEvent](capi-input-input-axisevent.md)。 |
 
 ## 枚举类型说明
 
@@ -443,6 +458,7 @@ enum Input_Result
 | INPUT_PARAMETER_ERROR = 401 | 参数检查失败。 |
 | INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。 |
 | INPUT_SERVICE_EXCEPTION = 3800001 | 服务异常。 |
+| INPUT_REPEAT_HANDLER = 3800002 | 此进程中已存在handler。<br>**起始版本：** 26.1.0 |
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | 应用创建拦截后，再次执行创建拦截的操作。 |
 | INPUT_OCCUPIED_BY_SYSTEM = 4200002 | 已经被系统应用占用。<br>**起始版本：** 14 |
 | INPUT_OCCUPIED_BY_OTHER = 4200003 | 已经被其他应用占用。<br>**起始版本：** 14 |
@@ -477,6 +493,25 @@ enum Input_TouchEventToolType
 | TOOL_TYPE_AIRBRUSH = 5 | 表示喷枪类设备。 |
 | TOOL_TYPE_MOUSE = 6 | 表示鼠标设备。 |
 | TOOL_TYPE_LENS = 7 | 表示透镜类设备。 |
+
+### OH_Input_EventType
+
+```c
+enum OH_Input_EventType
+```
+
+**描述**
+
+处理handler接收的输入事件类型。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_INPUT_EVENT_KEY = 0 | 按键事件。 |
+| OH_INPUT_EVENT_MOUSE = 1 | 鼠标事件。 |
+| OH_INPUT_EVENT_TOUCH = 2 | 触摸事件。 |
+| OH_INPUT_EVENT_AXIS = 3 | 轴事件。 |
 
 ## 函数说明
 
@@ -857,15 +892,17 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 注入按键事件。
 
-如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。从API版本26.1.0开始，持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**设备行为差异**：该接口仅在PC/2in1设备上生效，在其他设备上调用无效果。
+**设备行为差异**：该接口在PC/2in1设备上生效；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方调用无效果；在其他设备上调用无效果。
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
 
@@ -2031,7 +2068,7 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 当前应用申请注入权限，包括申请注入按键事件[OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md#oh_input_injectkeyevent)、注入触屏输入事件[OH_Input_InjectTouchEvent](capi-oh-input-manager-h.md#oh_input_injecttouchevent)、注入鼠标事件[OH_Input_InjectMouseEvent](capi-oh-input-manager-h.md#oh_input_injectmouseevent)等注入操作的权限。
 
-从API版本26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。
+从API版本26.0.0开始，在已授予ohos.permission.CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与ohos.permission.CONTROL_DEVICE权限无关。从API版本26.1.0开始，在已授予ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的情况下，无需再申请注入授权。本接口的行为与上述权限无关。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2062,7 +2099,7 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 
 查询当前应用注入的权限状态。
 
-从API版本26.0.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE权限而具备注入能力。
+从API版本26.0.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE权限而具备注入能力。从API版本26.1.0开始，本接口仅返回弹窗授权状态，不表示调用方是否因持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限而具备注入能力。
 
 **起始版本：** 20
 
@@ -3877,15 +3914,17 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 使用以指定屏幕左上角为原点的相对坐标系的坐标注入触屏输入事件。
 
-如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。从API版本26.1.0开始，持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备上调用无效果。
+**设备行为差异**：该接口在PC/2in1设备中可正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方调用无效果；在其他设备上调用无效果。
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
 
@@ -3912,15 +3951,17 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 使用以指定屏幕左上角为原点的相对坐标系的坐标注入鼠标事件。
 
-如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。从API版本26.1.0开始，持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
+**设备行为差异**：该接口在PC/2in1设备上正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上返回201错误码。
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
 
@@ -3997,13 +4038,15 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 使用以主屏左上角为原点的全局坐标系的坐标注入鼠标事件。
 
-如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。从API版本26.1.0开始，持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可以直接使用本接口。
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
+**设备行为差异**：该接口在PC/2in1设备上正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上返回201错误码。
 
 **起始版本：** 20
 
@@ -4114,13 +4157,15 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 使用以主屏左上角为原点的全局坐标系的坐标注入触屏输入事件。
 
-如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE权限，调用该接口注入事件不生效。
+如果当前处于用户未授权状态，且调用方未持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。从API版本26.1.0开始，持有ohos.permission.CONTROL_DEVICE或ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可以直接使用本接口。
 
-**需要权限：** ohos.permission.CONTROL_DEVICE
+**需要权限**：
+- API版本26.1.0+：ohos.permission.CONTROL_DEVICE 或 ohos.permission.ENTERPRISE_CONTROL_DEVICE
+- API版本26.0.0-26.0.1：ohos.permission.CONTROL_DEVICE
 
-**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
+**设备行为差异**：该接口在PC/2in1设备上正常调用；在Tablet设备上，持有ohos.permission.ENTERPRISE_CONTROL_DEVICE权限的调用方可正常调用，未持有该权限的调用方返回201错误码；在其他设备上返回201错误码。
 
 **起始版本：** 20
 
@@ -5167,3 +5212,328 @@ Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_Touch
 | 类型 | 说明 |
 | -- | -- |
 | [Input_TouchEventToolType](#input_toucheventtooltype) | 工具类型。 |
+
+
+### OH_Input_EventHandler_OnEventFunc()
+
+```c
+typedef const OH_Input_Event* (*OH_Input_EventHandler_OnEventFunc)(OH_Input_EventHandler* handler, const OH_Input_Event* event)
+```
+
+**描述**
+
+定义handler接收到输入事件时调用的函数。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)* handler | 接收事件的handler对象。 |
+| const [OH_Input_Event](capi-input-oh-input-event.md)* event | 传入的事件，始终为非NULL。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| const [OH_Input_Event](capi-input-oh-input-event.md)* | 返回该事件表示将其传递给后续处理，返回NULL表示拦截该事件。 |
+
+### OH_Input_EventHandler_OnDisabledFunc()
+
+```c
+typedef void (*OH_Input_EventHandler_OnDisabledFunc)(OH_Input_EventHandler* handler)
+```
+
+**描述**
+
+定义handler禁用时调用的函数。当调用此函数时，handler已经被禁用，输入事件不再被拦截。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)* handler | 禁用的handler。 |
+
+### OH_Input_EventHandler_Create()
+
+```c
+Input_Result OH_Input_EventHandler_Create(OH_Input_EventTypeMask mask, OH_Input_EventHandler_OnEventFunc onEventFunc, OH_Input_EventHandler_OnDisabledFunc onDisabledFunc, OH_Input_EventHandler** handler)
+```
+
+**描述**
+
+创建输入事件handler。通过调用[OH_Input_EventHandler_Destroy](#oh_input_eventhandler_destroy)销毁输入事件handler。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**需要权限：** ohos.permission.HOOK_INPUT_EVENT
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| OH_Input_EventTypeMask mask | 指定要观测的输入事件类型的位掩码。 |
+| [OH_Input_EventHandler_OnEventFunc](#oh_input_eventhandler_oneventfunc) onEventFunc | 接收到观测事件时调用的函数。 |
+| [OH_Input_EventHandler_OnDisabledFunc](#oh_input_eventhandler_ondisabledfunc) onDisabledFunc | 当handler因超时而被禁用时调用的函数。 |
+| [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)** handler | 指向[OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)对象的指针。成功时，handler指向新创建的handler。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_EventHandler_Create函数返回值。<br> [INPUT_SUCCESS](#input_result)创建handler成功。<br> [INPUT_PERMISSION_DENIED](#input_result)权限校验失败。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：mask为0、onEventFunc为NULL、onDisabledFunc为NULL、handler为NULL，或mask包含不支持的位。<br> [INPUT_DEVICE_NOT_SUPPORTED](#input_result)功能不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。 |
+
+### OH_Input_EventHandler_Destroy()
+
+```c
+void OH_Input_EventHandler_Destroy(OH_Input_EventHandler* handler)
+```
+
+**描述**
+
+销毁输入事件的handler并释放资源。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)* handler | 要销毁的[OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)对象。传入NULL时不执行任何操作。 |
+
+### OH_Input_EventHandler_Enable()
+
+```c
+Input_Result OH_Input_EventHandler_Enable(OH_Input_EventHandler* handler, bool enable)
+```
+
+**描述**
+
+启用或禁用输入事件handler。每个进程只允许启用一个handler。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**需要权限：** ohos.permission.HOOK_INPUT_EVENT
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)* handler | [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)对象。 |
+| bool enable | 是否启用handler。true表示启用handler，false表示禁用handler。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_EventHandler_Enable函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL。<br> [INPUT_PERMISSION_DENIED](#input_result)权限校验失败。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。<br> [INPUT_REPEAT_HANDLER](#input_result)该进程内已存在handler。 |
+
+### OH_Input_EventHandler_IsEnabled()
+
+```c
+Input_Result OH_Input_EventHandler_IsEnabled(const OH_Input_EventHandler* handler, bool* enabled)
+```
+
+**描述**
+
+查询是否启用了handler。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)* handler | [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)对象。 |
+| bool* enabled | 指针类型，指向启用状态。true表示handler已启用，false表示handler已禁用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_EventHandler_IsEnabled函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL或enabled为NULL。<br> [INPUT_SERVICE_EXCEPTION](#input_result)输入服务异常，请重试。 |
+
+### OH_Input_EventHandler_GetMask()
+
+```c
+Input_Result OH_Input_EventHandler_GetMask(const OH_Input_EventHandler* handler, OH_Input_EventTypeMask* mask)
+```
+
+**描述**
+
+查询输入事件handler的事件类型掩码。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)* handler | [OH_Input_EventHandler](capi-input-oh-input-eventhandler.md)对象。 |
+| OH_Input_EventTypeMask* mask | 指向事件类型掩码的指针。成功时，其值为传入[OH_Input_EventHandler_Create](#oh_input_eventhandler_create)的值，参考OH_Input_EventTypeMask。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_EventHandler_GetMask函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：handler为NULL或mask为NULL。 |
+
+### OH_Input_Event_GetType()
+
+```c
+Input_Result OH_Input_Event_GetType(const OH_Input_Event* event, OH_Input_EventType* type)
+```
+
+**描述**
+
+获取输入事件的类型。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Input_Event](capi-input-oh-input-event.md)* event | [OH_Input_Event](capi-input-oh-input-event.md)对象。 |
+| [OH_Input_EventType](#oh_input_eventtype)* type | 指向事件类型的指针，参考[OH_Input_EventType](#oh_input_eventtype)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_Event_GetType函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL或type为NULL。 |
+
+### OH_Input_Event_AsKeyEvent()
+
+```c
+Input_Result OH_Input_Event_AsKeyEvent(const OH_Input_Event* event, const Input_KeyEvent** keyEvent)
+```
+
+**描述**
+
+从输入事件中获取只读的[Input_KeyEvent](capi-input-input-keyevent.md)。仅在事件类型为[OH_INPUT_EVENT_KEY](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetKeyEventKeyCode](#oh_input_getkeyeventkeycode)）读取按键事件字段。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Input_Event](capi-input-oh-input-event.md)* event | 在handler函数中获取的[OH_Input_Event](capi-input-oh-input-event.md)对象。 |
+| const [Input_KeyEvent](capi-input-input-keyevent.md)** keyEvent | 指向[Input_KeyEvent](capi-input-input-keyevent.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_Event_AsKeyEvent函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、keyEvent为NULL，或事件类型不是[OH_INPUT_EVENT_KEY](#oh_input_eventtype)。 |
+
+### OH_Input_Event_AsMouseEvent()
+
+```c
+Input_Result OH_Input_Event_AsMouseEvent(const OH_Input_Event* event, const Input_MouseEvent** mouseEvent)
+```
+
+**描述**
+
+从输入事件中获取只读的[Input_MouseEvent](capi-input-input-mouseevent.md)。仅在事件类型为[OH_INPUT_EVENT_MOUSE](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetMouseEventAction](#oh_input_getmouseeventaction)）读取鼠标事件字段。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Input_Event](capi-input-oh-input-event.md)* event | 在handler函数中获取的[OH_Input_Event](capi-input-oh-input-event.md)对象。 |
+| const [Input_MouseEvent](capi-input-input-mouseevent.md)** mouseEvent | 指向[Input_MouseEvent](capi-input-input-mouseevent.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_Event_AsMouseEvent函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、mouseEvent为NULL，或事件类型不是[OH_INPUT_EVENT_MOUSE](#oh_input_eventtype)。 |
+
+### OH_Input_Event_AsTouchEvent()
+
+```c
+Input_Result OH_Input_Event_AsTouchEvent(const OH_Input_Event* event, const Input_TouchEvent** touchEvent)
+```
+
+**描述**
+
+从输入事件中获取只读的[Input_TouchEvent](capi-input-input-touchevent.md)。仅在事件类型为[OH_INPUT_EVENT_TOUCH](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetTouchEventAction](#oh_input_gettoucheventaction)）读取触摸事件字段。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Input_Event](capi-input-oh-input-event.md)* event | 在handler函数中获取的[OH_Input_Event](capi-input-oh-input-event.md)对象。 |
+| const [Input_TouchEvent](capi-input-input-touchevent.md)** touchEvent | 指向[Input_TouchEvent](capi-input-input-touchevent.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_Event_AsTouchEvent函数返回值。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、touchEvent为NULL，或事件类型不是[OH_INPUT_EVENT_TOUCH](#oh_input_eventtype)。 |
+
+### OH_Input_Event_AsAxisEvent()
+
+```c
+Input_Result OH_Input_Event_AsAxisEvent(const OH_Input_Event* event, const Input_AxisEvent** axisEvent)
+```
+
+**描述**
+
+从输入事件中获取只读的[Input_AxisEvent](capi-input-input-axisevent.md)。仅在事件类型为[OH_INPUT_EVENT_AXIS](#oh_input_eventtype)时有效。返回的指针是一个不拥有所有权的只读指针，其生命周期依附于event。仅在当前调用期间（即event有效期间）有效。请勿使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)释放该指针，请勿对其调用Set*类函数。请使用现有的Get*访问器（例如[OH_Input_GetAxisEventAction](#oh_input_getaxiseventaction)）读取轴事件字段。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Input_Event](capi-input-oh-input-event.md)* event | 在handler函数中获取的[OH_Input_Event](capi-input-oh-input-event.md)对象。 |
+| const [Input_AxisEvent](capi-input-input-axisevent.md)** axisEvent | 指向[Input_AxisEvent](capi-input-input-axisevent.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_Event_AsAxisEvent函数错误码。<br> [INPUT_SUCCESS](#input_result)操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result)参数检查失败。原因：event为NULL、axisEvent为NULL，或者事件类型不是[OH_INPUT_EVENT_AXIS](#oh_input_eventtype)。 |

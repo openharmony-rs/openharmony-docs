@@ -249,3 +249,78 @@ ohos-window list-windows --displayId 0 --type layout --type meta
     } 
 }
 ```
+
+## screenshot
+
+对指定的窗口或屏幕进行截图。屏幕截图支持全屏截图、矩形区域截图、全屏截图时排除指定窗口。
+
+### 约束限制
+
+- 需要权限：[ohos.permission.CUSTOM_SCREEN_CAPTURE](../security/AccessToken/permissions-for-all-user.md#ohospermissioncustom_screen_capture)。
+
+### 命令格式
+
+```bash
+ohos-window screenshot [options]
+```
+
+> **说明：**
+>
+> options不填时，截取的是默认屏。
+
+### 参数说明
+
+| 参数名 | 说明 |
+|------|------|
+| `--help` | 查看帮助信息，可选，指定本参数时会忽略其他参数。|
+| `--windowId <id>` | 指定待截图窗口的ID，可选，需为正整数。指定本参数时针对窗口进行截图，未指定本参数时针对屏幕进行截图。<br/>不可与`--displayId`/`--rect`/`--excludeWindowIds`同时使用。<br/>以下任一情况下，均返回ERR_INVALID_INPUT错误：<br/>- ID值小于等于0；<br/>- ID值为非整数；<br/>- ID对应的窗口不存在；<br/>- ID对应的窗口是后台窗口或隐私窗口。|
+| `--displayId <id>` | 指定待截图的屏幕ID，可选，需为正整数，缺省时为默认屏ID。<br/>不可与`--windowId`同时使用。<br/>以下任一情况下，均返回ERR_INVALID_INPUT错误：<br/>- ID值小于等于0；<br/>- ID值为非整数；<br/>- ID对应的屏幕不存在。|
+| `--outputPath <path>` | 指定保存截图的目录路径，可选，默认保存在`/data/storage/el2/base/temp`目录下。<br/>以下任一情况下，均返回ERR_INVALID_INPUT错误：<br/>- 指定的路径不存在；<br/>- 对应目录没有写入权限；<br/>- 传入路径非目录。<br/>应用有权限访问的目录可参考[应用沙箱目录与应用沙箱路径](../file-management/app-sandbox-directory.md#应用沙箱目录与应用沙箱路径)。|
+| `--rect <x,y,width,height>` | 指定屏幕截取矩形区域，可选，其中x和y表示矩形的左上角相对屏幕左上角顶点的坐标，width和height表示矩形的宽和高，单位均为px，均需为整数。<br/>不可与`--excludeWindowIds`/`--windowId`同时使用。<br/>以下任一情况下，均返回ERR_INVALID_INPUT错误：<br/>- 未同时指定x、y、width和height；<br/>- x、y、width和height不全为整数；<br/>- 矩形超出屏幕范围。|
+| `--excludeWindowIds <id1,id2,...>` | 指定屏幕截图时需要排除的窗口的ID，可选，需为正整数。多个ID以英文逗号分隔，最多支持64个。<br/>不可与`--rect`/`--windowId`同时使用。<br/>以下任一情况下，均返回ERR_INVALID_INPUT错误：<br/>- ID值小于等于0；<br/>- ID值为非整数；<br/>- ID对应的窗口不存在；<br/>- 窗口ID数量超过64个。|
+| `--format <jpeg\|png>` | 指定截图的图片格式，可选，支持jpeg和png格式，默认为jpeg格式。<br/>当指定不支持的格式时，会返回ERR_INVALID_INPUT错误。|
+
+### 错误码
+
+| 错误码 | 说明 | 处理建议 |
+|--------|------|------|
+| ERR_INVALID_INPUT | 无效的输入参数。 | 检查参数是否符合参数说明。 |
+| ERR_NO_PERMISSION | 权限校验失败。 | 检查是否配置[ohos.permission.CUSTOM_SCREEN_CAPTURE](../security/AccessToken/permissions-for-all-user.md#ohospermissioncustom_screen_capture)权限。 |
+| ERR_DEVICE_NOT_SUPPORT | 设备不支持。 | 检查当前设备类型。 |
+| ERR_IPC_FAILED | IPC通信或服务连接失败。 | 请重试。 |
+| ERR_INTERNAL_ERROR | 内部错误。 | 请重试。 |
+| ERR_INVALID_OPERATION | 当前状态不允许该操作。 | 请在设备解锁后使用该命令。 |
+| ERR_CODE_EMPTY | 未识别的底层错误。 | 请重试。 |
+
+### 示例代码
+
+**命令示例：**
+
+```bash
+# 截取默认屏
+ohos-window screenshot
+
+# 对指定窗口截图，图片格式为jpeg，保存到自定义路径
+ohos-window screenshot --windowId 100 --format jpeg --outputPath /app/data/
+
+# 截取指定矩形区域（x=100,y=200,width=300,height=400）
+ohos-window screenshot --rect 100,200,300,400
+
+# 截取主屏幕，排除窗口100和200
+ohos-window screenshot --displayId 0 --excludeWindowIds 100,200
+```
+
+**输出示例：**
+
+```json
+{
+    "type": "result",
+    "status": "success",
+    "data": {
+        "message": "capture screenshot successfully.",
+        "outputPath": "/data/storage/el2/base/temp/screenshot_2026-11-13_10-20-30.jpeg",
+        "width": 2091,
+        "height": 1527
+    }
+}
+```

@@ -2849,6 +2849,107 @@ try {
 }
 ```
 
+## securityManager.setEnterpriseResetPolicy
+
+setEnterpriseResetPolicy(policy: EnterpriseResetPolicy): void
+
+设置企业设备复位策略，用于管控设备复位（恢复出厂设置）时的企业账号认证要求。策略设置后立即生效（热生效），可通过[getEnterpriseResetPolicy](#securitymanagergetenterpriseresetpolicy)查询当前策略，验证设置是否生效。
+
+> **说明：**
+>
+> 设置为ENTERPRISE_ACCOUNT_AUTH_ON后，用户通过“设置-系统-重置-恢复出厂设置-重置本机”菜单操作设备恢复出厂时需通过企业账号认证。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                                                         |
+| ------ | -------- | ---- | ------------------------------------------------------------ |
+| policy | [EnterpriseResetPolicy](#enterpriseresetpolicy) | 是   | 企业设备复位策略。取值及含义请参见[EnterpriseResetPolicy](#enterpriseresetpolicy)：建议先通过[getEnterpriseResetPolicy](#securitymanagergetenterpriseresetpolicy)查询设备当前策略，再按企业安全要求设置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+  // 开启企业账号认证，设备复位前需通过企业账号认证
+  securityManager.setEnterpriseResetPolicy(securityManager.EnterpriseResetPolicy.ENTERPRISE_ACCOUNT_AUTH_ON);
+  console.info('Succeeded in setting enterprise reset policy');
+
+  // 查询设置后的策略，验证是否生效
+  let policy: securityManager.EnterpriseResetPolicy = securityManager.getEnterpriseResetPolicy();
+  console.info(`Current enterprise reset policy: ${policy}`);
+} catch (err) {
+  console.error(`Failed to set enterprise reset policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getEnterpriseResetPolicy
+
+getEnterpriseResetPolicy(): EnterpriseResetPolicy
+
+查询当前的企业设备复位策略，即设备恢复出厂设置时是否要求企业账号认证。策略取值见[EnterpriseResetPolicy](#enterpriseresetpolicy)。企业可通过本接口进行策略审计和合规性检查，并校验已下发的策略是否生效。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型     | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| [EnterpriseResetPolicy](#enterpriseresetpolicy) | 当前企业设备复位策略。各取值的含义请参见[EnterpriseResetPolicy](#enterpriseresetpolicy)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+  let policy: securityManager.EnterpriseResetPolicy = securityManager.getEnterpriseResetPolicy();
+  console.info(`Succeeded in getting enterprise reset policy, policy: ${policy}`);
+} catch (err) {
+  console.error(`Failed to get enterprise reset policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## CertBlob
 
 证书信息。
@@ -3011,6 +3112,22 @@ try {
 | credentialId | Uint8Array | 否   | 否   | 指示凭据ID。       |
 | pluginInfo   | string     | 否   | 否   | 指示认证插件信息。 |
 
+## EnterpriseResetPolicy
+
+企业设备复位策略枚举。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                      | 值 | 说明                                                         |
+| ------------------------- | -- | ------------------------------------------------------------ |
+| DEFAULT                   | 0  | 默认策略，使用系统默认的企业复位认证要求。                   |
+| ENTERPRISE_ACCOUNT_AUTH_ON | 1 | 企业账号认证开启，设备复位前需通过企业账号认证，未通过认证无法完成复位。 |
+| ENTERPRISE_ACCOUNT_AUTH_OFF | 2 | 企业账号认证关闭，设备复位时不要求通过企业账号认证。        |
+
 ## UnlockPolicy
 
 表示设备解锁策略。
@@ -3024,5 +3141,6 @@ try {
 | 名称                  | 值 | 说明                                       |
 | --------------------- | -- | ------------------------------------------ |
 | DEFAULT               | 0  | 系统内置认证方式单独解锁，使用系统内置的锁屏认证方式解锁设备。                         |
-| EXTENDED_AUTH_ONLY    | 1  | 三方自定义认证单独解锁，解锁设备时仅通过三方自定义认证方式进行身份验证，无需系统锁屏密码。                       |
-| EXTENDED_AUTH_REQUIRED | 2  | 三方自定义认证与系统内置认证融合解锁，解锁设备时需同时通过三方自定义认证方式和系统锁屏密码进行身份验证。           |
+| EXTENDED_AUTH_ONLY    | 1  | 三方自定义认证单独解锁，解锁设备时仅通过三方自定义认证方式进行身份验证，无需通过系统内置的锁屏认证方式。                       |
+| EXTENDED_AUTH_REQUIRED | 2  | 三方自定义认证与系统内置认证融合解锁，解锁设备时需同时通过三方自定义认证和系统内置认证进行身份验证。           |
+| EXTENDED_AUTH_OPTIONAL | 3  | 三方自定义认证与系统内置认证可选解锁，解锁设备时可选择通过三方自定义认证或系统内置认证其中一种方式进行身份验证。<br>**起始版本：** 26.1.0    |

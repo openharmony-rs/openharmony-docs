@@ -823,6 +823,34 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.vehicle.HIMA_DATA_READ
+
+允许应用读取HIMA云数据。
+ 
+通过此权限，应用程序可以从HIMA云读取车辆相关数据。
+ 
+**权限级别**：normal
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DATA_WRITE
+
+允许应用将数据写入HIMA云。
+ 
+通过此权限，应用程序可以向HIMA云写入车辆相关数据。
+ 
+**权限级别**：normal
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
 ## ohos.permission.DCAS_RUN_MODEL
 
 允许应用和服务接入端侧模型运行态管理。
@@ -850,3 +878,87 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.1
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+允许应用获取本地账号授权。
+
+获取该权限后，应用可调用接口请求本地账号授权。用户将通过系统授权弹窗进行本地账号身份认证后授予目标特权，应用可执行目标特权对应的敏感操作（如网络抓包等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
+
+**起始版本**：26.0.1
+
+## ohos.permission.kernel.USB_CAPTURE
+
+允许应用抓取USB数据包。
+
+获取此权限后，应用程序需用户认证后才可以进行USB抓包，无此权限不允许抓取。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+允许应用识别当前使用者是否为用户本人。
+
+获取该权限后，应用可以使用用户被动识别能力，识别当前使用者是否为用户本人，并获取用户ID、认证可信等级等信息。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.GET_STORAGE_VOLUME_INFO
+
+允许应用查询存储设备基础属性信息。
+
+获取该权限后，应用可查询外置存储设备的物理磁盘信息（如磁盘ID、设备类型、厂商ID、产品ID等）和卷信息（如卷ID、挂载状态、容量、挂载路径、文件系统类型等），以及本地系统盘和数据盘的硬件信息（如物理路径、型号、品牌、介质类型、运行状态、容量等）。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car | TV
+
+**起始版本**：26.0.1
+
+## ohos.permission.REGISTER_DAEMON_SERVICE
+
+允许应用注册、取消注册daemon服务。
+
+获取该权限后，应用可注册daemon服务，声明了该权限的应用无法上架应用市场，仅在自由分发时使用。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.USE_DAEMON_SERVICE
+
+允许应用使用daemon服务。
+
+获取该权限后，应用可以拉起、连接daemon服务。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0

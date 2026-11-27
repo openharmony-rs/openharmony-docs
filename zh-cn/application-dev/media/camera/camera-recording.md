@@ -165,7 +165,7 @@
     if (err !== undefined && err.code !== 0) {
       return;
     }
-    console.info('Video frame started');
+    console.info(`Video frame started`);
   });
   ```
 
@@ -178,7 +178,7 @@
     if (err !== undefined && err.code !== 0) {
       return;
     }
-    console.info('Video frame ended');
+    console.info(`Video frame ended`);
   });
   ```
 

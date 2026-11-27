@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "应用快启机制通过复用启动初始化结果跳过可复用流程，显著缩短冷启动时延，适合启动耗时较高、资源模块加载占比较大的应用。"
+keywords: [应用快启, 启动加速, HyperSnap, 快启初始化, setHyperSnapEnabled, onAboutToCreateAbility, 冷启动优化, 快启风险操作]
+doctype: guide
+status: active
+---
+
 # 应用快启
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
-<!--Designer: @junathuawei1; @zph000-->
+<!--Designer: @xuexuexuehc-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -218,6 +218,17 @@
 | com.apple.iwork.pages.pages                                     |                 general.composite-object,com.apple.iwork                                                            | .pages                            |    application/vnd.apple.pages                   |  iWork Pages文档文件。<!--RP1-->从OpenHarmony 6.1开始支持此类型。<!--RP1End-->         |
 | com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  musiccreate文件格式。<!--RP2-->从OpenHarmony 6.1开始支持此类型。<!--RP2End-->         |
 | com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF音频数据文件。<!--RP2-->从OpenHarmony 6.1开始支持此类型。<!--RP2End-->         |
+| general.3d-content                                     |                 general.object                                                            | -                            |    -                   |  表示3D内容的基类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.gltf                                     |                 general.3d-content                                                            | .gltf                            |    model/gltf+json                   |  基于JSON的glTF 3D场景和模型格式。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.glb                                     |                 general.3d-content                                                            | .glb                            |    model/gltf-binary                   |  glTF二进制容器格式。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.obj-model                                     |                 general.3d-content                                                            | .obj                            |    model/obj                   |  基于文本的3D模型类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.mtl                                     |                 general.object                                                            | .mtl                            |    model/mtl                   |  Wavefront OBJ 模型的材质库文件类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.3mf                                     |                 general.3d-content                                                            | .3mf                            |    model/3mf                   |  3D制造格式类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.step                                     |                 general.cad, general.3d-content                                                            | .p21, .stp, .step, .stpnc, .210                            |    model/step                   |  STEP交换文件类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.usdz                                     |                 general.3d-content                                                            | .usdz                            |    model/vnd.usdz+zip                   |  打包通用场景描述资源类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.usda                                     |                 general.3d-content                                                            | .usda                            |    model/vnd.usda                   |  通用场景描述数据的可读UTF-8文本类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| general.collada                                     |                 general.3d-content                                                            | .dae                            |    model/vnd.collada+xml                   |  基于XML的数字资产交换格式类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
+| com.mathworks.matlab-code                                     |                 general.source-code                                                            | .m                            |    text/x-matlab                   |  MATLAB脚本类型。<!--RP3-->从OpenHarmony 7.1开始支持此类型。<!--RP3End-->         |
 
 
 ## 系统关联类型
@@ -488,7 +499,7 @@
 | com.fujifilm.raf-raw-image                                  | general.raw-image                                                        | .raf                    | image/x-fuji-raf                                                          | Fujifilm原始图像格式。 |
 | com.panasonic.rw2-raw-image                                 | general.raw-image                                                        | .rw2, .raw              | image/x-panasonic-raw                                                     | Panasonic原始图像格式。 |
 | com.pentax.pef-raw-image                                    | general.raw-image                                                        | .pef                    | image/x-pentax-pef                                                        | Pentax电子原始图像格式。 |
-| com.sumsung.srw-raw-image                                   | general.raw-image                                                        | .srw                    | image/x-samsung-srw                                                       | Samsung原始图像格式。 |
+| com.samsung.srw-raw-image                                   | general.raw-image                                                        | .srw                    | image/x-samsung-srw                                                       | Samsung原始图像格式。<!--RP4-->从OpenHarmony 7.1开始支持此类型。<!--RP4End--> |
 | com.epson.erf-raw-image                                     | general.raw-image                                                        | .erf                    | image/x-epson-erf                                                         | Epson原始图像格式。 |
 | com.olympus.orf-raw-image                                   | general.raw-image                                                        | .orf                    | image/x-olympus-orf                                                       | Olympus原始图像格式。 |
 | org.w3.woff                                                 | general.font                                                             | .woff                   | font/woff                                                                 | Web开放字体格式类型。 |

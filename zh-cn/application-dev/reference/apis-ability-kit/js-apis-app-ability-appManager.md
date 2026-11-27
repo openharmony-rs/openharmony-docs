@@ -313,7 +313,14 @@ appManager.getAppMemorySize((err, data) => {
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
-从API版本11开始，默认仅返回调用方自身的进程信息；若拥有 ohos.permission.GET_RUNNING_INFO 权限（该权限仅系统应用可申请），则可查询全量应用的进程信息。使用Promise异步回调。
+获取应用运行进程的相关信息。使用Promise异步回调。
+
+> **说明：**
+>
+> - 对于API version 11之前的版本，该接口需要申请权限ohos.permission.GET_RUNNING_INFO，可查询全量应用的运行进程信息。
+>
+> - 从API version 11开始，默认仅返回调用方自身的运行进程信息；若拥有ohos.permission.GET_RUNNING_INFO权限，
+>   则可查询全量应用的运行进程信息。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -358,7 +365,14 @@ appManager.getRunningProcessInformation().then((data) => {
 
 getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-从API版本11开始，默认仅返回调用方自身的进程信息；若拥有 ohos.permission.GET_RUNNING_INFO 权限（该权限仅系统应用可申请），则可查询全量应用的进程信息。使用callback异步回调。
+获取应用运行进程的相关信息。使用callback异步回调。
+
+> **说明：**
+>
+> - 对于API version 11之前的版本，该接口需要申请权限ohos.permission.GET_RUNNING_INFO，可查询全量应用的运行进程信息。
+>
+> - 从API version 11开始，默认仅返回调用方自身的运行进程信息；若拥有ohos.permission.GET_RUNNING_INFO权限，
+>   则可查询全量应用的运行进程信息。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1361,9 +1375,9 @@ onFocusedApplicationChanged(observer: FocusedApplicationObserver): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 16000050 | Internal error. |
-| 16000165 | The number of registered observers has reached the upper limit. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Connect to system server failed. |
+| 16000165 | The number of registered observers for the current application has reached the upper limit. |
 
 **示例：**
 
@@ -1421,8 +1435,8 @@ offFocusedApplicationChanged(observerId: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 16000050 | Internal error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Connect to system server failed. |
 | 16300004 | The observer does not exist. |
 
 **示例：**

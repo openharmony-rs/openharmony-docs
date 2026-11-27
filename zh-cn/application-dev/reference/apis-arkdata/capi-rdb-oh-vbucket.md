@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_VBucket
+typedef struct OH_VBucket {...} OH_VBucket
 ```
 
 ## 概述
@@ -69,6 +69,10 @@ int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
+**参考：**
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
+
 ### putInt64()
 
 ```c
@@ -95,6 +99,10 @@ int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
+**参考：**
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
+
 ### putReal()
 
 ```c
@@ -120,6 +128,10 @@ int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+
+**参考：**
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
 
 ### putBlob()
 
@@ -148,6 +160,10 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
+**参考：**
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
+
 ### putNull()
 
 ```c
@@ -173,6 +189,10 @@ int (*putNull)(OH_VBucket *bucket, const char *field)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
+**参考：**
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
+
 ### clear()
 
 ```c
@@ -197,6 +217,10 @@ int (*clear)(OH_VBucket *bucket)
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
+**参考：**
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
+
 ### destroy()
 
 ```c
@@ -220,4 +244,8 @@ int (*destroy)(OH_VBucket *bucket)
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
 | int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+
+**参考：**
+
+[OH_VBucket](capi-rdb-oh-vbucket.md)
 

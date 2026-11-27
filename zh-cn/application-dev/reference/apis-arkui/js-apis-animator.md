@@ -1080,85 +1080,71 @@ iterations(iterations: int): SimpleAnimatorOptions
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
+```js
+import animator from '@ohos.animator';
 
-let DataTmp: Record<string, Animator> = {
-  'divWidth': 200,
-  'divHeight': 200,
-  'animator': animator
+let DataTmp = {
+    'divWidth': 200,
+    'divHeight': 200
 }
 
-class Tmp {
-  data: animator = DataTmp
-  onInit: Function = () => {
-  }
-  Show: Function = () => {
-  }
-}
-
-class DateT {
-  divWidth: number = 0
-  divHeight: number = 0
-  animator: AnimatorResult | null = null
-}
-
-(Fn: (v: Tmp) => void) => {
-  Fn({
-    data: DataTmp,
-    onInit() {
-      let options: AnimatorOptions = {
-        duration: 1500,
-        easing: "friction",
-        delay: 0,
-        fill: "forwards",
-        direction: "normal",
-        iterations: 2,
-        begin: 200.0,
-        end: 400.0
-      };
-      let DataTmp: DateT = {
-        divWidth: 200,
-        divHeight: 200,
-        animator: null
-      }
-      DataTmp.animator = animator.create(options);
-    },
-    Show() {
-      let options1: AnimatorOptions = {
-        duration: 1500,
-        easing: "friction",
-        delay: 0,
-        fill: "forwards",
-        direction: "normal",
-        iterations: 2,
-        begin: 0,
-        end: 400.0,
-      };
-      let DataTmp: DateT = {
-        divWidth: 200,
-        divHeight: 200,
-        animator: null
-      }
-      try {
-        DataTmp.animator = animator.create(options1);
-        DataTmp.animator.reset(options1);
-      } catch (error) {
-        let message = (error as BusinessError).message
-        let code = (error as BusinessError).code
-        console.error(`Animator reset failed, error code: ${code}, message: ${message}.`);
-      }
-      let _this = DataTmp;
-      if (DataTmp.animator) {
-        DataTmp.animator.onFrame = (value: number) => {
-          _this.divWidth = value;
-          _this.divHeight = value;
-        };
-        DataTmp.animator.play();
-      }
+class AnimatorState {
+    constructor() {
+        this.divWidth = 0;
+        this.divHeight = 0;
+        this.animator = null;
     }
-  })
+}
+
+export default {
+    data: DataTmp,
+    animatorState: null,
+    onInit() {
+        let options = {
+            duration: 1500,
+            easing: "friction",
+            delay: 0,
+            fill: "forwards",
+            direction: "normal",
+            iterations: 2,
+            begin: 200.0,
+            end: 400.0
+        };
+        this.animatorState = new AnimatorState();
+        this.animatorState.animator = animator.create(options);
+    },
+    show() {
+        let resetOptions = {
+            duration: 1500,
+            easing: "friction",
+            delay: 0,
+            fill: "forwards",
+            direction: "normal",
+            iterations: 2,
+            begin: 0,
+            end: 400.0,
+        };
+        if (!this.animatorState) {
+            this.animatorState = new AnimatorState();
+        }
+        let animatorState = this.animatorState;
+        try {
+            animatorState.animator = animator.create(resetOptions);
+            animatorState.animator.reset(resetOptions);
+        } catch (error) {
+            let message = error.message;
+            let code = error.code;
+            console.error(`Animator reset failed. Code: ${code}, message: ${message}`);
+        }
+        let _this = this;
+        if (animatorState.animator) {
+            animatorState.animator.onframe = (value) => {
+                _this.divWidth = value;
+                _this.divHeight = value;
+            };
+            animatorState.animator.play();
+        }
+    }
 }
 ```
 

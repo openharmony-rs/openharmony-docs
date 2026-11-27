@@ -98,10 +98,12 @@
         console.info('decrypted result string:' + messageDecrypted);
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -168,10 +170,12 @@
         console.info('decrypted result string:' + messageDecrypted);
       } else {
         console.error('decrypt failed.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

@@ -1,3 +1,11 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "指导开发者通过ArkTS API创建子进程以隔离耗时任务，对比三种子进程创建方式的接口选型与能力差异，并提供完整开发示例。"
+keywords: [ArkTS子进程, childProcessManager, startChildProcess, startArkChildProcess, startNativeChildProcess, ChildProcess, 进程隔离, 多任务处理]
+doctype: guide
+status: active
+---
+
 # 子进程开发指导（ArkTS）
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

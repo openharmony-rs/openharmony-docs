@@ -107,24 +107,24 @@ struct WebComponent {
           try {
             proxyConfig.insertProxyRule("https://proxy.XXX.com", webview.ProxySchemeFilter.MATCH_ALL_SCHEMES);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           try {
             proxyConfig.insertDirectRule(webview.ProxySchemeFilter.MATCH_HTTP);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           try {
             proxyConfig.insertBypassRule("*.example.com");
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           proxyConfig.clearImplicitRules();
           proxyConfig.bypassHostnamesWithoutPeriod();
           try {
             proxyConfig.enableReverseBypass(true);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           let bypassRules = proxyConfig.getBypassRules();
           for (let i = 0; i < bypassRules.length; i++) {
@@ -142,7 +142,7 @@ struct WebComponent {
               console.info("PROXYCONTROLLER proxy changed");
             });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
         Button("loadUrl-https").onClick(()=>{
@@ -157,7 +157,7 @@ struct WebComponent {
             console.info("PROXYCONTROLLER proxy changed");
           });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
         Web({ src: 'www.example.com', controller: this.controller})

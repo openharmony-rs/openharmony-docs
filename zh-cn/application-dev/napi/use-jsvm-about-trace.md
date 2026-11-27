@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍通过JSVM-API接入Trace能力的方法，说明OH_JSVM_TraceStart按分类启动采集、OH_JSVM_TraceStop停止并以JSON格式经回调输出运行时事件，用于问题定位与性能分析。"
 keywords: [OH_JSVM_TraceStart, OH_JSVM_TraceStop, Trace开发, 事件分类, JSON格式, 回调函数, 性能分析, JSVM_TraceCategory]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # 使用JSVM-API接口进行Trace相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

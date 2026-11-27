@@ -7,11 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## 概述
 
-定义获取和使用NativeWindow的相关函数。NativeWindow基于生产者-消费者模型，通过Buffer队列管理图形缓冲区的申请、写入和消费。开发者通过OHNativeWindow申请OHNativeWindowBuffer，向缓冲区写入内容后送回Buffer队列供消费者使用，完成内容渲染流程。
-
-
-<!--Del-->
-**相关示例：** [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--DelEnd-->
+定义获取和使用NativeWindow的相关函数。NativeWindow基于生产者-消费者模型，通过Buffer队列管理图形缓冲区的申请、写入和消费。开发者通过OHNativeWindow申请OHNativeWindowBuffer，向缓冲区写入内容后送回Buffer队列供消费者使用，完成内容渲染流程。使用方法可参考[NativeWindow开发指导 (C/C++)](../../graphics/native-window-guidelines.md)。
 
 **引用文件：** <native_window/external_window.h>
 
@@ -315,7 +311,7 @@ OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* pSurfaceBuffer | 一个指向生产者buffer的指针，类型为sptr<OHOS::SurfaceBuffer>。 |
+| void* pSurfaceBuffer | 一个指向生产者buffer的指针，类型为sptr\<OHOS\:\:SurfaceBuffer\>。 |
 
 **返回：**
 

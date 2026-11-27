@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍通过RenderNode获取画布和基于PixelMap创建离屏画布的方法，以及如何将绘制结果显示到屏幕上。"
+keywords: [Canvas, 画布创建, 离屏绘制, 上屏显示, 自定义绘制]
+doctype: guide
+status: active
+---
+
 # 画布的获取与绘制结果的显示（ArkTS）
 
 <!--Kit: ArkGraphics 2D-->
@@ -31,6 +39,11 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    
    ``` TypeScript
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI';
+   ```
+   
+   <!-- @[arkts_graphics_draw_import_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   
+   ``` TypeScript
    import { drawing } from '@kit.ArkGraphics2D';
    ```
    ArkTS-Sta示例：

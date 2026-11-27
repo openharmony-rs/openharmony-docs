@@ -33,6 +33,8 @@
 | querySchemes             | 允许应用进行跳转查询的URL schemes。| querySchemes              | -                          | -                                |
 | generateBuildHash        | 标识当前HAP或HSP是否由打包工具生成哈希值。| generateBuildHash    | generateBuildHash          | -                                |
 | buildVersion               | 应用的构建版本号。        | -                        | buildVersion                 | -                                |
+| keepDataOnUninstall | 标识应用卸载时是否保留数据。 | - | keepDataOnUninstall | - |
+| alternateModule | 标识当前模块是否为备用包。 | alternateModule | - | - |
 
 ## 约束与限制
 
@@ -150,6 +152,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
 | buildVersion                | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
+| keepDataOnUninstall | 从API版本26.1.0开始，所有HAP（entry和feature模块）的keepDataOnUninstall字段值必须保持一致。 |
 
 > **说明：** 
 >
@@ -196,6 +199,8 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 installer模式用于将一个或多个应用的HAP、HSP和应用描述文件打包为一个.app包，供安装器读取。生成的包采用ZIP格式，根目录包含manifest.json和Contents目录，Contents下按应用目录存放原始HAP、HSP文件。
 
 该包与[App打包指令](#app打包指令)生成的包具有不同的内部结构，使用时需要安装器支持installer包格式。打包工具负责生成容器，不执行应用安装或签名、验签。
+
+从API版本26.1.0开始，同一应用内所有HAP（包括entry和feature模块）的keepDataOnUninstall字段取值必须保持一致（未配置时默认按false处理），否则会导致打包失败。该一致性校验仅限同一应用内部，不同应用之间无此要求。
 
 ### 命令与参数
 
@@ -292,6 +297,7 @@ versionCode和minAPIVersion均须为[0, 2147483647]范围内的整数，不接�
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
 | buildVersion                | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。      |
+| keepDataOnUninstall | 从API版本26.1.0开始，所有HAP（entry和feature模块）的keepDataOnUninstall字段值必须保持一致。 |
 
 > **说明：** 
 >
@@ -482,6 +488,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 | minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
 | targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | buildVersion                      | 从API version 23开始，要求所有HAP或HSP的buildVersion字段值均保持一致。 |
+| keepDataOnUninstall | 从API版本26.1.0开始，所有HAP（entry和feature模块）的keepDataOnUninstall字段值必须保持一致。 |
 
 > **说明：** 
 >
@@ -670,6 +677,18 @@ json统计结果：
 | generatedTime   | String          | 结果文件生成时间（UTC）。                                      |
 | description     | String          | 结果文件描述。      |
 | removedSoFiles  | Vector\<Object> | 被移除so文件列表。每个元素包含originalPathInHap（so在包内的原始路径）和originalSha256（so的SHA-256值）。 |
+
+## 备用包（alternateModule）
+
+用于应用市场快速发布提前准备的可用替换版本。将[module.json5](../quick-start/module-configuration-file.md#配置文件标签)中的alternateModule字段配置为true的模块称为备用包（该字段从API版本26.1.0开始支持，仅对Stage模型的HSP生效，默认值为false）。
+
+执行[App打包指令](#app打包指令)、[fastApp打包指令](#fastapp模式打包指令)或[多工程打包指令](#多工程打包指令)时，打包工具会对备用包进行如下校验，任一项不通过均会导致打包失败：
+
+1. 备用包的`bundleType`必须为`shared`。
+2. 每个备用包HSP在打包输入中必须存在同名的普通HSP，且每个普通HSP最多对应一个备用包。
+3. 备用包HSP的module.json除`alternateModule`字段外，必须与某个同名普通HSP的module.json完全一致。
+4. 备用包HSP文件大小不能超过800KiB（819200字节）。
+5. 备用包HSP包内根目录不能包含libs目录。
 
 ## 打包工具错误码
 
@@ -1840,6 +1859,93 @@ HSP/HAP在[module.json5](../quick-start/module-configuration-file.md)配置了�
 
 如果module.json5中配置了executableBinaryPaths且存在二进制文件，请确保配置为应用以解压libs库的方式进行安装，即module.json5配置文件中的extractNativeLibs或compressNativeLibs中至少有一项为true。
 
+### 10012056 备用包bundleType无效
+**错误信息**
+
+alternate module bundleType invalid.
+
+**错误描述**
+
+打包App时，校验备用包的bundleType失败。
+
+**可能原因**
+
+module.json中alternateModule为true的模块，其bundleType不是shared。
+
+**处理步骤**
+
+检查备用包的module.json，将bundleType修改为shared，或将alternateModule修改为false。
+
+### 10012057 备用包没有可用的同名普通模块
+**错误信息**
+
+alternate module has no available same-name normal module.
+
+**错误描述**
+
+打包App时，未找到与备用包同名的可用普通HSP。
+
+**可能原因**
+
+1. 打包输入中不存在与备用包module/name相同的普通HSP。
+2. 与备用包同名的普通HSP已被其他备用包匹配，每个普通HSP最多对应一个备用包。
+
+**处理步骤**
+
+1. 确认打包输入中包含与备用包同名的普通HSP。
+2. 确认每个普通HSP最多对应一个备用包。
+
+### 10012058 备用包module.json不匹配
+**错误信息**
+
+alternate module module.json mismatch.
+
+**错误描述**
+
+打包App时，备用包的module.json与同名普通HSP的module.json不匹配。
+
+**可能原因**
+
+备用包的module.json与所有同名普通HSP的module.json均不一致（除alternateModule字段外）。
+
+**处理步骤**
+
+检查备用包与同名普通HSP的module.json，确保除alternateModule字段外，两者的module.json完全一致。
+
+### 10012059 备用包HSP大小超限
+**错误信息**
+
+alternate module hsp size exceeds limit.
+
+**错误描述**
+
+打包App时，备用包HSP文件大小超过限制。
+
+**可能原因**
+
+备用包HSP文件大小超过800KiB（819200字节）。
+
+**处理步骤**
+
+减小备用包HSP文件大小，使其不超过819200字节。
+
+### 10012060 备用包包含libs目录
+**错误信息**
+
+alternate module contains libs directory.
+
+**错误描述**
+
+打包App时，备用包HSP包内根目录包含libs目录。
+
+**可能原因**
+
+备用包HSP包内根目录存在libs目录。
+
+**处理步骤**
+
+删除备用包HSP包内根目录的libs目录后重新打包。
+
 ### 10013001 解析module.json或config.json文件异常
 **错误信息**
 
@@ -2515,6 +2621,7 @@ Some app variable is different.
 5. 当前参与打包的HAP或HSP中，存在模块的targetBundleName（app.json5配置文件中的属性）与其他模块不一致。
 6. 当前参与打包的HAP或HSP中，存在模块的targetPriority（app.json5配置文件中的属性）与其他模块不一致。
 7. 当前参与打包的HAP中，存在模块的multiAppMode（app.json5配置文件中的属性）与其他模块不一致。
+8. 当前参与打包的HAP中，存在模块的keepDataOnUninstall（app.json5配置文件中的属性）与其他模块不一致。
 
 **处理步骤**
 
@@ -2525,6 +2632,7 @@ Some app variable is different.
 5. 确保当前参与打包的HAP或HSP的targetBundleName一致。
 6. 确保当前参与打包的HAP或HSP的targetPriority一致。
 7. 确保当前参与打包的HAP的multiAppMode一致。
+8. 确保当前参与打包的HAP的keepDataOnUninstall一致。
 
 ### 10016003 分发策略相交校验失败
 **错误信息**
@@ -3185,11 +3293,13 @@ installer模式下，同一应用目录内的模块未通过应用校验。
 
 1. 同一应用的bundleName、bundleType、versionCode、buildVersion或versionName不一致。
 2. debug、API版本、模块名称、依赖关系或其他模块配置不符合应用打包要求。
+3. 同一应用目录内的HAP的keepDataOnUninstall不一致。
 
 **处理步骤**
 
 1. 核对同一应用目录下各模块的应用标识和版本配置，确保一致，修改后重新构建模块。
 2. 优先查看此前的模块校验错误，根据日志修正配置及跨模块关系。
+3. 核对同一应用目录下各模块的应用卸载时是否保留数据标识，确保一致，修改后重新构建模块。
 
 ### 10022006 installer应用描述文件无效
 

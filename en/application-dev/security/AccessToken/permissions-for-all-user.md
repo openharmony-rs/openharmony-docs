@@ -13,7 +13,7 @@ This type of permissions must be declared in the application installation packag
 
 <!--Del-->
 > **NOTE**
-> "Certificate-based authorization" is not required for normal-level permissions.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -58,11 +58,13 @@ Allows an application to read the open anonymous device identifier (OAID).
 
 Allows an application to read the current workout status of the user, such as detecting whether the user is working out and recording the number of steps the user has taken.
 
-For example, to determine whether the user is in motion or to record the number of steps that the user has walked.
+For example, the application can determine whether the user is in motion or to record the number of steps that the user has walked.
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -112,7 +114,7 @@ The system provides the continuous task mechanism. For applications that need to
 
 Allows an application to obtain the device location.
 
-**Prerequisites**: This permission must be requested with [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) together.
+**Prerequisites**: This permission must be requested with [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
 
 **Permission level**: normal
 
@@ -162,17 +164,19 @@ Allows an application to add, remove, and modify Calendar events.
 
 ## ohos.permission.READ_HEALTH_DATA
 
-Allows an application to read the health data of the user.
+Allows an application to obtain users' health data, such as heart rate.
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
+
 **Valid since**: 7
 
 ## ohos.permission.ACCESS_NEARLINK
 
-Allows an application to use NearLink, such as device pairing and connecting to nearby devices.
+Allows an application to access and use NearLink, such as device pairing and connecting to nearby devices.
 
 **Permission level**: normal
 
@@ -182,7 +186,7 @@ Allows an application to use NearLink, such as device pairing and connecting to 
 
 ## ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY
 
-Allows an application to access the **Download** directory and its subdirectories in the user directory.
+Allows an application to access the **Download** directory and its subdirectories in the public directory.
 
 <!--RP2--><!--RP2End-->
 
@@ -198,7 +202,7 @@ Allows an application to access the **Download** directory and its subdirectorie
 
 ## ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
 
-Allows an application to access the **Documents** directory and its subdirectories in the user directory.
+Allows an application to access the **Documents** directory and its subdirectories in the public directory.
 
 <!--RP2--><!--RP2End-->
 
@@ -222,11 +226,11 @@ With this permission, the application can perform operations such as taking scre
 
 **Authorization mode**: user_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets | phones
+**Supported devices**: PC/2in1 | Tablet | Phone | TV | Car | Wearable
 
 **Valid since**: 14
 
-**Changelog**: This permission is available only on tablets and PCs/2-in-1 devices from API versions 14 to 20. Since API version 21, this permission is also available on phones.
+**Changelog**: From API 14 to API 20, this permission can be applied for only on tablets and PC/2in1 devices. Since API 21, applying for it on phones is also supported. Since API 26.0.1, applying for it on TV, Car, and Wearable devices is also supported.
 
 ## ohos.permission.READ_MEDIA
 
@@ -259,3 +263,35 @@ Allows an application to read media files from and write media files into the us
 **Substitute**:
 
 See the [alternative solution of the **Files** permission group](app-permission-group-list.md#filesdeprecated).
+
+## ohos.permission.WINDOW_CAPTURE
+
+Allows an application to obtain the content of a specified window and capture screenshots of it.
+
+With this permission, the application can query the ID of a specified window and the package name of the application that owns it, and take screenshots of that window.
+
+This permission applies to window content awareness scenarios for agent applications, such as passing the window content to a large language model (LLM) for analysis.
+
+**Permission level**: normal
+
+**Authorization mode**: user_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
+## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
+
+Allows an application to record content protected by screen privacy guard.
+
+With this permission, the application can record system UI elements (such as status notifications and input method editors) that are shielded by default under screen privacy protection during screen recording.
+
+**Prerequisites**: Before requesting this permission, the application must request the [ohos.permission.CUSTOM_SCREEN_RECORDING](restricted-permissions.md#ohospermissioncustom_screen_recording) permission (privacy warnings will no longer be displayed after user authorization is obtained.)
+
+**Permission level**: normal
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0

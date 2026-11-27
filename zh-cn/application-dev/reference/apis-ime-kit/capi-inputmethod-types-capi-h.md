@@ -246,7 +246,9 @@ enum InputMethod_ErrorCode
 | -- | -- |
 | IME_ERR_OK = 0 | 成功。表示操作正常完成，无需额外处理。所有输入法C API接口在正常执行后均返回此值。开发者无需对此错误码执行任何错误处理逻辑。 |
 | IME_ERR_UNDEFINED = 1 | 未定义错误。可能是系统内部异常导致，建议检查系统日志并联系技术支持。该错误码表示输入法框架发生了无法归类到其他具体错误码的内部异常。 |
+| OH_INPUTMETHOD_ERR_PERMISSION_DENIED = 201 | 权限校验失败。<br>**起始版本：** 26.1.0 |
 | IME_ERR_PARAMCHECK = 401 | 参数检查失败。可能是参数类型、范围或格式不正确，请检查输入参数是否符合接口要求。该错误码在传入参数不符合接口规格（如参数类型错误、字符串长度超出限制等）时返回。 |
+| OH_INPUTMETHOD_ERR_DEVICE_NOT_SUPPORTED = 801 | 当前设备不支持此接口。<br>**起始版本：** 26.1.0 |
 | IME_ERR_PACKAGEMANAGER = 12800001 | 包管理异常。可能是输入法应用未正确安装或包信息异常，请检查输入法应用状态并重新安装。该错误码在系统包管理服务无法正确获取输入法应用信息时返回。 |
 | IME_ERR_IMENGINE = 12800002 | 输入法应用异常。可能是输入法应用崩溃或未运行，建议重启输入法应用或切换到其他输入法。该错误码在输入法引擎无法正常工作时返回。 |
 | IME_ERR_IMCLIENT = 12800003 | 输入框客户端异常。可能是输入框与输入法服务连接异常，请检查应用是否正确绑定输入法服务。该错误码在编辑框客户端与输入法服务之间的通信异常时返回。 |
@@ -256,8 +258,9 @@ enum InputMethod_ErrorCode
 | IME_ERR_IMMS = 12800008 | 输入法管理服务异常。可能是输入法管理服务未启动或异常终止，建议检查系统服务状态或重启输入法管理服务。该错误码在输入法管理服务（IMMS）无法正常工作时返回。 |
 | IME_ERR_DETACHED = 12800009 | 输入框未绑定。可能是输入框与输入法服务未建立连接，请调用绑定接口重新建立连接。该错误码在编辑框未通过OH_InputMethodController_Attach绑定输入法服务时调用需要绑定关系的接口时返回。 |
 | OH_INPUTMETHOD_ERR_NOT_DEFAULT_IME = 12800010 | 当前输入法应用不是系统配置的默认输入法。当调用[OH_InputMethod_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethod_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，若当前输入法不是系统配置的默认输入法，将返回此错误码。 |
+| OH_INPUTMETHOD_ERR_EDITABLE = 12800016 | 输入框处于非编辑态。输入框可能仍保持绑定，不能将此错误等同于已解绑。 |
 | OH_INPUTMETHOD_ERR_INPUT_TYPE_NOT_SUPPORTED = 12800029 | 输入类型不支持。当请求的输入能力类型在当前输入法中未配置对应子类型时返回此错误码。典型场景：调用[OH_InputMethod_InputMethodProxy_RequestSystemInputCapability](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethod_inputmethodproxy_requestsysteminputcapability)请求翻译输入能力时，当前输入法未配置翻译子类型。 |
-| IME_ERR_NULL_POINTER = 12802000 | 空指针异常。可能是传入的参数为空指针，请检查输入参数是否正确初始化。该错误码在C API接口收到NULL指针参数时返回，属于C语言特有的参数错误类型。开发者应在调用接口前确保所有指针参数均为非NULL。 |
+| IME_ERR_NULL_POINTER = 12802000 | 空指针异常。可能是传入的参数为空指针，请检查输入参数是否正确初始化。部分C API接口收到NULL指针参数时返回此错误码。开发者应在调用接口前确保所有指针参数均为非NULL。 |
 | IME_ERR_QUERY_FAILED = 12802001 | 查询失败。可能是查询条件无效或目标数据不存在，请检查查询参数和数据状态。该错误码在Get类接口的查询条件与实际数据不匹配时返回，典型场景：OH_PrivateCommand_GetBoolValue在value实际类型为int32_t时调用，将返回此错误码表示类型不匹配——命令中没有布尔值。 |
 
 ### InputMethod_RequestKeyboardReason

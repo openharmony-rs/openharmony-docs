@@ -327,6 +327,10 @@ type TouchGuideType = 'touchBegin' | 'touchEnd' | 'touchGuideGesture'
 
 AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能扩展业务的能力。
 
+> **说明：**
+>
+> AccessibilityExtensionAbility接口自API version 12起已废弃，当前版本不支持调用，无替代接口。
+
 ### 属性
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core

@@ -51,7 +51,7 @@
 | onCreate(want: Want, callback: AsyncCallback&lt;void&gt;): void | DataShare客户端连接DataShareExtensionAbility服务端时，服务端需要在此回调中实现初始化业务逻辑，该方法可以选择性重写。         |
 | insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void | 客户端请求插入数据时回调此接口，服务端需要在此回调中实现插入数据功能，该方法可以选择性重写。         |
 | update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void | 客户端请求更新数据时回调此接口，服务端需要在此回调中实现更新数据功能，该方法可以选择性重写。         |
-| batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | 客户端请求批量更新数据时回调此接口，服务端需要在此回调中实现批量更新数据功能，该方法可以选择性重写。    |
+| batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;, callback: AsyncCallback&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;): void | 客户端请求批量更新数据时回调此接口，服务端需要在此回调中实现批量更新数据功能，该方法可以选择性重写。    |
 | delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;number&gt;): void | 客户端请求删除数据时回调此接口，服务端需要在此回调中实现删除数据功能，该方法可以选择性重写。    |
 | query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;DataShareResultSet&gt;): void | 客户端请求查询数据时回调此接口，服务端需要在此回调中实现查询数据功能，该方法可以选择性重写。           |
 | batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void | 客户端请求批量插入数据时回调此接口，服务端需要在此回调中实现批量插入数据的功能，该方法可以选择性重写。    |

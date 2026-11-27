@@ -348,7 +348,7 @@ inDevices(devices: Array&lt;string&gt;): RdbPredicates
 
 > **说明：**
 >
-> 其中devices通过调用<!--RP2-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP2End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 其中devices通过调用deviceManager.getTrustedDeviceListSync方法得到。deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -380,9 +380,9 @@ deviceManager.createDeviceManager("com.example.appdatamgrverify", (err: Business
   }
   dmInstance = manager;
   devices = dmInstance.getTrustedDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    deviceIds[i] = devices[i].deviceId;
-  }
+  devices.forEach((item) => {
+    deviceIds.push(item.deviceId);
+  });
 })
 
 let predicates = new data_rdb.RdbPredicates("EMPLOYEE");
@@ -1949,7 +1949,7 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 
 > **说明：**
 >
-> 其中device通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 其中device通过调用deviceManager.getTrustedDeviceListSync方法得到。deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1997,7 +1997,7 @@ rdbStore.obtainDistributedTableName(deviceId, "EMPLOYEE", (err: BusinessError, t
 
 > **说明：**
 >
-> 其中device通过调用<!--RP1-->[deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync)方法得到。<!--RP1End-->deviceManager模块的接口均为系统接口，仅系统应用可用。
+> 其中device通过调用deviceManager.getTrustedDeviceListSync方法得到。deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2073,9 +2073,9 @@ deviceManager.createDeviceManager("com.example.appdatamgrverify", (err: Business
   }
   dmInstance = manager;
   let devices: Array<string> = dmInstance.getTrustedDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    let deviceIds: Array<string> = devices[i].deviceId;
-  }
+  devices.forEach((item) => {
+    let deviceIds: Array<string> = item.deviceId;
+  });
 })
 
 let predicates = new data_rdb.RdbPredicates('EMPLOYEE')
@@ -2086,9 +2086,9 @@ rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates, (err: BusinessError,
     return
   }
   console.info('Sync done.')
-  for (let i = 0; i < result.length; i++) {
-    console.info('device=' + result[i][0] + ' status=' + result[i][1])
-  }
+  result.forEach((item) => {
+    console.info('device=' + item[0] + ' status=' + item[1])
+  })
 })
 ```
 
@@ -2129,9 +2129,9 @@ deviceManager.createDeviceManager("com.example.appdatamgrverify", (err: Business
   }
   dmInstance = manager;
   let devices: Array<string> = dmInstance.getTrustedDeviceListSync();
-  for (let i = 0; i < devices.length; i++) {
-    let deviceIds: Array<string> = devices[i].deviceId;
-  }
+  devices.forEach((item) => {
+    let deviceIds: Array<string> = item.deviceId;
+  });
 })
 
 let predicates = new data_rdb.RdbPredicates('EMPLOYEE')
@@ -2139,9 +2139,9 @@ predicates.inDevices(deviceIds)
 let promise: void = rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates)
 promise.then((result: void) =>{
   console.info('Sync done.')
-  for (let i = 0; i < result.length; i++) {
-    console.info('device=' + result[i][0] + ' status=' + result[i][1])
-  }
+  result.forEach((item) => {
+    console.info('device=' + item[0] + ' status=' + item[1])
+  })
 }).catch((err: BusinessError) => {
   console.error('Sync failed')
 })
@@ -2170,9 +2170,9 @@ let devices: Array<string>;
 
 try {
   rdbStore.on('dataChange', data_rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (storeObserver: Array<string>) => {
-    for (let i = 0; i < devices.length; i++) {
-      console.info('device=' + devices[i] + ' data changed')
-    }
+    devices.forEach((device) => {
+      console.info('device=' + device + ' data changed')
+    })
   })
 } catch (err) {
   console.error('Register observer failed')
@@ -2202,9 +2202,9 @@ let devices: Array<string>;
 
 try {
   rdbStore.off('dataChange', data_rdb.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (storeObserver: Array<string>) => {
-    for (let i = 0; i < devices.length; i++) {
-      console.info('device=' + devices[i] + ' data changed')
-    }
+    devices.forEach((device) => {
+      console.info('device=' + device + ' data changed')
+    })
   })
 } catch (err) {
   console.error('Unregister observer failed')

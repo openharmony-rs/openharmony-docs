@@ -46,8 +46,9 @@ typedef enum {
     napi_arraybuffer_expected,
     napi_detachable_arraybuffer_expected,
     napi_would_deadlock, /* unused */
-    napi_no_external_buffers_allowed,
-    napi_cannot_run_js
+    napi_create_ark_runtime_too_many_envs = 22,
+    napi_create_ark_runtime_only_one_env_per_thread = 23,
+    napi_destroy_ark_runtime_env_not_exist = 24
 } napi_status;
 ```
 
@@ -223,10 +224,6 @@ napi_async_complete_callback用于异步操作完成后的回调。当需要进�
 **napi_threadsafe_function_call_js**
 
 函数指针，在事件循环线程中执行，可与ArkTS/JS交互，从而实现更加复杂的功能，用于napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)接口。
-
-**napi_cleanup_hook**
-
-函数指针，用于napi_add_env_cleanup_hook接口，当环境销毁时会被执行。
 
 **napi_async_cleanup_hook**
 
@@ -592,6 +589,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_global_handle_count | 遍历并获取global handle数量。 |
 | napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 |
 | napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 |
+| napi_shared_module_register | 注册Sendable共享NAPI模块，init在进程内只执行一次，导出对象跨Worker共享。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -935,6 +933,12 @@ napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope)
 
 ```c
 napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope);
+```
+
+**napi_shared_module_register**
+
+```c
+void napi_shared_module_register(napi_module* mod);
 ```
 
 ### 其他实用工具

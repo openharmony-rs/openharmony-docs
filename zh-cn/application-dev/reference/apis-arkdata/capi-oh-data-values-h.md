@@ -80,6 +80,10 @@ OH_Data_Values *OH_Values_Create(void)
 | ---------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) * | 执行成功时返回指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针，否则返回nullptr。<br>使用完成后，必须通过[OH_Values_Destroy](#oh_values_destroy)接口释放内存。 |
 
+**参考：**
+
+[OH_Values_Destroy](capi-oh-data-values-h.md#oh_values_destroy)
+
 ### OH_Values_Destroy()
 
 ```c
@@ -668,6 +672,10 @@ int OH_Values_GetAssets(OH_Data_Values *values, int index, Data_Asset **val, siz
 | ---- | ------------------------------------------------------------ |
 | int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
 
+**参考：**
+
+[OH_Values_GetAssetsCount](capi-oh-data-values-h.md#oh_values_getassetscount)
+
 ### OH_Values_GetFloatVectorCount()
 
 ```c
@@ -723,6 +731,10 @@ int OH_Values_GetFloatVector(OH_Data_Values *values, int index, float *val, size
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+
+**参考：**
+
+[OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md#oh_values_getfloatvectorcount)
 
 ### OH_Values_GetUnlimitedIntBand()
 
@@ -780,4 +792,8 @@ int OH_Values_GetUnlimitedInt(OH_Data_Values *values, int index, int *sign, uint
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | int  | 返回错误码。<br>返回RDB_OK表示成功。<br>返回RDB_E_INVALID_ARGS表示无效参数。<br>返回RDB_E_DATA_TYPE_NULL表示存储数据为空。<br>返回RDB_E_TYPE_MISMATCH表示数据类型不匹配。 |
+
+**参考：**
+
+[OH_Values_GetUnlimitedIntBand](capi-oh-data-values-h.md#oh_values_getunlimitedintband)
 

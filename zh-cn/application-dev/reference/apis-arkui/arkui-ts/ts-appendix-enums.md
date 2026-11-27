@@ -684,6 +684,18 @@
 | DPAD_DOWN<sup>12+</sup> | 15 | 表示键盘上DOWN方向键。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | DPAD_LEFT<sup>12+</sup> | 16 | 表示键盘上LEFT方向键。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | DPAD_RIGHT<sup>12+</sup> | 17 | 表示键盘上RIGHT方向键。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| CAPS_LOCK | 18 | 表示键盘上CapsLock键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| SCROLL_LOCK | 19 | 表示键盘上ScrollLock键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| PAUSE_BREAK | 20 | 表示键盘上Pause/Break键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| NUM_LOCK | 21 | 表示键盘上NumLock键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| INSERT | 22 | 表示键盘上Insert键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| DELETE | 23 | 表示键盘上Delete键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| HOME | 24 | 表示键盘上Home键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| END | 25 | 表示键盘上End键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| PAGE_UP | 26 | 表示键盘上PageUp键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| PAGE_DOWN | 27 | 表示键盘上PageDown键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| ENTER | 28 | 表示键盘上Enter键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
+| BACKSPACE | 29 | 表示键盘上Backspace键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0|
 
 ## FillMode
 
@@ -2180,6 +2192,7 @@ type Nullable\<T> = T | undefined
 | WATER_FLOW_EXPAND_SAFE_AREA | 5 | 将[WaterFlow](ts-container-waterflow.md)组件的裁剪内容扩展至安全区域，若在WaterFlow组件上显式设置了[clipContent](ts-container-scrollable-common.md#clipcontent14)，则显式设置优先于该配置。 |
 | AVOID_WINDOW_CONTROLS | 6 | 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，通过[setWindowDecorVisible](../arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏窗口标题栏时，设置此策略避让窗口三键，即窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。 |
 | NAVIGATION_EXPAND_SAFE_AREA | 8 | 将Navigation/NavDestination组件的标题栏和工具栏扩展为内容区的安全区域，若在Navigation/NavDestination组件上显式设置了标题栏或工具栏样式，则显式设置优先于该配置。 |
+| TABS_EXPAND_SAFE_AREA | 9 | 将Tabs组件的TabBar扩展为内容区的安全区域。通过[UIContext.applyDefaultImmersiveStrategy](../arkts-apis-uicontext-uicontext.md#applydefaultimmersivestrategy)应用此策略后，未显式设置[barOverlap](ts-container-tabs.md#baroverlap)的Tabs默认使用[BarOverlapMode.SAFE_AREA_PADDING](ts-container-tabs.md#baroverlapmode)模式。 |
 
 ## AgentControlMode
 

@@ -6263,7 +6263,7 @@ try {
   }
 } catch(error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to get list of sensors. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 

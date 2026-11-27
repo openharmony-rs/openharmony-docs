@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "提供CPU密集型任务的开发指导：以TaskPool执行图像直方图处理、Worker执行长时间数据分析为例，演示如何将高计算量任务放入子线程运行，避免阻塞UI主线程造成卡顿。"
 keywords: [CPU密集型任务, 图像直方图处理, 长时间数据分析, TaskPool, Worker, 子线程执行, 避免主线程阻塞]
 doctype: guide
@@ -137,7 +137,7 @@ struct Index {
    ```
 
 
-3. 在MyWorker1.ets文件中绑定Worker对象，当前线程即为Worker线程。在Worker线程中通过注册[onmessage()](../reference/apis-arkts/js-apis-worker.md#属性-2)回调接收宿主线程发送的消息，并通过调用[postMessage()](../reference/apis-arkts/js-apis-worker.md#postmessage9-2)方法向宿主线程发送消息。
+3. 在MyWorker1.ets文件中绑定Worker对象，当前线程即为Worker线程。在Worker线程中通过注册[onmessage()](../reference/apis-arkts/js-apis-worker.md#属性-1)回调接收宿主线程发送的消息，并通过调用[postMessage()](../reference/apis-arkts/js-apis-worker.md#postmessage9-2)方法向宿主线程发送消息。
 
     例如，在Worker线程中定义预测模型及其训练过程，并与宿主线程进行信息交互。
 

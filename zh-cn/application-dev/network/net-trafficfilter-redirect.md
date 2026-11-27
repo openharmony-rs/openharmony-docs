@@ -16,6 +16,8 @@
 
 > **说明：**
 >
+> 从API版本26.0.1开始支持网络流量重定向能力。
+>
 > 流量重定向能力需要系统权限支持，应用需在`module.json5`中声明`ohos.permission.kernel.TRAFFIC_FILTER`权限，并在原生侧调用C API。
 
 ## 约束与限制

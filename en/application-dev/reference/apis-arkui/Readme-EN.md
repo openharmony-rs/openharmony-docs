@@ -340,7 +340,7 @@
     - [Video](arkui-ts/ts-media-components-video.md)
     - [Image Analysis Types](arkui-ts/ts-image-common.md)
     - [SVG Tags](arkui-ts/ts-basic-svg.md)
-    - [Enhanced SVG Parsing Capabilities](arkui-ts/ts-image-svg2-capabilities.md)
+    - [Enhanced SVG Tag Parsing](arkui-ts/ts-image-svg2-capabilities.md)
     <!--Del-->
     - [Image (System API)](arkui-ts/ts-basic-components-image-sys.md)
     - [MediaCachedImage (System API)](arkui-ts/ts-basic-components-mediacachedimage-sys.md)

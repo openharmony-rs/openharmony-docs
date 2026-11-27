@@ -6,13 +6,13 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
-The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
+The **@ohos.sensor** module is a sensor service module provided by HarmonyOS in Sensor Service Kit. This page describes the system APIs of this module, which support subscribing to and unsubscribing from color sensor and SAR sensor data.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> This page contains only the system APIs of this module. For other public APIs, see [@ohos.sensor (Sensor)](js-apis-sensor.md).
 
 
 ## Modules to Import

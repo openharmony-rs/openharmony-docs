@@ -135,25 +135,6 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 | -- | -- |
 | void* | 返回Native接口抽象指针，在转换为具体类型后进行使用。 |
 
-### OH_ArkUI_GetModuleInterface()
-
-```c
-#define OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                     \
-do {                                                                                                 \
-        void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
-        if (anyNativeAPI) {                                                                          \
-            structPtr = (structType*)(anyNativeAPI);                                                 \
-        }                                                                                            \
-    } while (0)                                                                      
-```
-
-**描述：**
-
-
-基于结构体类型获取对应结构体指针的宏函数。此宏函数接收[ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、const char\*类型参数structType、structType\*类型参数structPtr，调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)获取Native接口抽象指针，转换为structType\*类型后赋值给structPtr。
-
-**起始版本：** 12
-
 ### OH_ArkUI_NativeModule_GetErrorMessage()
 
 ```c
@@ -196,3 +177,24 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_SetRuntimeCheckMode(OH_ArkUI_NativeModule_
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回值：<br>设置更新成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>checkType或mode无效时返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。<br>返回无效参数错误时，保留之前的设置。 |
+
+## 宏定义说明
+
+### OH_ArkUI_GetModuleInterface()
+
+```c
+#define OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                     \
+do {                                                                                                 \
+        void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
+        if (anyNativeAPI) {                                                                          \
+            structPtr = (structType*)(anyNativeAPI);                                                 \
+        }                                                                                            \
+    } while (0)                                                                      
+```
+
+**描述：**
+
+
+基于结构体类型获取对应结构体指针的宏函数。此宏函数接收[ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、const char\*类型参数structType、structType\*类型参数structPtr，调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)获取Native接口抽象指针，转换为structType\*类型后赋值给structPtr。
+
+**起始版本：** 12

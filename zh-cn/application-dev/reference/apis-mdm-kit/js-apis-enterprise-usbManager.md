@@ -41,7 +41,6 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 2. 已经通过[setUsbStorageDeviceAccessPolicy](#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为禁用。
 3. 已经通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。
 4. 已经通过[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口添加了禁止使用的USB设备类型。
-5. 已经通过[setExternalStorageInterceptEnable](#usbmanagersetexternalstorageinterceptenable)接口启用了外置存储设备挂载拦截。
 
 > **说明：**
 >
@@ -273,9 +272,12 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 设置USB存储设备（baseClass = 0x08）访问策略。
 
 > **说明：**
+>
 > 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。
 >
 > 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。严格优先级：禁用 > 只读 > 可读可写。
+>
+> 通过本接口设置USB存储设备访问策略为只读或可读可写后，若后续通过[setExternalStorageInterceptEnable](#usbmanagersetexternalstorageinterceptenable)接口启用外置存储设备挂载拦截，并通过[setExternalStorageDeviceMountPolicy](#usbmanagersetexternalstoragedevicemountpolicy)接口设置挂载策略，最终生效的为挂载策略。
 
 以下情况下，通过本接口设置USB存储设备访问策略为可读可写/只读，会报策略冲突：
 
@@ -469,7 +471,6 @@ addDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 2. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
 3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。
 4. 已经通过[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口添加了禁止使用的USB设备类型。
-5. 已经通过[setExternalStorageInterceptEnable](#usbmanagersetexternalstorageinterceptenable)接口启用了外置存储设备挂载拦截。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -705,7 +706,6 @@ addDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array\<PermissiveUsbD
 2. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了设备USB能力。
 3. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
 4. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。
-5. 已经通过[setExternalStorageInterceptEnable](#usbmanagersetexternalstorageinterceptenable)接口启用了外置存储设备挂载拦截。
 
 **起始版本：** 26.0.0
 
@@ -1127,7 +1127,7 @@ usbManager.getAllowedOpticalDiscDriveBurnUsbDevices(common.QueryPolicy.SELF).the
 
 setExternalStorageInterceptEnable(enable: boolean): void
 
-设置外置存储设备挂载拦截的启用状态。<!--RP1--><!--RP1End-->设置拦截使能成功后，不会影响已经挂载的外置存储设备；新插入的外置存储设备将不再自动挂载，需调用[usbManager.setExternalStorageDeviceMountPolicy](#usbmanagersetexternalstoragedevicemountpolicy)接口对其进行挂载。取消拦截使能后，未挂载的外置存储设备需重新插拔才能挂载成功。拦截的外置存储设备仅支持[common.DiskType](./js-apis-enterprise-common.md#disktype)对应类型。
+设置外置存储设备挂载拦截的启用状态。<!--RP1--><!--RP1End-->设置拦截使能成功后，不会影响已经挂载的外置存储设备；新插入的外置存储设备将不再自动挂载，系统会通过[onUnmountExternalStorageDevice](./js-apis-EnterpriseAdminExtensionAbility.md#onunmountexternalstoragedevice)回调函数（该回调函数无需注册即可触发）上报插入的外置存储设备信息，再通过[usbManager.setExternalStorageDeviceMountPolicy](#usbmanagersetexternalstoragedevicemountpolicy)接口对其进行挂载。取消拦截使能后，未挂载的外置存储设备需重新插拔才能挂载成功。拦截的外置存储设备仅支持[common.DiskType](./js-apis-enterprise-common.md#disktype)对应类型。
 
 > **说明：**
 >
@@ -1135,12 +1135,8 @@ setExternalStorageInterceptEnable(enable: boolean): void
 
 以下情况下，启用外置存储设备挂载拦截（enable为true）会报策略冲突：
 
-1. 已经通过[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口添加了禁止使用的USB设备类型。
-2. 已经通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。
-3. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)接口禁用了设备USB能力。
-4. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
-5. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了某用户USB存储设备写入能力。
-6. 已经通过[setUsbStorageDeviceAccessPolicy](#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为禁用。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)接口禁用了设备USB能力。
+2. 已经通过[setUsbStorageDeviceAccessPolicy](#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为禁用。
 
 **起始版本：** 26.0.1
 

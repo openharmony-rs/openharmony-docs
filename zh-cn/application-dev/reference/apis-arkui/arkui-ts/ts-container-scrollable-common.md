@@ -582,7 +582,7 @@ ArkTS-Dyn: enableScrollWithKeyboard(enabled: boolean | undefined): T
 
 ArkTS-Sta: enableScrollWithKeyboard(enabled: boolean | undefined): this
 
-设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认支持键盘方向键滚动。
+设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认不支持键盘方向键滚动。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -598,7 +598,7 @@ ArkTS-Sta: enableScrollWithKeyboard(enabled: boolean | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明    |
 | ------ | ------ | ---- | ------ |
-| enabled  | boolean&nbsp; \| undefined | 是   | 是否支持键盘方向键滚动。<br/>true：支持键盘方向键滚动。<br/>false：不支持键盘方向键滚动。<br/>undefined：支持键盘方向键滚动。 |
+| enabled  | boolean&nbsp; \| undefined | 是   | 是否支持键盘方向键滚动。<br/>true：支持键盘方向键滚动。<br/>false：不支持键盘方向键滚动。<br/>undefined：不支持键盘方向键滚动。 |
 
 **返回值：**
 
@@ -1599,7 +1599,7 @@ ArkTS-Sta: type OnVisibleIndexesChangeCallback = (start: int, end: int) => void
 
 ## ScrollSnapOffsetProvider
 
-用于自定义限位滚动的距离和吸附位置。此接口适用于[Grid](ts-container-grid.md)和[WaterFlow](ts-container-waterflow.md)组件的scrollSnapStrategy属性。开发者实现接口后，将对象传入scrollSnapStrategy即可使用。完整示例参考[示例24（自定义滚动吸附位置）](ts-container-grid.md#示例24自定义滚动吸附位置)。
+用于自定义限位滚动的距离和吸附位置。此接口适用于[Grid](ts-container-grid.md)、[WaterFlow](ts-container-waterflow.md)和[List](ts-container-list.md)组件的scrollSnapStrategy属性。开发者实现接口后，将对象传入scrollSnapStrategy即可使用。完整示例参考[示例24（自定义滚动吸附位置）](ts-container-grid.md#示例24自定义滚动吸附位置)。
 
 自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别在两个阶段的起始时机调用：
 
@@ -1671,7 +1671,7 @@ ArkTS-Sta: calculateSnapOffset(velocity: double): double
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
+| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 惯性滚动结束时的剩余速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
 
 **返回值：**
 

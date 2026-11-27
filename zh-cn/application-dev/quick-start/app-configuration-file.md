@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用级配置文件app.json5的结构与全部字段，涵盖bundleName、版本号与版本声明、应用图标、多开模式、启动模式等全局配置信息及配置示例。"
+keywords: [app.json5, bundleName, 版本声明, multiAppMode, startMode, AppScope, 应用图标, alternateIcons]
+doctype: guide
+status: active
+---
 # app.json5配置文件
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
@@ -64,11 +71,16 @@
     "ubsanEnabled": false,
     "cloudFileSyncEnabled": false,
     "cloudStructuredDataSyncEnabled": false,
+    "keepDataOnUninstall": false,
     "configuration": "$profile:configuration",
     "assetAccessGroups": [
       "com.ohos.photos",
       "com.ohos.screenshot",
       "com.ohos.note"
+    ],
+    "nativeChildProcessPreloadSoList": [
+      "libfoo.so",
+      "libbar.so"
     ],
     "startMode": "mainTask",
     "buildVersion": "1.0.0",
@@ -123,9 +135,11 @@ app.json5配置文件包含以下标签。
 | ubsanEnabled | 标识应用程序是否[使用UBSan检测未定义行为](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ubsan)。<br/>UBsan(Undefined Behavior Sanitizer)是一个用于运行时检测程序中未定义行为的工具，旨在帮助开发人员发现代码中潜在的错误和漏洞。<br/>-&nbsp;true：当前工程开启UBSan检测。<br/>-&nbsp;false：当前工程不开启UBsan检测。<br/>**说明：** <br/>从API version 14开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | cloudFileSyncEnabled | 标识当前应用是否启用端云文件同步能力。 <br/>-&nbsp;true：当前应用启用端云文件同步能力。<br/>-&nbsp;false：当前应用不启用端云文件同步能力。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | cloudStructuredDataSyncEnabled | 标识当前应用是否启用端云结构化数据同步能力。 <br/>-&nbsp;true：当前应用启用端云结构化数据同步能力。<br/>-&nbsp;false：当前应用不启用端云结构化数据同步能力。<br/>**说明：** <br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。  |
+| keepDataOnUninstall | 标识应用卸载时是否保留数据。<br/>-&nbsp;true：应用卸载时保留数据。<br/>-&nbsp;false：应用卸载时不保留数据。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | [configuration](#configuration标签) | 标识当前应用字体大小跟随系统配置的能力。<br/>该标签是一个profile文件资源，用于指定描述应用字体大小跟随系统变更的配置文件。| 字符串 | 该标签可缺省，缺省时configuration使用不跟随系统默认设定。 |
 | assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>该标签仅在应用主模块（即module.json5中的type字段配置为entry）下生效。<br/>从API version 18开始，支持该标签。| 字符串数组 | 该标签可缺省，缺省值为空。 |
-| appPreloadPhase | 配置[应用预加载](../application-models/preload-application.md)到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。<br/>**说明：** <br/>从API version 20开始，支持该标签。<br>仅在PC/2in1设备上生效。<br>仅在应用的entry模块配置有效。<br>该标签仅表示应用自身是否为预加载到所配置阶段做好了准备，最终能否预加载还需要由系统根据用户习惯等信息来决策。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
+| nativeChildProcessPreloadSoList | 配置应用启动子进程时需要预加载的SO库列表。该字段为字符串数组，每个元素为SO库文件名或文件路径（例如libfoo.so或xxx/libfoo.so），系统会在进程启动时预加载。<br/>**说明：**<br/>从API版本26.1.0开始，支持该标签。<br/>该标签仅在应用的entry模块配置有效。<br/>数组元素数量范围为1~128，单个元素字符串长度不能超过128。<br/>数组元素不可重复。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
+| appPreloadPhase | 配置[应用预加载](../application-models/preload-application.md)到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。从API版本20开始，在Phone、Tablet和PC/2in1设备上生效。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。从API版本20开始，在PC/2in1设备上生效；从API版本26.0.0开始，在Phone和Tablet设备上生效。不同设备类型预加载到windowStage阶段的生命周期差异，请参考[应用预加载](../application-models/preload-application.md)。<br/>**说明：** <br/>从API版本20开始，支持该标签。<br>仅在应用的entry模块配置有效。<br>该标签仅表示应用自身是否为预加载到所配置阶段做好了准备，最终能否预加载还需要由系统根据用户习惯等信息来决策。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该标签。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该标签仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
 | buildVersion | 标识应用的构建版本号，建议采用“A.B.C”三段式。三段式建议的含义如下：<br/>第一段：主版本号/Major，用于标识重大修改的版本，例如实现新的重大特性或重大变化。<br/>第二段：次版本号/Minor，用于表示实现较突出的特性，例如新特性添加或大问题修复。<br/>第三段：特性版本号/Feature，用于标识规划的新版本特性。<br/>**说明：**<br/>从API version 23开始，支持该标签。<br/>字符串格式要求如下：<br/>-&nbsp;字符串最小长度为1字节，最大长度18字节。<br/>-&nbsp;字符串由数字和'.'组成。<br/>-&nbsp;'.'的数量限制0到2个，不能以'.'开头和结尾，也不能相邻。<br/>-&nbsp;数字段可以为0，但不能以0开头，如"02"，"0123"。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | profileable | 标识是否允许[调优工具](../dfx/hiperf.md)对<!--RP3-->[Profile签名文件](../security/app-provision-structure.md)类型为release<!--RP3End-->的应用进行性能分析。<br/>-&nbsp;true：允许调优工具对应用进行性能分析。<br/>-&nbsp;false：不允许调优工具对应用进行性能分析。<br/>**说明：**<br/>从API version 24开始，支持该标签。<br/>仅当bundleType为app或atomicService时，可以配置该标签。 | 布尔值 | 该标签可缺省，缺省值为false。 |

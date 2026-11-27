@@ -1,5 +1,12 @@
 # @Entry：页面入口
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 \@Entry装饰的自定义组件将作为UI页面的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。开发指南参考：[\@Component装饰器：自定义组件](../../../ui/state-management-static/arkts-static-create-component.md#entry)。
 
 > **说明：**

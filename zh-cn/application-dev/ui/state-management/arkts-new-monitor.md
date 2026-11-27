@@ -1820,7 +1820,7 @@ struct Index {
 - 当Index组件创建完成，页面加载完成后，点击按钮“change message in Index”，此时Index组件中的\@Monitor能够监听到变化，日志输出`Index message change from initialized to Index click to change Message`。
 - 点击按钮“show/hide Child”，创建Child组件，在Child组件初始化\@Param装饰的变量以及\@Monitor之后，调用Child组件的aboutToAppear回调，改变message。此时Index组件与Child组件的\@Monitor均能监听到变化，日志输出`Index message change from Index click to change Message to Child aboutToAppear`以及`Child message change from Index click to change Message to Child aboutToAppear`。
 - 点击按钮“change message in Child”，改变message。此时Index组件与Child组件的\@Monitor均能监听到变化，日志输出`Index message change from Child aboutToAppear to Child click to change Message`以及`Child message change from Child aboutToAppear to Child click to change Message`。
-- 点击按钮”show/hide Child“，销毁Child组件，调用Child组件的aboutToDisappear回调，改变message。此时Index组件与Child组件的\@Monitor均能监听到变化，日志输出`Child aboutToDisappear`，`Index message change from Child click to change Message to Child aboutToDisappear`以及`Child message change from Child click to change Message to Child aboutToDisappear`。
+- 点击按钮“show/hide Child”，销毁Child组件，调用Child组件的aboutToDisappear回调，改变message。此时Index组件与Child组件的\@Monitor均能监听到变化，日志输出`Child aboutToDisappear`，`Index message change from Child click to change Message to Child aboutToDisappear`以及`Child message change from Child click to change Message to Child aboutToDisappear`。
 - 点击按钮“change message in Index”，改变message。此时Child组件已销毁，其注册的\@Monitor监听也被解注册，仅有Index组件的\@Monitor能够监听到变化，日志输出`Index message change from Child aboutToDisappear to Index click to change Message`。
 
 这表明Child组件中定义的\@Monitor监听随着Child组件的创建初始化生效，随着Child组件的销毁失效。

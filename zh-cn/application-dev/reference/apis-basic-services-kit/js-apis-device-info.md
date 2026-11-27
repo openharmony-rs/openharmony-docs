@@ -37,7 +37,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：wearable<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | manufacture | string | 是 | 设备厂家名称。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | brand | string | 是 | 设备品牌名称。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
-| marketName | string | 是 | <!--RP17-->外部产品系列。<!--RP17End--><br/>示例：<!--RP2-->Mate XX<!--RP2End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
+| marketName | string | 是 | <!--RP17-->外部产品系列，即外部产品名称。<!--RP17End--><br/>示例：<!--RP2-->Mate XX<!--RP2End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productSeries | string | 是 | 产品系列。<br/>示例：<!--RP3-->TAS<!--RP3End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productModel | string | 是 | 认证型号。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP4-->TAS-AL00<!--RP4End--><br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24 |
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：TAS-AL00<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 24 |
@@ -80,15 +80,6 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/>**模型约束**： 此接口仅可在Stage模型下使用。<br/> **起始版本**：26.0.0<br/> 示例：gold<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | kernelVersion | string | 是 | 获取当前运行环境的内核版本字符串。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.1<br/>**ArkTS-Sta起始版本：** 26.0.1<br> 示例：HongMeng Kernel 1.0.0 |
 | installTime | string | 是 | 获取系统安装UTC时间戳。<!--RP18--><br> 默认值：1790784000000<br>**模型约束**： 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0<!--RP18End--> |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[deviceInfo错误码](errorcode-device-info.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID   | 错误信息    |
-|---------|---------|
-| 14700103 | Permission verification failed. System permission operation permission denied |
-| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例**
 

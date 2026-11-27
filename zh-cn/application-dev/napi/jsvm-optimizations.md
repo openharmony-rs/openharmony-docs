@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍JSVM通用调优实践，从引擎层与Native层分析启动开销，说明冷热启动下eagerCompile与code cache取舍，并给出IsXXX替代TypeOf、直接创建Reference等高效API用法。"
 keywords: [JSVM, 性能调优, 启动速度, 冷启动, 热启动, code cache, eagerCompile, OH_JSVM_CompileScript, OH_JSVM_IsFunction]
 doctype: guide
@@ -9,8 +9,8 @@ status: active
 # JSVM通用调优实践
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 

@@ -1,5 +1,12 @@
 # @Builder装饰器：自定义构建函数
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 \@Builder装饰的函数也称为“自定义构建函数”。开发指南见[\@Builder装饰器：自定义构建函数](../../../ui/state-management/arkts-builder.md)。
 
 > **说明：**
@@ -13,6 +20,12 @@
 @interface Builder
 
 \@Builder装饰器的配置接口，声明\@Builder装饰器的配置项（如占位构建函数标记isPlaceholder）。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 

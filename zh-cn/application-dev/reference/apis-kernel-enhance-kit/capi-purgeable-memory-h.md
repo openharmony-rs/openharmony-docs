@@ -96,7 +96,7 @@ OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_Mo
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PurgeableMemory *](capi-memory-purgmem.md) | 可丢弃内存对象。 |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) * | 可丢弃内存对象。 |
 
 ### OH_PurgeableMemory_Destroy()
 
@@ -162,7 +162,7 @@ void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。当此函数执行结束，操作系统可能会稍后回收可丢弃内存对象的内容的内存。 |
+| [OH_PurgeableMemory](capi-memory-purgmem.md) *purgObj | 可丢弃内存对象。当此函数执行结束时，操作系统可能会稍后回收可丢弃内存对象的内容的内存。 |
 
 ### OH_PurgeableMemory_BeginWrite()
 

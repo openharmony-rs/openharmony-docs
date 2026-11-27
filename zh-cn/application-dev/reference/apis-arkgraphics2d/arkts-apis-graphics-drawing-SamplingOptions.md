@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
+<!--Owner: @dreamyhhh-->
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -44,7 +44,7 @@ constructor()
 ArkTS-Dyn示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context: DrawContext) {
@@ -98,7 +98,7 @@ constructor(filterMode: FilterMode)
 ArkTS-Dyn示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context: DrawContext) {

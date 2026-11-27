@@ -1719,7 +1719,7 @@ setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
 设置Kiosk模式的特征。通过本接口可以控制在Kiosk模式下能否进入通知中心、控制中心。
 
-从API version 24开始，新增支持设置是否允许底部上滑进入最近任务栏，左滑或右滑悬停展示侧边DOCK栏。
+从API version 24开始，新增支持设置是否允许底部上滑打开最近任务，侧边内滑停留打开智慧多窗应用栏。
 
 在非Kiosk模式下，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
 
@@ -1740,7 +1740,7 @@ setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合（从API version 24开始，新增允许底部上滑进入最近任务栏、左滑悬停或右滑悬停展示侧边DOCK栏）。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态。即：禁用通知中心、控制中心、最近任务栏、侧边Dock栏等能力。|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合（从API version 24开始，新增允许底部上滑打开最近任务、侧边内滑停留打开智慧多窗应用栏）。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态。即：禁用通知中心、控制中心、最近任务、智慧多窗应用栏等能力。|
 
 **错误码**：
 
@@ -3212,8 +3212,8 @@ Kiosk模式的特征。
 | ----------------------------| ----| ------------------------------- |
 | ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心（通过单指左上方下滑进入）。 |
 | ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心（通过单指右上方下滑进入）。 |
-| ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | 允许进入最近任务栏（通过单指底部上滑停留进入）。 |
-| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 允许进入侧边DOCK栏（通过单指边缘内滑停留进入）。 |
+| ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | 允许打开最近任务（通过单指底部上滑停留触发）。 |
+| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 允许打开智慧多窗应用栏（通过单指侧边内滑停留触发）。 |
 
 
 ## DockInfo<sup>24+</sup>
@@ -3851,3 +3851,148 @@ systemManager.stopExactTimer(timerId).then(() => {
 | 名称     | 值 | 说明           |
 | -------- | -- | -------------- |
 | NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的应用场景。 |
+
+## applicationManager.getAllMainWindowStates
+
+getAllMainWindowStates(): Array\<MainWindowStates\>
+
+获取当前设备上所有[主窗口](../../windowmanager/window-type-overview.md#主窗口)的状态信息列表。
+
+> **说明：**
+>
+> 1. 本接口返回当前用户下所有主窗口的状态。多用户场景下，各用户的主窗口相互隔离，本接口不返回其他用户的主窗口。
+>
+> 2. 当前用户无主窗口时，返回空数组。
+>
+> 3. 同一应用（进程）可以拥有多个主窗口，此时返回结果中包含多条pid（应用进程ID）相同的记录，每条记录的state（主窗口状态）对应其中一个主窗口的当前状态。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[MainWindowStates](#mainwindowstates)&gt; | 返回主窗口状态信息的数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  let result: Array<applicationManager.MainWindowStates> = applicationManager.getAllMainWindowStates();
+  console.info(`Succeeded in getting all main window states, result: ${JSON.stringify(result)}`);
+  // state字段可用于过滤前台应用
+  let foregroundWindows: Array<applicationManager.MainWindowStates> = result.filter((window) => {
+    return window.state === applicationManager.WindowState.ACTIVE;
+  });
+  console.info(`Foreground windows: ${JSON.stringify(foregroundWindows)}`);
+} catch (err) {
+  console.error(`Failed to get all main window states. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getApplicationIconData
+ 
+getApplicationIconData(bundleName: string): string
+ 
+获取指定应用的图标数据。当企业需要自定义应用管理界面（如自建应用列表、应用管控报表）并展示应用图标时，可使用本接口获取。
+ 
+**起始版本：** 26.1.0
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**参数：**
+ 
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| bundleName | string                                                 | 是   | 应用的包名，用于指定需要获取图标数据的应用。 |
+ 
+**返回值：**
+ 
+| 类型                | 说明                             |
+| ------------------- | -------------------------------- |
+| string | 返回应用的图标数据，为Base64编码的字符串，解码后可用于图片展示。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201015  | The application is not installed. |
+ 
+**示例：**
+ 
+```ts
+import { applicationManager } from '@kit.MDMKit';
+ 
+@Entry
+@Component
+struct Index {
+  @State iconData: string = '';
+ 
+  build() {
+    Column() {
+      Image(this.iconData)
+        .width(100)
+        .height(100)
+ 
+      Button('获取指定应用的图标数据')
+        .onClick(() => {
+          try {
+            // 需根据实际情况进行替换
+            let bundleName: string = 'com.example.exampleapplication';
+            this.iconData = applicationManager.getApplicationIconData(bundleName);
+            console.info(`Succeeded in getting application icon data, iconData length: ${iconData.length}`);
+          } catch (err) {
+            console.error(`Failed to get application icon data. Code is ${err.code}, message is ${err.message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## MainWindowStates
+
+主窗口状态信息。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| pid | number | 否 | 否 | 应用进程ID。 |
+| bundleName | string | 否 | 否 | 应用包名。 |
+| state | [WindowState](#windowstate) | 否 | 否 | 应用窗口状态。在本结构体中只代表主窗口状态（主窗口属于应用窗口的一种）。|

@@ -704,9 +704,160 @@ try {
 }
 ```
 
+## deviceSettings.setValueForAccount
+
+setValueForAccount(item: SettingsItem, accountId: number, value: string): void
+
+设置指定用户的设备设置策略，设置后可通过[getValueForAccount](#devicesettingsgetvalueforaccount)查询指定用户的设备设置策略。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| item | [SettingsItem](#settingsitem24) | 是 | 设备设置策略类型。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+| value | string | 是 | 策略类型值。不同策略项对应的value取值范围和格式请参考[SettingsItem](#settingsitem24)。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200006 | The specified account ID is invalid. |
+| 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
+| 9200020 | Cross-user configuration is not supported. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let accountId: number = 100;
+
+// 设置电池供电场景下指定用户的息屏时间为15秒
+try {
+  deviceSettings.setValueForAccount(deviceSettings.SettingsItem.SCREEN_OFF_DC, accountId, '15000');
+  console.info('Succeeded in setting screen off time for battery power supply scenario.');
+} catch (err) {
+  console.error(`Failed to set screen off time for battery power supply scenario. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置交流供电场景下指定用户的息屏时间为5分钟
+try {
+  deviceSettings.setValueForAccount(deviceSettings.SettingsItem.SCREEN_OFF_AC, accountId, '300000');
+  console.info('Succeeded in setting screen off time for AC power supply scenario.');
+} catch (err) {
+  console.error(`Failed to set screen off time for AC power supply scenario. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置电池供电场景下指定用户的电源策略，超时灭屏后自动进入睡眠，延迟时间为60000毫秒
+try {
+  let powerPolicyValue: string = JSON.stringify({
+    powerScene: 0,
+    powerPolicy: {
+      powerPolicyAction: 1,
+      delayTime: 60000
+    }
+  });
+  deviceSettings.setValueForAccount(deviceSettings.SettingsItem.POWER_POLICY_DC, accountId, powerPolicyValue);
+  console.info('Succeeded in setting power policy for battery power supply scenario.');
+} catch (err) {
+  console.error(`Failed to set power policy for battery power supply scenario. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## deviceSettings.getValueForAccount
+
+getValueForAccount(item: SettingsItem, accountId: number): string
+
+获取指定用户的设备设置策略。可通过[setValueForAccount](#devicesettingssetvalueforaccount)设置指定用户的设备设置策略。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| item | [SettingsItem](#settingsitem24) | 是 | 设备设置策略类型。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------------------------------------------------------------ |
+| string | 策略类型值。如果指定用户从未设置过该策略项，返回系统默认值。不同策略项对应的返回值说明请参考[SettingsItem](#settingsitem24)。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200006 | The specified account ID is invalid. |
+| 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
+| 9200020 | Cross-user configuration is not supported. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let accountId: number = 100;
+
+// 查询电池供电场景下指定用户的息屏时间，返回息屏时间（单位：毫秒）
+try {
+  let result: string = deviceSettings.getValueForAccount(deviceSettings.SettingsItem.SCREEN_OFF_DC, accountId);
+  console.info(`Succeeded in getting screen off time for battery power supply scenario, result: ${result}`);
+} catch (err) {
+  console.error(`Failed to get screen off time for battery power supply scenario. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 查询交流供电场景下指定用户的电源策略，返回JSON字符串{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}
+try {
+  let result: string = deviceSettings.getValueForAccount(deviceSettings.SettingsItem.POWER_POLICY_AC, accountId);
+  console.info(`Succeeded in getting power policy for AC power supply scenario, result: ${result}`);
+} catch (err) {
+  console.error(`Failed to get power policy for AC power supply scenario. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## SettingsItem<sup>24+</sup>
 
 设置的策略类型。
+
+> **说明：**
+>
+> [setValueForAccount<sup>24+</sup>](#devicesettingssetvalueforaccount24)和[getValueForAccount<sup>24+</sup>](#devicesettingsgetvalueforaccount24)接口，仅支持设置SettingsItem.DEVICE_NAME和SettingsItem.FLOATING_NAVIGATION，设置其他枚举值均返回801错误码。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -716,6 +867,10 @@ try {
 | ---- | ---- | -------------- |
 | DEVICE_NAME   | 0    | 设备名称。 |
 | FLOATING_NAVIGATION   | 1   | 三键导航。 |
+| SCREEN_OFF_DC   | 2   | 电池供电场景下的息屏策略，用于设置或查询电池供电场景下指定用户的设备息屏时间。<br>取值需大于等于15000，传入-1表示永不息屏，传入其他值时返回9200012错误码。<br/>设置成功后，指定用户在电池供电场景下将按照下发的息屏时间息屏，策略立即生效。<br>台式机没有电池供电，调用接口设置熄屏和睡眠延迟策略不会报错，实际不会生效。<br>仅PC支持。<br>**起始版本**：26.1.0 |
+| SCREEN_OFF_AC   | 3   | 交流供电场景下的息屏策略，用于设置或查询交流供电场景下指定用户的设备息屏时间。<br>取值需大于等于15000，传入-1表示永不息屏，传入其他值时返回9200012错误码。<br/>设置成功后，指定用户在交流供电场景下将按照下发的息屏时间息屏，策略立即生效。<br>仅PC支持。<br>**起始版本**：26.1.0 |
+| POWER_POLICY_DC   | 4   | 电池供电场景下的电源策略，用于设置或查询电池供电场景下指定用户的设备电源策略。<br/>设备电源策略，为JSON字符串，格式为{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。<br>powerScene为电源策略场景：<br>- 0：超时灭屏场景。<br>powerPolicyAction为休眠动作策略：<br>- 0：不执行动作。<br>- 1：自动进入睡眠。<br>- 2：强制进入睡眠。<br>- 3：进入休眠，该策略暂不生效。<br>- 4：关机。<br>delayTime为延迟时间（单位：毫秒），delayTime不支持设置为30000毫秒，其他取值均在允许范围内。<br>台式机没有电池供电，调用接口设置熄屏和睡眠延迟策略不会报错，实际不会生效。<br>仅PC支持。<br>**起始版本**：26.1.0 |
+| POWER_POLICY_AC   | 5   | 交流供电场景下的电源策略，用于设置或查询交流供电场景下指定用户的设备电源策略。<br/>设备电源策略，为JSON字符串，格式为{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。<br>powerScene为电源策略场景：<br>- 0：超时灭屏场景。<br>powerPolicyAction为休眠动作策略：<br>- 0：不执行动作。<br>- 1：自动进入睡眠。<br>- 2：强制进入睡眠。<br>- 3：进入休眠，该策略暂不生效。<br>- 4：关机。<br>delayTime为延迟时间（单位：毫秒），delayTime不支持设置为30000毫秒，其他取值均在允许范围内。<br>仅PC支持。<br>**起始版本**：26.1.0 |
 
 ## SettingsMenu<sup>24+</sup>
 

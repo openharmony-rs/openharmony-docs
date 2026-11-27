@@ -77,3 +77,26 @@
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
 | start | Date | 否 | 是   | 设置日期区间的开始日期。 |
 | end | Date | 否   | 是   | 设置日期区间的结束日期。 |
+
+## PickerComponentTextStyle
+
+DatePickerComponent与UIPickerComponent共用的文本样式，用于配置选择器选项的文本样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 字体颜色。默认值：$r('sys.color.font_primary')。 |
+| font | [Font](ts-types.md#font) | 否 | 是 | 文本样式。仅支持size与weight。默认值：weight为FontWeight.Normal。size因使用组件而异，详见[DatePickerComponent](ohos-arkui-advanced-DatePickerComponent.md)与[UIPickerComponent](ts-container-ui-picker-component.md)。 |
+| minFontSize | ArkTS-Dyn: number \| [ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: double \| [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本最小字号，与maxFontSize配合使用以启用字号缩放。当minFontSize与maxFontSize同时设置时，font中的size不生效。number类型取值范围：大于0。默认值：不设置，不启用字号缩放。详见Text组件的[minFontSize](ts-basic-components-text.md#minfontsize)。 |
+| maxFontSize | ArkTS-Dyn: number \| [ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: double \| [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 文本最大字号。number类型取值范围：大于0且大于等于minFontSize。默认值：不设置，不启用字号缩放。详见Text组件的[maxFontSize](ts-basic-components-text.md#maxfontsize)。 |
+| overflow | [TextOverflow](ts-appendix-enums.md#textoverflow) | 否 | 是 | 文本溢出处理。设置为MARQUEE时不生效。默认值：TextOverflow.Clip。详见Text组件的[textOverflow](ts-basic-components-text.md#textoverflow)。 |
