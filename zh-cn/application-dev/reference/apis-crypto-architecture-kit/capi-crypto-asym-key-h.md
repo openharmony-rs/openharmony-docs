@@ -403,7 +403,7 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 | -- | -- |
 | [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *key | [in] 公钥。不能为NULL。 |
 | [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | [in] 编码类型。 |
-| const char *encodingStandard | [in] 编码标准，支持"X509"或"PKCS1"。 |
+| const char *encodingStandard | [in] 编码标准，支持"X509"或"PKCS1"。只有RSA密钥才支持"PKCS1"。 |
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储编码结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回：**
