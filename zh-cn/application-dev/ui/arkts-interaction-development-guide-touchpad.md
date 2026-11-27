@@ -30,6 +30,14 @@
 >
 > 触控板原始事件相关接口（[UIContext.enableTouchPadEvent](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#enabletouchpadevent)、[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)等）从API版本26.1.0开始支持，更低版本不支持。
 
+<!-- @[enable_touchpad_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/touchpadEvent/EnableTouchPadEvent.ets) -->
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+
+UIContext.enableTouchPadEvent(true);
+```
+
 ### 注册触控板原始事件
 
 可在组件上通过[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接口注册回调，接收[TouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadevent)对象。该对象的关键属性如下：
