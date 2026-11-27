@@ -189,7 +189,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称       | 类型                                                          | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ---- | ---- | -------------- |
-| type      | [DataProxyType](#dataproxytype20)                            | 否 | 否   | 数据代理操作的类型。 |
+| type      | [DataProxyType](#dataproxytype20)                            | 否 | 否   | 数据代理操作的类型，此字段取值不生效。 |
 | maxValueLength  | [DataProxyMaxValueLength](#dataproxymaxvaluelength)  | 否 | 是   | 设置共享配置的值允许的最大长度。如果未填写，默认为MAX_LENGTH_4K，即共享配置的值允许的最大长度为4096字节。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## DataProxyMaxValueLength
