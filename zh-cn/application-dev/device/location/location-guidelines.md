@@ -33,18 +33,23 @@
 
 2. 导入geoLocationManager模块，所有与基础定位能力相关的功能API，都是通过该模块提供的。
    
-   ```ts
+   <!-- @[location_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 3. 调用获取位置接口之前需要先判断位置开关是否打开。<br/>
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
+   
+   <!-- @[location_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```ts
-   import { geoLocationManager } from '@kit.LocationKit';
+   ``` TypeScript
    try {
-       let locationEnabled = geoLocationManager.isLocationEnabled();
+      let locationEnabled = geoLocationManager.isLocationEnabled();
+      // ...
    } catch (err) {
-       console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error('errCode:' + err.code + ', message:' + err.message);
    }
    ```
    如果位置开关未开启，可以拉起全局开关设置弹框，引导用户打开位置开关，具体可参考[requestGlobalSwitch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12)。
@@ -54,14 +59,16 @@
       如果系统当前没有缓存位置会返回错误码。<br/>
       推荐优先使用该接口获取位置，可以减少系统功耗。<br/>
       如果对位置的新鲜度比较敏感，可以先获取缓存位置，将位置中的时间戳与当前时间对比，若新鲜度不满足预期可以使用方式二获取位置。<br/>
+   
+      <!-- @[location_get_last_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-      ```ts
-      import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit';
+      ``` TypeScript
       try {
-          let location = geoLocationManager.getLastLocation();
+         let location = geoLocationManager.getLastLocation();
+         // ...
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+         console.error('errCode:' + err.code + ', message:'  + err.message);
+         // ...
       }
       ```
 
@@ -75,10 +82,10 @@
          因为设备环境、设备所处状态、系统功耗管控策略等的影响，定位返回的时延会有较大波动，建议把单次定位超时时间设置为10秒。<br/>
          
       以快速定位策略(PRIORITY_LOCATING_SPEED)为例，调用方式如下：<br/>
+   
+      <!-- @[location_get_current_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-      ```ts
-      import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit';
+      ``` TypeScript
       let request: geoLocationManager.SingleLocationRequest = {
          'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_LOCATING_SPEED,
          'locatingTimeoutMs': 10000
@@ -86,13 +93,16 @@
       try {
          geoLocationManager.getCurrentLocation(request).then((result) => { // 调用getCurrentLocation获取当前设备位置，通过promise接收上报的位置
             console.info('current location: ' + JSON.stringify(result));
+            // ...
          })
          .catch((error:BusinessError) => { // 接收上报的错误码
             console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
+            // ...
          });
-       } catch (err) {
-         console.error("errCode:" + err.code + ", message:"  + err.message);
-       }
+      } catch (err) {
+         console.error('errCode:' + err.code + ', message:'  + err.message);
+         // ...
+      }
       ```
    通过本模块获取到的坐标均为WGS-84坐标系坐标点，如需使用其它坐标系类型的坐标点，请进行坐标系转换后再使用。
 
@@ -106,28 +116,37 @@
       表示上报位置信息的时间间隔，单位是秒，默认值为1秒。如果对位置上报时间间隔无特殊要求，可以不填写该字段。
    
    以地图导航场景为例，调用方式如下：
+   
+   <!-- @[location_on_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
 
-   ```ts
-   import { geoLocationManager } from '@kit.LocationKit';
+   ``` TypeScript
    let request: geoLocationManager.ContinuousLocationRequest= {
       'interval': 1,
       'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION
    }
    let locationCallback = (location:geoLocationManager.Location):void => {
       console.info('locationCallback: data: ' + JSON.stringify(location));
+      // ...
    };
+   // ...
    try {
       geoLocationManager.on('locationChange', request, locationCallback);
+      // ...
    } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error('errCode:' + err.code + ', message:'  + err.message);
+      // ...
    }
    ```
    如果不主动结束定位可能导致设备功耗高，耗电快；建议在不需要获取定位信息时及时结束定位。
-   ```ts
+      
+   <!-- @[location_off_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ``` TypeScript
    // 该回调函数需要与on接口传入的回调函数保持一致。
    try {
       geoLocationManager.off('locationChange', locationCallback);
    } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error('errCode:' + err.code + ', message:'  + err.message);
+      // ...
    }
    ```
