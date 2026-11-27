@@ -101,9 +101,9 @@ struct TouchPadEventActualApplication {
         this.gainX = screenWVp;
         this.gainY = screenHVp;
       }
-      console.log(`GestureDebug| screen=${d.width}x${d.height}px density=${density} px/vp gain=(${this.gainX.toFixed(1)}, ${this.gainY.toFixed(1)})vp`);
+      console.info(`GestureDebug| screen=${d.width}x${d.height}px density=${density} px/vp gain=(${this.gainX.toFixed(1)}, ${this.gainY.toFixed(1)})vp`);
     } catch (e) {
-      console.log(`GestureDebug| display获取失败，使用默认增益: ${JSON.stringify(e)}`);
+      console.info(`GestureDebug| display获取失败，使用默认增益: ${JSON.stringify(e)}`);
     }
   }
 
@@ -126,7 +126,7 @@ struct TouchPadEventActualApplication {
       this.debugLines.shift();
     }
     this.gestureDebug = this.debugLines.join('\n');
-    console.log(`GestureDebug| ${line}`);
+    console.info(`GestureDebug| ${line}`);
   }
 
   gestureReset(): void {
