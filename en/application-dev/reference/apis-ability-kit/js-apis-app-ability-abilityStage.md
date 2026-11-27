@@ -418,7 +418,7 @@ class MyAbilityStage extends AbilityStage {
 
 onLaunchFromHyperSnap(): void
 
-Called when the process is launched from [application quick launch](./js-apis-app-ability-hyperSnapManager.md#implementation-principle).
+Called when the process is launched from [application quick launch](./js-apis-app-ability-hyperSnapManager.md#working-principles).
 
 Developers can override this method to handle specific logic during application quick launch, for example, reinitializing certain resources or states.
 
