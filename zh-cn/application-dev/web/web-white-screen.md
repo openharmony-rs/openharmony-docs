@@ -340,8 +340,8 @@ Web组件提供了两种渲染模式，能够根据不同的容器大小进行�
 - 异步渲染模式下（renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).ASYNC_RENDER），Web组件的宽高不能超过7,680px（物理像素），超过会导致白屏。
 
 Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自适应页面内容布局](web-fit-content.md)，使用时也需要注意以下约束条件：
-- 配置同步渲染模式：`webSetting({renderingMode: WebRenderingMode.SYNCHRONOUS})`。
-- 关闭滚动效果：`webSetting({overScrollMode: OverScrollMode.NEVER})`。
+- 配置同步渲染模式：`Web({renderMode: RenderMode.SYNC_RENDER})`。
+- 关闭滚动效果：`.overScrollMode(OverScrollMode.NEVER)`。
 - 此模式下不支持动态调整组件高度，确保页面高度固定。
 - 避免在FIT_CONTENT模式下启用键盘避让属性RESIZE_CONTENT，以免导致布局失效。
 - css样式`height: <number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height: <number> vh`是否是由body节点以内的第一个高度css样式。如以下结构，id为2的dom节点高度将为0，导致白屏。
@@ -359,7 +359,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
     ```html
     <body>
       <div id = "1">
-        <div id = "2"><div style = "height: 20px"><div/></div>
+        <div id = "2"><div style = "height: 20px"></div></div>
         <div id = "3" style = "height: 20px">子dom</div>
       </div>
     </body>
@@ -435,11 +435,11 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 
 **问题现象：**
 
-用WebView加载H5在Phone上表现正常，但是在Tablet/PC/2in1上白屏。
+用WebView加载H5在Phone上表现正常，但是在Tablet/2in1上白屏。
 
 **可能原因：**
 
-Tablet/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
+Tablet/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
 
 **解决措施：**
 
