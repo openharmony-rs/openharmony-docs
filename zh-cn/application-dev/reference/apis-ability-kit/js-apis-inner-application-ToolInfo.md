@@ -8,12 +8,12 @@
 
 ToolInfo用于描述系统命令行工具（CLI）的基本信息，包括工具名称、版本、描述、可执行路径、输入输出模式等。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 > **说明：**
 >
-> 本模块仅适用于ArkTS-Dyn。  
-> 本模块接口为系统接口。
+> 本模块仅适用于ArkTS-Dyn。
+
 
 ## 导入模块
 
@@ -25,11 +25,9 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 
 描述CLI工具的基本信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -46,17 +44,16 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 | eventSchemas       | Record<string, Record<string, Object>> | 是   | 是   | 自定义事件的模式定义。以键值对形式存储，键为事件类型，值为该事件的JSON Schema定义。默认值为空对象。 |
 | hasSubCommand      | boolean                                                | 是   | 是   | 指示该工具是否支持子命令。true表示工具支持子命令，false表示不支持子命令。默认值为false。 |
 | subcommands        | Record<string, [SubCommandInfo](#subcommandinfo)>       | 是   | 是   | 子命令信息列表。以键值对形式存储，键为子命令名称，值为子命令的详细信息。默认值为空对象。 |
-| isLockScreenExecutionAllowed        | boolean       | 是   | 是   | 指示该工具是否支持在锁屏状态下执行。true表示工具支持在锁屏状态下执行，false表示工具不支持在锁屏状态下执行。 |
+| isLockScreenExecutionAllowed        | boolean       | 是   | 是   | 指示该工具是否支持在锁屏状态下执行。true表示工具支持在锁屏状态下执行，false表示工具不支持在锁屏状态下执行。默认值为false。 |
+| supportedDevices   | Array\<string> | 是   | 是   | CLI工具支持的设备类型列表。默认值为空数组。<br>**起始版本：** 26.1.0 |
 
 ## ToolSummary
 
 描述CLI工具的摘要信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -70,11 +67,9 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 
 描述CLI工具子命令的信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 

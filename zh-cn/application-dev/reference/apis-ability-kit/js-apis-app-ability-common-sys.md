@@ -253,7 +253,7 @@ AgentExtensionConnectCallback二级模块。
 
 type ToolInfo = _ToolInfo
 
-[ToolInfo (CLI工具信息)](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
+[ToolInfo (CLI工具信息)](../apis-ability-kit/js-apis-inner-application-ToolInfo.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -267,13 +267,13 @@ type ToolInfo = _ToolInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo) | 用于描述系统命令行工具（CLI）的基本信息。 |
+| [_ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo.md#toolinfo) | 用于描述系统命令行工具（CLI）的基本信息。 |
 
 ## ToolSummary
 
 type ToolSummary = _ToolSummary
 
-[ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary)用于描述系统命令行工具（CLI）的摘要信息。
+[ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo.md#toolsummary)用于描述系统命令行工具（CLI）的摘要信息。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -287,7 +287,7 @@ type ToolSummary = _ToolSummary
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary) | 用于描述系统命令行工具（CLI）的摘要信息。 |
+| [_ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo.md#toolsummary) | 用于描述系统命令行工具（CLI）的摘要信息。 |
 
 ## CliToolEvent
 
