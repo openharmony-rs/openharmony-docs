@@ -3598,8 +3598,6 @@ async function testListAliases() {
 
 表示摘要算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 | 名称                   | 值   | 说明                                     |
 | ---------------------- | ---- | ---------------------------------------- |
 | HUKS_DIGEST_NONE       | 0   | 表示无摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
@@ -3610,6 +3608,8 @@ async function testListAliases() {
 | HUKS_DIGEST_SHA256 | 12  | 表示SHA256摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DIGEST_SHA384  | 13  | 表示SHA384摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
 | HUKS_DIGEST_SHA512 | 14  | 表示SHA512摘要算法。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
+| HUKS_DIGEST_SHAKE128 | 15  | 表示SHAKE128可扩展输出函数（XOF），用于ML-DSA的预哈希模式。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
+| HUKS_DIGEST_SHAKE256 | 16  | 表示SHAKE256可扩展输出函数（XOF），用于ML-DSA的预哈希模式。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 
 ## HuksKeyPadding
 
@@ -3946,6 +3946,24 @@ async function testListAliases() {
 | HUKS_KEY_SECURITY_LEVEL_TEE | 0    | 密钥在可信执行环境中生成并使用。 |
 | HUKS_KEY_SECURITY_LEVEL_SE | 1    | 密钥在安全环境中生成并使用。<br>**需要权限：** [ohos.permission.ACCESS_SE_KEY](../../security/AccessToken/restricted-permissions.md#ohospermissionaccess_se_key) |
 
+## HuksPQCSigMode
+
+表示后量子密码（PQC）算法的签名模式。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| HUKS_PQC_SIG_MODE_PURE | 0 | 纯模式：直接对原始消息签名，不做预哈希。 |
+| HUKS_PQC_SIG_MODE_PREHASH | 1 | 预哈希模式（HashML-DSA）：输入为消息摘要PH(M)，摘要算法由HUKS_TAG_DIGEST指定。 |
+| HUKS_PQC_SIG_MODE_EXTERNAL_MU | 2 | 外部μ模式：输入为64字节的消息代表值μ。 |
+
 ## HuksTagType
 
 表示tag的数据类型。
@@ -4038,6 +4056,7 @@ async function testListAliases() {
 | HUKS_TAG_AAD<sup>24+</sup>                                  | HuksTagType.HUKS_TAG_TYPE_BYTES \| 527   | 标记指示GCM或CCM模式的附加验证数据。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_CONTEXT                                           | HuksTagType.HUKS_TAG_TYPE_BYTES \| 528   | 表示ML-DSA签名验签的context参数。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_TIMEOUT                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 529   | 表示异步超时时间，单位为秒，可由业务逻辑自定义。<br>**起始版本：** 26.0.1<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension |
+| HUKS_TAG_PQC_SIG_MODE                                      | HuksTagType.HUKS_TAG_TYPE_UINT \| 530   | 表示ML-DSA的签名模式，取值见[HuksPQCSigMode](#hukspqcsigmode)。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_STORAGE_FLAG                                   | HuksTagType.HUKS_TAG_TYPE_UINT \| 1002   | 表示密钥存储方式的tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_IS_ALLOWED_WRAP                                    | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1003   | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：**<br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本8-11：SystemCapability.Security.Huks.Extension|
