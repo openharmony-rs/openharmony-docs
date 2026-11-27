@@ -1094,11 +1094,12 @@ destroyPanel(panel: Panel, callback: AsyncCallback&lt;void&gt; ): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800008 | Failed to initialize or submit the asynchronous operation.  |
 
 **示例：**
 
@@ -1159,11 +1160,12 @@ destroyPanel(panel: Panel): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800008 | Failed to initialize or submit the asynchronous operation. |
 
 **示例：**
 
@@ -1582,11 +1584,13 @@ setUiContent(path: string, callback: AsyncCallback&lt;void&gt; ): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1626,11 +1630,13 @@ setUiContent(path: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1662,11 +1668,13 @@ setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1708,11 +1716,13 @@ setUiContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1753,11 +1763,13 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt; ): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1803,11 +1815,13 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1840,11 +1854,13 @@ moveTo(x: number, y: number, callback: AsyncCallback&lt;void&gt; ): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1884,11 +1900,13 @@ moveTo(x: number, y: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -1977,6 +1995,16 @@ show(callback: AsyncCallback&lt;void&gt; ): void
 | -------- | ---------------------- | ---- | -------- |
 | callback | AsyncCallback&lt;void&gt;  | 是   | 回调函数。当面板显示成功，err为undefined，否则err为错误对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800013 | window manager service error. |
+
 **示例：**
 
 ```ts
@@ -2005,6 +2033,16 @@ show(): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | Promise&lt;void&gt;  | Promise对象，无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800013 | window manager service error. |
+
 **示例：**
 
 ```ts
@@ -2030,6 +2068,15 @@ hide(callback: AsyncCallback&lt;void&gt; ): void
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
 | callback | AsyncCallback&lt;void&gt;  | 是   | 回调函数。当面板隐藏成功，err为undefined，否则err为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -2058,6 +2105,15 @@ hide(): Promise&lt;void&gt;
 | 类型   | 说明                             |
 | ------- | ------------------------------ |
 | Promise&lt;void&gt;  | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -2101,6 +2157,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error. |
 
 **示例：**
@@ -2167,6 +2224,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -2242,6 +2300,7 @@ updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error. |
 
 **示例：**
@@ -2314,6 +2373,7 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -2384,6 +2444,7 @@ updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error. |
 
 **示例：**
@@ -2451,6 +2512,7 @@ updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -2516,6 +2578,7 @@ updateRegion(inputRegion: Array&lt;window.Rect&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -2549,6 +2612,14 @@ on(type: 'show', callback: () => void): void
 | type | string | 是 | 监听当前面板的状态类型，固定取值为'show'。 |
 | callback | () => void | 是   | 回调函数。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+
 **示例：**
 
 ```ts
@@ -2571,6 +2642,14 @@ on(type: 'hide', callback: () => void): void
 | -------- | ---------------------- | ---- | -------- |
 | type | string | 是 | 监听当前面板的状态类型，固定取值为'hide'。 |
 | callback | () => void | 是   | 回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例：**
 
@@ -2601,6 +2680,14 @@ on(type: 'sizeChange', callback: SizeChangeCallback): void
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------ |
 | type     | string                                      | 是   | 监听当前面板的大小是否产生变化，固定值为'sizeChange'。 |
 | callback | [SizeChangeCallback](#sizechangecallback15) | 是   | 回调函数。返回当前软键盘面板的大小，包含宽度和高度值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例：**
 
@@ -2636,11 +2723,12 @@ off(type: 'show', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例：**
 
@@ -2665,11 +2753,12 @@ off(type: 'hide', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 
 **示例：**
 
@@ -2699,6 +2788,14 @@ off(type: 'sizeChange', callback?: SizeChangeCallback): void
 | type     | string                                      | 是   | 监听当前面板的大小是否产生变化，固定取值为'sizeChange'。 |
 | callback | [SizeChangeCallback](#sizechangecallback15) | 否   | 回调函数。返回当前软键盘面板的大小，包含宽度和高度值。参数不填写时，取消订阅type对应的所有回调事件。   |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+
 **示例：**
 
 ```ts
@@ -2725,11 +2822,13 @@ changeFlag(flag: PanelFlag): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -2756,12 +2855,14 @@ setPrivacyMode(isPrivacyMode: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)和[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 201      | permissions check fails. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -2814,6 +2915,15 @@ getImmersiveMode(): ImmersiveMode
 | ------------------------------- | ---------- |
 | [ImmersiveMode](#immersivemode15) | 沉浸模式。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
+
 **示例：**
 
 ```ts
@@ -2848,7 +2958,7 @@ setImmersiveEffect(effect: ImmersiveEffect): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801  |Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                          |
+| 801  | capability not supported. |
 | 12800002   |input method engine error. Possible causes:1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013   |window manager service error.                          |
 | 12800020   |invalid immersive effect. 1.The gradient mode and the fluid light mode can only be used when the immersive mode is enabled. 2.The fluid light mode can only be used when the gradient mode is enabled. 3.When the gradient mode is not enabled, the gradient height can only be 0. |
@@ -2895,6 +3005,7 @@ setKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error. |
 
 **示例：**
@@ -2934,6 +3045,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise&lt;SystemPanelInsets&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. Possible causes: 1. Current panel's type is not SOFT_KEYBOARD.  2. Panel's flag is not FLG_FIXED or FLG_FLOATING. |
 | 12800022 | invalid displayId. |
@@ -2986,6 +3098,15 @@ setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string
 | 类型   | 说明                             |
 | ------- | ------------------------------ |
 | Promise&lt;void&gt;  | Promise对象。无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12800002 | input method engine error. The panel has been destroyed or is unavailable. |
+| 12800013 | window manager service error. |
 
 **示例：**
 
@@ -5198,6 +5319,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise&lt;void&gt;
 | -------- | ------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.               |
 | 12800014 | the input method is in basic mode.          |
 | 12800015 | the other side does not accept the request. |
