@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍多模块应用在安装或更新时签名证书与配置文件的一致性校验规则，涵盖appId、appIdentifier、bundleName、versionCode、moduleType等字段的校验逻辑。"
+keywords: [一致性校验, 签名证书, appId, appIdentifier, bundleName, versionCode, moduleType, apiReleaseType]
+doctype: guide
+status: active
+---
 # 应用安装与更新一致性校验
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
