@@ -190,7 +190,7 @@ int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps
 
 **参考：**
 
-[OH_PixelMap_CreatePixelMapWithStride](#oh_pixelmap_createpixelmapwithstride)
+[OH_PixelMap_CreatePixelMapWithStride()](#oh_pixelmap_createpixelmapwithstride)
 
 ### OH_PixelMap_CreateAlphaPixelMap()
 
