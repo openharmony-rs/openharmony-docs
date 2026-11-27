@@ -188,6 +188,10 @@ int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps
 | -- | -- |
 | int32_t | [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode)：<br>IMAGE_RESULT_SUCCESS：操作成功。<br>IMAGE_RESULT_BAD_PARAMETER：参数错误。<br> IMAGE_RESULT_JNI_ENV_ABNORMAL：JNI环境异常。<br> IMAGE_RESULT_GET_DATA_ABNORMAL：图像获取数据失败。<br> IMAGE_RESULT_CHECK_FORMAT_ERROR：检查格式失败。<br> IMAGE_RESULT_DATA_ABNORMAL：图像输入数据失败。<br>IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL：共享内存数据错误。<br> IMAGE_RESULT_DATA_UNSUPPORT：属性无效或图像数据不支持。<br> IMAGE_RESULT_UNKNOWN_FORMAT：图像格式未知。 |
 
+**参考：**
+
+[OH_PixelMap_CreatePixelMapWithStride()](#oh_pixelmap_createpixelmapwithstride)
+
 ### OH_PixelMap_CreateAlphaPixelMap()
 
 ```c
