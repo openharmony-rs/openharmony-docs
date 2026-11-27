@@ -27,6 +27,7 @@ typedef struct {...} OH_WifiLinkedInfo
 | 名称 | 描述 |
 | -- | -- |
 | char ssid[WIFI_MAX_SSID_LEN] | 服务集标识符（ssid）用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 33。|
+| char bssid[WIFI_MAC_LEN] | Wi-Fi接入点（路由器/AP）的MAC地址。<br>长度 WIFI_MAC_LEN = 18。|
 | int32_t rssi | 热点的信号强度(dBm)。RSSI（Received Signal Strength Indicator，接收信号强度指示）。|
 | int32_t band | 热点的Wi-Fi频段信息。1表示2.4GHz；2表示5GHz。|
 | int32_t linkSpeed | Wi-Fi接入点的上行速度单位Mbps。|
