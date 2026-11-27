@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍GATT客户端连接、服务发现与读写特征值，以及GATT服务端添加服务与推送通知的步骤。"
+keywords: [GATT协议, GATT客户端, GATT服务端, 服务发现, 读写特征值, 读写描述符, 特征值变化通知, notifyCharacteristicChanged, Client Characteristic Configuration（CCC）描述符UUID]
+doctype: guide
+status: active
+---
+
 # 连接和传输数据
 
 <!--Kit: Connectivity Kit-->

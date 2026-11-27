@@ -1,3 +1,12 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍BLE扫描与BLE广播的开发步骤，用于发现周边BLE设备或让本机被其他设备发现。"
+keywords: [BLE扫描, BLE广播, createBleScanner, startScan, startAdvertising, enableAdvertising, BLEDeviceFind, 广播报文解析, 可连接广播]
+doctype: guide
+status: active
+
+---
+
 # 查找设备
 
 <!--Kit: Connectivity Kit-->

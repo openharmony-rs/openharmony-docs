@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "指导把本机注册为蓝牙键盘、鼠标等HID设备，连接HID主机并收发HID报告。"
+keywords: [蓝牙HID, HID设备注册, HID主机, HID报告描述符, sendReport, replyReport, GET_REPORT事件, SET_REPORT事件]
+doctype: guide
+status: active
+---
+
 # HID设备调用指南
 
 <!--Kit: Connectivity Kit-->

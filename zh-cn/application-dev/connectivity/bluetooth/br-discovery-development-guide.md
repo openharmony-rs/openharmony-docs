@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍传统蓝牙扫描周边设备、设置本机扫描模式与查找已配对设备的步骤和耗时约束。"
+keywords: [蓝牙扫描, 周边设备发现, discoveryResult事件上报, bluetoothDeviceFind, 本机扫描模式, 已配对设备查询, 停止蓝牙扫描]
+doctype: guide
+status: active
+---
+
 # 查找设备
 
 <!--Kit: Connectivity Kit-->

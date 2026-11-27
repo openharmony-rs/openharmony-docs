@@ -1,8 +1,16 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "说明融合短距通信服务的定位与分层架构，梳理应用层、框架层、系统服务层中PartnerAgent相关模块的职责，涵盖伙伴设备注册管理、Extension拉起与服务生命周期控制。"
+keywords: [融合短距, PartnerAgent, partnerAgent-sys, PartnerAgentExtensionAbility, 伙伴设备注册管理, 媒体控制, 电话反控, 健康监测, 代理通知]
+doctype: guide
+status: active
+---
+
 # 融合短距服务开发概述
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @guoxiadi-->
+<!--Owner: @enjoy_sunshine-->
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->

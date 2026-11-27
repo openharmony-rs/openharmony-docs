@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍星闪NearLink低功耗、高速率的短距离通信能力，说明中心设备与外围设备的角色分工及角色可切换特性，并给出鼠标、手写笔等外设接入的典型使用场景。"
+keywords: [星闪, NearLink, 中心设备, 外围设备, 星闪配对连接]
+doctype: guide
+status: active
+---
+
 # 星闪简介
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

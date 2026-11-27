@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "汇总蓝牙开发常用术语的中英文对照与释义，覆盖A2DP、HFP、HID、MAP、PBAP等Profile，以及BR/EDR、BLE、GATT、RFCOMM、RSSI、MTU等基础概念。"
+keywords: [蓝牙术语, Profile, A2DP, HFP, HID, GATT, RFCOMM, RSSI, MTU]
+doctype: glossary
+status: active
+---
+
 # 蓝牙术语
 
 <!--Kit: Connectivity Kit-->

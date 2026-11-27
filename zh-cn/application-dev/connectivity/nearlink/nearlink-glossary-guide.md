@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "给出星闪开发涉及的核心术语定义，包括面向连接异步双向链路ACB、客户端属性值配置描述符CPCD、合作设备集合管理CDSM与星闪服务交互协议SSAP的含义与作用。"
+keywords: [星闪术语, ACB, CPCD, CDSM, SSAP, 异步双向链路]
+doctype: glossary
+status: active
+---
+
 # 星闪术语
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

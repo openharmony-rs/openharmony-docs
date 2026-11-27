@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍以主动查询或订阅方式获取合作设备集合内全部成员设备信息的步骤，适用于星闪耳机。"
+keywords: [合作设备集合, CDSM, CDS, createCdsmClient, getCdsmInfo, onCdsmInfoChange, 星闪耳机, 成员设备信息]
+doctype: guide
+status: active
+---
+
 # 获取星闪合作设备集合信息
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

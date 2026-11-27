@@ -1,3 +1,11 @@
+---
+kits: ["Connectivity Kit / 短距通信服务"]
+description: "介绍开发星闪应用前的设备确认、ACCESS_NEARLINK权限申请与星闪开关状态查询。"
+keywords: [开发准备, isNearLinkSupported, getState, onStateChange, NearlinkState, 星闪开关状态, user_grant权限]
+doctype: guide
+status: active
+---
+
 # 开发准备
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
