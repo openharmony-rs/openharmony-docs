@@ -1,10 +1,11 @@
 # Display Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-25T10:55:23.854Z pushedAt=2026-11-26T11:55:45.992Z nl=1 -->
 
 > **NOTE**
 >
@@ -51,12 +52,12 @@ This error code is reported when the display manager service is abnormal.
 1. The display manager service is not started normally.
 2. The bottom-layer graphics synthesis and rendering are abnormal.
 
-**Solution**<br>
-Try again later or restart the device.
+**Procedure**<br>
+System service error. Try again later or restart the device.
 
 ## 1400004 Parameter Error
 **Error Message**<br>
-Parameter error. 
+Parameter error.
 
 **Description**<br>
 This error code is reported when an input parameter is incorrect.
