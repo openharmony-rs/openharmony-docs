@@ -1375,9 +1375,9 @@ onFocusedApplicationChanged(observer: FocusedApplicationObserver): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 16000050 | Internal error. |
-| 16000165 | The number of registered observers has reached the upper limit. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Connect to system server failed. |
+| 16000165 | The number of registered observers for the current application has reached the upper limit. |
 
 **示例：**
 
@@ -1435,8 +1435,8 @@ offFocusedApplicationChanged(observerId: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 16000050 | Internal error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Connect to system server failed. |
 | 16300004 | The observer does not exist. |
 
 **示例：**
