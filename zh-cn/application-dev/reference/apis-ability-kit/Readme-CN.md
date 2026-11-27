@@ -215,6 +215,7 @@
       - [SendableContext](js-apis-inner-application-sendableContext.md)
       - [CliToolEvent (CLI工具会话事件)](js-apis-inner-application-cliToolEvent.md)
       - [ToolEventCallback (CLI工具事件回调)](js-apis-inner-application-toolEventCallback.md)
+      - [ToolInfo (CLI工具信息)](js-apis-inner-application-ToolInfo.md)
       - [ViewData (视图数据)](js-apis-inner-application-viewData.md)
       <!--Del-->
       - [AbilityFirstFrameStateData (首帧绘制状态数据)(系统接口)](js-apis-inner-application-abilityFirstFrameStateData-sys.md)
@@ -244,7 +245,6 @@
       - [RunningMultiAppInfo (多开应用运行信息)(系统接口)](js-apis-inner-application-runningMultiAppInfo-sys.md)
       - [RunningMultiInstanceInfo (多实例应用运行信息)(系统接口)](js-apis-inner-application-runningMultiInstanceInfo-sys.md)
       - [ServiceExtensionContext (系统接口)](js-apis-inner-application-serviceExtensionContext-sys.md)
-      - [ToolInfo (CLI工具信息)(系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       - [UIServiceExtensionContext (系统接口)](js-apis-inner-application-uiserviceExtensionContext-sys.md)
       - [UIServiceHostProxy (系统接口)](js-apis-inner-application-uiservicehostproxy-sys.md)
       - [UIAbilityContext (UIAbility上下文)(系统接口)](js-apis-inner-application-uiAbilityContext-sys.md)

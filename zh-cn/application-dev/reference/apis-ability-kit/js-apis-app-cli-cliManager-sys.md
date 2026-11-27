@@ -78,7 +78,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<[ToolSummary](js-apis-inner-application-ToolInfo-sys.md#toolsummary)>> | Promise对象，返回工具摘要信息列表。 |
+| Promise\<Array\<[ToolSummary](js-apis-inner-application-ToolInfo.md#toolsummary)>> | Promise对象，返回工具摘要信息列表。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0 |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -133,7 +133,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)\>\> | Promise对象，返回工具详细信息列表。 |
+| Promise\<Array\<[ToolInfo](js-apis-inner-application-ToolInfo.md#toolinfo)\>\> | Promise对象，返回工具详细信息列表。 |
 
 **错误码：**
 
@@ -142,7 +142,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0 |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -194,7 +194,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 | 类型                                         | 说明                               |
 | -------------------------------------------- | ---------------------------------- |
-| Promise\<[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)> | Promise对象，返回工具的详细信息。 |
+| Promise\<[ToolInfo](js-apis-inner-application-ToolInfo.md#toolinfo)> | Promise对象，返回工具的详细信息。 |
 
 **错误码：**
 
@@ -203,7 +203,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>适用版本：26.0.0 |
 | 35600030 | No tool with the specified name exists.                      |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
