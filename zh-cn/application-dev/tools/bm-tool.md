@@ -3478,6 +3478,27 @@ error: Failed to install because the bundle must be debug type.
 
 使用debug类型证书对应用重新签名。
 
+### 9568463 去重so链接失败导致安装失败
+**错误信息**
+
+error: install failed due to dedup so link failed.
+
+**错误描述**
+
+安装开启了[SDK清单so去重](./packing-tool.md#sdk清单so去重)的应用包时，需要为应用包中被移除so建立指向系统预置so的软链接，如果软链接创建失败，则应用安装失败。
+
+**可能原因**
+
+1. 设备侧去重配置不可用：设备系统版本不支持SDK清单so去重，或设备未预置对应的系统so。
+2. 应用包中dedupfiles.json文件记录的被移除的so，无法在设备侧匹配到对应的系统预置so，或匹配到的系统预置so与被移除so的SHA-256值不一致，即版本不匹配。
+3. 系统内部错误，例如so解压路径无效、链接创建失败、installd服务异常等。
+
+**处理步骤**
+
+1. 确认设备系统版本支持SDK清单so去重，且已预置对应的系统so。
+2. 重新[打包应用](./packing-tool.md#app打包指令)：不设置--deduplist-sdk-path参数以保留包内so文件，或使用与设备系统版本匹配的deduplist_sdk.json开启[SDK清单so去重](./packing-tool.md#sdk清单so去重)，然后重新安装。
+3. 重启手机后再次尝试安装应用。
+
 <!--Del-->
 ## 常见问题
 
