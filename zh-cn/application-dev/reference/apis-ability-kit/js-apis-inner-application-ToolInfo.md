@@ -8,12 +8,12 @@
 
 ToolInfo用于描述系统命令行工具（CLI）的基本信息，包括工具名称、版本、描述、可执行路径、输入输出模式等。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 > **说明：**
 >
-> 本模块仅适用于ArkTS-Dyn。  
-> 本模块接口为系统接口。
+> 本模块仅适用于ArkTS-Dyn。
+
 
 ## 导入模块
 
@@ -25,11 +25,9 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 
 描述CLI工具的基本信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -53,11 +51,9 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 
 描述CLI工具的摘要信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -71,11 +67,9 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 
 描述CLI工具子命令的信息。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 

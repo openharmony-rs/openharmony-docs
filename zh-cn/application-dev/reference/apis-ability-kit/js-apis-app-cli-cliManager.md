@@ -96,7 +96,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 查询CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -108,7 +108,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<<!--RP1-->[ToolSummary](js-apis-inner-application-ToolInfo-sys.md#toolsummary)<!--RP1End-->>> | Promise对象，返回工具摘要信息列表。 |
+| Promise\<Array\<[ToolSummary](js-apis-inner-application-ToolInfo.md#toolsummary)>> | Promise对象，返回工具摘要信息列表。 |
 
 **错误码：**
 
@@ -148,7 +148,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 查询CLI工具的详细信息，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -160,7 +160,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 | 类型                               | 说明                       |
 | ---------------------------------- | -------------------------- |
-| Promise\<Array\<<!--RP2-->[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)<!--RP2End-->\>\> | Promise对象，返回工具详细信息列表。 |
+| Promise\<Array\<[ToolInfo](js-apis-inner-application-ToolInfo.md#toolinfo)\>\> | Promise对象，返回工具详细信息列表。 |
 
 **错误码：**
 
@@ -200,7 +200,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 根据工具名称获取单个工具的详细信息，使用Promise异步回调。持有ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持有ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具，查询private工具时返回错误码35600030。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -218,7 +218,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 | 类型                                         | 说明                               |
 | -------------------------------------------- | ---------------------------------- |
-| Promise\<<!--RP3-->[ToolInfo](js-apis-inner-application-ToolInfo-sys.md#toolinfo)<!--RP3End-->> | Promise对象，返回工具的详细信息。 |
+| Promise\<[ToolInfo](js-apis-inner-application-ToolInfo.md#toolinfo)> | Promise对象，返回工具的详细信息。 |
 
 **错误码：**
 
