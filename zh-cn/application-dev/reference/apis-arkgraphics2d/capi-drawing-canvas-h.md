@@ -50,6 +50,7 @@
 | [void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas* canvas)](#oh_drawing_canvasdetachbrush) | 用于去除画布中的画刷，使用后画布将不使用此前设置的画刷填充图形形状。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_CanvasSave(OH_Drawing_Canvas* canvas)](#oh_drawing_canvassave) | 用于保存当前画布的状态（画布矩阵）到一个栈顶。需要与恢复接口[OH_Drawing_CanvasRestore](#oh_drawing_canvasrestore)配合使用。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_CanvasSaveLayer(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect, const OH_Drawing_Brush* brush)](#oh_drawing_canvassavelayer) | 保存矩阵和裁剪区域，为后续绘制分配位图。调用恢复接口[OH_Drawing_CanvasRestore](#oh_drawing_canvasrestore)后，将舍弃对矩阵和裁剪区域所做的更改，并绘制位图。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode OH_Drawing_CanvasSaveLayerWithFlag(OH_Drawing_Canvas *canvas, const OH_Drawing_Rect *rect, const OH_Drawing_Brush *brush, uint32_t saveLayerFlags)](#oh_drawing_canvassavelayerwithflag) | 保存矩阵和裁剪区域，为后续绘制分配位图。可以使用已有内容初始化位图。 调用恢复接口[OH_Drawing_CanvasRestore](capi-drawing-canvas-h.md#oh_drawing_canvasrestore)后，将舍弃对矩阵和裁剪区域所做的更改，并绘制位图。 |
 | [void OH_Drawing_CanvasRestore(OH_Drawing_Canvas* canvas)](#oh_drawing_canvasrestore) | 用于恢复保存在栈顶的画布状态（画布矩阵）。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [uint32_t OH_Drawing_CanvasGetSaveCount(OH_Drawing_Canvas* canvas)](#oh_drawing_canvasgetsavecount) | 用于获取栈中保存的画布状态（画布矩阵）的数量。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas* canvas, uint32_t saveCount)](#oh_drawing_canvasrestoretocount) | 用于恢复到指定数量的画布状态（画布矩阵）。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -514,6 +515,37 @@ void OH_Drawing_CanvasSaveLayer(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针。 |
 | const [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* rect | 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针，用于限制图层大小，为NULL表示无限制。 |
 | const [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)* brush | 指向画刷对象[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)的指针，绘制位图时会应用画刷对象的透明度，滤波器效果，混合模式，为NULL表示不应用任何效果。 |
+
+### OH_Drawing_CanvasSaveLayerWithFlag()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_CanvasSaveLayerWithFlag(OH_Drawing_Canvas *canvas, const OH_Drawing_Rect *rect, const OH_Drawing_Brush *brush, uint32_t saveLayerFlags)
+```
+
+**描述：**
+
+保存矩阵和裁剪区域，为后续绘制分配位图。可以使用已有内容初始化位图。 调用恢复接口[OH_Drawing_CanvasRestore](capi-drawing-canvas-h.md#oh_drawing_canvasrestore)后，将舍弃对矩阵和裁剪区域所做的更改，并绘制位图。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_CanvasSaveLayerWithFlag(OH_Drawing_Canvas *canvas, const OH_Drawing_Rect *rect, const OH_Drawing_Brush *brush, uint32_t saveLayerFlags)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_CanvasSaveLayerWithFlag(OH_Drawing_Canvas *canvas, const OH_Drawing_Rect *rect, const OH_Drawing_Brush *brush, uint32_t saveLayerFlags)-End-->
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) *canvas | [入参] 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的指针，不能为NULL。 |
+| [const OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md) *rect | [入参] 指向矩形对象[OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)的指针，用于限制图层大小，为NULL表示无限制。 |
+| [const OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) *brush | [入参] 指向画刷对象[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)的指针，绘制位图时会应用画刷对象的透明度、滤波器效果和混合模式，为NULL表示不应用任何效果。 |
+| uint32_t saveLayerFlags | [入参] 表示新分配位图的初始化方式，仅支持以下取值： 0：位图以透明像素初始化，等价于[OH_Drawing_CanvasSaveLayer](capi-drawing-canvas-h.md#oh_drawing_canvassavelayer)。 2：位图以画布上已有的内容初始化。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | <ul> <li>操作成功时返回[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode)。</li> <li>当canvas为空指针时返回[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode)。</li> <li>当saveLayerFlags不为0或2时返回[OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE](capi-drawing-error-code-h.md#oh_drawing_errorcode)。</li> </ul> |
 
 ### OH_Drawing_CanvasRestore()
 
