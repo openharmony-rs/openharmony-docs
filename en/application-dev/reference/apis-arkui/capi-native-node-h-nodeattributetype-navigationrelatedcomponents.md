@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=354168186e23ba43e61c6a088e90afc8304b8ea2 translatedAt=2026-11-23T07:32:48.870Z pushedAt=2026-11-25T06:24:44.480Z nl=1 -->
+<!-- md-trans-meta sourceCommit=354168186e23ba43e61c6a088e90afc8304b8ea2 translatedAt=2026-11-23T07:32:48.870Z pushedAt=2026-11-27T04:08:14.190Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -333,13 +333,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).|
 
 ## NODE_SWIPER_NODE_ADAPTER
 
@@ -1171,5 +1171,3 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type | Description |
 | -- | -- |
 | .value[0].i32 | Whether the transition animation is disabled. |
-
-<!--no_check-->

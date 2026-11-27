@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5e114c216749dc35d8cfe05f82a6a8e53d302eae translatedAt=2026-11-23T07:11:31.458Z pushedAt=2026-11-24T06:36:51.042Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5e114c216749dc35d8cfe05f82a6a8e53d302eae translatedAt=2026-11-23T07:11:31.458Z pushedAt=2026-11-27T04:04:41.000Z nl=1 -->
 
 ## Overview
 
@@ -900,7 +900,7 @@ Sets the alignment mode of a dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the dialog box configuration.|
-| int32_t alignment | Alignment mode of the dialog box. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
+| int32_t alignment | Alignment mode of the dialog box. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment).|
 | float offsetX | Horizontal offset of the dialog box. The value is a floating point number, in vp.|
 | float offsetY | Vertical offset of the dialog box. The value is a floating point number, in vp.|
 
