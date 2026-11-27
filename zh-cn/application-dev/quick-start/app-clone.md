@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "应用分身支持在同一设备安装多个相同应用实现多账号同时登录且数据隔离，适用于社交账号双开、游戏大小号等场景，通过app.json5的multiAppMode字段配置。"
+keywords: [应用分身, multiAppMode, appClone, 多账号双开, 数据隔离, app.json5, 桌面图标, 主应用, 分身应用]
+doctype: guide
+status: active
+---
 # 创建应用分身
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍应用多实例能力，支持一个应用同时运行多个进程实现多账号登录且实例间共享数据，仅支持2in1设备，通过app.json5的multiAppMode字段配置。"
+keywords: [应用多实例, multiAppMode, multiInstance, 多进程, 多账号, 2in1, app.json5, 桌面图标, 数据共享]
+doctype: guide
+status: active
+---
 # 创建应用多实例
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍HSP（Harmony Shared Package）动态共享包的概念、使用场景、约束限制以及创建开发方法，支持导出ArkUI组件、接口与资源供应用内HAP/HSP共享。"
+keywords: [HSP, Harmony Shared Package, 动态共享包, 应用内HSP, ArkUI组件导出, 按需加载, bundleName, 循环依赖, 依赖传递]
+doctype: guide
+status: active
+---
 # HSP
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "介绍如何使用Native Bundle接口在C/C++层获取应用自身相关信息，包括应用信息、appId、appIdentifier、入口信息、设备类型、调试模式及元数据等。"
+keywords: [NativeBundle, NDK, OH_NativeBundle, appId, appIdentifier, 应用信息, 设备类型, 调试模式]
+doctype: guide
+status: active
+---
 # NativeBundle开发指导
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->

@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "汇总应用程序包开发中的常见问题与解决方法，包括签名指纹获取、appId与appIdentifier概念及获取途径、调试签名等相关问题。"
+keywords: [FAQ, 签名指纹, appId, appIdentifier, bundleManager, getBundleInfoForSelf, bm工具, 证书, 调试签名]
+doctype: faq
+status: active
+---
 # 应用程序包常见问题
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
