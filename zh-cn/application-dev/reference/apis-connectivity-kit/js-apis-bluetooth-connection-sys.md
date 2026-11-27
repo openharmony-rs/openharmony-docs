@@ -40,7 +40,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："11:22:33:44:55:66"。 |
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对远端设备时使用的传输方式。<br>-若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。<br>-若不确定使用哪种传输方式，则传入TRANSPORT_DUAL<sup>20+</sup>或TRANSPORT_UNKNOWN<sup>20+</sup>，蓝牙子系统会决策传输方式。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发起配对成功，err为undefined，否则为错误对象。   |
 
@@ -63,7 +63,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.pairCredibleDevice('68:13:24:79:4C:8C', connection.BluetoothTransport
+    connection.pairCredibleDevice('11:22:33:44:55:66', connection.BluetoothTransport
         .TRANSPORT_BR_EDR, (err: BusinessError) => {
         if (err) {
             console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -95,7 +95,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："11:22:33:44:55:66"。 |
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对远端设备时使用的传输方式。<br>-若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。<br>-若不确定使用哪种传输方式，则传入TRANSPORT_DUAL<sup>20+</sup>或TRANSPORT_UNKNOWN<sup>20+</sup>，蓝牙子系统会决策传输方式。 |
 
 **返回值：**
@@ -123,7 +123,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.pairCredibleDevice('68:13:24:79:4C:8C', 0).then(() => {
+    connection.pairCredibleDevice('11:22:33:44:55:66', 0).then(() => {
         console.info('PairCredibleDevice');
     }, (err: BusinessError) => {
         console.error('PairCredibleDevice:errCode' + err.code + ', errMessage: ' + err.message);
@@ -152,7 +152,7 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型     | 必填   | 说明                                    |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除远程配对设备成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
@@ -202,7 +202,7 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                    |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -260,7 +260,7 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型     | 必填   | 说明                                    |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除远程配对设备成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
@@ -282,7 +282,7 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
+    connection.cancelPairingDevice('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -307,7 +307,7 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                    |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -334,7 +334,7 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
+    connection.cancelPairingDevice('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -455,7 +455,7 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示断开的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示断开的远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发起断开成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
@@ -477,7 +477,7 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.disconnectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
+    connection.disconnectAllowedProfiles('11:22:33:44:55:66', (err: BusinessError) => {
         if (err) {
             console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
             return;
@@ -509,7 +509,7 @@ getRemoteProductId(deviceId: string): string
 
 | 参数名      | 类型     | 必填   | 说明                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | 是    | 表示远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远程设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -535,7 +535,7 @@ getRemoteProductId(deviceId: string): string
 
 ```js
 try {
-  let remoteDeviceProductId = connection.getRemoteProductId('XX:XX:XX:XX:XX:XX');
+  let remoteDeviceProductId = connection.getRemoteProductId('11:22:33:44:55:66');
 } catch (err) {
   console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
 }
@@ -559,7 +559,7 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示远端设备MAC地址，例如："11:22:33:44:55:66"。 |
 | type   | [DeviceType](#devicetype12)  | 是    | 表示设备类型。        |
 
 **返回值：**
@@ -613,7 +613,7 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示远端设备MAC地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -694,7 +694,7 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let controlDeviceActionParams: connection.ControlDeviceActionParams = {
-        deviceId: '40:DC:A5:E5:75:C3',
+        deviceId: '11:22:33:44:55:66',
         type: connection.ControlType.PLAY,
         typeValue: connection.ControlTypeValue.ENABLE,
         controlObject: connection.ControlObject.LEFT_EAR
@@ -940,7 +940,7 @@ setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示远端设备MAC地址，例如："11:22:33:44:55:66"。 |
 | action | [CarKeyActionType](#carkeyactiontype)  | 是    | 表示车钥匙执行的操作，例如开卡、删卡。 |
            
 **错误码**：
@@ -1031,7 +1031,7 @@ try {
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | 否    | 否 | 表示要控制的设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 否    | 否 | 表示要控制的设备地址，例如："11:22:33:44:55:66"。 |
 | type | [ControlType](#controltype15) | 否    | 否    | 表示控制类型。 |
 | typeValue | [ControlTypeValue](#controltypevalue15) | 否 | 否 | 表示控制动作。 |
 | controlObject | [ControlObject](#controlobject15) | 否 | 否 | 表示控制对象。|

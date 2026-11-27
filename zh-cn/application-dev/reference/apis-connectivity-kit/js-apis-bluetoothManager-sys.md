@@ -44,7 +44,7 @@ cancelPairedDevice(deviceId: string): void
 
 | 参数名      | 类型     | 必填   | 说明                                    |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -65,7 +65,7 @@ cancelPairedDevice(deviceId: string): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    bluetoothManager.cancelPairedDevice("XX:XX:XX:XX:XX:XX");
+    bluetoothManager.cancelPairedDevice("11:22:33:44:55:66");
 } catch (err) {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
@@ -115,7 +115,7 @@ connect(device: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile: bluetoothManager.HidHostProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_HID_HOST) as bluetoothManager.HidHostProfile;
-    hidHostProfile.connect('XX:XX:XX:XX:XX:XX');
+    hidHostProfile.connect('11:22:33:44:55:66');
 } catch (err) {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
@@ -165,7 +165,7 @@ disconnect(device: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile: bluetoothManager.HidHostProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_HID_HOST) as bluetoothManager.HidHostProfile;
-    hidHostProfile.disconnect('XX:XX:XX:XX:XX:XX');
+    hidHostProfile.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
@@ -216,7 +216,7 @@ disconnect(device: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: bluetoothManager.PanProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_PAN_NETWORK) as bluetoothManager.PanProfile;
-    panProfile.disconnect('XX:XX:XX:XX:XX:XX');
+    panProfile.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }

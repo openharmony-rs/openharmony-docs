@@ -47,7 +47,7 @@ connect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 表示远端设备MAC地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备MAC地址。例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -67,7 +67,7 @@ connect(deviceId: string): void
 ```js
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
-    panProfile.connect('XX:XX:XX:XX:XX:XX');
+    panProfile.connect('11:22:33:44:55:66');
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -92,7 +92,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -114,7 +114,7 @@ disconnect(deviceId: string): void
 ```js
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
-    panProfile.disconnect('XX:XX:XX:XX:XX:XX');
+    panProfile.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
