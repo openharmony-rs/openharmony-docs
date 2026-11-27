@@ -167,6 +167,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |UiTree|获取页面内JSON树信息。<br> **起始版本：** 26.0.0|
     |InjectEvent|注入事件。<br> **起始版本：** 26.0.0|
     |CollectStrategy|获取屏幕采集策略。<br> **起始版本：** 26.0.0|
+    |PrivacyWindow|监听是否有隐私窗口。<br> **起始版本：** 26.1.0|
+    |ModalDialog|监听是否有系统模态弹窗。<br> **起始版本：** 26.1.0|
+    |SystemNotification|监听是否有系统通知。<br> **起始版本：** 26.1.0|
 
   * groupId支持能力列表<br>
     按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
@@ -177,6 +180,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |SmartEdge|Todo|获取待办场景的感知信息。|
     |SmartEdge|Activity|获取基础服务的感知信息。|
     |CeliaMemory|Article|获取阅读场景的感知信息。|
+    |StateAwareness|PrivacyWindow|监听是否有隐私窗口。|
+    |StateAwareness|ModalDialog|监听是否有系统模态弹窗。|
+    |StateAwareness|SystemNotification|监听是否有系统通知。|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -1018,3 +1024,4 @@ try {
   console.error(`offReadingScreenPermissionListener failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
