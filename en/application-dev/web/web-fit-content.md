@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to use `layoutMode` to make the Web component height adapt to the web page content, which is suitable for scenarios where Web and ArkUI components scroll together, such as long articles, and explains the specification constraints and FAQs."
+keywords: [ArkWeb, layoutMode, WebLayoutMode.FIT_CONTENT, adaptive layout, synchronous rendering, overScrollMode, metaviewport, Web component height, scrollbar]
+doctype: guide
+status: active
+---
+
 # Fitting In the Page Content Layout
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d4f09144a4616021c14ccc32ff5169be66ccf32b translatedAt=2026-11-12T04:42:08.315Z pushedAt=2026-11-12T08:25:49.057Z nl=1 -->
+<!-- md-trans-meta sourceCommit=eda7769deb8135ebed5b2aeb5427b057f09d74d2 translatedAt=2026-11-27T08:16:35.424Z pushedAt=2026-11-27T08:37:24.709Z nl=1 -->
 
 When using the adaptive page content layout mode of the **Web** component size, [layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT), the size of the **Web** component can adapt to the page content.
 
@@ -124,7 +132,7 @@ The code for the **fit_content.html** page is as follows:
             <li><p>Maintenance and debugging capability: DevTools debugging and Crashpad (used to collect Web component crash information).
             </p></li>
             <li><p>
-                Other advanced capabilities: same-layer rendering with system components, network and media playback takeover, and custom input method for Web component text boxes. </p>
+                Other advanced capabilities: same-layer rendering with system components, network hosting for the Web component, media playback hosting for the Web component, and invoking a custom input method from the Web component input box.</p>
             </li>
         </ul>
     </div>

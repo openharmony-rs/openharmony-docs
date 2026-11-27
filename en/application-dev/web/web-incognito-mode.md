@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to enable and use the privacy mode of the Web component. In this mode, cookies, cache, and other data are not stored persistently and are cleared after component destruction. It also covers geolocation authorization, memory data clearing, and cookie read/write."
+keywords: [privacy mode, incognitoMode, isIncognitoMode, incognito browsing, allowGeolocation, deleteAllData, configCookieSync, clearAllCookiesSync, WebStorage]
+doctype: guide
+status: active
+---
+
 # Using Incognito Mode
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:43:43.568Z pushedAt=2026-11-12T08:27:26.309Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:20:34.723Z pushedAt=2026-11-27T09:01:39.085Z nl=1 -->
 
 When you browse web pages in incognito mode, data such as cookies and caches is not written to local persistent storage. After the Web component in incognito mode is destroyed, this data is cleared and will not be retained.
 

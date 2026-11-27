@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the Web component's support for the W3C standard picture-in-picture capability, covering entering and exiting picture-in-picture and listening for picture-in-picture events, enabling the user to continue watching the video while browsing other pages."
+keywords: [picture-in-picture, Picture-in-Picture, requestPictureInPicture, exitPictureInPicture, pictureInPictureEnabled]
+doctype: guide
+status: active
+---
+
 # Enabling Picture-in-Picture
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @zhangyao75477-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8004d75b05732e296edfec497742a956b9d2f6b5 translatedAt=2026-09-21T02:25:47.810Z pushedAt=2026-09-21T13:53:34.237Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:25:44.426Z pushedAt=2026-11-27T09:06:03.779Z nl=2 -->
 
 The web component supports the picture-in-picture (PiP) feature. An application can use the Picture-in-Picture API of the W3C standard to create a floating window on a web page to play videos. In this way, users can continue to watch videos in the PiP window when browsing other web pages or interacting with other applications.  
 
@@ -98,7 +106,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 * UI components at the PiP control layer:<br>  
   The picture-in-picture window control layer contains **Close** (closes the picture-in-picture window) and **Restore** (restores the original app UI from the picture-in-picture window).<br/>  
   Playback controls include **Pause**, **Play**, and **Forward/Backward** (the Forward/Backward UI controls are displayed by default; if the original video does not support forward/backward, a single tap has no effect).<br/>
-
+  
   ![web-picture-in-picture](figures/web-picture-in-picture-ui.png)
 
 

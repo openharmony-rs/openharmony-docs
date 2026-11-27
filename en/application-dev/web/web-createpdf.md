@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to use the Web component to save a frontend page as a PDF, covering the callback and Promise calling methods and page size configuration, applicable to sharing scenarios such as generating reports and invoices."
+keywords: [PDF saving, createPdf, PdfConfiguration, pdfArrayBuffer, PdfData, fileIo, frontend page to PDF, ohos.permission.INTERNET]
+doctype: guide
+status: active
+---
+
 # Saving a Frontend Page as a PDF File
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=aacb45eb5ab6329ddc86a78846a11e1dc48d3ef5 translatedAt=2026-09-21T02:03:59.160Z pushedAt=2026-09-21T10:19:20.429Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:11:22.816Z pushedAt=2026-11-27T08:16:40.171Z nl=1 -->
 
 Since API version 14, the **Web** component supports the [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14) method for saving frontend pages as PDF files.
 

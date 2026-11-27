@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes methods for accelerating web page access, including domain-level preparsing and preconnection, page preloading, POST request prefetching, JavaScript precompilation to generate caches, and offline resource injection."
+keywords: [page loading acceleration, preconnect, prepareForPageLoad, prefetchPage, prefetchResource, clearPrefetchedResource, precompileJavaScript, injectOfflineResources, compilation cache]
+doctype: guide
+status: active
+---
+
 # Accelerating Web Page Access
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5487d1b7e86ba7315ebf7d7f564f6ce81141d5ed translatedAt=2026-11-03T03:10:44.046Z pushedAt=2026-11-03T03:24:01.886Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fbf2b56d21e7fb83d43a3f70e53f52367eff8464 translatedAt=2026-11-27T08:25:59.678Z pushedAt=2026-11-27T09:10:43.258Z nl=1 -->
 
 When a web page loads slowly, you can use the preconnect, prefetch, and POST request prefetching capabilities to accelerate web page access.
 
@@ -130,7 +138,7 @@ struct WebComponent {
             'KeyX', 500);
         })
         .onPageEnd(() => {
-          // Clear the cache of prefetched resources that are no longer used.
+          // Clear the prefetched resource cache that will no longer be used.
           webview.WebviewController.clearPrefetchedResource(['KeyX',]);
         })
     }
@@ -218,7 +226,7 @@ You are advised to use this function together with dynamic components, use offli
 
 1. First, in EntryAbility, store [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../ui/state-management/arkts-localstorage.md).
 
-   <!-- @[save_the_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @[save_the_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets) -->    
    
    ``` TypeScript
    // EntryAbility.ets
@@ -231,7 +239,6 @@ You are advised to use this function together with dynamic components, use offli
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
      // ...
-     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
@@ -242,8 +249,6 @@ You are advised to use this function together with dynamic components, use offli
        });
      }
    
-     // ...
-     // ...
      // ...
    }
    ```
@@ -450,7 +455,7 @@ You are advised to use this function together with dynamic components, use offli
 
 1. First, in EntryAbility, store [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../ui/state-management/arkts-localstorage.md).
 
-   <!-- @[save_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @[save_uiContext_to_localstorage_in_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets) -->    
    
    ``` TypeScript
    // EntryAbility.ets
@@ -463,8 +468,6 @@ You are advised to use this function together with dynamic components, use offli
    export default class EntryAbility extends UIAbility {
      storage: LocalStorage = localStorage;
      // ...
-   
-     // ...
      onWindowStageCreate(windowStage: window.WindowStage) {
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
@@ -474,8 +477,6 @@ You are advised to use this function together with dynamic components, use offli
          this.storage.setOrCreate<UIContext>('uiContext', windowStage.getMainWindowSync().getUIContext());
        });
      }
-     // ...
-     // ...
      // ...
    }
    ```

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to enable and query the Intelligent Tracking Prevention feature of the Web component. When tracking websites are inserted as third parties, their requests are prohibited from carrying cookies. The feature also supports block result callbacks and bypass domain list configuration."
+keywords: [Intelligent Tracking Prevention, Web component, cookie, enableIntelligentTrackingPrevention, isIntelligentTrackingPreventionEnabled, onIntelligentTrackingPreventionResult, addIntelligentTrackingPreventionBypassingList, bypass domain list]
+doctype: guide
+status: active
+---
+
 # Intelligent Tracking Prevention
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:43:50.869Z pushedAt=2026-11-12T08:28:58.592Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:20:54.216Z pushedAt=2026-11-27T09:01:44.342Z nl=1 -->
 
 
 The **Web** component supports the intelligent tracking prevention feature. That is, when a tracking website is inserted into another web page as a third party, the network request sent by the website cannot carry cookies.

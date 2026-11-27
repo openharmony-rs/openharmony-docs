@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the complete process of opening the camera and microphone based on WebRTC in a Web component, covering permission declarations in module.json5, system-side and application-side authorization handling, and sample code."
+keywords: [WebRTC, camera, microphone, onPermissionRequest, getUserMedia, requestPermissionsFromUser, ohos.permission.CAMERA, ohos.permission.MICROPHONE, MediaStream]
+doctype: guide
+status: active
+---
+
 # Starting a Camera and Microphone
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=dadc5d2e6bb9c5594236accd7857209621472343 translatedAt=2026-11-03T03:11:47.926Z pushedAt=2026-11-03T03:24:44.319Z nl=1 -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:29:13.964Z pushedAt=2026-11-27T09:22:07.752Z nl=1 -->
 
 Web Real-Time Communications (WebRTC) is a real-time communication technology that allows web applications or sites to establish peer-to-peer connections between browsers without an intermediary, enabling the transmission of video streams, audio streams, or any other data. The standards included in WebRTC allow users to create peer-to-peer data sharing and audio/video conferencing without installing any plug-ins or third-party software. WebRTC applies to all modern browsers and native clients on major platforms. The underlying technology is implemented as an open web standard and is provided as a regular JavaScript API in all major browsers.
 

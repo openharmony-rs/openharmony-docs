@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes solutions to the cross-origin interception of the file and resource protocols when the Web component loads local resources, including switching to the http/https protocols with request interception, and setting a path list that allows cross-origin access."
+keywords: [Web component, cross-origin, CORS, local resource, file protocol, resource protocol, onInterceptRequest, setPathAllowingUniversalAccess, fileAccess]
+doctype: guide
+status: active
+---
+
 # Resolving Cross-Origin Resource Access
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:38:53.463Z pushedAt=2026-11-12T08:20:48.953Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:11:57.317Z pushedAt=2026-11-27T08:25:08.673Z nl=1 -->
 
 ## Background
 

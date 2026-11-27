@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to preview PDF documents using the Web component: supports loading by three methods, namely network, application sandbox, and local, controls states such as page number, zoom, and toolbar through URL parameters, and provides callbacks for load results and scroll to bottom."
+keywords: [PDF preview, loadUrl, domStorageAccess, fileAccess, onPdfLoadEvent, onPdfScrollAtBottom, pdfbackgroundcolor]
+doctype: guide
+status: active
+---
+
 # Previewing PDF Files
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=bcbbbedf2234f156fe3ad4387f2cc76834ae7941 translatedAt=2026-09-21T02:25:06.003Z pushedAt=2026-09-21T13:52:48.313Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:25:09.890Z pushedAt=2026-11-27T09:06:00.933Z nl=1 -->
 
 The [Web](../reference/apis-arkweb/arkts-basic-components-web.md) component supports previewing PDF files in web pages. However, due to performance limitations, frame drops may occur in some scenarios. If smoothness is required, use [PdfView](https://developer.huawei.com/consumer/en/doc/harmonyos-references/pdf-arkts-pdfview-component) or the third-party parsing library [PDF.js](https://github.com/mozilla/pdf.js). An app loads a PDF document through the src parameter of [WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions) and the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API. Specific scenarios include network PDF documents, PDF documents in the app sandbox, and local PDF documents.
 

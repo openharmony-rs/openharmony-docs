@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Introduces the ArkWeb same-layer rendering architecture. It describes how to build same-layer components through embed/object tags and NodeController, handle lifecycle and input events, and apply them to scenarios such as maps and input boxes."
+keywords: [same-layer rendering, embed tag, object tag, enableNativeEmbedMode, registerNativeEmbedRule, onNativeEmbedLifecycleChange, NodeController, BuilderNode, arkwebnativestyle]
+doctype: guide
+status: active
+---
+
 # Using Same-Layer Rendering
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a9aa0e7897bbc10acf5c5fce4de86fc068f08ee0 translatedAt=2026-11-12T04:47:15.012Z pushedAt=2026-11-12T08:40:14.026Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:30:26.964Z pushedAt=2026-11-27T09:22:19.730Z nl=1 -->
 
 In the system, applications can use the **Web** component to load web pages. If the capability or performance of non-system UI components is inferior to that of system components, you can use the ArkUI component to render these components (same-layer components).
 
@@ -1397,7 +1405,7 @@ struct Page{
 
 ## Aligning the Same-layer Rendered Texture Map
 
-The private attribute** arkwebnativestyle** for ArkWeb same-layer rendering scenarios only takes effect on the **</embed>** and **</object>** tags after same-layer rendering is enabled. Since API version 23, two configurations are added: **object-fit: stretch** (the default value, where the texture is stretched and aligned according to the **bounds** size of the same-layer tag) and **object-fit: none** (where the texture is not stretched and aligned with the top-left corner). These configurations are used to control the texture alignment mode of a single same-layer tag for flexible display effects. They can solve the texture stretching issue that occurs in scenarios where the width and height of the same-layer tag change dynamically.
+The private attribute** arkwebnativestyle** for ArkWeb same-layer rendering scenarios only takes effect on the **&lt;embed&gt;** and **&lt;object&gt;** tags after same-layer rendering is enabled. Since API version 23, two configurations are added: **object-fit: stretch** (the default value, where the texture is stretched and aligned according to the **bounds** size of the same-layer tag) and **object-fit: none** (where the texture is not stretched and aligned with the top-left corner). These configurations are used to control the texture alignment mode of a single same-layer tag for flexible display effects. They can solve the texture stretching issue that occurs in scenarios where the width and height of the same-layer tag change dynamically.
 
 The values of the attribute are listed in the following table.
 

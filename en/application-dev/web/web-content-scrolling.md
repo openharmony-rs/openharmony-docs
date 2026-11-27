@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Summarizes the methods for controlling content scrolling on Web pages, covering device operations such as touchscreen and mouse wheel, scrolling APIs on both the ArkTS and JS sides, and tapping the status bar to return to the top of the page."
+keywords: [Web page scrolling, scrollTo, scrollBy, pageUp, pageDown, window.scrollTo, backToTop, status bar return to top, mouse wheel scrolling]
+doctype: guide
+status: active
+---
+
 # Implementing Content Scrolling
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:00:44.853Z pushedAt=2026-09-21T09:59:13.325Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:10:03.062Z pushedAt=2026-11-27T08:16:29.633Z nl=1 -->
 
 A web page can scroll only when its content height or width exceeds the visible area. Web page scrolling can be performed in several ways, including using external devices, calling ArkTS APIs, and calling JS APIs.
 
@@ -22,7 +30,7 @@ You can control web page scrolling through the touchscreen, touchpad, and mouse 
   Return to the top of the page.
 
   <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) -->
-
+  
   ``` TypeScript
   this.webController.scrollTo(0, 0);
   ```

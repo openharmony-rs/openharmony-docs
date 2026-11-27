@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to use ArkWeb Native APIs to implement bidirectional JSBridge communication in ArkTS and C++ hybrid development scenarios, avoiding redundant switching between the ArkTS and C++ environments."
+keywords: [ArkWeb, NDK, JSBridge, registerJavaScriptProxyEx, permission control, runJavaScript]
+doctype: guide
+status: active
+---
+
 # Mutual Invoking Between the Application and the Frontend Page (C/C++)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:32:26.033Z pushedAt=2026-11-12T08:17:05.212Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fbf2b56d21e7fb83d43a3f70e53f52367eff8464 translatedAt=2026-11-27T08:04:43.907Z pushedAt=2026-11-27T08:14:40.175Z nl=1 -->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
 
@@ -399,7 +407,7 @@ Use [runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#
   ```
 
 * Node-API layer code:
-  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->  
+  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->
   
   ``` C++
   // entry/src/main/cpp/hello.cpp
@@ -438,7 +446,7 @@ Use [runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#
       }
   }
   
-  // This example registers one object and two methods.
+  // Example code that registers one object and two methods.
   static ArkWeb_JavaScriptValuePtr ProxyMethod1(
       const char *webTag, const ArkWeb_JavaScriptBridgeData *dataArray, size_t arraySize, void *userData)
   {

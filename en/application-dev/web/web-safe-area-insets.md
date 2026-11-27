@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the calculation and avoidance adaptation of the safe area of a web page under immersive effect, covering how to enable the immersive effect of the Web component and use CSS environment variables to avoid unsafe areas such as the status bar, cutout area, and navigation bar."
+keywords: [safe area, immersive effect, viewport-fit, safe-area-inset, env(), expandSafeArea, setWindowLayoutFullScreen, avoidance adaptation, irregular screen]
+doctype: guide
+status: active
+---
+
 # Calculating and Adjusting Safe Area Insets
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=bba73b5d9ea980d77cc86ca2a3809bffa5922aca translatedAt=2026-11-12T04:46:14.628Z pushedAt=2026-11-12T08:36:42.711Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:29:29.589Z pushedAt=2026-11-27T09:21:27.997Z nl=1 -->
 
 In earlier versions, the screen of most devices is rectangular, and the application UI can be completely displayed. With the popularization of irregular screens such as bezel-less screen and notch screens, rounded corners, cameras, or system navigation bars may appear on the edge of the screen. As a result, some parts of the screen are obscured.
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the download capability of the Web component: listening for download tasks and progress callbacks triggered by pages, proactively initiating downloads and specifying save paths, and resuming unfinished download tasks when the process exits."
+keywords: [file download, setDownloadDelegate, startDownload, WebDownloadDelegate, WebDownloadItem, resumeDownload, download progress, download task resume, getSuggestedFileName]
+doctype: guide
+status: active
+---
+
 # Downloading Files
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:41:43.764Z pushedAt=2026-11-12T08:24:28.804Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fbf2b56d21e7fb83d43a3f70e53f52367eff8464 translatedAt=2026-11-27T08:14:33.113Z pushedAt=2026-11-27T08:33:07.985Z nl=1 -->
 
 To download files on the web page, you can use the following method to invoke the web APIs.
 
@@ -155,7 +163,7 @@ struct WebComponent {
 
 Use [DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to obtain the default download directory and set it as the download directory.
 
-<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->
+<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -198,7 +206,7 @@ struct WebComponent {
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
@@ -225,7 +233,7 @@ function getDownloadPathFromPicker(): Promise<string> {
         const uri = new fileUri.FileUri(uriString);
         resolve(uri.path);
       }).catch((err: BusinessError) => {
-        console.error(`ErrorCode: ${err.code},  Message: ${err.message}`);
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
         resolve('');
       });
     } catch (error) {

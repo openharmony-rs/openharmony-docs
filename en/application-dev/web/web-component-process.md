@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Introduces the multi-process architecture of ArkWeb, describes the responsibilities of the application process, render process, GPU process, and other processes, as well as render process mode configuration, process closing and exit, and unresponsive event listening."
+keywords: [ArkWeb, multi-process model, render process, setRenderProcessMode, getRenderProcessMode, terminateRenderProcess, onRenderExited, onRenderProcessNotResponding, sharedRenderProcessToken]
+doctype: guide
+status: active
+---
+
 # ArkWeb Process
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=129e568b2e3d9e00a1a96f816f5b690da736d5ea translatedAt=2026-09-21T01:58:03.859Z pushedAt=2026-09-21T09:52:51.545Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:09:12.506Z pushedAt=2026-11-27T08:16:25.708Z nl=1 -->
 
 ArkWeb is a multi-process model, which consists of the application process, Web rendering process, Web GPU process, Web spawn process, and Foundation process.
 
@@ -52,7 +60,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
    Mobile devices use single-process rendering by default, while 2-in-1 devices use multi-process rendering by default. You can call [getRenderProcessMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getrenderprocessmode12) to query the current render subprocess mode, where the enumeration value 0 indicates single-process mode and the enumeration value 1 indicates multi-process mode. If the value passed to setRenderProcessMode is not within the [RenderProcessMode](../reference/apis-arkweb/arkts-apis-webview-e.md#renderprocessmode12) enumeration range, the system automatically uses multi-process rendering mode as the default setting.
 
     <!-- @[setRenderProcessMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -86,7 +94,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
 2. You can use [terminateRenderProcess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#terminaterenderprocess12) to stop the rendering process. If a rendering process is not started or has been destroyed, this operation does not have any impact. However, destroying a rendering process affects all other instances associated with it.
 
     <!-- @[terminateRenderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -111,7 +119,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
 3. You can use [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9) to listen for the exit event of the rendering process to obtain the specific exit cause (such as OOM, crash, or normal exit). Multiple **Web** components may share the same rendering process. Therefore, each time the rendering process exits, each affected **Web** component triggers a corresponding callback.
 
     <!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -138,7 +146,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
    When a **Web** component cannot process an input event or fails to navigate to a new URL within the expected time, the system determines that the web page process is unresponsive and triggers the **onRenderProcessNotResponding** callback. While the web page process remains unresponsive, this callback may be triggered repeatedly until the process is restored to the normal running state. In this case, the **onRenderProcessResponding** callback is triggered.
 
     <!-- @[onRenderProcessNotResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -160,7 +168,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
     ```
 
     <!-- @[onRenderProcessResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -183,7 +191,7 @@ ArkWeb is a multi-process model, which consists of the application process, Web 
 5. Parameters of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cover the use of the multi-process model. **sharedRenderProcessToken** identifies the token of a shared rendering process specified by the current **Web** component. In multi-rendering process mode, **Web** components with the same token preferentially attempt to reuse the rendering process bound to the token. The token and the rendering process are bound in the initialization phase of the rendering process. Once a rendering process is no longer associated with any **Web** component, its binding to the token is removed.
 
     <!-- @[WebComponentCreat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/WebComponentCreat.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     

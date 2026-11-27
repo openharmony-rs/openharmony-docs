@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the integration of the Web component with the system soft keyboard, including W3C standard attribute adaptation for input boxes, automatic soft keyboard pop-up, avoidance mode setting, and intercepting the system soft keyboard to implement custom keyboard input."
+keywords: [soft keyboard, inputmode, enterkeyhint, WebKeyboardAvoidMode, onInterceptKeyboardAttach, soft keyboard avoidance, custom soft keyboard]
+doctype: guide
+status: active
+---
+
 # Docking to the Soft Keyboard
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=90b5bd1fbe791c793793e4d4ab58362356e25839 translatedAt=2026-11-12T04:41:32.616Z pushedAt=2026-11-12T08:24:07.940Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:14:28.592Z pushedAt=2026-11-27T08:26:44.054Z nl=1 -->
 
 By docking the **Web** component to the soft keyboard, you can manage the display and interaction of the soft keyboard in your application, and can also customize its features to suit your specific needs. The main scenarios are as follows:
 

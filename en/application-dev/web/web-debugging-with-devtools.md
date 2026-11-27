@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Introduces how to use DevTools to debug the frontend page loaded by the Web component on the computer, covering two processes: wireless debugging and USB connection debugging, as well as port forwarding configuration, and summarizes solutions to common debugging issues."
+keywords: [DevTools, frontend page debugging, setWebDebuggingAccess, wireless debugging, USB debugging, chrome://inspect, hdc fport, port forwarding]
+doctype: guide
+status: active
+---
+
 # Debugging Frontend Pages by Using DevTools
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:40:38.203Z pushedAt=2026-11-12T08:22:10.536Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fbf2b56d21e7fb83d43a3f70e53f52367eff8464 translatedAt=2026-11-27T08:12:46.626Z pushedAt=2026-11-27T08:26:04.089Z nl=1 -->
 
 
 The **Web** component supports debugging of web frontend pages by using DevTools, a web frontend development and debugging tool that allows you to debug an application's frontend pages on a PC. Before you do this, use [setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess) to enable frontend page debugging for the **Web** component and make sure the test device connected to the PC runs 4.1.0 or a later version.
@@ -20,7 +28,7 @@ Before debugging a web page, call the **setWebDebuggingAccess()** API to enable 
 If the web debugging function is not enabled, DevTools cannot detect the web page to be debugged.
 
    1. To enable the web debugging feature in application code, call the [setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20) API to set the TCP socket port and enable the web debugging feature.
-      <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
+      <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->  
       
       ``` TypeScript
       import { webview } from '@kit.ArkWeb';
@@ -37,7 +45,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
             // Enable wireless web debugging and specify the TCP socket port.
             webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         }
       
