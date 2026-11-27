@@ -2,8 +2,8 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @ning-jingyou-->
-<!--Designer: @renguang1116; @wang_zhangjun-->
-<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Designer: @renguang1116-->
+<!--Tester: @zsyztt; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供卷设备、磁盘设备查询和管理的相关功能：包括查询卷设备信息和磁盘设备信息，对卷设备的挂载卸载、弹出、擦除，对磁盘设备的分区创建、删除、格式化及分区表查询，卷设备的格式化，以及光盘刻录（包括创建ISO镜像、数据刻录、刻录数据校验和操作进度查询）等功能。
