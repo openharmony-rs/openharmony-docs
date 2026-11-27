@@ -162,7 +162,7 @@ struct SetWindowDisplayModeAbility {
 
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例。splitRatio的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)和[SplitRatioPreference](../reference/apis-arkui/arkts-apis-window-e.md#splitratiopreference)。
+3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例，需配合windowMode（WINDOW_MODE_SPLIT_PRIMARY或WINDOW_MODE_SPLIT_SECONDARY）使用。splitRatio可设置为EQUAL（默认）、PRIMARY_DOMINANT或SECONDARY_DOMINANT。splitRatio的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)和[SplitRatioPreference](../reference/apis-arkui/arkts-apis-window-e.md#splitratiopreference)。
 4. 调用startAbility()接口，启动目标UIAbility。
 
 <!-- @[startOptions_setSplitRatioAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetSplitRatioAbility/src/main/ets/pages/Index.ets) --> 
@@ -171,6 +171,7 @@ struct SetWindowDisplayModeAbility {
 import { common, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 const TAG: string = '[StartAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -190,15 +191,16 @@ struct SetSplitRatioAbility {
             let want: Want = {
               deviceId: '', // deviceId为空表示本设备
               bundleName: 'com.example.startoptions',
-              abilityName: 'EntryAbility',
+              abilityName: 'SecondAbility',
               parameters: {
                 // 自定义信息
-                info: '从EntryAbility启动'
+                info: '从SetSplitRatioAbility启动SecondAbility'
               }
             };
 
             let options: StartOptions = {
               windowMode: AbilityConstant.WindowMode.WINDOW_MODE_SPLIT_SECONDARY, // 以分屏模式拉起
+              splitRatio: window.SplitRatioPreference.SECONDARY_DOMINANT // 次分屏分配较大比例，主分屏分配较小比例
             };
 
             context.startAbility(want, options).then(() => {
