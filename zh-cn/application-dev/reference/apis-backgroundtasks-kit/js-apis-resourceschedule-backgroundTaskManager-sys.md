@@ -44,8 +44,8 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
 | 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
@@ -92,9 +92,9 @@ resetAllEfficiencyResources(): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
-| 401 | Parameter error. Possible causes: 1. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 9800001 | Memory operation failed. |
 | 9800002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9800003 | Internal transaction failed. |
@@ -136,7 +136,7 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202 | Not System App. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 18700001 | Caller information verification failed for an energy resource request. |
 | 18700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 18700004 | System service operation failed. |
@@ -184,8 +184,8 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
@@ -242,8 +242,8 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
@@ -293,8 +293,8 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9800004 | System service operation failed. |
 
 **示例：**
@@ -341,8 +341,8 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 | 错误码ID   | 错误信息 |
 |---------| ------- |
-| 201     | Permission denied. |
-| 202     | Not System App. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
@@ -398,8 +398,8 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 | 错误码ID   | 错误信息 |
 |---------| ------- |
-| 201     | Permission denied. |
-| 202     | Not System App. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
