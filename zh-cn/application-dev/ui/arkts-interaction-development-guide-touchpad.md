@@ -107,17 +107,17 @@ struct TouchPadEventActualApplication {
     }
   }
 
-  // 单位归一化：positionX/Y 规范取值范围[0,1]；
-  // 防御性兼容：若设备异常上报百分比(0~100)或毫米绝对坐标(>100)，
-  // 用 deviceWidth/deviceHeight(触控板物理尺寸mm) 一并折算回[0,1]
+  // 单位归一化：positionX/Y 规范取值范围为[0,1]；
+  // 若上报值为百分比(0~100)或毫米坐标(>100)，
+  // 通过 deviceWidth/deviceHeight(触控板物理尺寸mm)折算回[0,1]
   static toFraction(v: number, deviceSpanMm: number): number {
     if (v >= 0 && v <= 1) {
       return v; // 规范路径：[0,1]
     }
     if (v <= 100) {
-      return v / 100; // 兼容异常百分比上报
+      return v / 100; // 百分比格式(0~100)，除以100转换为[0,1]
     }
-    return deviceSpanMm > 0 ? v / deviceSpanMm : v / 100; // 兼容异常毫米上报
+    return deviceSpanMm > 0 ? v / deviceSpanMm : v / 100; // 毫米坐标格式(>100)，按设备尺寸折算为[0,1]
   }
 
   appendGestureDebug(line: string): void {
@@ -265,15 +265,17 @@ struct TouchPadEventActualApplication {
 }
 ```
 
-上面的示例中，点击 Enable 按钮调用`UIContext.enableTouchPadEvent(true)`开启上报，在 childStack 组件上绑定`onTouchPadEvent`接收事件。回调处理流程如下：
+上面的示例中，点击 Enable 按钮调用UIContext.enableTouchPadEvent(true)开启上报，在 childStack 组件上绑定onTouchPadEvent接收事件。回调处理流程如下：
 
-1. **阶段判断**：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画将组件还原至原位与初始缩放。
-2. **双指识别**：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板归一化坐标[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
-3. **平移跟随**：计算两指中点相对上一帧的位移（`midX/midY`差值），乘以屏幕增益后累加到组件的`translate`偏移量上，实现双指滑动驱动组件平移。
-4. **缩放跟随**：计算两指间距相对上一帧的比例（`ratio`），累乘到组件的`scale`上，实现双指张开放大、捏合缩小，并限制缩放范围在[0.3, 3.0]。
-5. **防跳变**：在触点集发生增减（BEGIN/CANCEL）或触点数少于2时，清除基线并等待下次双指重新建立，避免手势跳变。
+1. 阶段判断：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画将组件还原至原位与初始缩放。
+2. 双指识别：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板归一化坐标[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
+3. 平移跟随：计算两指中点相对上一帧的位移（`midX/midY`差值），乘以屏幕增益后累加到组件的`translate`偏移量上，实现双指滑动驱动组件平移。
+4. 缩放跟随：计算两指间距相对上一帧的比例（`ratio`），累乘到组件的`scale`上，实现双指张开放大、捏合缩小，并限制缩放范围在[0.3, 3.0]。
+5. 防跳变：在触点集发生增减（BEGIN/CANCEL）或触点数少于2时，清除基线并等待下次双指重新建立，避免手势跳变。
 
 ## 触控板生成事件
+
+触控板生成事件是系统将触控板上的操作转换为应用已熟悉的事件类型后上报的事件，包括单指操作产生的鼠标事件、双指滑动产生的轴事件以及双指捏合产生的缩放值。
 
 ### 单指操作
 
@@ -302,4 +304,4 @@ struct TouchPadEventActualApplication {
 
 ![touchpad-pinch](figures/touchpad-pinch.png)
 
-在触控板上通过双指捏合，可以产生捏合缩放值上报，用于驱动[PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md)手势的触发。该缩放值表示一个相对缩放比例（scale），以双指开始捏合的那一刻为基准（此时scale为1.0）。当双指向外扩张时，scale从1.0逐渐增大；当双指向内合并时，scale从1.0逐渐减小。应用可通过[GestureEvent](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)的`scale`属性获取该值，用于实现图片、页面内容等对象的缩放交互。
+在触控板上通过双指捏合，可以产生捏合缩放值上报，用于触发[PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md)手势。该缩放值表示一个相对缩放比例（scale），以双指开始捏合的那一刻为基准（此时scale为1.0）。当双指向外扩张时，scale从1.0逐渐增大；当双指向内合并时，scale从1.0逐渐减小。应用可通过[GestureEvent](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)的`scale`属性获取该值，用于实现图片、页面内容等对象的缩放交互。
