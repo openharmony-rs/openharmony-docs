@@ -1,12 +1,11 @@
 # SMS Service Development
-
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
 <!--Owner: @shao-yikai-->
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f9a9b9785e9bcc5cb366299e64289f5600fae304 translatedAt=2026-08-14T10:11:28.905Z pushedAt=2026-08-16T01:50:38.861Z -->
+<!-- md-trans-meta sourceCommit=133940c4ea1c43a1a115d526053cf597c9e4d631 translatedAt=2026-11-26T02:49:01.644Z pushedAt=2026-11-26T02:54:16.624Z nl=1 -->
 
 ## When to Use
 
@@ -15,11 +14,8 @@ The Short Messaging Service (SMS) module provides basic SMS management functions
 Typical development scenarios are as follows:
 
 - On web pages:
-
   - The **Send Message** button is displayed when user opens a web page. After the user taps the button, the SMS application is started, and the user can then enter the recipient number and SMS message content to send an SMS message.
-
 - On applications:
-
   - When a user taps the **Send Message** button on a mobile application, the application calls the system function to start the SMS application, and the user can then enter the recipient number and SMS message content to send an SMS message.
 
 ## Basic Concepts
@@ -27,19 +23,16 @@ Typical development scenarios are as follows:
 - SMS
 
   A service capable of SMS message storage and forwarding. It enables mobile phones to send and receive SMS messages. The content of the SMS message can be text, digits, or binary non-text data. The information about the sender is stored in the Short Message Service Center (SMSC) and forwarded to the recipient.
-
 - SMSC
-
+  
   An entity that relays, stores, or forwards SMS messages between base stations and mobile devices. It uses the GSM 03.40 protocol for sending SMS messages to or receiving SMS messages from mobile phones.
-
 - PDU
-
+  
   Protocol data unit, which uses the following encoding schemes to send and receive SMS messages: 7-bit, 8-bit, and UCS-2. 7-bit encoding is used to send common ASCII characters, 8-bit encoding to send data messages, and UCS-2 encoding to send Unicode characters.
 
 ## Constraints
 
 1. The SMS service is available only on standard-system devices.
-
 2. An available SIM card must be present on the device, and the permission to send SMS messages must be granted.
 
 ## Available APIs
@@ -62,13 +55,10 @@ Typical development scenarios are as follows:
 1. Declare the required permission:
 
    - To send SMS messages, call the **sendShortMessage** API and declare the **ohos.permission.SEND\_MESSAGES** permission. The permission is of the **system\_basic** level.
-
    - To set the SMSC address, call the **setSmscAddr** API and declare the **ohos.permission.SET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
-
    - To obtain the SMSC address, call the **getSmscAddr** API and declare the **ohos.permission.GET\_TELEPHONY\_STATE** permission. The permission is of the **system\_basic** level.
-
+  
      Before requesting the permission, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
-
 2. Import the required modules.
 
 3. Send an SMS message.
@@ -108,13 +98,12 @@ import { common, Want } from '@kit.AbilityKit';
 
 const MMS_BUNDLE_NAME = "com.ohos.mms";
 const MMS_ABILITY_NAME = "com.ohos.mms.MainAbility";
-const MMS_ENTITIES = "entity.system.home";
 
 export class Contact {
     contactsName: string;
-    telephone: number;
+    telephone: string;
 
-    constructor(contactsName: string, telephone: number) {
+    constructor(contactsName: string, telephone: string) {
         this.contactsName = contactsName;
         this.telephone = telephone;
     }
@@ -127,11 +116,11 @@ struct JumpMessage {
 
     startMMSAbilityExplicit() {
         // Complete the contact and number. You can query the contact name based on the phone number. Therefore, the phone number is mainly used in this mode.
-        let params: Array<Object> = [new Contact("Tom", 133XXXXXXXX)];
+        let params: Array<Object> = [new Contact('Zhang San', '13333333333')];
 
         let want: Want = {
-            bundleName: "com.ohos.mms",
-            abilityName: "com.ohos.mms.MainAbility",
+            bundleName: MMS_BUNDLE_NAME,
+            abilityName: MMS_ABILITY_NAME,
             parameters: {
                 contactObjects: JSON.stringify(params), // After obfuscation is enabled, contactsName and telephone may be obfuscated. It is recommended that you preserve the property names in -keep-property-name.
                 pageFlag: "conversation",
@@ -150,7 +139,7 @@ struct JumpMessage {
     build() {
         Row() {
             Column() {
-                Button ('Send SMS')
+                Button('Send SMS')
                   .onClick(() => {
                       this.startMMSAbilityExplicit();
                   })
@@ -178,11 +167,8 @@ sms:106XXXXXXXXXX?body=SMS message content
 ```
 
 + `sms:`: SMS scheme, which is mandatory.
-
 + `106XXXXXXXXXX`: recipient number, which is optional. If there are multiple addresses, separate them with commas (,).
-
 + `?`: start declaration character of the SMS message content. This parameter is mandatory if the SMS message content is present.
-
 + `body-value`: SMS message content, which is optional.
 
 ### Developing a Caller Application
@@ -211,7 +197,7 @@ struct Index {
 
   build() {
     Column() {
-      Button ('Send SMS')
+      Button('Send SMS')
         .onClick(() => {
           let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
           let exampleUrl = "sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9";
