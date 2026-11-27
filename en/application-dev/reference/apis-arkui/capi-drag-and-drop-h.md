@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c119a607299eb566bbbf97b6a6dc6968be6b0ef2 translatedAt=2026-11-23T07:10:29.666Z pushedAt=2026-11-25T07:21:35.686Z nl=1 -->
+<!-- md-trans-meta sourceCommit=c119a607299eb566bbbf97b6a6dc6968be6b0ef2 translatedAt=2026-11-23T07:10:29.666Z pushedAt=2026-11-27T04:03:33.575Z nl=1 -->
 
 ## Overview
 
@@ -2065,3 +2065,4 @@ Checks whether the current drag operation is a cross-device drag.
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
