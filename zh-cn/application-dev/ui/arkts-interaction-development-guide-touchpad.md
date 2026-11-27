@@ -65,15 +65,15 @@ UIContext.enableTouchPadEvent(true);
 import { UIContext, display } from '@kit.ArkUI';
 
 /**
- * TouchPadEvent 实际应用页：
- * childStack 基于触控板双指手势实现跟随：双指滑动实现平移，双指张开/捏合实现缩放，抬手后动画还原。
- * positionX/Y 为触控板百分比坐标，取值范围为[0, 1]。
+ * TouchPadEvent实际应用页：
+ * childStack基于触控板双指手势实现跟随：双指滑动实现平移，双指张开/捏合实现缩放，抬手后动画还原。
+ * positionX/Y为触控板百分比坐标，取值范围为[0, 1]。
  */
 @Entry
 @Component
 struct TouchPadEventActualApplication {
   @State info: string = '操作提示\n' +
-    '1. 点击 Enable 后，触控板双指悬于粉色区域操作\n' +
+    '1. 点击Enable后，触控板双指悬于粉色区域操作\n' +
     '2. 双指滑动：组件跟随平移\n' +
     '3. 双指张开/捏合：组件放大/缩小\n' +
     '4. 抬手：组件动画还原至原位';
@@ -88,7 +88,7 @@ struct TouchPadEventActualApplication {
   private lastDist: number = 0;
   private hasBaseline: boolean = false;
   // 增益：触控板百分比坐标[0, 1]位移转换为屏幕vp，满幅滑动约移动一个屏幕宽/高
-  private gainX: number = 360; // 默认值，aboutToAppear 中按屏幕实际尺寸重算
+  private gainX: number = 360; // 默认值，aboutToAppear中按屏幕实际尺寸重算
   private gainY: number = 780;
   // 手势诊断信息
   @State gestureDebug: string = '等待触控板事件…';
@@ -110,9 +110,9 @@ struct TouchPadEventActualApplication {
     }
   }
 
-  // 坐标转换：positionX/Y 规范取值范围为[0, 1]；
+  // 坐标转换：positionX/Y规范取值范围为[0, 1]；
   // 若上报值为百分比(0~100)或毫米坐标(>100)，
-  // 通过 deviceWidth/deviceHeight(触控板物理尺寸mm)折算回[0, 1]
+  // 通过deviceWidth/deviceHeight(触控板物理尺寸mm)折算回[0, 1]
   static toFraction(v: number, deviceSpanMm: number): number {
     if (v >= 0 && v <= 1) {
       return v; // 规范路径：[0, 1]
@@ -186,7 +186,7 @@ struct TouchPadEventActualApplication {
     const midY = (ay + by) / 2;
     const dist = Math.sqrt((ax - bx) * (ax - bx) + (ay - by) * (ay - by));
     if (this.hasBaseline && this.lastDist > 0) {
-      // 双指滑动：中点位移 -> 平移（[0, 1]差值 × 屏幕增益换算为 vp）
+      // 双指滑动：中点位移 -> 平移（[0, 1]差值 × 屏幕增益换算为vp）
       const dx = midX - this.lastMidX;
       const dy = midY - this.lastMidY;
       this.moveX += dx * this.gainX;
