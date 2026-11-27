@@ -633,6 +633,9 @@ registerKeyObserver(context: Context, name: string, domainName: string, observer
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
+**需要权限**：    
+- 监听USER_SECURITY域需要权限ohos.permission.MANAGE_SECURE_SETTINGS，该权限仅系统应用可用。
+
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                                                                                |
@@ -672,6 +675,9 @@ unregisterKeyObserver(context: Context, name: string, domainName: string): boole
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
+
+**需要权限**：    
+- 监听USER_SECURITY域需要权限ohos.permission.MANAGE_SECURE_SETTINGS，该权限仅系统应用可用。
 
 **参数**：
 
