@@ -20,7 +20,7 @@
 
 ## 触控板原始事件
 
-触控板原始事件由用户在触控板上触摸时触发，可用于获取触控板上触点的百分比位置、触点阶段、触控板设备尺寸等信息。使用触控板原始事件前，需要先使能上报，再在组件上注册监听。
+触控板原始事件由用户在触控板上触摸时触发，可用于获取触控板上触点的百分比位置、触点阶段、触控板设备尺寸等信息。使用触控板原始事件，需在应用级使能上报，并在组件上注册监听，使能与注册的先后顺序不影响事件接收。
 
 ### 使能触控板原始事件
 
@@ -38,7 +38,7 @@ UIContext.enableTouchPadEvent(true);
 
 ### 监听触控板原始事件
 
-使能后，可在组件上通过[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接口注册回调，接收[TouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadevent)对象。该对象的关键属性如下：
+可在组件上通过[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接口注册回调，接收[TouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadevent)对象。该对象的关键属性如下：
 
 - **contacts**：当前事件上报的全部触点数组。触点数量取决于硬件能力，使用前需校验是否为空。
 - **changedContact**：本次发生变化并触发事件的触点，使用前需校验是否为空。
