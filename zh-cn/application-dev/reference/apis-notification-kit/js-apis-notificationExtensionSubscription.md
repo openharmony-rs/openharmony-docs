@@ -367,7 +367,7 @@ getUserGrantedBundleIcon(bundleName: string): Promise\<image.PixelMap\>
 | 801      | Capability not supported. |
 | 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Failed to obtain or decode the application icon. |
 | 1600003  | Failed to connect to the service. |
-| 1600022  | The specified bundle is invalid. Possible causes: 1. The application is not in the list. 2. The application is disabled. |
+| 1600022  | The specified bundle is invalid. Possible cause: 1. The application is not in the list. 2. The application is disabled. |
 
 **示例：**
 
