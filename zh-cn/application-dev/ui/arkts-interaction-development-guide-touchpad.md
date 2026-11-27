@@ -270,10 +270,10 @@ struct TouchPadEventActualApplication {
 
 上面的示例中，点击Enable按钮调用UIContext.enableTouchPadEvent(true)启用上报，在childStack组件上绑定onTouchPadEvent接收事件。回调处理流程如下：
 
-1. 阶段判断：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)动画将组件还原至原位与初始缩放。
-2. 双指识别：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板百分比坐标，取值范围[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
-3. 平移跟随：计算两指中点相对上一帧的位移（`midX/midY`差值），乘以屏幕增益后累加到组件的`translate`偏移量上，实现双指滑动驱动组件平移。
-4. 缩放跟随：计算两指间距相对上一帧的比例（`ratio`），累乘到组件的`scale`上，实现双指张开放大、捏合缩小，并限制缩放范围在[0.3, 3.0]。
+1. 阶段判断：通过event.changedContact.phase区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)动画将组件还原至原位与初始缩放。
+2. 双指识别：通过event.contacts获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板百分比坐标，取值范围[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
+3. 平移跟随：计算两指中点相对上一帧的位移（`midX/midY`差值），乘以屏幕增益后累加到组件的translate偏移量上，实现双指滑动驱动组件平移。
+4. 缩放跟随：计算两指间距相对上一帧的比例（ratio），累乘到组件的scale上，实现双指张开放大、捏合缩小，并限制缩放范围在[0.3, 3.0]。
 5. 防跳变：在触点集发生增减（BEGIN）或触点数少于2时，清除基线并等待下次双指重新建立，避免手势跳变。
 
 ## 触控板生成事件
