@@ -268,7 +268,7 @@ struct TouchPadEventActualApplication {
 }
 ```
 
-上面的示例中，点击 Enable 按钮调用UIContext.enableTouchPadEvent(true)启用上报，在 childStack 组件上绑定onTouchPadEvent接收事件。回调处理流程如下：
+上面的示例中，点击Enable按钮调用UIContext.enableTouchPadEvent(true)启用上报，在childStack组件上绑定onTouchPadEvent接收事件。回调处理流程如下：
 
 1. 阶段判断：通过`event.changedContact.phase`区分手势阶段。当阶段为END或CANCEL（抬手）时，通过[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)动画将组件还原至原位与初始缩放。
 2. 双指识别：通过`event.contacts`获取全部触点，当触点数大于等于2时，取前两个触点计算手势。`positionX/positionY`为触控板百分比坐标，取值范围[0, 1]，示例中按屏幕实际尺寸换算为vp位移。
