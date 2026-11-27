@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8ed03ffe90bb2522b0df0e44ac852e6dea1907ea translatedAt=2026-08-25T13:11:47.965Z pushedAt=2026-08-26T04:02:55.225Z -->
+<!-- md-trans-meta sourceCommit=acc6fcbe5da6efbfc119eaf0b709cc4007100e03 translatedAt=2026-11-16T06:10:33.711Z pushedAt=2026-11-16T06:31:14.304Z nl=1 -->
 
 The Font class describes the attributes used for font drawing (such as size, typeface, weight, skew, and scale), and supports capabilities such as text measurement, glyph conversion, path outline retrieval, and theme font following.
 
@@ -489,6 +489,40 @@ let font = new drawing.Font();
 font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
 ```
 
+## measureTextWithFallback
+
+measureTextWithFallback(text: string, encoding: TextEncoding): number
+
+Measures the width of text, with fallback font support. If the typeface of the current font does not support certain characters in the text (no corresponding glyphs), the system automatically searches for a fallback font that supports the character and uses the fallback font to measure the character width. If no fallback font is found, the typeface of the current font is still used for measurement.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Text content to be measured, which will be parsed according to the encoding format specified by encoding. |
+| encoding | [TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | Yes | Encoding format of the text. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| number | Returns the width of the text including fallback fonts, as a floating-point number. The unit is physical pixel px. |
+
+**Example**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let font = new drawing.Font();
+font.measureTextWithFallback("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
+```
+
 ## measureSingleCharacter<sup>12+</sup>
 
 measureSingleCharacter(text: string): number
@@ -527,7 +561,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     const font = new drawing.Font();
     font.setSize(20);
     let width = font.measureSingleCharacter("H");
@@ -986,7 +1019,7 @@ Obtains the width of each glyph in an array.
 
 | Type  | Description            |
 | ------ | ---------------- |
-| Array\<number> | Array of glyph widths, as floating-point numbers. The unit is physical pixel px. |
+| Array\<number> | Returns an array of glyph widths, as floating-point numbers. The unit is physical pixel px. Returns undefined if the acquisition fails. |
 
 **Error codes**
 
@@ -1052,6 +1085,67 @@ let glyphs : number[] = font.textToGlyphs(text);
 console.info("drawing text toglyphs OnTestFunction num =  " + glyphs.length );
 ```
 
+## textToGlyphsWithFallback
+
+textToGlyphsWithFallback(text: string, glyphCount?: number): Array\<TypefaceFallbackInfo>
+
+Converts text to glyph indices, with font fallback support. If the current font does not support certain characters in the text (no corresponding glyphs), the system automatically searches the system fonts for a fallback font that supports those characters and uses the fallback font's glyph indices. If no fallback font is found, the notdef placeholder glyph of the current font is still used.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Text string to be converted to glyph indices. |
+| glyphCount | number | No | Number of characters represented by the text. This parameter is an integer. When passed in, it must be equal to the value obtained by [countText](#counttext12). When not passed in, it defaults to the number of characters represented by text. If a floating-point number is passed in, it is rounded down. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Array\<[TypefaceFallbackInfo](arkts-apis-graphics-drawing-i.md#typefacefallbackinfo)> | Returns an array of font fallback information. Each element in the array contains an array of glyph indexes that use the same fallback font. |
+
+**Error codes**
+
+For details about the following error code, see [Drawing and Display Error Codes](errorcode-drawing.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**Example**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font : drawing.Font = new drawing.Font();
+    let text : string = 'hello world';
+    let infos : Array<drawing.TypefaceFallbackInfo> = font.textToGlyphsWithFallback(text);
+    console.info("drawing textToGlyphsWithFallback infos length = " + infos.length );
+    let offset = 0;
+    for (let run of infos) {
+      font.setTypeface(run.typeface);
+      let positions: Array<common2D.Point> = [];
+      let glyphWidths = font.getWidths(run.glyphIds);
+      for (let j = 0; j < run.glyphIds.length; j++) {
+        positions.push({x: offset, y: 80});
+        offset += glyphWidths[j];
+      }
+      canvas.drawGlyphs(run.glyphIds, 0, positions, 0, run.glyphIds.length, font);
+    }
+  }
+}
+```
+
 ## getBounds<sup>18+</sup>
 
 getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
@@ -1084,7 +1178,7 @@ let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontBounds: Array<common2D.Rect> = font.getBounds(glyphs);
 for (let index = 0; index < fontBounds.length; index++) {
-  console.info("get fontWidths[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
+  console.info("get fontBounds[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
     " right:", fontBounds[index].right, " bottom:", fontBounds[index].bottom);
 }
 ```
@@ -1212,7 +1306,7 @@ Obtains the outline path of a glyph.
 
 | Type  | Description            |
 | ------ | ---------------- |
-| [Path](arkts-apis-graphics-drawing-Path.md) | Outline path of the glyph.|
+| [Path](arkts-apis-graphics-drawing-Path.md) | Returns the path outline of the specified glyph. Returns undefined if the acquisition fails. |
 
 **Example**
 
@@ -1269,11 +1363,11 @@ font.setThemeFontFollowed(true);
 console.info("font is theme font followed: " + font.isThemeFontFollowed());
 ```
 
-## isThemeFontFollowed()<sup>15+</sup>
+## isThemeFontFollowed<sup>15+</sup>
 
 isThemeFontFollowed(): boolean
 
-Checks whether the font follows the theme font. By default, the font follows the theme font.
+Checks whether the font follows the theme font. By default, the theme font is not followed.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

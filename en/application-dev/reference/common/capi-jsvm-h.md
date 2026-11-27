@@ -1,8 +1,8 @@
 # jsvm.h
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=3c322d4980db4ff806888b92ca96f9d6f31f2934 translatedAt=2026-11-04T04:24:58.920Z pushedAt=2026-11-04T08:04:44.671Z nl=1 -->

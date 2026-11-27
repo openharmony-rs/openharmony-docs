@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=32467fa6c828652fb26112a4bff11116959f3e32 translatedAt=2026-10-10T09:34:16.199Z pushedAt=2026-10-12T03:32:50.188Z -->
+<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-23T07:28:34.597Z pushedAt=2026-11-25T04:07:30.002Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -37,13 +37,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Foreground color, in 0xARGB format. For example, **0xFFFF0000** indicates red. Default Value: The color follows the theme color. |
+| .value[0].u32 | Foreground color, in 0xARGB format. For example, **0xFFFF0000** indicates red. Default value: The color follows the theme color. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Foreground color, in 0xARGB format.|
+| .value[0].u32 | Foreground color, in 0xARGB format. |
 
 ## NODE_LOADING_PROGRESS_ENABLE_LOADING
 
@@ -139,7 +139,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Color, in 0xARGB format.|
+| .value[0].u32 | Color, in 0xARGB format. |
 
 ## NODE_PROGRESS_TYPE
 

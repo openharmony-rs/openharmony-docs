@@ -1,11 +1,11 @@
 # Print_DefaultValue
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T11:41:08.460Z pushedAt=2026-10-10T03:41:40.671Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-23T01:05:41.655Z pushedAt=2026-11-23T10:55:17.879Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_DefaultValue
@@ -30,7 +30,7 @@ Enumerates default attributes of a printer, including the color mode, duplex mod
 | [Print_ColorMode](capi-ohprint-h.md#print_colormode) defaultColorMode | Default color mode, which indicates the color mode of the print output. The value is determined by the color modes supported by the printer. |
 | [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) defaultDuplexMode | Default duplex mode, which indicates whether printing is single-sided or double-sided. The value is determined by the duplex modes supported by the printer. |
 | char *defaultMediaType | Default media type, which indicates the type of media (such as ordinary paper or glossy paper) used for printing. The value is determined by the media types supported by the printer. |
-| char *defaultPageSizeId | Default paper size ID, which indicates the paper size ID (such as **A4** or **Letter**) used for printing. The value is determined by the paper sizes supported by the printer. |
+| char *defaultPageSizeId | Default page size ID, such as **A4** or **Letter**. It is used for printing. The value is determined by the page sizes supported by the printer. |
 | [Print_Margin](capi-oh-print-print-margin.md) defaultMargin | Default margin, which indicates the margin settings of the printed page. The value is determined by the margins supported by the printer. |
 | char *defaultPaperSource | Default paper source, which indicates the paper source (such as automatic paper feeder or manual feeding) used for printing. The value is determined by the paper sources supported by the printer. |
 | [Print_Quality](capi-ohprint-h.md#print_quality) defaultPrintQuality | Default print quality, which indicates the quality level of the print. The value is determined by the print quality supported by the printer. |

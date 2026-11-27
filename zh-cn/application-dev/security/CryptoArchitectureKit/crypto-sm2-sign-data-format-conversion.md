@@ -35,6 +35,7 @@ function testSm2SignDataRsToDer() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`ecc failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -61,6 +62,7 @@ function testSm2SignDataDerToRs() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`ecc failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

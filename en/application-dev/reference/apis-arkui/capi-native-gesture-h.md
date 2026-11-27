@@ -1,11 +1,11 @@
 # native_gesture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=177cf08b41b42ef2a0a1e73e96f1ea583ec5a150 translatedAt=2026-09-23T09:31:17.116Z pushedAt=2026-10-09T02:19:43.617Z -->
+<!-- md-trans-meta sourceCommit=3154b41880c24a2e0e8ff034976e8ae6dbdcefa1 translatedAt=2026-11-23T07:12:41.333Z pushedAt=2026-11-25T02:57:18.713Z nl=1 -->
 
 ## Overview
 
@@ -28,7 +28,7 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 | Name                                                                                           | typedef Keyword                      | Description               |
 |-----------------------------------------------------------------------------------------------|----------------------------------|-------------------|
 | [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)               | ArkUI_NativeGestureAPI_1         | Provides APIs for creating tap, long press, swipe, pinch, rotation, and fling gestures as well as gesture groups, and supports binding gestures, removing gestures, and setting gesture interruption callbacks and parallel inner gesture callbacks. This struct is used to configure and manage touch-based interaction recognition and event handling of components. When using this struct to configure gestures, you are advised to follow the workflow: call APIs such as [createTapGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createtapgesture) to create a gesture recognizer, call [setGestureEventTarget](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureeventtarget) to register a gesture event callback, and then call [addGestureToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#addgesturetonode) to bind the gesture recognizer to a component node. When the gesture is no longer needed, call [removeGestureFromNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#removegesturefromnode) to remove the gesture recognizer from the node, and then call [dispose](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#dispose) to release the gesture resource. For gesture competition scenarios, you can configure the response policy through the gesture priority, blocking mode, or [setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureinterruptertonode). For scenarios where internal component gestures and external custom gestures need to be recognized in parallel, call [setInnerGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto) to set a parallel inner gesture event callback. |
-| [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)               | -                                | Defines a set of gesture APIs, extending [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) with the capability to set a gesture interruption event callback, which is used to continue or interrupt a gesture based on the callback result during gesture processing. You can access basic gesture APIs through [gestureApi1](capi-arkui-nativemodule-arkui-nativegestureapi-2.md#member-variables) and use [setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-2.md#setgestureinterruptertonode) to implement complete gesture interruption handling. |
+| [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)               | ArkUI_NativeGestureAPI_2 | Defines a set of gesture APIs, extending [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) with the capability to set a gesture interruption event callback, which is used to continue or interrupt a gesture based on the callback result during gesture processing. You can access basic gesture APIs through [gestureApi1](capi-arkui-nativemodule-arkui-nativegestureapi-2.md#member-variables) and use [setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-2.md#setgestureinterruptertonode) to implement complete gesture interruption handling. |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)                 | ArkUI_GestureRecognizer          | Defines a gesture component instance object, which is used to represent a gesture recognizer object in ArkUI gesture recognition APIs, helping you understand and use the component gesture recognition capability. |
 | [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)           | ArkUI_GestureInterruptInfo       | Defines gesture interruption event information, which is used to represent information related to interrupt handling in gesture interruption scenarios. For APIs related to gesture interruption information, see [native_gesture.h](capi-native-gesture-h.md). |
 | [ArkUI_GestureEvent](capi-arkui-nativemodule-arkui-gestureevent.md)                           | ArkUI_GestureEvent               | Defines the object of gesture event data, which is used to carry and transfer gesture event-related data during gesture event processing. It supports obtaining key information such as the gesture event type, coordinates, and timestamp. This struct is applicable to scenarios that require processing touch gesture interactions, such as tap, long-pressing, drag, and pinch gesture recognition and response. You can obtain event information through related gesture event APIs. |
@@ -80,8 +80,8 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 | [float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getvelocity) | - | Obtains the average velocity of all fingers used in the swipe gesture.|
 | [float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_rotationgesture_getangle) | - | Obtains the angle information of a rotation gesture.|
 | [float OH_ArkUI_PinchGesture_GetScale(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getscale) | - | Obtains the scale ratio of a pinch gesture.|
-| [float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcenterx) | - | Obtains the x-coordinate of the center of the pinch gesture, in vp, relative to the upper left corner of the current component.|
-| [float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcentery) | - | Obtains the y-coordinate of the center of the pinch gesture, in vp, relative to the upper left corner of the current component.|
+| [float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcenterx) | - | Obtains the x-coordinate of the center of the pinch gesture, relative to the upper left corner of the current component.|
+| [float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getcentery) | - | Obtains the y-coordinate of the center of the pinch gesture, relative to the upper left corner of the current component.|
 | [ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)](#oh_arkui_gestureevent_getnode) | - | Obtains the ArkUI component to which the gesture is bound. |
 | [int32_t OH_ArkUI_GetResponseRecognizersFromInterruptInfo(const ArkUI_GestureInterruptInfo* event,ArkUI_GestureRecognizerHandleArray* responseChain, int32_t* count)](#oh_arkui_getresponserecognizersfrominterruptinfo) | - | Obtains information about a gesture response chain.|
 | [int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer, bool enabled)](#oh_arkui_setgesturerecognizerenabled) | - | Sets the enabled state of a gesture recognizer. This API is applicable to scenarios where gesture recognition needs to be dynamically enabled or disabled based on the application's interaction state, for example, disabling the swipe gesture during page scrolling animation to avoid accidental touches, or disabling the drag gesture in editing mode. |
@@ -108,7 +108,7 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 | [int32_t OH_ArkUI_GetGestureParam_speed(ArkUI_GestureRecognizer* recognizer, double* speed)](#oh_arkui_getgestureparam_speed) | - | Obtains the minimum swipe speed recognized by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, int* duration)](#oh_arkui_getgestureparam_duration) | - | Obtains the minimum duration required to trigger a long press by a gesture recognizer.|
 | [int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, double* angle)](#oh_arkui_getgestureparam_angle) | - | Obtains the minimum angle change required for a rotation gesture to be recognized by a gesture recognizer.|
-| [int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* recognizer, double* distanceThreshold)](#oh_arkui_getgestureparam_distancethreshold) | - | Obtains the movement threshold distance for gesture recognition.|
+| [int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* recognizer, double* distanceThreshold)](#oh_arkui_getgestureparam_distancethreshold) | - | Obtains the movement distance threshold for gesture recognition.|
 | [ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* recognizer, int size, int* toolTypeArray, double* distanceArray)](#oh_arkui_pangesture_setdistancemap) | - | Sets the minimum sliding distance threshold mapping for gesture recognition.|
 | [ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognizer* recognizer, int toolType, double* distance)](#oh_arkui_pangesture_getdistancebytooltype) | - | Obtains the movement distance threshold for gesture recognition for a specific input device type. This API only returns values for device types previously set using **OH_ArkUI_PanGesture_SetDistanceMap**. The default pan gesture activation threshold can be obtained using **UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN**. This API returns no value for unconfigured device types.|
 | [ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (\*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData))](#oh_arkui_settouchtestdonecallback) | - | Registers a callback that is executed after all gesture recognizers are collected. When the user begins touching the screen, the system performs hit testing and collects gesture recognizers based on the touch location. Subsequently, before processing any move events, the component can use this API to determine the gesture recognizers that will participate in and compete for recognition.|
@@ -766,7 +766,7 @@ Obtains the angle information of the swipe gesture, that is, the angle between t
 
 | Type| Description|
 | -- | -- |
-| float | Angle of the fling gesture, that is, the angle between the instantaneous direction of finger swipe and the positive horizontal direction, in deg. |
+| float | Angle of the swipe gesture, that is, the angle between the instantaneous direction of finger swipe and the positive horizontal direction, in deg. |
 
 ### OH_ArkUI_SwipeGesture_GetVelocity()
 
@@ -792,7 +792,7 @@ Obtains the average velocity of all fingers used in the swipe gesture.
 
 | Type| Description|
 | -- | -- |
-| float | Average velocity of all fingers used in the fling gesture, in px/s. |
+| float | Average velocity of all fingers used in the swipe gesture, in px/s. |
 
 ### OH_ArkUI_RotationGesture_GetAngle()
 
@@ -855,7 +855,7 @@ float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)
 **Description**
 
 
-Obtains the x-coordinate of the center of the pinch gesture, in vp, relative to the upper left corner of the current component.
+Obtains the x-coordinate of the center of the pinch gesture, relative to the upper left corner of the current component.
 
 **Since**: 12
 
@@ -881,7 +881,7 @@ float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)
 **Description**
 
 
-Obtains the y-coordinate of the center of the pinch gesture, in vp, relative to the upper left corner of the current component.
+Obtains the y-coordinate of the center of the pinch gesture, relative to the upper left corner of the current component.
 
 **Since**: 12
 
@@ -1609,7 +1609,7 @@ int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* reco
 **Description**
 
 
-Obtains the movement threshold distance for gesture recognition.
+Obtains the movement distance threshold for gesture recognition.
 
 **Since**: 18
 

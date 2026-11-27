@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=283b3e9b73539c5e233a0e04cf1ddde271f24877 translatedAt=2026-09-23T09:18:28.180Z pushedAt=2026-09-23T10:39:41.830Z -->
+<!-- md-trans-meta sourceCommit=1134d090ecd87d8de20dd233977fc855b7db7eaf translatedAt=2026-11-23T07:10:33.257Z pushedAt=2026-11-25T02:48:49.035Z nl=1 -->
 
 ## Overview
 
@@ -32,9 +32,7 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a **DrawableDescriptor** object.|
 | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | - | Defines an **OH_PixelmapNative** object on the native side using Image Kit.|
 | [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines the pointer to an **OH_PixelmapNative** object.|
-| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | Defines an ArkUI native component instance object, used by the **ArkUI_NodeHandle** pointer to identify and pass component instances in native APIs.<br>**Since:** 22|
-| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component instance object, used to identify and pass component instances in ArkUI native APIs, such as creating, mounting, removing, or destroying component nodes.<br>**Since:** 22|
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the DrawableDescriptor animation controller object.<br>**Since**: 22|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the **DrawableDescriptor** animation controller object.<br>**Since**: 22|
 
 ### Enums
 
@@ -375,7 +373,7 @@ Sets the duration for each frame in a DrawableDescriptor animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to a **DrawableDescriptor** object.|
-| uint32_t* durations | Array of the playback durations for each frame in the animation, in ms.<br>If this parameter is not set, the playback follows the total duration. This parameter takes precedence over [OH_ArkUI_DrawableDescriptor_SetAnimationDuration](#oh_arkui_drawabledescriptor_setanimationduration). That is, if both **OH_ArkUI_DrawableDescriptor_SetAnimationDuration** and **OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations** are set, **OH_ArkUI_DrawableDescriptor_SetAnimationDuration** does not take effect.<br>The array size must match the number of frames in the PixelMap image array.<br>Valid range for each frame's playback duration: [0, +∞). Default value: evenly distributed total duration.|
+| uint32_t* durations | Pointer to the array of the playback durations for each frame in the animation, in ms.<br>If this parameter is not set, the playback follows the total duration. This parameter takes precedence over [OH_ArkUI_DrawableDescriptor_SetAnimationDuration](#oh_arkui_drawabledescriptor_setanimationduration). That is, if both **OH_ArkUI_DrawableDescriptor_SetAnimationDuration** and **OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations** are set, **OH_ArkUI_DrawableDescriptor_SetAnimationDuration** does not take effect.<br>The array size must match the number of frames in the PixelMap image array.<br>Valid range for each frame's playback duration: [0, +∞). Default value: evenly distributed total duration.|
 | size_t size | Array size.|
 
 **Return value**
@@ -401,7 +399,7 @@ Obtains the duration of each frame in a DrawableDescriptor animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to a **DrawableDescriptor** object.|
-| uint32_t* durations | Array of the playback durations for each frame in the animation, in ms.|
+| uint32_t* durations | Pointer to the array of the playback durations for each frame in the animation.|
 | size_t* size | Array size.|
 
 **Return value**

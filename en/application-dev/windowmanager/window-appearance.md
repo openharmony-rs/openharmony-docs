@@ -6,7 +6,7 @@
 <!--Designer: @shinmy; @jingbotao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0f81f77662b418fdb2ccd9cc974a26cc411c9cef translatedAt=2026-11-05T10:50:45.566Z pushedAt=2026-11-06T01:41:28.703Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0afe452e603bfead1a3f4dee1688f24b1fb6467f translatedAt=2026-11-16T09:27:05.339Z pushedAt=2026-11-16T11:06:50.229Z nl=1 -->
 
 ## When to Use
 
@@ -288,7 +288,7 @@ You can choose to set the background color of the app content area or the window
 
 ![backgroundColor](figures/backgroundColor.gif)
 
-The sample code is as follows:
+Here, [setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9) is used as an example to set the window content area background color:
 
 <!--@[backgroundColor_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/backgroundColor/entry/src/main/ets/pages/Index.ets) -->
 

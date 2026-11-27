@@ -1,12 +1,11 @@
 # @ohos.util (util)
-
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=314415969ba967fe32041b2e695bd9c6c74bcafd translatedAt=2026-08-25T13:15:21.509Z pushedAt=2026-08-26T11:12:59.132Z -->
+<!-- md-trans-meta sourceCommit=5328fe9d7aa9348c95725ba51d89ba4ad07c13d5 translatedAt=2026-11-16T06:01:12.405Z pushedAt=2026-11-16T06:31:14.286Z nl=1 -->
 
 This module mainly provides common utility functions, implementing string encoding and decoding ([TextEncoder](#textencoder), [TextDecoder](#textdecoder)), rational number operations ([RationalNumber<sup>8+</sup>](#rationalnumber8)), buffer management ([LRUCache<sup>9+</sup>](#lrucache9)), range checking ([ScopeHelper<sup>9+</sup>](#scopehelper9)), Base64 encoding and decoding ([Base64Helper<sup>9+</sup>](#base64helper9)), built-in object type checking ([types<sup>8+</sup>](#types8)), method instrumentation and replacement ([Aspect<sup>11+</sup>](#aspect11)), virtual machine debugging capabilities ([ArkTSVM<sup>23+</sup>](#arktsvm23)), binary stream decoding ([StringDecoder<sup>12+</sup>](#stringdecoder12)), and heap memory threshold configuration ([HeapMemoryThreshold<sup>24+</sup>](#heapmemorythreshold24)). In addition, it provides utility functions such as obtaining the hash value of an object ([util.getHash<sup>12+</sup>](#utilgethash12)) and obtaining the main thread stack trace information ([util.getMainThreadStackTrace<sup>20+</sup>](#utilgetmainthreadstacktrace20)).
 
@@ -14,12 +13,12 @@ This module mainly provides common utility functions, implementing string encodi
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+
 ## Modules to Import
 
 ```ts
 import { util } from '@kit.ArkTS';
 ```
-
 ## util.format<sup>9+</sup>
 
 format(format: string,  ...args: Object[]): string
@@ -223,7 +222,7 @@ async function fn(args: Array<string | number | Function>) {
 let cb = util.callbackWrapper(fn);
 let args: Array<string | number | Function> = ['hello world', 8]
 cb(args, (err : Object, ret : string) => {
-  if (err) throw new Error;
+  if (err) throw new Error();
   console.info(ret); // Output: hello world
 });
 ```
@@ -263,7 +262,7 @@ const addCall = util.promisify(util.callbackWrapper(fn));
     console.info(res);
     // Output: hello world
   } catch (err) {
-    console.info(err);
+    console.error(`Failed to call promisify. Code: ${err.code}, message: ${err.message}`);
   }
 })();
 ```
@@ -399,6 +398,7 @@ console.info(res);
 // Output: hello world!
 ```
 
+
 ## util.getErrorString<sup>(deprecated)</sup>
 
 getErrorString(errno: number): string
@@ -455,6 +455,7 @@ Receives a function that uses the error-first callback mode, that is, uses `(err
 | Type| Description|
 | -------- | -------- |
 | Object | Promise in the error-first style (that is, (err, value) => ... is called as the last parameter).|
+
 
 ## util.getHash<sup>12+</sup>
 
@@ -520,7 +521,6 @@ let stack = util.getMainThreadStackTrace();
 console.info(stack);
 // Obtain the stack trace information of the main thread.
 ```
-
 ## MultithreadingDetectionOptions
 
 MultithreadingDetectionOptions is an interface class used to configure the behavior parameters of the [ArkTSVM.setMultithreadingDetectionEnabled](#setmultithreadingdetectionenabled23) function.
@@ -1155,7 +1155,6 @@ let retStr = textDecoder.encoding;
 console.info('retStr = ' + retStr);
 // Output: retStr = utf-8
 ```
-
 ### create<sup>9+</sup>
 
 static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
@@ -1253,7 +1252,7 @@ console.info("retStr = " + retStr);
 // Output: retStr = abc
 let retJson = JSON.stringify(retStr)
 console.info("retJson = " + retJson);
-// Output result: retJson = ab/u0000c
+// Output result: retJson = "ab\u0000c"
 ```
 
 ### decodeWithStream<sup>(deprecated)</sup>
@@ -1402,6 +1401,7 @@ Encrypted information, including the number of read characters and the number of
 | read     | number  | Yes| No|Number of characters that have been read.|
 | written | number   | Yes|No|Number of bytes that have been written. |
 
+
 ## TextEncoder
 
 Provides APIs to encode strings into byte arrays. Multiple encoding formats are supported.
@@ -1417,6 +1417,7 @@ When **TextEncoder** is used for encoding, the number of bytes occupied by a cha
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | encoding | string | Yes| No|  Encoding format.<br>The following formats are supported: utf-8, gb2312, gb18030, ibm866, iso-8859-1, iso-8859-2, iso-8859-3, iso-8859-4, iso-8859-5, iso-8859-6, iso-8859-7, iso-8859-8, iso-8859-8-i, iso-8859-10, iso-8859-13, iso-8859-14, iso-8859-15, koi8-r, koi8-u, macintosh, windows-874, windows-1250, windows-1251, windows-1252, windows-1253, windows-1254, windows-1255, windows-1256, windows-1257, windows-1258, gbk, big5, euc-jp, iso-2022-jp, shift_jis, euc-kr, x-mac-cyrillic, utf-16be, and utf-16le.<br>The default value is **'utf-8'**.|
+
 
 ### constructor
 
@@ -1763,9 +1764,7 @@ let result = rationalNumber.valueOf();
 console.info("result = " + result);
 // Output: result = 0.5
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.valueOf();
@@ -1804,9 +1803,7 @@ let result = rationalNumber.equals(rational);
 console.info("result = " + result);
 // Output: result = false
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let rational = util.RationalNumber.createRationalFromString("3/4");
@@ -1874,9 +1871,7 @@ let result = rationalNumber.getNumerator();
 console.info("result = " + result);
 // Output: result = 1
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.getNumerator();
@@ -1908,9 +1903,7 @@ let result = rationalNumber.getDenominator();
 console.info("result = " + result);
 // Output: result = 2
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2)
 let result = rationalNumber.getDenominator();
@@ -1942,9 +1935,7 @@ let result = rationalNumber.isZero();
 console.info("result = " + result);
 // Output: result = false
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.isZero();
@@ -1976,9 +1967,7 @@ let result = rationalNumber.isNaN();
 console.info("result = " + result);
 // Output: result = false
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.isNaN();
@@ -2010,9 +1999,7 @@ let result = rationalNumber.isFinite();
 console.info("result = " + result);
 // Output: result = true
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.isFinite();
@@ -2044,9 +2031,7 @@ let result = rationalNumber.toString();
 console.info("result = " + result);
 // Output: result = 1/2
 ```
-
 You are advised to use the following code snippet for API version 9 and later versions:
-
 ```ts
 let rationalNumber = util.RationalNumber.parseRationalNumber(1,2);
 let result = rationalNumber.toString();
@@ -2138,6 +2123,8 @@ Obtains the greatest common divisor of two specified integers.
 | -------- | -------- |
 | number | Greatest common divisor obtained.|
 
+
+
 ## LRUCache<sup>9+</sup>
 
 Provides APIs to discard the least recently used data to make rooms for new elements when the cache is full. This class uses the Least Recently Used (LRU) algorithm, which believes that the recently used data may be accessed again in the near future and the least accessed data is the least valuable data and should be removed from the cache.
@@ -2184,6 +2171,7 @@ A constructor used to create a **LRUCache** instance. The default capacity of th
 ```ts
 let lruCache = new util.LRUCache<number, number>();
 ```
+
 
 ### updateCapacity<sup>9+</sup>
 
@@ -2853,7 +2841,7 @@ for (let value of pro) {
 // 3, 15
 ```
 
-## ScopeComparable<sup>8+</sup>
+## ScopeComparable<sup>7+</sup>
 
 The values of the **ScopeComparable** type are used to implement the **compareTo** method. Therefore, ensure that the input parameters are comparable.
 
@@ -2873,7 +2861,7 @@ Compares two values and returns a Boolean value.
 
 | Name| Type| Mandatory| Description          |
 | ------ | ---- | ---- | -------------- |
-| other  | [ScopeComparable](#scopecomparable8) | Yes | The other value to be compared with the current value.|
+| other  | [ScopeComparable](#scopecomparable7) | Yes  | Indicates the value to be compared. |
 
 **Return value**
 
@@ -2920,7 +2908,7 @@ Defines the type of values in a **Scope** object.
 | Type| Description|
 | -------- | -------- |
 | number | The value type is a number.|
-| [ScopeComparable](#scopecomparable8) | The value type is ScopeComparable.|
+| [ScopeComparable](#scopecomparable7) | Indicates that the value type is ScopeComparable. |
 
 ## ScopeHelper<sup>9+</sup>
 
@@ -3608,6 +3596,7 @@ Encodes the input content into a Uint8Array object.
   // Output: result = 99,122,69,122
   ```
 
+
 ### encodeToStringSync<sup>9+</sup>
 
 encodeToStringSync(src: Uint8Array, options?: Type): string
@@ -3667,8 +3656,8 @@ Performs Base64 encoding on the input Uint8Array byte array and returns a string
   /*
   Output result: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
    */
-  
-  // MIME_URL_SAFE encoding
+
+  // BASIC_URL_SAFE encoding
   let base64Helper = new util.Base64Helper();
   let array =
     new Uint8Array([77, 97, 110, 105, 115, 100, 105, 115, 116, 105, 110, 103, 117, 105, 115, 104, 101, 100, 110, 111, 116,
@@ -3737,6 +3726,7 @@ Decodes a string into a Uint8Array object. This API returns the result synchrono
    */
   ```
 
+
 ### encode<sup>9+</sup>
 
 encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
@@ -3770,6 +3760,7 @@ Encodes the input content into a Uint8Array object. This API uses a promise to r
     // Output: 99,122,69,122
   })
   ```
+
 
 ### encodeToString<sup>9+</sup>
 
@@ -3810,6 +3801,7 @@ Encodes the input parameters asynchronously and outputs the corresponding text. 
   })
   ```
 
+
 ### decode<sup>9+</sup>
 
 decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
@@ -3842,7 +3834,7 @@ Decodes the input parameters asynchronously and outputs the corresponding Uint8A
     console.info(val.toString());
     /*
     Output: 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-    */
+     */
   })
   ```
 
@@ -3918,7 +3910,7 @@ Ends the decoding process and returns any remaining input stored in the internal
 
 | Name| Type      | Mandatory| Description               |
 | ------ | ---------- | ---- | ------------------- |
-| chunk  | string \| Uint8Array | No   | The last portion of data to be decoded. Pass this parameter when there is remaining data to be processed together at the end of decoding. If not passed, it defaults to undefined, meaning only the decoding result of the incomplete byte sequence stored in the internal buffer is returned, and no new data is processed. The string to be decoded. Defaults to undefined. |
+| chunk  | string \| Uint8Array | No   | The last part of data to decode, defaults to undefined. Pass in this parameter when there is remaining data that needs to be processed together when decoding ends; when not passed in, it defaults to undefined, that is, only the decode result of the incomplete byte sequence stored in the internal buffer is returned, and no new data is processed. |
 
 **Return value**
 
@@ -3945,12 +3937,14 @@ Enumerates the Base64 encoding formats.
 
 **System capability**: SystemCapability.Utils.Lang
 
+
 | Name  |Value| Description              |
 | ----- |---| ----------------- |
 | BASIC | 0 | Indicates the BASIC encoding format. **Atomic service API:** Since API version 11, this API is supported in atomic services.|
 | MIME  | 1 | Indicates the MIME encoding format. **Atomic service API:** Since API version 11, this API is supported in atomic services.|
 | BASIC_URL_SAFE<sup>12+</sup> | 2 | Indicates the BASIC_URL_SAFE encoding format.<br/>This enum is supported since API version 12. **Atomic service API:** Since API version 12, this API is supported in atomic services.|
 | MIME_URL_SAFE<sup>12+</sup> | 3 | Indicates the MIME_URL_SAFE encoding format.<br/>This enum is supported since API version 12. **Atomic service API:** Since API version 12, this API is supported in atomic services. |
+
 
 ## types<sup>8+</sup>
 
@@ -3971,6 +3965,7 @@ Constructor of Types, which creates a types instance for built-in object type ch
   ```ts
   let type = new util.types();
   ```
+
 
 ### isAnyArrayBuffer<sup>8+</sup>
 
@@ -4002,6 +3997,7 @@ Checks whether the value is of the ArrayBuffer or SharedArrayBuffer type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isArrayBufferView<sup>8+</sup>
 
@@ -4035,6 +4031,7 @@ Checks whether the value is of the ArrayBufferView type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isArgumentsObject<sup>8+</sup>
 
@@ -4070,6 +4067,7 @@ Checks whether the value is an **arguments** object.
   // Output: result = true
   ```
 
+
 ### isArrayBuffer<sup>8+</sup>
 
 isArrayBuffer(value: Object): boolean
@@ -4100,6 +4098,7 @@ Checks whether the value is of the ArrayBuffer type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isAsyncFunction<sup>8+</sup>
 
@@ -4139,14 +4138,12 @@ Checks whether the value is an asynchronous function.
 > This API cannot effectively determine an async member function in a Sendable class. There is no alternative.
 
   <!--code_no_check-->
-
   ```ts
   // /entry/src/main/ets/pages/test.ts
   export async function* asyncGeneratorFunc() {}
   ```
 
   <!--code_no_check-->
-
   ```ts
   import { asyncGeneratorFunc } from './test'
 
@@ -4169,6 +4166,7 @@ Checks whether the value is an asynchronous function.
   console.info("result = " + result2);
   // Output: result = false
   ```
+
 
 ### isBooleanObject<sup>(deprecated)</sup>
 
@@ -4205,6 +4203,7 @@ Checks whether the value is of the Boolean type.
   // Output: result = true
   ```
 
+
 ### isBoxedPrimitive<sup>(deprecated)</sup>
 
 isBoxedPrimitive(value: Object): boolean
@@ -4240,6 +4239,7 @@ Checks whether the value is of the Boolean, Number, String, or Symbol type.
   // Output: result = true
   ```
 
+
 ### isDataView<sup>8+</sup>
 
 isDataView(value: Object): boolean
@@ -4272,6 +4272,7 @@ Checks whether the value is of the DataView type.
   // Output: result = true
   ```
 
+
 ### isDate<sup>8+</sup>
 
 isDate(value: Object): boolean
@@ -4302,6 +4303,7 @@ Checks whether the value is of the Date type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isExternal<sup>8+</sup>
 
@@ -4360,7 +4362,6 @@ Checks whether the value is of the native external type.
   ```
 
   <!--code_no_check-->
-
   ```ts
   import testNapi from 'libentry.so';
 
@@ -4374,6 +4375,7 @@ Checks whether the value is of the native external type.
   // Output: result = true
   // Output: result01 = false
   ```
+
 
 ### isFloat32Array<sup>8+</sup>
 
@@ -4406,6 +4408,7 @@ Checks whether the value is of the Float32Array type.
   // Output: result = true
   ```
 
+
 ### isFloat64Array<sup>8+</sup>
 
 isFloat64Array(value: Object): boolean
@@ -4437,6 +4440,7 @@ Checks whether the value is of the Float64Array type.
   // Output: result = true
   ```
 
+
 ### isGeneratorFunction<sup>8+</sup>
 
 isGeneratorFunction(value: Object): boolean
@@ -4460,16 +4464,13 @@ Checks whether the value is a generator function.
 | boolean | Check result. The value **true** is returned if the value is a generator function; otherwise, **false** is returned.|
 
 **Example**
-
 <!--code_no_check-->
-
   ```ts
   // /entry/src/main/ets/pages/test.ts
   export function* foo() {}
   ```
 
   <!--code_no_check-->
-
   ```ts
   import { foo } from './test'
 
@@ -4484,14 +4485,12 @@ Checks whether the value is a generator function.
 > This API cannot effectively determine an AsyncGenerator Function. It is recommended to obtain the `constructor.name` property of the function and compare it with `'AsyncGeneratorFunction'` instead.
 
   <!--code_no_check-->
-
   ```ts
   // /entry/src/main/ets/pages/test.ts
   export async function* asyncGeneratorFunc() {}
   ```
 
   <!--code_no_check-->
-
   ```ts
   import { asyncGeneratorFunc } from './test'
 
@@ -4504,6 +4503,7 @@ Checks whether the value is a generator function.
     (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
   // Output: asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
   ```
+
 
 ### isGeneratorObject<sup>8+</sup>
 
@@ -4528,9 +4528,7 @@ Checks whether the value is a generator object.
 | boolean | Check result. The value **true** is returned if the value is a generator object; otherwise, **false** is returned.|
 
 **Example**
-
 <!--code_no_check-->
-
   ```ts
   // /entry/src/main/ets/pages/test.ts
   function* foo() {}
@@ -4538,7 +4536,6 @@ Checks whether the value is a generator object.
   ```
 
   <!--code_no_check-->
-
   ```ts
   import { generator } from './test'
 
@@ -4547,6 +4544,7 @@ Checks whether the value is a generator object.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isInt8Array<sup>8+</sup>
 
@@ -4579,6 +4577,7 @@ Checks whether the value is of the Int8Array type.
   // Output: result = true
   ```
 
+
 ### isInt16Array<sup>8+</sup>
 
 isInt16Array(value: Object): boolean
@@ -4609,6 +4608,7 @@ Checks whether the value is of the Int16Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isInt32Array<sup>8+</sup>
 
@@ -4641,6 +4641,7 @@ Checks whether the value is of the Int32Array type.
   // Output: result = true
   ```
 
+
 ### isMap<sup>8+</sup>
 
 isMap(value: Object): boolean
@@ -4672,6 +4673,7 @@ Checks whether the value is of the Map type.
   // Output: result = true
   ```
 
+
 ### isMapIterator<sup>8+</sup>
 
 isMapIterator(value: Object): boolean
@@ -4683,6 +4685,7 @@ Checks whether the value is of the MapIterator type.
 **System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
+
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
@@ -4703,6 +4706,7 @@ Checks whether the value is of the MapIterator type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isNativeError<sup>8+</sup>
 
@@ -4734,6 +4738,7 @@ Checks whether the value is of the Error type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isNumberObject<sup>(deprecated)</sup>
 
@@ -4770,6 +4775,7 @@ Checks whether the value is of the Number type.
   // Output: result = true
   ```
 
+
 ### isPromise<sup>8+</sup>
 
 isPromise(value: Object): boolean
@@ -4800,6 +4806,7 @@ Checks whether the value is a promise.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isProxy<sup>8+</sup>
 
@@ -4836,6 +4843,7 @@ Checks whether the value is a proxy.
   // Output: result = true
   ```
 
+
 ### isRegExp<sup>8+</sup>
 
 isRegExp(value: Object): boolean
@@ -4866,6 +4874,7 @@ Checks whether the value is of the RegExp type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isSet<sup>8+</sup>
 
@@ -4899,6 +4908,7 @@ Checks whether the value is of the Set type.
   // Output: result = true
   ```
 
+
 ### isSetIterator<sup>8+</sup>
 
 isSetIterator(value: Object): boolean
@@ -4930,6 +4940,7 @@ Checks whether the value is of the SetIterator type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isStringObject<sup>(deprecated)</sup>
 
@@ -4966,6 +4977,7 @@ Checks whether the value is a string object.
   // Output: result = true
   ```
 
+
 ### isSymbolObject<sup>(deprecated)</sup>
 
 isSymbolObject(value: Object): boolean
@@ -4993,16 +5005,13 @@ Checks whether the value is a symbol object.
 | boolean | Returns true if the object is of the Symbol type; otherwise, returns false. |
 
 **Example**
-
 <!--code_no_check-->
-
   ```ts
   // /entry/src/main/ets/pages/test.ts
   export const symbols = Symbol('foo');
   ```
 
   <!--code_no_check-->
-
   ```ts
   import { symbols } from './test'
 
@@ -5011,6 +5020,7 @@ Checks whether the value is a symbol object.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isTypedArray<sup>8+</sup>
 
@@ -5045,6 +5055,7 @@ Checks whether the value is of the TypedArray type.
   // Output: result = true
   ```
 
+
 ### isUint8Array<sup>8+</sup>
 
 isUint8Array(value: Object): boolean
@@ -5075,6 +5086,7 @@ Checks whether the value is of the Uint8Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isUint8ClampedArray<sup>8+</sup>
 
@@ -5107,6 +5119,7 @@ Checks whether the value is of the Uint8ClampedArray type.
   // Output: result = true
   ```
 
+
 ### isUint16Array<sup>8+</sup>
 
 isUint16Array(value: Object): boolean
@@ -5138,6 +5151,7 @@ Checks whether the value is of the Uint16Array type.
   // Output: result = true
   ```
 
+
 ### isUint32Array<sup>8+</sup>
 
 isUint32Array(value: Object): boolean
@@ -5168,6 +5182,7 @@ Checks whether the value is of the Uint32Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isWeakMap<sup>8+</sup>
 
@@ -5201,6 +5216,7 @@ Checks whether the value is of the WeakMap type.
   // Output: result = true
   ```
 
+
 ### isWeakSet<sup>8+</sup>
 
 isWeakSet(value: Object): boolean
@@ -5231,6 +5247,7 @@ Checks whether the value is of the WeakSet type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isBigInt64Array<sup>8+</sup>
 
@@ -5263,6 +5280,7 @@ Checks whether the value is of the BigInt64Array type.
   // Output: result = true
   ```
 
+
 ### isBigUint64Array<sup>8+</sup>
 
 isBigUint64Array(value: Object): boolean
@@ -5293,6 +5311,7 @@ Checks whether the value is of the BigUint64Array type.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isModuleNamespaceObject<sup>8+</sup>
 
@@ -5326,7 +5345,6 @@ Checks whether the value is a module namespace object.
   ```
 
   <!--code_no_check-->
-
   ```ts
   import * as nameSpace from './test';
 
@@ -5335,6 +5353,7 @@ Checks whether the value is a module namespace object.
   console.info("result = " + result);
   // Output: result = true
   ```
+
 
 ### isSharedArrayBuffer<sup>8+</sup>
 
@@ -5444,9 +5463,7 @@ const device = new DeviceManageViewModel("test");
 | length | number | Yes| No| Total number of values in this cache.|
 
 **Example**
-
   <!--code_no_check-->
-
   ```ts
   let pro : util.LruBuffer<number,number>= new util.LruBuffer();
   pro.put(2,10);
@@ -5967,6 +5984,7 @@ contains(key: K): boolean
 
 Checks whether this cache contains the specified key.
 
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.contains<sup>9+</sup>](#contains9) instead.
@@ -6094,6 +6112,7 @@ A constructor used to create a **Scope** object with the specified upper and low
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [ScopeHelper.constructor<sup>9+</sup>](#constructor9-4) instead.
 
+
 **System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
@@ -6104,7 +6123,6 @@ A constructor used to create a **Scope** object with the specified upper and low
 | upperObj | [ScopeType](#scopetype8) | Yes| Upper limit of the **Scope** object.|
 
 **Example**
-
 ```ts
 class Temperature implements util.ScopeComparable {
   private readonly _temp: number;
@@ -6684,6 +6702,7 @@ console.info("result = " + result);
 
 ### clamp<sup>(deprecated)</sup>
 
+
 clamp(value: ScopeType): ScopeType
 
 Limits a value to this **Scope**.
@@ -6738,6 +6757,7 @@ console.info("result = " + result);
 // Output: result = 35
 ```
 
+
 ## Base64<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -6759,7 +6779,7 @@ A constructor used to create a **Base64** object.
 **Example**
 
   ```ts
-  let base64 = new  util.Base64();
+  let base64 = new util.Base64();
   ```
 
 ### encodeSync<sup>(deprecated)</sup>
@@ -6935,6 +6955,7 @@ Encodes the input content into a string. This API uses a promise to return the r
   ```
 
 ### decode<sup>(deprecated)</sup>
+
 
 decode(src: Uint8Array | string): Promise&lt;Uint8Array&gt;
 

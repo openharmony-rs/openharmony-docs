@@ -1,16 +1,18 @@
 # @ohos.nearlink.manager (Basic NearLink Management Capability)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=aa9545020692baaf11004432a3eb3c2a031071bf translatedAt=2026-08-17T08:49:12.741Z pushedAt=2026-08-18T12:03:24.668Z -->
+<!-- md-trans-meta sourceCommit=37ca604503d451441f6924864481deef5fcc486f translatedAt=2026-11-23T02:23:45.984Z pushedAt=2026-11-24T11:52:33.884Z nl=1 -->
+
 
 This module provides basic NearLink management capabilities, including checking whether NearLink is supported, obtaining local device information, managing the NearLink status, and subscribing to status change events.
 
+
 **Since**: 26.0.0
+
 
 ## Modules to Import
 
@@ -18,11 +20,14 @@ This module provides basic NearLink management capabilities, including checking 
 import { manager } from '@kit.ConnectivityKit';
 ```
 
+
 ## manager.getState
 
 getState(): NearlinkState
 
 Queries the NearLink status.
+
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -42,11 +47,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -78,7 +82,6 @@ Checks whether the current device supports NearLink.
 | boolean | Whether the current device supports NearLink. The value **true** indicates that the device supports NearLink, and **false** indicates the opposite. |
 
 **Example** 
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -95,11 +98,14 @@ try {
 }
 ```
 
+
 ## manager.getLocalName
 
 getLocalName(): string
 
 Queries the NearLink name on the local device.
+
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -121,13 +127,12 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -140,11 +145,14 @@ try {
 }
 ```
 
+
 ## manager.getPairedDevices
 
 getPairedDevices(): string[]
 
 Obtains the devices paired with the current device.
+
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -166,13 +174,12 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -189,11 +196,14 @@ try {
 }
 ```
 
+
 ## manager.onStateChange
 
 onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
 Subscribes to the NearLink status change event. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -213,11 +223,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -240,11 +249,14 @@ try {
 }
 ```
 
+
 ## manager.offStateChange
 
 offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
 Unsubscribes from the NearLink status change event. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -264,11 +276,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

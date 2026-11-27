@@ -5,17 +5,17 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:28:46.037Z pushedAt=2026-10-10T07:16:32.167Z -->
+<!-- md-trans-meta sourceCommit=1f5acf4351f1f66ef4d92a490ec72aca25222f34 translatedAt=2026-11-23T02:31:15.067Z pushedAt=2026-11-24T11:59:14.037Z nl=1 -->
 
 
-This module provides the SparkLink Service Access Protocol (SSAP) connection capability, including creating and connecting to a client, calling server methods, reading and writing descriptors, and subscribing to event notifications.
+This module provides the SSAP (SparkLink Service Access Protocol) connection capability, including system APIs for calling server methods, reading and writing descriptors, subscribing to event notifications, and setting property indications.
 
 
 **Since**: 26.0.0
 
 > **NOTE**
 >
-> The APIs provided by this module are system APIs.
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.nearlink.ssap (NearLink SSAP Connection Capability)](js-apis-nearlink-ssap.md).
 
 
 ## Modules to Import
@@ -75,8 +75,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100030 | The connection is not established. |
 | 36100043 | Invalid UUID in property. |
@@ -144,8 +144,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -219,8 +219,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in descriptor. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -300,8 +300,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in descriptor. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -432,15 +432,14 @@ Represents the NearLink service.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API:** This is a system API.
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| serviceUuid | string | No | No | NearLink service UUID, which is a string of 36 characters. The value consists of 32 hexadecimal digits and four hyphens (-), for example, **FFFFFFFF-1234-5678-ABCD-000000001234**, which indicates a 128-bit ID. The value cannot be set to a standard NearLink UUID. |
-| properties | [Property](js-apis-nearlink-ssap.md#property)[] | No | No | Properties of a service. |
-| methods | [Method](#method)[] | No | Yes | Methods of a service. If this field is not specified, the service does not provide any method. |
-| events | [Event](#event)[] | No | Yes | Events of a service. If this field is not specified, the service does not provide any event. |
-
+| methods | [Method](#method)[] | No | Yes | Methods of a service. If not configured, the service does not provide any method. |
+| events | [Event](#event)[] | No | Yes | Events of a service. If not configured, the service does not provide any event. |
 
 ## Method
 

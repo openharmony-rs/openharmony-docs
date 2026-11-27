@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=02b3587e911190b13ac6bc78e61c77d58159e033 translatedAt=2026-09-02T02:16:36.558Z pushedAt=2026-09-02T07:05:54.530Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-16T04:30:29.806Z pushedAt=2026-11-16T06:31:14.075Z nl=1 -->
 
 ## Two Printing Methods Provided by OpenHarmony
 
@@ -218,7 +218,7 @@ Encapsulate the C/C++ APIs.
 <!-- @[print_native_startprint1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// WriteFile is implemented by the developer, and the example is only a simple file copy. Based on the print parameters modified by the current user, if the print file needs to be updated, it can be rewritten into the fd provided by the system.
+// WriteFile is implemented by the developer. This example only performs simple file copying. Based on the print parameters modified by the current user, if the print file needs to be updated, rewrite it into the fd provided by the system.
 static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs)
 {
     // A valid path within the sandbox.
@@ -263,7 +263,7 @@ static void OnStartLayoutWriteCb(const char *jobId,
 // Callback function for print status changes corresponding to the job ID.
 static void OnJobStateChangedCb(const char *jobId, uint32_t state)
 {
-    // state values: 0 - job preparing, 1 - job queued, 2 - job printing, 3 - job paused due to exception, 4 - job finished, 100 - unknown job exception.
+    // state value: 0 - task preparing, 1 - task queuing, 2 - task printing, 3 - task paused due to exception, 4 - task finished, 100 - task unknown exception
     LOGI("do something with OnJobStateChangedCb, jobId: %{public}s, jobState: %{public}u", jobId, state);
 }
 ```
@@ -278,7 +278,7 @@ static napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info
     void *context = nullptr;
     size_t argc = 1;
     napi_value argv[1] = {nullptr};
-    // Assume that both napi_get_cb_info and napi_unwrap return normally.
+    // Assume napi_get_cb_info and napi_unwrap both return normally.
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     napi_unwrap(env, argv[0], &context);
 
@@ -369,7 +369,7 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
         return n_ret;
     }
     std::vector<uint32_t> fdList = { static_cast<uint32_t>(fd) };
-    // This example uses the preference printerInfo->defaultValue as the print job parameter to submit the job.
+    // Use the preference printerInfo->defaultValue as the print task parameter to dispatch the task.
     Print_PrintJob printJob{ "jobName", fdList.data(), static_cast<uint32_t>(fdList.size()), printerInfo->printerId,
                              1, printerInfo->defaultValue.defaultPaperSource,
                              printerInfo->defaultValue.defaultMediaType, printerInfo->defaultValue.defaultPageSizeId,

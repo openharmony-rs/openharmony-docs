@@ -80,7 +80,7 @@ struct WebComponent {
 >
 > Cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync()，也不会将session cookie写入磁盘）。
 >
-> 从API版本26.0.1开始，调用[setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22)设置为true后，[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)的接口支持在异步线程使用；设置为false或不调用该接口时，[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)的接口不支持在异步线程使用，仅能在UI线程使用。
+> 从API版本26.0.1开始，调用[setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22)设置为true后，[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)的接口支持在非UI线程使用；设置为false或不调用该接口时，[WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md)的接口不支持在非UI线程使用，仅能在UI线程使用。
 
 ## 缓存与存储管理
 
@@ -123,7 +123,7 @@ struct WebComponent {
 
 
 为了获取最新资源，开发者可以通过[removeCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removecache)接口清除已经缓存的资源，示例代码如下：
-<!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->
+<!-- @[clear_the_cached_resources_that_have_been_stored](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -143,7 +143,7 @@ struct WebComponent {
             // 设置为true时同时清除rom和ram中的缓存，设置为false时只清除ram中的缓存
             this.controller.removeCache(true);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         });
       Web({ src: 'www.example.com', controller: this.controller })

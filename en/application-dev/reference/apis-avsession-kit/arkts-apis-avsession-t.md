@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b1fd8b3f51834f9eb9230d7ab9fdd9c5dc437803 translatedAt=2026-11-18T03:20:25.575Z pushedAt=2026-11-19T11:31:39.552Z nl=1 -->
 
 > **NOTE**
 >
@@ -67,13 +68,13 @@ Defines the commands that can be sent by a cast controller.
 
 type ExtraInfo = {[key: string]: Object;} 
 
-Defines the custom media packet set by the provider.
+Defines a custom media data packet object set by the media provider. Starting from API version 26.0.1, in the cockpit cold start scenario, it is used to pass cold start extension information.
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-|{[key: string]: Object;} | **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all available remote devices.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
+|{[key: string]: Object;} | **key** is the remote distributed event type. The currently supported event types are as follows:<br>**AUDIO_GET_VOLUME**: Gets the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: Gets all available devices on the remote device.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: Gets the actual sound output device on the remote device.<br>The media provider returns the corresponding media data packet object based on different remote distributed event types.<br>Since API version 26.0.1, in the cockpit cold start scenario, **ExtraInfo** supports the following fields:<br>**controlCommand**: Control command, including: **play**: Play. **playNext**: Next. **playPrevious**: Previous.<br>**isPlayList**: Whether to use the **PlayMusicList** intent to implement playback. **1**: yes, other values: no. |
 
 ## KeyRequestCallback<sup>12+</sup>
 
@@ -175,3 +176,20 @@ Defines a callback type that takes two parameters.
 |-------|----| ---- |------|
 | data1 | T  | Yes  | First data parameter received by the callback function. The specific type and meaning are defined by the caller.|
 | data2 | G  | Yes  | Second data parameter received by the callback function. The specific type and meaning are defined by the caller.|
+
+## EventProcess
+
+type EventProcess = (event: string, args: Record\<string, Object>) => void
+
+Defines a general function type for processing events and parameters.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
+| Name  | Type | Mandatory | Description  |
+|-------|----| ---- |------|
+| event | string  | Yes   | Request event. |
+| args | Record\<string, Object>  | Yes   | Parameters associated with the event. |

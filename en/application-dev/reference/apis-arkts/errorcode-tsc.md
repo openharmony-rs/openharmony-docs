@@ -1,23 +1,24 @@
-# TypeScript Compiler Error Codes
+# TSC Error Code Introduction
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @liyancheng-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @liyancheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-16T05:14:22.539Z pushedAt=2026-11-16T06:31:14.174Z nl=1 -->
 
-Error codes of TypeScript Compiler (TSC) start with '105' and serve as error indicators during the TSC compilation process. These error codes and their corresponding descriptions are shown in the editor, console, or log files.
+TSC (TypeScript Compiler) error codes start with `105` and are error prompts in the TSC compilation process. The error code and its corresponding error description are displayed in the editor, console, or log files.
 
 ## 10505001 TSC Native Errors
 
-TSC native errors, ending with '001', represent existing native error rules checked by TSC. Common causes of TSC native errors during compilation include: missing keywords or symbols, type mismatches in assignments, and undefined types or variables. These issues typically arise from not adhering to [language specifications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/introduction-to-arkts) when writing code. Developers can adjust the code based on the error descriptions.
+TSC Native errors: ending with `001`, these are the existing native error rules in TSC checking. In the TSC compilation process, common causes of TSC native errors include: missing keywords or symbols, multiple default exports, assignment type and receiving type mismatch, and missing interface declarations in js files. These issues are usually caused by code that does not follow the [ArkTS Language Specification](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/introduction-to-arkts). Developers can modify the code based on the error description.
 
 ### Missing Keywords or Symbols
 
 **Error Example Scenario**
 
 ```typescript
-declare type AAA = 'BBB;
+declare type Color = 'red;
 ```
 
 **Error Message**
@@ -30,14 +31,14 @@ The string literal is not correctly terminated at the expected position.
 
 **Possible Causes**
 
-The closing quote is missing.
+The string literal is not properly terminated at the expected position. Common causes include: a missing closing quote (single or double quote); mismatched quote types, for example starting with a single quote but ending with a double quote; and a quote character in the string that is the same as the delimiter but is not escaped.
 
 **Solution**
 
-Based on the error description, add the missing quotes to the code block. The updated code is as follows:
+To fix the unterminated string literal error, add the missing closing quote in the code block. The code after modification is as follows:
 
 ```typescript
-declare type AAA = 'BBB';
+declare type Color = 'red';
 ```
 
 ### Multiple Default Exports
@@ -45,8 +46,10 @@ declare type AAA = 'BBB';
 **Error Example Scenario**
 
 ```typescript
-export default A;
-export default B;
+let config = { key: 'value' };
+let logger = { log: () => {} };
+export default config;
+export default logger;
 ```
 
 **Error Message**
@@ -63,10 +66,10 @@ Multiple default exports are defined in the module.
 
 **Solution**
 
-Based on the error description, delete unnecessary default exports. The updated code is as follows:
+To fix the error of multiple default exports in a module, delete the redundant default export. The code after modification is as follows:
 
 ```typescript
-export default A;
+export default config;
 ```
 
 ### Type Mismatch in Assignments
@@ -74,9 +77,9 @@ export default A;
 **Error Example Scenario**
 
 ```typescript
-let a: number = 1;
-let b: string = '2';
-a = b;
+let count: number = 1;
+let amount: string = '2';
+count = amount;
 ```
 
 **Error Message**
@@ -93,54 +96,54 @@ Assigning a value of one type to a variable of a different type results in a typ
 
 **Solution**
 
-Based on the error description, ensure type consistency by making appropriate type assignment changes. The updated code is as follows:
+To fix the type mismatch error, ensure that the assignment type and the receiving type are consistent. For example, change the type of the variable `amount` from `string` to `number`. The code after modification is as follows:
 
 ```typescript
-let a: number = 1;
-let b: number = 2;
-a = b;
+let count: number = 1;
+let amount: number = 2;
+count = amount;
 ```
 
-### API Export Exception in JS Files
+### Missing Interface Declaration in js Files
 
 **Error Example Scenario**
 
 A JS file in the har1 package defines an exportable API:
-```
-// har1's src/main/ets/FileJs.js
+```javascript
+// har1 src/main/ets/FileJs.js
 export let fileJs = 1;
 ```
 The har2 package references this API from the har1 package as follows:
-```
+```typescript
 import { fileJs } from 'har1/src/main/ets/FileJs';
 ```
 
 **Error Message**
 
-Cannot find module XXX or its corresponding type declarations.
+Cannot find module ${moduleName} or its corresponding type declarations.
 
 **Description**
 
-When a bytecode HAR file contains a JS file, no declaration file will be generated during compilation, preventing other modules from importing it.
+The module or its corresponding type declaration file cannot be found, so the module cannot be imported normally.
 
 **Possible Causes**
 
-When the JS file is compiled, TSC does not generate a corresponding declaration file, which blocks imports from other modules.
+The [bytecode HAR](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415) contains js files, and TSC does not generate the corresponding .d.ts declaration files for js files during compilation. Therefore, external modules that depend on this module cannot resolve its type declarations, which triggers an import failure.
 
 **Solution**
 
-If a JS file in a HAR package needs to expose exports, follow these steps:
+If a js file in a HAR package needs to provide external export functionality, the developer must:
 
-1. Manually create a corresponding .d.ts declaration file in the same directory as the JS file, and compile and release it alongside the HAR package. Example:
-```
-// har1's src/main/ets/FileJs.d.ts
-export declare let fileJs: number;
-```
-2. Add an export statement to the **Index.ets** file at the root of the har1 package. Example:
-```
-export { fileJs } from './src/main/ets/FileJs';
-```
-3. The har2 package can then import the API from har1 as follows:
-```
-import { fileJs } from 'har1/src/main/ets/FileJs';
-```
+1. Manually write the corresponding .d.ts declaration file in the same directory as the js file, and compile and publish it together with the HAR package. Example:
+    ```typescript
+    // har1's src/main/ets/FileJs.d.ts
+    export declare let fileJs: number;
+    ```
+2. Add an export statement to the Index.ets file at the top level of the har1 package. Example:
+    ```typescript
+    export { fileJs } from './src/main/ets/FileJs';
+    ```
+3. Reference this interface from the har1 package in the har2 package. Example:
+    ```typescript
+    import { fileJs } from 'har1/src/main/ets/FileJs';
+    ```

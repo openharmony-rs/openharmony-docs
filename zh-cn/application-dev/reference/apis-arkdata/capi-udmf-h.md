@@ -2,7 +2,7 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
-<!--Designer: @junathuawei1; @zph000-->
+<!--Designer: @xuexuexuehc-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -2373,7 +2373,7 @@ OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | 如果操作成功，返回一个指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针，调用者拥有该实例的所有权。 |
+| [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | 如果操作成功，返回一个指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针，否则返回nullptr。调用者拥有该实例的所有权。 |
 
 ### OH_UDMF_DestroySummary()
 

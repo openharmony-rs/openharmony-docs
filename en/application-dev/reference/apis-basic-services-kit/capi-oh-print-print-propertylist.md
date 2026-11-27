@@ -1,11 +1,11 @@
 # Print_PropertyList
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f172f47675a58f89bb693013f28ad2465486c311 translatedAt=2026-10-09T11:44:59.182Z pushedAt=2026-10-10T03:46:28.744Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-23T01:14:00.418Z pushedAt=2026-11-23T10:58:05.387Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_PropertyList

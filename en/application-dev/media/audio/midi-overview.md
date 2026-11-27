@@ -2,8 +2,8 @@
 
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=3120d7a9c5ec148c9e44c3b33dc9c1416da673d1 translatedAt=2026-08-06T01:50:52.942Z pushedAt=2026-08-06T08:48:02.760Z -->

@@ -287,7 +287,7 @@ Gets the binary data of the corresponding media resource by specifying the resou
 | const char *resName | Input parameter. Resource name. |
 | uint8_t **resultValue | Output parameter. Pointer to the returned media data. The memory is allocated by malloc() and must be released by free() after use. |
 | uint64_t *resultLen | Output parameter. Length of the returned data, in bytes. |
-| uint32_t density | Input parameter. Screen density. For the value range, see ScreenDensity](capi-resmgr-common-h.md#screendensity. The value **0** indicates the current system screen density. If no specific density is required, set this parameter to 0. |
+| uint32_t density | Input parameter. Screen density. For the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity. The value **0** indicates the current system screen density. If no specific density is required, set this parameter to 0. |
 
 **Returns**
 

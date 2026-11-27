@@ -5,7 +5,8 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ef178f16f660427ccb002c86238fcc793129557d translatedAt=2026-10-12T09:39:25.439Z pushedAt=2026-10-13T03:40:14.101Z -->
+<!-- md-trans-meta sourceCommit=6e4b6a217c88301771a64a762b38c68c64d3b97e translatedAt=2026-11-16T08:07:18.951Z pushedAt=2026-11-16T09:06:35.243Z nl=1 -->
+
 
 Page routing refers to the redirection and data transfer between different pages in an application. It can be implemented through APIs of the **Router** module. Through different URLs, you can easily navigate users through pages. This document outlines the key features of the **Router** module, including: [Page Redirection](#page-redirection), [Page Return](#page-return), [Adding a Confirmation Dialog Box Before Page Return](#adding-a-confirmation-dialog-box-before-page-return), and [Named Route](#named-route).
 
@@ -416,9 +417,9 @@ struct MyComponent {
 <!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->   
 
 ``` TypeScript
- import { hilog } from '@kit.PerformanceAnalysisKit';
- const DOMAIN = 0xF811;
- const TAG = '[Sample_ArkTSRouter]';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 // Page.ets
 @Entry
 @Component

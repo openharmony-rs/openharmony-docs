@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @tom_guo-->
-<!--Designer: @trytocalm-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -18,7 +18,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
 ## 使用前提
 
-- 当前支持通过有线耳机及部分星闪耳机实现低时延返听功能。当连接有线耳机时，音频由耳机进行采集并播放；当连接星闪耳机时，音频由手机进行采集，耳机进行播放。
+- 当前支持通过部分有线耳机及部分星闪耳机实现低时延返听功能，耳机是否支持需连接设备后通过调用[getSupportedDevicePairs](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getsupporteddevicepairs)方法判断（API版本26.0.0之前通过[getStatus](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getstatus20)方法）。当连接有线耳机时，音频由耳机进行采集并播放；当连接星闪耳机时，音频由手机进行采集，耳机进行播放。
 
 - 低功耗渲染器和低时延渲染器在API version 20不能实现并发。若要启用渲染器，建议采用[STREAM_USAGE_UNKNOWN](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)；系统内决策采用[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)创建普通渲染器。
 

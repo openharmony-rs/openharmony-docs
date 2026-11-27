@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=22eba3117e42e0dfcdfd0d1c696d1ec6d288a98a translatedAt=2026-11-09T10:25:54.014Z pushedAt=2026-11-09T11:28:12.082Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ddf0648fd626d654edd412186b48ab04cc95ba6f translatedAt=2026-11-18T03:08:42.033Z pushedAt=2026-11-19T08:56:37.668Z nl=1 -->
 
 ## Overview
 
@@ -425,7 +425,7 @@ Enumerates the privacy types of an audio stream. The privacy type specifies whet
 | -- | -- |
 | AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0 | The audio stream can be recorded or screen-projected by other applications and is not privacy-related.|
 | AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1 | The audio stream cannot be recorded or screen-projected by other applications.|
-| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br>     For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, the [AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage) audio stream cannot be recorded or screen-projected by other applications. However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.<br>**Since**: 21|
+| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | The audio stream can be screen-projected and is privacy-related.<br>     For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, the [AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage) audio stream cannot be screen-projected. However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be screen-projected.<br>**Since:** 21 |
 
 ### OH_AudioData_Callback_Result
 

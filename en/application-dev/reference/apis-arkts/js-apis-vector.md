@@ -1,25 +1,26 @@
 # @ohos.util.Vector (Linear Container Vector)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=a211d88dec3940df73a753a1732c7250fbff3179 translatedAt=2026-11-16T06:02:33.121Z pushedAt=2026-11-16T06:31:14.296Z nl=1 -->
 
-Vector is a linear data structure that is implemented based on arrays. When the memory of a vector is used up, a larger contiguous memory area is automatically allocated, all the elements are copied to the new memory area, and the current memory area is reclaimed. Vector can be used to efficiently access elements.
+Vector is a linear data structure implemented based on arrays, which solves the data storage problem that requires dynamic capacity expansion and efficient random access. When the memory of Vector is exhausted, a larger contiguous memory area is automatically allocated, the original elements are copied to the new memory area, and the old memory area is released. Using Vector enables efficient and fast access to elements. Its 2x capacity expansion policy reduces frequent memory reallocation, and its rich operation interfaces provide more flexible data management capabilities.
 
 Both Vector and [ArrayList](js-apis-arraylist.md) are implemented based on arrays, but Vector provides more interfaces for operating the arrays. Both of them can dynamically adjust the capacity. Vector doubles the capacity each time, whereas ArrayList increases the capacity by 50%.
 
-**Recommended use case**: Use Vector when the data volume is large.
+**Recommended use cases:** When frequent random access to elements by index is required and the data volume is large, Vector is recommended for storing and accessing data.
 
-This topic uses the following to identify the use of generics:<br>
+Generics are used in this document, involving the following generic type parameter:<br>
 - T: Type
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with the superscript to indicate their earliest API version.
 >
-> - The APIs provided by this module are deprecated since API version 9. You are advised to use [@ohos.util.ArrayList](js-apis-arraylist.md).
+> Since API version 9, this API is no longer maintained. It is recommended that you use [ArrayList](js-apis-arraylist.md).
 
 ## Modules to Import
 
@@ -58,7 +59,7 @@ let vector : Vector<string | number | Array<number>> = new Vector();
 
 add(element: T): boolean
 
-Adds an element at the end of this Vector.
+Inserts an element at the end of Vector. After the insertion succeeds, the length of Vector increases by 1.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -66,7 +67,7 @@ Adds an element at the end of this Vector.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Added element. |
 
 **Return value**
 
@@ -77,24 +78,30 @@ Adds an element at the end of this Vector.
 **Example**
 
 ```ts
-class C1 {
+// Define the custom class PersonInfo.
+class PersonInfo {
   name: string = ""
   age: string = ""
 }
-let vector : Vector<string | number | C1 | Array<number>> = new Vector();
+// Create a Vector instance.
+let vector : Vector<string | number | PersonInfo | Array<number>> = new Vector();
+// Add a string element.
 let result = vector.add("a");
+// Add a number element.
 let result1 = vector.add(1);
-let b = [1, 2, 3];
-let result2 = vector.add(b);
-let c: C1 = {name : "Jack", age : "13"};
-let result3 = vector.add(c);
+let numArray = [1, 2, 3];
+// Add an array element.
+let result2 = vector.add(numArray);
+let personInfo: PersonInfo = {name : "Jack", age : "13"};
+// Add a custom class instance.
+let result3 = vector.add(personInfo);
 ```
 
 ### insert
 
 insert(element: T, index: number): void
 
-Inserts an element within the length range and moves its subsequent elements rightwards.
+Inserts an element at a specified position within the length range, and moves the elements after this position to the right.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -103,14 +110,18 @@ Inserts an element within the length range and moves its subsequent elements rig
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | element | T | Yes| Target element.|
-| index | number | Yes| Index of the position where the element is to be inserted.|
+| index | number | Yes | Position index of the element to be inserted. Value range: [0, length]. |
 
 **Example**
 
 ```ts
+// Create a Vector instance.
 let vector : Vector<string | number | Object | Array<number>> = new Vector();
+// Insert the string "A" at index 0.
 vector.insert("A", 0);
+// Insert the number 0 at index 1.
 vector.insert(0, 1);
+// Insert the boolean value true at index 2.
 vector.insert(true, 2);
 ```
 
@@ -137,9 +148,13 @@ Checks whether this Vector has the specified element.
 **Example**
 
 ```ts
+// Create a Vector instance.
 let vector : Vector<string> = new Vector();
+// Determine whether it contains "squirrel" before adding an element. Expected return: false.
 let result = vector.has("squirrel");
+// Add element "squirrel".
 vector.add("squirrel");
+// Determine whether it contains "squirrel" after adding an element. Expected return: true.
 let result1 = vector.has("squirrel");
 ```
 
@@ -147,7 +162,7 @@ let result1 = vector.has("squirrel");
 
 getIndexOf(element: T): number
 
-Obtains the index of the first occurrence of the specified element in this Vector.
+Returns the index of the first occurrence of the specified element. If the search fails, -1 is returned. Difference from [getLastIndexOf](#getlastindexof): getIndexOf returns the position of the first occurrence of the element, while getLastIndexOf returns the position of the last occurrence of the element.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -215,7 +230,7 @@ let result = vector.getLastIndexOf(2);
 
 removeByIndex(index: number): T
 
-Searches for an element based on its index, removes the element after returning it, and moves its subsequent elements leftwards.
+Finds the corresponding element by index and deletes it, moves the elements after this position to the left, and returns the deleted element. The value range of index is [0, length-1].
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -223,13 +238,13 @@ Searches for an element based on its index, removes the element after returning 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element.|
+| index | number | Yes | Position index of the element to be removed. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Element removed. If the Vector is empty, **undefined** is returned. If the index is out of range, an exception is thrown.|
+| T | Return the removed element. Return undefined when Vector is empty, and throw an exception when the index is out of bounds. |
 
 **Example**
 
@@ -247,7 +262,7 @@ let result = vector.removeByIndex(2);
 
 remove(element: T): boolean
 
-Removes the first occurrence of the specified element from this Vector.
+Deletes the first found specified element and moves the elements after it to the left.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -261,7 +276,7 @@ Removes the first occurrence of the specified element from this Vector.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the element is removed; otherwise, **false** is returned.|
+| boolean | Returns true if the deletion is successful, and false if the deletion fails. |
 
 **Example**
 
@@ -278,7 +293,7 @@ let result = vector.remove(2);
 
 removeByRange(fromIndex: number, toIndex: number): void
 
-Removes from this Vector all of the elements within a range, including the element at the start position but not that at the end position.
+Deletes elements from a range, including the start value but excluding the end value. After deletion, subsequent elements shift left, and the length of the Vector decreases accordingly.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -286,17 +301,19 @@ Removes from this Vector all of the elements within a range, including the eleme
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fromIndex | number | Yes| Index of the start position.|
-| toIndex | number | Yes| Index of the end position.|
+| fromIndex | number | Yes | Start index, including the element corresponding to this index. |
+| toIndex | number | Yes | End index, excluding the element corresponding to this index. |
 
 **Example**
 
 ```ts
+// Create a Vector instance and add element.
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// Delete elements between index 2 and 4 (include the start index 2, not include the end index 4).
 vector.removeByRange(2,4);
 ```
 
@@ -304,7 +321,7 @@ vector.removeByRange(2,4);
 
 replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => T, thisArg?: Object): void
 
-Replaces all elements in this Vector with new elements, and returns the new ones.
+Operates on the elements in the Vector through a callback function, replacing the original elements with the elements returned by the callback function.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -312,25 +329,27 @@ Replaces all elements in this Vector with new elements, and returns the new ones
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked for replacement.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function used to operate on the elements in Vector and replace the original elements with the operation results. |
+| thisArg | Object | No | Value used as this when callbackFn is called. Default value is the current instance object. |
 
-callbackFn
+callbackFn parameters
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | T | Yes| Value of the element that is currently traversed.|
-| index | number | No| Position index of the element that is currently traversed. The default value is **0**.|
-| vector | Vector&lt;T&gt; | No| Instance that calls the **replaceAllElements** API. The default value is this instance.|
+| index | number | No | Index value of the current iteration. |
+| vector | [Vector&lt;T&gt;](#vector) | No | Instance object that currently calls the replaceAllElements method. Default value is the current instance object. |
 
 **Example**
 
 ```ts
+// Create a Vector instance and add element
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// Perform a replace operation on each element in the Vector, and the callback function returns the replaced element
 vector.replaceAllElements((value : number) : number => {
   // Add the user operation logic based on the actual scenario.
   return value;
@@ -349,26 +368,28 @@ Uses a callback to traverse the elements in this Vector and obtain their positio
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked for replacement.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function used to iterate over each element in Vector. |
+| thisArg | Object | No | Value used as this when callbackFn is called. Default value is the current instance object. |
 
-callbackFn
+callbackFn parameters
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | T | Yes| Value of the element that is currently traversed.|
-| index | number | No| Position index of the element that is currently traversed. The default value is **0**.|
-| vector | Vector&lt;T&gt; | No| Instance that calls the **forEach** API. The default value is this instance.|
+| index | number | No | Index value of the current iteration. |
+| vector | [Vector&lt;T&gt;](#vector) | No | Instance object that currently calls the forEach method. Default value is the current instance object. |
 
 **Example**
 
 ```ts
+// Create a Vector instance and add elements.
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
-vector.forEach((value : number, index ?: number) : void => {
+// Traverse each element in the Vector, and print the element value and index.
+vector.forEach((value : number, index?: number) : void => {
   console.info("value:" + value, "index:" + index);
 });
 ```
@@ -377,7 +398,7 @@ vector.forEach((value : number, index ?: number) : void => {
 
 sort(comparator?: (firstValue: T, secondValue: T) => number): void
 
-Sorts elements in this Vector.
+Sorts the elements in the Vector. After sorting, the index positions of the elements change. Index values obtained before sorting through methods such as getIndexOf and getLastIndexOf are no longer valid and must be queried again.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -385,7 +406,7 @@ Sorts elements in this Vector.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | function | No| Callback invoked for sorting. The default value is this instance.|
+| comparator | function | No | Callback function. If this parameter is not passed, elements are sorted by the default sorting rule. |
 
 comparator
 
@@ -397,13 +418,17 @@ comparator
 **Example**
 
 ```ts
+// Create a Vector instance and add elements.
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// Sort in ascending order.
 vector.sort((a: number, b: number) => a - b);
+// Sort in descending order.
 vector.sort((a: number, b: number) => b - a);
+// Use the default sorting rule.
 vector.sort();
 ```
 
@@ -411,7 +436,7 @@ vector.sort();
 
 subVector(fromIndex: number, toIndex: number): Vector&lt;T&gt;
 
-Obtains elements within a range in this Vector, including the element at the start position but not that at the end position, and returns these elements as a new **Vector** instance.
+Intercepts a range of elements in the Vector by index and returns this Vector instance, including the start value but excluding the end value.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -419,18 +444,19 @@ Obtains elements within a range in this Vector, including the element at the sta
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fromIndex | number | Yes| Index of the start position.|
-| toIndex | number | Yes| Index of the end position.|
+| fromIndex | number | Yes | Start index. Value range: 0 ≤ fromIndex < length. |
+| toIndex | number | Yes | End index. Value range: 0 ≤ toIndex ≤ length, and toIndex must be greater than fromIndex. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Vector&lt;T&gt; | New **Vector** instance obtained.|
+| Vector&lt;T&gt; | Returns a Vector object instance containing elements from the start index to the end index (excluding the end index). |
 
 **Example**
 
 ```ts
+// Create a Vector instance and add element
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
@@ -438,7 +464,9 @@ vector.add(5);
 vector.add(4);
 vector.add(6);
 vector.add(8);
+// Extract elements between index 0 and 4 (include the start index 0, not include the end index 4, and toIndex is greater than fromIndex)
 let result = vector.subVector(0,4);
+// Extract elements between index 2 and 4 (include the start index 2, not include the end index 4)
 let result1 = vector.subVector(2,4);
 
 ```
@@ -474,7 +502,7 @@ Clones this Vector and returns a copy. The modification to the copy does not aff
 
 | Type| Description|
 | -------- | -------- |
-| Vector&lt;T&gt; | New **Vector** instance obtained.|
+| Vector&lt;T&gt; | Returns a cloned Vector object instance with the same content as the original instance. Modifying the cloned instance does not affect the original instance. |
 
 **Example**
 
@@ -524,7 +552,7 @@ Converts this Vector into an array.
 
 | Type| Description|
 | -------- | -------- |
-| Array&lt;T&gt; | Array obtained.|
+| Array&lt;T&gt; | Returns an array containing all elements in the Vector. |
 
 **Example**
 
@@ -549,7 +577,7 @@ Checks whether this Vector is empty (contains no elements).
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the Vector is empty; otherwise, **false** is returned.|
+| boolean | Return true when empty, and false when not empty. |
 
 **Example**
 
@@ -566,7 +594,7 @@ let result = vector.isEmpty();
 
 increaseCapacityTo(newCapacity: number): void
 
-Increases the capacity of this Vector.
+If the new capacity passed in is greater than or equal to the number of elements in the current Vector instance, the capacity is changed to the new capacity. If the new capacity passed in is less than the number of elements in the current Vector instance, no change is made.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -574,17 +602,20 @@ Increases the capacity of this Vector.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| newCapacity | number | Yes| New capacity.|
+| newCapacity | number | Yes | New capacity, which must be greater than or equal to the number of elements in the current Vector. The value does not take effect if it is less than the number of elements. |
 
 **Example**
 
 ```ts
+// Create a Vector instance and add element
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
+// Pass in capacity 2, which is less than the number of elements 4. The capacity is not changed.
 vector.increaseCapacityTo(2);
+// Pass in capacity 12, which is greater than the number of elements 4. The capacity changes to 12.
 vector.increaseCapacityTo(12);
 ```
 
@@ -592,7 +623,7 @@ vector.increaseCapacityTo(12);
 
 trimToCurrentLength(): void
 
-Trims the capacity of this Vector into its current length.
+Limits the capacity to the current length. This is suitable for releasing excess memory space after element addition is complete, optimizing memory usage.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -619,7 +650,7 @@ Uses commas (,) to concatenate elements in this Vector into a string.
 
 | Type| Description|
 | -------- | -------- |
-| string | String obtained.|
+| string | Returns a string formed by concatenating the elements in the Vector in order with ",". |
 
 **Example**
 
@@ -636,7 +667,7 @@ let result = vector.toString();
 
 copyToArray(array: Array&lt;T&gt;): void
 
-Copies elements in this Vector into an array to overwrite elements of the same position indexes.
+Copies the elements in the Vector instance to the corresponding positions in the specified array according to their index correspondence.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -644,13 +675,13 @@ Copies elements in this Vector into an array to overwrite elements of the same p
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| array | Array&lt;T&gt; | Yes| Array to which the elements in the Vector will be copied.|
+| array | Array&lt;T&gt; | Yes | Target array that receives the copied elements. |
 
 ### getFirstElement
 
 getFirstElement(): T
 
-Obtains the first element in this Vector.
+Obtains the first element in the instance. Returns undefined when the Vector is empty.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -658,7 +689,7 @@ Obtains the first element in this Vector.
 
 | Type| Description|
 | -------- | -------- |
-| T | The first element obtained.|
+| T | Returns the first element in the Vector instance; returns undefined if the Vector is empty. |
 
 **Example**
 
@@ -675,7 +706,7 @@ let result = vector.getFirstElement();
 
 getLastElement(): T
 
-Obtains the last element in this Vector.
+Obtains the last element in the Vector instance. Returns undefined when the Vector is empty.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -683,7 +714,7 @@ Obtains the last element in this Vector.
 
 | Type| Description|
 | -------- | -------- |
-| T | The last element obtained.|
+| T | Returns the last element in the Vector instance; if the Vector is empty, returns undefined. |
 
 **Example**
 
@@ -700,7 +731,7 @@ let result = vector.getLastElement();
 
 getLastIndexFrom(element: T, index: number): number
 
-Searches for an element backward from the specified position index and returns the position index of the element.
+Searches from the specified index toward lower indices and returns the index of the element.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -709,7 +740,7 @@ Searches for an element backward from the specified position index and returns t
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | element | T | Yes| Target element.|
-| index | number | Yes| Position index where the search starts.|
+| index | number | Yes | Search starts from the specified index. Value range: [0, length-1]. Returns -1 when out of range. |
 
 **Return value**
 
@@ -732,7 +763,7 @@ let result = vector.getLastIndexFrom(4,3);
 
 getIndexFrom(element: T, index: number): number
 
-Searches for an element forward from the specified position index and returns the position index of the element.
+Searches from the specified index toward higher indices and returns the index of the element.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -741,7 +772,7 @@ Searches for an element forward from the specified position index and returns th
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | element | T | Yes| Target element.|
-| index | number | Yes| Position index where the search starts.|
+| index | number | Yes | Starting position for forward search from the specified index. Value range: [0, length-1]. |
 
 **Return value**
 
@@ -764,7 +795,7 @@ let result = vector.getIndexFrom(4, 3);
 
 setLength(newSize: number): void
 
-Sets a new length for this Vector.
+Sets the number of elements in the Vector instance. If newSize is greater than the current number of elements, capacity expansion is performed. If newSize is less than the current number of elements, the excess elements are truncated and removed. When newSize is 0, all elements are cleared and length is set to 0.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -772,7 +803,7 @@ Sets a new length for this Vector.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| newSize | number | Yes| New length to set.|
+| newSize | number | Yes | New length to set. Value rule: newSize ≥ 0. |
 
 **Example**
 
@@ -790,7 +821,7 @@ vector.setLength(2);
 
 get(index: number): T 
 
-Obtains an element at the specified position in this Vector.
+Obtains the element in the Vector instance by index. The value range of index is [0, length-1]. Returns undefined when the Vector is empty or the index is out of bounds.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -798,7 +829,7 @@ Obtains an element at the specified position in this Vector.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | index | number | Yes| Position index of the target element.|
+  | index | number | Yes | Index value to search for. Value range: 0 ≤ index < length. |
 
 **Return value**
 
@@ -829,43 +860,44 @@ Replaces an element at the specified position in this Vector with a given elemen
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element.|
+| index | number | Yes | Index value to search for. Value range: [0, length-1]. |
 | element | T | Yes| Element to be used for replacement.|
 
 **Return value**
 
   | Type| Description|
   | -------- | -------- |
-  | T | New element.|
+  | T | Returns the original element at the replaced position. |
 
 ### [Symbol.iterator]
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator used for iteration over the elements in the Vector.
 
 **System capability**: SystemCapability.Utils.Lang
 
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | Iterator obtained.|
+| IterableIterator&lt;T&gt; | Returns an iterator used for iteration over the elements in the Vector instance. |
 
 **Example**
 
 ```ts
+// Create a Vector instance and add elements.
 let vector : Vector<number> = new Vector();
 vector.add(2);
 vector.add(4);
 vector.add(5);
 vector.add(4);
-// Method 1:
+// Usage 1: Convert the Vector to an array via convertToArray, then traverse it using for-of.
 let nums: Array<number> =  vector.convertToArray()
 for (let item of nums) {
   console.info("value:" + item);
 }
 
-// Method 2:
+// Usage 2: Obtain the iterator via Symbol.iterator, then access elements one by one using next().
 let iter = vector[Symbol.iterator]();
 let temp: IteratorResult<number> = iter.next().value;
 while(temp != undefined) {

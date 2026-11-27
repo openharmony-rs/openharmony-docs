@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1df531ebf1418a6c56fd304cd42d9c8279c475df translatedAt=2026-11-23T01:30:12.712Z pushedAt=2026-11-23T11:44:28.992Z nl=1 -->
 
 The **batteryInfo** module provides APIs for querying the charger type, battery health status, and battery charging status.
 
@@ -35,7 +36,7 @@ Describes battery information.
 | voltage                                   | number                                         | Yes  | Battery voltage of the device, in unit of microvolt.                        |
 | technology                                | string                                         | Yes  | Battery technology of the device.                              |
 | batteryTemperature                        | number                                         | Yes  | Battery temperature of the device, in unit of 0.1°C.                   |
-| isBatteryPresent<sup>7+</sup>             | boolean                                        | Yes  | Whether the battery is supported or present. The value **true** means that the battery is supported or present; **false** means the opposite.<br>Default value: **false**.|
+| isBatteryPresent<sup>7+</sup>             | boolean                                        | Yes   | Whether the current device supports a battery and whether the battery is present. The value **true** indicates that the device supports a battery and the battery is present, and **false** indicates the opposite. The default value is **true**. |
 | batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | Yes  | Battery level of the device.                             |
 | nowCurrent<sup>12+</sup>                  | number                                         | Yes  | Battery current of the device, in unit of mA.                       |
 

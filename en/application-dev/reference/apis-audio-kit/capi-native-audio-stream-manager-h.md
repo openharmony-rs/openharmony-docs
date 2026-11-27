@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1ff9e9cd1ebb6561090ad32be99073f8301559bf translatedAt=2026-11-09T10:24:51.528Z pushedAt=2026-11-09T11:26:14.032Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e043fa6283e20117e939754fa590740df7e56af9 translatedAt=2026-11-18T03:07:08.741Z pushedAt=2026-11-19T08:52:47.967Z nl=1 -->
 
 ## Overview
 
@@ -120,7 +120,7 @@ Queries whether the specified recording stream type usage scenario supports acou
 
 | Type | Description |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | Result code.<br>          AUDIOCOMMON_RESULT_SUCCESS = 0: the function is executed successfully.<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101:<br>                                                    1. The parameter audioStreamManager is nullptr;<br>                                                    2. The parameter sourceType is invalid;<br>                                                    3. The parameter supported is nullptr. |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | Result code.<br>          **AUDIOCOMMON_RESULT_SUCCESS = 0**: The function is executed successfully.<br>          **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101**:<br>                                                    1. The **streamManager** parameter is **nullptr**.<br>                                                    2. The **sourceType** parameter is invalid;<br>                                                    3. The **supported** parameter is **nullptr**. |
 
 ### OH_AudioStreamManager_IsFastPlaybackSupported()
 

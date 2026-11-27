@@ -5,8 +5,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester:@jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=45d7a7f3a546f09d883db6316888aa64247d94c0 translatedAt=2026-11-17T03:45:19.116Z pushedAt=2026-11-19T08:20:04.840Z nl=1 -->
 
-The **Badge** component is a container that can be attached to another component for notification and reminder purposes.
+A badge container component that can be attached to a single component for information reminders. It supports three badge formats: number, string, and dot. You can customize the badge style (text color, size, badge color, and size) and display position. It is suitable for scenarios where users need to be reminded of new or unread messages, such as unread message counts and new feature prompts, helping users quickly identify and focus on important information and improving user experience.
 
 >  **NOTE**
 >
@@ -19,13 +20,13 @@ This component supports only one child component.
 
 >  **NOTE**
 >
-> - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)).
+> - Child component types: system components and custom components, with support for rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)).
 >
-> - A custom component defaults to a width and height of 0. You must explicitly set its width and height; otherwise, the **Badge** component will not be displayed.
+> - The width and height of a custom component are 0 by default. You need to set the width and height for it; otherwise, the badge component will not display.
 >
-> - When there are multiple child components, only the last child component is displayed on the UI. However, the status update of other child components will still cause the badge and its child components to be re-rendered.
+> - When there are multiple child components, only the last child component is displayed on the UI, but state updates of the remaining child components still trigger the re-layout and re-rendering of the **Badge** and all child components it includes.
 >
-> - Child component layout is independent and does not automatically adjust to avoid overlapping with the badge.
+> - The Badge does not affect the layout of child components, that is, it does not actively avoid the component content.
 
 
 ## APIs
@@ -46,7 +47,7 @@ Creates a badge with the given numerical value.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value |  [BadgeParamWithNumber](#badgeparamwithnumber)| Yes| Options of the numeric badge.|
+| value | [BadgeParamWithNumber](#badgeparamwithnumber)| Yes | Parameter of the number badge component, used to configure the Badge component created based on a number, including attributes such as message count, display position, and style.|
 
 ### Badge
 
@@ -59,8 +60,6 @@ Creates a badge with the given string.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-This component supports the scaling effect for visibility transition since API version 12.
 
 **Parameters**
 
@@ -80,8 +79,8 @@ Provides basic parameters for creating a badge.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| position | [BadgePosition](#badgeposition)\|[Position<sup>10+</sup>](ts-types.md#position)| No| Yes| Position to display the badge relative to the parent component.<br>Default value: **BadgePosition.RightTop**<br>**NOTE**<br> With the **Position** type, percentage values are not supported. If an invalid value is set, the default value **(0,0)**, which indicates the upper left corner of the component, will be used.<br>With the **BadgePosition** type, the position is mirrored based on the [Direction](ts-appendix-enums.md#direction) property.|
-| style | [BadgeStyle](#badgestyle) | No| No| Style of the badge, including the font color, font size, badge color, and badge size.|
+| position | [BadgePosition](#badgeposition)\|[Position<sup>10+</sup>](ts-types.md#position)  | No | Yes | Badge display position.<br>Default value: **BadgePosition.RightTop** <br>**Note:** <br> **Position**, as an input parameter, does not support setting percentage; when set to an invalid value, it is handled as **(0,0)**, where **(0,0)** is the upper-left corner of the component.<br>When **BadgePosition** is used as an input parameter, it follows the [Direction](ts-appendix-enums.md#direction) attribute to control the mirrored display.|
+| style | [BadgeStyle](#badgestyle) | No | No | The **Badge** component can set styles, supporting setting the text color, size, badge color, and badge size. |
 
 
 ## BadgeParamWithNumber
@@ -96,8 +95,8 @@ Inherits from [BadgeParam](#badgeparam) and has all attributes of **BadgeParam**
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| count | number | No| No| Number of notifications.<br>**NOTE**<br>If the value is less than or equal to 0 and less than the value of **maxCount**, no badge is displayed.<br>Value range: [-2147483648, 2147483647]. If the value is out of the range, 4294967296 is added or subtracted so that the value is within the range. If the value is not an integer, it is rounded off to the nearest integer. For example, 5.5 is rounded off to 5.|
-| maxCount | number | No| Yes| Maximum number of messages. If the number of messages exceeds the maximum, only **maxCount+** is displayed. For example, if **maxCount** is 99, **99+** is displayed.<br>Default value: **99**<br>Value range: [-2147483648, 2147483647]. If the value is out of the range, 4294967296 is added or subtracted so that the value is within the range. If the value is not an integer, it is rounded off to the nearest integer. For example, 5.5 is rounded off to 5.|
+| count | number | No | No | Number of reminder messages.<br>**NOTE**<br>When the value is less than or equal to 0 and less than **maxCount**, the badge is not displayed.<br>Value range: [-2147483648, 2147483647]. If the value is out of range, 4294967296 is added to or subtracted from it to keep it within the range. If the value is not an integer, the decimal part is discarded, for example, 5.5 becomes 5. |
+| maxCount | number | No | Yes | Maximum number of messages. When the number exceeds the maximum, only **maxCount+** is displayed. For example, when **maxCount** is 99, `99+` is displayed.<br>Default value: **99**<br>Value range: [-2147483648, 2147483647]. If the value is out of range, 4294967296 is added to or subtracted from it to keep it within the range. If the value is not an integer, the decimal part is discarded, for example, 5.5 becomes 5. |
 
 ## BadgeParamWithString
 
@@ -111,11 +110,11 @@ Inherits from [BadgeParam](#badgeparam) and has all attributes of **BadgeParam**
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | No| No| Text string of the badge content.<br>**NOTE**<br>The ResourceStr type is supported since API version 20.|
+| value | [ResourceStr](ts-types.md#resourcestr) | No | No | Text string of the prompt content.<br>**Note:** <br>When value is an empty string, the text is not displayed and only the dot badge is displayed.<br>Since API version 20, the ResourceStr type is supported. |
 
 ## BadgePosition
 
-Enumerates the display positions of a badge.
+Enumerates the badge display positions.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -125,31 +124,31 @@ Enumerates the display positions of a badge.
 
 | Name| Value| Description|
 | -------- | -------- |-------- |
-| RightTop | - | The badge is displayed in the upper right corner of the parent component.|
-| Right | - | The badge is vertically centered on the right of the parent component.|
-| Left | - | The badge is vertically centered on the left of the parent component.|
+| RightTop | - | The badge is displayed in the upper right corner. |
+| Right | - | The badge is displayed in the vertical center on the right. |
+| Left | - | The badge is displayed in the vertical center on the left. |
 
 ## BadgeStyle
 
-Describes the badge style. It includes the font color, font size, badge color, and badge size.
+Defines the style of a badge, including the text color, size, font weight, badge color, and badge size.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                     | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| color                     | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Font color.<br>Default value: **Color.White**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| fontSize                  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | No  | Yes  | Font size. The value of this parameter is a string of the number type. The unit can be px, vp, fp, or lpx, for example, 10 or 10fp. If no unit is specified, fp is used by default.<br>Default value: **10vp**<br>The value must be greater than 0. If the value is **0**, the text is not displayed. If the value is less than 0, the default value is used.<br>**NOTE**<br>1. Percentage values are not supported. If a percentage value is set, the default value is used.<br>2. The ResourceStr type is supported since API version 20.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| badgeSize                 | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | No  | Yes  | Badge size. For the string type, numeric string values with optional units, for example, **"16"** or **"16fp"**, are supported.<br>Default value: **16**<br>Unit: vp<br>The value must be greater than 0. If the value is **0**, the badge is not displayed. If the value is less than 0, the default value is used.<br>**NOTE**<br>1. Percentage values are not supported. If a percentage value is set, the default value is used.<br>2. The ResourceStr type is supported since API version 20.<br>3. If **fontSize** is set and **badgeSize** is smaller than fontSize, **badgeSize** will take effect based on the value of **fontSize**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| badgeColor                | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Badge color.<br>Default value: **Color.Red**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| fontWeight<sup>10+</sup>  | number \|[FontWeight](ts-appendix-enums.md#fontweight) \|&nbsp;[ResourceStr](ts-types.md#resourcestr) | No  | Yes  | Font weight of the text. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a bolder font. For the number type, if the value is not within the range, the default value **400** is used. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Normal**<br>**NOTE**<br>Percentage values are not supported. If a percentage value is set, the default value is used. The ResourceStr type is supported since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| borderColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Color of the background border.<br>Default value: **Color.Red**<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| borderWidth<sup>10+</sup> | [Length](ts-types.md#length)                                 | No  | Yes  | Width of the background border.<br>Default value: **1**<br>Unit: vp<br>**NOTE**<br>Percentage values are not supported. If a percentage value is set, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| outerBorderColor<sup>22+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Color of the background outer border.<br>Default value: **Color.White**<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
-| outerBorderWidth<sup>22+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                   | No  | Yes  | Width of the background outer border.<br>Default value: **0**.<br>Unit: vp<br>Percentage values are not supported. If a percentage value is set, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| enableAutoAvoidance<sup>22+</sup> | boolean                                 | No  | Yes  | Whether to enable avoidance when the badge text is extended.<br>The value **true** means to enable avoidance, and **false** means the opposite.<br>Default value: **true**.<br> **NOTE**<br>1. The avoidance effect is that the badge text is extended to the inside of the component.  <br>2. When the width of the outer border is greater than 0, the extension start point of the badge is the inner side of the outer border.<br>3. When position is set to a specific coordinate value, the badge does not perform avoidance.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| color                     | [ResourceColor](ts-types.md#resourcecolor)                   | No   | Yes   | Text color.<br>Default value: **Color.White**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| fontSize                  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | No   | Yes   | Text size. The string type supports only the string form of a number value, which can carry a unit. The supported units are "px", "vp", "fp", and "lpx", for example, "10" and "10fp". When no unit is carried, the default unit is "fp".<br>Default value: 10vp<br>Default unit: fp<br>Value range: greater than 0; when the value is 0, the text is not displayed; when the value is less than 0, the default value is used.<br>**NOTE**<br>1. This parameter does not support setting percentage. When set to a percentage, the default value is used.<br>2. The ResourceStr type is supported since API version 20.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| badgeSize                 | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | No   | Yes   | Badge size. The string type supports only the string form of a number value, which can carry a unit. The supported units are "px", "vp", "fp", and "lpx", for example, "16" and "16fp". When no unit is carried, the default unit is "fp".<br>Default value: 16vp<br>Default unit: fp<br>Value range: greater than 0; when the value is 0, the **Badge** is not displayed; when the value is less than 0, the default value is used.<br>**NOTE**<br>1. This parameter does not support setting percentage. When set to a percentage, the default value is used.<br>2. The **ResourceStr** type is supported since API version 20.<br>3. When **fontSize** is set and **badgeSize** is less than **fontSize**, **badgeSize** takes effect as **fontSize**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| badgeColor                | [ResourceColor](ts-types.md#resourcecolor)                   | No   | Yes   | Badge color.<br>Default value: **Color.Red**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| fontWeight<sup>10+</sup>  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | No   | Yes   | Font weight of the text. The value range of the number type is [100, 900], with an interval of 100. The larger the value, the bolder the font. When the number type is set to a value outside the value range, the default value 400 is used. The string type supports only the string form of a number value, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**.<br>Default value: **FontWeight.Normal**<br>**NOTE**<br>This parameter does not support setting percentage. When set to a percentage, the default value is used. The ResourceStr type is supported since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction:** This API can be used only under the stage model. |
+| borderColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | No   | Yes   | Board stroke color.<br>Default value: **Color.Red**<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction:** This API can be used only under the stage model.     |
+| borderWidth<sup>10+</sup> | [Length](ts-types.md#length)                                 | No   | Yes   | Board stroke width.<br>Default value: **1**<br>Unit: vp<br>**NOTE**<br>This parameter does not support setting percentage. When set to a percentage, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction:** This API can be used only under the stage model. |
+| outerBorderColor<sup>22+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | No   | Yes   | Board outer stroke color.<br>Default value: **Color.White**<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br>**Model restriction:** This API can be used only under the stage model.   |
+| outerBorderWidth<sup>22+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                   | No   | Yes   | Board outer stroke width.<br>Default value: **0**<br>Unit: vp<br>This parameter does not support setting percentage. When set to a percentage, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br>**Model restriction:** This API can be used only under the stage model. |
+| enableAutoAvoidance<sup>22+</sup> | boolean                                 | No   | Yes   | Whether to avoid the badge text when it extends.<br>**true** indicates avoidance, and **false** indicates no avoidance.<br>Default value: **false**<br> **NOTE**<br>1. The avoidance effect is that the badge text extends and is displayed within the component.<br>2. When the width of the outer stroke is greater than 0, the extension start point of the badge is the inner side of the outer stroke.<br>3. When **position** is set to a specific coordinate value, the badge does not perform avoidance.<br>**Atomic service API**: This API can be used in atomic services since API version 22.<br>**Model restriction:** This API can be used only under the stage model.|
 
 > **NOTE**
-> When **borderWidth** is set to a value greater than 0 and **borderColor** is different from **badgeColor**, the badge is drawn before the border. Edge pixels are anti-aliased, which produces semi-transparent pixels. This causes the border in **badgeColor** to become visible at the four corners. To implement related scenarios, it is recommended that you use the [Text](ts-basic-components-text.md) component with its [outline](ts-universal-attributes-outline.md) attribute instead of the **Badge** component.
+> When `borderWidth` is greater than 0 and the colors of `borderColor` and `badgeColor` are different, the badge is drawn first and then the border. Because edge pixels are anti-aliased, semi-transparent pixels are generated, and border lines in the `badgeColor` color appear at the four corners. To implement such a scenario, you are advised to use the [Text](ts-basic-components-text.md) component and set [outline](ts-universal-attributes-outline.md#outline) instead of the Badge component.
 
 ## Attributes
 
@@ -159,11 +158,11 @@ The [universal attributes](ts-component-general-attributes.md) are supported.
 
 The [universal events](ts-component-general-events.md) are supported.
 
-## Example
+## Examples
 
 ### Example 1: Setting the Badge Content
 
-This example uses the **value** parameter of [BadgeParamWithNumber](#badgeparamwithnumber) and the **count** parameter of [BadgeParamWithString](#badgeparamwithstring) to display different effects when the **Badge** component receives an empty value, a character, or a number.
+This example uses the input parameter **count** of [BadgeParamWithNumber](#badgeparamwithnumber) and the input parameter **value** of [BadgeParamWithString](#badgeparamwithstring) to display different effects of the badge component when null, a character, or a number is passed in.
 
 ```ts
 // xxx.ets
@@ -325,7 +324,6 @@ struct BadgeExample {
 This example shows how to use the **count** property to toggle the visibility of the **Badge** component. Specifically, when the **count** property is set to **0**, the badge is hidden; when it is set to **1**, the badge becomes visible.
 
 ```ts
-// This example implements scaling when the badge visibility changes.
 @Entry
 @Component
 struct Index {
@@ -370,30 +368,30 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Component
 struct Index {
   @State badgeValue: string = '1234';
-  @State textAvoid:boolean[] = [false, true];
+  @State textAvoid: boolean[] = [false, true];
   @State textAvoidIndex: number = 0;
-  @State textAvoidString: string [] = ["false", "true"];
+  @State textAvoidString: string [] = ['false', 'true'];
   build() {
     Column() {
       Badge({
         value: this.badgeValue,
         style: {
-          badgeSize : 30,
-          fontSize:20,
+          badgeSize: 30,
+          fontSize: 20,
           outerBorderColor : Color.Pink,
           outerBorderWidth : LengthMetrics.vp(5),
           enableAutoAvoidance : this.textAvoid[this.textAvoidIndex]
         },
-        position:BadgePosition.RightTop
+        position: BadgePosition.RightTop
       }) {
         // Replace $r('app.media.startIcon') with the image resource file you use.
-        Image($r("app.media.startIcon"))
+        Image($r('app.media.startIcon'))
           .width(80)
           .height(80)
       }
       .direction(Direction.Ltr)
       .margin({ top: 20, bottom: 20 })
-      Button("enableAutoAvoidance : " + this.textAvoidString[this.textAvoidIndex])
+      Button('enableAutoAvoidance : ' + this.textAvoidString[this.textAvoidIndex])
         .onClick(() => {
           this.textAvoidIndex = (this.textAvoidIndex + 1) % this.textAvoidString.length;
         })

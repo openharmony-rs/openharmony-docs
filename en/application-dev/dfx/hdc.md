@@ -892,8 +892,8 @@ FileTransfer finish, Size:xxx, File...
 | Command| Description|
 | -------- | -------- |
 | fport ls | Displays all port forwarding tasks.|
-| fport localnode remotenode | Sets a local port forwarding, which listens for requests from the local node and forwards the requests to the remote node. The task format is **<Forwarding type>:<Forwarding port>**, for example, **tcp:1234**.|
-| rport remotenode localnode | Sets a remote port forwarding, which listens for requests from the remote node and forwards the requests to the local node. The task format is **<Forwarding type>:<Forwarding port>**, for example, **tcp:1234**.|
+| fport localnode remotenode | Sets a local port forwarding, which listens for requests from the local node and forwards the requests to the remote node. The task format is **\<Forwarding type\>:\<Forwarding port\>**, for example, **tcp:1234**.|
+| rport remotenode localnode | Sets a remote port forwarding, which listens for requests from the remote node and forwards the requests to the local node. The task format is **\<Forwarding type\>:\<Forwarding port\>**, for example, **tcp:1234**.|
 | fport rm taskstr | Deletes a port forwarding task.|
 
 > **NOTE**
@@ -1646,7 +1646,7 @@ The recording log files are stored in the following paths:
 
 | OS| Path| Remarks|
 | -------- | -------- | -------- |
-| Windows | %temp%\hdc_cmd\ | Example: **C:\\Users\Username\AppData\Local\Temp\hdc_cmd\<br/>** (Replace the user name with the actual one.)|
+| Windows | %temp%\hdc_cmd\ | Example: **C:\\Users\Username\AppData\Local\Temp\hdc_cmd\\**<br/> (Replace the user name with the actual one.)|
 | Linux | /tmp/hdc_cmd/ | - |
 | macOS| $TMPDIR/hdc_cmd/ | - |
 

@@ -1,11 +1,11 @@
 # common_attributes.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @zhou-chaobo-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b81710ebf2b57aa36c42a15ea81e48e08f95fb9b translatedAt=2026-09-22T09:36:05.404Z pushedAt=2026-09-23T08:59:46.390Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-23T07:09:52.921Z pushedAt=2026-11-25T01:23:07.451Z nl=1 -->
 
 ## Overview
 
@@ -165,7 +165,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 | UI_STATE_FOCUSED = 1 << 1 | Focused state.|
 | UI_STATE_DISABLED = 1 << 2 | Disabled state.|
 | UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**.|
-| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br/>**Since:** 26 |
+| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br/>**Since:** 26.0.0 |
 
 ### ArkUI_FocusMove
 

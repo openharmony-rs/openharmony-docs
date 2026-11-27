@@ -1,18 +1,19 @@
 # @ohos.util.ArrayList (Linear Container ArrayList)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cc99e5187aa152bc96569f8b87fca412b6552a60 translatedAt=2026-11-16T05:24:58.815Z pushedAt=2026-11-16T06:31:14.184Z nl=1 -->
 
-ArrayList is a linear data structure that is implemented based on arrays. ArrayList can dynamically adjust the capacity based on project requirements. It increases the capacity by 50% each time.
+ArrayList is a linear data structure implemented based on arrays, which overcomes the limitation that fixed-size arrays cannot be dynamically expanded. ArrayList dynamically adjusts its capacity based on actual needs, increasing the capacity by 50% each time it expands.
 
-When compared with [LinkedList](js-apis-linkedlist.md), ArrayList is more efficient in random access but less efficient in the addition or removal operation, because its addition or removal operation affects the position of other elements in the container.
+Compared with [LinkedList](js-apis-linkedlist.md), ArrayList provides higher random access efficiency. However, because the addition and deletion operations of ArrayList may require moving other elements in the array, LinkedList provides higher efficiency for addition and deletion operations.
 
-**Recommended use case**: Use ArrayList when elements in a container need to be frequently read.
+**Recommended use cases:** When you need to frequently read or randomly access elements in a collection by index, use ArrayList. When you need to dynamically manage an ordered data collection with a low frequency of addition and deletion operations, use ArrayList as well.
 
-This topic uses the following to identify the use of generics:
+Generics are used in this document. The following generic type parameters are involved:
 - T: Type
 
 > **NOTE**
@@ -45,7 +46,7 @@ import { ArrayList } from '@kit.ArkTS';
 
 constructor()
 
-A constructor used to create an **ArrayList** instance.
+The constructor of ArrayList, used to create an empty ArrayList instance. This constructor must be called with the new keyword and cannot be called directly as a regular function; otherwise, an exception will be thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -70,7 +71,7 @@ let arrayList = new ArrayList<string | number>();
 
 add(element: T): boolean
 
-Adds an element at the end of this ArrayList.
+Inserts an element at the end of the ArrayList. When adding elements in batches, call [increaseCapacityTo](#increasecapacityto) first to expand the capacity, avoiding the performance overhead caused by multiple automatic expansions.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -80,7 +81,7 @@ Adds an element at the end of this ArrayList.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Target element. |
 
 **Return value**
 
@@ -99,28 +100,33 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-class C1 {
-  name: string = ""
-  age: string = ""
+class Person {
+  name: string = '';
+  age: string = '';
 }
-let arrayList = new ArrayList<string | number | boolean | Array<number> | C1>();
-arrayList.add("a");
+let arrayList = new ArrayList<string | number | boolean | Array<number> | Person>();
+// Add a string type element.
+arrayList.add('a');
+// Add a number type element.
 arrayList.add(1);
-let b = [1, 2, 3];
-arrayList.add(b);
-let c : C1 = {name: "Dylan", age: "13"}
-let result1 = arrayList.add(c);
-let result2 = arrayList.add(false);
-console.info("result1:", result1);  // result1: true
-console.info("result2:", result2);  // result2: true
-console.info("length:", arrayList.length);  // length: 5
+let numberArray = [1, 2, 3];
+// Add an array type element.
+arrayList.add(numberArray);
+let person: Person = {name: 'Dylan', age: '13'};
+// Add a custom object type element.
+let addPersonResult = arrayList.add(person);
+// Add a boolean type element.
+let addBooleanResult = arrayList.add(false);
+console.info('addPersonResult:', addPersonResult);  // addPersonResult: true
+console.info('addBooleanResult:', addBooleanResult);  // addBooleanResult: true
+console.info('length:', arrayList.length);  // length: 5
 ```
 
 ### insert
 
 insert(element: T, index: number): void
 
-Inserts an element at a specified index within the length range. If index is out of range, the insertion fails.
+Inserts the element at the specified position index within the length range. After a successful call, the length of the ArrayList increases by 1, and the element at the index position and the elements after it are shifted backward by one position. If the index is out of range, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -131,15 +137,14 @@ Inserts an element at a specified index within the length range. If index is out
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | element | T | Yes| Target element.|
-| index | number | Yes| Index of the position where the element is to be inserted. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index to be inserted. Value Range: [0, ArrayList.length]. Must be less than or equal to int32_max, that is, 2147483647. Throws an exception when Out of Range. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
@@ -147,17 +152,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let arrayList = new ArrayList<number | string | boolean>();
-arrayList.insert("A", 0);
+// Insert string 'A' at position 0.
+arrayList.insert('A', 0);
+// Insert number 0 at position 1.
 arrayList.insert(0, 1);
+// Insert boolean true at position 2.
 arrayList.insert(true, 2);
-console.info("length:", arrayList.length);  // length: 3
+console.info('length:', arrayList.length);  // length: 3
 ```
 
 ### has
 
 has(element: T): boolean
 
-Checks whether this ArrayList has the specified element.
+Checks whether this ArrayList contains the specified element.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -167,7 +175,7 @@ Checks whether this ArrayList has the specified element.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Element to check whether it is contained. |
 
 **Return value**
 
@@ -187,16 +195,16 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let arrayList = new ArrayList<string>();
-arrayList.add("squirrel");
-let result: boolean = arrayList.has("squirrel");
-console.info("result:", result);  // result: true
+arrayList.add('squirrel');
+let result: boolean = arrayList.has('squirrel');
+console.info('result:', result);  // result: true
 ```
 
 ### getIndexOf
 
 getIndexOf(element: T): number
 
-Obtains the index of the first occurrence of the specified element in this ArrayList.
+Returns the index of the first occurrence of the specified element, or -1 if the element is not found. The difference from [getLastIndexOf](#getlastindexof) is that this method returns the position where the element first appears, while getLastIndexOf returns the position where the element last appears.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -206,7 +214,7 @@ Obtains the index of the first occurrence of the specified element in this Array
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Element whose first occurrence position is to be found. |
 
 **Return value**
 
@@ -233,7 +241,7 @@ arrayList.add(2);
 arrayList.add(1);
 arrayList.add(2);
 arrayList.add(4);
-let result: number = arrayList.getIndexOf(2); 
+let result: number = arrayList.getIndexOf(2);
 console.info("result = ", result); // result = 0
 ```
 
@@ -251,7 +259,7 @@ Obtains the index of the last occurrence of the specified element in this ArrayL
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Element whose last occurrence position is to be found. |
 
 **Return value**
 
@@ -279,14 +287,14 @@ arrayList.add(1);
 arrayList.add(2);
 arrayList.add(4);
 let result: number = arrayList.getLastIndexOf(2);
-console.info("result = ", result); // result = 5
+console.info('result = ', result); // result = 5
 ```
 
 ### removeByIndex
 
 removeByIndex(index: number): T
 
-Removes an element with the specified position from this ArrayList.
+Deletes the element at the specified index and returns the deleted element. After the deletion, the length of the ArrayList decreases by 1, and the elements after the deleted element move forward by one position. If the index is out of range, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -296,7 +304,7 @@ Removes an element with the specified position from this ArrayList.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index value of the specified element. The value range is [0, ArrayList.length-1]. It must be less than or equal to int32_max, that is, 2147483647. |
 
 **Return value**
 
@@ -306,11 +314,10 @@ Removes an element with the specified position from this ArrayList.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "index" is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
@@ -324,14 +331,14 @@ arrayList.add(5);
 arrayList.add(2);
 arrayList.add(4);
 let result: number = arrayList.removeByIndex(2);
-console.info("result = ", result); // result = 5
+console.info('result = ', result); // result = 5
 ```
 
 ### remove
 
 remove(element: T): boolean
 
-Removes the first occurrence of the specified element from this ArrayList.
+Deletes the first found specified element. After the deletion succeeds, the length of the ArrayList decreases by 1, and the elements after the deleted element move forward by one position. If the specified element is not found, no deletion operation is performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -341,7 +348,7 @@ Removes the first occurrence of the specified element from this ArrayList.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Element to delete. |
 
 **Return value**
 
@@ -366,14 +373,14 @@ arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
 let result: boolean = arrayList.remove(2);
-console.info("result = ", result); // result =  true
+console.info('result = ', result); // result =  true
 ```
 
 ### removeByRange
 
 removeByRange(fromIndex: number, toIndex: number): void
 
-Removes elements within the range [fromIndex, toIndex).
+Deletes elements in the specified range. The range includes fromIndex but excludes toIndex, that is, a left-closed, right-open interval [fromIndex, toIndex). After the deletion, the length of the ArrayList decreases by the corresponding number of elements, and the elements after toIndex move forward in sequence.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -383,16 +390,15 @@ Removes elements within the range [fromIndex, toIndex).
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fromIndex | number | Yes| Index of the start position.|
-| toIndex | number | Yes| Index of the end position.|
+| fromIndex | number | Yes | Start index, which is included in the range. It must be less than or equal to int32_max, that is, 2147483647. |
+| toIndex | number | Yes | End index, which is excluded from the range. It must be less than or equal to int32_max, that is, 2147483647. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The removeByRange method cannot be bound. |
 
@@ -404,6 +410,7 @@ arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
+// Delete the elements from index 2 to 4 (left-closed right-open interval, that is, delete the elements at indexes 2 and 3).
 arrayList.removeByRange(2, 4);
 ```
 
@@ -411,7 +418,7 @@ arrayList.removeByRange(2, 4);
 
 replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => T, thisArg?: Object): void
 
-Replaces all elements in this ArrayList with new elements, and returns the new ones.
+Traverses each element in the ArrayList, executes the callback function on each element, and replaces the original element with the value returned by the callback function.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -421,8 +428,8 @@ Replaces all elements in this ArrayList with new elements, and returns the new o
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked for the replacement.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function used to operate on the element and return the replacement value. |
+| thisArg | Object | No | Used as the this value when callbackFn is called. Pass this parameter when the callback function needs to reference an external object as the this context. If not passed, the default value is undefined. |
 
 callbackFn parameters
 
@@ -430,15 +437,14 @@ callbackFn parameters
 | -------- | -------- | -------- | -------- |
 | value | T | Yes| Value of the element that is currently traversed.|
 | index | number | No| Position index of the element that is currently traversed. The default value is **0**.|
-| arrlist | ArrayList&lt;T&gt; | No| Instance that calls the **replaceAllElements** API. The default value is this instance.|
+| arrlist | [ArrayList](#arraylist)&lt;T&gt; | No | Instance object that currently calls the replaceAllElements method. Default value is the current instance object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The replaceAllElements method cannot be bound. |
 
 **Example**
@@ -469,8 +475,8 @@ Uses a callback to traverse each element in the **ArrayList** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked for the replacement.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function used to perform an operation on each element. |
+| thisArg | Object | No | Used as the this value when callbackFn is called. Pass this parameter when the callback function needs to reference an external object as the this context. If not passed, the default value is undefined. |
 
 callbackFn parameters
 
@@ -478,15 +484,14 @@ callbackFn parameters
 | -------- | -------- | -------- | -------- |
 | value | T | Yes| Value of the element that is currently traversed.|
 | index | number | No| Position index of the element that is currently traversed. The default value is **0**.|
-| arrlist | ArrayList&lt;T&gt; | No| Instance that calls the **forEach** API. The default value is this instance.|
+| arrlist | [ArrayList](#arraylist)&lt;T&gt; | No | Instance object that currently calls the forEach method. Default value is the current instance object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
@@ -497,8 +502,9 @@ arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
+// Traverse each element in the ArrayList and print the element value and index.
 arrayList.forEach((value: number, index?: number) => {
-  console.info("value:" + value, "index:" + index);
+  console.info('value:' + value, 'index:' + index);
 });
 // value:2 index:0
 // value:4 index:1
@@ -508,9 +514,9 @@ arrayList.forEach((value: number, index?: number) => {
 
 ### sort
 
-sort(comparator?: ArrayListComparatorFn\<T\>): void
+sort(comparator?: ArrayListComparatorFn&lt;T&gt;): void
 
-Sorts elements in an ArrayList according to the order defined by the specified comparator.
+Sorts the elements in the ArrayList according to the order defined by the specified comparator. After sorting, the number of elements in the ArrayList remains unchanged, and the element positions are rearranged according to the order defined by the comparator.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -520,15 +526,14 @@ Sorts elements in an ArrayList according to the order defined by the specified c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt23) | No| Callback invoked for sorting. The default value is the callback function for sorting elements in ascending order.<br> There has been a compatibility change since API version 23. In API version 22 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
+| comparator | [ArrayListComparatorFn](#arraylistcomparatorfnt23)&lt;T&gt; | No | Comparator function used to define the sort order. The default is ascending order. Pass this parameter when descending order or custom comparison logic is required.<br>Compatibility change since API version 23. In API version 22 and earlier, its type is: `(firstValue: T, secondValue: T) => number`. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 10200011 | The sort method cannot be bound. |
 
 **Example**
@@ -539,8 +544,11 @@ arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
-arrayList.sort((a: number, b: number) => a - b);
-arrayList.sort((a: number, b: number) => b - a);
+// sort in ascending order
+arrayList.sort((firstValue: number, secondValue: number) => firstValue - secondValue);
+// sort in descending order
+arrayList.sort((firstValue: number, secondValue: number) => secondValue - firstValue);
+// default sort (ascending order)
 arrayList.sort();
 ```
 
@@ -548,7 +556,7 @@ arrayList.sort();
 
 subArrayList(fromIndex: number, toIndex: number): ArrayList&lt;T&gt;
 
-Obtains elements from this **ArrayList** within the range [fromIndex, toIndex) and returns them as a new ArrayList instance.
+Extracts a segment of elements from the ArrayList based on the index and returns this ArrayList instance, that is, a left-closed, right-open interval [fromIndex, toIndex). If fromIndex or toIndex is out of range, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -558,22 +566,21 @@ Obtains elements from this **ArrayList** within the range [fromIndex, toIndex) a
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fromIndex | number | Yes| Index of the start position.|
-| toIndex | number | Yes| Index of the end position.|
+| fromIndex | number | Yes | Start index, inclusive. The value range is [0, ArrayList.length-1]. It must be less than toIndex and less than or equal to int32_max, that is, 2147483647. An exception is thrown when it is out of range. |
+| toIndex | number | Yes | End index, exclusive. The value range is (fromIndex, ArrayList.length]. It must be greater than fromIndex and less than or equal to int32_max, that is, 2147483647. An exception is thrown when it is out of range. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| ArrayList&lt;T&gt; | New **ArrayList** instance obtained.|
+| ArrayList&lt;T&gt; | Returns an ArrayList sublist instance containing elements in the range [fromIndex, toIndex). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The subArrayList method cannot be bound. |
 
@@ -586,14 +593,14 @@ arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
 let result: ArrayList<number> = arrayList.subArrayList(2, 4);
-console.info("result = ", result.length); // result = 2
+console.info('result = ', result.length); // result = 2
 ```
 
 ### clear
 
 clear(): void
 
-Clears this ArrayList and sets its length to **0**.
+Clears all elements in the ArrayList and sets length to 0. This method does not release the reserved capacity. To release the capacity, call the [trimToCurrentLength](#trimtocurrentlength) method.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -633,7 +640,7 @@ Clones this ArrayList and returns a copy. The modification to the copy does not 
 
 | Type| Description|
 | -------- | -------- |
-| ArrayList&lt;T&gt; | New **ArrayList** instance obtained.|
+| ArrayList&lt;T&gt; | Returns a clone instance with the same content as the original ArrayList. Modifying the clone instance does not affect the original instance. |
 
 **Error codes**
 
@@ -651,8 +658,8 @@ arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
-let result:  ArrayList<number> = arrayList.clone();
-console.info("result = ", result.length); // result = 4
+let result: ArrayList<number> = arrayList.clone();
+console.info('result = ', result.length); // result = 4
 ```
 
 ### getCapacity
@@ -669,7 +676,7 @@ Obtains the capacity of this ArrayList.
 
 | Type| Description|
 | -------- | -------- |
-| number | Capacity obtained.|
+| number | Returns the current capacity of the instance. |
 
 **Error codes**
 
@@ -688,14 +695,14 @@ arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
 let result: number = arrayList.getCapacity();
-console.info("result = ", result); // result = 10
+console.info('result = ', result); // result = 10
 ```
 
 ### convertToArray
 
 convertToArray(): Array&lt;T&gt;
 
-Converts this ArrayList into an array.
+Converts the current ArrayList instance into an array and returns the converted array. This operation does not modify the original ArrayList instance, and modifications to the returned array do not affect the original instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -705,7 +712,7 @@ Converts this ArrayList into an array.
 
 | Type| Description|
 | -------- | -------- |
-| Array&lt;T&gt; | Array obtained.|
+| Array&lt;T&gt; | Returns an array consisting of all elements in the ArrayList. |
 
 **Error codes**
 
@@ -724,7 +731,7 @@ arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
 let result: Array<number> = arrayList.convertToArray();
-console.info("result = ", result); // result =  2,4,5,4
+console.info('result = ', result); // result =  2,4,5,4
 ```
 
 ### isEmpty
@@ -760,14 +767,14 @@ arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
 let result: boolean = arrayList.isEmpty();
-console.info("result = ", result); // result =  false
+console.info('result = ', result); // result =  false
 ```
 
 ### \[index: number\]<sup>12+</sup>
 
 \[index: number\]: T
 
-Returns the element at the given index.
+Obtains the element at the position corresponding to the specified index. If the index is out of range, an exception is thrown.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -777,7 +784,7 @@ Returns the element at the given index.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Index. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index of the element. The value range is [0, ArrayList.length-1]. It must be less than or equal to int32_max, that is, 2147483647. An exception is thrown when the value is out of range. |
 
 **Return value**
 
@@ -787,11 +794,10 @@ Returns the element at the given index.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401 | Parameter error. |
 | 10200001 | The value of index is out of range. |
 
 **Example**
@@ -803,14 +809,14 @@ arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
 let result: number = arrayList[2];
-console.info("result = ", result); // result =  5
+console.info('result = ', result); // result =  5
 ```
 
 ### increaseCapacityTo
 
 increaseCapacityTo(newCapacity: number): void
 
-Increases the capacity of this ArrayList.
+If the new capacity passed in is greater than or equal to the number of elements in the ArrayList, the capacity is changed to the new capacity; if the new capacity passed in is less than the number of elements in the ArrayList, the capacity remains unchanged. When elements need to be added in batches, you can call this method in advance to expand the capacity, avoiding the performance overhead caused by multiple automatic expansions.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -820,15 +826,14 @@ Increases the capacity of this ArrayList.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| newCapacity | number | Yes| New capacity.|
+| newCapacity | number | Yes | New capacity. It takes effect only when it is greater than or equal to the number of elements in the current ArrayList; otherwise, the capacity does not change. It must be less than or equal to int32_max, that is, 2147483647. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
 **Example**
@@ -841,14 +846,14 @@ arrayList.add(5);
 arrayList.add(4);
 arrayList.increaseCapacityTo(2);
 arrayList.increaseCapacityTo(8);
-console.info("result = ", arrayList.length); // result = 4
+console.info('result = ', arrayList.length); // result = 4
 ```
 
 ### trimToCurrentLength
 
 trimToCurrentLength(): void
 
-Releases the reserved space in this ArrayList by adjusting the capacity to the actual number of elements in it.
+Releases the reserved space in the ArrayList and adjusts the capacity to the current number of elements. When the capacity of the ArrayList is much larger than the current number of elements (for example, after multiple deletion operations), you can call this method to release the excess space to optimize memory usage.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -871,14 +876,14 @@ arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
 arrayList.trimToCurrentLength();
-console.info("result = ", arrayList.length); // result = 4
+console.info('result = ', arrayList.length); // result = 4
 ```
 
-### [Symbol.iterator]
+### \[Symbol.iterator\]
 
-[Symbol.iterator]\(): IterableIterator&lt;T&gt;
+\[Symbol.iterator\](): IterableIterator&lt;T&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator that returns elements of type T in the order of the elements in the ArrayList.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -888,7 +893,7 @@ Returns an iterator, each item of which is a JavaScript object.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | Iterator obtained.|
+| IterableIterator&lt;T&gt; | Returns an iterator. Traversing the iterator can obtain each element in the ArrayList in sequence. |
 
 **Error codes**
 
@@ -909,7 +914,7 @@ arrayList.add(4);
 
 // Method 1:
 for (let value of arrayList) {
-  console.info("value:", value);
+  console.info('value:', value);
 }
 // value: 2
 // value: 4
@@ -917,11 +922,11 @@ for (let value of arrayList) {
 // value: 4
 
 // Method 2:
-let iter = arrayList[Symbol.iterator]();
-let temp: IteratorResult<number> = iter.next();
-while(!temp.done) {
-  console.info("value:", temp.value);
-  temp = iter.next();
+let iterator = arrayList[Symbol.iterator]();
+let iteratorResult: IteratorResult<number> = iterator.next();
+while (!iteratorResult.done) {
+  console.info('value:', iteratorResult.value);
+  iteratorResult = iterator.next();
 }
 // value: 2
 // value: 4
@@ -929,13 +934,15 @@ while(!temp.done) {
 // value: 4
 ```
 
-### ArrayListComparatorFn\<T\><sup>23+</sup>
+## ArrayListComparatorFn&lt;T&gt;<sup>23+</sup>
 
-type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+type ArrayListComparatorFn&lt;T&gt; = (firstValue: T, secondValue: T) => number
 
 Callback function of the **sort** method in ArrayList.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -950,4 +957,4 @@ Callback function of the **sort** method in ArrayList.
 
 | Type| Description|
 | -------- | -------- |
-| number | Value returned by the callback function. The ArrayList can maintain the order of elements based on the custom comparison rules.|
+| number | Value returned through the callback function. ArrayList maintains the order of elements based on this comparison rule. A negative number indicates that firstValue is less than secondValue (firstValue is placed before secondValue), 0 indicates that the two are equal, and a positive number indicates that firstValue is greater than secondValue (firstValue is placed after secondValue). |

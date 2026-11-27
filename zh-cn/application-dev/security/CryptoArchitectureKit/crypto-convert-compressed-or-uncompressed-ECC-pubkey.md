@@ -46,6 +46,7 @@ async function eccPubUncompressedToCompressed() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`eccPubUncompressedToCompressed failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

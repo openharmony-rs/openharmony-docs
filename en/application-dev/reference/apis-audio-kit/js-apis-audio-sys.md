@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a26c0fadb345e394f1bacb5ffe8622bbf5052072 translatedAt=2026-11-09T10:30:30.722Z pushedAt=2026-11-09T11:35:07.804Z nl=1 -->
+<!-- md-trans-meta sourceCommit=aaff6a3ca5ca4e20b7e45c8ad96885be0be5accc translatedAt=2026-11-18T03:12:23.119Z pushedAt=2026-11-19T09:11:12.629Z nl=1 -->
 
 The module provides basic audio management capabilities, including audio volume and audio device management, and audio data collection and rendering.
 
@@ -2343,7 +2343,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let propertyArray: Array<audio.AudioEffectProperty> = audioStreamManager.getSupportedAudioEffectProperty();
+  let propertyArray: Array<audio.AudioEffectProperty> = audioEffectManager.getSupportedAudioEffectProperty();
   console.info(`The effect modes are: ${propertyArray}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -5877,7 +5877,7 @@ audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice');
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
   console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
-  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+  console.info(`isHeadTrackingEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 };
 
 audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);

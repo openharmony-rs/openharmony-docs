@@ -5,6 +5,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6e4f06766702757ac76aee8ad41e870897bbc4b0 translatedAt=2026-11-23T02:45:57.966Z pushedAt=2026-11-24T12:03:49.911Z nl=1 -->
 
 This module provides basic Wi-Fi functions (such as Wi-Fi scanning, connection management, connection information query, and signal strength acquisition), peer-to-peer (P2P) functions (such as device discovery, group creation and management, and P2P connection), and Wi-Fi notifications. It is applicable to scenarios where apps access the network or perform P2P data transmission and connection with other devices over Wi-Fi.
 
@@ -26,6 +27,8 @@ import wifi from '@ohos.wifi';
 isWifiActive(): boolean
 
 Checks whether Wi-Fi is enabled.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -60,6 +63,8 @@ scan(): boolean
 
 Starts Wi-Fi scanning.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.scan](js-apis-wifiManager.md#wifimanagerscandeprecated) instead.
@@ -92,6 +97,8 @@ getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 Obtains the scan result. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
@@ -112,6 +119,8 @@ Obtains the scan result. This API uses a promise to return the result.
 getScanInfos(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 Obtains the scan result. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -213,6 +222,8 @@ addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 Adds the configuration of an untrusted network. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig) instead.
@@ -271,6 +282,8 @@ addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&
 
 Adds the configuration of an untrusted network. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig-1) instead.
@@ -323,6 +336,8 @@ try {
 removeUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 Removes the configuration of an untrusted network. This API uses a promise to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -384,6 +399,8 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
 
 Removes the configuration of an untrusted network. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.removeCandidateConfig](js-apis-wifiManager.md#wifimanagerremovecandidateconfig-1) instead.
@@ -437,6 +454,8 @@ getSignalLevel(rssi: number, band: number): number
 
 Queries the Wi-Fi signal strength.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getSignalLevel](js-apis-wifiManager.md#wifimanagergetsignallevel) instead.
@@ -479,6 +498,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 Obtains Wi-Fi connection information. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getLinkedInfo](js-apis-wifiManager.md#wifimanagergetlinkedinfo) instead.
@@ -499,6 +520,8 @@ Obtains Wi-Fi connection information. This API uses a promise to return the resu
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 Obtains Wi-Fi connection information. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -587,6 +610,8 @@ isConnected(): boolean
 
 Checks whether the Wi-Fi connection is established.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.isConnected](js-apis-wifiManager.md#wifimanagerisconnected) instead.
@@ -607,6 +632,8 @@ Checks whether the Wi-Fi connection is established.
 isFeatureSupported(featureId: number): boolean
 
 Checks whether the device supports the Wi-Fi feature specified by the feature ID.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -649,6 +676,8 @@ try {
 getIpInfo(): IpInfo
 
 Obtains IP information.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -703,6 +732,8 @@ getCountryCode(): string
 
 Obtains the country code.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.getCountryCode](js-apis-wifiManager.md#wifimanagergetcountrycode) instead.
@@ -729,12 +760,13 @@ try {
 }
 ```
 
-
 ## wifi.getP2pLinkedInfo<sup>(deprecated)</sup>
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 Obtains P2P connection information. This API uses a promise to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -749,7 +781,6 @@ Obtains P2P connection information. This API uses a promise to return the result
   | Type| Description|
   | -------- | -------- |
   | Promise&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Promise used to return the P2P link information.|
-
 
 
 ## WifiP2pLinkedInfo<sup>(deprecated)</sup>
@@ -791,6 +822,8 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 Obtains P2P connection information. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getP2pLinkedInfo](js-apis-wifiManager.md#wifimanagergetp2plinkedinfo-1) instead.
@@ -828,6 +861,8 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 Obtains the current P2P group information. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getCurrentGroup](js-apis-wifiManager.md#wifimanagergetcurrentgroup) instead.
@@ -848,6 +883,8 @@ Obtains the current P2P group information. This API uses a promise to return the
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
 Obtains the current P2P group information. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -886,6 +923,8 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
 Obtains the P2P peer device list. This API uses a promise to return the result.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.getP2pPeerDevices](js-apis-wifiManager.md#wifimanagergetp2ppeerdevices) instead.
@@ -906,6 +945,8 @@ Obtains the P2P peer device list. This API uses a promise to return the result.
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
 Obtains the P2P peer device list. This API uses an asynchronous callback to return the result.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -981,6 +1022,8 @@ Enumerates the P2P device states.
 createGroup(config: WifiP2PConfig): boolean
 
 Creates a P2P group.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1063,6 +1106,8 @@ removeGroup(): boolean
 
 Removes this P2P group.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.removeGroup](js-apis-wifiManager.md#wifimanagerremovegroup) instead.
@@ -1093,6 +1138,8 @@ try {
 p2pConnect(config: WifiP2PConfig): boolean
 
 Sets up a P2P connection.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1189,6 +1236,8 @@ p2pCancelConnect(): boolean
 
 Cancels this P2P connection.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.p2pCancelConnect](js-apis-wifiManager.md#wifimanagerp2pcancelconnect) instead.
@@ -1220,6 +1269,8 @@ startDiscoverDevices(): boolean
 
 Starts to discover devices.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.startDiscoverDevices](js-apis-wifiManager.md#wifimanagerstartdiscoverdevices) instead.
@@ -1250,6 +1301,8 @@ try {
 stopDiscoverDevices(): boolean
 
 Stops discovering devices.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1306,6 +1359,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to Wi-Fi status change events.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwifistatechange) instead.
@@ -1321,7 +1376,7 @@ Subscribes to Wi-Fi status change events.
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
-**WLAN states** 
+**WLAN states**
 
 | Value| Description|
 | -------- | -------- |
@@ -1336,6 +1391,8 @@ Subscribes to Wi-Fi status change events.
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from Wi-Fi status change events.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1374,6 +1431,8 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to Wi-Fi connection status change events.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwificonnectionchange) instead.
@@ -1402,6 +1461,8 @@ Subscribes to Wi-Fi connection status change events.
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from Wi-Fi connection status change events.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1439,6 +1500,8 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to WLAN scan state changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwifiscanstatechange) instead.
@@ -1467,6 +1530,8 @@ Subscribes to WLAN scan state changes.
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from WLAN scan state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1504,6 +1569,8 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to RSSI changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronwifirssichange) instead.
@@ -1525,6 +1592,8 @@ Subscribes to RSSI changes.
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from RSSI changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1563,6 +1632,8 @@ wifi.off("wifiRssiChange", recvWifiRssiChangeFunc);
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to hotspot state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1632,6 +1703,8 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to P2P state changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pstatechange) instead.
@@ -1662,6 +1735,8 @@ Subscribes to P2P state changes.
 off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from P2P state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1699,6 +1774,8 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 Subscribes to P2P connection state changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pconnectionchange) instead.
@@ -1720,6 +1797,8 @@ Subscribes to P2P connection state changes.
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 Unsubscribes from P2P connection state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1757,6 +1836,8 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 Subscribes to P2P device state changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdevicechange) instead.
@@ -1778,6 +1859,8 @@ Subscribes to P2P device state changes.
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 Unsubscribes from P2P device state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1815,6 +1898,8 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 Subscribes to P2P peer device state changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppeerdevicechange) instead.
@@ -1836,6 +1921,8 @@ Subscribes to P2P peer device state changes.
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
 Unsubscribes from P2P peer device state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1873,6 +1960,8 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 Subscribes to P2P persistent group state changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppersistentgroupchange) instead.
@@ -1894,6 +1983,8 @@ Subscribes to P2P persistent group state changes.
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 Unsubscribes from P2P persistent group state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >
@@ -1932,6 +2023,8 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 Subscribes to P2P device discovery state changes.
 
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdiscoverychange) instead.
@@ -1960,6 +2053,8 @@ Subscribes to P2P device discovery state changes.
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 Unsubscribes from P2P device discovery state changes.
+
+Before calling this API, you can call [wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 
 > **NOTE**
 >

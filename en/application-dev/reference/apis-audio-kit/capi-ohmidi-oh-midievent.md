@@ -1,8 +1,8 @@
 # OH_MIDIEvent
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=634d132e8abe7b7c43dfeb8e3f424ff260f676a7 translatedAt=2026-11-09T10:27:45.900Z pushedAt=2026-11-09T11:32:09.037Z nl=1 -->

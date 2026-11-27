@@ -5,7 +5,7 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:25:45.070Z pushedAt=2026-10-10T07:13:32.054Z -->
+<!-- md-trans-meta sourceCommit=37ca604503d451441f6924864481deef5fcc486f translatedAt=2026-11-18T04:18:26.602Z pushedAt=2026-11-20T09:29:21.751Z nl=1 -->
 
 
 This module provides the NearLink data transfer capability, including port channel management, connection management, data sending and receiving, and connection status query and subscription.
@@ -44,6 +44,8 @@ createPort(uuid: string): void
 
 Registers a port channel. A port channel can be used to connect to a remote device only after being registered. If the port channel is no longer needed after use, call [dataTransfer.destroyPort](#datatransferdestroyport) to destroy it.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -64,8 +66,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100020 | The UUID is already registered. |
 | 36100021 | Port exceeds the upper limit. |
@@ -94,6 +96,8 @@ destroyPort(uuid: string): void
 
 Destroys the port channel.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -114,8 +118,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100022 | The UUID is not registered. |
 | 36100043 | Invalid UUID. |
@@ -143,6 +147,8 @@ connect(params: ConnectionParams): Promise&lt;void&gt;
 
 Connects to a remote device. This API uses a promise to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -169,8 +175,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID. |
@@ -205,6 +211,8 @@ disconnect(params: ConnectionParams): Promise&lt;void&gt;
 
 Disconnects from the remote device. This method is called to disconnect from the remote device after it is successfully connected using [dataTransfer.connect](#datatransferconnect). This API uses a promise to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -231,8 +239,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID. |
@@ -269,6 +277,8 @@ Subscribes to the connection state change event of the port channel. This API us
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -287,7 +297,7 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
@@ -312,6 +322,8 @@ offConnectionStateChanged(callback?: Callback&lt;ConnectionResult&gt;): void
 
 Unsubscribes from the connection state change event of the port channel. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -330,7 +342,7 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
@@ -351,6 +363,8 @@ try {
 getConnectionState(params: ConnectionStateParams): ConnectionState
 
 Obtains the port channel connection state with a remote device.
+
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
 
 **Since**: 26.0.0
 
@@ -378,8 +392,8 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID in connection parameters. |
@@ -410,6 +424,8 @@ writeData(params: DataParams): Promise&lt;void&gt;
 
 Sends data to a remote device using the device address and UUID. This API uses a promise to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -436,10 +452,10 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
-| 36100023 | Write data congestion. |
+| 36100023 | Data transmission congested. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -481,6 +497,8 @@ Subscribes to the port channel data receiving event. This API uses an asynchrono
 
 The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive this event.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -499,7 +517,7 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 
@@ -524,6 +542,8 @@ offReadData(callback?: Callback&lt;DataParams&gt;): void
 
 Unsubscribes from the port channel data receiving event. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -542,7 +562,7 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 
 | ID | Error Message |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **Example** 

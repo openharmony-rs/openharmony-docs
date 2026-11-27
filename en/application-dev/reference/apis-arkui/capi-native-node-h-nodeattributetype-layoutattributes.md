@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=57a52d2139f4e46425b5e67653d1d8a67878aa18 translatedAt=2026-10-10T09:44:20.117Z pushedAt=2026-10-12T08:39:08.833Z -->
+<!-- md-trans-meta sourceCommit=33cfda879b7bd1e89aaf5b9311d58af1b0bfee60 translatedAt=2026-11-23T07:30:39.304Z pushedAt=2026-11-25T05:59:16.434Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -225,13 +225,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 One or four parameters can be passed:
 
-1. Specify the same corner radius for the four borders.<br>
+1: Specify the same corner radius for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Corner radius for the four borders, in vp. Value range: [0, +∞). The default value is **0vp**. |
 
-2. Specify different corner radii for the four borders.<br>
+2: Specify different corner radii for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -934,13 +934,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 One or four parameters can be passed:
 
-1. Specify the same corner radius for the four borders.<br>
+1: Specify the same corner radius for the four borders.<br>
 
 | Name | Description |
 | -- | -- |
 | .value[0].f32 | Corner radius for the four borders, in percentage. Value range: [0, +∞). Default value: **0**. |
 
-2. Specify different corner radii for the four borders.<br>
+2: Specify different corner radii for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -1154,7 +1154,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment rule of the child components in the **Stack** container, determining the position of child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment). The default value is **ARKUI_ALIGNMENT_CENTER**. When an invalid value is set, the default value is used for display. |
+| .value[0].i32 | Alignment rule of the child components in the **Stack** container, determining the position of child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment). The default value is **ARKUI_LOCALIZED_ALIGNMENT_CENTER**. When an invalid value is set, the default value is used for display. |
 
 **Returns**
 

@@ -1,12 +1,11 @@
-# Clipboard Glossary
-
+# Pasteboard Terminology
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=60d9d26e148b855695daa12aaed8d7a59c39045c translatedAt=2026-07-28T07:31:44.410Z pushedAt=2026-07-30T12:20:38.121Z -->
+<!-- md-trans-meta sourceCommit=caf83da30d35c4e98fd6ece0314591b4a81685b0 translatedAt=2026-11-16T04:27:47.870Z pushedAt=2026-11-16T06:31:14.045Z nl=1 -->
 
 ## E
 

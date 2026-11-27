@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ebfe2f6580b6a20ff6c2028463724b35bb4af90c translatedAt=2026-09-22T09:30:44.499Z pushedAt=2026-09-23T08:11:34.882Z -->
+<!-- md-trans-meta sourceCommit=174be54c52bb8e9adbbb1e84f7fc5998aa5714d8 translatedAt=2026-11-23T07:09:15.776Z pushedAt=2026-11-25T01:20:45.706Z nl=1 -->
 
 ## Overview
 
@@ -32,6 +32,7 @@ The preceding APIs are applicable to scenarios where ArkTS pages are integrated 
 | Name | Description |
 | -- | -- |
 | [common_attributes.h](capi-common-attributes-h.md) | Defines the types of common attributes and events of **NativeModule**. |
+| [common_type.h](capi-common-type-h.md) | Defines the common types of ArkUI native APIs. |
 | [embedded_component.h](capi-embedded-component-h.md) | Defines the structs and APIs of the **EmbeddedComponent** component. |
 | [image.h](capi-image-h.md) | Defines **Image** node types for **NativeNode** APIs. |
 | [image_animator.h](capi-image-animator-h.md) | Defines **ImageAnimator** node types for **NativeNode** APIs. |
@@ -39,6 +40,7 @@ The preceding APIs are applicable to scenarios where ArkTS pages are integrated 
 | [custom_attributes.h](capi-native-node-node-attributes-custom-attributes-h.md) | Defines measurement, layout, and drawing event types for custom components in **NativeNode** APIs. These types are used to register and handle measurement, layout, and drawing events for the content layer, foreground layer, and floating layer. |
 | [grid.h](capi-grid-h.md) | Defines the enumerations and APIs related to the **Grid** component. |
 | [list.h](capi-list-h.md) | Defines the enumerations and APIs related to the **List** component. |
+| [list_item.h](capi-list-item-h.md) | Defines the enumerations and APIs related to the swipe actions of the **ListItem** component. |
 | [navigation_router.h](capi-navigation-router-h.md) | Defines the enumerations and APIs related to the **Navigation** or **Router** component. |
 | [scroll.h](capi-scroll-h.md) | Defines the enumerations related to the **Scroll** component. |
 | [swiper.h](capi-swiper-h.md) | Defines the enumerations and APIs related to the **Swiper** component. |

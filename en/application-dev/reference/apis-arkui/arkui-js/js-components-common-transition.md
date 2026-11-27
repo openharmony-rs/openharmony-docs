@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=214e29279f37b00be7bd8f1096b2e4dc3af96177 translatedAt=2026-11-12T04:26:32.681Z pushedAt=2026-11-18T02:37:08.459Z nl=1 -->
 
 >  **NOTE**
 >  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -35,7 +36,7 @@
 2. The exchange effect of shared elements is similar to the transition shown below.
 
    **Figure 1** Default transition effect of shared elements
-   ![transition-page](figures/transition-page.png)
+   ![exchange](figures/exchange.png)
 
 3. The animation of a shared element does not take effect for the border and background color of the element.
 

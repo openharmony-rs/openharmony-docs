@@ -4,8 +4,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fc51a757cde4308898b8986a88362ef10907d498 translatedAt=2026-09-17T09:20:10.106Z pushedAt=2026-09-21T11:20:37.067Z -->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-11-16T03:43:49.863Z pushedAt=2026-11-16T06:31:13.959Z nl=1 -->
 
 ## Capability Scope
 

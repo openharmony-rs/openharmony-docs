@@ -1,12 +1,13 @@
 # @ohos.worker (Starting the Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=e42d49ae1e9e7c1c48c6d743fb3a84192d3e7fe7 translatedAt=2026-11-16T06:09:14.892Z pushedAt=2026-11-16T06:31:14.307Z nl=1 -->
 
-The Worker thread is an independent thread running in parallel with the main thread. The thread that creates the Worker thread is referred to as the host thread. The URL file passed in during worker creation is executed in the Worker thread. The Worker thread can process time-consuming operations, but cannot directly operate the UI.
+A Worker is an independent thread that runs in parallel with the host thread. The thread that creates the Worker is called the host thread, and the Worker's own thread is called the Worker thread. The URL file passed in when creating the Worker is executed in the Worker thread, which can handle time-consuming operations but cannot directly operate the UI.
 
 Worker primarily provides a multithreaded runtime environment for applications, allowing them to separate from the host thread during execution. This enables scripts to run in background threads for time-consuming operations, reducing the likelihood of blocking the host thread during computing-intensive or high-latency tasks. A Worker instance will not be proactively destroyed once it is created. It consumes resources to keep running. Therefore, you should call the API to terminate it in a timely manner.
 
@@ -24,14 +25,14 @@ import { worker } from '@kit.ArkTS';
 ```
 
 
-## Properties
+## Constants
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name                             | Type                                                        | Read-only| Optional| Description                                                        |
-| --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| workerPort<sup>9+</sup>           | [ThreadWorkerGlobalScope](#threadworkerglobalscope9)         | No  | No  | Object of the Worker thread used to communicate with the host thread.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                        |
-| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | No  | No  | Object of the Worker thread used to communicate with the host thread.<br>This property is supported since API version 7 and deprecated since API version 9.<br>You are advised to use **workerPort<sup>9+</sup>** instead.|
+| Name                              | Type                                                         | Read-Only | Description                                                         |
+| --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| workerPort<sup>9+</sup>           | [ThreadWorkerGlobalScope](#threadworkerglobalscope9)         | Yes   | Object used by the Worker thread for communication with the host thread.<br/>**Atomic service API**: This API can be used in atomic services since API version 11.                         |
+| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | Yes   | Object used by the Worker thread for communication with the host thread.<br/>**Note**: Supported since API version 7, deprecated since API version 9. It is recommended to use [workerPort](#constants) instead.|
 
 
 ## WorkerOptions
@@ -42,15 +43,15 @@ Provides options that can be set for the Worker instance to create.
 
 | Name| Type| Read-only| Optional| Description|
 | ---- | -------- | ---- | ---- | -------------- |
-| type | 'classic' \| 'module' | No  | Yes| Mode in which the Worker instance executes the script. The **module** type is not supported yet. The default value is **classic**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| name | string   | No  | Yes| Name of the Worker thread. The default value is **undefined**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| shared | boolean | No  | Yes| Whether sharing of the Worker instance is enabled. Currently, sharing is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| priority<sup>18+</sup> | [ThreadWorkerPriority](#threadworkerpriority18) | No  | Yes| Priority of the Worker thread. The default value is **MEDIUM**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| type | 'classic' \| 'module' | No   | Yes | The mode type of the script executed by the Worker. The module type is not supported. The default value is "classic".<br/>**Atomic Service API**: Since API version 11, this API supports use in atomic services. |
+| name | string   | No   | Yes | Name of the Worker.<br/>Default value is undefined, in which case the thread name is 'WorkerThread'.<br/>When a non-default value is set, the corresponding thread name has the prefix 'WorkerThread_'. For example, when name is 'testName', the corresponding thread name is 'WorkerThread_testName'.<br/>The thread name can be obtained through the threadName of [HeapMemoryInfo](js-apis-util.md#heapmemoryinfo24).<br/>**Atomic service API**: This interface supports use in atomic services since API version 11.|
+| shared | boolean | No   | Yes | Indicates the Worker sharing feature. This interface is not supported yet. <br/>**Atomic service API**: This interface supports use in atomic services since API version 12.|
+| priority<sup>18+</sup> | [ThreadWorkerPriority](#threadworkerpriority18) | No   | Yes | Indicates the Worker thread priority. Default value is MEDIUM. <br/>**Atomic service API**: This interface supports use in atomic services since API version 18.|
 
 
 ## ThreadWorkerPriority<sup>18+</sup>
 
-Enumerates the priorities available for Worker threads. For details about the mappings between priorities and QoS levels, see [QoS Level](../../kernel-enhance/qos-guidelines.md#qos-levels).
+Enumerates the priorities of the Worker thread. For the mapping between priorities, see [QoS level definition](../../kernel-enhance/qos-guidelines.md#qos-levels).
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -75,13 +76,13 @@ Before using the following APIs, you must create a ThreadWorker instance. The Th
 
 | Name  | Type                   | Read-only| Optional| Description                                                        |
 | ------ | ---------------------- | ---- | --- | ------------------------------------------------------------ |
-| onexit<sup>9+</sup> | (code: number) => void | No| Yes| Called when the Worker thread exits. The event handler is executed in the host thread. The **code** value is of the number type, where the value **1** indicates abnormal exit and **0** indicates normal exit. The default value is **undefined**.<br>**Atomic service API**: This property can be used in atomic services since API version 11.|
-| onerror<sup>9+</sup> | (err: [ErrorEvent](#errorevent)) => void | No| Yes| Called when an exception occurs in the synchronous code of the **onmessage** callback function. The handler is executed in the host thread. In the callback function, the **err** type is [ErrorEvent](#errorevent), indicating the received abnormal data. The default value is **undefined**.<br>**Atomic service API**: This property can be used in atomic services since API version 11.|
-| onAllErrors<sup>18+</sup> | [ErrorCallback](#errorcallback18) | No| Yes| Called when an exception occurs within the lifecycle of the Worker thread. The event handler is executed in the host thread.<br>**Atomic service API**: This property can be used in atomic services since API version 18.|
-| onmessage<sup>9+</sup> | (event: [MessageEvents](#messageevents9)) => void | No| Yes| Called when the host thread receives a message sent by the Worker thread through the workerPort.[postMessage](#postmessage9-3) or workerPort.[postMessageWithSharedSendable](#postmessagewithsharedsendable12-1) API. The handler is executed in the host thread. In the callback function, the **event** type is [MessageEvents](#messageevents9), indicating the received message data. The default value is **undefined**.<br>**Atomic service API**: This property can be used in atomic services since API version 11.|
-| onmessageerror<sup>9+</sup> | (event: [MessageEvents](#messageevents9)) => void | No| Yes| Called when the Worker thread receives a message that cannot be serialized. The event handler is executed in the host thread. The **event** type is [MessageEvents](#messageevents9), indicating the received message data. The default value is **undefined**.<br>**Atomic service API**: This property can be used in atomic services since API version 11.|
+| onexit<sup>9+</sup> | (code: number) => void | No | Yes | Callback function. Indicates the event handler called when the Worker thread is destroyed. The handler is executed in the host thread. The code parameter of the callback function is of the number type. The value is 1 for abnormal exit and 0 for normal exit. Default value is undefined.<br/>The following errors. Detailed error codes. Refer to [Language basics library error codes](errorcode-utils.md).<br/>- 10200004: The Worker instance is not running.<br/>- 10200005: The called API is not supported in the worker thread.<br/>**Atomic service API**: Supported since API version 11, this property supports use in atomic services.|
+| onerror<sup>9+</sup> | (err: [ErrorEvent](#errorevent)) => void | No | Yes | Callback function, used to handle exceptions generated by synchronous code in the onmessage callback function. The handler is executed in the host thread. The err parameter of the callback function is of the [ErrorEvent](#errorevent) type, indicating the received exception data. Default value is undefined.<br/>The following errors. Detailed error codes. Refer to [Language basics library error codes](errorcode-utils.md).<br/>- 10200004: The Worker instance is not running.<br/>- 10200005: The called API is not supported in the worker thread.<br/>**Atomic service API**: Supported since API version 11, this property supports use in atomic services.|
+| onAllErrors<sup>18+</sup> | [ErrorCallback](#errorcallback18) | No | Yes | Callback function. Indicates the event handler called when an exception occurs during the lifecycle of the Worker thread. The handler is executed in the host thread. Default value is undefined.<br/>The following errors. Detailed error codes. Refer to [Language basics library error codes](errorcode-utils.md).<br/>- 10200004: The Worker instance is not running.<br/>- 10200005: The called API is not supported in the worker thread.<br/>**Atomic service API**: Supported since API version 18, this property supports use in atomic services.|
+| onmessage<sup>9+</sup> | (event: [MessageEvents](#messageevents9)) => void | No | Yes | Callback function. Indicates the event handler called when the host thread receives a message sent by the Worker it created through the workerPort.[postMessage](#postmessage9-3) or workerPort.[postMessageWithSharedSendable](#postmessagewithsharedsendable12-1) interface. The handler is executed in the host thread. Where the callback function's event is of the [MessageEvents](#messageevents9) type, indicating the received message data sent by the Worker thread. Default value is undefined.<br/>The following errors. Detailed error codes. Refer to [Language basics library error codes](errorcode-utils.md).<br/>- 10200004: The Worker instance is not running.<br/>- 10200005: The called API is not supported in the worker thread.<br/>**Atomic service API**: Supported since API version 11, this property supports use in atomic services.|
+| onmessageerror<sup>9+</sup> | (event: [MessageEvents](#messageevents9)) => void | No | Yes | Callback function. Used to handle messages received by the Worker object that cannot be serialized. The handler is executed in the host thread. The event is of the [MessageEvents](#messageevents9) type, indicating the received Worker message data. Default value is undefined.<br/>The following errors. Detailed error codes. Refer to [Language basics library error codes](errorcode-utils.md).<br/>- 10200004: The Worker instance is not running.<br/>- 10200005: The called API is not supported in the worker thread.<br/>**Atomic service API**: Supported since API version 11, this property supports use in atomic services.|
 
-When using the Worker module, you are advised to register the **onAllErrors** callback in the host thread in API version 18 or later to capture various exceptions that may occur during the lifecycle of the Worker thread. In versions earlier than API version 18, you should register the **onerror** callback. If neither of them is registered, JS crash occurs when the Worker thread is abnormal. Note that the **onerror** callback can only capture synchronous exceptions within the **onmessage** callback. Once an exception is captured, the Worker thread will proceed to the destruction process and cannot be used.
+When using the Worker module, for API version 18 and later, it is recommended to register the onAllErrors callback in the host thread to capture various exceptions during the Worker thread lifecycle. For versions earlier than API version 18, register the onerror callback. If neither onAllErrors nor onerror is registered, a crash occurs when an exception happens in the Worker thread. Note that the onerror interface can only capture synchronous exceptions in the onmessage callback. After an exception is captured, the Worker thread enters the destruction process and cannot be used further.
 
 The behavior differences between **onAllErrors** and **onerror** are as follows:
 
@@ -120,21 +121,20 @@ A constructor used to create a ThreadWorker instance.
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | scriptURL | string                          | Yes  | URL of the Worker thread file.<br>For details about the rules, see [Precautions for File URLs](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).|
-| options   | [WorkerOptions](#workeroptions) | No  | Options that can be set for the Worker instance.                                          |
+| options   | [WorkerOptions](#workeroptions) | No   | Options for Worker construction. If this parameter is not specified, each property takes its default value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200003 | Worker initialization failed. |
 | 10200007 | The worker file path is invalid. |
 
 **Example**
 
-The following uses the **Index.ets** file in the entry module of the stage model as an example to describe how to load the worker file. For details about how to use the library to load the Worker thread file, see [Precautions for File URLs](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).
+The following example shows how to load the Worker thread file in the Index.ets file of the entry module in the Stage model. For the scenario of loading the Worker thread file using Library, see [File path notes](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).
 
 ```ts
 // Index.ets
@@ -159,16 +159,15 @@ Sends a message from the host thread to the Worker thread by transferring object
 
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| message  | Object        | Yes  | Data to be sent to the Worker thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| message  | Object        | Yes   | Data sent to the Worker. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | transfer | ArrayBuffer[] | Yes  | ArrayBuffer instance holding an array of objects for which the ownership is transferred to the Worker thread. After the transfer, the objects are available only in the Worker thread. The array cannot be null.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -260,16 +259,15 @@ Sends a message from the host thread to the Worker thread by transferring object
 
 | Name | Type                                     | Mandatory| Description                                                        |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object                                    | Yes  | Data to be sent to the Worker thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| message | Object                                    | Yes  | Data sent to the Worker. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | options | [PostMessageOptions](#postmessageoptions) | No  | If this parameter is specified, the data is sent to the Worker thread through ownership transfer. Such data will become unavailable in the host main thread and only remain accessible within the Worker thread.<br>If this parameter is not specified, the default value **undefined** is used, and data is transferred to the Worker thread through copying.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -285,10 +283,7 @@ workerInstance.postMessage("hello world");
 let buffer = new ArrayBuffer(8);
 
 // When the options parameter is specified, the ownership of the buffer is transferred to the Worker thread and will no longer be accessible from the host thread.
-workerInstance.postMessage(buffer, [buffer]);
-
-// When the options parameter is not provided, it defaults to undefined, and the buffer is sent to the Worker thread by copying the data.
-workerInstance.postMessage(buffer);
+workerInstance.postMessage(buffer, {transfer: [buffer]});
 ```
 
 
@@ -306,16 +301,15 @@ Sends a message from the host thread to the Worker thread. In the message, a [Se
 
 | Name| Type| Mandatory| Description|
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object | Yes| Data to be sent to the Worker thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types). If data needs to be shared, see [Sendable Data Types](../../arkts-utils/arkts-sendable.md#sendable-data-types).|
+| message | Object | Yes | Data sent to the Worker. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). If data sharing is required, see [Sendable supported data types](../../arkts-utils/arkts-sendable.md#sendable-data-types) for supported types. |
 | transfer | ArrayBuffer[] | No| ArrayBuffer instance holding an array of objects for which the ownership is transferred to the Worker thread. After the transfer, the objects are available only in the Worker thread. The array cannot be null. The default value is an empty array.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -343,7 +337,7 @@ workerInstance.postMessage(object);
 
 @Sendable
 export class SendableObject {
-  a:number = 45;
+  value:number = 45;
 }
 ```
 
@@ -360,7 +354,7 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
   let obj: SendableObject = e.data;
-  console.info("sendable obj is: " + obj.a);
+  console.info("sendable obj is: " + obj.value);
 }
 ```
 
@@ -384,13 +378,12 @@ Adds an event listener for the Worker instance of the host thread. This API prov
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                  |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **Example**
 
@@ -429,13 +422,12 @@ Adds an event listener for the Worker instance of the host thread and removes th
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                  |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **Example**
 
@@ -450,9 +442,6 @@ workerInstance.once("alert", () => {
 })
 
 workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp is not supported yet.
-
-// Event listeners added using once are automatically removed after being executed once and cannot be executed multiple times.
-// workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp is not supported yet.
 ```
 
 
@@ -470,18 +459,17 @@ Removes the event listener of the Worker instance in the host thread. This API p
 
 | Name  | Type                                        | Mandatory| Description                        |
 | -------- | -------------------------------------------- | ---- | ---------------------------- |
-| type     | string                                       | Yes  | Type of the event for which the event listener is to be removed.        |
+| type     | string                                       | Yes   | Type of the event to delete. The event type is set through [on<sup>9+</sup>](#on9). |
 | listener | [WorkerEventListener](#workereventlistener9) | No| Callback for which the listener is to be removed. If this parameter is not passed, all listeners of the specified type are removed.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                  |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **Example**
 
@@ -530,16 +518,15 @@ Registers an object with the ThreadWorker instance of the host thread. In this w
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.           |
+| 10200004 | The Worker instance is not running.           |
 
 **Example**
 ```ts
-//Index.ets
+// Index.ets
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
@@ -575,7 +562,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // The method to call carries input parameters.
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // Exception handling.
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -601,12 +588,11 @@ Unregisters an object with the ThreadWorker instance of the host thread. This AP
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **Example**
 ```ts
@@ -628,7 +614,6 @@ workerInstance.registerGlobalCallObject("myObj", registerObj);
 // Unregister the object.
 workerInstance.unregisterGlobalCallObject("myObj");
 // Unregister all objects from the ThreadWorker instance.
-//workerInstance.unregisterGlobalCallObject();
 workerInstance.postMessage("start worker");
 ```
 
@@ -636,7 +621,7 @@ workerInstance.postMessage("start worker");
 
 terminate(): void
 
-Destroys the Worker thread and stops the Worker thread from receiving messages.
+The host thread actively destroys the Worker thread and stops the Worker thread from receiving messages.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -680,13 +665,12 @@ Adds an event listener for the Worker instance of the host thread. This API prov
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                  |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.              |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **Example**
 
@@ -719,17 +703,16 @@ Removes the event listener of the Worker instance in the host thread. This API p
 
 | Name  | Type                                        | Mandatory| Description                        |
 | -------- | -------------------------------------------- | ---- | ---------------------------- |
-| type     | string                                       | Yes  | Type of the event for which the event listener is to be removed.    |
-| callback | [WorkerEventListener](#workereventlistener9) | No| Callback to invoke when the listener is removed.|
+| type     | string                                       | Yes   | Type of the listener event to remove. The event type is set through [addEventListener<sup>9+</sup>](#addeventlistener9). |
+| callback | [WorkerEventListener](#workereventlistener9) | No | Callback for which the listener is to be removed. If this parameter is not passed, all listeners of the specified type are removed. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                     |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **Example**
 
@@ -773,12 +756,11 @@ Dispatches an event object to the event system of the Worker thread. The event s
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                     |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **Example**
 
@@ -792,7 +774,7 @@ workerInstance.addEventListener("alert", () => {
   console.info("alert listener callback");
 })
 
-let result: Boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp is not supported yet.
+let result: boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp is not supported yet.
 
 console.info("dispatchEvent result is: ", result);
 ```
@@ -816,7 +798,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                     |
 | -------- | ------------------------------- |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **Example**
 
@@ -854,11 +836,10 @@ Adds an event listener for the Worker instance.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                  |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.              |
 | 10200005 | The called API is not supported in the worker thread. |
 
@@ -892,8 +873,8 @@ Removes the event listener of the Worker instance.
 
 | Name  | Type                                        | Mandatory| Description                        |
 | -------- | -------------------------------------------- | ---- | ---------------------------- |
-| type     | string                                       | Yes  | Type of the event for which the event listener is to be removed.    |
-| callback | [WorkerEventListener](#workereventlistener9) | No| Callback to invoke when the listener is removed.|
+| type     | string                                       | Yes   | Type of the listener event to delete. The event type is set through [addEventListener<sup>9+</sup>](#addeventlistener9-1).     |
+| callback | [WorkerEventListener](#workereventlistener9) | No | Callback for which the listener is to be removed. If this parameter is not passed, all listeners of the specified type are removed. |
 
 **Error codes**
 
@@ -901,7 +882,6 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                     |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running. |
 
 **Example**
@@ -946,11 +926,10 @@ Dispatches an event object to the event system of the Worker thread. The event s
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                     |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running. |
 
 **Example**
@@ -1019,8 +998,8 @@ Implements communication between the Worker thread and the host thread. The **Th
 
 | Name  | Type                   | Read-only| Optional| Description                                                        |
 | ------ | ---------------------- | ---- | --- | ------------------------------------------------------------ |
-| onmessage<sup>9+</sup> | (this: ThreadWorkerGlobalScope, ev: [MessageEvents](#messageevents9)) => void | No| Yes| Called when the Worker thread receives a message sent by the host thread through [postMessage](#postmessage9-1) or [postMessageWithSharedSendable](#postmessagewithsharedsendable12). The event handler is executed in the Worker thread. In the callback function, **this** indicates the caller's [ThreadWorkerGlobalScope](#threadworkerglobalscope9), and the **ev** type is [MessageEvents](#messageevents9), indicating the received message data. The default value is **undefined**.<br>**Atomic service API**: This property can be used in atomic services since API version 11.|
-| onmessageerror<sup>9+</sup> | (this: ThreadWorkerGlobalScope, ev: [MessageEvents](#messageevents9)) => void | No| Yes| Called when the Worker thread receives a message that cannot be deserialized. The event handler is executed in the Worker thread. In the callback function, **this** indicates the caller's [ThreadWorkerGlobalScope](#threadworkerglobalscope9), and the **ev** type is [MessageEvents](#messageevents9), indicating the received message data. The default value is **undefined**.<br>**Atomic service API**: This property can be used in atomic services since API version 11.|
+| onmessage<sup>9+</sup> | (this: [ThreadWorkerGlobalScope](#threadworkerglobalscope9), ev: [MessageEvents](#messageevents9)) => void | No | Yes | Callback function. Indicates the event handler called when the Worker thread receives a message sent by its host thread through the [postMessage](#postmessage9-1) or [postMessageWithSharedSendable](#postmessagewithsharedsendable12) interface. The handler is executed in the Worker thread. Here, this refers to the caller object itself [ThreadWorkerGlobalScope](#threadworkerglobalscope9), and ev is of type [MessageEvents](#messageevents9), indicating the message data sent by the host thread. The default value is undefined.<br/>**Atomic service API**: Since API version 11, this property supports use in atomic services.|
+| onmessageerror<sup>9+</sup> | (this: [ThreadWorkerGlobalScope](#threadworkerglobalscope9), ev: [MessageEvents](#messageevents9)) => void | No | Yes | Callback function. Indicates the event handler called when the Worker object of the Worker thread receives a message that cannot be deserialized. The handler is executed in the Worker thread. Here, this refers to the caller object itself [ThreadWorkerGlobalScope](#threadworkerglobalscope9), and ev is of type [MessageEvents](#messageevents9), indicating the received message data. The default value is undefined.<br/>**Atomic service API**: Since API version 11, this property supports use in atomic services.|
 
 ### postMessage<sup>9+</sup>
 
@@ -1036,16 +1015,15 @@ Sends a message from the Worker thread to the host thread by transferring object
 
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| messageObject  | Object        | Yes  | Data to be sent to the host thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| messageObject  | Object        | Yes   | Data sent to the host thread. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | transfer | ArrayBuffer[] | Yes  | ArrayBuffer instance holding an array of objects for which the ownership is transferred to the host thread. After the transfer, the objects are available only in the host thread. The array cannot be null.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -1058,7 +1036,7 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
 workerInstance.postMessage("hello world");
 workerInstance.onmessage = (e: MessageEvents): void => {
-    console.info("receive data from worker.ets");
+  console.info("receive data from worker.ets");
 }
 ```
 
@@ -1068,8 +1046,8 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 
 const workerPort = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents): void => {
-    let buffer = new ArrayBuffer(8);
-    workerPort.postMessage(buffer, [buffer]);
+  let buffer = new ArrayBuffer(8);
+  workerPort.postMessage(buffer, [buffer]);
 }
 ```
 
@@ -1087,16 +1065,15 @@ Sends a message from the Worker thread to the host thread by transferring object
 
 | Name | Type                                     | Mandatory| Description                                                        |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| messageObject | Object                                    | Yes  | Data to be sent to the host thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| messageObject | Object                                    | Yes  | Data sent to the host thread. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | options | [PostMessageOptions](#postmessageoptions) | No  | If this parameter is specified, it functions the same as **ArrayBuffer[]**. Specifically, the ownership of the objects in the array is transferred to the host thread and becomes unavailable in the Worker thread. The objects are available only in the host thread.<br>If this parameter is not specified, the default value **undefined** is used, and information is transferred to the host thread by copying data.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -1138,16 +1115,15 @@ Sends a message from the Worker thread to the host thread. In the message, a [Se
 
 | Name| Type| Mandatory| Description|
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object | Yes| Data to be sent to the host thread. The data object must be sequenceable or sendable. For details about the supported sequenceable types, see [Sequenceable Data Types](#sequenceable-data-types). For details about the supported sendable types, see [Sendable Data Types](../../arkts-utils/arkts-sendable.md#sendable-data-types).|
+| message | Object | Yes | Data sent to the host thread. This data object must be serializable or shareable. For serialization supported types, see [Sequenceable Data Types](#sequenceable-data-types). For shareable supported types, see [Sendable supported data types](../../arkts-utils/arkts-sendable.md#sendable-data-types). |
 | transfer | ArrayBuffer[] | No| ArrayBuffer instance holding an array of objects for which the ownership is transferred to the host thread. After the transfer, the objects are available only in the host thread. The array cannot be null. The default value is an empty array.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 
@@ -1212,7 +1188,7 @@ Calls a method of an object registered with the host thread. This API is called 
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | instanceName | string                                    | Yes  | Key used for registration. It is used to search for the object in the host thread.|
 | methodName | string | Yes| Name of the method to call. This method cannot be modified by async or generator, or return results asynchronously by using the asynchronous mechanism at the bottom layer. Otherwise, an exception is thrown.|
-| timeout | number | Yes| Maximum waiting time from the time when the Worker thread initiates the call to the time when the target method is executed in the main thread, in milliseconds. The value is an integer ranging from 1 to 5000. The value **0** means that the 5000 ms duration is used.<br>In versions earlier than API version 21, the maximum waiting time is limited by this parameter in debug mode.<br> Since API version 21, the maximum waiting time is not limited by this parameter in debug mode.|
+| timeout | number | Yes | Indicates the maximum wait time from when the call is initiated from the Worker thread to when the target method is executed in the main thread, in ms, as an integer, in the range [1-5000]ms. If the value is out of range, the wait time for this call is 5000ms.<br>Before API version 21, in debug mode, the maximum wait time is limited by this parameter. <br> Since API version 21, in debug mode, the maximum wait time is not limited by this parameter and can wait indefinitely.|
 | args | Object[] | No| Array of parameters in the method.|
 
 **Return value**
@@ -1223,12 +1199,11 @@ Calls a method of an object registered with the host thread. This API is called 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                               |
 | -------- | ----------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.           |
+| 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 | 10200019 | The globalCallObject is not registered. |
 | 10200020 | The method to be called is not callable or is an async method or a generator. |
@@ -1236,7 +1211,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 ```ts
-//Index.ets
+// Index.ets
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
@@ -1253,8 +1228,6 @@ let registerObj = new TestObj();
 // Register registerObj with the ThreadWorker instance.
 workerInstance.registerGlobalCallObject("myObj", registerObj);
 workerInstance.postMessage("start worker");
-// Call the following method when the component lifecycle ends:
-// workerInstance.unregisterGlobalCallObject("myObj");
 ```
 
 ```ts
@@ -1274,7 +1247,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // The method to call carries input parameters.
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // Exception handling.
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -1320,6 +1293,126 @@ workerPort.onmessage = (e: MessageEvents): void => {
 }
 ```
 
+### postMessageAtFront
+
+postMessageAtFront?(message: Object, priority: Priority, transfer?: ArrayBuffer[]): void
+
+The Worker thread sends a queue-jumping message to the host thread. [Sendable objects](../../arkts-utils/arkts-sendable.md) in the message are passed by reference, and non-Sendable objects are passed by copying data.
+
+> **NOTE**
+> - If a Worker thread sends a queue-jumping message to the host thread, the message can jump the queue and is sent by priority.
+> - If a queue-jumping message is sent between Worker threads, the message can only jump the queue, without priority.
+> - The postMessage and postMessageWithSharedSendable interfaces send messages to the host thread at HIGH priority by default, without queue-jumping.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
+| message | Object | Yes | Data sent to the host thread. This data object must be serializable or shareable. For serialization supported types, see [Sequenceable Data Types](#sequenceable-data-types). For shareable supported types, see [Sendable supported data types](../../arkts-utils/arkts-sendable.md#sendable-data-types). |
+| priority | [Priority](#priority) | Yes | Priority of the message to be sent. |
+| transfer | ArrayBuffer[] | No | ArrayBuffer instance holding an array of objects for which the ownership is transferred to the host thread. After the transfer, the objects are available only in the host thread. The array cannot be null. The default value is an empty array. |
+
+**Error codes**
+
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+
+| ID | Error Message                                |
+| -------- | ----------------------------------------- |
+| 10200004 | The Worker instance is not running.           |
+| 10200006 | An exception occurred during serialization. |
+
+**Example**
+
+<!--code_no_check-->
+```ts
+// The Worker file path is: entry/src/main/ets/workers/Worker.ets
+// Worker.ets
+
+import { MessageEvents, ThreadWorkerGlobalScope, worker, Priority } from '@kit.ArkTS';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  workerPort.postMessage("1");
+  workerPort.postMessage("2");
+  // Way 1: Use the optional chaining operator (recommended, most concise).
+  workerPort.postMessageAtFront?.("3-idle", Priority.IDLE);
+  workerPort.postMessageAtFront?.("4-immediate", Priority.IMMEDIATE);
+
+  // Way 2: Use non-null assertion and call directly (requires certainty that it exists).
+  workerPort.postMessageAtFront!("5-low", Priority.LOW);
+
+  // Way 3: Check whether the method exists before using it.
+  if (workerPort.postMessageAtFront) {
+    workerPort.postMessageAtFront("6-high", Priority.HIGH);
+  } else {
+    workerPort.postMessageWithSharedSendable("6-high");
+  }
+}
+```
+
+<!--code_no_check-->
+```ts
+// Index.ets
+// Receive data that the Worker thread passes to the host thread.
+
+import { worker, MessageEvents } from '@kit.ArkTS';
+
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/Worker.ets");
+workerInstance.postMessage("start");
+workerInstance.onmessage = (e: MessageEvents) => {
+  // Simulate a time-consuming operation.
+  let start = new Date().getTime();
+  while (new Date().getTime() - start < 1000) {
+    continue;
+  }
+  let res: string = e.data as string;
+  // Execution result:
+  // result is: 1
+  // result is: 4-immediate
+  // result is: 6-high
+  // result is: 2
+  // result is: 5-low
+  // result is: 3-idle
+  console.info("result is: " + res);
+}
+```
+
+If the passed parameter is an object literal, you need to [explicitly annotate the type of the object literal](../../quick-start/typescript-to-arkts-migration-guide.md#object-literal-must-correspond-to-some-explicitly-declared-class-or-interface).
+
+<!--code_no_check-->
+```ts
+import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent, Priority } from '@kit.ArkTS';
+
+class ClassA {
+  public obj: string = ""
+}
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+workerPort.onmessage = (e: MessageEvents) => {
+  // When the optional chaining operator is used to call the API, passing an object literal causes a compilation error. The type of the object literal must be explicitly annotated.
+  // workerPort.postMessageAtFront?.({obj: "obj"}, Priority.HIGH);
+
+  let classAInstance: ClassA = { obj: "obj" };
+  workerPort.postMessageAtFront?.(classAInstance, Priority.HIGH);
+
+  // Use non-null assertion and call directly. An object literal can be passed directly.
+  workerPort.postMessageAtFront!({ obj: "obj" }, Priority.HIGH);
+  // Check whether the method exists before using it. An object literal can be passed directly.
+  if (workerPort.postMessageAtFront) {
+    workerPort.postMessageAtFront({ obj: "obj" }, Priority.HIGH);
+  } else {
+    workerPort.postMessageWithSharedSendable({ obj: "obj" });
+  }
+}
+```
 
 ## WorkerEventListener<sup>9+</sup>
 
@@ -1328,6 +1421,8 @@ Implements event listening.
 ### (event: Event)<sup>9+</sup>
 
 (event: Event): void | Promise&lt;void&gt;
+
+Specifies the callback function to be called.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1347,13 +1442,12 @@ Implements event listening.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                  |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200004 | Worker instance is not running.          |
-| 10200005 | The invoked API is not supported in workers. |
+| 10200004 | The Worker instance is not running.              |
+| 10200005 | The called API is not supported in the worker thread. |
 
 **Example**
 
@@ -1399,9 +1493,9 @@ Holds the data transferred between Worker threads. The class inherits from [Even
 | ---- | ---- | ---- | ---- | ------------------ |
 | data | any  | Yes  | No  | Data transferred between threads.|
 
-## MessageType<sup>7+</sup>
+## MessageType
 
-type MessageType = 'message' | 'messageerror';
+type MessageType = 'message' | 'messageerror'
 
 Defines the message type. Reserved data type, which is not implemented yet.
 
@@ -1428,14 +1522,14 @@ Defines an error callback.
 
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| err | ErrorEvent                          | Yes  | Error event class, which indicates the exception information that occurs during Worker execution.|
+| err | [ErrorEvent](#errorevent)               | Yes   | Error event class, indicating the exception information that occurs during Worker execution. |
 
 ## Worker<sup>(deprecated)</sup>
 
 Before using the following APIs, you must create a Worker instance. The **Worker** class inherits from [EventTarget](#eventtargetdeprecated).
 
-> **NOTE**<br>
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [ThreadWorker<sup>9+</sup>](#threadworker9) instead.
+> **NOTE**<br/>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [ThreadWorker](#threadworker9) instead.
 
 ### Properties
 
@@ -1443,10 +1537,10 @@ Before using the following APIs, you must create a Worker instance. The **Worker
 
 | Name  | Type                   | Read-only| Optional| Description                                                        |
 | ------ | ---------------------- | ---- | --- | ------------------------------------------------------------ |
-| onexit<sup>(deprecated)</sup> | (code: number) => void | No| Yes| Called when the Worker thread exits. The event handler is executed in the host thread. In the callback function, the **code** value is of the number type, where the value **1** indicates abnormal exit and **0** indicates normal exit. The default value is **undefined**.<br>**Note**: This property is supported since API version 7 and deprecated since API version 9. You are advised to use [ThreadWorker.onexit](#properties-1) instead.|
-| onerror<sup>(deprecated)</sup> | (err: [ErrorEvent](#errorevent)) => void | No| Yes| Called when an exception occurs during worker execution. The event handler is executed in the host thread. In the callback function, the **err** type is [ErrorEvent](#errorevent), indicating the received abnormal data. The default value is **undefined**.<br>**Note**: This property is supported since API version 7 and deprecated since API version 9. You are advised to use [ThreadWorker.onerror](#properties-1) instead.|
-| onmessage<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | No| Yes| Called when the host thread receives a message sent by the Worker thread through **workerPort.postMessage**. The event handler is executed in the host thread. In the callback function, the **event** type is [MessageEvent](#messageeventt), indicating the received message data. The default value is **undefined**.<br>**Note**: This property is supported since API version 7 and deprecated since API version 9. You are advised to use [ThreadWorker.onmessage](#properties-1) instead.|
-| onmessageerror<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | No| Yes| Called when the Worker thread receives a message that cannot be serialized. The event handler is executed in the host thread. In the callback function, the **event** type is [MessageEvent](#messageeventt), indicating the received message data. The default value is **undefined**.<br>**Note**: This property is supported since API version 7 and deprecated since API version 9. You are advised to use [ThreadWorker.onmessageerror](#properties-1) instead.|
+| onexit<sup>(deprecated)</sup> | (code: number) => void | No | Yes | Callback function. Indicates the event handler called when the Worker is destroyed. The handler is executed in the host thread. In the callback function, the type of code is number, where 1 indicates abnormal exit and 0 indicates normal exit. Default value is undefined.<br/>**Note**: Supported since API version 7, deprecated since API version 9. Recommended to use [ThreadWorker.onexit](#properties) instead.|
+| onerror<sup>(deprecated)</sup> | (err: [ErrorEvent](#errorevent)) => void | No | Yes | Callback function. Indicates the event handler called when an exception occurs during Worker execution. The handler is executed in the host thread. In the callback function, the type of err is [ErrorEvent](#errorevent), which indicates the received exception data. Default value is undefined.<br/>**Note**: Supported since API version 7, deprecated since API version 9. Recommended to use [ThreadWorker.onerror](#properties) instead.|
+| onmessage<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | No | Yes | Callback function. Indicates the event handler called when the host thread receives a message sent by the Worker it created through the workerPort.postMessage interface. The handler is executed in the host thread. In the callback function, the type of event is [MessageEvent](#messageeventt), which indicates the received Worker message data. Default value is undefined.<br/>**Note**: Supported since API version 7, deprecated since API version 9. Recommended to use [ThreadWorker.onmessage](#properties) instead.|
+| onmessageerror<sup>(deprecated)</sup> | (event: [MessageEvent](#messageeventt)) => void | No | Yes | Callback function. Indicates the event handler called when the Worker object receives a message that cannot be serialized. The handler is executed in the host thread. In the callback function, the type of event is [MessageEvent](#messageeventt), which indicates the received Worker message data. Default value is undefined.<br/>**Note**: Supported since API version 7, deprecated since API version 9. Recommended to use [ThreadWorker.onmessageerror](#properties) instead.|
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -1468,7 +1562,7 @@ A constructor used to create a Worker instance.
 
 **Example**
 
-The following uses the **Index.ets** file in the entry module of the stage model as an example to describe how to load the worker file. For details about how to use the library to load the Worker thread file, see [Precautions for File URLs](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).
+This example loads a Worker thread file in the Index.ets file of the entry module in the stage model. For the scenario of loading a Worker thread file using Library, see [File Path Notes](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).
 
 ```ts
 // Index.ets
@@ -1493,7 +1587,7 @@ Sends a message from the host thread to the Worker thread by transferring object
 
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| message  | Object        | Yes  | Data to be sent to the Worker thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| message  | Object        | Yes   | The data object sent to the Worker must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | transfer | ArrayBuffer[] | Yes  | ArrayBuffer instance holding an array of objects for which the ownership is transferred to the Worker thread. After the transfer, the objects are available only in the Worker thread. The array cannot be null.|
 
 **Example**
@@ -1523,7 +1617,7 @@ Sends a message from the host thread to the Worker thread by transferring object
 
 | Name | Type                                     | Mandatory| Description                                                        |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message | Object                                    | Yes  | Data to be sent to the Worker thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| message | Object                                    | Yes  | Data sent to the Worker. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | options | [PostMessageOptions](#postmessageoptions) | No  | If this parameter is specified, it functions the same as **ArrayBuffer[]**. Specifically, the ownership of the objects in the array is transferred to the Worker thread and becomes unavailable in the host thread. The objects are available only in the Worker thread.<br>If this parameter is not specified, the default value **undefined** is used, and information is transferred to the Worker thread by copying data.|
 
 **Example**
@@ -1557,7 +1651,7 @@ Adds an event listener for the Worker thread. This API provides the same functio
 | Name  | Type                                     | Mandatory| Description            |
 | -------- | ----------------------------------------- | ---- | ---------------- |
 | type     | string                                    | Yes  | Type of the event to listen for.|
-| listener | [EventListener](#eventlistenerdeprecated) | Yes  | Callback to invoke when an event of the specified type occurs.      |
+| listener | [EventListener](#eventlistenerdeprecated) | Yes   | Callback function when the event is triggered. |
 
 **Example**
 
@@ -1588,7 +1682,7 @@ Adds an event listener for the Worker thread and removes the event listener afte
 | Name  | Type                                     | Mandatory| Description            |
 | -------- | ----------------------------------------- | ---- | ---------------- |
 | type     | string                                    | Yes  | Type of the event to listen for.|
-| listener | [EventListener](#eventlistenerdeprecated) | Yes  | Callback to invoke when an event of the specified type occurs.      |
+| listener | [EventListener](#eventlistenerdeprecated) | Yes | Callback function when the event is triggered. |
 
 **Example**
 
@@ -1618,8 +1712,8 @@ Removes an event listener for the Worker thread. This API provides the same func
 
 | Name  | Type                                     | Mandatory| Description                |
 | -------- | ----------------------------------------- | ---- | -------------------- |
-| type     | string                                    | Yes  | Type of the event for which the event listener is to be removed.|
-| listener | [EventListener](#eventlistenerdeprecated) | No  | Callback to invoke when the listener is removed.|
+| type     | string                                    | Yes   | Type of the event to delete. The event type is set through [on<sup>(deprecated)</sup>](#ondeprecated). |
+| listener | [EventListener](#eventlistenerdeprecated) | No   | Callback for which the listener is to be removed. If this parameter is not passed, all listeners of the specified type are removed. |
 
 **Example**
 
@@ -1628,7 +1722,7 @@ Removes an event listener for the Worker thread. This API provides the same func
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
-// Use on, once, or addEventListener to add a listener for the "alert" event, and use off to remove the listener.
+// Use the on, once, or addEventListener API to create the "alert" event, and use the off API to remove the event.
 workerInstance.off("alert");
 ```
 
@@ -1706,8 +1800,8 @@ Removes an event listener for the Worker thread. This API provides the same func
 
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Type of the event to be removed.|
-| callback | [EventListener](#eventlistenerdeprecated) | No  | Callback to invoke when the listener is removed.|
+| type     | string                                    | Yes   | Type of the event to remove. The event type is set through [addEventListener<sup>(deprecated)</sup>](#addeventlistenerdeprecated). |
+| callback | [EventListener](#eventlistenerdeprecated) | No   | Callback for which the listener is to be removed. If this parameter is not passed, all listeners of the specified type are removed. |
 
 **Example**
 
@@ -1729,7 +1823,7 @@ workerPort.removeEventListener('alert');
 
 dispatchEvent(event: Event): boolean
 
-Dispatches the event defined for the Worker thread.
+Dispatches the events registered on the Worker instance.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [dispatchEvent<sup>9+</sup>](#dispatchevent9) instead.
@@ -1831,8 +1925,8 @@ Implements communication between the Worker thread and the host thread. This cla
 
 | Name  | Type                   | Read-only| Optional| Description                                                        |
 | ------ | ---------------------- | ---- | --- | ------------------------------------------------------------ |
-| onmessage<sup>(deprecated)</sup> | (this: DedicatedWorkerGlobalScope, ev: [MessageEvent](#messageeventt)) => void | No| Yes| Called when the Worker thread receives a message sent by the host thread through **postMessage**. The event handler is executed in the Worker thread. In the callback function, **this** indicates the caller's [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), and the **ev** type is [MessageEvent](#messageeventt), indicating the received message data. The default value is **undefined**.<br>**Note**: This property is supported since API version 7 and deprecated since API version 9. You are advised to use [ThreadWorkerGlobalScope.onmessage](#properties-2) instead.|
-| onmessageerror<sup>(deprecated)</sup> | (this: DedicatedWorkerGlobalScope, ev: [MessageEvent](#messageeventt)) => void | No| Yes| Called when the Worker thread receives a message that cannot be deserialized. The event handler is executed in the Worker thread. In the callback function, **this** indicates the caller's [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), and the **ev** type is [MessageEvent](#messageeventt), indicating the received message data. This property is supported since API version 7. The default value is **undefined**.<br>**Note**: This property is deprecated since API version 9. You are advised to use [ThreadWorkerGlobalScope.onmessageerror](#properties-2) instead.|
+| onmessage<sup>(deprecated)</sup> | (this: [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), ev: [MessageEvent](#messageeventt)) => void | No | Yes | Callback function, indicating the event handler called when the Worker thread receives a message sent by its host thread through the postMessage interface. The handler is executed in the Worker thread. Here, this refers to the caller object itself [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), and ev is of type [MessageEvent](#messageeventt), indicating the received Worker message data. The default value is undefined.<br/>**Note**: Supported since API version 7, deprecated since API version 9. It is recommended to use [ThreadWorkerGlobalScope.onmessage](#properties-2) instead. |
+| onmessageerror<sup>(deprecated)</sup> | (this: [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), ev: [MessageEvent](#messageeventt)) => void | No | Yes | Callback function, indicating the event handler called when the Worker object receives a message that cannot be deserialized. The handler is executed in the Worker thread. Here, this refers to the caller object itself [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated), and ev is of type [MessageEvent](#messageeventt), indicating the received Worker message data. The default value is undefined.<br/>**Note**: Supported since API version 7, deprecated since API version 9. It is recommended to use [ThreadWorkerGlobalScope.onmessageerror](#properties-2) instead. |
 
 ### postMessage<sup>(deprecated)</sup>
 
@@ -1849,7 +1943,7 @@ Sends a message from the Worker thread to the host thread by transferring object
 
 | Name | Type                                     | Mandatory| Description                                                        |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| messageObject | Object                                    | Yes  | Data to be sent to the host thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| messageObject | Object                                    | Yes  | Data sent to the host thread. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | transfer| Transferable[]                            | Yes  | Currently, this parameter is not supported.                                        |
 
 ### postMessage<sup>(deprecated)</sup>
@@ -1867,7 +1961,7 @@ Sends a message from the Worker thread to the host thread by transferring object
 
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
-| messageObject  | Object        | Yes  | Data to be sent to the host thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| messageObject  | Object        | Yes   | Data sent to the host thread. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | transfer | ArrayBuffer[] | Yes  | ArrayBuffer instance holding an array of objects for which the ownership is transferred to the host thread. After the transfer, the objects are available only in the host thread. The array cannot be null.|
 
 **Example**
@@ -1911,7 +2005,7 @@ Sends a message from the Worker thread to the host thread by transferring object
 
 | Name | Type                                     | Mandatory| Description                                                        |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| messageObject | Object                                    | Yes  | Data to be sent to the host thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types).|
+| messageObject | Object                                    | Yes  | Data sent to the host thread. This data object must be a serializable object. For supported serialization types, see [Sequenceable Data Types](#sequenceable-data-types). |
 | options | [PostMessageOptions](#postmessageoptions) | No  | If this parameter is specified, it functions the same as **ArrayBuffer[]**. Specifically, the ownership of the objects in the array is transferred to the host thread and becomes unavailable in the Worker thread. The objects are available only in the host thread.<br>If this parameter is not specified, the default value **undefined** is used, and information is transferred to the host thread by copying data.|
 
 **Example**
@@ -1992,7 +2086,7 @@ Defines the event.
 | Name     | Type  | Read-only| Optional| Description                                        |
 | --------- | ------ | ---- | ---- | -------------------------------------------- |
 | type      | string | Yes  | No  | Type of the event.                            |
-| timeStamp | number | Yes  | No  | Timestamp (accurate to millisecond) when the event is created. This parameter is not supported yet.|
+| timeStamp | number | Yes | No | Timestamp when the event is created, in ms. Not supported currently. |
 
 
 ## EventListener<sup>(deprecated)</sup>
@@ -2009,7 +2103,7 @@ Defines an event listener.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [(event:Event)<sup>9+</sup>](#event-event9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [(event: Event)](#event-event9) instead.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -2052,7 +2146,7 @@ Provides detailed information about the exception that occurs during worker exec
 | filename | string | Yes  | No  | File where the exception is located.|
 | lineno   | number | Yes  | No  | Serial number of the line where the exception is located.    |
 | colno    | number | Yes  | No  | Serial number of the column where the exception is located.    |
-| error    | Object | Yes  | No  | Type of the exception.          |
+| error    | Object | Yes   | No   | Exception object.           |
 
 
 ## MessageEvent\<T\>
@@ -2083,6 +2177,24 @@ Implements the running environment of the Worker thread. The **WorkerGlobalScope
 | self | [WorkerGlobalScope](#workerglobalscopedeprecated)&nbsp;&amp;&nbsp;typeof&nbsp;globalThis | Yes  | No  | WorkerGlobalScope.              |
 | onerror | (ev: [ErrorEvent](#errorevent)) => void | No| Yes| Callback function invoked when an exception occurs during Worker execution. It is executed in the Worker thread. **ev** indicates the exception data received. The default value is **undefined**.|
 
+## Priority
+
+Indicates the priority for sending messages.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Utils.Lang
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| IMMEDIATE | 1 | Immediate execution priority. Indicates that the message is sent with priority over HIGH. |
+| HIGH | 2 | High priority. Indicates that the message is sent with priority over LOW. |
+| LOW | 3 | Low priority. Indicates that the message is sent with priority over IDLE. |
+| IDLE | 4 | Background priority. Indicates that the message is sent only when there are no messages of other priorities. |
 
 ## More Information
 
@@ -2101,8 +2213,10 @@ import { worker, MessageEvents } from '@kit.ArkTS';
 const workerInstance = new worker.ThreadWorker("workers/worker.ets");
 workerInstance.postMessage("message from main thread to worker");
 workerInstance.onmessage = (d: MessageEvents): void => {
-  // When the Worker thread passes obj2, data contains obj2, excluding the Init or SetName method.
-  let data: string  = d.data;
+  // When the Worker thread passes myModel, data is myModel. data has no init method.
+  let data: Record<string, Object> = d.data as Record<string, Object>;
+  console.info('name:', data.name);// name: default name
+  console.info('init:', data.init === undefined);// init: true
 }
 ```
 ```ts
@@ -2111,8 +2225,8 @@ import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
 const workerPort = worker.workerPort;
 class MyModel {
-    name = "undefined";
-    Init() {
+    name = "default name";
+    init() {
         this.name = "MyModel";
     }
 }
@@ -2123,8 +2237,8 @@ workerPort.onmessage = (d: MessageEvents): void => {
     console.info("post message is function");
   }
   // workerPort.postMessage(func1); A serialization error occurs when passing func1.
-  let obj2 = new MyModel();
-  workerPort.postMessage(obj2);     // No serialization error occurs when passing obj2, but the functions in obj2 are lost.
+  let myModel = new MyModel();
+  workerPort.postMessage(myModel);     // Pass myModel without serialization errors, but functions in myModel are lost.
 }
 workerPort.onmessageerror = () => {
     console.error("worker.ets onmessageerror");

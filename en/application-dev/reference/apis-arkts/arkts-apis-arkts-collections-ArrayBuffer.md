@@ -1,10 +1,12 @@
 # Class (ArrayBuffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=31ba07988632b6f2ed98a078bdae886436926502 translatedAt=2026-11-16T04:35:53.521Z pushedAt=2026-11-16T06:31:14.106Z nl=2 -->
+
 Underlying data structure of the ArkTS TypedArray ([Int8Array](arkts-apis-arkts-collections-Int8Array.md), [Uint8Array](arkts-apis-arkts-collections-Uint8Array.md), [Int16Array](arkts-apis-arkts-collections-Int16Array.md), [Uint16Array](arkts-apis-arkts-collections-Uint16Array.md), [Int32Array](arkts-apis-arkts-collections-Int32Array.md), [Uint32Array](arkts-apis-arkts-collections-Uint32Array.md), [Uint8ClampedArray](arkts-apis-arkts-collections-Uint8ClampedArray.md), and [Float32Array](arkts-apis-arkts-collections-Float32Array.md)).
 
 > **NOTE**
@@ -44,15 +46,14 @@ A constructor used to create an ArkTS ArrayBuffer of a given length.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------|
-| byteLength  | number | Yes  | Number of bytes occupied by the buffer. The maximum value is **2147483647**.    |
+| byteLength  | number  | Yes   | The number of bytes occupied by the buffer. The value ranges from 0 to 2147483647. Otherwise, an exception is thrown. 0 indicates that the length of the constructed ArkTS ArrayBuffer is 0, and 2147483647 indicates that the length of the constructed ArkTS ArrayBuffer is 2147483647. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                          |
 | 10200012 | The ArrayBuffer's constructor cannot be directly invoked. |
 
 **Example**
@@ -75,22 +76,21 @@ Selects a range of elements in this ArkTS ArrayBuffer to create an ArkTS ArrayBu
 
 | Name| Type  | Mandatory| Description                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| begin  | number | Yes  | Start index of the range. If a negative number is passed in, it refers to the index of `begin + arrayBuffer.byteLength`.|
-| end    | number | No  | End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + arrayBuffer.byteLength`. The default value is the length of the original ArkTS ArrayBuffer.|
+| begin  | number | Yes   | Start index. If `begin < 0`, the start position is `begin + arrayBuffer.byteLength`. If `begin < -arrayBuffer.byteLength`, the start position is 0. |
+| end    | number | No   | End index (excluding the element at this index). If `end < 0`, the end position is `end + arrayBuffer.byteLength`. If `end > arrayBuffer.byteLength`, the slice ends at arrayBuffer.byteLength. The default value is the length of the original ArkTS ArrayBuffer. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| ArrayBuffer | New ArrayBuffer generated.|
+| ArrayBuffer | collections.ArrayBuffer, a new ArkTS ArrayBuffer object containing the content of the specified range of the original ArkTS ArrayBuffer |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|                    Error Message                  |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error.                             |
 | 10200011 | The slice method cannot be bound.            |
 | 10200201 | Concurrent modification error.               |
 

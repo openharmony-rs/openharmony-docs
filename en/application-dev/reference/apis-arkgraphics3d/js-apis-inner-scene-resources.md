@@ -1,12 +1,11 @@
 # SceneResources
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=943c6a9d177f6e87860158abc76387727f97f346 translatedAt=2026-08-25T13:20:11.981Z pushedAt=2026-08-26T07:04:06.759Z -->
+<!-- md-trans-meta sourceCommit=dab54be04d4fc216049dccb973aae5f59e744da7 translatedAt=2026-11-16T06:16:08.470Z pushedAt=2026-11-16T06:31:14.311Z nl=1 -->
 
 This module provides the basic resource types commonly used in ArkGraphics 3D, including shaders, materials, meshes, animations, environments, and images, which are used to build 3D scenes.
 
@@ -238,7 +237,7 @@ Defines the textures, property factors, and texture samplers used by a material.
 | ---- | ---- | ---- | ---- | ---- |
 | image | [Image](#image) \| null | No| No| Texture map based on PBR properties to convey the texture information of the material.|
 | factor | [Vec4](js-apis-inner-scene-types.md#vec4) | No| No| PBR property factor, with different meanings for different properties.|
-| sampler | [Sampler](#sampler20) | No| Yes| Texture sampler, with the default value set to **LINEAR** for magnification, minification, and mipmaps, and to **REPEAT** for U, V, and W directions.|
+| sampler | [Sampler](#sampler20) | No | Yes | Texture map sampler. By default, the magnify, shrink, and mipmap filter modes are linear filtering (LINEAR), and the addressing modes in the U and V directions of the texture map are repeat (REPEAT). |
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
 
@@ -650,7 +649,6 @@ Image type, inherited from [SceneResource](#sceneresource).
 | height | number | Yes| No| Image height, in px. The value must be greater than 0.|
 
 ## ImageStream
-
 Image stream type, which inherits from [Image](#image).
 
 **Since**: 26.0.0
@@ -690,7 +688,7 @@ Obtains the value of the specified effect property.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| propertyName | string | Yes| Name of a specified effect property. Currently, the following strings are supported:<br>-'exposure': exposure level of an image.<br>-'vibrance': natural saturation of an image.|
+| propertyName | string | Yes | Name of the specific effect attribute. Currently supported strings are:<br>-'exposure': This attribute indicates the exposure of the image.<br>-'vibrance': This attribute indicates the natural saturation of the image. |
 
 **Return value**
 
@@ -732,7 +730,7 @@ Sets the value of a specified effect property.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| propertyName | string | Yes| Name of a specified effect property. Currently, the following strings are supported:<br>-'exposure': exposure level of an image.<br>-'vibrance': natural saturation of an image.|
+| propertyName | string | Yes | Name of the specific effect attribute. Currently supported strings are:<br>-'exposure': This attribute indicates the exposure of the image.<br>-'vibrance': This attribute indicates the natural saturation of the image. |
 | value | Object \| undefined | Yes| Value of the effect property to set.<br>-'exposure': The value is of the number type. The recommended value range is [-5, 5]. A larger value indicates a brighter image.<br>-'vibrance': The value is of the number type. The recommended value range is [-1, 1]. A larger value indicates more vivid image colors.|
 
 **Return value**

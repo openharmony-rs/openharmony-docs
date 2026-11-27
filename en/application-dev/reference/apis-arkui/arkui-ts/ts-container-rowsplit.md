@@ -2,13 +2,14 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-11-17T04:20:48.088Z pushedAt=2026-11-19T08:20:04.891Z nl=1 -->
 
-The **RowSplit** component lays out child components horizontally and inserts a vertical divider between every two child components.
+The **RowSplit** component lays out child components horizontally and inserts a vertical divider between every two child components. It is suitable for scenarios that require horizontal multi-area layout and support dynamic adjustment of child component widths, such as the left and right panes of a file manager and the two-column layout of a settings page. Through draggable dividers, users can flexibly adjust the width of each area.
 
->  **NOTE**
+> **NOTE**
 >
 > This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
@@ -16,9 +17,11 @@ The **RowSplit** component lays out child components horizontally and inserts a 
 
 Supported
 
-This component limits the width of its child components through dividers. During initialization, the divider positions are calculated based on the width of its child components. After initialization, dynamic width modifications to child components do not affect divider positions. To adjust child component widths, drag the adjacent dividers.
+The **RowSplit** component limits the width of its child components through dividers. During initialization, the divider positions are calculated based on the width of its child components. After initialization, dynamically modifying the width of a child component does not change the divider positions, which remain unchanged. You can drag a divider to change the width of the child components.
 
-After initialization, dynamic changes to the [margin](ts-universal-attributes-size.md#margin), [border](ts-universal-attributes-border.md#border), or [padding](ts-universal-attributes-size.md#padding) attributes may cause the width of the child components to exceed the allowable distance between adjacent dividers. In such cases, dividers cannot be dragged to adjust the width of the child components.
+**NOTE**
+After initialization, dynamically modifying the [margin](ts-universal-attributes-size.md#margin), [border](ts-universal-attributes-border.md#border), or [padding](ts-universal-attributes-size.md#padding) universal attributes may cause the width of a child component to be greater than the spacing between adjacent dividers. In this exceptional case, dragging a divider to change the width of the child components is not supported. This is because the divider positions are determined during initialization, and dynamically modifying attributes such as margin, border, and padding breaks the original layout calculation, preventing the dividers from correctly responding to drag operations. You are advised to set the size and margin attributes of the child components properly during initialization.
+
 ## APIs
 
 RowSplit()
@@ -41,21 +44,25 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 resizeable(value: boolean)
 
-Sets whether the divider can be dragged.
+Sets whether the divider is draggable. When set to **true**, the user can drag the divider to change the width of the child components; when set to **false**, the divider position is fixed.
+
+> **NOTE**
+>
+> After initialization, if the child component width is greater than the spacing between adjacent dividers due to an exception caused by dynamically modifying the universal attributes **margin**, **border**, and **padding**, dragging the divider to change the child component width is not supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | boolean | Yes| Whether the divider can be dragged. **true**: The divider can be dragged. **false**: The divider cannot be dragged.<br>Default value: **false**<br>Invalid values are treated as the default value.|
+| value | boolean | Yes | Whether the divider can be dragged. When set to **true**, the divider can be dragged; when set to **false**, the divider cannot be dragged.<br>Default value: **false**<br>Invalid value: handled as the default value. |
 
->  **NOTE**
+> **NOTE**
 >
-> The divider of **RowSplit** can change the width of the left and right child components, but only to the extent that the resultant width falls within the maximum and minimum widths of the child components.
+> The divider of **RowSplit** can change the width of the left and right child components, but only to the extent that the resultant width falls within the maximum and minimum widths of the child components. When the divider is dragged, the child component width is calculated in real time. When the minimum or maximum width set for the child component is reached, the divider stops moving.
 
 ## Events
 
@@ -63,7 +70,7 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 
-This example demonstrates the basic usage of **RowSplit**, which allows you to create draggable, horizontally laid-out child components.
+This example shows the basic usage of **RowSplit**, which implements a horizontally laid-out layout with a draggable divider.
 
 ```ts
 // xxx.ets
@@ -73,6 +80,7 @@ struct RowSplitExample {
   build() {
     Column() {
       Text('The second line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      // Create a RowSplit component to implement horizontal layout.
       RowSplit() {
         Text('1').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
         Text('2').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)

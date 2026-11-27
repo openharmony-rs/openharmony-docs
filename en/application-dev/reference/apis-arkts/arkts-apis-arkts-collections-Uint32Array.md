@@ -1,11 +1,13 @@
 # Class (Uint32Array)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
-A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=31ba07988632b6f2ed98a078bdae886436926502 translatedAt=2026-11-16T05:01:07.799Z pushedAt=2026-11-16T06:31:14.159Z nl=2 -->
+
+A linear data structure whose underlying implementation is based on [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
 
 > **NOTE**
 >
@@ -29,11 +31,11 @@ import { collections } from '@kit.ArkTS';
 
 | Name  | Type  | Read Only| Optional| Description             |
 | ------ | ------ | ---- | ---- | ----------------|
-| buffer | ArrayBuffer | Yes  | No | Bottom-layer buffer used by an ArkTS Uint32Array.|
-| byteLength | number | Yes  | No  | Number of bytes occupied by an ArkTS Uint32Array.|
-| byteOffset | number | Yes  | No  | Offset between the ArkTS Uint32Array and the start position of the ArrayBuffer.|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | Yes   | No  | The [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) object used by the ArkTS Uint32Array at the underlying layer.|
+| byteLength | number | Yes   | No   | The number of bytes occupied by the ArkTS Uint32Array.|
+| byteOffset | number | Yes   | No   | The byte offset of the ArkTS Uint32Array from the start position of its ArrayBuffer.|
 | length | number | Yes  | No | Number of elements in an ArkTS Uint32Array.|
-| BYTES_PER_ELEMENT | number | Yes  | No  | Number of bytes occupied by each element in the ArkTS Uint32Array.|
+| BYTES_PER_ELEMENT | number | Yes   | No   | The number of bytes occupied by each element in the ArkTS Uint32Array.|
 
 ## constructor
 constructor()
@@ -71,15 +73,14 @@ A constructor used to create an ArkTS Uint32Array of a given length.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| length | number | Yes| Length of the ArkTS Uint32Array.|
+| length | number | Yes | Used to specify the length of the ArkTS Uint32Array, which must be a non-negative integer. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                 |
 | -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint32Array's constructor cannot be directly invoked. |
 
 
@@ -107,11 +108,10 @@ A constructor that creates an ArkTS Uint32Array from an iterable object.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint32Array's constructor cannot be directly invoked. |
 
 **Example**
@@ -136,15 +136,14 @@ A constructor that creates an ArkTS Uint32Array from an array-like object or Ark
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| array |  ArrayLike\<number> \| ArrayBuffer | Yes| Object used to construct the ArkTS Uint32Array. When the parameter type is ArrayBuffer, the number of bytes occupied by the buffer must be an integer multiple of 4.|
+| array |  ArrayLike\<number> \| ArrayBuffer | Yes | Object used to construct an ArkTS Uint32Array. When the parameter type is ArrayBuffer, the occupied byte count must be an integer multiple of 4. When the parameter type is ArrayLike, its elements are copied and a new underlying [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) is created. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint32Array's constructor cannot be directly invoked. |
 
 **Example**
@@ -173,7 +172,7 @@ let uint32Array2: collections.Uint32Array = new collections.Uint32Array(uint32Ar
 ## constructor
 constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
-A constructor that creates an ArkTS Uint32Array from an ArrayBuffer.
+Constructor that creates an ArkTS Uint32Array object from an ArrayBuffer. The Uint32Array shares the same underlying data with the passed-in ArrayBuffer.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -183,33 +182,32 @@ A constructor that creates an ArkTS Uint32Array from an ArrayBuffer.
 
 | Name | Type  | Mandatory| Description                                        |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | Yes| ArrayBuffer object used to construct the ArkTS Uint32Array. The number of bytes occupied by the buffer must be an integer multiple of 4.|
-| byteOffset | number | No| Byte offset of the buffer, beginning at 0. The default value is **0**.|
-| length | number | No| Length of the ArkTS Uint32Array. The default value is **0**.|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | Yes | The [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) object used to construct the ArkTS Uint32Array. The number of bytes occupied by the buffer must be a multiple of 4. |
+| byteOffset | number | No | Specifies the byte offset of the buffer, which must be a non-negative integer and a multiple of 4. The default value is 0. |
+| length | number | No | Specifies the length of the ArkTS Uint32Array, which must be a non-negative integer. The default value is 0. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                  |
 | -------- | -------------------------------------------------------   |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint32Array's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
 let uint32Array: collections.Uint32Array = collections.Uint32Array.from([1, 2, 3, 4, 5, 6]);
-console.info("byteLength: " + uint32Array.buffer.byteLength); // byteLength: 24
-// Start from the fourth byte of the buffer corresponding to Uint32Array. The length is 5.
+console.info(`byteLength: ${uint32Array.buffer.byteLength}`); // byteLength: 24
+// Start from the 5th byte of the buffer corresponding to uint32Array, with a length of 5.
 let uint32Array1: collections.Uint32Array = new collections.Uint32Array(uint32Array.buffer, 4, 5);
-console.info("[" + uint32Array1 + "]"); // [2, 3, 4, 5, 6]
+console.info(`[${uint32Array1}]`); // [2, 3, 4, 5, 6]
 ```
 
 ## from
 static from(arrayLike: ArrayLike\<number>): Uint32Array
 
-Creates an ArkTS Uint32Array from an array-like or iterator object.
+Creates an ArkTS Uint32Array object from an ArrayLike.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -227,14 +225,6 @@ Creates an ArkTS Uint32Array from an array-like or iterator object.
 | ------------ | --------- |
 | Uint32Array | New ArkTS Uint32Array generated.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
-
 **Example**
 ```ts
 let arrayLike = [1, 3, 5];
@@ -244,7 +234,7 @@ let array: collections.Uint32Array = collections.Uint32Array.from(arrayLike); //
 ## from
 static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>): Uint32Array
 
-Creates an ArkTS Uint32Array from an array-like object.
+Creates an ArkTS Uint32Array object from an ArrayLike, transforming each element through a mapping function.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -253,7 +243,7 @@ Creates an ArkTS Uint32Array from an array-like object.
 **Parameters**
 | Name | Type  | Mandatory| Description                                       |
 | ------- | ------ | ---- | ------------------------------------------|
-| arrayLike | ArrayLike\<T> | Yes| Array-like object used to construct the ArkTS Uint32Array.             |
+| arrayLike | ArrayLike\<T> | Yes | Array-like object used to construct the ArkTS Uint32Array.              |
 | mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | Yes| Mapping function.|
 
 **Return value**
@@ -262,34 +252,26 @@ Creates an ArkTS Uint32Array from an array-like object.
 | ------------ | --------- |
 | Uint32Array | New ArkTS Uint32Array generated.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
-
 **Example**
 
 ```ts
 // Example 1: Create an ArkTS Uint32Array from an object.
 let array: collections.Uint32Array = collections.Uint32Array.from<number>(
-  { length: 5 }, (v: Object, k: number) => k);
+  { length: 5 }, (v: number, k: number) => k);
 // Uint32Array [0, 1, 2, 3, 4]
 ```
 
 ```ts
 // Example 2: Create an ArkTS Uint32Array from a string array.
 let array: collections.Uint32Array = collections.Uint32Array.from<string>(
-  ["1", "3", "5"], (v: string, k: number) => parseInt(v));
+  ["1", "3", "5"], (value: string, k: number) => parseInt(value));
 // Uint32Array [1, 3, 5]
 ```
 
 ```ts
 // Example 3: Create an ArkTS Uint32Array from a string.
 let array: collections.Uint32Array = collections.Uint32Array.from<string>(
-  "12345", (v: string, k: number) => parseInt(v));
+  "12345", (value: string, k: number) => parseInt(value));
 // Uint32Array [1, 2, 3, 4, 5]
 ```
 
@@ -305,7 +287,7 @@ Creates an ArkTS Uint32Array from an iterator object.
 **Parameters**
 | Name | Type  | Mandatory| Description                               |
 | ------- | ------ | ---- | -----------------------------------|
-| arrayLike | Iterable\<number> | Yes| Iterator object used to construct the ArkTS Uint32Array.  |
+| arrayLike | Iterable\<number> | Yes | An iterable object used to construct an ArkTS Uint32Array. |
 | mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No| Mapping function. If no value is passed in, no special processing is conducted on the elements.|
 
 **Return value**
@@ -313,14 +295,6 @@ Creates an ArkTS Uint32Array from an iterator object.
 | Type        | Description     |
 | ------------ | --------- |
 | Uint32Array | New ArkTS Uint32Array generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **Example**
 
@@ -335,7 +309,7 @@ let array: collections.Uint32Array = collections.Uint32Array.from(set);
 // Example 2: A mapping function is specified.
 let set: Set<number> = new Set<number>([1, 2, 3]);
 let array: collections.Uint32Array = collections.Uint32Array.from(
-  set, (v: number, k: number) => v + k);
+  set, (value: number, k: number) => value + k);
 // Uint32Array [1, 3, 5]
 ```
 
@@ -343,7 +317,7 @@ let array: collections.Uint32Array = collections.Uint32Array.from(
 
 static of(...items: number[]): Uint32Array
 
-Creates an ArkTS Uint32Array with a variable number of parameters.
+Creates a new ArkTS Uint32Array object from a variable number of arguments.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -361,26 +335,18 @@ Creates an ArkTS Uint32Array with a variable number of parameters.
 | --------- | ----------------------- |
 | Uint32Array | New ArkTS Uint32Array instance.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-
 **Example**
 
 ```ts
-let arr: collections.Uint32Array = collections.Uint32Array.of(1, 2, 3, 4);
-console.info(arr.toString()); // Expected output: 1,2,3,4
+let uint32Array: collections.Uint32Array = collections.Uint32Array.of(1, 2, 3, 4);
+console.info(uint32Array.toString()); // Expected output: 1,2,3,4
 ```
 
 ## toString<sup>18+</sup>
 
 toString(): string
 
-Converts an ArkTS Uint32Array into a string.
+Converts the ArkTS Uint32Array to a string.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -440,13 +406,13 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 // The system where the application is running is set to the French locale.
 let array = new collections.Uint32Array([1000, 2000, 3000]);
 let stringArray = array.toLocaleString();
-console.info(stringArray); // Expected output: 1,000, 2,000, 3,000
+console.info(stringArray); // Expected output: 1,000,2,000,3,000
 ```
 
 ## copyWithin
 copyWithin(target: number, start: number, end?: number): Uint32Array
 
-Copies elements within a given range from this ArkTS Uint32Array to another position in sequence.
+Copies the elements within the specified range of the ArkTS Uint32Array to the target position in sequence.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -456,7 +422,7 @@ Copies elements within a given range from this ArkTS Uint32Array to another posi
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| target | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `target + array.length`.|
+| target | number | Yes | Subscript of the target start position. If `target < 0`, it starts from the position `target + Uint32Array.length`. |
 | start | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint32Array.length`.|
 | end | number | No| End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint32Array.length`. The default value is the length of the ArkTS Uint32Array.|
 
@@ -464,15 +430,14 @@ Copies elements within a given range from this ArkTS Uint32Array to another posi
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint32Array | ArkTS Uint32Array after being modified.|
+| Uint32Array | The modified ArkTS Uint32Array object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -487,7 +452,7 @@ let copied: collections.Uint32Array = array.copyWithin(3, 1, 3);
 ## some
 some(predicate: TypedArrayPredicateFn\<number, Uint32Array>): boolean
 
-Checks whether any element in this ArkTS Uint32Array meets a given condition.
+Tests whether any element in the ArkTS Uint32Array satisfies the specified condition.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -507,11 +472,10 @@ Checks whether any element in this ArkTS Uint32Array meets a given condition.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The some method cannot be bound.   |
 | 10200201 | Concurrent modification error. |
 
@@ -546,11 +510,10 @@ Checks whether all elements in this ArkTS Uint32Array meet a given condition.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The every method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -583,15 +546,14 @@ Fills all elements in a given range in this ArkTS Uint32Array with a value.
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint32Array | Filled ArkTS Uint32Array.|
+| Uint32Array | The ArkTS Uint32Array object after filling.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -627,11 +589,10 @@ Returns a new ArkTS Uint32Array that contains all elements that meet the given c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -666,11 +627,10 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -705,11 +665,10 @@ Returns the index of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -738,11 +697,10 @@ Calls a callback function for each element in this ArkTS Uint32Array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -769,21 +727,20 @@ Returns the index of the first occurrence of a value in this ArkTS Uint32Array. 
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | Yes  | Value to search for.               |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint32Array, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint32Array.|
+| fromIndex     | number | No   | Start index of the search. The default value is 0. If the index is greater than or equal to the length of the ArkTS Uint32Array, -1 is returned. If the index is negative, it is treated as an offset from the end of the array, searching from front to back. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| number | Index of the first occurrence of the value. If the value is not found, **-1** is returned.|
+| number | The first index of the given element in the ArkTS Uint32Array; if not found, -1 is returned. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.                |
 
@@ -801,7 +758,7 @@ array.indexOf(9, -2); // 2
 
 lastIndexOf(searchElement: number, fromIndex?: number): number
 
-Obtains the index of the last occurrence of the specified value in this ArkTS Uint32Array.
+Returns the index of the last occurrence of searchElement in the ArkTS Uint32Array instance, or -1 if the element is not contained.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -812,13 +769,13 @@ Obtains the index of the last occurrence of the specified value in this ArkTS Ui
 | Name          | Type    | Mandatory | Description                                                                               |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | number | Yes  | Value to search for.                                                                           |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint32Array, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint32Array.|
+| fromIndex     | number | No   | Start index of the search, searching backward from this position. The default value is the length of the ArkTS Uint32Array minus 1 (that is, starting from the end). If the provided index value is negative, it is treated as an offset from the end of the array, searching from back to front. |
 
 **Return value**
 
 | Type    | Description                     |
 | ------ | ----------------------- |
-| number | Index of the last occurrence of the value. If the value is not found, **-1** is returned.|
+| number | The index of the last occurrence of the given element in the ArkTS Uint32Array; if not found, returns -1. |
 
 **Error codes**
 
@@ -833,10 +790,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([3, 5, 9]);
-console.info(array.lastIndexOf(3) + ''); // Expected output: 0
-console.info(array.lastIndexOf(7) + ''); // Expected output: -1
-console.info(array.lastIndexOf(9, 2) + ''); // Expected output: 2
-console.info(array.lastIndexOf(9, -2) + ''); // Expected output: -1
+console.info(`${array.lastIndexOf(3)}`); // Expected output: 0
+console.info(`${array.lastIndexOf(7)}`); // Expected output: -1
+console.info(`${array.lastIndexOf(9, 2)}`); // Expected output: 2
+console.info(`${array.lastIndexOf(9, -2)}`); // Expected output: -1
 ```
 
 ## join
@@ -862,11 +819,10 @@ Concatenates all elements in this ArkTS Uint32Array into a string, with a given 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -900,11 +856,10 @@ Applies a callback function to each element in this ArkTS Uint32Array and uses t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -912,13 +867,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([25, 36, 49]);
-const mapped: collections.Uint32Array = array.map(Math.sqrt); // Uint32Array [5, 6 ,7]
+const mapped: collections.Uint32Array = array.map(Math.sqrt); // Uint32Array [5, 6, 7]
 ```
 
 ## reduce
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint32Array>): number
 
-Applies a reduce function on each element in this ArkTS Uint32Array and returns the final reduction result.
+Executes a reducer function on each element and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -937,11 +892,10 @@ Applies a reduce function on each element in this ArkTS Uint32Array and returns 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID|                      Error Message                    |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The reduce method cannot be bound.               |
 | 10200201 | Concurrent modification error.               |
 
@@ -957,7 +911,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Uint32Array>): number
 
-Reversely traverses this ArkTS Uint32Array, applies a reduce function on each element in the array, and returns the final reduction result.
+Traverses the ArkTS Uint32Array in reverse order, executes the reducer function on each element, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -976,11 +930,10 @@ Reversely traverses this ArkTS Uint32Array, applies a reduce function on each el
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -989,13 +942,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 2, 3, 4, 5]);
 let reducedValue: number = array.reduceRight((accumulator: number, value: number) => accumulator + value);
-console.info(reducedValue + ''); // Expected output: 15
+console.info(`${reducedValue}`); // Expected output: 15
 ```
 
 ## reduce
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint32Array>, initialValue: number): number
 
-Applies a reduce function for each element in this ArkTS Uint32Array, receives an initial value as the parameter called by the reduce function for the first time, and returns the final reduction result.
+Executes the reducer function on each element, receives the initial value as the first call argument, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1016,11 +969,10 @@ Applies a reduce function for each element in this ArkTS Uint32Array, receives a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1036,7 +988,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Uint32Array>, initialValue: U): U
 
-Reversely traverses this ArkTS Uint32Array, applies a reduce function for each element in the array, receives an initial value as the parameter called by the reduce function for the first time, and returns the final reduction result.
+Traverses the ArkTS Uint32Array in reverse order, executes the reducer function on each element, receives the initial value as the first call argument, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1056,11 +1008,10 @@ Reversely traverses this ArkTS Uint32Array, applies a reduce function for each e
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1069,13 +1020,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 2, 3, 4, 5]);
 let reducedValue: number = array.reduceRight((accumulator: number, value: number) => accumulator + value, 1);
-console.info(reducedValue + ''); // Expected output: 16
+console.info(`${reducedValue}`); // Expected output: 16
 ```
 
 ## reduce
 reduce\<U>(callbackFn: TypedArrayReduceCallback\<U, number, Uint32Array>, initialValue: U): U
 
-Applies a reduce function for each element in this ArkTS Uint32Array, receives an initial value as the parameter called by the reduce function for the first time, and returns the final reduction result.
+Executes the reducer function on each element, receives the initial value as the first call argument, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1096,11 +1047,10 @@ Applies a reduce function for each element in this ArkTS Uint32Array, receives a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1115,7 +1065,7 @@ let reducedValue: string = array.reduce<string>((accumulator: string, value: num
 ## reverse
 reverse(): Uint32Array
 
-Reverses this ArkTS Uint32Array.
+Reverses the element order of the ArkTS Uint32Array in place (modifies the original array), and returns a reference to the modified original array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1156,15 +1106,14 @@ Writes the elements in an array-like object to the given start position in seque
 | Name   | Type  | Mandatory| Description                                                |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | array | ArrayLike\<number> | Yes | Array-like object whose elements will be written.|
-| offset | number | No | Start position for writing data. The default value is **0**.|
+| offset | number | No  | Start position for writing, which must be a non-negative integer. The default value is 0. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The set method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1189,7 +1138,7 @@ Selects a range of elements in this ArkTS Uint32Array to create an ArkTS Uint32A
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | -----------------------------------------------------|
-| start  | number | No  | Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint32Array.length`. The default value is **0**.|
+| start  | number | No   | Start index. If `start < 0`, it starts from the position `start + Uint32Array.length`. The default value is 0. |
 | end    | number | No  | End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint32Array.length`. The default value is the length of the ArkTS Uint32Array.|
 
 **Return value**
@@ -1200,11 +1149,10 @@ Selects a range of elements in this ArkTS Uint32Array to create an ArkTS Uint32A
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1220,7 +1168,7 @@ array.slice(-2); // Uint32Array [4, 5]
 ## sort
 sort(compareFn?: TypedArrayCompareFn\<number>): Uint32Array
 
-Sorts elements in this ArkTS Uint32Array and returns the sorted ArkTS Uint32Array.
+Sorts the ArkTS Uint32Array in place (modifies the original array), and returns a reference to the sorted original array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1240,11 +1188,10 @@ Sorts elements in this ArkTS Uint32Array and returns the sorted ArkTS Uint32Arra
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------ |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.         |
 
@@ -1253,14 +1200,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 3, 5, 4, 2]);
 array.sort(); // Uint32Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => a - b); // Uint32Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => b - a); // Uint32Array [5, 4, 3, 2, 1]
+array.sort((first: number, second: number) => first - second); // Uint32Array [1, 2, 3, 4, 5]
+array.sort((first: number, second: number) => second - first); // Uint32Array [5, 4, 3, 2, 1]
 ```
 
 ## subarray
 subarray(begin?: number, end?: number): Uint32Array
 
-Truncates an array from a specified position and returns a new ArkTS Uint32Array based on the same ArkTS ArrayBuffer.
+Extracts a subarray from the specified positions and returns a new ArkTS Uint32Array object based on the same ArkTS ArrayBuffer. Modifying the returned subarray or the original ArkTS Uint32Array affects each other because they share the same underlying [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) data. To create an independent copy, use the [slice](#slice) method.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1277,15 +1224,14 @@ Truncates an array from a specified position and returns a new ArkTS Uint32Array
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint32Array | New ArkTS Uint32Array.|
+| Uint32Array | An ArkTS Uint32Array object that shares the underlying ArrayBuffer with the original Uint32Array. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID|            Error Message                              |
 | -------- | -------------------------------------------------|
-| 401      | Parameter error.                                 |
 | 10200011 | The subarray method cannot be bound.             |
 | 10200201 | Concurrent modification error.               |
 
@@ -1309,7 +1255,7 @@ Returns the element at the given index. If no element is found, **undefined** is
 **Parameters**
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | number | Yes  | Index of the element. The index in an array always starts from 0 and is an integer. If a negative number is passed in, it refers to the index of `index + Uint32Array.length`.|
+| index  | number | Yes   | Index of the element to return (starting from 0), which is an integer. If `index < 0`, the element at position `index + Uint32Array.length` is accessed. |
 
 **Return value**
 
@@ -1319,11 +1265,10 @@ Returns the element at the given index. If no element is found, **undefined** is
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID|                       Error Message                   |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The at method cannot be bound.                   |
 | 10200201 | Concurrent modification error.               |
 
@@ -1331,9 +1276,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 2, 3, 4, 5]);
-console.info("element: " + array.at(2));  // element: 3
-console.info("element: " + array.at(-1)); // element: 5
-console.info("element: " + array.at(6));  // element: undefined
+console.info(`element: ${array.at(2)}`);  // element: 3
+console.info(`element: ${array.at(-1)}`); // element: 5
+console.info(`element: ${array.at(6)}`);  // element: undefined
 ```
 
 ## includes
@@ -1360,11 +1305,10 @@ Checks whether elements are contained in this ArkTS Uint32Array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1372,9 +1316,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 2, 3]);
-console.info("includes: " + array.includes(2));    // includes: true
-console.info("includes: " + array.includes(4));    // includes: false
-console.info("includes: " + array.includes(3, 3)); // includes: false
+console.info(`includes: ${array.includes(2)}`);    // includes: true
+console.info(`includes: ${array.includes(4)}`);    // includes: false
+console.info(`includes: ${array.includes(3, 3)}`); // includes: false
 ```
 
 ## entries
@@ -1406,9 +1350,9 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 let array: collections.Uint32Array = collections.Uint32Array.from([11, 22, 33]);
 let iterator: IterableIterator<[number, number]> = array.entries();
-console.info("value: " + iterator.next().value); // value: 0,11
-console.info("value: " + iterator.next().value); // value: 1,22
-console.info("value: " + iterator.next().value); // value: 2,33
+console.info(`value: ${iterator.next().value}`); // value: 0,11
+console.info(`value: ${iterator.next().value}`); // value: 1,22
+console.info(`value: ${iterator.next().value}`); // value: 2,33
 ```
 
 ## keys
@@ -1441,7 +1385,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 2, 3, 4, 5]);
 let iterator: IterableIterator<number> = array.keys();
 for (const key of iterator) {
-  console.info("" + key); // 0, 1, 2, 3, and 4 are returned in sequence.
+  console.info(`${key}`); // Output sequentially 0,1,2,3,4.
 }
 ```
 
@@ -1475,7 +1419,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array: collections.Uint32Array = collections.Uint32Array.from([1, 2, 3, 4, 5]);
 let iterator: IterableIterator<number> = array.values();
 for (const value of iterator) {
-  console.info("" + value); // 1, 2, 3, 4, and 5 are returned in sequence.
+  console.info(`${value}`); // output sequentially 1,2,3,4,5
 }
 ```
 
@@ -1483,7 +1427,7 @@ for (const value of iterator) {
 
 [Symbol.iterator]\(): IterableIterator&lt;number&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator, where each item of the iterator is the element value at the corresponding position in the ArkTS Uint32Array.
 
 > **NOTE**
 >
@@ -1521,7 +1465,7 @@ for (let item of uint32Array) {
 
 &#91;index: number&#93;: number
 
-Returns the element at a given index in this Uint32Array.
+Returns the element at the specified index position of the ArkTS Uint32Array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1531,17 +1475,17 @@ Returns the element at a given index in this Uint32Array.
 
 | Name   | Type  | Mandatory| Description                    |
 | ----- | ------ | ---- | -------------------------- |
-| index | number | Yes  | Index of the element. The index starts from zero.|
+| index | number | Yes | Zero-based index of the desired element. The value range is [0, Uint32Array.length-1]. |
 
 **Return value**
 
 | Type  | Description                |
 | ----- | ---------------------|
-| number | Number data type.|
+| number | Returns the element value at the specified index position. |
 
 **Example**
 
 ```ts
 let uint32Array = collections.Uint32Array.from([1, 2, 4]);
-console.info("Element at index 1: ", uint32Array[1]);
+console.info(`Element at index 1: ${uint32Array[1]}`);
 ```

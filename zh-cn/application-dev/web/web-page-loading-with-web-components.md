@@ -27,7 +27,7 @@
 
 在下面的示例中，在Web组件加载完“www\.example.com”页面后，开发者可通过loadUrl()接口将此Web组件显示页面变更为“www\.example1.com”。
 
-<!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->
+<!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -46,7 +46,7 @@ struct WebComponent {
             // 点击按钮时，通过loadUrl，跳转到www.example1.com
             this.controller.loadUrl('www.example1.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       // 组件创建时，加载www.example.com
@@ -80,7 +80,7 @@ struct WebComponent {
 
 
 - 应用侧代码。
-  <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
+  <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->  
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -99,7 +99,7 @@ struct WebComponent {
               // 点击按钮时，通过loadUrl，跳转到local1.html
               this.controller.loadUrl($rawfile('local1.html'));
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           })
         // 组件创建时，通过$rawfile加载本地文件local.html
@@ -224,7 +224,7 @@ struct WebComponent {
 ## 加载HTML格式的文本数据
 
 Web组件可以通过[loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata)接口实现加载HTML格式的文本数据。当开发者不需要加载整个页面，只需要显示一些页面片段时，可通过此功能来快速加载页面，当加载大量html文件时，需设置第四个参数baseUrl为"data"。
-<!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
+<!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -247,7 +247,7 @@ struct WebComponent {
               'UTF-8'
             );
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       // 组件创建时，加载www.example.com
@@ -311,7 +311,7 @@ struct ResourceWebComponent {
 }
 ```
 
-在“src\main\resources\rawfile”文件夹下创建index.html：
+在“src/main/resources/rawfile”文件夹下创建index.html：
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -322,7 +322,7 @@ struct ResourceWebComponent {
 </html>
 ```
 
-在“src\main\resources\rawfile”文件夹下创建index1.html：
+在“src/main/resources/rawfile”文件夹下创建index1.html：
 
 ```html
 <!-- index1.html -->

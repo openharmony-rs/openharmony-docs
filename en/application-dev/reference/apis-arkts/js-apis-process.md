@@ -1,10 +1,11 @@
 # @ohos.process (Obtaining Process Information)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-11-16T05:49:42.880Z pushedAt=2026-11-16T06:31:14.245Z nl=1 -->
 
 The **process** module provides process management APIs, for example, APIs for obtaining process information.
 
@@ -208,8 +209,8 @@ Sends a signal to a specified process to terminate it.
 **Example**
 
 ```js
-let pres = process.pid;
-let result = process.kill(28, pres);
+let pid = process.pid;
+let result = process.kill(28, pid);
 ```
 
 
@@ -219,7 +220,7 @@ exit(code: number): void
 
 Terminates this process.
 
-Exercise caution when using this API. After this API is called, the application exits. If the input parameter is not 0, data loss or exceptions may occur.
+Use this API with caution. After this API is called, the application exits. If the input parameter is not 0, data loss or undefined runtime exceptions may occur.
 
 > **NOTE**
 >
@@ -275,7 +276,7 @@ let pres = process.getUidForName("tool");
 
 getThreadPriority(v: number): number
 
-Obtains the thread priority based on the specified TID.
+Gets the thread priority according to the specified tid. The priority order depends on the current operating system.
 
 > **NOTE**
 >
@@ -330,7 +331,9 @@ Checks whether a UID belongs to this application.
 **Example**
 
 ```js
-let result = process.isAppUid(688);
+// Obtain the uid through process.uid.
+let pres = process.uid;
+let result = process.isAppUid(pres);
 ```
 
 
@@ -370,7 +373,7 @@ let pres = process.getSystemConfig(_SC_ARG_MAX);
 
 getEnvironmentVar(name: string): string
 
-Obtains the value of an environment variable.
+Gets the value corresponding to the environment variable name. If the environment variable does not exist, undefined is returned.
 
 > **NOTE**
 >
@@ -399,9 +402,9 @@ let pres = process.getEnvironmentVar("PATH");
 
 ## ProcessManager<sup>9+</sup>
 
-Provides APIs for throwing exceptions during the addition of a process.
+Provides process management related APIs, including process uid determination, user information query, thread priority retrieval, environment variable retrieval, process exit, and signal sending.
 
-Construct a **ProcessManager** object.
+Constructs a ProcessManager object through `new process.ProcessManager()`.
 
 ### isAppUid<sup>9+</sup>
 
@@ -425,22 +428,16 @@ Checks whether a UID belongs to this application.
 | ------- | ------------------------------------------------------------ |
 | boolean | Check result. The value **true** is returned if the UID belongs to the application; otherwise, **false** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```js
-let pro = new process.ProcessManager();
+// Create a ProcessManager instance.
+let processManager = new process.ProcessManager();
 // Use process.uid to obtain the UID.
 let pres = process.uid;
-let result = pro.isAppUid(pres);
-console.info("result: " + result); // result: true
+// Determine whether the uid belongs to the current application.
+let result = processManager.isAppUid(pres);
+console.info("result:", result); // result: true
 ```
 
 
@@ -466,19 +463,13 @@ Obtains the UID of a user from the user database of the system based on the spec
 | ------ | ------------- |
 | number | UID of the user. If the user does not exist, **-1** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```js
-let pro = new process.ProcessManager();
-let pres = pro.getUidForName("tool");
+// Create a ProcessManager instance.
+let processManager = new process.ProcessManager();
+// Obtain the uid based on the username.
+let pres = processManager.getUidForName("tool");
 ```
 
 
@@ -496,7 +487,7 @@ Obtains the thread priority based on the specified TID.
 
 | Name| Type  | Mandatory| Description           |
 | ------ | ------ | ---- | --------------- |
-| v      | number | Yes  | TID.|
+| v      | number | Yes   | Specified thread tid. Can be accessed through process.tid. |
 
 **Return value**
 
@@ -504,20 +495,15 @@ Obtains the thread priority based on the specified TID.
 | ------ | ------------------------------------------------ |
 | number | Priority of the thread. The priority depends on the operating system.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```js
-let pro = new process.ProcessManager();
+// Create a ProcessManager instance.
+let processManager = new process.ProcessManager();
+// Obtain the current thread tid.
 let tid = process.tid;
-let pres = pro.getThreadPriority(tid);
+// Obtain the thread priority based on the tid.
+let pres = processManager.getThreadPriority(tid);
 ```
 
 
@@ -543,20 +529,15 @@ Obtains the system configuration.
 | ------ | ------------------ |
 | number | System configuration obtained. If the configuration does not exist, **-1** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```js
-let pro = new process.ProcessManager();
+// Create a ProcessManager instance.
+let processManager = new process.ProcessManager();
+// Define system configuration parameters.
 let _SC_ARG_MAX = 0;
-let pres = pro.getSystemConfig(_SC_ARG_MAX);
+// Obtain system configuration information.
+let pres = processManager.getSystemConfig(_SC_ARG_MAX);
 ```
 
 
@@ -565,10 +546,6 @@ let pres = pro.getSystemConfig(_SC_ARG_MAX);
 getEnvironmentVar(name: string): string
 
 Obtains the value of an environment variable.
-
-> **NOTE**
->
-> Obtains the value of an environment variable. If the environment variable does not exist, **undefined** is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -584,21 +561,15 @@ Obtains the value of an environment variable.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| string | Value of the environment variable.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| string | Returns the value corresponding to the specified environment variable name. If the environment variable does not exist, returns undefined. |
 
 **Example**
 
 ```js
-let pro = new process.ProcessManager();
-let pres = pro.getEnvironmentVar("PATH");
+// Create a ProcessManager instance.
+let processManager = new process.ProcessManager();
+// Obtain the value of the PATH environment variable.
+let pres = processManager.getEnvironmentVar("PATH");
 ```
 
 
@@ -608,7 +579,7 @@ exit(code: number): void
 
 Terminates this process.
 
-Exercise caution when using this API. After this API is called, the application exits. If the input parameter is not 0, data loss or exceptions may occur.
+Use this API with caution. After this API is called, the application exits. If the input parameter is not 0, data loss or undefined runtime exceptions may occur.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -620,19 +591,11 @@ Exercise caution when using this API. After this API is called, the application 
 | ------ | ------ | ---- | -------------- |
 | code   | number | Yes  | Exit code of the process.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```js
-let pro = new process.ProcessManager();
-pro.exit(0);
+let processManager = new process.ProcessManager();
+processManager.exit(0);
 ```
 
 
@@ -640,7 +603,7 @@ pro.exit(0);
 
 kill(signal: number, pid: number): boolean
 
-Sends a signal to the specified process to terminate it. Only the current process can be terminated.
+Sends a signal to the specified process to terminate the specified process (only terminating the current process is supported).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -650,8 +613,8 @@ Sends a signal to the specified process to terminate it. Only the current proces
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| signal | number | Yes  | Signal to send. Value range: 1 <= signal <= 64.|
-| pid    | number | Yes  | PID of the process, to which the signal will be sent.  |
+| signal | number | Yes | Sends a specific signal to the specified process. Value range: 1 <= signal <= 64. |
+| pid    | number | Yes | ID of the process. Can be accessed through process.pid. |
 
 **Return value**
 
@@ -659,18 +622,13 @@ Sends a signal to the specified process to terminate it. Only the current proces
 | ------- | ------------------------------------------------------------ |
 | boolean | Signal sending result. The value **true** is returned if the signal is sent successfully; otherwise, **false** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```js
-let pro = new process.ProcessManager();
+// Create a ProcessManager instance.
+let processManager = new process.ProcessManager();
+// Obtain the pid of the current process.
 let pres = process.pid;
-let result = pro.kill(28, pres);
+// Send signal 28 to end the current process.
+let result = processManager.kill(28, pres);
 ```

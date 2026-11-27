@@ -5,6 +5,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=4517d8951650b6827c117dbc27949ea5827acec2 translatedAt=2026-11-17T07:24:18.605Z pushedAt=2026-11-17T07:47:33.202Z nl=1 -->
 
 > **NOTE**
 >
@@ -28,7 +29,7 @@ The system memory is insufficient.
 
 Check whether memory leak occurs.
 
-## 10000002 IPC Parcel Write Failure
+## 10000002 IPC Serialization Failed
 
 **Error Message**
 
@@ -208,3 +209,4 @@ The client process fails to obtain the application group information.
 **Solution**
 
 Check whether the bundle name is valid and whether the application exists.
+

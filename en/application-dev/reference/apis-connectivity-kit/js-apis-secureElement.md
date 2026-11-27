@@ -6,6 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1e01ee9a229e85b1a042d263115901930531c529 translatedAt=2026-11-23T02:40:12.120Z pushedAt=2026-11-24T12:02:23.318Z nl=1 -->
 
 The **secureElement** module provides APIs for managing secure elements (SEs). SEs include the Embedded SE (eSE) and SIM on a device. The SE service mentioned in this topic is an **SEService** instance. For details, see [createService](#omapicreateservice12).
 
@@ -411,7 +412,7 @@ let seService : omapi.SEService;
 
 try {
     let version = seService.getVersion();
-    hilog.error(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
+    hilog.info(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
 } catch (error) {
     hilog.error(0x0000, 'testTag', 'getVersion error %{public}s', JSON.stringify(error));
 }
@@ -436,7 +437,7 @@ Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** 
 
 **Error codes**
 
-For details about error codes, see [NFC Error Codes](errorcode-nfc.md).
+For details about the following error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |

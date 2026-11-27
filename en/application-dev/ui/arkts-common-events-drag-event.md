@@ -1,13 +1,13 @@
-# Implementing Unified Drag and Drop
+# Implementing Unified Drag-and-Drop
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2a058c2b0cfcdeaf9ab5cf0b4796fa46db1e1dff translatedAt=2026-11-05T11:04:27.168Z pushedAt=2026-11-09T10:02:18.682Z nl=1 -->
+<!-- md-trans-meta sourceCommit=be1a4cc0d5b66a6dbc37b39b165dfada72acc31e translatedAt=2026-11-16T08:10:31.098Z pushedAt=2026-11-16T09:06:35.250Z nl=1 -->
 
-Unified drag and drop refers to a data transfer interaction triggered by a mouse device or gesture. Users can drag data from one component (the drag source) and drop it into another (the drop target) to initiate a response. In this interaction, the drag source provides the data, while the drop target receives and processes it, thereby enabling users to easily move, copy, or delete data.
+Unified drag-and-drop refers to a data transfer interaction triggered by a mouse device or gesture. Users can drag data from one component (the drag source) and drop it into another (the drop target) to initiate a response. In this interaction, the drag source provides the data, while the drop target receives and processes it, thereby enabling users to easily move, copy, or delete data.
 
 ## Basic Concepts
 
@@ -36,7 +36,7 @@ When a mouse device is used as the pointer, dragging starts as soon as the point
 
 ## Drag Event Callbacks
 
-Drag and drop can occur within a single application or span multiple applications. The following callback events allow you to detect drag status and intervene in the system's default drag behavior.
+Drag-and-Drop can occur within a single application or span multiple applications. The following callback events allow you to detect drag status and intervene in the system's default drag behavior.
 
 | Callback Event| **Description**|
 | ---------------- | ------------------------|
@@ -83,9 +83,9 @@ You can use the getter methods supported by [DragEvent](../reference/apis-arkui/
 
 ## Drag Preview
 
-The drag preview is an image displayed during the drag and drop operation. It is a visual representation of the drag data, not the component itself. You can set it to any supported image that you want to display to users. Specifically, the **pixelMap** field of [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) or [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) returned in the **onDragStart** callback can be used to set the drag preview. By default, the floating image is the screenshot of the component itself. The **pixelMap** field of **CustomBuilder** or **DragItemInfo** in the [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11) attribute can be used to configure the drag preview. If no custom drag preview is set, the system uses a snapshot of the component for dragging and floating by default.
+The drag preview is an image displayed during the drag-and-drop operation. It is a visual representation of the drag data, not the component itself. You can set it to any supported image that you want to display to users. Specifically, the **pixelMap** field of [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) or [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) returned in the **onDragStart** callback can be used to set the drag preview. By default, the floating image is the screenshot of the component itself. The **pixelMap** field of **CustomBuilder** or **DragItemInfo** in the [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11) attribute can be used to configure the drag preview. If no custom drag preview is set, the system uses a snapshot of the component for dragging and floating by default.
 
-You can configure opacity, rounded corners, shadow, and blur effects for the drag preview. For details, see [Drag and Drop Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md).
+You can configure opacity, rounded corners, shadow, and blur effects for the drag preview. For details, see [Drag-and-Drop Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md).
 
 ![pixelMap](figures/pixelMap.png)
 
@@ -94,11 +94,11 @@ You can configure opacity, rounded corners, shadow, and blur effects for the dra
 * For a container component, if the drawing area of internal content exceeds the container's bounds due to the use of APIs such as [position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position) and [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset), the system screenshot will not capture content outside the bounds. To show the excess content, you can expand the container scope or use a custom container.
 * Regardless of whether you use a **CustomBuilder** or rely on the default snapshot mechanism, the snapshot process does not support transformation APIs, including [scale](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale) and [rotate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate).
 
-## Drag and Drop Implementation
+## Drag-and-Drop Implementation
 
-### General Drag and Drop Adaptation
+### General Drag-and-Drop Adaptation
 
-The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component to illustrate basic drag and drop development procedures and key considerations.
+The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component to illustrate basic drag-and-drop development procedures and key considerations.
 
 1. Make the component draggable.
 
@@ -496,13 +496,13 @@ export struct DefaultDrag {
 
 ![commonDrag](figures/commonDrag.gif)
 
-### Multi-Select Drag and Drop Adaptation
+### Multi-Select Drag-and-Drop Adaptation
 
-Since API version 12, the [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) and [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) components in the [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) and [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) components support the multi-select drag and drop functions. Currently, only the **onDragStart** API can be used to trigger these functions.
+Since API version 12, the [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) and [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) components in the [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) and [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) components support the multi-select drag-and-drop functions. Currently, only the **onDragStart** API can be used to trigger these functions.
 
-The following uses **Grid** as an example to describe the basic procedure for multi-select drag and drop development and key considerations during development.
+The following uses **Grid** as an example to describe the basic procedure for multi-select drag-and-drop development and key considerations during development.
 
-1. Enable multi-select drag and drop.
+1. Enable multi-select drag-and-drop.
 
    Create **GridItem** child components and bind the **onDragStart** callback to them. In addition, set the **GridItem** components to be selectable.
 
@@ -528,7 +528,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    }
    ```
 
-   Multi-select drag and drop is disabled by default. To enable it, set **isMultiSelectionEnabled** to **true** in the **options** parameter of the [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11) API. **options** also has the **defaultAnimationBeforeLifting** parameter, which, when set to **true**, applies a default scaling down animation as the lift animation for the component.
+   Multi-select drag-and-drop is disabled by default. To enable it, set **isMultiSelectionEnabled** to **true** in the **options** parameter of the [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11) API. **options** also has the **defaultAnimationBeforeLifting** parameter, which, when set to **true**, applies a default scaling down animation as the lift animation for the component.
 
    <!-- @[dragPreviewOptions_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -550,9 +550,9 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    })
    ```
 
-2. Optimize the multi-select drag and drop performance.
+2. Optimize the multi-select drag-and-drop performance.
 
-   In multi-select drag and drop scenarios, there is a clustering animation effect when multiple items are selected. This effect captures a snapshot of the selected components currently displayed on the screen, which can incur high performance costs if there are too many selected components. To optimize performance, the multi-select drag and drop function can obtain screenshots from the [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11) to implement the clustering animation effect, thereby effectively saving system resources.
+   In multi-select drag-and-drop scenarios, there is a clustering animation effect when multiple items are selected. This effect captures a snapshot of the selected components currently displayed on the screen, which can incur high performance costs if there are too many selected components. To optimize performance, the multi-select drag-and-drop function can obtain screenshots from the [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11) to implement the clustering animation effect, thereby effectively saving system resources.
 
    <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -658,7 +658,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
 
 4. Adapt the number badge.
 
-    Currently, the number badge for multi-select drag and drop needs to be set by the application using the **numberBadge** parameter in [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11). You need to set the number badge based on the number of selected nodes.
+    Currently, the number badge for multi-select drag-and-drop needs to be set by the application using the **numberBadge** parameter in [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11). You need to set the number badge based on the number of selected nodes.
 
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
     
@@ -804,7 +804,7 @@ build() {
 
 When you need to create custom drop animations, you can disable the default system animations. Since API version 18, ArkUI provides the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API, which allows you to define your own drop animations. The following provides step-by-step instructions using the **Image** component as an example, along with key points to keep in mind during development.
 
-1. Configure drag and drop settings for the component.
+1. Configure drag-and-drop settings for the component.
 
    Set **draggable** to **true** and configure callbacks such as **onDragStart** and **onDragEnd**.
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
@@ -965,11 +965,11 @@ export struct DropAnimationExample {
 
 ### Handling Large Data Volumes
 
-When dealing with a large number of items or large data volumes during drag and drop operations, processing all the data at once can degrade the user experience. This example uses the **Grid** component to demonstrate recommended practices and key development considerations for handling large data volumes during drag and drop operations. Note that proactive drag blocking is supported since API version 18.
+When dealing with a large number of items or large data volumes during drag-and-drop operations, processing all the data at once can degrade the user experience. This example uses the **Grid** component to demonstrate recommended practices and key development considerations for handling large data volumes during drag-and-drop operations. Note that proactive drag blocking is supported since API version 18.
 
-1. Configure multi-select drag and drop.
+1. Configure multi-select drag-and-drop.
 
-   Create **GridItem** child components and set their state to be selectable. Enable multi-select drag and drop by setting **isMultiSelectionEnabled** to **true**. Use the selected state to distinguish whether an item is selected.
+   Create **GridItem** child components and set their state to be selectable. Enable multi-select drag-and-drop by setting **isMultiSelectionEnabled** to **true**. Use the selected state to distinguish whether an item is selected.
 
    <!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -1000,7 +1000,7 @@ When dealing with a large number of items or large data volumes during drag and 
    }
    ```
 
-   To maintain performance, limit the maximum number of items for multi-select drag and drop to 500.
+   To maintain performance, limit the maximum number of items for multi-select drag-and-drop to 500.
 
    <!-- @[gridExample_onPageShow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
    
@@ -1275,7 +1275,7 @@ struct GridEts {
 
 
 ## Spring Loading (Hover Detection) Support
-Spring loading, also known as drag hover detection or spring-loaded navigation, is an enhanced drag and drop capability that allows users to automatically trigger view transitions by hovering over targets during drag operations. This feature significantly improves operational efficiency and is recommended for implementation in all page transition scenarios.
+Spring loading, also known as drag hover detection or spring-loaded navigation, is an enhanced drag-and-drop capability that allows users to automatically trigger view transitions by hovering over targets during drag operations. This feature significantly improves operational efficiency and is recommended for implementation in all page transition scenarios.
 
 > This feature is supported since API version 20.
 
@@ -1337,7 +1337,7 @@ You can customize spring loading detection parameters to dynamically determine w
        // Check the current state.
        if (context.state == DragSpringLoadingState.BEGIN) {
          // Check whether the data type dragged by the user can be handled.
-         boolean isICanHandle = false;
+         let isICanHandle: boolean = false;
          let dataSummary = context?.dragInfos?.dataSummary;
          if (dataSummary != undefined) {
            for (const [type, size] of dataSummary) {

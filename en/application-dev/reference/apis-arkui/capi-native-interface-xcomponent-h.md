@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4ef6238e7f0b047abd8ac763c7b6a0bc9229445a translatedAt=2026-09-23T09:50:37.772Z pushedAt=2026-10-10T07:15:30.930Z -->
+<!-- md-trans-meta sourceCommit=da58150c9ff9f725e7ef4a8711245853edee6519 translatedAt=2026-11-23T07:20:53.072Z pushedAt=2026-11-25T04:01:20.581Z nl=1 -->
 
 ## Overview
 
@@ -41,7 +41,7 @@ Declares the APIs for accessing Native XComponent features. Native XComponent pr
 | [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md) | OH_NativeXComponent_ExtraMouseEventInfo | Provides an encapsulated instance of extended mouse event information.|
 | [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) | OH_ArkUI_SurfaceHolder | Provides an encapsulated **OH_ArkUI_SurfaceHolder** instance.|
 | [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) | OH_ArkUI_SurfaceCallback | Defines surface lifecycle callback functions.|
-| [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Provides an encapsulated **NativeWindow** instance. |
+| [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Provides an encapsulated **NativeWindow** instance. |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | Defines the surface configuration for the **XComponent**, which specifies whether the **XComponent**'s surface should be treated as opaque during rendering.|
 
 ### Enums
@@ -100,7 +100,7 @@ Declares the APIs for accessing Native XComponent features. Native XComponent pr
 | [int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEvent* keyEvent, bool* isScrollLockOn)](#oh_nativexcomponent_getkeyeventscrolllockstate) | Obtains the state of the ScrollLock key from a key event.|
 | [int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* component, OH_NativeXComponent_ExpectedRateRange* range)](#oh_nativexcomponent_setexpectedframeraterange) | Sets the expected frame rate range. This API is applicable to scenarios where operations are performed through the **OH_NativeXComponent** pointer. If **XComponent** is created using **NativeNode** (**ArkUI_NodeHandle**), use [OH_ArkUI_XComponent_SetExpectedFrameRateRange](#oh_arkui_xcomponent_setexpectedframeraterange). |
 | [int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, uint64_t timestamp, uint64_t targetTimestamp))](#oh_nativexcomponent_registeronframecallback) | Registers the display update callback for this [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance and enables the callback for each frame.|
-| [int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component)](#oh_nativexcomponent_unregisteronframecallback) | Deregisters the display update callback for this [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance and disables the callback for each frame.|
+| [int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* component)](#oh_nativexcomponent_unregisteronframecallback) | Unregisters the display update callback for this [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance and disables the callback for each frame.|
 | [int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_attachnativerootnode) | Attaches the UI component created through ArkUI native APIs to the current **XComponent**.<br>**Call in pair:** When the attached component is no longer needed, [OH_NativeXComponent_DetachNativeRootNode](#oh_nativexcomponent_detachnativerootnode) must be called to detach it. |
 | [int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)](#oh_nativexcomponent_detachnativerootnode) | Detaches the native component of ArkUI from this **OH_NativeXComponent** instance.|
 | [int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent *component, void (\*callback)(OH_NativeXComponent *component, ArkUI_UIInputEvent *event,ArkUI_UIInputEvent_Type type),ArkUI_UIInputEvent_Type type)](#oh_nativexcomponent_registeruiinputeventcallback) | Registers a UI input event callback for this [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance and enables this callback to be invoked when a UI input event is received. Currently, only axis events are supported.|
@@ -134,8 +134,8 @@ Declares the APIs for accessing Native XComponent features. Native XComponent pr
 | [int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node,void (\*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp))](#oh_arkui_xcomponent_registeronframecallback) | Registers a frame callback function for this **XComponent** instance and enables the callback to be invoked on each frame. |
 | [int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_unregisteronframecallback) | Unregisters the frame callback function for this **XComponent** instance and disables the callback to be invoked on each frame. |
 | [int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool needSoftKeyboard)](#oh_arkui_xcomponent_setneedsoftkeyboard) | Sets whether the soft keyboard is required for the XComponent.|
-| [ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node)](#oh_arkui_accessibilityprovider_create) | Creates an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance for this **XComponent** instance.|
-| [void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)](#oh_arkui_accessibilityprovider_dispose) | Disposes of the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance created using [OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create).|
+| [ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node)](#oh_arkui_accessibilityprovider_create) | Creates an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance for this **XComponent** instance. This API can be called only on the UI thread. |
+| [void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)](#oh_arkui_accessibilityprovider_dispose) | Disposes of the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance created using [OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create). This API can be called only on the UI thread. |
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfaceshowevent) | Sets a surface display callback for this [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) instance. This callback is invoked when the application window has moved from the background to the foreground.|
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfacehideevent) | Sets a surface hiding callback for this [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md) instance. This callback is invoked when the application window has moved from the foreground to the background.|
 | [ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()](#oh_arkui_xcomponentsurfaceconfig_create) | Creates an [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) object for an **XComponent**.|
@@ -149,7 +149,6 @@ Declares the APIs for accessing Native XComponent features. Native XComponent pr
 | -- | -- |
 | const uint32_t OH_XCOMPONENT_ID_LEN_MAX = 128 | Maximum length of the ArkUI XComponent ID.<br>**Since**: 8|
 | const uint32_t OH_MAX_TOUCH_POINTS_NUMBER = 10 | Maximum number of identifiable touch points in a touch event.<br>**Since**: 8|
-| OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | Maximum number of identifiable touch points in a touch event.<br>**Since**: 8 |
 
 ## Enum Description
 
@@ -410,8 +409,8 @@ Obtains the offset of the surface held by the XComponent relative to the upper l
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
 | const void* window | Handle to the **NativeWindow** instance.|
-| double* x | Pointer to the x-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component. Unit: vp.|
-| double* y | Pointer to the y-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component. Unit: vp.|
+| double* x | Pointer to the x-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component. Unit: px. |
+| double* y | Pointer to the y-coordinate of the current surface relative to the upper left corner of the **XComponent**'s parent component. Unit: px. |
 
 **Returns**
 
@@ -800,7 +799,7 @@ Obtains the state of modifier keys from an [OH_NativeXComponent_ExtraMouseEventI
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)* extraMouseEventInfo | Pointer to the extended mouse event information instance.|
-| uint64_t* keys | Pointer to the 64-bit unsigned integer used to receive the functional key press state. Each bit corresponds to the press state of a functional key (for example, a bit value of 1 indicates that the corresponding key is pressed). For the mapping between specific bits and functional keys, see the definition of functional key state bits. |
+| uint64_t* keys | Pointer to the 64-bit unsigned integer used to receive the modifier key press state. Each bit corresponds to the press state of a modifier key (for example, a bit value of 1 indicates that the corresponding key is pressed). For the mapping between specific bits and modifier keys, see the definition of modifier key state bits. |
 
 **Returns**
 
@@ -1070,7 +1069,7 @@ Obtains the state of modifier keys from a key event.
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md)* keyEvent | Pointer to the key event.|
-| uint64_t* keys | Pointer to the 64-bit unsigned integer used to receive functional key press state information. Each bit corresponds to the press state of a functional key. For the mapping between bits and functional keys, see the definition of functional key state bits in **ArkUI_UIInputEvent**. |
+| uint64_t* keys | Pointer to the 64-bit unsigned integer used to receive modifier key press state information. Each bit corresponds to the press state of a modifier key. For the mapping between bits and modifier keys, see the definition of modifier key state bits in **ArkUI_UIInputEvent**. |
 
 **Returns**
 
@@ -1222,7 +1221,7 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 **Description**
 
 
-Deregisters the display update callback for this [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance and disables the callback for each frame.
+Unregisters the display update callback for this [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance and disables the callback for each frame.
 
 **Since**: 11
 
@@ -2120,7 +2119,7 @@ ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHan
 **Description**
 
 
-Creates an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance for this **XComponent** instance.
+Creates an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance for this **XComponent** instance. This API can be called only on the UI thread.
 
 **Since**: 20
 
@@ -2146,7 +2145,7 @@ void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provide
 **Description**
 
 
-Disposes of the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance created using [OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create).
+Disposes of the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance created using [OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create). Only the UI thread is supported for calling.
 
 **Since**: 20
 

@@ -2,11 +2,11 @@
 
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T12:01:23.994Z pushedAt=2026-10-10T05:51:13.392Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-23T01:22:03.617Z pushedAt=2026-11-23T11:12:19.850Z nl=1 -->
 
 > **NOTE**
 >
@@ -88,8 +88,8 @@ Invalid printer.
 
 The possible causes are as follows:
 1. Incorrect printer ID.
-2. The cups failed to query the printer list.
-3. The cups failed to query the printer information.
+2. The **cups** failed to query the printer list.
+3. The **cups** failed to query the printer information.
 
 **Solution**
 

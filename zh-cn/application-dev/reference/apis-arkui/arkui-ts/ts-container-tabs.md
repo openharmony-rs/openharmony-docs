@@ -82,9 +82,9 @@ TabBar显示样式枚举。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
+ 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
+ 
 | 名称  | 值 | 说明                                                         |
 | ----- | ----- | ------------------------------------------------------------ |
 | BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。 |
@@ -1278,9 +1278,9 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
+ 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
+ 
 | 名称  | 值 | 说明  |
 | ------ | -- | ------  |
 | BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |

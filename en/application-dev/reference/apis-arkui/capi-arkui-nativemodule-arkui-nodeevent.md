@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6c0ccb8f8517ef528c9398431e636d1d5cc3b4f4 translatedAt=2026-09-20T09:22:11.180Z pushedAt=2026-09-21T12:33:15.994Z -->
+<!-- md-trans-meta sourceCommit=2ef784f0bdab28245033ef8be92f653a500e646d translatedAt=2026-11-23T07:07:06.361Z pushedAt=2026-11-25T01:14:38.424Z nl=1 -->
 
 ```c
 typedef struct ArkUI_NodeEvent ArkUI_NodeEvent
@@ -19,5 +19,4 @@ Defines a component event. This is a general struct type. This struct is used to
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
-
+**Header file**: [common_type.h](capi-common-type-h.md)

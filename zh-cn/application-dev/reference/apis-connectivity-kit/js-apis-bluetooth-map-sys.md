@@ -90,7 +90,7 @@ setMessageAccessAuthorization(deviceId: string, authorization: AccessAuthorizati
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -143,7 +143,7 @@ getMessageAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorization&
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise对象，返回信息的访问权限。 |
 
 **错误码**：
 

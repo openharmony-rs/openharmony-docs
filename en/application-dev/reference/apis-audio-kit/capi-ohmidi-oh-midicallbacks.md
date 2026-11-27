@@ -1,8 +1,8 @@
 # OH_MIDICallbacks
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @owen_creeper-->
-<!--Designer: @trytocalm-->
+<!--Owner: @tom_guo-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=40b8574cf7284f42e60f2c280c655eafea0c92e5 translatedAt=2026-11-09T10:27:27.860Z pushedAt=2026-11-09T11:31:54.783Z nl=1 -->

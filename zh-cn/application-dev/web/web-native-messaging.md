@@ -12,7 +12,7 @@
 
 从API version 21开始，支持开发者在应用中使用[WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)组件，为浏览器扩展提供后台服务能力。
 
-浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。
+浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility。连接建立后，扩展通过 runtime.Port 收发消息；应用则基于浏览器传递的文件描述符，调用文件 I/O接口完成消息收发。
 
 
 ![](figures/connect-native-overview.png)
@@ -316,7 +316,7 @@ function sendMessageToNative() {
 ### 实现拉起WebNativeMessagingExtensionAbility（浏览器开发者）
 浏览器负责实现扩展runtime接口，拉起WebNativeMessagingExtensionAbility，建立和管理NativeMessaging连接。需要申请权限：ohos.permission.WEB_NATIVE_MESSAGING。
 
-1. 当接收到创建NativeMessaging连接时，先通过[get20](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
+1. 当接收到创建NativeMessaging连接时，先通过[get](../reference/apis-arkdata/js-apis-data-dataShare.md#get20)获取目标应用的extension配置。然后读取WebNativeMessagingExtensionAbility名称和允许访问的扩展列表。最后校验是否允许访问。
    <!-- @[GetManifestData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebNativeMessaging/entry2/src/main/ets/pages/GetManifestData.ets) -->
    
    ``` TypeScript

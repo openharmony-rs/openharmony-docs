@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API版本8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 以下方法在隐藏页面中调用会产生缓存，应避免在隐藏页面中频繁刷新Canvas。
 
@@ -1280,6 +1280,8 @@ fill(fillRule?: CanvasFillRule): void
 | -------- | -------------- | ---- | ---------------------------------------- |
 | fillRule | [CanvasFillRule](#canvasfillrule) | 否 | 指定要填充对象的规则。<br/>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
 
+**示例：** 
+
   ```ts
   // xxx.ets
   @Entry
@@ -1554,7 +1556,7 @@ saveLayer(): void
   // xxx.ets
   @Entry
   @Component
-  struct saveLayer {
+  struct SaveLayer {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
     private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);

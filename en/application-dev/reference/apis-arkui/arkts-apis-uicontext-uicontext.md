@@ -5,15 +5,13 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bb1c9a97d7fc141459c116712e73f90ace0d667b translatedAt=2026-11-11T09:22:47.555Z pushedAt=2026-11-12T02:57:10.872Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2d99114a1840dfa02908961367b26a470e2a8c4f translatedAt=2026-11-25T10:32:03.369Z pushedAt=2026-11-26T02:01:19.227Z nl=1 -->
 
 The UIContext instance provides contextual capabilities associated with the current UI instance. It supports obtaining UI-related controllers, managing dialogs and animations, querying node and window information, and converting pixel units. This is suitable for scenarios where you need to manage pages, components, and interactions within a specified UI instance.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
-> - The APIs of this module can be used only in the stage model.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs in later versions are marked with a superscript to indicate their earliest version.
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
@@ -21,10 +19,27 @@ The UIContext instance provides contextual capabilities associated with the curr
 
 **Example**
 
-The following example illustrates the three ways to obtain a UIContext instance.
+The following example shows three ways to obtain a UIContext instance. There is no difference among the UIContext instances obtained through the three ways. The three ways are distributed in two files, and therefore are carried by two independent example scripts: example script 1 must be completely copied to the UIAbility file **EntryAbility.ets**, and example script 2 must be completely copied to the page file **index.ets**. Do not copy the two scripts to the same file.
+
+**Example Script 1 (EntryAbility.ets):**
 
 ```ts
-// The three approaches return identical UIContext instances.
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Method 1: Obtain the UIContext instance through getUIContext() in ohos.window.
+    windowStage.getMainWindowSync().getUIContext();
+    // Run other logic.
+  }
+}
+```
+
+**Example Script 2 (index.ets):**
+
+```ts
 // index.ets
 import { UIContext } from '@kit.ArkUI';
 
@@ -35,25 +50,13 @@ struct Index {
     Column() {
       Button('Button')
           .onClick(() => {
-            // Obtain using the built-in component method
+            // Method 2: Obtain the UIContext instance through the built-in method getUIContext() of the custom component.
             this.getUIContext();
-            // Obtain using a static method of the UIContext class
+            // Method 3: Obtain the UIContext instance through a static method of the UIContext class (such as getCallingScopeUIContext).
             let uiContext = UIContext.getCallingScopeUIContext();
             // Additional logic
           })
     }
-  }
-}
-
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Obtain using ohos.window
-    windowStage.getMainWindowSync().getUIContext();
-    // Additional logic
   }
 }
 ```
@@ -71,6 +74,8 @@ Construct a **UIContext** object.
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Example**
 
@@ -156,6 +161,8 @@ Obtains the UIContext of this [calling scope](../../ui/arkts-global-interface.md
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 |Type|Description|
@@ -202,6 +209,8 @@ Obtains the UIContext of the UI instance that most recently switched to the focu
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -250,6 +259,8 @@ Obtains the UIContext of the UI instance that most recently switched to the fore
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 |Type|Description|
@@ -296,6 +307,8 @@ Obtains all currently valid UIContext instances.
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -356,6 +369,8 @@ Obtains a UIContext instance along with its resolution strategy using a predefin
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 |Type|Description|
@@ -393,6 +408,8 @@ Checks whether the UI instance corresponding to this **UIContext** object is val
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -470,6 +487,8 @@ Obtains a **Font** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type           | Description         |
@@ -489,6 +508,8 @@ Obtains the **ComponentUtils** object.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -510,6 +531,8 @@ Obtains the **UIInspector** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                         | Description                |
@@ -529,6 +552,8 @@ Obtains the **UIObserver** object.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -594,6 +619,8 @@ Obtains the unique ID of a UI instance object. In multi-instance scenarios, you 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type  | Description              |
@@ -627,6 +654,8 @@ Obtains a **MediaQuery** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                       | Description               |
@@ -647,6 +676,8 @@ Obtains a **Router** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type               | Description           |
@@ -666,6 +697,8 @@ Obtains a **PromptAction** object.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -711,6 +744,8 @@ Obtains the **OverlayManager** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                          | Description                |
@@ -730,6 +765,8 @@ Sets the parameters for [OverlayManager](arkts-apis-uicontext-overlaymanager.md)
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -757,6 +794,8 @@ Obtains the current parameters of [OverlayManagerOptions](arkts-apis-uicontext-i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                          | Description                |
@@ -776,6 +815,8 @@ Specifies a clear animation host instance context via the UIContext object and t
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -855,6 +896,8 @@ Adds transition animations for state changes in closure code.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 > **NOTE**
 > - Avoid using **animateTo** in **aboutToAppear** or **aboutToDisappear**.
@@ -1069,6 +1112,8 @@ Obtains a FrameNode on the component tree based on the component ID.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                      | Mandatory  | Description                                   |
@@ -1098,6 +1143,8 @@ Obtains the FrameNode attached to the current window based on its component ID.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1159,6 +1206,8 @@ Obtains the entity node of the component tree based on **uniqueId** of the compo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                      | Mandatory  | Description                                   |
@@ -1206,6 +1255,8 @@ Obtains the router or navigation destination page information corresponding to t
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1278,6 +1329,8 @@ Obtains the navigation information corresponding to the node that matches the sp
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                      | Mandatory  | Description                                   |
@@ -1307,6 +1360,8 @@ Shows an alert dialog box.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1362,6 +1417,8 @@ Shows an action sheet in the given settings.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters** 
 
@@ -1437,6 +1494,8 @@ Shows a date picker dialog box in the given settings.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
@@ -1514,6 +1573,8 @@ Shows a time picker dialog box in the given settings.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters** 
@@ -1580,6 +1641,8 @@ Shows a text picker dialog box in the given settings.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
@@ -1659,6 +1722,8 @@ Shows a text picker dialog box in the given settings. Compared to API version 11
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters** 
@@ -1676,6 +1741,8 @@ Creates an animation result object.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1743,6 +1810,8 @@ Creates an **AnimatorResult** object for animations. Compared to the previous [c
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
@@ -1799,6 +1868,8 @@ Executes the provided callback function within the scope of the UI instance corr
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type        | Mandatory  | Description  |
@@ -1836,6 +1907,8 @@ Sets the avoidance mode for the virtual keyboard.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1885,6 +1958,8 @@ Obtains the avoidance mode for the virtual keyboard.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type        | Description  |
@@ -1921,6 +1996,8 @@ Obtains an **AtomicServiceBar** object, which can be used to set the properties 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -1961,6 +2038,8 @@ Obtains the **DragController** object, which can be used to create and initiate 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 |Type|Description|
@@ -1980,6 +2059,8 @@ Generates a keyframe animation. For details about how to use this API, see [keyf
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2058,6 +2139,8 @@ Obtains a [FocusController](arkts-apis-uicontext-focuscontroller.md) object, whi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 |Type|Description|
@@ -2077,6 +2160,8 @@ Obtains the component tree and component attributes. This API has a long process
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2179,6 +2264,8 @@ Obtains the attributes of the specified component and its child components. This
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name | Type           | Mandatory| Description                                                        |
@@ -2259,6 +2346,8 @@ Obtains a [CursorController](arkts-apis-uicontext-cursorcontroller.md) object, w
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 |Type|Description|
@@ -2278,6 +2367,8 @@ Obtains a [ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -2319,6 +2410,8 @@ Obtains a **MeasureUtils** object for text calculation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value** 
 
 | Type  | Description                                        |
@@ -2340,6 +2433,8 @@ For typical use cases (for example, long screenshots) and best practices of comp
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -2370,6 +2465,8 @@ Pixel density: effective pixel density of the current window, which is the virtu
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2429,6 +2526,8 @@ Pixel density: effective pixel density of the current window, which is the virtu
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description                                  |
@@ -2486,6 +2585,8 @@ Font scale factor: system font scaling coefficient ([Configuration.fontScale](ar
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2545,6 +2646,8 @@ Font scale factor: system font scaling coefficient ([Configuration.fontScale](ar
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description                                  |
@@ -2598,6 +2701,8 @@ Conversion formula: px value = lpx value × (actual screen width/logical width),
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2653,6 +2758,8 @@ Conversion formula: lpx value = px value/(actual screen width/logical width), wh
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description                                   |
@@ -2700,6 +2807,8 @@ Obtains the name of the window where this instance is located.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value** 
 
@@ -2755,6 +2864,8 @@ Obtains the ID of the window to which the current application instance belongs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value** 
 
 | Type  | Description                                        |
@@ -2799,6 +2910,8 @@ Obtains the width breakpoint value of the window where this instance is located.
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value** 
 
@@ -2848,6 +2961,8 @@ Obtains the height breakpoint value of the window where this instance is located
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value** 
 
@@ -2899,6 +3014,8 @@ Registers a callback that is executed when the next frame is rendered.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description                                   |
@@ -2946,6 +3063,8 @@ Registers a callback to be executed on the next frame after a delay.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2995,6 +3114,8 @@ Requests the dynamic sync scene of a component for customizing related frame rat
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3076,6 +3197,8 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3208,6 +3331,8 @@ Updates the style of the sheet corresponding to the provided **bindSheetContent*
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
@@ -3336,6 +3461,8 @@ Closes the sheet corresponding to **bindSheetContent**. This API uses a promise 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
@@ -3457,6 +3584,8 @@ Checks whether this UI context follows the system font scale settings.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type     | Description           |
@@ -3489,6 +3618,8 @@ Obtains the maximum font scale of this UI context.
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -3526,6 +3657,8 @@ Binds a **Tabs** component with a scrollable container, which can be a [List](./
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3643,6 +3776,8 @@ Unbinds a **Tabs** component from a scrollable container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name    | Type                                      | Mandatory  | Description     |
@@ -3663,6 +3798,8 @@ Binds a **Tabs** component with a nested scrollable container, which can be a [L
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3685,6 +3822,8 @@ Unbinds a **Tabs** component from a nested scrollable container.
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3745,6 +3884,8 @@ Obtains a [TextMenuController](arkts-apis-uicontext-textmenucontroller.md) objec
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 |Type|Description|
@@ -3768,6 +3909,8 @@ Creates a UI instance that does not depend on a window and returns its UI contex
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3819,6 +3962,8 @@ Destroys the UI instance created using [createUIContextWithoutWindow](#createuic
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Example**
 
 ```ts
@@ -3847,6 +3992,8 @@ Dispatches a key event to the specified component. To ensure predictable behavio
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters** 
 
@@ -3912,6 +4059,8 @@ Sets the pixel rounding mode for this page.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type        | Mandatory  | Description  |
@@ -3945,6 +4094,8 @@ Obtains the pixel rounding mode for this page.
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -3983,6 +4134,8 @@ Sets the maximum number of cached HSP resource management objects.
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -4039,6 +4192,8 @@ The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCach
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -4083,6 +4238,8 @@ Sets the maximum size (in bytes) of the image data cached in the memory before d
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -4124,6 +4281,8 @@ Obtains a [Magnifier](arkts-apis-uicontext-magnifier.md) object, which can be us
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 

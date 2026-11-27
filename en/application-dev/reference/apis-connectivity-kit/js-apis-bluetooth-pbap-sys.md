@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-10-09T13:11:30.388Z pushedAt=2026-10-10T07:10:47.575Z -->
+<!-- md-trans-meta sourceCommit=0c35e2da2a6ef71cfecc03dfb2bbc3c0f3345833 translatedAt=2026-11-18T04:07:55.900Z pushedAt=2026-11-20T09:24:44.326Z nl=1 -->
 
 The **pbap** module provides APIs for accessing the phone book of a device using the Bluetooth Phone Book Access Profile (PBAP).
 
@@ -40,15 +40,15 @@ Disconnects the PBAP service for a device.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -87,15 +87,15 @@ Sets the share type of the phone book information for a device. This API uses an
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| type | [ShareType](#sharetype) | Yes   | Share type to set.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| type | [ShareType](#sharetype) | Yes   | Share type to set. |
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -137,20 +137,20 @@ Sets the share type of the phone book information for a device. This API uses a 
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| type | [ShareType](#sharetype) | Yes   | Share type to set.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| type | [ShareType](#sharetype) | Yes   | Share type to set. |
 
 **Return value**
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -191,14 +191,14 @@ Obtains the phone book share type of a device. This API uses an asynchronous cal
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;[ShareType](#sharetype)&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| callback | AsyncCallback&lt;[ShareType](#sharetype)&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -239,19 +239,19 @@ Obtains the phone book share type of a device. This API uses a promise to return
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[ShareType](#sharetype)&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;[ShareType](#sharetype)&gt; | Promise used to return the share type of phone book information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -292,15 +292,15 @@ Sets the phone book access authorization for a device. This API uses an asynchro
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes   | Phone book access authorization to set.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes   | Phone book access authorization to set. |
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -342,20 +342,20 @@ Sets the phone book access authorization for a device. This API uses a promise t
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes   | Phone book access authorization to set.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | Yes   | Phone book access authorization to set. |
 
 **Return value**
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -396,14 +396,14 @@ Obtains the phone book access authorization of a device. This API uses an asynch
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
+| callback | AsyncCallback&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Yes   | Callback used to return the result.<br> If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -444,19 +444,19 @@ Obtains the phone book access authorization of a device. This API uses a promise
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise used to return the access permission of phone book information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -489,11 +489,11 @@ Enumerates the phone book share types.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-| Name                | Value | Description    |
+| Name                 | Value  | Description     |
 | ------------------ | ---- | ------ |
-| SHARE_NAME_AND_PHONE_NUMBER | 0    | Share the name and number.<br>This is a system API.|
-| SHARE_ALL | 1    | Share all information.<br>This is a system API. |
-| SHARE_NOTHING  | 2    | Share nothing.<br>This is a system API.  |
+| SHARE_NAME_AND_PHONE_NUMBER | 0    | Share the name and number.<br>This is a system API. |
+| SHARE_ALL | 1    | Share all information.<br>This is a system API.  |
+| SHARE_NOTHING  | 2    | Share nothing.<br>This is a system API.   |
 
 
 ## PbapClientProfile
@@ -504,14 +504,14 @@ Manages the PBAP client profile.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 
 ### connect
 
 connect(deviceId: string): void
 
-Connects the PBAP client to a remote device.
+Connects the PBAP client to the remote device.
 
 **Since:** 26.0.1
 
@@ -521,23 +521,23 @@ Connects the PBAP client to a remote device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|801 | Capability not supported. |
+|801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 |2900003 | Bluetooth disabled. |
 |2900004 | Profile not supported. |
 |2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
@@ -559,7 +559,7 @@ try {
 
 disconnect(deviceId: string): void
 
-Disconnects the PBAP client from a remote device.
+Disconnects the PBAP client from the remote device.
 
 **Since:** 26.0.1
 
@@ -569,23 +569,23 @@ Disconnects the PBAP client from a remote device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
-|801 | Capability not supported. |
+|801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 |2900003 | Bluetooth disabled. |
 |2900004 | Profile not supported. |
 |2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem. |
@@ -607,7 +607,7 @@ try {
 
 getSyncState(deviceId: string): SyncStateType
 
-Obtains the PBAP phone book synchronization state. Only the synchronization sub-state is reported.
+Obtains the PBAP phone book synchronization status, and only reports the synchronization substatus.
 
 **Since:** 26.0.1
 
@@ -617,25 +617,25 @@ Obtains the PBAP phone book synchronization state. Only the synchronization sub-
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX. |
 
 **Return value**
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| [SyncStateType](#syncstatetype) | Phone book synchronization state. |
+| [SyncStateType](#syncstatetype) | Returns the phone book synchronization status. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
@@ -661,7 +661,7 @@ try {
 
 onSyncStateChange(callback: Callback&lt;SyncStateChangeParam&gt;): void
 
-Subscribes to phone book synchronization state change events. Only the synchronization sub-state is reported.
+Subscribes to the phone book synchronization status change event. Only the synchronization substatus is reported.
 
 **Since:** 26.0.1
 
@@ -671,19 +671,19 @@ Subscribes to phone book synchronization state change events. Only the synchroni
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| callback | Callback&lt;[SyncStateChangeParam](#syncstatechangeparam)&gt; | Yes   | Callback used to return the phone book synchronization state change information. |
+| callback | Callback&lt;[SyncStateChangeParam](#syncstatechangeparam)&gt; | Yes   | Callback function, returns the phone book synchronization status change information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
@@ -707,7 +707,7 @@ try {
 
 offSyncStateChange(callback?: Callback&lt;SyncStateChangeParam&gt;): void
 
-Unsubscribes from phone book synchronization state change events.
+Unsubscribes from the phone book synchronization status change event.
 
 **Since:** 26.0.1
 
@@ -717,19 +717,19 @@ Unsubscribes from phone book synchronization state change events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name   | Type    | Mandatory  | Description     |
+| Name    | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| callback | Callback&lt;[SyncStateChangeParam](#syncstatechangeparam)&gt; | No   | Callback for the phone book synchronization state change event.<br>If this parameter is passed, it must be the same as the callback in [onSyncStateChange](#onsyncstatechange). If this parameter is not passed, all callbacks registered for this event are unsubscribed. |
+| callback | Callback&lt;[SyncStateChangeParam](#syncstatechangeparam)&gt; | No   | Specifies the callback function notification to unsubscribe from.<br>If a parameter is passed, it must be the same as the callback function in [onSyncStateChange](#onsyncstatechange); if no parameter is passed, all callback function notifications of this event are unsubscribed from. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API. |
 |202 | Permission verification failed. A non-system application calls a system API. |
@@ -751,7 +751,7 @@ try {
 
 ## SyncStateChangeParam
 
-Represents the phone book synchronization state change information.
+Phone book synchronization status change information.
 
 **Since:** 26.0.1
 
@@ -759,17 +759,17 @@ Represents the phone book synchronization state change information.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name     | Type    | Read-Only  | Optional  | Description                                 |
 | -------- | ------ | ---- | ---- | ----------------------------------- |
-| deviceId | string | No   | No   | Address of the remote device. |
-| state | [SyncStateType](#syncstatetype) | No   | No   | Phone book synchronization state. |
+| deviceId | string | No   | No   | Address of the target device. |
+| state | [SyncStateType](#syncstatetype) | No   | No   | Phone book synchronization status. |
 
 
 ## SyncStateType
 
-Enumerates the phone book synchronization state types.
+Enumerates the phone book synchronization status types.
 
 **Since:** 26.0.1
 
@@ -777,11 +777,11 @@ Enumerates the phone book synchronization state types.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name               | Value   | Description     |
 | ----------------- | ------ | ------- |
-| PHONEBOOK_STATE_IDLE | 0 | The phone book synchronization is idle (not started, for example, connected but not downloaded). |
+| PHONEBOOK_STATE_IDLE | 0 | The phone book synchronization is in the idle state (not started, for example, connected but not downloaded). |
 | PHONEBOOK_STATE_DOWNLOADING | 1 | The phone book is being downloaded. |
 | PHONEBOOK_STATE_DOWNLOADED | 2 | The phone book download is complete. |
-| PHONEBOOK_STATE_DOWNLOAD_ERROR | 3 | The phone book download failed. |
+| PHONEBOOK_STATE_DOWNLOAD_ERROR | 3 | A phone book download error occurs. |

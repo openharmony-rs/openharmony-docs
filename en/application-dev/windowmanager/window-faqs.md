@@ -5,7 +5,7 @@
 <!--Designer: @ki_ja-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:51:06.235Z pushedAt=2026-11-06T01:43:32.806Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0afe452e603bfead1a3f4dee1688f24b1fb6467f translatedAt=2026-11-16T09:27:53.918Z pushedAt=2026-11-16T11:06:52.691Z nl=1 -->
 
 ## How to Launch Application B During the Startup of Application A
 
@@ -273,30 +273,30 @@ To make the window background transparent, call [setWindowBackgroundColor](../re
 The example code is as follows:
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ColorMetrics } from '@kit.ArkUI';
-import { window } from '@kit.ArkUI';
+import { ColorMetrics, window } from '@kit.ArkUI';
 
-let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
-  let errCode: number = err.code;
-  if (errCode) {
-  console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-  return;
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent("pages/Index", (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      const windowClass = windowStage.getMainWindowSync();
+      try {
+        // Use the ARGB method.
+        windowClass.setWindowBackgroundColor('#0000FF33');
+        // Use the ColorMetrics method.
+        windowClass.setWindowBackgroundColor(ColorMetrics.numeric(0x00112233));
+      } catch (exception) {
+        console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
+      };
+    });
   }
-  console.info('Succeeded in loading the content.');
-  // Use the ARGB mode.
-  let color1: string = '#0000FF33'; 
-  // Use the ColorMetrics mode.
-  let color2: ColorMetrics = ColorMetrics.numeric(0x00112233);  
-  try {
-    windowClass?.setWindowBackgroundColor(color1);
-    windowClass?.setWindowBackgroundColor(color2);
-  } catch (exception) {
-    console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
-  };
-});
+}
 ```
 
 ## How to Implement Landscape/Portrait Switching

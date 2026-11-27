@@ -1,11 +1,11 @@
 # Print_PrinterCapability
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T11:43:08.590Z pushedAt=2026-10-10T03:42:41.394Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-23T01:11:02.937Z pushedAt=2026-11-23T10:57:34.706Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_PrinterCapability

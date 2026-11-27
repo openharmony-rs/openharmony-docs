@@ -1,12 +1,11 @@
 # Interface (WhiteBalance)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:20.375Z pushedAt=2026-06-25T06:57:19.544Z -->
+<!-- md-trans-meta sourceCommit=8d7cd89856e59b2dafac0971679b7b6d2f7e5220 translatedAt=2026-11-18T03:36:29.278Z pushedAt=2026-11-20T07:31:16.848Z nl=1 -->
 
 **WhiteBalance** inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
 
@@ -43,7 +42,7 @@ Sets a white balance mode. Before the setting, run [isWhiteBalanceModeSupported]
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -55,7 +54,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setWhiteBalanceMode(session: camera.PhotoSession | camera.VideoSession): void {
   try {
-    session.setWhiteBalanceMode(camera.WhiteBalanceMode.DAYLIGHT);
+    if (session.isWhiteBalanceModeSupported(camera.WhiteBalanceMode.DAYLIGHT)) {
+      session.setWhiteBalanceMode(camera.WhiteBalanceMode.DAYLIGHT);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setWhiteBalanceMode call failed. error code: ${err.code}`);
@@ -83,7 +84,7 @@ Obtains the white balance mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -126,7 +127,7 @@ Before the setting, run [getWhiteBalanceRange](arkts-apis-camera-WhiteBalanceQue
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -136,10 +137,14 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession): void {
+function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession, whiteBalance: number): void {
   try {
-    let whiteBalance: number = 1000;
-    session.setWhiteBalance(whiteBalance);
+    let whiteBalances: Array<number> = session.getWhiteBalanceRange();
+    if (whiteBalance >= whiteBalances[0] && whiteBalance <= whiteBalances[1]) {
+      session.setWhiteBalance(whiteBalance);
+    } else {
+      console.error(`invalid whiteBalance.`);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setWhiteBalance call failed. error code: ${err.code}`);
@@ -167,7 +172,7 @@ Obtains the current white balance value.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -214,7 +219,7 @@ Before the setting, run [getColorTintRange](arkts-apis-camera-WhiteBalanceQuery.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                | Session not config.                                   |
 
@@ -223,10 +228,14 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setColorTint(session: camera.PhotoSession | camera.VideoSession): void {
-  let colorTint: number = 0;
+function setColorTint(session: camera.PhotoSession | camera.VideoSession, colorTint: number): void {
   try {
-    session.setColorTint(colorTint);
+    let tints: Array<number> = session.getColorTintRange();
+    if (colorTint >= tints[0] && colorTint <= tints[1]) {
+      session.setColorTint(colorTint);
+    } else {
+      console.error(`invalid colorTint.`);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setColorTint call failed. error code: ${err.code}`);
@@ -258,7 +267,7 @@ Obtains the white balance hue adjustment.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                | Session not config.                                   |
 

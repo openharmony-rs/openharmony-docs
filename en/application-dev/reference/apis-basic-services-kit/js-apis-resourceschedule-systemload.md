@@ -1,10 +1,11 @@
 # @ohos.resourceschedule.systemload (System Load Level Management)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @baiheng-->
+<!--Owner: @xupeng_-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=e0f042c94b35403b0ac3a4f8f0bcb5ca557f78a1 translatedAt=2026-11-23T02:03:53.955Z pushedAt=2026-11-23T12:22:25.334Z nl=1 -->
 
 The **systemload** module allows the system to determine the system load level based on the current temperature, load, and scenario, and notifies registered applications of level changes, if any.
 
@@ -37,7 +38,7 @@ Enables listening for system load level changes. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
 
@@ -77,7 +78,7 @@ Disables listening for system load level changes. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
 
@@ -92,7 +93,7 @@ function onSystemLoadChange(res: systemLoad.SystemLoadLevel) {
 
 try {
     systemLoad.off('systemLoadChange', onSystemLoadChange);
-    console.info(`unregister systemload callback succeeded:. `);
+    console.info(`unregister systemload callback succeeded. `);
 } catch (err) {
     console.error(`unregister systemload callback failed: ` + JSON.stringify(err));
 }
@@ -100,7 +101,7 @@ try {
 
 ## systemLoad.getLevel
 
-getLevel(): Promise&lt;[SystemLoadLevel](#systemloadlevel)&gt;
+getLevel(): Promise&lt;SystemLoadLevel&gt;
 
 Obtains the system load level. This API uses a promise to return the result.
 
@@ -138,6 +139,6 @@ Enumerates system load levels.
 | MEDIUM       | 2    | One or more device temperature or load items are slightly high, or the device temperature is in the medium range but the load is high. You need to stop or delay some imperceptible services.                   |
 | HIGH         | 3    | The device temperature and load are relatively high. You need to stop all imperceptible services and downgrade or reduce the load of non-critical services.                 |
 | OVERHEATED   | 4    | The device temperature and load are high, and the device is overheated. You need to stop all imperceptible services and downgrade or reduce the load of major foreground services.                 |
-| WARNING     | 5    | The device is overheated or heavily loaded and is about to enter the Warning state. You need to stop all imperceptible services and downgrade major foreground services to the maximum extent.                |
+| WARNING     | 5    | The device is overheated or heavily loaded and is about to enter the Warning state. You need to stop all imperceptible services and downgrade major foreground services to the maximum extent.                 |
 | EMERGENCY    | 6    | The device is overheated or significantly heavy loaded and is about to enter the Emergency state. You need to stop all services except those for fundamental use.       |
 | ESCAPE      | 7    | The device is overheated or extremely heavy loaded and is about to enter the Escape state. You need to stop all services and take necessary emergency measures such as data backup.       |

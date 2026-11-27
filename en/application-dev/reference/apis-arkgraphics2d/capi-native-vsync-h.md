@@ -8,7 +8,7 @@
 
 ## Purpose
 
-This file declares the functions for obtaining and using native virtual synchronization (VSync).
+This file declares the functions for obtaining and using native vertical synchronization (VSync).
 
 <!--Del-->
 **Sample**: [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--DelEnd-->

@@ -115,7 +115,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/introduction-to-arkts.md#对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
+| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordk-v-类型)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
 
 **返回值：**
 
@@ -1321,7 +1321,7 @@ let count: number = pasteData.getRecordCount();
 
 getTag(): string
 
-获取剪贴板内容中用户自定义的标签内容，如果没有设置用户自定义的标签内容将返回空。
+获取剪贴板内容中用户自定义的标签内容，如果没有设置用户自定义的标签内容将返回空字符串。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1331,7 +1331,7 @@ getTag(): string
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 返回用户自定义的标签内容，如果没有设置用户自定义的标签内容，将返回空。 |
+| string | 返回用户自定义的标签内容，如果没有设置用户自定义的标签内容，将返回空字符串。 |
 
 **示例：**
 
@@ -1400,7 +1400,7 @@ removeRecord(index: number): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900001 | The index is out of range. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1433,7 +1433,7 @@ replaceRecord(index: number, record: PasteDataRecord): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900001 | The index is out of range. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2058,7 +2058,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 getData(): Promise&lt;PasteData&gt;
 
-读取系统剪贴板内容，将剪贴板数据封装为PasteData对象返回，使用Promise异步回调。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。适用于应用需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)读取剪贴板数据的场景。
+读取系统剪贴板内容，将剪贴板数据封装为PasteData对象返回，使用Promise异步回调。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。
 
 应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
 
@@ -2956,7 +2956,6 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 - 与removeAppShareOptions()方法（删除应用全局的可粘贴的范围）配合使用。
 - 需要删除已设置的分享范围时，调用removeAppShareOptions()。
-- 在何处设置就在何处删除，确保分享范围设置和删除的一致性。
 
 **需要权限：** ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
 
@@ -2966,7 +2965,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。传入其他值时返回错误码401。 |
+| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption中定义的枚举值。传入其他值时返回错误码401。 |
 
 **错误码：**
 
@@ -3063,7 +3062,7 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -3238,7 +3237,7 @@ try {
 
 type UpdateCallback = () => void
 
-表示剪贴板内容变更的回调
+表示剪贴板内容变更的回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 

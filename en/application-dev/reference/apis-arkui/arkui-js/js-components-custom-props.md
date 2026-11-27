@@ -1,16 +1,16 @@
 # Data Transfer and Processing
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:55.757Z pushedAt=2026-06-23T10:55:01.474Z -->
+<!-- md-trans-meta sourceCommit=eb5594babacac2de9732cbabf759971d65108885 translatedAt=2026-11-23T06:12:34.537Z pushedAt=2026-11-23T06:39:24.529Z nl=1 -->
+
 
 ## Props
 
-You can use **props** to declare attributes of a custom component and pass the attributes to the child component. The supported types of **props** include String, Number, Boolean, Array, Object, and Function. Note that a camel case attribute name (**compProp**) should be converted to the kebab case format (**comp-prop**) when you reference the attribute in an external parent component. The following is a sample for adding **props** to a custom component and passing the attribute to the child component.
+You can use **props** to declare attributes of a custom component, and pass the parameters from the parent component to the child component by setting the attributes. The supported types of **props** include **String**, **Number**, **Boolean**, **Array**, and **Object**. Note that a camel case attribute name (**compProp**) should be converted to the kebab case format (**comp-prop**) when you reference the attribute in an external parent component. The following is a sample for adding **props** to a custom component and passing the parameter from the parent component to the child component.
 
 ```html
 <!-- comp.hml -->
@@ -66,7 +66,7 @@ In this example, a **\<text>** component is added to display the title. The titl
 <!-- xxx.hml -->
 <element name='comp' src='../common/component/comp/comp.hml'></element>
 <div class="container"> 
-   <comp title="Custom component"></comp>
+   <comp title="Custom component"></comp> 
 </div>
 ```
 
@@ -105,6 +105,7 @@ export default {
   },
 }
 ```
+
 
 ## computed
 

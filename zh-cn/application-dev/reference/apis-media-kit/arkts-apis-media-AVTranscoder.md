@@ -9,7 +9,7 @@
 
 视频转码管理类，用于视频转码。在调用AVTranscoder的方法前，需要先通过[createAVTranscoder()](arkts-apis-media-f.md#mediacreateavtranscoder12)构建一个AVTranscoder实例。
 
-视频转码demo可参考：[视频转码开发指导](../../media/media/using-avtranscoder-for-transcodering.md)
+视频转码demo可参考：[视频转码开发指导](../../media/media/using-avtranscoder-for-transcoding.md)
 
 > **说明：**
 >

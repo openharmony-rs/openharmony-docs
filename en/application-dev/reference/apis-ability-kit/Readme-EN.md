@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6; @lihaitao-->
 <!--Tester: @kongjing2; @dsz2025-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=5e808b510c7c59a45d78cfd38503d08e0ca61c53 translatedAt=2026-09-09T03:03:21.872Z pushedAt=2026-09-09T04:02:43.397Z -->
+<!-- md-trans-meta sourceCommit=6e61b58dc675113392438152e215210fe3cdced8 translatedAt=2026-11-16T11:55:48.886Z pushedAt=2026-11-16T12:01:22.468Z nl=1 -->
 
 - ArkTS APIs<!--ability-arkts-->
   - Stage Model<!--stage-model-->
@@ -14,7 +14,6 @@
     - [@ohos.app.ability.abilityLifecycleCallback (UIAbility Lifecycle Callback Listener)](js-apis-app-ability-abilityLifecycleCallback.md)
     - [@ohos.app.ability.AbilityStage (AbilityStage Component Manager)](js-apis-app-ability-abilityStage.md)
     - [@ohos.app.ability.ActionExtensionAbility (ExtensionAbility for Custom Actions)](js-apis-app-ability-actionExtensionAbility.md)
-    - [@ohos.app.ability.AgentUIExtensionAbility (UI-based Agent Extension Component)](js-apis-agent-agentUIExtensionAbility.md)
     - [@ohos.app.ability.application (Application Utility Class)](js-apis-app-ability-application.md)
     - [@ohos.app.ability.ApplicationStateChangeCallback (Application Process State Change Listener)](js-apis-app-ability-applicationStateChangeCallback.md)
     - [@ohos.app.ability.appMemoryOptimizer (Application Memory Optimizer)](js-apis-app-ability-appMemoryOptimizer.md)
@@ -58,6 +57,8 @@
     - [@ohos.app.ability.autoStartupManager (Auto-Startup Management)](js-apis-app-ability-autoStartupManager.md)
     - [@ohos.app.agent.agentConstant (Agent Constants)](js-apis-app-agent-agentConstant.md)
     - [@ohos.app.agent.AgentExtensionAbility (Agent Extension Component)](js-apis-app-agent-agentExtensionAbility.md)
+    - [@ohos.app.agent.AgentUIExtensionAbility (Agent Extension Component with UI)](js-apis-agent-agentUIExtensionAbility.md)
+    - [@ohos.app.cli.cliManager (CLI Tool Management)](js-apis-app-cli-cliManager.md)
     - [@ohos.continuation.continuationManager (Continuation/Collaboration Management)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.app.ability.AbilityConstant (Ability-related Constants) (System API)](js-apis-app-ability-abilityConstant-sys.md)
@@ -69,7 +70,9 @@
      - [@ohos.app.ability.contextConstant (Context-related Constants) (System API)](js-apis-app-ability-contextConstant-sys.md)
     - [@ohos.app.ability.dialogSession (dialogSession) (System API)](js-apis-app-ability-dialogSession-sys.md)
     - [@ohos.app.ability.insightIntent (Basic Definitions of InsightIntent Framework) (System API)](js-apis-app-ability-insightIntent-sys.md)
+    - [@ohos.app.ability.InsightIntentContext (Intent Execution Context) (System API)](js-apis-app-ability-insightIntentContext-sys.md)
     - [@ohos.app.ability.insightIntentDriver (Intent Call Execution) (System API)](js-apis-app-ability-insightIntentDriver-sys.md)
+    - [@ohos.app.ability.scriptManager (Script Management) (System API)](js-apis-app-ability-scriptManager-sys.md)
     - [@ohos.app.ability.ServiceExtensionAbility (ServiceExtensionAbility) (System API)](js-apis-app-ability-serviceExtensionAbility-sys.md)
     - [@ohos.app.ability.StartOptions (StartOptions) (System API)](js-apis-app-ability-startOptions-sys.md)
     - [@ohos.app.ability.UIServiceExtensionAbility (UIServiceExtensionAbility) (System API)](js-apis-app-ability-uiServiceExtensionAbility-sys.md)
@@ -84,7 +87,7 @@
        - [ContinuableInfo (system API)](js-apis-inner-application-continuableInfo-sys.md)
        - [ContinueCallback (system API)](js-apis-inner-application-continueCallback-sys.md)
        - [ContinueMissionInfo (system API)](js-apis-inner-application-continueMissionInfo-sys.md)
-       - [MissionCallbacks (system API)](js-apis-inner-application-missionCallbacks-sys.md)
+       - [MissionCallback (System API)](js-apis-inner-application-missionCallbacks-sys.md)
        - [MissionDeviceInfo (system API)](js-apis-inner-application-missionDeviceInfo-sys.md)
        - [MissionParameter (system API)](js-apis-inner-application-missionParameter-sys.md)
        <!--DelEnd-->
@@ -180,6 +183,7 @@
       - [AutoFillRequest](js-apis-inner-application-autoFillRequest.md)
       - [AutoFillType](js-apis-inner-application-autoFillType.md)
       - [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType.md)
+      - [ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)
       - [BaseContext](js-apis-inner-application-baseContext.md)
       - [Context (Context Base Class of the Stage Model)](js-apis-inner-application-context.md)
       - [EmbeddableUIAbilityContext](js-apis-inner-application-EmbeddableUIAbilityContext.md)
@@ -198,6 +202,8 @@
       - [ProcessData](js-apis-inner-application-processData.md)
       - [PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md)
       - [SendableContext](js-apis-inner-application-sendableContext.md)
+      - [CliToolEvent (CLI Tool Session Event)](js-apis-inner-application-cliToolEvent.md)
+      - [ToolEventCallback (CLI Tool Event Callback)](js-apis-inner-application-toolEventCallback.md)
       - [ViewData](js-apis-inner-application-viewData.md)
       <!--Del-->
       - [AbilityFirstFrameStateData (system API)](js-apis-inner-application-abilityFirstFrameStateData-sys.md)
@@ -211,7 +217,6 @@
       - [AutoFillType (system API)](js-apis-inner-application-autoFillType-sys.md)
       - [AutoStartupCallback (system API)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo (system API)](js-apis-inner-application-autoStartupInfo-sys.md)
-      - [CliToolEvent (system API)](js-apis-inner-application-cliToolEvent-sys.md)
       - [Context (System API)](js-apis-inner-application-context-sys.md)
       - [ContinueDeviceInfo (system API)](js-apis-inner-application-continueDeviceInfo-sys.md)
       - [CustomData (System API)](js-apis-inner-application-customData-sys.md)
@@ -225,7 +230,6 @@
       - [RunningMultiAppInfo (System API)](js-apis-inner-application-runningMultiAppInfo-sys.md)
       - [RunningMultiInstanceInfo (System API)](js-apis-inner-application-runningMultiInstanceInfo-sys.md)
       - [ServiceExtensionContext (System API)](js-apis-inner-application-serviceExtensionContext-sys.md)
-      - [ToolEventCallback (System API)](js-apis-inner-application-toolEventCallback-sys.md)
       - [ToolInfo (System API)](js-apis-inner-application-ToolInfo-sys.md)
       - [UIServiceExtensionContext (System API)](js-apis-inner-application-uiserviceExtensionContext-sys.md)
       - [UIServiceHostProxy (System API)](js-apis-inner-application-uiservicehostproxy-sys.md)
@@ -257,6 +261,7 @@
       - [BundleResourceInfo (System API)](js-apis-bundleManager-BundleResourceInfo-sys.md)
       - [BusinessAbilityInfo (System API)](js-apis-bundleManager-businessAbilityInfo-sys.md)
       - [DispatchInfo (system API)](js-apis-bundleManager-dispatchInfo-sys.md)
+      - [HapModuleInfo (System API)](js-apis-bundleManager-HapModuleInfo-sys.md)
       - [LauncherAbilityResourceInfo (System API)](js-apis-LauncherAbilityResourceInfo-sys.md)
       - [PermissionDef (system API)](js-apis-bundleManager-permissionDef-sys.md)
       - [RecoverableApplicationInfo (system API)](js-apis-recoverableApplicationInfo-sys.md)
@@ -328,6 +333,7 @@
     - [application_context.h](capi-application-context-h.md)
     - [context_constant.h](capi-context-constant-h.md)
     - [connect_options.h](capi-connect-options-h.md)
+    - [child_process_info.h](capi-child-process-info-h.md)
     - [native_ability_wrapper.h](capi-native-ability-wrapper-h.md)
     - [native_child_process.h](capi-native-child-process-h.md)
     - [native_interface_bundle.h](capi-native-interface-bundle-h.md)
@@ -350,6 +356,8 @@
     - [NativeChildProcess_Options](capi-nativechildprocess-options.md)
     - [NativeChildProcess_Args](capi-nativechildprocess-args.md)
     - [Ability_ChildProcessConfigs](capi-ability-childprocessconfigs.md)
+    - [OH_AbilityRuntime_ChildProcessInfo*](capi-nativechildprocess-info.md)
+    - [OH_AbilityRuntime_ChildProcessInfos*](capi-nativechildprocess-infos.md)
     - [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md)
     - [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md)
     - [OH_NativeBundle_Metadata](capi-native-bundle-oh-nativebundle-metadata.md)

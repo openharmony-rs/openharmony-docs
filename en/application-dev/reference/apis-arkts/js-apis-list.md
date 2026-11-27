@@ -1,10 +1,11 @@
 # @ohos.util.List (Linear Container List)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-11-16T05:44:44.638Z pushedAt=2026-11-16T06:31:14.243Z nl=1 -->
 
 List is implemented based on the singly linked list. Each node has a reference pointing to the next element. Elements must be traversed from the beginning, making querying inefficient. However, insertion and deletion operations are highly efficient. List allows null elements.
 
@@ -16,8 +17,8 @@ Unlike [LinkedList](js-apis-linkedlist.md), which is a doubly linked list, List 
 
 **Recommended use case**: Use List for frequent insertion and removal operations when a singly linked list is required.
 
-This topic uses the following to identify the use of generics:
-- T: Type
+The document uses generics and involves the following generic type parameters:
+- T: Type, a generic type parameter, which can be of any type
 
 > **NOTE**
 >
@@ -85,7 +86,7 @@ Adds an element at the end of this List.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Element to be added. |
 
 **Return value**
 
@@ -104,19 +105,24 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a List instance that supports multiple element types.
 let list = new List<string | number | boolean | object>();
 let result1 = list.add("a");
+console.info("result = ", result1); // result =  true
 let result2 = list.add(1);
-let b = [1, 2, 3];
-let result3 = list.add(b);
-class C {
-  name: string = ''
-  age: string = ''
+console.info("result = ", result2); // result =  true
+let numArray = [1, 2, 3];
+let result3 = list.add(numArray);
+console.info("result = ", result3); // result =  true
+class PersonInfo {
+  name: string = "";
+  age: string = "";
 }
-let c: C = {name : "Dylan", age : "13"};
-let result4 = list.add(c);
+let personInfo: PersonInfo = {name : "Dylan", age : "13"};
+let result4 = list.add(personInfo);
+console.info("result = ", result4); // result =  true
 let result5 = list.add(false);
-console.info("result = ", result5) // result =  true
+console.info("result = ", result5); // result =  true
 ```
 
 ### insert
@@ -133,16 +139,15 @@ Inserts an element at the specified position in this List.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
-| index | number | Yes| Index of the position where the element is to be inserted. The value must be less than or equal to int32_max, that is, 2147483647.|
+| element | T | Yes | Element to insert. |
+| index | number | Yes | Position index for insertion. The valid insertion range is [0, List.length], and the value must be less than or equal to int32_max, that is, 2147483647. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
@@ -219,17 +224,16 @@ Obtains the element at the specified position in this List.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The get method cannot be bound. |
 
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -274,7 +278,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -319,7 +323,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -364,7 +368,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -390,7 +394,7 @@ Searches for an element based on its index and then removes it.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index value of the specified element. The value range is [0, List.length-1], and the value must be less than or equal to int32_max, that is, 2147483647. |
 
 **Return value**
 
@@ -400,18 +404,17 @@ Searches for an element based on its index and then removes it.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -454,7 +457,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -490,23 +493,22 @@ callbackFn parameters
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The replaceAllElements method cannot be bound. |
 
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 list.replaceAllElements((value: number) => {
-  // Add the user operation logic based on the actual scenario.
+  // Add user operation logic based on the actual scenario.
   if (value === 5) {
     return value * 2;
   }
@@ -543,21 +545,21 @@ callbackFn parameters
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
+// Traverse each element in the List and print the value and index.
 list.forEach((value: number, index: number) => {
   console.info("value:" + value, "index:" + index);
 });
@@ -581,21 +583,20 @@ Sorts elements in this List.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt23) | Yes| Callback used to return the result.<br> There has been a compatibility change since API version 23. In API version 22 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt23) | Yes | Callback function.<br> Compatibility change since API version 23. In API version 22 and earlier, its type is: `(firstValue: T, secondValue: T) => number`. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The sort method cannot be bound. |
 
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(1);
 list.add(3);
@@ -632,18 +633,17 @@ Obtains elements within a range in this List, including the element at the start
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The getSubList method cannot be bound. |
 
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(6);
@@ -673,7 +673,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -697,7 +697,7 @@ Replaces an element at the specified position in this List with a given element.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Index value to find. The value range is [0, List.length-1], and it must be less than or equal to int32_max, that is, 2147483647. |
 | element | T | Yes| Element to be used for replacement.|
 
 **Return value**
@@ -708,11 +708,10 @@ Replaces an element at the specified position in this List with a given element.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The set method cannot be bound. |
 
@@ -755,7 +754,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -791,7 +790,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -827,7 +826,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -863,7 +862,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let list = new List<number>()
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
@@ -876,7 +875,7 @@ console.info("result:", result);  // result: 4
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator for traversing the elements in the List.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

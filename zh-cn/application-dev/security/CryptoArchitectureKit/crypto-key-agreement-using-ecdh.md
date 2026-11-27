@@ -55,10 +55,12 @@
         console.info('ecdh output: ' + secret1.data);
       } else {
         console.error('ecdh result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -100,10 +102,12 @@
         console.info('ecdh output: ' + secret1.data);
       } else {
         console.error('ecdh result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```

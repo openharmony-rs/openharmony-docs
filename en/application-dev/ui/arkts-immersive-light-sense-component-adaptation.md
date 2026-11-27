@@ -101,7 +101,7 @@ Component-level enablement: The dialog box supports setting the immersive lighti
 - The popup opened by the [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md) component currently does not support enabling the immersive lighting effect. The immersive lighting effect set through universal attributes is reflected on the CalendarPicker component itself.
 - The immersive lighting effect of the [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md), [DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md), [TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md), and [TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md) components is the same as that of CustomDialog.
 
-For the effect of enabling immersive lighting on the component, see [Example 9: Setting the System Material of the Dialog Box](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#example-9-setting-the-system-material-of-the-dialog-box), [Example 14: Setting the System Material of a Dialog box](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#example-14-setting-the-system-material-of-a-dialog-box), and [Example 9: Setting the System Material of the Dialog Box](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#example-9-setting-the-system-material-of-the-dialog-box).
+For the effect of enabling immersive lighting on the component, see [Example 9: Setting the Immersive Light Effect of the Dialog Box](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#example-9-setting-the-immersive-light-effect-of-the-dialog-box), [Example 9: Setting the Immersive Light Effect of the Dialog Box](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#example-14-setting-the-immersive-light-effect-of-a-dialog), and [Example 9: Setting the Immersive Light Effect of the Dialog Box](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#example-9-setting-the-immersive-light-effect-of-the-dialog-box).
 
 ### Half-modal (bindSheet)
 
@@ -158,7 +158,7 @@ Component-level enablement: Toggle supports setting the immersive lighting effec
   - ToggleType.Switch: The material parameters passed in serve only as a switch marker for enabling immersive lighting and do not affect the actual visual effect. The component's internal preset visual parameters are used, mainly affecting the slider size, slider style, shadow, and so on. The material effect varies with the device's computing power tier.
   - ToggleType.Button: The effect is the same as that of setting immersive lighting on the [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) component, mainly affecting visual attributes such as background color, border, and shadow.
 
-For the effect of enabling immersive lighting on the component, see [Example 4: Implementing the Immersive Light Effect for the Toggle Component](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#example-4-implementing-the-immersive-light-effect-for-the-toggle-component).
+For the effect of enabling immersive lighting on the component, see [Example 4: Implementing the Immersive Light Effect for the Toggle Component](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md).
 
 ### Slider
 
@@ -171,7 +171,7 @@ Component-level enablement: The slider supports setting the immersive lighting e
 - The material parameter passed in serves only as a switch marker for enabling immersive lighting and does not affect the actual visual effect. The component uses its internal preset visual parameters, which mainly affect the slider size, slider style, and shadow. When undefined is passed in, immersive lighting does not take effect, and the original Slider style is restored.
 - The interactive feedback effect of immersive lighting takes effect only when the slider block shape is [SliderBlockType](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#sliderblocktype10).DEFAULT and [SliderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#sliderstyle) is not NONE.
 
-For the effect of enabling immersive lighting for the component, see [Example 10: Setting the Immersive Light Effect for the Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#example-10-setting-the-immersive-light-effect-for-the-slider).
+For the effect of enabling immersive lighting for the component, see [Example 10: Setting the Immersive Light Effect for the Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md).
 
 ### Sub Tab (ChipGroup/ChipGroupV2)
 

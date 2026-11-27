@@ -81,7 +81,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 
 - 参考文档：  
 
-[如何在C++调用从ArkTS传递过来的function](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-26)    
+[如何在C++调用从ArkTS传递过来的function](https://developer.huawei.com/consumer/cn/doc/doccenter-dev-faq/ndk-development-faq-0006)    
 
 ## 如何确保数据类型的正确映射与内存管理的安全性
 

@@ -204,7 +204,7 @@ The following table shows the mapping between [FaultLogInfo](../reference/apis-p
 | module | bundle_name | N/A |
 | fullLog | external_log | fullLog is the full fault log text. external_log is the specific path of the fault log file in the app sandbox (/data/storage/el2/log/). Access the file at this path to obtain the full fault log text. |
 | reason | The Reason field in the external_log file content | N/A |
-| summary | A specific section in the external_log file content | For APP_FREEZE, summary corresponds to the section from the line containing "appfreeze:<process name>" to the line containing "DisplayPowerInfo:" in the external_log file. |
+| summary | A specific section in the external_log file content | For APP_FREEZE, summary corresponds to the section from the line containing "appfreeze:process name" to the line containing "DisplayPowerInfo:" in the external_log file. |
 
 Both [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) (using callback) and [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) (using promise) can be replaced with [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to achieve the same functionality.
 

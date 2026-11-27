@@ -1,4 +1,11 @@
 # EffectComponent (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=56f4ce2c21ec32221aec4b4c16d073cd82052f76 translatedAt=2026-11-17T03:52:11.512Z pushedAt=2026-11-19T08:20:04.856Z nl=1 -->
 
 The **EffectComponent** component defines combined special effects for child components to optimize the special effect drawing performance.
 
@@ -6,11 +13,13 @@ The **EffectComponent** component defines combined special effects for child com
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this component are system APIs.
+> - The APIs provided by this module are system APIs.
 >
-> - Currently, this component provides only combined background blur effects for child components.
+> - The APIs of this module can be used only in the stage model.
 >
-> - To use this component for combined background blur effects, first replace the **backgroundBlurStyle(BlurStyle)** attribute of the target child components with **useEffect(true)**.
+> - Currently, this component only supports the drawing combination optimization of the background blur effect of child components.
+>
+> - When performing drawing combination on the background blur effect of a child component, replace the child component's **backgroundBlurStyle(BlurStyle)** attribute with **useEffect(true)**.
 
 
 ## Child Components
@@ -33,7 +42,7 @@ Creates an **EffectComponent** component.
 
 EffectComponent(options?: EffectComponentOptions)
 
-Creates an effect drawing and combination component. If no parameter is passed or the parameter is EffectLayer.None, the background blur effect of child components is combined. If a parameter is specified, the current rendering layer is placed on a special layer.
+Creates an effect rendering merging component. When no parameter is passed or the parameter is **EffectLayer.NONE**, it is used to merge the rendering of the background blur effect of child components. When an explicit parameter is passed, it indicates that the current rendering layer is placed on a special layer.
 
 **System API**: This is a system API.
 
@@ -61,9 +70,9 @@ Sets the construction parameters of the current EffectComponent, including the r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                   | Mandatory| Description                                                    |
-| ----------- | --------------------------------------- | ---- | -------------------------------------------------------- |
-| effectLayer | [EffectLayer](#effectlayer20) | No  | Rendering layer of the EffectComponent.<br>Default value: EffectLayer.NONE|
+| Name            | Type        |  Read-Only   |   Optional   | Description                                     |
+|-------------------|-----|-------|----|-------------------------------------------------------------------------------------------------------------------------------------|
+| effectLayer | [EffectLayer](#effectlayer20) |  No   |   Yes   | Render layer of **EffectComponent**.<br/>Default value: **EffectLayer.NONE** |
 
 ## EffectLayer<sup>20+</sup>
 
@@ -79,7 +88,7 @@ Rendering layer of the EffectComponent.
 | CHARGE_MOTION | 1    | Charging animation layer.|
 | CHARGE_TEXT   | 2    | Charging text layer.|
 
-## Example
+## Examples
 
 ### Example 1: Using the EffectComponent Component
 
@@ -176,3 +185,4 @@ struct Index {
   }
 }
 ```
+

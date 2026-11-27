@@ -1,11 +1,11 @@
 # Print_PageSize
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f172f47675a58f89bb693013f28ad2465486c311 translatedAt=2026-10-09T11:41:50.083Z pushedAt=2026-10-10T03:42:02.966Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-23T01:09:30.443Z pushedAt=2026-11-23T10:55:45.063Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_PageSize
@@ -13,7 +13,7 @@ typedef struct {...} Print_PageSize
 
 ## Overview
 
-Represents the paper size information in a print task, including key attributes such as the paper ID, name, width, and height. This API can be used to specify or query paper specifications during printing configuration.
+Represents the paper size in a print task, including key attributes such as the page ID, name, width, and height. This API can be used to specify or query paper specifications during printing configuration.
 
 **Since**: 12
 

@@ -770,9 +770,9 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-允许应用使用闪控球的自动恢复到应用主窗口的能力。
+允许创建闪控球的应用在后台时，不通过用户点击闪控球的方式，直接调用[restoreMainWindow](../../reference/apis-arkui/js-apis-floatingBall.md#restoremainwindow)接口将应用自身恢复到前台。
 
-**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
+**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起使用，才能实现相关功能。
 
 <!--RP69--><!--RP69End-->
 
@@ -1274,7 +1274,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.FLOAT_VIEW
 
-允许应用使用闪控窗。
+允许应用使用闪控窗的能力。
 
 <!--RP78--><!--RP78End-->
 
@@ -1564,20 +1564,6 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
  
 **起始版本**：26.0.1
 
-## ohos.permission.ASSESSMENT_CONFIGURATION
-
-允许应用进入考试场景，系统服务将弹窗提醒用户进入考试模式后会限制系统能力，防止用户考试作弊或泄密，在保障考试公平的同时保护用户权益。
-
-<!--RP112--><!--RP112End-->
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：Phone | PC/2in1 | Tablet
-
-**起始版本**：26.0.1
-
 ## ohos.permission.DIRECT_CALL
  
 允许应用一键拨号。
@@ -1624,18 +1610,3 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
  
 **起始版本**：26.0.1
 
-## ohos.permission.HIDDEN_CAMERA_DETECTION
-
-允许应用检测隐藏摄像头。
-
-获取该权限后，在酒店、民宿等地点，应用可辅助使用人员以检测当前空间是否存在隐藏摄像头，保护用户隐私。
-
-<!--RP120--><!--RP120End-->
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：Phone
-
-**起始版本**：26.0.1

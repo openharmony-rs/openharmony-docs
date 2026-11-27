@@ -73,12 +73,18 @@
      hilog.info(0x0000, 'testTag', JSON.stringify(stats));
      // ...
    })
+   .catch((err: BusinessError) => {
+     this.logMessage = `Failed to get cellular downstream traffic: ${JSON.stringify(err)}`;
+   });
    // ...
    // 获取蜂窝实时上行流量数据。
    statistics.getCellularTxBytes().then((stats: number) => {
      hilog.info(0x0000, 'testTag', JSON.stringify(stats));
      // ...
    })
+   .catch((err: BusinessError) => {
+     this.logMessage = `Failed to get cellular upstream traffic: ${JSON.stringify(err)}`;
+   });
    // ...
    ```
 4. 获取所有网卡流量数据。

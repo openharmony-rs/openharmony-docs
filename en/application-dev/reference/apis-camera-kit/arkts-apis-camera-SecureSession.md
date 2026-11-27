@@ -5,10 +5,13 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=fefd645189e794d80ae9ee3e4a15dff8502cd619 translatedAt=2026-11-18T03:33:47.728Z pushedAt=2026-11-20T04:58:50.352Z nl=1 -->
 
 **SecureSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), and [Zoom](arkts-apis-camera-Zoom.md).
 
 It implements a secure session, which provides operations on the flash, exposure, white balance, focus, and zoom.
+
+Before creating a secure mode session, you need to call [getSupportedSceneModes](./arkts-apis-camera-CameraManager.md#getsupportedscenemodes11) to obtain the modes supported by the current camera and check whether the secure mode session is supported.
 
 You can call [createSession](arkts-apis-camera-CameraManager.md#createsession11) with [SceneMode](arkts-apis-camera-e.md#scenemode11) set to **SECURE_PHOTO** to create a session in secure mode. The secure mode is designed for applications with high security requirements, such as facial recognition systems and banking services. It must be used together with the <!--RP1-->security TA<!--RP1End--> to support service scenarios where both standard preview streams and security streams are output.<!--RP2--><br>
 The security TA can verify the signature of data delivered by the server, sign images, parse and assemble TLV logic, and read, create, and operate keys. It applies to image processing.<!--RP2End-->
@@ -45,7 +48,7 @@ Marks a [PreviewOutput](arkts-apis-camera-PreviewOutput.md) stream as secure out
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                |
@@ -62,7 +65,7 @@ function addSecureOutput(session: camera.SecureSession, previewOutput: camera.Pr
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
-    console.error(`The addOutput call failed. error code: ${err.code}`);
+    console.error(`The addSecureOutput call failed. error code: ${err.code}`);
   }
 }
 ```

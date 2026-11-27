@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=17a9de905a6a3682c2b9ccf9046917713fe58eb1 translatedAt=2026-11-25T11:13:32.488Z pushedAt=2026-11-26T02:19:43.211Z nl=1 -->
 
 The **Navigation** component is the root view container for navigation. It typically functions as the root container of a page and includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of **Navigation**) and non-home page content (child components of [NavDestination](ts-basic-components-navdestination.md)) through routing.
 
@@ -105,12 +106,12 @@ Sets the page title.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | Yes  | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect.<br>When the title string is too long:<br>- If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped.<br>- If a subtitle is set, the subtitle is scaled down and then clipped.|
-| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | No  | Defines the title bar options. Title bar options include the background color, background blur style, blur options, background properties, layout style, scroll blur effect, padding at the start and end of the title bar, main title attribute modifier, subtitle attribute modifier, and whether to respond when the device is in semi-folded mode.<br>**Model restriction**: This API can be used only in the stage model.|
+| value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | Yes  | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect.<br>When the title string is too long:<br>- If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped.<br> - If a subtitle is set, the subtitle is scaled down and then clipped.|
+| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | No  | Defines the title bar options. Title bar options include the background color, background blur style, blur options, background properties, layout style, scroll blur effect, padding at the start and end of the title bar, main title attribute modifier, subtitle attribute modifier, and whether to respond when the device is in hover mode.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ### menus
 
@@ -122,7 +123,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
@@ -144,7 +145,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
@@ -161,7 +162,7 @@ Sets the display mode of the page title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                               | Mandatory| Description                                                     |
 | ------ | --------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -183,7 +184,7 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; 20%; 8%; 62%-->
 | Name | Type                                                        | Mandatory| Description                                                        |
@@ -201,7 +202,7 @@ Specifies whether to hide the toolbar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -219,7 +220,7 @@ Specifies whether to hide the toolbar. Compared with [hideToolBar](#hidetoolbar)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -236,7 +237,7 @@ Specifies whether to hide the title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -254,7 +255,7 @@ Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitle
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -271,7 +272,7 @@ Sets whether to hide the back button in the title bar. The back button takes eff
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -289,7 +290,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                     |
 | ------ | ---------------------------- | ---- | ----------------------------------------- |
@@ -305,7 +306,7 @@ Sets the position of the navigation page. It takes effect only when [mode](#mode
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                         |
 | ------ | ------------------------------------------ | ---- | --------------------------------------------- |
@@ -321,7 +322,7 @@ Sets the display mode of the navigation page. The options are **Stack**, **Split
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -341,7 +342,7 @@ Sets the icon of the back button in the title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                |
 | ------ | ------------------------------------------------------------ | ---- | -------------------- |
@@ -365,7 +366,7 @@ Sets the icon and accessibility text for the back button on the title bar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
@@ -384,7 +385,7 @@ From API version 9 to API version 10, this attribute takes effect only in split-
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
@@ -402,7 +403,7 @@ Creates a **NavDestination** component. The builder receives the **name** and **
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                  | Mandatory| Description                    |
 | ------- | -------------------------------------- | ---- | ------------------------ |
@@ -430,7 +431,7 @@ Divider dragging range:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -448,7 +449,7 @@ Minimum width of the navigation bar content area (effective in split-column mode
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                | Mandatory| Description                                                        |
 | ------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -462,7 +463,7 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 
 > **NOTE**
 >   
-> - Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:  
+> - Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:   
 > When **LayoutSafeAreaType.SYSTEM** is set, the component can extend into the non-safe area if its boundaries overlap with it.
 >   
 > - If the component extends into the non-safe area, events triggered within that area (such as click events) might be intercepted by the system. This allows the system to prioritize responses to system components such as the status bar.
@@ -475,7 +476,7 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                              | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -508,7 +509,7 @@ Sets the style of the system status bar when the home page of the **Navigation**
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -531,7 +532,7 @@ Sets whether the **Navigation** component is recoverable. If set to recoverable,
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -549,7 +550,7 @@ Sets whether to display a drag bar in split-column scenarios. This attribute has
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -567,7 +568,7 @@ Sets whether to enable the animation for switching between single- and split-col
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -585,7 +586,7 @@ Sets whether to enable toolbar adaptation ([toolbarConfiguration](#toolbarconfig
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -603,7 +604,7 @@ Sets a default placeholder page for the right column in the **Navigation** compo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -623,7 +624,7 @@ Sets the divider style in the split-column mode of the **Navigation** component.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -645,7 +646,7 @@ Sets whether to enable the linkage between the [onShown](./ts-basic-components-n
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
@@ -683,7 +684,7 @@ Sets the page subtitle.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
@@ -701,13 +702,13 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description        |
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
 | value  | object&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar.|
 
-**object**
+**object** 
 
 | Name    | Type           | Mandatory  | Description             |
 | ------ | ------------- | ---- | --------------- |
@@ -727,7 +728,7 @@ Triggered when [titleMode](#titlemode) is set to **NavigationTitleMode.Free** an
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                               | Mandatory| Description      |
 | --------- | --------------------------------------------------- | ---- | ---------- |
@@ -743,7 +744,7 @@ Callback invoked when the navigation page visibility status changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type   | Mandatory| Description                                          |
 | --------- | ------- | ---- | ---------------------------------------------- |
@@ -761,7 +762,7 @@ Triggered when the **Navigation** component is displayed for the first time or i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type   | Mandatory| Description                                          |
 | --------- | ------- | ---- | ---------------------------------------------- |
@@ -783,7 +784,7 @@ Defines the callback of the custom transition animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                                 | Mandatory| Description                   |
 | --------- | ----------------------------------------------------- | ---- | ----------------------- |
@@ -791,7 +792,7 @@ Defines the callback of the custom transition animation.
 | to        | [NavContentInfo](#navcontentinfo11)                   | Yes  | Destination page to enter.|
 | operation | [NavigationOperation](#navigationoperation11) | Yes  | Transition type.             |
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -811,12 +812,12 @@ Starting from API version 12, **NavPathStack** is inheritable. Objects of a deri
 
 > **NOTE**
 >
-> 1. When multiple navigation controller operations are triggered in succession, the intermediate states are bypassed, and only the final result of the operations is rendered.<br>
+> 1. When multiple navigation controller operations are triggered in succession, the intermediate states are bypassed, and only the final result of the operations is rendered.<br/>
 > Example: If a pop operation is performed on page 1 followed by a push on the same page, the system considers the states before and after the operations to be the same and does not perform any operations. To forcibly push a new page 1 instance, set the **launchMode** attribute in [NavigationOption](#navigationoptions12) to **LaunchMode.NEW_INSTANCE**.
 >
 > 2. You are advised not to manage the navigation controllers by listening to page lifecycles.
 >
-> 3. When the app is in the background, calling stack operation APIs of **NavPathStack** will trigger a refresh upon the app's return to the foreground.
+> 3. When the application is in the background, calling stack operation APIs of **NavPathStack** will trigger a refresh upon the application's return to the foreground.
 
 ### constructor<sup>10+</sup>
 
@@ -917,7 +918,7 @@ Pushes the navigation destination page specified by **info** onto the routing st
 
 > **NOTE**
 >
-> You are not advised to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
+> You are advised not to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -957,7 +958,7 @@ Pushes the navigation destination page specified by **info** onto the routing st
 
 > **NOTE**
 >
-> You are not advised to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
+> You are advised not to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -997,7 +998,7 @@ Pushes the navigation destination page specified by **name**, with the data spec
 
 > **NOTE**
 >
-> You are not advised to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
+> You are advised not to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1038,7 +1039,7 @@ Pushes the navigation destination page specified by **name**, with the data spec
 
 > **NOTE**
 >
-> You are not advised to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
+> You are advised not to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1315,7 +1316,7 @@ Pops the top element out of the routing stack and invokes the **onPop** callback
 
 popToName(name: string, animated?: boolean): number
 
-Pops pages until the first navigation destination page that matches **name** from the bottom of the routing stack is at the top of the stack.
+Pops the routing stack back to the first **NavDestination** page that matches the value of **name** from the bottom of the stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1479,7 +1480,7 @@ Obtains the names of all navigation destination pages in the routing stack.
 
 | Type            | Description                        |
 | -------------- | -------------------------- |
-| Array<string\> | Names of all navigation destination pages in the routing stack.|
+| Array<string\> | Array of names of all **NavDestination** pages in the stack. |
 
 ### getParamByIndex<sup>10+</sup>
 
@@ -1527,7 +1528,7 @@ Obtains the parameter information of all **NavDestination** pages with the speci
 
 | Type             | Description                               |
 | --------------- | --------------------------------- |
-| Array<unknown\> | Parameter information of all **NavDestination** pages with the specified name. **unknown** can represent a user-defined type.|
+| Array<unknown\> | Array of parameters for all **NavDestination** pages that match the value of **name**. The **unknown** type can be replaced with a user-defined type. |
 
 ### getIndexByName<sup>10+</sup>
 
@@ -1623,7 +1624,7 @@ Sets the interception callback for navigation page redirection.
 
 | Name   | Type    | Mandatory  | Description                    |
 | ---- | ---- | --- | ---|
-|interception| [NavigationInterception](#navigationinterception12)| Yes| Object to be intercepted during navigation redirection.|
+|interception| [NavigationInterception](#navigationinterception12)| Yes | Object to be intercepted during navigation redirection.|
 
 ### getPathStack<sup>19+</sup>
 
@@ -1665,8 +1666,45 @@ Updates the array of route page information in this routing stack to the specifi
 
 | Name   | Type    | Mandatory  | Description                    |
 | ---- | ---- | --- | ---|
-|pathStack| Array\<[NavPathInfo](#navpathinfo10)\>| Yes| Array of route page information in the current routing stack.<br>**NOTE**<br>The array length is not limited.|
+|pathStack| Array\<[NavPathInfo](#navpathinfo10)\>| Yes | Array of route page information in the current routing stack.<br/>**NOTE**<br/>The array length is not limited.|
 |animated| boolean | No| Whether to enable the transition animation.<br>**true**: yes; **false**: no<br> Default value: **true**|
+
+### preloadPath
+
+preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
+
+Preloads the **NavDestination** page specified by the **info** parameter. The preloaded page is not displayed immediately but is cached. When [pushPath](#pushpath10) is called later, if the parameters match, the preloaded page instance is used for quick display. This API uses a promise to return the result.
+
+**Since**: 26.0.1
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description                    |
+| ---- | ---- | --- | ---|
+|info| [NavPathInfo](#navpathinfo10)| Yes| Preloaded **NavDestination** page information.|
+|options| [PreloadOptions](#preloadoptions)| No| Options for preloading a page.|
+
+**Return value**
+
+| Type               | Description       |
+| ------------------- | --------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Router Error Codes](../errorcode-router.md) and [API Call Error Codes](../errorcode-internal.md).
+
+| ID  | Error Message|
+| --------- | ------- |
+| 100001    | Internal error.|
+| 100005    | Builder function not registered. |
+| 100006    | NavDestination not found.|
 
 ## NavPathInfo<sup>10+</sup>
 
@@ -1756,7 +1794,7 @@ Defines the custom transition animation protocol. You need to implement this pro
 
 | Name| Type| Read-Only| Optional| Description|
 |------|-----|-----|-----|------|
-| timeout | number | No| Yes| Animation timeout time.<br> Unit: ms<br>Value range: [0, +∞)<br> Default value: no default value for interactive animations; 1000 ms for non-interactive animations.|
+| timeout | number | No | Yes | Timeout duration of the animation. After this duration elapses, the system automatically ends the current transition.<br> Unit: ms.<br/>Value range: [0, +∞).<br> Default value: For interactive animations, there is no timeout limit by default. If **timeout** is not set, you must call [finishTransition](#finishtransition) to end the current transition. For non-interactive animations, the default timeout is 1000 ms.|
 | transition | (transitionProxy:[NavigationTransitionProxy](#navigationtransitionproxy-11)) =&gt; void | No| No| Callback for executing the custom transition animation.<br> **transitionProxy**: proxy for the custom transition animation.|
 | onTransitionEnd | (success:boolean)&nbsp;=>&nbsp;void | No| Yes| Callback invoked when the transition is complete.<br> **success**: whether the transition is successful.|
 | isInteractive<sup>12+</sup> | boolean | No| Yes| Whether the transition animation is interactive.<br>**true**: yes; **false**: no<br> Default value: **false**|
@@ -1815,7 +1853,7 @@ Updates the progress of this interactive transition animation. (Non-interactive 
 
 > **NOTE**
 >
-> You are not advised to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
+> You are advised not to use stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1827,7 +1865,7 @@ Updates the progress of this interactive transition animation. (Non-interactive 
 
 | Name| Type| Mandatory| Description|
 |------|------|------|-----|
-| progress | number | Yes| Progress percentage of the interactive transition animation. Value range: [0, 1].|
+| progress | number | Yes | Progress of the interactive transition animation. Value range: [0, 1]. |
 
 ## NavigationInterception<sup>12+</sup>
 
@@ -1931,11 +1969,11 @@ Defines the navigation menu item, including the menu icon and menu information.
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name    | Type           | Read-Only| Optional| Description             |
 | ------ | ------------- | ---- | ---- | --------------- |
-| value  | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | No   | No   | Text of the menu item. Its visibility varies by the API version.<br>API version 9: visible.<br> Since API version 10: invisible.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | No   | Yes   | Icon path of the menu item.<br>**NOTE**<br>If the icon is in SVG format, the system sets the fill color by default, which overrides the **fill** attribute defined in the SVG file. As a result, the icon may be displayed abnormally. You are advised to set the **fill** attribute in the SVG file using the **style** attribute to override the default value. The following is an example:<br>Original code (the **fill** attribute will be overwritten by the default value): `<rect fill="rgb(255,0,0)" .../>`. You are advised to change it to `<rect style="fill: rgb(255,0,0)" .../>`.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| isEnabled<sup>12+</sup>   | boolean        | No   | Yes   | Whether to enable a menu item.<br>**true** to enable the menu item, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
+| value  | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | No    | No    | Text of the menu item. Its visibility varies by the API version.<br>API version 9: visible.<br> Since API version 10: invisible.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | No    | Yes    | Icon path of the menu item. <br/>**NOTE** <br/>If the icon is in SVG format, the system sets the fill color by default, which overrides the **fill** attribute defined in the SVG file. As a result, the icon may be displayed abnormally. You are advised to set the **fill** attribute in the SVG file using the **style** attribute to override the default value. The following is an example:<br/>Original code (the **fill** attribute will be overwritten by the default value): `<rect fill="rgb(255,0,0)" .../>`. You are advised to change it to `<rect style="fill: rgb(255,0,0)" .../>`. <br/>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| isEnabled<sup>12+</sup>   | boolean        | No    | Yes    | Whether to enable a menu item.<br>**true** to enable the menu item, **false** otherwise. Default value: **true**<br/>**Atomic service API**: This API can be used in atomic services since API version 12.<br/>**Model restriction**: This API can be used only in the stage model. |
 | action | () =&gt; void | No   | Yes   | Callback invoked when the menu item is selected.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | No   | Yes   |Symbol icon for a single option on the menu bar. It has higher priority than **icon**.<br>**NOTE**<br>The [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) object's [fontSize](ts-basic-components-symbolGlyph.md#fontsize) attribute cannot be used to change the icon size, [effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy) attribute cannot be used to change the animation effect, and [symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12) attribute cannot be used to change the animation effect type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
+| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | No   | Yes   | Symbol icon for a single option on the menu bar. It has higher priority than **icon**.<br>**NOTE**<br>The [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) object's [fontSize](ts-basic-components-symbolGlyph.md#fontsize) attribute cannot be used to change the icon size, [effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy) attribute cannot be used to change the animation effect, and [symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12) attribute cannot be used to change the animation effect type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## ToolbarItem<sup>10+</sup>
 
@@ -1997,8 +2035,8 @@ Defines a general title for the **Navigation** component.
 
 | Name  | Type    | Read-Only| Optional| Description    |
 | ---- | ------ | ---- | ---- | ------ |
-| main | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | No   | No   | Main title.|
-| sub  | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | No   | No   | Subtitle.|
+| main | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | No    | No    | Main title. |
+| sub  | string \| [Resource<sup>14+<sup>](ts-types.md#resource) | No    | No    | Subtitle. |
 
 ## NavigationCustomTitle<sup>9+</sup>
 
@@ -2137,8 +2175,8 @@ Provides the scroll blur effect options of the title bar.
 | Name| Type| Read-Only| Optional| Description|
 | --- | --- | --- | --- | --- |
 | scrollEffectType | [ScrollEffectType](#scrolleffecttype) | No| Yes| Scroll blur effect type of the title bar.<br>Default value: **ScrollEffectType.COMMON_BLUR**.|
-| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Minimum sliding distance for enabling the scroll blur effect of the title bar.<br>The minimum sliding distance cannot be set using [LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12).<br>Default value: **0vp**|
-| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Maximum sliding distance for the title bar to reach the final blur style.<br>The maximum sliding distance cannot be set using [LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12).<br>Default value: **8vp**|
+| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Minimum sliding distance for enabling the scroll blur effect of the title bar.<br>The minimum sliding distance cannot be set using [LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12).<br>Default value: **0vp** |
+| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Maximum sliding distance for the title bar to reach the final blur style.<br>The maximum sliding distance cannot be set using [LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12).<br>Default value: **8vp** |
 
 ## NavigationTitleOptions<sup>11+</sup>
 
@@ -2151,8 +2189,8 @@ Defines the title bar options.
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name    | Type           | Read-Only| Optional| Description             |
 | ------ | ------------- | ---- | ---- | --------------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | No   | Yes   | Background color of the title bar. If this parameter is not set, the default color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No   | Yes   | Background blur style of the title bar. If this parameter is not set, the background blur effect is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | No    | Yes    | Background color of the title bar. If this parameter is not set, the default color is used.<br/>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No    | Yes    | Background blur style of the title bar. If this parameter is not set, the background blur effect is disabled.<br/>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | backgroundBlurStyleOptions<sup>19+</sup>   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)       | No   | Yes   | Options for the title bar background blur style.<br>**NOTE**<br>This parameter is only effective when **backgroundBlurStyle** is set.<br>Avoid using this API in conjunction with **backgroundEffect**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | backgroundEffect<sup>19+</sup>   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | No   | Yes   | Title bar background properties, including blur radius, brightness, saturation, and color.<br>**NOTE**<br>Avoid using this API in conjunction with **backgroundBlurStyleOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | barStyle<sup>12+</sup>   | [BarStyle](#barstyle12)        | No   | Yes   | Layout style of the title bar.<br>Default value: **BarStyle.STANDARD**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -2160,13 +2198,13 @@ Defines the title bar options.
 | paddingEnd<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | No   | Yes   | Padding at the end of the title bar.<br>Only supported in one of the following scenarios:<br>1. Using non-custom menus, that is, the [menus](#menus) attribute adopts the Array&lt;NavigationMenuItem&gt; type.<br>2. Using no top-right menu with a non-custom title, that is, the [title](#title) type is **ResourceStr** or **NavigationCommonTitle**.<br>Default value:<br>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | mainTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No   | Yes   | Main title attribute modifier.<br>1. Attribute settings configured by this modifier will override the system's default attribute settings. For example, if the modifier is used to set font size attributes, such as **fontSize**, **maxFontSize**, and **minFontSize**, the settings will take precedence over the system's default settings for size-related attributes.<br>2. If no modifier is used or an invalid value is set, the system reverts to its default settings.<br>3. In [Free](#navigationtitlemode) mode, setting the font size will disable the effect where the main title's size changes in response to content scrolling.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | subTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No   | Yes   | Subtitle attribute modifier.<br>1. Attribute settings configured by this modifier will override the system's default attribute settings. For example, if the modifier is used to set font size attributes, such as **fontSize**, **maxFontSize**, and **minFontSize**, the settings will take precedence over the system's default settings for size-related attributes.<br>2. If no modifier is used or an invalid value is set, the system reverts to its default settings.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| enableHoverMode<sup>13+</sup>   | boolean | No   | Yes   | Whether to respond when the device is in semi-folded mode.<br>Observe the following when using this API:<br>1. Make sure the **Navigation** component is in full screen.<br>2. When the title bar is in [Free](#navigationtitlemode) display mode or in [STANDARD](#barstyle12) layout style, this API has no effect.<br>**true**: yes; **false**: no<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| enableHoverMode<sup>13+</sup>   | boolean | No   | Yes   | Whether to respond when the device is in hover mode.<br>Observe the following when using this API:<br>1. Make sure the **Navigation** component is in full screen.<br>2. When the title bar is in [Free](#navigationtitlemode) display mode or in [STANDARD](#barstyle12) layout style, this API has no effect.<br>**true**: yes; **false**: no<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | scrollEffectOptions | [ScrollEffectOptions](#scrolleffectoptions) | No| Yes| Scroll blur effect options of the title bar. The default value is **undefined**, indicating that the scroll blur effect is disabled for the title bar.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
 | systemMaterial | [Material](#material) | No   | Yes   | System material of the title bar. The default value is **undefined**. The system material effect depends on the device computing power. For details, see [@ohos.arkui.uiMaterial (System Material)](../arkts-apis-uimaterial.md).<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
 
 > **systemMaterial attribute description**
 >
-> The title bar material takes effect on the background of the back button, the background of the menu button, and the background of the **More** dialog box of the menu. When the application-level system material switch is set to **disable**, the title bar material effect does not take effect regardless of the value of **systemMaterial**. For details about the application-level system material switch, see [MaterialState]../arkts-apis-uimaterial.md#materialstate). The effects of different values for the system material of the title bar are as follows:
+> The title bar material takes effect on the background of the back button, the background of the menu button, and the background of the **More** dialog box of the menu. When the application-level system material switch is set to **disable**, the title bar material effect does not take effect regardless of the value of **systemMaterial**. For details about the application-level system material switch, see [MaterialState](../arkts-apis-uimaterial.md#materialstate). The effects of different values for the system material of the title bar are as follows:
 >
 > - **undefined** (default value): When the application-level system material switch is set to **default**, the title bar has no material effect. When the application-level system material switch is set to **enable**, the default immersive material effect takes effect on the title bar.
 >
@@ -2185,8 +2223,8 @@ Defines the toolbar options.
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name    | Type           | Read-Only| Optional| Description             |
 | ------ | ------------- | ---- | ---- | --------------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | No   | Yes   | Background color of the toolbar. If this parameter is not set, the default color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No   | Yes   | Background blur style of the toolbar. If this parameter is not set, the background blur effect is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | No    | Yes    | Background color of the toolbar. If this parameter is not set, the default color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No    | Yes    | Background blur style of the toolbar. If this parameter is not set, the background blur effect is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | backgroundBlurStyleOptions<sup>19+</sup>   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)       | No   | Yes   | Options for the toolbar background blur style.<br>**NOTE**<br>This parameter is only effective when **backgroundBlurStyle** is set.<br>Avoid using this API in conjunction with **backgroundEffect**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | backgroundEffect<sup>19+</sup>   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | No   | Yes   | Toolbar background properties, including blur radius, brightness, saturation, and color.<br>**NOTE**<br>Avoid using this API in conjunction with **backgroundBlurStyleOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | barStyle<sup>14+</sup>   | [BarStyle](#barstyle12)        | No   | Yes   | Layout style of the toolbar.<br>Default value: **BarStyle.STANDARD**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
@@ -2205,7 +2243,7 @@ Defines options for menu items in the upper right corner of the page.
 
 | Name    | Type           | Read-Only| Optional| Description             |
 | ------ | ------------- | ---- | ---- | --------------- |
-| moreButtonOptions   | [MoreButtonOptions](#morebuttonoptions19)        | No   | Yes   | Options for the more button menu. |
+| moreButtonOptions   | [MoreButtonOptions](#morebuttonoptions19)        | No    | Yes    | Options for the more button menu.  |
 
 ## LaunchMode<sup>12+</sup>
 
@@ -2239,13 +2277,13 @@ Defines the routing stack operation options.
 | launchMode | [LaunchMode](#launchmode12)  | No   | Yes   | Operation mode of the routing stack.<br>Default value: **LaunchMode.STANDARD**|
 | animated   | boolean  | No   | Yes   | Whether to enable the transition animation.<br>**true**: yes; **false**: no<br>Default value: **true**|
 
-## NavigationConfiguration
+## PreloadOptions
 
-Provides the navigation configuration item.
+Provides the options for preloading a page.
 
-**Since:** 26.0.0
+**Since**: 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2253,7 +2291,23 @@ Provides the navigation configuration item.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| stackSizeLimit | number | No| Yes| Maximum number of active page nodes in the navigation routing stack.<br>Default value: **0**, indicating that the routing stack size is not limited.<br>If the value is less than or equal to 0, the routing stack size is not limited.<br>If the value is greater than 0, the number of active page nodes is limited to the specified value. If the number exceeds the limit, the system automatically destroys the page nodes that are pushed to the stack earlier in the first-in-first-out (FIFO) order. The **NavPathInfo** of the pages is completely retained in the routing stack, so that the pages can be recreated later.|
+| onDestroy | Callback\<void\> | No| Yes| Callback invoked when the preloaded page is destroyed by the system.|
+
+## NavigationConfiguration
+
+Provides the navigation configuration item.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| stackSizeLimit | number | No| Yes| Maximum number of active page nodes in the navigation routing stack.<br>Default value: **0**, indicating that the routing stack size is not limited.<br>If the value is less than or equal to 0, the routing stack size is not limited.<br>If the value is greater than 0, the number of active page nodes is limited to the specified value. If the number exceeds the limit, the system automatically destroys the page nodes that are pushed to the stack earlier in the first-in-first-out (FIFO) order. The **NavPathInfo** of the pages is completely retained in the routing stack, so that the pages can be recreated later.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| recyclePagesOnLowMemory | boolean | No | Yes | Whether to recycle invisible pages when a low memory signal is received.<br/>Default value: **false**<br/>**true**: Invisible **NavDestination** page instances are recycled when a low memory signal is received. **NavPathInfo** is retained, so that the page can be recreated later.<br/>**false**: Invisible **NavDestination** page instances are not recycled when a low memory signal is received.<br/>**Since:** 26.0.1<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.1.<br/> |
+| clearContentStackOnPrimaryNavigation | boolean | No | Yes | Whether to enable the navigation stack clearing capability from left to right.<br/>Default value: **false**. The value **true** means to enable the navigation stack clearing capability from left to right, and the value **false** means to disable it.<br/>**Description of the navigation stack clearing capability from left to right:**<br/>When the navigation page is displayed in split mode, if a user's operation (such as clicking a button on the page) on the home page (**NavBar** or **NavDestination**) triggers the page redirection, the system clears the pages before the first newly created page in the navigation page stack, and only the first newly created page and the pages that follow it are retained.<br/>**Since:** 26.0.1<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.1. |
 
 ## MoreButtonOptions<sup>19+</sup>
 
@@ -2267,7 +2321,7 @@ Defines the options for the more button menu.
 
 | Name    | Type           | Read-Only| Optional| Description             |
 | ------ | ------------- | ---- | ---- | --------------- |
-| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No   | Yes   | Background blur style of the more button menu. If this parameter is not set, background blur is disabled.|
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No    | Yes    | Background blur style of the more button menu. If this attribute is not set, the background blur effect is disabled. |
 | backgroundBlurStyleOptions   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)       | No   | Yes   | Background blur style options of the more button menu.<br>**NOTE**<br>This parameter is only effective when **backgroundBlurStyle** is set.<br>Avoid using this API in conjunction with **backgroundEffect**.|
 | backgroundEffect   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | No   | Yes   | Background properties of the more button menu, including blur radius, brightness, saturation, and color.<br>**NOTE**<br>Avoid using this parameter in conjunction with **backgroundBlurStyleOptions**.|
 
@@ -3283,7 +3337,7 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let pageParam = new pageParam();
+            let pageParam = new PageParam();
             // Push the navigation destination page specified by name, with the data specified by param, to the routing stack. Use the onPop callback to receive the page processing result.
             this.pageInfo.pushDestinationByName('pageTwo', pageParam, (popInfo) => {
               this.message = 
@@ -3387,7 +3441,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.pop(new resultClass(1)); // Return to the previous page and pass in the processing result to the onPop callback of push.
+            this.pathStack.pop(new resultClass(1)); // Pop back to the previous page and pass in the processing result to the onPop callback of push.
           })
 
         Button('popToName', { stateEffect: true, type: ButtonType.Capsule })
@@ -3396,7 +3450,7 @@ export struct PageTwo {
           .margin(20)
           .onClick(() => {
             this.pathStack.popToName('pageOne',
-              new resultClass(11)); // Pop the routing stack back to the first navigation destination page specified by name and pass the processing result to the onPop callback of push.
+              new resultClass(11)); // Pop the routing stack back to the first NavDestination page specified by name, and pass in the processing result to the onPop callback of push.
           })
 
         Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
@@ -3404,7 +3458,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.popToIndex(0, new resultClass(111)); // Pop the routing stack back to the navigation destination page specified by index and pass the processing result to the onPop callback of push.
+            this.pathStack.popToIndex(0, new resultClass(111)); // Pop the routing stack back to the NavDestination page specified by index, and pass in the processing result to the onPop callback of push.
           })
 
         Button('popWithoutResult', { stateEffect: true, type: ButtonType.Capsule })
@@ -3433,7 +3487,7 @@ export struct PageTwo {
       }.width('100%').height('100%')
     }.title('pageTwo')
     .onBackPressed(() => {
-      this.pathStack.pop(new resultClass(0)); // Return to the previous page and pass in the processing result to the onPop callback of push.
+      this.pathStack.pop(new resultClass(0)); // Pop back to the previous page and pass in the processing result to the onPop callback of push.
       return true;
     }).onReady((context: NavDestinationContext) => {
       this.pathStack = context.pathStack;
@@ -3887,7 +3941,7 @@ struct PageOne {
         this.paramNum = (ctx?.pathInfo?.param as PageParam)?.num;
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.Code}, message: ${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message: ${err.message}`);
       }
     })
   }
@@ -4006,7 +4060,7 @@ struct PageOneComponent {
         this.eventStr += '<onReady>';
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.code}, message:${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message:${err.message}`);
       }
     })
   }
@@ -4074,7 +4128,7 @@ struct NavigationExample {
           Scroll(this.scrollerForScroll) {
             Column() {
               // Replace $r('app.media.image_1') with the resource file you use.
-              Image($r('app.media.image_1'))// Set the height to be the same as that of the title bar to observe the STACK effect.
+              Image($r('app.media.image_1')) // Set the height to be consistent with the title bar to observe the STACK effect.
                 .height(138)
                 .width('100%')
               Button('BarStyle.STANDARD')
@@ -5640,7 +5694,7 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 >
 > 2. Swipe up the application to return to the background and open the CLI.
 >
-> 3. Run **hdc shell**, and then run **pidof <package_name>** to query the value of **pid**.
+> 3. Run **hdc shell**, and then run **pidof Package name** to query the value of **pid**.
 >
 > 4. Run the **aa force-stop *Project name* -p *Value of pid* -r RESOURCE_CONTROL** command to simulate the scenario where the app exits due to improper resource usage.
 >
@@ -5720,7 +5774,7 @@ struct NavigationExample {
 
 ### Example 20: Setting systemMaterial to Enable the Material Effect for the Title Bar
 
-This example demonstrates how to use the **systemMaterial** attribute to enable the material effect for the title bar.
+This example demonstrates how to use the **systemMaterial** attribute to set the system material of the component and enable the immersive light effect for the title bar.
 
 The **systemMaterial** attribute is added to [NavigationTitleOptions](#navigationtitleoptions11) since API version 26.0.0.
 
@@ -5854,4 +5908,112 @@ struct NavigationTitleMaterialDemo {
 }
 ```
 
+The figure in this example shows the strong effect on a high-computing-power device.
+
 ![navigationTitleSystemMaterial.gif](figures/navigationTitleSystemMaterial.gif)
+
+### Example 21: Enabling the Stack Clearing Effect from Left to Right
+ 
+This example demonstrates how to use the **clearContentStackOnPrimaryNavigation** attribute to enable the stack clearing effect from left to right on the navigation page.
+ 
+Since API version 26.0.1, the **clearContentStackOnPrimaryNavigation** attribute is added to [NavigationConfiguration](#navigationconfiguration).
+ 
+```ts
+// xxx.ets
+@Component
+struct MyControlPanel {
+  private stack: NavPathStack | undefined = undefined;
+ 
+  aboutToAppear(): void {
+    let info = this.queryNavigationInfo();
+    if (info) {
+      this.stack = info.pathStack;
+    }
+  }
+ 
+  build() {
+    Column() {
+      Button('push pageOne').onClick(() => {
+        this.stack?.pushPath({name: 'one'})
+      })
+        .margin({top: 25})
+      Button('push pageTwo').onClick(() => {
+        this.stack?.pushPath({name: 'two'})
+      })
+        .margin({top: 25})
+      Button('pop').onClick(() => {
+        this.stack?.pop()
+      })
+        .margin({top: 25})
+    }
+  }
+}
+ 
+@Component
+struct MyPageOne {
+  build() {
+    NavDestination() {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('PageOne')
+  }
+}
+ 
+@Component
+struct MyPageTwo {
+  build() {
+    NavDestination() {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('PageTwo')
+  }
+}
+ 
+@Entry
+@Component
+struct NavigationConfig {
+  private stack: NavPathStack = new NavPathStack();
+ 
+  @Builder
+  MyDestMap(name: string) {
+    if (name === 'one') {
+      MyPageOne()
+    } else {
+      MyPageTwo()
+    }
+  }
+ 
+  build() {
+    Navigation(this.stack) {
+      Column() {
+        MyControlPanel()
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('NavBar')
+    .titleMode(NavigationTitleMode.Mini)
+    .mode(NavigationMode.Split)
+    .navDestination(this.MyDestMap)
+    .configuration({
+      clearContentStackOnPrimaryNavigation: true
+    })
+  }
+}
+```
+ 
+![navigationClearContent.gif](figures/navigationClearContent.gif)

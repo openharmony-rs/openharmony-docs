@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=feaaacdac079d264228b6dc8fe98b7de6cf247a2 translatedAt=2026-10-09T13:17:14.106Z pushedAt=2026-10-10T06:33:54.149Z -->
+<!-- md-trans-meta sourceCommit=b2abee6fde0080e246d10ff0f94cb54cace432c9 translatedAt=2026-11-23T02:10:08.536Z pushedAt=2026-11-23T12:25:38.161Z nl=1 -->
 
 The serial port management module uses a system-level permission control mechanism. The system manages and verifies the access permissions of serial port devices in a centralized manner. Apps can read data from and write data to serial port devices only after obtaining the access permissions through system APIs. This ensures secure access control and device isolation.
 
@@ -67,8 +67,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 
 function addSerialRight() {

@@ -4,10 +4,11 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7140cac841b8e0b1d02062401547f66922ff0409 translatedAt=2026-11-23T01:45:40.774Z pushedAt=2026-11-23T11:44:21.934Z nl=1 -->
 
-The **appAccount** module provides APIs for adding, deleting, modifying, and querying application account information, and supports inter-application authentication and distributed data synchronization.
+This module provides the basic capabilities for adding, deleting, modifying, and querying app account information. App account management adopts an app-level account isolation mechanism, where the account information of each app is managed independently.
 
 > **NOTE**
 >
@@ -55,14 +56,14 @@ Creates an application account with the given name. This API uses an asynchronou
 
 | Name     | Type                   | Mandatory | Description              |
 | -------- | ------------------------- | ----- | -------------------- |
-| name     | string                    | Yes   | Name of the application account.         |
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.          |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -101,7 +102,7 @@ Creates an application account with custom data. This API uses an asynchronous c
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | Yes   | Name of the application account.                             |
+| name      | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                              |
 | options | [CreateAccountOptions](#createaccountoptions9) | Yes   | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens).|
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
@@ -109,7 +110,7 @@ Creates an application account with custom data. This API uses an asynchronous c
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -153,20 +154,20 @@ Creates an application account with custom data. This API uses a promise to retu
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | Yes   | Name of the application account.                             |
+| name      | string | Yes    | Name of the app account. The maximum length is 512 characters.                              |
 | options | [CreateAccountOptions](#createaccountoptions9) | No   | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens). <br>By default, no value is passed in, which means no additional information needs to be added for the account.|
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -200,7 +201,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 createAccountImplicitly(owner: string, callback: AuthCallback): void
 
-Creates an application account implicitly based on the specified account owner. This API uses an asynchronous callback to return the result.
+Creates an app account automatically by the authenticator based on the specified account owner. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -208,14 +209,14 @@ Creates an application account implicitly based on the specified account owner. 
 
 | Name     | Type               | Mandatory  | Description                     |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.         |
+| owner    | string                | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.          |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -282,7 +283,7 @@ Creates an application account implicitly based on the specified account owner a
 
 | Name     | Type                   | Mandatory  | Description                     |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.         |
+| owner    | string                | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.          |
 | options    | [CreateAccountImplicitlyOptions](#createaccountimplicitlyoptions9)   | Yes   | Options for implicitly creating the account.         |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.        |
 
@@ -290,7 +291,7 @@ Creates an application account implicitly based on the specified account owner a
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -361,14 +362,14 @@ Removes an application account. This API uses an asynchronous callback to return
 
 | Name     | Type                       | Mandatory  | Description              |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | Yes   | Name of the application account.     |
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.      |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -406,19 +407,19 @@ Removes an application account. This API uses a promise to return the result.
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes | Name of the app account. The maximum length is 512 characters. |
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type | Description |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -446,7 +447,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the access to the data of an account for an application. This API uses an asynchronous callback to return the result.
+Sets the data access permission of a specified app to a specific account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -454,22 +455,22 @@ Sets the access to the data of an account for an application. This API uses an a
 
 | Name       | Type                     | Mandatory  | Description                               |
 | ------------ | ------------------------- | ---- | --------------------------------- |
-| name         | string                    | Yes   | Name of the application account.                          |
-| bundleName   | string                    | Yes   | Bundle name of the application.                        |
+| name         | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                           |
+| bundleName   | string                    | Yes    | Bundle name of the third-party app. Maximum length: 512 characters.                         |
 | isAccessible | boolean                   | Yes   | Whether the access is allowed. The value **true** means to allow the access; the value **false** means the opposite.|
-| callback     | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
+| callback     | AsyncCallback&lt;void&gt; | Yes    | Callback function. If the setting is successful, **err** is **null**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
-| 12400005 | The size of authorization list reaches the upper limit. |
+| 12400001 | Application not found. <br>Applicable version: 9 - 13 |
+| 12400005 | The size of authorization list reaches the upper limit. <br>Applicable version: 14+ |
 
 **Example**
 
@@ -502,27 +503,27 @@ Sets the access to the data of an account for an application. This API uses a pr
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the application account.  |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes    | Name of the app account. The maximum length is 512 characters.   |
+| bundleName | string | Yes    | Bundle name of the third-party app. Maximum length: 512 characters. |
 | isAccessible | boolean | Yes   | Whether the access is allowed. The value **true** means to allow the access; the value **false** means the opposite.|
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type | Description |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
-| 12400005 | The size of authorization list reaches the upper limit. |
+| 12400001 | Application not found. <br>Applicable version: 9 - 13 |
+| 12400005 | The size of authorization list reaches the upper limit. <br>Applicable version: 14+ |
 
 **Example**
 
@@ -553,15 +554,15 @@ Checks whether the caller can access the account data that belongs to the target
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the application account.                          |
-| bundleName | string                    | Yes   | Bundle name of the application.                        |
+| name       | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                           |
+| bundleName | string                    | Yes    | Bundle name of the third-party app. Maximum length: 512 characters.                         |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means the application can access the account data; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -600,8 +601,8 @@ Checks whether the caller can access the account data that belongs to the target
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the application account.  |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes    | Name of the app account. The maximum length is 512 characters.   |
+| bundleName | string | Yes    | Bundle name of the third-party app. Maximum length: 512 characters. |
 
 **Return value**
 
@@ -613,7 +614,7 @@ Checks whether the caller can access the account data that belongs to the target
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -651,7 +652,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 | Name     | Type                       | Mandatory  | Description                       |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | Yes   | Name of the application account.                  |
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                   |
 | isEnabled | boolean                   | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.      |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -659,7 +660,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -696,20 +697,20 @@ Sets data synchronization for an application account. This API uses a promise to
 
 | Name     | Type     | Mandatory  | Description         |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | Yes   | Name of the application account.    |
+| name     | string  | Yes    | Name of the app account. The maximum length is 512 characters.     |
 | isEnabled | boolean | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.|
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type | Description |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -748,14 +749,14 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name     | Type                          | Mandatory  | Description                   |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | Yes   | Name of the application account.              |
+| name     | string                       | Yes    | Name of the app account. The maximum length is 512 characters.               |
 | callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -796,19 +797,19 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes    | Name of the app account. The maximum length is 512 characters. |
 
 **Return value**
 
-| Type                    | Description                   |
-| :--------------------- | :-------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
+| Type | Description |
+| --------------------- | -------------------- |
+| Promise&lt;boolean&gt; | Promise object. The value true indicates that data synchronization is enabled for the specified app account; the value false indicates that it is not enabled. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -845,16 +846,16 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 | Name           | Type                       | Mandatory  | Description           |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | Yes   | Name of the application account.    |
-| credentialType | string                    | Yes   | Credential type.    |
-| credential     | string                    | Yes   | Credential value.      |
+| name           | string                    | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| credentialType | string                    | Yes    | Credential type. A custom type with a maximum length of 1024 characters.     |
+| credential     | string                    | Yes    | Credential value. Custom data with a maximum length of 1024 characters.       |
 | callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the credential is set successfully, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -892,21 +893,21 @@ Sets a credential for an application account. This API uses a promise to return 
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.  |
-| credentialType | string | Yes   | Credential type.|
-| credential     | string | Yes   | Credential value.   |
+| name           | string | Yes    | Name of the app account. The maximum length is 512 characters.   |
+| credentialType | string | Yes    | Credential type. A custom type with a maximum length of 1024 characters. |
+| credential     | string | Yes    | Credential value. Custom data with a maximum length of 1024 characters.    |
 
 **Return value**
 
-| Type                | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type | Description |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -942,15 +943,15 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 | Name           | Type                         | Mandatory  | Description            |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | Yes   | Name of the application account.       |
-| credentialType | string                      | Yes   | Credential type.|
+| name           | string                      | Yes    | Name of the app account. The maximum length is 512 characters.        |
+| credentialType | string                      | Yes    | Credential type. A custom type with a maximum length of 1024 characters. |
 | callback       | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -989,20 +990,20 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 | Name         | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.|
-| credentialType | string | Yes   | Credential type.|
+| name           | string | Yes    | Name of the app account. The maximum length is 512 characters. |
+| credentialType | string | Yes    | Credential type. A custom type with a maximum length of 1024 characters. |
 
 **Return value**
 
-| Type                   | Description                   |
-| :-------------------- | :-------------------- |
-| Promise&lt;string&gt; | Promise used to return the credential obtained.|
+| Type | Description |
+| -------------------- | -------------------- |
+| Promise&lt;string&gt; | Promise object, which returns the credential of the specified app account. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1039,16 +1040,16 @@ Sets custom data for an application account. This API uses an asynchronous callb
 
 | Name     | Type                       | Mandatory  | Description               |
 | -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | Yes   | Name of the application account.|
-| key      | string                    | Yes   | Key of the custom data.|
-| value    | string                    | Yes   | Value of the custom data.|
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters. |
+| key      | string | Yes    | Key name of the custom data. Maximum length: 1024 characters. |
+| value    | string | Yes    | Value of the custom data. It is not recommended to include sensitive data. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1087,21 +1088,21 @@ Sets custom data for an application account. This API uses a promise to return t
 
 | Name  | Type| Mandatory | Description             |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | Yes   | Name of the application account.  |
-| key   | string | Yes   | Key of the custom data.|
-| value | string | Yes   | Value of the custom data.|
+| name  | string | Yes    | Name of the app account. The maximum length is 512 characters.   |
+| key   | string | Yes    | Key name of the custom data. Maximum length: 1024 characters. |
+| value | string | Yes    | Value of the custom data. The maximum length is 1024 characters. |
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type | Description |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1138,15 +1139,15 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name   | Type                       | Mandatory | Description                    |
 | -------- | --------------------------- | ----- | ------------------------ |
-| name     | string                      | Yes   | Name of the application account.          |
-| key      | string                      | Yes   | Key of the custom data.        |
+| name     | string                      | Yes    | Name of the app account. The maximum length is 512 characters.           |
+| key      | string                      | Yes    | Key name of the custom data. Maximum length: 1024 characters.         |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the custom data value obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1185,8 +1186,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the application account.  |
-| key  | string | Yes   | Key of the custom data.|
+| name | string | Yes | Name of the app account. The maximum length is 512 characters. |
+| key | string | Yes | Key name of the custom data. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -1198,7 +1199,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1235,8 +1236,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the application account.  |
-| key  | string | Yes   | Key of the custom data.|
+| name | string | Yes | Name of the app account. The maximum length is 512 characters. |
+| key | string | Yes | Key name of the custom data. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -1248,7 +1249,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1288,7 +1289,7 @@ Obtains information about all accessible application accounts. This API uses an 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1330,7 +1331,7 @@ Obtains information about all accessible application accounts. This API uses a p
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 12300001 | System service exception. |
 
@@ -1363,18 +1364,18 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.   |
+| owner    | string                                   | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.    |
 | callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is null and **data** is the application account information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
+| 12400001 | Application not found. <br>Applicable version: 9 - 13 |
 
 **Example**
 
@@ -1408,7 +1409,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name  | Type    | Mandatory  | Description    |
 | ----- | ------ | ---- | ------ |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes | Bundle name of the app account owner. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -1418,13 +1419,13 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Error codes**
 
-For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
+| 12400001 | Application not found. <br>Applicable version: 9 - 13 |
 
 **Example**
 
@@ -1456,19 +1457,19 @@ Subscribes to account information changes of apps.
 
 | Name     | Type                                      | Mandatory  | Description                            |
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
-| type     | 'accountChange'                          | Yes   | Event type to subscribe to. The value is **'accountChange'**. An event will be reported when the account information of the target application changes.|
+| type     | 'accountChange'                          | Yes    | Event callback type. The supported event is 'accountChange'. This event is triggered when the account owner updates the account information. |
 | owners   | Array&lt;string&gt;                      | Yes   | Application bundle names of the account.                     |
 | callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback registered to return the list of changed application accounts.          |
 
 **Error codes**
 
-For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid type or owners. |
+| 12400001 | Application not found. <br>Applicable version: 9 - 13 |
 
 **Example**
 
@@ -1506,7 +1507,7 @@ Unsubscribes from account information changes.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
@@ -1547,16 +1548,16 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the application account.    |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                | Yes   | Authorization type.          |
+| name     | string                | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| owner    | string                | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.  |
+| authType | string                | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.           |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1624,9 +1625,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the application account.    |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                | Yes   | Authorization type.          |
+| name     | string                | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| owner    | string                | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.  |
+| authType | string                | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.           |
 | options  | Record<string, Object>  | Yes   | Options for the authentication.      |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
@@ -1634,7 +1635,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1705,16 +1706,16 @@ Obtains the authorization token of the specified authorization type for an appli
 
 | Name     | Type                         | Mandatory  | Description         |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | Yes   | Name of the application account.   |
-| owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string                      | Yes   | Authorization type.      |
+| name     | string                      | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner    | string                      | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
+| authType | string                      | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.       |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1754,9 +1755,9 @@ Obtains the authorization token of the specified authorization type for an appli
 
 | Name     | Type    | Mandatory  | Description         |
 | -------- | ------ | ---- | ----------- |
-| name     | string | Yes   | Name of the application account.   |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string | Yes   | Authorization type.      |
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner    | string | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.       |
 
 **Return value**
 
@@ -1768,7 +1769,7 @@ Obtains the authorization token of the specified authorization type for an appli
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1805,16 +1806,16 @@ Sets an authorization token of the specific authorization type for an applicatio
 
 | Name     | Type                       | Mandatory  | Description      |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | Yes   | Name of the application account.|
-| authType | string                    | Yes   | Authorization type.   |
-| token    | string                    | Yes   | Authorization token.|
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters. |
+| authType | string                    | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.    |
+| token    | string                    | Yes    | Authorization token. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1853,21 +1854,21 @@ Sets an authorization token of the specific authorization type for an applicatio
 
 | Name     | Type    | Mandatory  | Description      |
 | -------- | ------ | ---- | -------- |
-| name     | string | Yes   | Name of the application account.|
-| authType | string | Yes   | Authorization type.   |
-| token    | string | Yes   | Authorization token.|
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters. |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.    |
+| token    | string | Yes    | Authorization token. Maximum length: 1024 characters. |
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1904,17 +1905,17 @@ Deletes the authorization token of the specified authorization type for an appli
 
 | Name     | Type                       | Mandatory  | Description          |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | Yes   | Name of the application account.    |
-| owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                    | Yes   | Authorization type.       |
-| token    | string                    | Yes   | Authorization token. If the token does not exist, no operation is performed.|
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| owner    | string                    | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.  |
+| authType | string                    | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.        |
+| token    | string                    | Yes    | Authorization token. If the authorization token does not exist, no operation is performed. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.    |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -1954,22 +1955,22 @@ Deletes the authorization token of the specified authorization type for an appli
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | ------ | ---- | ------------ |
-| name     | string | Yes   | Name of the application account.    |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string | Yes   | Authorization type.       |
-| token    | string | Yes   | Authorization token. If the token does not exist, no operation is performed.|
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| owner    | string | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.  |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.        |
+| token    | string | Yes    | Authorization token. If the authorization token does not exist, no operation is performed. Maximum length: 1024 characters. |
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2006,23 +2007,23 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| authType   | string                    | Yes   | Authorization type.                    |
-| bundleName | string                    | Yes   | Bundle name of the application.             |
+| name       | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                  |
+| authType   | string                    | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.                     |
+| bundleName | string                    | Yes    | Bundle name of the app whose visibility is set. Maximum length: 512 characters.              |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
-For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
 | 12300107 | AuthType not found. |
+| 12400001 | Application not found. <br>Applicable version: 9 - 13 |
 | 12400005 | The size of authorization list reaches the upper limit. |
 
 **Example**
@@ -2057,28 +2058,28 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name     | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| authType   | string                    | Yes   | Authorization type.                    |
-| bundleName | string                    | Yes   | Bundle name of the application.             |
+| name       | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                  |
+| authType   | string                    | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.                     |
+| bundleName | string                    | Yes    | Bundle name of the app whose visibility is set. Maximum length: 512 characters.              |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
 | 12300107 | AuthType not found. |
+| 12400001 | Application not found. <br>Applicable version: 9 - 13 |
 | 12400005 | The size of authorization list reaches the upper limit. |
 
 **Example**
@@ -2110,16 +2111,16 @@ Checks the visibility of an authorization token of the specified authorization t
 
 | Name       | Type                          | Mandatory  | Description         |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | Yes   | Name of the application account.   |
-| authType   | string                       | Yes   | Authorization type.      |
-| bundleName | string                       | Yes   | Bundle name of the application.|
+| name       | string                       | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| authType   | string                       | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.       |
+| bundleName | string                       | Yes    | Bundle name of the app whose visibility is checked. Maximum length: 512 characters. |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2159,9 +2160,9 @@ Checks the visibility of an authorization token of the specified authorization t
 
 | Name       | Type    | Mandatory  | Description           |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | Yes   | Name of the application account.     |
-| authType   | string | Yes   | Authorization type.        |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes    | Name of the app account. The maximum length is 512 characters.      |
+| authType   | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.         |
+| bundleName | string | Yes    | Bundle name of the app used to check visibility. Maximum length: 512 characters. |
 
 **Return value**
 
@@ -2173,7 +2174,7 @@ Checks the visibility of an authorization token of the specified authorization t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2211,15 +2212,15 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name     | Type                                      | Mandatory  | Description         |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | Yes   | Name of the application account.   |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name     | string                                   | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner    | string                                   | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;Array&lt;[AuthTokenInfo](#authtokeninfo9)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2258,8 +2259,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| name  | string | Yes   | Name of the application account.   |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name  | string | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner | string | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -2271,7 +2272,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2308,15 +2309,15 @@ Obtains the authorization list of the specified authorization type for an applic
 
 | Name     | Type                                      | Mandatory  | Description                     |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | Yes   | Name of the application account.               |
-| authType | string                                   | Yes   | Authorization type.|
+| name     | string                                   | Yes    | Name of the app account. The maximum length is 512 characters.                |
+| authType | string                                   | Yes    | Authentication type. Custom data. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2355,8 +2356,8 @@ Obtains the authorization list of the specified authorization type for an applic
 
 | Name     | Type    | Mandatory  | Description                     |
 | -------- | ------ | ---- | ------------------------------ |
-| name     | string | Yes   | Name of the application account.               |
-| authType | string | Yes   | Authorization type.|
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters.                |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -2368,7 +2369,7 @@ Obtains the authorization list of the specified authorization type for an applic
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2412,7 +2413,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2478,7 +2479,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2530,14 +2531,14 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 | Name     | Type                                    | Mandatory  | Description         |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner    | string                                 | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator information obtained. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2576,7 +2577,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes | Bundle name of the app account owner. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -2588,7 +2589,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2625,8 +2626,8 @@ Checks whether an application account has specific labels. This API uses an asyn
 
 | Name        | Type                      | Mandatory | Description            |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | Yes   | Name of the application account. |
-| owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name           | string                    | Yes    | Name of the app account. The maximum length is 512 characters.  |
+| owner          | string                    | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.|
 | labels         | Array&lt;string&gt;       | Yes   | Labels to check.      |
 | callback       | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** or **false**. The value **true** means the application account has the labels; the value **false** means the opposite. If the operation fails, **err** is an error object. |
 
@@ -2634,7 +2635,7 @@ Checks whether an application account has specific labels. This API uses an asyn
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2677,8 +2678,8 @@ Checks whether an application account has specific labels. This API uses a promi
 
 | Name        | Type                      | Mandatory | Description            |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | Yes   | Name of the application account. |
-| owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name           | string                    | Yes    | Name of the app account. The maximum length is 512 characters.  |
+| owner          | string                    | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.|
 | labels         | Array&lt;string&gt;       | Yes   | Labels to check.      |
 
 **Return value**
@@ -2691,7 +2692,7 @@ Checks whether an application account has specific labels. This API uses a promi
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2732,15 +2733,15 @@ Deletes the credential for the specified type of an application account. This AP
 
 | Name        | Type                      | Mandatory | Description           |
 | -------------- | ------------------------- | ----- | -------------- |
-| name           | string                    | Yes   | Name of the application account.|
-| credentialType | string                    | Yes   | Credential type.     |
+| name           | string                    | Yes    | Name of the app account. The maximum length is 512 characters. |
+| credentialType | string                    | Yes    | Credential type. A custom type with a maximum length of 1024 characters.      |
 | callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2779,20 +2780,20 @@ Deletes the credential for the specified type of an application account. This AP
 
 | Name        | Type  | Mandatory  | Description           |
 | -------------- | ------ | ----- | --------------- |
-| name           | string | Yes   | Name of the application account.|
-| credentialType | string | Yes   | Credential type.      |
+| name           | string | Yes    | Name of the app account. The maximum length is 512 characters. |
+| credentialType | string | Yes    | Credential type. A custom type with a maximum length of 1024 characters.       |
 
 **Return value**
 
 | Type               | Description                             |
 | ------------------- | -------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2836,7 +2837,7 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2892,7 +2893,7 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2924,7 +2925,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
-Verifies the credential of an application account. This API uses an asynchronous callback to return the result.
+Verifies the validity of the credential of the specified account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2932,15 +2933,15 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 | Name   | Type                 | Mandatory | Description                    |
 | -------- | --------------------- | ----- | ----------------------- |
-| name     | string                | Yes   | Name of the application account.         |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.       |
+| name     | string                | Yes    | Name of the app account. The maximum length is 512 characters.          |
+| owner    | string                | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.        |
 | callback | [AuthCallback](#authcallback9) | Yes   | Callback used to return the result.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -2976,7 +2977,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void
 
-Verifies the user credential. This API uses an asynchronous callback to return the result.
+Verifies the credential of the specified account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2984,8 +2985,8 @@ Verifies the user credential. This API uses an asynchronous callback to return t
 
 | Name   | Type                   | Mandatory | Description                    |
 | -------- | ----------------------- | ----- | ----------------------- |
-| name     | string                  | Yes   | Name of the application account.         |
-| owner    | string                  | Yes   | Owner of the application account. The value is the bundle name of the application.       |
+| name     | string                  | Yes    | Name of the app account. The maximum length is 512 characters.          |
+| owner    | string                  | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.        |
 | options  | [VerifyCredentialOptions](#verifycredentialoptions9) | Yes   | Options for credential verification.         |
 | callback | [AuthCallback](#authcallback9)   | Yes   | Callback used to return the result.|
 
@@ -2993,7 +2994,7 @@ Verifies the user credential. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -3048,7 +3049,7 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -3083,7 +3084,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void
 
-Sets the authenticator properties. This API uses an asynchronous callback to return the result.
+Sets the authenticator attributes of an application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3099,7 +3100,7 @@ Sets the authenticator properties. This API uses an asynchronous callback to ret
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | ------- |
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
@@ -3141,7 +3142,7 @@ Adds an application account with the given name. This API uses an asynchronous c
 
 > **NOTE**
 >
->This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3149,7 +3150,7 @@ Adds an application account with the given name. This API uses an asynchronous c
 
 | Name     | Type                       | Mandatory  | Description                  |
 | -------- | ------------------------- | ---- | -------------------- |
-| name     | string                    | Yes   | Name of the application account.         |
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.          |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3178,7 +3179,7 @@ Adds an application account name and additional information. This API uses an as
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | Yes   | Name of the application account.                             |
+| name      | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                              |
 | extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
@@ -3198,7 +3199,7 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
 Adds an application account name and additional information. This API uses a promise to return the result.
 
-> **NOTE** 
+> **NOTE**  
 > This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9-2) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
@@ -3207,14 +3208,14 @@ Adds an application account name and additional information. This API uses a pro
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | Yes   | Name of the application account.                           |
+| name      | string | Yes    | Name of the app account. The maximum length is 512 characters.                            |
 | extraInfo | string | No   | Additional information (information that can be converted to the string type). <br>The additional information cannot be sensitive information (such as the password and token) of the application account.<br>By default, no value is passed, which means no additional information needs to be added for the account.|
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3244,8 +3245,8 @@ Adds an application account implicitly based on the specified owner. This API us
 
 | Name     | Type                   | Mandatory  | Description                     |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.         |
-| authType | string                | Yes   | Authorization type. The authorization type is customized. |
+| owner    | string                | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.          |
+| authType | string                | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.  |
 | options  | {[key: string]: any}  | Yes   | Options for the authentication, which can be set as required.|
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.        |
 
@@ -3306,7 +3307,7 @@ Deletes an application account. This API uses an asynchronous callback to return
 
 | Name     | Type                       | Mandatory  | Description              |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | Yes   | Name of the application account.     |
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.      |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3335,13 +3336,13 @@ Deletes an application account. This API uses a promise to return the result.
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes | Name of the app account. The maximum length is 512 characters. |
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3359,7 +3360,7 @@ Deletes an application account. This API uses a promise to return the result.
 
 disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-Disables an application account from accessing an application. This API uses an asynchronous callback to return the result.
+Disables a third-party app account from accessing a third-party app with the specified bundle name. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -3371,9 +3372,9 @@ Disables an application account from accessing an application. This API uses an 
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| bundleName | string                    | Yes   | Bundle name of the application.                        |
-| callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
+| name       | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                  |
+| bundleName | string                    | Yes    | Bundle name of the third-party app. Maximum length: 512 characters.                         |
+| callback   | AsyncCallback&lt;void&gt; | Yes    | Callback function. When the specified third-party app account is successfully disabled from accessing the third-party app with the specified bundle name, err is null; otherwise, it is an error object. |
 
 **Example**
 
@@ -3401,14 +3402,14 @@ Disables an application account from accessing an application. This API uses a p
 
 | Name       | Type    | Mandatory  | Description              |
 | ---------- | ------ | ---- | ---------------- |
-| name       | string | Yes   | Name of the target application account.|
-| bundleName | string | Yes   | Bundle name of the application.       |
+| name       | string | Yes    | Name of the third-party app account whose access is to be disabled. Maximum length: 512 characters. |
+| bundleName | string | Yes    | Bundle name of the third-party app. Maximum length: 512 characters.        |
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3438,8 +3439,8 @@ Enables an application to access an application account. This API uses an asynch
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the application account.                          |
-| bundleName | string                    | Yes   | Bundle name of the application.                        |
+| name       | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                           |
+| bundleName | string                    | Yes    | Bundle name of the third-party app. Maximum length: 512 characters.                         |
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3472,14 +3473,14 @@ Enables an application to access an application account. This API uses a promise
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the application account.  |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes    | Name of the app account. The maximum length is 512 characters.   |
+| bundleName | string | Yes    | Bundle name of the third-party app. Maximum length: 512 characters. |
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3511,7 +3512,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name     | Type                          | Mandatory  | Description                   |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | Yes   | Name of the application account.              |
+| name     | string                       | Yes    | Name of the app account. The maximum length is 512 characters.               |
 | callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
 
 **Example**
@@ -3546,7 +3547,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes    | Name of the app account. The maximum length is 512 characters. |
 
 **Return value**
 
@@ -3582,10 +3583,10 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 | Name           | Type                       | Mandatory  | Description           |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | Yes   | Name of the application account.    |
-| credentialType | string                    | Yes   | Credential type.    |
-| credential     | string                    | Yes   | Credential value.     |
-| callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
+| name           | string                    | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| credentialType | string                    | Yes    | Credential type. A custom type with a maximum length of 1024 characters.     |
+| credential     | string                    | Yes    | Credential value. Custom data with a maximum length of 1024 characters.      |
+| callback       | AsyncCallback&lt;void&gt; | Yes    | Callback function. When the credential of the specified app account is set successfully, err is null; otherwise, it is an error object. |
 
 **Example**
 
@@ -3617,15 +3618,15 @@ Sets a credential for an application account. This API uses a promise to return 
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.  |
-| credentialType | string | Yes   | Credential type.|
-| credential     | string | Yes   | Credential value.|
+| name           | string | Yes    | Name of the app account. The maximum length is 512 characters.   |
+| credentialType | string | Yes    | Credential type. A custom type with a maximum length of 1024 characters. |
+| credential     | string | Yes    | Credential value. Custom data with a maximum length of 1024 characters. |
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3647,7 +3648,7 @@ Sets additional information for an application account. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3655,7 +3656,7 @@ Sets additional information for an application account. This API uses an asynchr
 
 | Name      | Type                       | Mandatory  | Description             |
 | --------- | ------------------------- | ---- | --------------- |
-| name      | string                    | Yes   | Name of the application account.        |
+| name      | string                    | Yes    | Name of the app account. The maximum length is 512 characters.         |
 | extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.      |
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3681,7 +3682,7 @@ Sets additional information for an application account. This API uses a promise 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9-1) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3689,14 +3690,14 @@ Sets additional information for an application account. This API uses a promise 
 
 | Name      | Type    | Mandatory  | Description       |
 | --------- | ------ | ---- | --------- |
-| name      | string | Yes   | Name of the application account.  |
+| name      | string | Yes    | Name of the app account. The maximum length is 512 characters.   |
 | extraInfo | string | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3718,7 +3719,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setDataSyncEnabled](#setdatasyncenabled9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [setDataSyncEnabled](#setdatasyncenabled9) instead.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3728,7 +3729,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 | Name     | Type                       | Mandatory  | Description                       |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | Yes   | Name of the application account.                 |
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters. |
 | isEnable | boolean                   | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.  |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3754,7 +3755,7 @@ Sets data synchronization for an application account. This API uses a promise to
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setDataSyncEnabled](#setdatasyncenabled9-1) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [setDataSyncEnabled](#setdatasyncenabled9-1) instead.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3764,14 +3765,14 @@ Sets data synchronization for an application account. This API uses a promise to
 
 | Name     | Type     | Mandatory  | Description         |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | Yes   | Name of the application account.    |
+| name     | string  | Yes    | Name of the app account. The maximum length is 512 characters.     |
 | isEnable | boolean | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.|
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3793,7 +3794,7 @@ Sets data to be associated with an application account. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3801,7 +3802,7 @@ Sets data to be associated with an application account. This API uses an asynchr
 
 | Name     | Type                       | Mandatory  | Description               |
 | -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | Yes   | Name of the application account.          |
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.           |
 | key      | string                    | Yes   | Key of the associated data.|
 | value    | string                    | Yes   | Value of the data to set.        |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
@@ -3828,7 +3829,7 @@ Sets data to be associated with an application account. This API uses a promise 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9-1) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3836,15 +3837,15 @@ Sets data to be associated with an application account. This API uses a promise 
 
 | Name  | Type    | Mandatory  | Description               |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | Yes   | Name of the application account.          |
+| name  | string | Yes    | Name of the app account. The maximum length is 512 characters.           |
 | key      | string | Yes   | Key of the associated data.|
 | value    | string | Yes   | Value of the data to set.|
 
 **Return value**
 
-| Type                 | Description                   |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3866,7 +3867,7 @@ Obtains information about all accessible application accounts. This API uses an 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAllAccounts](#getallaccounts9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getAllAccounts](#getallaccounts9) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3900,7 +3901,7 @@ Obtains information about all accessible application accounts. This API uses a p
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAllAccounts](#getallaccounts9-1) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getAllAccounts](#getallaccounts9-1) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3932,7 +3933,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAccountsByOwner](#getaccountsbyowner9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getAccountsByOwner](#getaccountsbyowner9) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3942,8 +3943,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.   |
-| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback used to return information about all accessible application accounts.|
+| owner    | string                                   | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.    |
+| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes    | Callback function. When the app account information is obtained successfully, err is null and data is the list of app account information; otherwise, it is an error object. |
 
 **Example**
 
@@ -3968,7 +3969,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAccountsByOwner](#getaccountsbyowner9-1) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getAccountsByOwner](#getaccountsbyowner9-1) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3978,7 +3979,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name  | Type    | Mandatory  | Description    |
 | ----- | ------ | ---- | ------ |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes | Bundle name of the app account owner. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -4007,7 +4008,7 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCredential](#getcredential9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getCredential](#getcredential9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4015,8 +4016,8 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 | Name           | Type                         | Mandatory  | Description            |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | Yes   | Name of the application account.       |
-| credentialType | string                      | Yes   | Credential type.|
+| name           | string                      | Yes    | Name of the app account. The maximum length is 512 characters.        |
+| credentialType | string                      | Yes    | Credential type. A custom type with a maximum length of 1024 characters. |
 | callback       | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4041,7 +4042,7 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCredential](#getcredential9-1) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getCredential](#getcredential9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4049,14 +4050,14 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.   |
-| credentialType | string | Yes   | Credential type.|
+| name           | string | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| credentialType | string | Yes    | Credential type. A custom type with a maximum length of 1024 characters. |
 
 **Return value**
 
-| Type                   | Description                   |
-| :-------------------- | :-------------------- |
-| Promise&lt;string&gt; | Promise used to return the credential obtained.|
+| Type                  | Description                    |
+| --------------------- | ------------------------------ |
+| Promise&lt;string&gt; | Promise object, which returns the credential of the specified app account. |
 
 **Example**
 
@@ -4078,7 +4079,7 @@ Obtains additional information of an application account. Additional information
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCustomData](#getcustomdata9) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getCustomData](#getcustomdata9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4086,7 +4087,7 @@ Obtains additional information of an application account. Additional information
 
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
-| name     | string                      | Yes   | Name of the application account.        |
+| name     | string                      | Yes    | Name of the app account. The maximum length is 512 characters.         |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the additional information obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4111,7 +4112,7 @@ Obtains additional information of an application account. Additional information
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCustomData](#getcustomdata9-1) instead.
+> Supported since API version 7 and deprecated since API version 9. You are advised to use [getCustomData](#getcustomdata9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4119,13 +4120,13 @@ Obtains additional information of an application account. Additional information
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes | Name of the app account. The maximum length is 512 characters. |
 
 **Return value**
 
-| Type                   | Description                   |
-| :-------------------- | :-------------------- |
-| Promise&lt;string&gt; | Promise used to return the additional information obtained.|
+| Type                    | Description                    |
+| -------------------- | -------------------- |
+| Promise&lt;string&gt; | Promise used to return the additional information of the specified application account. |
 
 **Example**
 
@@ -4155,7 +4156,7 @@ Obtains the associated data of an application account based on the specified key
 
 | Name     | Type                         | Mandatory  | Description               |
 | -------- | --------------------------- | ---- | ----------------- |
-| name     | string                      | Yes   | Name of the application account.          |
+| name     | string                      | Yes    | Name of the app account. The maximum length is 512 characters.           |
 | key      | string                      | Yes   | Key of the associated data.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the data obtained. Otherwise, **err** is an error object.|
 
@@ -4177,7 +4178,7 @@ Obtains the associated data of an application account based on the specified key
 
 getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 
-Obtains data associated with an application account. This API uses a promise to return the result.
+Obtains the associated data of an application account. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -4189,14 +4190,14 @@ Obtains data associated with an application account. This API uses a promise to 
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the application account.  |
+| name | string | Yes | Name of the app account. The maximum length is 512 characters. |
 | key  | string | Yes   | Key of the associated data.|
 
 **Return value**
 
-| Type                   | Description                   |
-| :-------------------- | :-------------------- |
-| Promise&lt;string&gt; | Promise used to return the data obtained.|
+| Type                    | Description                    |
+| -------------------- | -------------------- |
+| Promise&lt;string&gt; | Promise used to return the value of the associated data. |
 
 **Example**
 
@@ -4302,9 +4303,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the application account.    |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                | Yes   | Authorization type.          |
+| name     | string                | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| owner    | string                | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.  |
+| authType | string                | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.           |
 | options  | {[key: string]: any}  | Yes   | Options for the authentication.      |
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.|
 
@@ -4365,9 +4366,9 @@ Obtains the authorization token of the specified authorization type for an appli
 
 | Name     | Type                         | Mandatory  | Description         |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | Yes   | Name of the application account.   |
-| owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string                      | Yes   | Authorization type.      |
+| name     | string                      | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner    | string                      | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
+| authType | string                      | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.       |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object.  |
 
 **Example**
@@ -4401,9 +4402,9 @@ Obtains the authorization token of the specified authorization type for an appli
 
 | Name     | Type    | Mandatory  | Description         |
 | -------- | ------ | ---- | ----------- |
-| name     | string | Yes   | Name of the application account.   |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string | Yes   | Authorization type.      |
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner    | string | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.       |
 
 **Return value**
 
@@ -4439,9 +4440,9 @@ Sets an authorization token of the specific authorization type for an applicatio
 
 | Name     | Type                       | Mandatory  | Description      |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | Yes   | Name of the application account.|
-| authType | string                    | Yes   | Authorization type.   |
-| token    | string                    | Yes   | Authorization token.|
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters. |
+| authType | string                    | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.    |
+| token    | string                    | Yes    | Authorization token. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4466,7 +4467,7 @@ Sets an authorization token of the specific authorization type for an applicatio
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthToken](#setauthtoken9-1) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [setAuthToken](#setauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4474,15 +4475,15 @@ Sets an authorization token of the specific authorization type for an applicatio
 
 | Name     | Type    | Mandatory  | Description      |
 | -------- | ------ | ---- | -------- |
-| name     | string | Yes   | Name of the application account.|
-| authType | string | Yes   | Authorization type.   |
-| token    | string | Yes   | Authorization token.|
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters. |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.    |
+| token    | string | Yes    | Authorization token. Maximum length: 1024 characters. |
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -4504,7 +4505,7 @@ Deletes the authorization token of the specified authorization type for an appli
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [deleteAuthToken](#deleteauthtoken9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4512,10 +4513,10 @@ Deletes the authorization token of the specified authorization type for an appli
 
 | Name     | Type                       | Mandatory  | Description          |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | Yes   | Name of the application account.    |
-| owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                    | Yes   | Authorization type.       |
-| token    | string                    | Yes   | Authorization token.|
+| name     | string                    | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| owner    | string                    | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.  |
+| authType | string                    | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.        |
+| token    | string                    | Yes    | Authorization token. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.    |
 
 **Example**
@@ -4541,7 +4542,7 @@ Deletes the authorization token of the specified authorization type for an appli
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9-1) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [deleteAuthToken](#deleteauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4549,16 +4550,16 @@ Deletes the authorization token of the specified authorization type for an appli
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | ------ | ---- | ------------ |
-| name     | string | Yes   | Name of the application account.    |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string | Yes   | Authorization type.       |
-| token    | string | Yes   | Authorization token.|
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| owner    | string | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters.  |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.        |
+| token    | string | Yes    | Authorization token. Maximum length: 1024 characters. |
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -4580,7 +4581,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [setAuthTokenVisibility](#setauthtokenvisibility9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4588,9 +4589,9 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| authType   | string                    | Yes   | Authorization type.                    |
-| bundleName | string                    | Yes   | Bundle name of the application.             |
+| name       | string                    | Yes    | Name of the app account. The maximum length is 512 characters.                  |
+| authType   | string                    | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.                     |
+| bundleName | string                    | Yes    | Bundle name of the app whose visibility is set. Maximum length: 512 characters.              |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.                 |
 
@@ -4617,7 +4618,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9-1) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [setAuthTokenVisibility](#setauthtokenvisibility9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4625,16 +4626,16 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type     | Mandatory  | Description          |
 | ---------- | ------- | ---- | ------------ |
-| name       | string  | Yes   | Name of the application account.    |
-| authType   | string  | Yes   | Authorization type.       |
-| bundleName | string  | Yes   | Bundle name of the application.|
+| name       | string  | Yes    | Name of the app account. The maximum length is 512 characters.     |
+| authType   | string  | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.        |
+| bundleName | string  | Yes    | Bundle name of the app whose visibility is set. Maximum length: 512 characters. |
 | isVisible  | boolean | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.       |
 
 **Return value**
 
 | Type                 | Description                   |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -4656,7 +4657,7 @@ Checks the visibility of an authorization token of the specified authorization t
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [checkAuthTokenVisibility](#checkauthtokenvisibility9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4664,9 +4665,9 @@ Checks the visibility of an authorization token of the specified authorization t
 
 | Name       | Type                          | Mandatory  | Description         |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | Yes   | Name of the application account.   |
-| authType   | string                       | Yes   | Authorization type.      |
-| bundleName | string                       | Yes   | Bundle name of the application.|
+| name       | string                       | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| authType   | string                       | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.       |
+| bundleName | string                       | Yes    | Bundle name of the app whose visibility is checked. Maximum length: 512 characters. |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object.   |
 
 **Example**
@@ -4692,7 +4693,7 @@ Checks the visibility of an authorization token of the specified authorization t
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9-1) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [checkAuthTokenVisibility](#checkauthtokenvisibility9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4700,9 +4701,9 @@ Checks the visibility of an authorization token of the specified authorization t
 
 | Name       | Type    | Mandatory  | Description           |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | Yes   | Name of the application account.     |
-| authType   | string | Yes   | Authorization type.        |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes    | Name of the app account. The maximum length is 512 characters.      |
+| authType   | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters.         |
+| bundleName | string | Yes    | Bundle name of the app used to check visibility. Maximum length: 512 characters. |
 
 **Return value**
 
@@ -4731,7 +4732,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [getAllAuthTokens](#getallauthtokens9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4739,8 +4740,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name     | Type                                      | Mandatory  | Description         |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | Yes   | Name of the application account.   |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name     | string                                   | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner    | string                                   | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;Array&lt;[OAuthTokenInfo](#oauthtokeninfodeprecated)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object.   |
 
 **Example**
@@ -4766,7 +4767,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9-1) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [getAllAuthTokens](#getallauthtokens9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4774,8 +4775,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| name  | string | Yes   | Name of the application account.   |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name  | string | Yes    | Name of the app account. The maximum length is 512 characters.    |
+| owner | string | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -4804,7 +4805,7 @@ Obtains the authorization list of the specified authorization type for an applic
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthList](#getauthlist9) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [getAuthList](#getauthlist9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4812,8 +4813,8 @@ Obtains the authorization list of the specified authorization type for an applic
 
 | Name     | Type                                      | Mandatory  | Description                     |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | Yes   | Name of the application account.               |
-| authType | string                                   | Yes   | Authorization type.|
+| name     | string                                   | Yes    | Name of the app account. The maximum length is 512 characters.                |
+| authType | string                                   | Yes    | Authentication type. Custom data. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object.              |
 
 **Example**
@@ -4846,8 +4847,8 @@ Obtains the authorization list of the specified authorization type for an applic
 
 | Name     | Type    | Mandatory  | Description                     |
 | -------- | ------ | ---- | ----------------------- |
-| name     | string | Yes   | Name of the application account.               |
-| authType | string | Yes   | Authorization type.|
+| name     | string | Yes    | Name of the app account. The maximum length is 512 characters.                |
+| authType | string | Yes    | Authentication type. Custom data. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -4976,7 +4977,7 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 | Name     | Type                                    | Mandatory  | Description         |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner    | string                                 | Yes    | Bundle name of the app account owner. Maximum length: 1024 characters. |
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator information obtained. Otherwise, **err** is an error object.   |
 
 **Example**
@@ -5010,7 +5011,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes | Bundle name of the app account owner. Maximum length: 1024 characters. |
 
 **Return value**
 
@@ -5100,7 +5101,7 @@ Defines the options for creating an application account.
 
 | Name    | Type    | Read-Only | Optional  | Description        |
 | ------- | ------ | ---- | ---- | ---------- |
-| customData   | Record<string, string> | No| Yes   | Custom data. By default, no value is passed in.|
+| customData   | Record<string, string> | No | Yes    | Custom data. Empty by default. It is not recommended to include sensitive data. |
 
 ## CreateAccountImplicitlyOptions<sup>9+</sup>
 
@@ -5179,8 +5180,8 @@ Enumerates the constants.
 
 Enumerates the result codes.
 
-> **NOTE**<br>
-> This API is supported since API version 8 and deprecated since API version 9. For details, see [Account Management Error Codes](errorcode-account.md).
+> **NOTE**<br/>
+> This API is supported since API version 8 and deprecated since API version 9. For related information, see [Account Management Error Codes](errorcode-account.md) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5436,7 +5437,7 @@ Adds an application account implicitly based on the specified authorization type
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [createAccountImplicitly](#createaccountimplicitly9-2) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [createAccountImplicitly](#createaccountimplicitly9-2) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5444,7 +5445,7 @@ Adds an application account implicitly based on the specified authorization type
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| authType         | string                | Yes   | Authorization type.     |
+| authType         | string                | Yes    | Authentication type of the app account. User-defined data. The maximum length is 1024 characters.      |
 | callerBundleName | string                | Yes   | Bundle name of the authentication requester.      |
 | options          | {[key: string]: any}  | Yes   | Options for the authentication.     |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.|
@@ -5461,8 +5462,8 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | Yes   | Name of the application account.       |
-| authType         | string                | Yes   | Authorization type.     |
+| name             | string                | Yes    | Name of the app account. The maximum length is 512 characters.        |
+| authType         | string                | Yes    | Authentication type of the app account. User-defined data. The maximum length is 1024 characters.      |
 | options          | Record<string, Object>  | Yes   | Options for the authentication.     |
 | callback         | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
@@ -5474,7 +5475,7 @@ Authenticates an application account to obtain the OAuth token. This API uses an
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [auth](#auth9-2) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [auth](#auth9-2) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5482,8 +5483,8 @@ Authenticates an application account to obtain the OAuth token. This API uses an
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | Yes   | Name of the application account.       |
-| authType         | string                | Yes   | Authorization type.     |
+| name             | string                | Yes    | Name of the app account. The maximum length is 512 characters.        |
+| authType         | string                | Yes    | Authentication type of the app account. User-defined data. The maximum length is 1024 characters.      |
 | callerBundleName | string                | Yes   | Bundle name of the authentication requester.      |
 | options          | {[key: string]: any}  | Yes   | Options for the authentication.     |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.|
@@ -5500,7 +5501,7 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                   | Yes   | Name of the application account.             |
+| name      | string                   | Yes    | Name of the app account. The maximum length is 512 characters.              |
 | options   | [VerifyCredentialOptions](#verifycredentialoptions9)  | Yes   | Options for credential verification.           |
 | callback  | [AuthCallback](#authcallback9)    | Yes   | Authenticator callback used to return the result.|
 
@@ -5539,7 +5540,7 @@ Checks the account labels. This API uses an asynchronous callback to return the 
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | Yes   | Name of the application account.             |
+| name      | string                | Yes    | Name of the app account. The maximum length is 512 characters.              |
 | labels    | Array&lt;string&gt;          | Yes   | Labels to check.                  |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
@@ -5559,7 +5560,7 @@ Checks whether an application account can be deleted. This API uses an asynchron
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | Yes   | Name of the application account.             |
+| name      | string                | Yes    | Name of the app account. The maximum length is 512 characters.              |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Example**

@@ -3,7 +3,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @tom_guo-->
-<!--Designer: @trytocalm-->
+<!--Designer: @owen_creeper-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 <!-- md-trans-meta sourceCommit=bf5d49a4393b61c9a2c280c54a54215020618b5d translatedAt=2026-08-06T01:48:13.095Z pushedAt=2026-08-06T11:32:35.089Z -->

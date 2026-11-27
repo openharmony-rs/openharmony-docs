@@ -5,15 +5,15 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=8b332ba8e6e72c2d885a38003986f27dfb7e99d3 translatedAt=2026-10-09T12:12:03.657Z pushedAt=2026-10-10T06:00:38.078Z -->
+<!-- md-trans-meta sourceCommit=87dbb7dccdd55553f9b008ef4d22fbd61da3fce1 translatedAt=2026-11-23T01:32:21.575Z pushedAt=2026-11-23T11:45:12.870Z nl=1 -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data. It is applicable to scenarios where system services or apps communicate with each other through common events. This module helps you publish and subscribe to events across apps, improving collaboration efficiency between apps.
 
 > **NOTE**
 >
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [@ohos.commonEventManager](js-apis-commonEventManager.md) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [@ohos.commonEventManager](js-apis-commonEventManager.md) instead.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [CommonEvent](./js-apis-commonEvent.md).
+> This topic describes only system APIs provided by this module. For details about its public APIs, see [CommonEvent](./js-apis-commonEvent.md).
 
 ## Modules to Import
 
@@ -35,7 +35,7 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -78,7 +78,7 @@ Publishes a common event with given properties to a specific user. This API uses
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

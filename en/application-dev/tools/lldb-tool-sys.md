@@ -6,7 +6,7 @@
 <!--Designer: @da_wei_li11-->
 <!--Tester: @chenhliang-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=4b07e88550e0184fe83fe80e1f31b5c935b7680c translatedAt=2026-11-04T04:56:23.550Z pushedAt=2026-11-04T06:48:07.635Z nl=1 -->
+<!-- md-trans-meta sourceCommit=9993676b4959355919ad1fb31eb2269a2c3fc472 translatedAt=2026-11-16T09:18:30.030Z pushedAt=2026-11-16T10:51:36.589Z nl=1 -->
 
 ## Overview
 Low Level Debugger (LLDB) is a next-generation, high-performance debugger. It can be used to set breakpoints, view and modify variables, perform memory operations, control threads, calculate expressions, backtrack stacks, and support cross-platform and plugin extension.
@@ -416,7 +416,7 @@ Compilation:
     ```
 
 ## FAQs
-- When the **run** command is executed in the LLDB debugging environment, the console returns **error: 'A' packet returned an error: 8** or a similar error code. What should I do?<br> This usually indicates that the debugger cannot create a debugging process because it has no permission. In this case, you are advised to perform the following steps:
+- When the `run` command is executed in the LLDB debugging environment, the console returns `error: 'A' packet returned an error: 8` or a similar error code. This usually indicates that the debugger cannot create a debugging process because it has no permission. In this case, you are advised to perform the following steps:
 
    (1) Check whether **Developer options** is enabled on the target device.
 

@@ -1,10 +1,11 @@
 # SubHeader
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
-<!--Designer: @YanSanzo-->
-<!--Tester: @ybhou1993-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a2be072c98789f4da04ce6df0c49a90391628186 translatedAt=2026-11-26T03:42:57.659Z pushedAt=2026-11-26T09:22:16.460Z nl=1 -->
 
 
 The **SubHeader** component is positioned at the top of list items or content sections, organizing lists or content into distinct groups. The subheader text summarizes the content within each respective section.
@@ -36,7 +37,7 @@ Not supported
 
 ## SubHeader
 
-SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, select?: SelectOptions, operationType?: OperationType, operationItem?: Array&lt;OperationOption&gt;, operationSymbolOptions?: Array&lt;SymbolOptions&gt;, primaryTitleModifier?: TextModifier, secondaryTitleModifier?: TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, contentPadding?: LocalizedPadding})
+SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, endIcon?: ResourceStr, endIconSymbolOptions?: SymbolOptions, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, select?: SelectOptions, operationType?: OperationType, operationItem?: Array&lt;OperationOption&gt;, operationSymbolOptions?: Array&lt;SymbolOptions&gt;, primaryTitleModifier?: TextModifier, secondaryTitleModifier?: TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, contentPadding?: LocalizedPadding, titleAccessibilityText?: ResourceStr, titleId?: string })
 
 **Decorator**: @Component
 
@@ -44,22 +45,25 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Mandatory| Decorator        | Description|
+| Name | Type | Mandatory | Decorator | Description |
 | -------- | -------- | -------- |---------------| -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Icon.<br>Default value: **undefined**, indicating that no icon is displayed.<br>The **icon** attribute takes effect only when the **secondaryTitle** attribute is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | No| -             | Icon symbol options. This parameter is available when **icon** is set to a [symbol glyph](ts-basic-components-symbolGlyph.md).<br>Default value: **undefined**, indicating that no icon is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Primary title.<br>Default value: **undefined**, indicating that no primary title is displayed.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously, the **primaryTitle** attribute will not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Secondary title.<br>Default value: **undefined**, indicating that no secondary title is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| select | [SelectOptions](#selectoptions) | No| -             | Content and events for selection.<br>Default value: **undefined**, indicating that no drop-down list is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| operationType | [OperationType](#operationtype) | No| \@Prop        | Style of elements in the operation area (right).<br>Default value: **OperationType.BUTTON**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | No| -             | Items in the operation area (right).<br>Default value: **undefined**, indicating that the operation area is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | No| -             | Icon symbol options.<br>This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](ts-basic-components-symbolGlyph.md).<br>Default value: **undefined**, indicating that no symbol icon is set.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**, indicating that the default style is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**, indicating that the default style is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| titleBuilder<sup>12+</sup> | () => void | No| @BuilderParam | Content of the custom title area.<br>Default value: **undefined**, indicating that no custom title is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | No| @Prop         | Margin of the content. Negative numbers are not supported.<br>Default value:<br> `{start: LengthMetrics.resource(` <br> `$r('sys.float.margin_left'))`, <br> `end: LengthMetrics.resource(` <br> `$r('sys.float.margin_right'))}`<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | No| @Prop         | Padding of the content.<br>Default value:<br>If a secondary title, with or without an icon, is displayed on the left:<br> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| titleAccessibilityText<sup>23+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No| @Prop         | Customized content to be read in the title.<br>Default value: **undefined**.<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.  |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No | \@Prop        | Icon setting item.<br/>Default value: **undefined**, indicating that no icon is displayed.<br/>The **icon** attribute takes effect only when the **secondaryTitle** attribute is used.<br/>**Atomic service API:** This API supports use in atomic services since API version 11. |
+| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | No | -             | Settings when **icon** is [SymbolGlyph](ts-basic-components-symbolGlyph.md).<br/>Default value: **undefined**, indicating that no icon is displayed.<br/>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| endIcon | [ResourceStr](ts-types.md#resourcestr) | No | @Prop | Icon resource at the title end.<br/>This attribute takes effect only when the **primaryTitle** or **secondaryTitle** attribute is used.<br/>Default value: **undefined**, indicating that the icon at the title end is not displayed.<br/>**Since:** 26.0.1 <br/>**Atomic service API:** This API is supported in atomic services since API version 26.0.1. <br/>**Model restriction:** This API can be used only in the stage model. |
+| endIconSymbolOptions | [SymbolOptions](#symboloptions12) | No | -             | Settings for **endIcon** when it is a [SymbolGlyph](ts-basic-components-symbolGlyph.md).<br/>Default value: **undefined**, indicating that the style of the Symbol icon at the title end is not set.<br/>**Since:** 26.0.1 <br/>**Atomic service API:** This API is supported in atomic services since API version 26.0.1. <br/>**Model restriction:** This API can be used only in the stage model. |
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No | \@Prop        | Primary title content.<br/>Default value: **undefined**, indicating that no title is displayed.<br/>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used together, the **primaryTitle** attribute does not take effect.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No | \@Prop        | Secondary title content.<br/>Default value: **undefined**, indicating that no secondary title is displayed. When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used together, the **primaryTitle** attribute does not take effect.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| select | [SelectOptions](#selectoptions) | No | -             | Dropdown box content and events.<br/>Default value: **undefined**, indicating that no dropdown box is displayed.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| operationType | [OperationType](#operationtype) | No | \@Prop        | Element style of the operation area (right side).<br/>Default value: **OperationType.BUTTON**<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | No | -             | Setting item of the operation area (right side).<br/>Default value: **undefined**, indicating that no operation area is displayed.<br/>**Atomic service API:** This API supports use in atomic services since API version 11. |
+| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | No | -             | Settings when **operationType** is **OperationType.ICON_GROUP**, **operationItem** is set with multiple icons, and the icons are [SymbolGlyph](ts-basic-components-symbolGlyph.md).<br/>Default value: **undefined**, indicating that no symbol icon is set.<br/>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No | -             | Used to set the title text attributes, such as title color, font size, font weight, etc.<br/>Default value: **undefined**, indicating that the system default style is used.<br/>**Atomic service API:** This API supports use in atomic services since API version 12. |
+| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No | -             | Used to set the secondary title text attributes, such as title color, font size, font weight, etc.<br/>Default value: **undefined**, indicating that the system default style is used.<br/>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| titleBuilder<sup>12+</sup> | () => void | No | @BuilderParam | Custom title area content.<br/>Default value: **undefined**, indicating that no custom title definition is adopted for the title.<br/>**Atomic service API:** This API supports use in atomic services since API version 12. |
+| contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | No | @Prop         | Margin of the subheader. Negative values are not supported.<br />Default value:<br /> `{start: LengthMetrics.resource(` <br /> `$r('sys.float.margin_left'))`, <br /> `end: LengthMetrics.resource(` <br /> `$r('sys.float.margin_right'))}`<br/>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | No | @Prop         | Padding of the subheader.<br />Default value:<br />When the left side contains a secondary title or a secondary title with an icon:<br /> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}.<br/>**Atomic service API:** This API supports use in atomic services since API version 12.|
+| titleAccessibilityText<sup>23+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No | @Prop         | Custom spoken content of the title.<br/>Default value: **undefined**<br/>When the value is **undefined**, the title content displayed by the component is read aloud by default.<br/>**Atomic service API:** This API supports use in atomic services since API version 23.   |
+| titleId<sup>24+</sup>  | string | No | @Prop         | Title ID. Set this parameter when an ID needs to be set for the title. When omitted, this parameter is not set.<br/>Default value: **undefined**, indicating that no title ID is set.<br/>**Atomic service API:** This API supports use in atomic services since API version 24.   |
 
 ## OperationType
 
@@ -98,14 +102,16 @@ Defines the style of elements in the subheader operation area.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Read-Only| Optional| Description                                                                                                                                                                                                                                                      |
+| Name | Type | Read-Only | Optional | Description                                                                                                                                                                                                                                                       |
 | -------- | -------- |---|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| value | [ResourceStr](ts-types.md#resourcestr) | No| No| Text content.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                 |
-| action | ()=&gt;void | No| Yes| Right-side button click event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                   |
-| accessibilityLevel<sup>18+<sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| accessibilityText<sup>18+<sup>        | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of the **value** property if the operation type is **TEXT_ARROW** or **BUTTON** and an empty string otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| accessibilityDescription<sup>18+<sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: "Loading" when the operation type is **LOADING** and **"Double-tap to activate"** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
-| defaultFocus<sup>18+</sup> | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                           |
+| value | [ResourceStr](ts-types.md#resourcestr) | No | No | Operation area element content. When **operationType** is **TEXT_ARROW** or **BUTTON**, **value** is the text content; when **operationType** is **ICON_GROUP**, **value** is the icon resource.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| action | ()=&gt;void | No | Yes | Click event of the subheader end button.<br/>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                    |
+| accessibilityLevel<sup>18+</sup>       | string  | No | Yes | Accessibility level of the subheader end button. It is used to control whether the current item can be recognized by accessibility services.<br/>Supported values:<br/>**"auto"**: The current component is converted to **"yes"**.<br/>**"yes"**: The current component can be recognized by accessibility services.<br/>**"no"**: The current component cannot be recognized by accessibility services.<br/>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br/>Default value: **"auto"**<br/>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the subheader end button. When a component does not contain a text attribute, the screen reader does not announce anything when this component is selected, and the user cannot clearly know which component is currently selected. To address this scenario, developers can set accessibility text for components that do not contain text information. When the screen reader selects this component, it announces the content of the accessibility text, helping screen reader users clearly know which component they have selected.<br/>Default value: When the type is **TEXT_ARROW** or **BUTTON**, the default value is the content of the value attribute of the current item; for other types, the default value is " ".<br/>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the subheader end button. This description is used to explain the current component to the user in detail. You should provide a relatively detailed text description for this attribute of the component to help users understand the operation to be performed and its possible consequences, especially when these consequences cannot be directly learned from the component's attributes and accessibility text alone. If a component has both a text attribute and an accessibility description attribute, when the component is selected, the system first announces the component's text attribute and then announces the content of the accessibility description attribute.<br/>Default value: When the type is **LOADING**, the default value is "Loading"; for other types, the default value is "Double-tap with one finger to execute".<br/>**Atomic service API**: This API can be used in atomic services since API version 18.        |
+| defaultFocus<sup>18+</sup> | boolean | No | Yes | Whether the subheader end button is the default focus.<br/>**true**: The subheader end button is the default focus.<br/>**false**: The subheader end button is not the default focus.<br />Default value: false <br/>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                            |
+| id<sup>24+</sup> | string | No | Yes | ID of the subheader end button. Set this parameter when an ID needs to be set for the subheader end button. By default, this parameter is not set.<br/>Default value: **undefined**, indicating that the ID of the subheader end button is not set. <br/>**Atomic service API**: This API can be used in atomic services since API version 24.      |
+
 ## SymbolOptions<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -502,3 +508,39 @@ struct SubHeaderExample {
 }
 ```
 ![/SubHeaderDefaultFocus](figures/SubHeaderDefaultFocus.png)
+
+### Example 10: Setting the Subheader End Icon
+This example demonstrates how to set the **endIcon** for the subheader, in two forms: a common image resource and a Symbol icon.
+
+Since API version 26.0.1, [SubHeader](#subheader-1) adds the **endIcon** and **endIconSymbolOptions** attributes.
+```ts
+import { SubHeader } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // Icon + secondary title + end icon (Image)
+        // $r('app.media.startIcon') needs to be replaced with the image resource file required by the developer.
+        icon: $r('app.media.startIcon'),
+        secondaryTitle: 'Secondary title',
+        endIcon: $r('app.media.startIcon')
+      })
+      SubHeader({
+        // Icon + secondary title + end icon (Symbol)
+        icon: $r('sys.media.ohos_ic_public_email'),
+        secondaryTitle: 'Secondary title',
+        endIcon: $r('sys.symbol.ohos_lungs'),
+        endIconSymbolOptions: {
+          renderingStrategy: SymbolRenderingStrategy.MULTIPLE_COLOR,
+          fontColor: [Color.Blue, Color.Grey, Color.Green]
+        }
+      })
+    }
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
