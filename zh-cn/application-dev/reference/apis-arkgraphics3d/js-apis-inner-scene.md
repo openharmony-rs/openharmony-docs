@@ -1051,8 +1051,8 @@ PCF（Percentage Closer Filtering，百分比邻近过滤）软阴影配置类�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| shadowSampleRadius | ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: double \| undefined | 否 | 是 | 采样半径，决定了阴影边缘模糊的范围，半径越大，阴影边缘越柔和。采样半径过大会导致阴影过度模糊，失去阴影形状特征。<br>默认值为5.0。<br>取值范围：>= 0。<br>- 设置为0时，将不进行PCF采样，无阴影效果。<br>- 设置为undefined时，恢复默认值5.0进行渲染。 |
-| shadowSampleCount | ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: int \| undefined | 否 | 是 | 采样数量，决定了每个像素采样阴影图的次数，数量越多，阴影质量越高，但性能开销越大。<br>默认值为16。<br>取值范围：0 ~ 64。<br>- 超出此范围的值会被自动限制到最近的有效边界值（例如65实际按64处理）。<br>- 设置为0时，将不进行PCF采样，无阴影效果。<br>- 设置为undefined时，恢复默认值16进行渲染。 |
+| shadowSampleRadius | ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: double \| undefined | 否 | 是 | 采样半径，决定了阴影边缘模糊的范围，半径越大，阴影边缘越柔和。采样半径过大会导致阴影过度模糊，失去阴影形状特征。<br>默认值为5.0。<br>取值范围：>= 0。<br>- 设置为0时，不进行PCF采样，无阴影效果。<br>- 设置为负数时为无效赋值，本次设置不生效，属性保留当前值不变。<br>- 设置为undefined时，恢复默认值5.0进行渲染。 |
+| shadowSampleCount | ArkTS-Dyn: number \| undefined<br>ArkTS-Sta: int \| undefined | 否 | 是 | 采样数量，决定了每个像素采样阴影图的次数，数量越多，阴影质量越高，但性能开销越大。<br>默认值为16。<br>取值范围：0 ~ 64。<br>- 设置为0时，不进行PCF采样，无阴影效果。<br>- 设置为负数时为无效赋值，本次设置不生效，属性保留当前值不变（例如传入-16，属性值和渲染效果仍保持设置前的状态）。<br>- 设置大于64的值不会被拒绝，属性按实际传入值保存（例如传入65可设置成功），但渲染时按上限64计算，阴影效果与设置为64时一致。<br>- 设置为undefined时，恢复默认值16进行渲染。 |
 
 ## RenderConfiguration<sup>23+</sup>
 
