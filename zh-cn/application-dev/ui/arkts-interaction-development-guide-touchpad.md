@@ -30,32 +30,26 @@
 >
 > 触控板原始事件相关接口（[UIContext.enableTouchPadEvent](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#enabletouchpadevent)、[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)等）从API版本26.1.0开始支持，更低版本不支持。
 
-```ts
-import { UIContext } from '@kit.ArkUI';
-
-UIContext.enableTouchPadEvent(true);
-```
-
-### 监听触控板原始事件
+### 注册触控板原始事件
 
 可在组件上通过[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)接口注册回调，接收[TouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadevent)对象。该对象的关键属性如下：
 
-- **contacts**：当前事件上报的全部触点数组。触点数量取决于硬件能力，使用前需校验是否为空。
-- **changedContact**：本次发生变化并触发事件的触点。
-- **deviceWidth / deviceHeight**：触控板的物理尺寸（单位：mm），可用于坐标换算。
+- contacts：当前事件上报的全部触点数组。触点数量取决于硬件能力，使用前需校验是否为空。
+- changedContact：本次发生变化并触发事件的触点。
+- deviceWidth / deviceHeight：触控板的物理尺寸（单位：mm），可用于坐标换算。
 
 每个触点（[TouchPadEventContact](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#touchpadeventcontact)）包含以下信息：
 
 | 名称 | 说明 |
 | -------- | -------- |
 | id | 触点的唯一标识，在触点按下至抬起或取消期间保持不变。 |
-| phase | 触点阶段，取值为[TouchPadEventPhase](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#touchpadeventphase)：BEGIN（开始接触）、MOVE（移动）、END（结束接触）、CANCEL（取消）。 |
+| phase | 触点阶段，取值为[TouchPadEventPhase](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#touchpadeventphase)定义的枚举，包括BEGIN（开始接触）、MOVE（移动）、END（结束接触）、CANCEL（取消）。 |
 | positionX | 触点在触控板X轴的百分比位置，取值范围[0, 1]，0表示最左侧，1表示最右侧。 |
 | positionY | 触点在触控板Y轴的百分比位置，取值范围[0, 1]，0表示最上侧，1表示最下侧。 |
 
-触点阶段遵循**BEGIN → MOVE → END/CANCEL**的生命周期：手指接触触控板时上报BEGIN，移动时持续上报MOVE，抬起时上报END，事件被打断（如被系统手势接管）时上报CANCEL。通过判断`changedContact.phase`可区分手势的按下、移动、抬起阶段。
+触点阶段遵循BEGIN → MOVE → END/CANCEL的生命周期：手指接触触控板时上报BEGIN，移动时持续上报MOVE，抬起时上报END，事件被打断（如被系统手势接管）时上报CANCEL。通过判断changedContact.phase可区分手势的按下、移动、抬起阶段。
 
-如果需要拦截触控板事件的命中测试，可通过[onTouchPadEventIntercept](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadeventintercept)接口设置自定义拦截回调，返回[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9)决定组件在触控板事件链中的命中测试行为。
+如果需要拦截触控板事件的命中测试，可通过[onTouchPadEventIntercept](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadeventintercept)接口设置自定义拦截回调，通过返回的[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9)，判断组件在触控板事件链中的命中测试行为。
 
 以下示例演示了启用触控板原始事件上报，并基于双指触点数据实现自定义手势跟随：双指滑动驱动组件平移、双指张开/捏合驱动组件缩放，抬手后动画还原至原位。
 
@@ -67,7 +61,7 @@ import { UIContext, display } from '@kit.ArkUI';
 /**
  * TouchPadEvent实际应用页：
  * childStack基于触控板双指手势实现跟随：双指滑动实现平移，双指张开/捏合实现缩放，抬手后动画还原。
- * positionX/Y为触控板百分比坐标，取值范围为[0, 1]。
+ * positionX/positionY为触控板百分比坐标，取值范围为[0, 1]。
  */
 @Entry
 @Component
@@ -110,7 +104,7 @@ struct TouchPadEventActualApplication {
     }
   }
 
-  // 坐标转换：positionX/Y规范取值范围为[0, 1]；
+  // 坐标转换：positionX/positionY规范取值范围为[0, 1]；
   // 若上报值为百分比(0~100)或毫米坐标(>100)，
   // 通过deviceWidth/deviceHeight(触控板物理尺寸mm)折算回[0, 1]
   static toFraction(v: number, deviceSpanMm: number): number {
