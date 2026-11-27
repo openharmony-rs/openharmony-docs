@@ -6,9 +6,9 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-![touchpad](figures/touchpad-ops.png)
-
 触控板是PC/2in1、Tablet类型设备上常见的输入设备。当用户在触控板上操作时，系统会产生两类事件：触控板原始事件和触控板生成事件。
+
+![touchpad](figures/touchpad-ops.png)
 
 - **触控板原始事件**：直接上报触控板上触点的原始数据，包括触点在触控板上的百分比位置、触点阶段（按下、移动、抬起、取消）、触控板设备尺寸等信息。该事件独立于触摸、鼠标、轴事件和系统手势事件，不会相互转换或影响，适用于需要直接处理触控板原始触点数据、实现自定义触控板交互的场景。从API版本26.1.0开始支持该能力，详细接口请参考[触控板原始事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md)。
 
