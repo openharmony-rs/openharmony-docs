@@ -26,6 +26,10 @@
 
 触控板原始事件默认不上报，需通过[UIContext.enableTouchPadEvent](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#enabletouchpadevent)接口在应用级开启上报，开启后应用才能接收到触控板原始事件。
 
+> **说明：**
+>
+> 触控板原始事件相关接口（[UIContext.enableTouchPadEvent](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#enabletouchpadevent)、[onTouchPadEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touchpad.md#ontouchpadevent)等）从API版本26.1.0开始支持，更低版本不支持。
+
 ```ts
 import { UIContext } from '@kit.ArkUI';
 
