@@ -202,7 +202,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 非对称密钥算法名称，不能为NULL。取值如下：<br>- 从API version 12开始支持RSA系列："RSA512"、"RSA768"、"RSA1024"、"RSA2048"、"RSA3072"、"RSA4096"、"RSA8192"。支持多素数格式，示例："RSA1024\|PRIMES_3"、"RSA4096\|PRIMES_4"、"RSA8192\|PRIMES_5"。<br>- 从API version 12开始支持ECC系列："ECC224"、"ECC256"、"ECC384"、"ECC521"。<br>- 从API version 12开始支持ECC BrainPool系列："ECC_BrainPoolP160r1"、"ECC_BrainPoolP160t1"、"ECC_BrainPoolP192r1"、"ECC_BrainPoolP192t1"、"ECC_BrainPoolP224r1"、"ECC_BrainPoolP224t1"、"ECC_BrainPoolP256r1"、"ECC_BrainPoolP256t1"、"ECC_BrainPoolP320r1"、"ECC_BrainPoolP320t1"、"ECC_BrainPoolP384r1"、"ECC_BrainPoolP384t1"、"ECC_BrainPoolP512r1"、"ECC_BrainPoolP512t1"。<br>- 从API version 12开始支持"SM2_256"、"Ed25519"、"X25519"。<br>- 从API version 12开始支持DSA系列："DSA1024"、"DSA2048"、"DSA3072"。<br>- 从API version 12开始支持DH系列："DH_modp1536"、"DH_modp2048"、"DH_modp3072"、"DH_modp4096"、"DH_modp6144"、"DH_modp8192"、"DH_ffdhe2048"、"DH_ffdhe3072"、"DH_ffdhe4096"、"DH_ffdhe6144"、"DH_ffdhe8192"。<br>- 从API version 14开始支持"ECC_Secp256k1"。<br>- 从API版本26.0.0开始支持"ECC192"。 |
+| const char *algoName | [in] 非对称密钥算法名称，不能为NULL。取值如下：<br>- 从API版本12开始支持RSA系列："RSA512"、"RSA768"、"RSA1024"、"RSA2048"、"RSA3072"、"RSA4096"、"RSA8192"。支持多素数格式，示例："RSA1024\|PRIMES_3"、"RSA4096\|PRIMES_4"、"RSA8192\|PRIMES_5"。<br>- 从API版本12开始支持ECC系列："ECC224"、"ECC256"、"ECC384"、"ECC521"。<br>- 从API版本12开始支持ECC BrainPool系列："ECC_BrainPoolP160r1"、"ECC_BrainPoolP160t1"、"ECC_BrainPoolP192r1"、"ECC_BrainPoolP192t1"、"ECC_BrainPoolP224r1"、"ECC_BrainPoolP224t1"、"ECC_BrainPoolP256r1"、"ECC_BrainPoolP256t1"、"ECC_BrainPoolP320r1"、"ECC_BrainPoolP320t1"、"ECC_BrainPoolP384r1"、"ECC_BrainPoolP384t1"、"ECC_BrainPoolP512r1"、"ECC_BrainPoolP512t1"。<br>- 从API版本12开始支持"SM2_256"、"Ed25519"、"X25519"。<br>- 从API版本12开始支持DSA系列："DSA1024"、"DSA2048"、"DSA3072"。<br>- 从API版本12开始支持DH系列："DH_modp1536"、"DH_modp2048"、"DH_modp3072"、"DH_modp4096"、"DH_modp6144"、"DH_modp8192"、"DH_ffdhe2048"、"DH_ffdhe3072"、"DH_ffdhe4096"、"DH_ffdhe6144"、"DH_ffdhe8192"。<br>- 从API版本14开始支持"ECC_Secp256k1"。<br>- 从API版本26.0.0开始支持"ECC192"。 |
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) **ctx | [out] 指向非对称密钥生成器指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**
@@ -403,7 +403,7 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 | -- | -- |
 | [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *key | [in] 公钥。不能为NULL。 |
 | [Crypto_EncodingType](capi-crypto-asym-key-h.md#crypto_encodingtype) type | [in] 编码类型。 |
-| const char *encodingStandard | [in] 编码标准，支持"X509"。不能为NULL。 |
+| const char *encodingStandard | [in] 编码标准，支持"X509"或"PKCS1"。只有RSA密钥才支持"PKCS1"。 |
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储编码结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回：**
@@ -672,7 +672,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 非对称密钥规格算法名称，不能为NULL。取值如下：<br>- 从API version 20开始支持"RSA"、"ECC"、"DSA"、"SM2"、"Ed25519"、"X25519"、"DH"。 |
+| const char *algoName | [in] 非对称密钥规格算法名称，不能为NULL。取值如下：<br>- 从API版本20开始支持"RSA"、"ECC"、"DSA"、"SM2"、"Ed25519"、"X25519"、"DH"。 |
 | [CryptoAsymKeySpec_Type](capi-crypto-asym-key-h.md#cryptoasymkeyspec_type) type | [in] 非对称密钥规格类型。 |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) **spec | [out] 指向非对称密钥规格指针的指针。spec不能为NULL，*spec必须为NULL。 |
 
