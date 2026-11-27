@@ -47,7 +47,7 @@
   - Data File Processing<!--data-file-processing-arkts-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
     - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
-    - [@ohos.pasteboard (Clipboard)](js-apis-pasteboard.md)
+    - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
     - [@ohos.scan (Scan)](js-apis-scan.md)
     - [@ohos.request (Upload and Download)](js-apis-request.md)
