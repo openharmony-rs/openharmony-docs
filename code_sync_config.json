@@ -59659,7 +59659,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages3/Index.ets",
 				"functions":[
 					{
-						"end_line":184,
+						"end_line":188,
 						"name":"deflate_and_inflate_004",
 						"start_line":16
 					}
