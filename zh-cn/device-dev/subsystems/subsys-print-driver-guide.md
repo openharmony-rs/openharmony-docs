@@ -211,7 +211,7 @@ device-class device-uri "device-make-and-model" "device-info"
 | 字段 | 示例值 | 说明 |
 |------|--------|------|
 | device-class | `network` | 设备类型：`network` / `direct` / `serial` / `file` |
-| device-uri | `com.example.backendtest_entry_testbackend:/` | 设备 URI，`{包名}_{module名}_{backend名}:/` 格式，系统自动拼接保证唯一 |
+| device-uri | `com.example.backendtest_entry_testbackend:/` | 设备 URI，`{包名}_{模块名}_{驱动名}:/` 格式，系统自动拼接保证唯一 |
 | make-and-model | `"testbackend"` | 打印机型号，显示在添加界面 |
 | device-info | `"Save PDF to local file"` | 打印机描述信息 |
 
@@ -347,7 +347,7 @@ static int write_output_file(int input_fd, const std::string& output_file) {
 
 ### BUILD.gn 配置解析
 
-BUILD.gn 位于 OpenHarmony 源码 `/third_party/cups/BUILD.gn`，是 CUPS 组件的编译入口。testbackend 的编译配置需要在此文件中完成三件事：**声明源码变量**、**注册到 cups_action**、**添加编译目标**。
+BUILD.gn 位于 OpenHarmony 源码 `/third_party/cups/BUILD.gn`，是 CUPS 组件的编译入口。testbackend 的编译配置需要在此文件中完成四件事：**声明源码变量**、**注册到 cups_action**、**注册到编译 group**、**添加编译目标**。
 
 #### 声明源码变量
 
@@ -446,7 +446,7 @@ ohos_executable("testbackend") {
 ./build.sh --product-name rk3568 --build-target third_party/cups:third_party_cups --target-cpu arm64
 
 # 宿主机导出产物
-docker cp oh_builder:/home/openharmony/out/rk3568/thirdparty/cups/testbackend D:\dist
+docker cp oh_builder:/home/openharmony/out/rk3568/thirdparty/cups/testbackend D:/dist
 ```
 
 产物 `testbackend` 放入工程 `entry/libs/arm64-v8a/` 即可。PPD 无需编译。
@@ -516,7 +516,7 @@ DevEco 默认 SDK 不识别 `type: "driver"`，需手动修改两处后重启：
 1. **module.json** — `extensionAbilities.type` 的枚举值中 `preview` 下面添加 `"driver"`
 2. **resource pattern** — 正则改为 `(^[$]profile:[0-9a-zA-Z_.]+|(?=.*[{])(?=.*[}])[0-9a-zA-Z_.{}]+)|(^(/[\w-]+)+(.[a-z]+)?)$|.*`
 
-> 具体操作见 OpenHarmony打印扫描驱动开发指南1.9 第 6.3 节（5.1 ~ 5.3）。
+> 具体操作见 OpenHarmony打印扫描驱动开发指南1.9 第 6.3 节（对应 (5.1) ~ (5.3) 小节）。
 
 ## 部署 & 验证
 
@@ -551,7 +551,7 @@ stdout 输出设备声明       ▼              testbackend 接收
 
 | 阶段 | 操作 | 预期 |
 |------|------|------|
-| 发现 | 设备 **设置 → 打印机和扫描仪** -> 添加打印机和扫描仪 | 列表中出现 "**Save PDF to local file**" |
+| 发现 | 设备 **设置 → 打印机和扫描仪** → 添加打印机和扫描仪 | 列表中出现 "**Save PDF to local file**" |
 | 添加 | 点击添加 | 打印机状态显示"已连接" |
 | 打印 | 选择 "**Save PDF to local file**" 发起打印，然后执行 `hdc shell ls /data/service/el1/public/print_service/cups/spool/tmp/` | 目录下出现新生成的 PDF 文件 |
 

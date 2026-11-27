@@ -122,7 +122,7 @@ PPD 同时支持 `*.Translation` 多语言机制：英文为默认语言，通�
 
 ## 首选项验证
 
-**在 设置 → 打印机和扫描仪 → 点击任一连接的打印机 → 默认设置 中可查看打印首选项。首选项配置的作用是：在打印没有设置参数时，使用首选项中的默认配置。**
+**在 设置 → 打印机和扫描仪 → 点击任一已连接的打印机 → 默认设置 中可查看打印首选项。首选项配置的作用是：打印任务未设置参数时，使用首选项中的默认配置。**
 
 ![](./figures/print_preferences.jpg)
 
@@ -137,7 +137,7 @@ PPD 同时支持 `*.Translation` 多语言机制：英文为默认语言，通�
 | PPD 语法报错 | 引号不配对、`*` 遗漏、`OpenUI`/`CloseUI` 字段名不一致 | 对照模板修复语法 |
 | 选项不显示 | `*OpenUI`/`*CloseUI` 未成对或字段名不一致 | 检查闭合 |
 | 选项选择提示设置冲突，已回退 | 被 `*UIConstraints` 约束 | 检查约束是否误配 |
-| 纸张尺寸跟PPD定义不一致 | `*PaperDimension` 没有配置 | 配置 `*PaperDimension` |
+| 纸张尺寸与 PPD 定义不一致 | `*PaperDimension` 没有配置 | 配置 `*PaperDimension` |
 | 切换系统语言后仍显示英文 | `*cupsLanguages` 未包含该语言代码或 `*.Translation` 未配置 | 检查 `*cupsLanguages` 声明和翻译行是否齐全 |
 | 部分文本已翻译、部分仍为英文 | 对应选项的 `*.Translation` 行遗漏或原文不匹配 | 逐行排查 `*.Translation` 的 `<原文>` 是否与英文默认行完全一致 |
 
@@ -158,7 +158,7 @@ PPD 同时支持 `*.Translation` 多语言机制：英文为默认语言，通�
 *cupsLanguages: "zh_CN"
 *cupsPJLDisplay: "omit"
 
-*%色彩模式中"彩色"是由ColorDevice确定
+*%色彩模式中的"彩色"由 ColorDevice 确定
 *ColorDevice: True
 *%===== Color Model =======
 *OpenUI *ColorModel/黑白: PickOne
