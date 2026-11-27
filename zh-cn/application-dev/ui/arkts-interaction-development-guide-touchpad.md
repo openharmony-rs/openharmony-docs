@@ -61,7 +61,6 @@ import { UIContext, display } from '@kit.ArkUI';
 /**
  * TouchPadEvent实际应用页：
  * childStack基于触控板双指手势实现跟随：双指滑动实现平移，双指张开/捏合实现缩放，抬手后动画还原。
- * positionX/positionY为触控板百分比坐标，取值范围为[0, 1]。
  */
 @Entry
 @Component
