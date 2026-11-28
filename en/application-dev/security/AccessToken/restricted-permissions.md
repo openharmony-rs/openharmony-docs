@@ -889,6 +889,90 @@ Allows an application to add, remove, or change all calendar events.
 
 **Changelog**: This permission is available only to system applications in API versions 9 to 19. From API version 20, it's also available to normal applications.
 
+## ohos.permission.vehicle.STEERINGWHEEL_INFO
+
+Allows an application to subscribe to and obtain the status information of the steering wheel counterpart.
+
+<!--RP126--><!--RP126End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
+
+Allows an application to subscribe to and obtain the status information of the interior lighting counterpart component.
+
+<!--RP127--><!--RP127End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
+
+Allows an application to set the status of the interior light counterpart component.
+
+<!--RP128--><!--RP128End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
+
+Allows an application to subscribe to and obtain the status information of the counterpart component of the driving information module.
+
+<!--RP129--><!--RP129End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status information of the accelerator pedal counterpart.
+
+<!--RP130--><!--RP130End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.BRAKE_PEDAL_INFO
+
+Allows an application to subscribe to and obtain the status information of the brake pedal counterpart.
+
+<!--RP131--><!--RP131End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
 Allows an application to set the trustlist of target applications for system sharing.
