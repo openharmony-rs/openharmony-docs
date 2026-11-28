@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=49eb80979d24efc646f232a5fdee339bb63c977e translatedAt=2026-11-09T07:43:54.371Z pushedAt=2026-11-09T07:47:11.123Z nl=1 -->
+<!-- md-trans-meta sourceCommit=c228affc9573e775befa699635d39cb23d8d10bd translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Introduction
 Near Field Communication (NFC) is a high-frequency radio technology that enables communication between devices over a distance less than 10 cm. NFC operates at 13.56 MHz. With NFC technologies, electronic devices can read data from tags or write data to tags.<br>

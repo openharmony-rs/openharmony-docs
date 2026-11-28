@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5bb88bb94d89f6d282aea4674234254f4d4bb26 translatedAt=2026-08-15T01:42:12.822Z pushedAt=2026-08-15T06:21:59.473Z -->
+<!-- md-trans-meta sourceCommit=30e4283bf08253ae9c214c3b4b20b868b85c7697 translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 ## When to Use
 

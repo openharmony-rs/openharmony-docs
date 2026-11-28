@@ -6,7 +6,7 @@
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=75499f1960105c83d6903f3ae3913c285e7bd788 translatedAt=2026-08-15T01:45:53.046Z pushedAt=2026-08-15T07:08:50.929Z -->
+<!-- md-trans-meta sourceCommit=09a7bc88ada00c18ee39567073922ff28ee82a94 translatedAt=2026-11-28T03:12:44.833Z nl=2 -->
 
 ## Overview
 
@@ -48,7 +48,7 @@ Example:
 
 ```ts
 import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-import { deviceInfo, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let policy: hiAppEvent.EventPolicy = {
     "addressSanitizerPolicy": {

@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=7c0f82bbecfb43d53c7c1cbe2897743059d65942 translatedAt=2026-10-31T01:26:42.706Z pushedAt=2026-10-31T03:38:51.783Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f3013a64ea5affc2f435777368db51dcc713c607 translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 ## When to Use
 
@@ -152,12 +152,12 @@ The following sample code is a demo that illustrates how to develop both the cli
      let option = new rpc.MessageOption();
      let data = new rpc.MessageSequence();
      let reply = new rpc.MessageSequence();
-   
-     // Send "Hello" to the driver.
-     hilog.info(DOMAIN, 'testTag', `communicateWithRemote, message=${this.message}`);
-     data.writeString(this.message);
-   
+
      try {
+       // Send "Hello" to the driver.
+       hilog.info(DOMAIN, 'testTag', `communicateWithRemote, message=${this.message}`);
+       data.writeString(this.message);
+
        await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
        // Obtain the "Hello world" information returned by the driver.
        this.message = reply.readString();

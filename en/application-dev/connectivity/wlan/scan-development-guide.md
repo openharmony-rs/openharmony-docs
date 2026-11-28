@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=10a823f5114708793f873c2259ddf0b8d1e5f84e translatedAt=2026-10-31T01:19:18.413Z pushedAt=2026-10-31T01:58:45.185Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6e4f06766702757ac76aee8ad41e870897bbc4b0 translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Introduction
 Wi-Fi scan is the process where devices (such as smartphones, PCs, and routers) search for available Wi-Fi networks in their surrounding environment. Through this scan process, devices can gather fundamental information about nearby networks—such as network name, signal strength, and encryption type—thereby enabling connection to, management of, or analysis of these networks.
@@ -37,7 +37,7 @@ The following table describes the related APIs.
 1. Import the required Wi-Fi module.
 2. Check that the **SystemCapability.Communication.WiFi.STA** capability is available.
 3. Apply for the **ohos.permission.GET_WIFI_INFO** permission.
-4. Enable Wi-Fi on the device.
+4. Enable Wi-Fi on the device. Before enabling Wi-Fi, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 5. Sample code:
 
    > **NOTE**<br>

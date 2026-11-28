@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=90b4d02a48a3db5de1635b8ee446b90ce9bc89ae translatedAt=2026-10-08T03:42:56.984Z pushedAt=2026-10-08T06:14:47.201Z -->
+<!-- md-trans-meta sourceCommit=d66a8b7c7e3dee22d223d13dbcab6819caa2df60 translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 Driver Development Kit (DDK) provides peripheral driver developers with efficient, secure, and feature-rich extended peripheral driver development solutions — ArkTS APIs and C APIs — enabling a seamless plug-and-play experience for end users.
 
@@ -120,4 +120,4 @@ The following table lists the associated modules you may use during development 
     - Based on the security constraints and service scenarios in driver development, access to other ArkTS APIs is not allowed within DriverExtensionAbility, which is intended to prevent malicious behavior and data leakage.
     - Restricted ArkTS API access in **DriverExtensionAbility** is implemented as follows:
       - During initialization and creation of the **Extension** process, system modules are loaded according to the configured list of ArkTS APIs restricted for **DriverExtensionAbility**. At runtime, if a restricted ArkTS API is called within **DriverExtensionAbility**, the call fails because the corresponding system module was not loaded during initialization and creation.
-    - For the specific list of ArkTS APIs restricted in **DriverExtensionAbility**, refer to the **DriverExtension** configuration in [frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).
+    - For the specific list of ArkTS APIs restricted in **DriverExtensionAbility**, refer to the **DriverExtension** configuration in [extension_blocklist_config.json](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).

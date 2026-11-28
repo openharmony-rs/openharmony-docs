@@ -5,7 +5,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:29:00.331Z pushedAt=2026-09-29T10:10:48.402Z -->
+<!-- md-trans-meta sourceCommit=74f6be55956b790cf74f8d4b3682a09b0bdf1754 translatedAt=2026-11-28T03:12:44.837Z nl=2 -->
 
 ## Overview
 
@@ -45,13 +45,21 @@ You can enable page switch log collection for app freeze events by setting param
 
 **Parameter Setting Example**
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+Include the header files.
 
+<!-- @[AppfreezeConfig_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+<!-- @[SetAppfreeze_Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 let policy: hiAppEvent.EventPolicy = {
-    "appFreezePolicy" : {
-      "pageSwitchLogEnable": true // Enable page switch logging.
+    'appFreezePolicy' : {
+        'pageSwitchLogEnable': true // Enable page switch logging.
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {

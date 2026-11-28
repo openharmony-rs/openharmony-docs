@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:27:44.439Z pushedAt=2026-09-29T03:48:05.267Z -->
+<!-- md-trans-meta sourceCommit=8c80ccbb09d5b92143b13c87f24e3198a47da7da translatedAt=2026-11-28T03:12:44.835Z nl=2 -->
 
 ## Overview
 
@@ -36,6 +36,8 @@ The **params** property in the application killed event is described as follows.
 | foreground | boolean | Whether the application is in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
 | app_running_unique_id | string | Unique ID associated with the app runtime.<br>**Note**: This parameter is supported since API version 24. |
 | bundle_version | string | App version information.<br>**Note**: This parameter is supported since API version 24. |
+| calling_pid | string | ID of the process that initiates termination.<br>**Note:** This parameter is supported since API version 26.0.1. |
+| calling_process_name | string | Name of the process that initiates termination.<br>**Note:** This parameter is supported since API version 26.0.1. |
 | last_exit_detail_info | string | Detailed information before the app exits. For details, see [last_exit_detail_info](#last_exit_detail_info).<br>**Note:** This parameter is supported since API version 26.0.0. |
 
 ### reason
@@ -70,6 +72,8 @@ The **params** property in the application killed event is described as follows.
 | Logout                        | The app sandbox is uninstalled when the user logs out.                   |
 | PermissionUpdate              | The app permissions are updated.                          |
 | aaForceStop                   | The app is forcibly stopped using the aa command.                    |
+| signalKill | The application is terminated by a signal such as SIGKILL.<br>**Note:** This parameter is supported since API version 26.0.1. |
+| signalExit | The application process exits voluntarily through the exit() system call.<br>**Note:** This parameter is supported since API version 26.0.1. |
 | ThreadBlock6S                 | The main thread of the app is frozen and times out.                       |
 | AppInputBlock                 | The user input response times out.                        |
 | LifecycleTimeout              | The app lifecycle times out.                        |

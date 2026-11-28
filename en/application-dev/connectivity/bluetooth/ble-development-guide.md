@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1533e3b9c2e1f6338d66cec2b3bebc32c9125cd1 translatedAt=2026-11-04T08:34:14.873Z pushedAt=2026-11-04T08:38:01.811Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f206f7e143272a3ab0ad2cf6f71c881aea953322 translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Introduction
 This guide describes how to implement Bluetooth Low Energy (BLE) scanning and advertising. It supports scenarios such as discovering nearby BLE devices and enabling other devices to detect the local device.
@@ -15,6 +15,10 @@ This guide describes how to implement Bluetooth Low Energy (BLE) scanning and ad
 
 ### Applying for Required Permissions
 Apply for the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+
+### Checking Whether Bluetooth Is Supported
+
+Call [isBluetoothSupported](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessisbluetoothsupported) to check whether the device supports Bluetooth. Proceed with the following steps only if Bluetooth is supported. Otherwise, do not use the related APIs.
 
 ### Importing Required Modules
 Import the **ble** and **BusinessError** modules.

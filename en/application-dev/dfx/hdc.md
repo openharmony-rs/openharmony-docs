@@ -6,9 +6,9 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a3465ee9687286e8938442ad1767b0c844bac9c7 translatedAt=2026-09-20T06:26:57.241Z pushedAt=2026-09-20T07:48:02.498Z -->
+<!-- md-trans-meta sourceCommit=abf9e5eb3e42c5a3b08a4676806060300cf86260 translatedAt=2026-11-28T03:12:44.829Z nl=1 -->
 
-OpenHarmony Device Connector (hdc) is a command line tool used to interact with devices for debugging, data transfer, log viewing, and application installation. It can run on Windows, Linux, and MacOS to provide efficient and convenient device debugging capabilities.
+OpenHarmony Device Connector (hdc) is a command line tool used to interact with devices for debugging, data transfer, log viewing, and application installation. It can run on Windows, Linux, MacOS, and OpenHarmony to provide efficient and convenient device debugging capabilities.
 
 hdc consists of three parts:
 
@@ -32,7 +32,7 @@ The following figure shows the relationship.
 
 You can obtain hdc in any of the following ways:
 
-1. Obtain the hdc tool through OpenHarmony SDK. OpenHarmony SDK is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/). No additional configuration is required. hdc is installed in **DevEco Studio/sdk/default/openharmony/toolchains** by default. On macOS, the SDK is installed in **DevEco Studio/Contents**.
+1. Obtain the hdc tool through OpenHarmony SDK. OpenHarmony SDK is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/). No additional configuration is required. hdc is installed in **DevEco Studio/sdk/default/openharmony/toolchains** by default. On macOS, the SDK is installed in **DevEco Studio/Contents**. To view the full hdc path, run **where hdc** or **which hdc** in the DevEco Studio terminal.
 
 2. Obtain related tools through the SDK directory of [Command Line Tools](https://developer.huawei.com/consumer/en/download/). hdc is installed in **Command Line Tools/sdk/default/openharmony/toolchains** by default.
 
@@ -54,7 +54,7 @@ hdc supports both USB and wireless connections. You can enable or disable debugg
 
    - Search for **Advanced system settings**. Choose **Environment Variables** > **System Variables** > **Path**, and click **Edit** to add the directory of **hdc.exe** to **Path**. After the environment variables are configured, restart the computer and run the hdc command in the CLI.
 
-2. On Linux/macOS:
+2. On Linux/macOS/OpenHarmony:
 
    - Start the terminal tool and run the following command:
 
@@ -1510,6 +1510,7 @@ The collected logs are stored in the following path.
 | Windows | %temp%\ | Example: **C:\\Users\Username\AppData\Local\Temp**.<br>Replace *Username* with the actual one.|
 | Linux | /tmp/ | - |
 | macOS| $TMPDIR/ | You can run the **echo $TMPDIR** command to view the actual path, and **cd $TMPDIR** to go to the corresponding directory.|
+| OpenHarmony | $TMPDIR/ | Example path: /storage/media/{currentUserId}/local/files/Docs/.hdc<br/>(Replace the user ID with the actual value.) |
 
 The log file types are as follows.
 
@@ -1649,6 +1650,7 @@ The recording log files are stored in the following paths:
 | Windows | %temp%\hdc_cmd\ | Example: **C:\\Users\Username\AppData\Local\Temp\hdc_cmd\\**<br/> (Replace the user name with the actual one.)|
 | Linux | /tmp/hdc_cmd/ | - |
 | macOS| $TMPDIR/hdc_cmd/ | - |
+| OpenHarmony | $TMPDIR/hdc_cmd/ | Example path: /storage/media/{currentUserId}/local/files/Docs/hdc_cmd<br/>(Replace the user ID with the actual value.) |
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
@@ -1687,6 +1689,7 @@ The following example describes how to set environment variables by setting **OH
 | Windows | In **Settings**, search for **View advanced system settings**. In **Environment Variables** > **System Variables** > **Path**, click **Edit** to add the environment variable **OHOS_HDC_LOG_LEVEL** whose value is **5**. After the configuration is complete, click **OK**. Restart the CLI or other software that uses OpenHarmony SDK for the new environment variable to take effect.|
 | Linux | Add **export OHOS_HDC_LOG_LEVEL=5** to the end of the **~/.bash_profile** file, save the file, and run the **source ~/.bash_profile** command for the current environment variable to take effect.|
 | macOS| Add **export OHOS_HDC_LOG_LEVEL=5** to the end of the **~/.zshrc** file, save the file, and run the **source ~/.zshrc** command for the current environment variable to take effect. Restart the CLI or other software that uses OpenHarmony SDK for the new environment variable to take effect.|
+| OpenHarmony | Append **export OHOS_HDC_LOG_LEVEL=5** to the end of **~/.zshrc** and save the file. Run **source ~/.zshrc** to apply the environment variable to the current session. After configuration, close and restart the command line or any other software that uses the OpenHarmony SDK for the new configuration to take effect. |
 
 ## hdc Version Mappings
 

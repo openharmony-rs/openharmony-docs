@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b3002ba9e170e60c2ca2ddd623c2ab4f4030ff0d translatedAt=2026-11-05T06:16:33.937Z pushedAt=2026-09-29T10:02:58.780Z nl=1 -->
+<!-- md-trans-meta sourceCommit=74f6be55956b790cf74f8d4b3682a09b0bdf1754 translatedAt=2026-11-28T03:12:44.827Z nl=1 -->
 
 ## Overview
 
@@ -103,12 +103,12 @@ Here, state saving refers to state saving upon a fault. For app freeze scenarios
 ### Enabling Application Recovery
 
 Import the required module.
-<!-- @[import_appRecovery_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[import_appRecovery_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
 import {
   appRecovery,
-// ...
+  // ...
 } from '@kit.AbilityKit';
 ```
 
@@ -144,6 +144,8 @@ The following is an example of **EntryAbility**:
 
 **Importing modules**
 
+<!-- @[import_save_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
 ``` TypeScript
 import {
   appRecovery,
@@ -155,7 +157,7 @@ import {
 } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-``` 
+```
 
 Customize the domain value used by hilog.
 <!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) --> 

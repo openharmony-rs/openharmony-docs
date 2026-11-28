@@ -2,10 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997; @dboy190-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1dfcae50ec6478bcfb98c5682df32acfd9099312 translatedAt=2026-10-31T01:20:51.446Z pushedAt=2026-10-31T03:29:52.206Z nl=1 -->
+<!-- md-trans-meta sourceCommit=53ac80e743ddb8a01710b3ccdebb61e2fb82390d translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 ## When to Use
 
@@ -442,6 +442,9 @@ The following example contains only the code snippet for the restore process. Th
             }
             hilog.error(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
           }
+        }).catch((err: Error) => {
+          let e = err as BusinessError;
+          hilog.error(DOMAIN, 'BackupAndRestore', `Failed to query. Code:${e.code}, message:${e.message}`);
         })
     }
     ```

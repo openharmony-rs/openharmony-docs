@@ -5,7 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-10-31T01:29:10.004Z pushedAt=2026-10-31T03:42:08.382Z nl=1 -->
+<!-- md-trans-meta sourceCommit=24cb7130c2fa26539d2271d78e3dd3f951ea41dd translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 
 ## When to Use
@@ -39,7 +39,9 @@ You can call location-related APIs to listen for device location changes.
 
 3. Add the dynamic dependency libraries into the **CMakeLists.txt** file.
 
-   ```c
+   <!-- @[location_capi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/CMakeLists.txt) -->
+
+   ``` Text
    target_link_libraries(entry PUBLIC libace_napi.z.so)
    target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    target_link_libraries(entry PUBLIC liblocation_ndk.so)
@@ -47,12 +49,14 @@ You can call location-related APIs to listen for device location changes.
 
 4. Write the **napi_init.cpp** file to import related modules.
 
-   ```c
+   <!-- @[location_capi_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    #include "napi/native_api.h"
    #include "LocationKit/oh_location.h"
    #include "LocationKit/oh_location_type.h"
    #include "hilog/log.h"
-   #include <stdlib.h>
+   #include <cstdlib>
    #include <string>
    ```
 
@@ -61,152 +65,157 @@ You can call location-related APIs to listen for device location changes.
 
    The return result is a Boolean value. The value **true** indicates that the location switch is enabled, and the value **false** indicates the opposite.
 
-   ```c
-    std::string GetErrorMsgFromErrorCode(int errorCode)
-    {
-        switch(errorCode) {
-           case LOCATION_PERMISSION_DENIED:
-              return "Permission verification failed. The application does not have the permission required to call the API.";
-           case LOCATION_INVALID_PARAM:
-              return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.";
-           case LOCATION_NOT_SUPPORTED:
-              return "Capability not supported. Failed to call this API due to limited device capabilities.";
-           case LOCATION_SERVICE_UNAVAILABLE:
-              return "The location service is unavailable.";
-           case LOCATION_SWITCH_OFF:
-              return "The location switch is off.";
-           default:
-              return "Unknown error. error code: " + std::to_string(errorCode);
-        }
-    }
+   <!-- @[location_capi_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
 
-    static napi_value OhLocationIsEnabled(napi_env env, napi_callback_info info)
-    {
-        bool isEnabled = false;
-        int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
-        napi_value result = NULL;
-        if (resultCode != LOCATION_SUCCESS) {
-           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
-           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
-           napi_get_undefined(env, &result);
-           return result;
-        }
-        napi_get_boolean(env, isEnabled, &result);
-        return result;
-    }
-    // Add related APIs to the Init function.
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        napi_property_descriptor desc[] = {
-            {"ohLocationIsEnabled", NULL, OhLocationIsEnabled, NULL, NULL, NULL, napi_default, NULL},
-        };
-        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-        return exports;
-    }
-    EXTERN_C_END
+   ``` C++
+   std::string GetErrorMsgFromErrorCode(int errorCode)
+   {
+      switch (errorCode) {
+         case LOCATION_PERMISSION_DENIED:
+            return "Permission verification failed. The application does not have the permission"
+               " required to call the API.";
+         case LOCATION_INVALID_PARAM:
+            return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; "
+               "2. Incorrect parameter types; 3. Parameter verification failed.";
+         case LOCATION_NOT_SUPPORTED:
+            return "Capability not supported. Failed to call this API due to limited device capabilities.";
+         case LOCATION_SERVICE_UNAVAILABLE:
+            return "The location service is unavailable.";
+         case LOCATION_SWITCH_OFF:
+            return "The location switch is off.";
+         default:
+            return "Unknown error. error code: " + std::to_string(errorCode);
+      }  
+   }
+
+   static napi_value OhLocationIsEnabled(napi_env env, napi_callback_info info)
+   {
+      bool isEnabled = false;
+      int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
+      napi_value result = nullptr;
+      if (resultCode != LOCATION_SUCCESS) {
+         std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+         napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
+      napi_get_boolean(env, isEnabled, &result);
+      return result;
+   }
    ```
 
 6. Start positioning and subscribe to location changes.
 
-   ```c
+   <!-- @[location_capi_locating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    // Define a location request.
-   struct Location_RequestConfig *g_requestConfig = NULL;
-   void *mydata = NULL;
+   struct Location_RequestConfig *g_requestConfig = nullptr;
+   void *g_mydata = nullptr;
    
    // Define a callback to receive location information.
    void reportLocation(Location_Info* location, void* userData)
    {
-       Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
-       char additionalInfo[1024] = "";
-       Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
-       // Compare the returned userData with mydata to determine whether this is a location request callback carrying the mydata field.
-       if (mydata == userData) {
-           OH_LOG_INFO(LOG_APP, "userData is mydata");
-       }
-       return;
+      Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
+      char additionalInfo[1024] = "";
+      Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
+      // Compare the returned userData with g_mydata to identify the location request carrying g_mydata.
+      if (g_mydata == userData) {
+         OH_LOG_INFO(LOG_APP, "userData is g_mydata");
+      }
+      // ...
+      return;
    }
 
    // Subscribe to location information.
    static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
    {
-       if (g_requestConfig == NULL) {
-          g_requestConfig = OH_Location_CreateRequestConfig();
-       }
-       OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
-       OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
-       // mydata: a user-defined value of any type. This field is returned when the reportLocation callback is triggered, and is used to determine whether this is a location request callback carrying the mydata field.
-       mydata = (void *)malloc(sizeof("mydata"));
-       napi_value result = NULL;
-       if (mydata == NULL) {
-          int errCode = LOCATION_INVALID_PARAM;
-          std::string errorMsg = GetErrorMsgFromErrorCode(errCode);
-          napi_throw_error(env, std::to_string(errCode).c_str(), errorMsg.c_str());
-          napi_get_undefined(env, &result);
-          return result;
-       }
+      if (g_requestConfig == nullptr) {
+         g_requestConfig = OH_Location_CreateRequestConfig();
+      }
+      OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
+      OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
+      // g_mydata: user-defined data of any type, passed back to reportLocation to identify the corresponding location request.
+      g_mydata = static_cast<void *>(malloc(sizeof("g_mydata")));
+      napi_value result = nullptr;
+      if (g_mydata == nullptr) {
+         int errCode = LOCATION_INVALID_PARAM;
+         std::string errorMsg = GetErrorMsgFromErrorCode(errCode);
+         napi_throw_error(env, std::to_string(errCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
 
-       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
-       int resultCode = OH_Location_StartLocating(g_requestConfig);
-       if (resultCode != LOCATION_SUCCESS) {
-           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
-           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
-           napi_get_undefined(env, &result);
-           return result;
-       }
-       napi_create_int32(env, resultCode, &result);
-       return result;
+      OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, g_mydata);
+      int resultCode = OH_Location_StartLocating(g_requestConfig);
+      if (resultCode != LOCATION_SUCCESS) {
+         std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+         napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
+      napi_create_int32(env, resultCode, &result);
+      return result;
    }
 
    // Unsubscribe from location information. The value of g_requestConfig must be the same as the object passed during subscription.
    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
    {
-       int32_t resultCode = OH_Location_StopLocating(g_requestConfig);
-       if (g_requestConfig != NULL) {
-           OH_Location_DestroyRequestConfig(g_requestConfig);
-           g_requestConfig = NULL;
-       }
-       if (mydata != NULL) {
-           free(mydata);
-           mydata = NULL;
-       }
-       napi_value result = NULL;
-       if (resultCode != LOCATION_SUCCESS) {
-           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
-           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
-           napi_get_undefined(env, &result);
-           return result;
-       }
-       napi_create_int32(env, resultCode, &result);
-       return result;
+      int32_t resultCode = OH_Location_StopLocating(g_requestConfig);
+      if (g_requestConfig != nullptr) {
+         OH_Location_DestroyRequestConfig(g_requestConfig);
+         g_requestConfig = nullptr;
+      }
+      if (g_mydata != nullptr) {
+         free(g_mydata);
+         g_mydata = nullptr;
+      }
+      napi_value result = nullptr;
+      if (resultCode != LOCATION_SUCCESS) {
+         std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+         napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+         napi_get_undefined(env, &result);
+         return result;
+      }
+      napi_create_int32(env, resultCode, &result);
+      return result;
    }
+   ```
 
-   // Add related APIs to the Init function.
+7. Add the APIs to the **Init** function.
+
+   <!-- @[location_capi_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
    {
-       napi_property_descriptor desc[] = {
-           {"ohLocationStartLocating", NULL, OhLocationStartLocating, NULL, NULL, NULL, napi_default, NULL},
-           {"ohLocationStopLocating", NULL, OhLocationStopLocating, NULL, NULL, NULL, napi_default, NULL},
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
+      napi_property_descriptor desc[] = {
+         {"ohLocationIsEnabled", nullptr, OhLocationIsEnabled, nullptr, nullptr, nullptr, napi_default, nullptr},
+         {"ohLocationStartLocating", nullptr, OhLocationStartLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
+         {"ohLocationStopLocating", nullptr, OhLocationStopLocating, nullptr, nullptr, nullptr, napi_default, nullptr},
+         // ...
+      };
+      napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+      return exports;
    }
    EXTERN_C_END
    ```
 
-7. Introduce the NAPI APIs to the **index.d.ts** file in **types/libentry**.
+8. Introduce the NAPI APIs to the **index.d.ts** file in **types/libentry**.
 
-   ```c
+   <!-- @[location_capi_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/cpp/types/libentry/index.d.ts) -->
+
+   ``` TypeScript
    export const ohLocationIsEnabled: () => boolean;
    export const ohLocationStartLocating: () => number;
    export const ohLocationStopLocating: () => number;
    ```
 
-8. Delete deprecated functions from the **Index.ets** file.
+9. Delete deprecated functions from the **Index.ets** file.
 
    ```js
    .onClick(() => {
-       hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
+      hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
    })
    ```

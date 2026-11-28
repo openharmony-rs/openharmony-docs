@@ -6,7 +6,7 @@
 <!--Designer: @csuxsh-->
 <!--Tester: @zhujieliang-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6174dbe83735166d6bba14dbb2029a3e65a74471 translatedAt=2026-07-27T08:17:04.810Z pushedAt=2026-07-27T10:01:03.430Z -->
+<!-- md-trans-meta sourceCommit=30e4283bf08253ae9c214c3b4b20b868b85c7697 translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 SQLite is a lightweight, embedded, serverless relational database management system. Its core advantage is that the entire database is stored in a single file, without the need for an independent server process. It supports cross-platform operation and is widely used in mobile applications, embedded devices, and desktop software.
 

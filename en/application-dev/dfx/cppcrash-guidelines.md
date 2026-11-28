@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=387418431118b0206a5f06ecae6bfd10ec6dc0f0 translatedAt=2026-09-16T02:35:43.921Z pushedAt=2026-09-16T03:33:12.586Z -->
+<!-- md-trans-meta sourceCommit=6aca03df325978f397c8f09f3605fe8aa48f05a4 translatedAt=2026-11-28T03:12:44.827Z nl=2 -->
 
 ## Overview
 
@@ -501,6 +501,8 @@ Stack overflow may occur in the following scenarios:
 - The stack memory used in the signal stack exceeds the system limit.
 
 The following example shows that the stack memory is used up because the recursive termination condition is not set during recursive call.
+
+<!-- @[CppCrash_Stack_Overflow_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
 ```c++
 static void *DoStackOverflow(void * inputArg) __attribute__((optnone))
@@ -1043,24 +1045,27 @@ App bundle name with pid xxxx exit with signal:13
 
   Filter logs in HILOG by using the keyword `C02D11`. If the filtered logs contain information about the line where the exception occurs, the call stack feature has been enabled successfully.
 
-  The following example uses the `testSIGPIPE()` function to construct a SIGPIPE exception scenario:
+  The following example uses the `TestSigpipe()` function to construct a SIGPIPE exception scenario:
+
+  <!-- @[CppCrash_Sigpipe_Test_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
 
   ```c++
   #include <unistd.h>
-  #include <signal.h>
+  #include <csignal>
 
-  int testSIGPIPE()
+  int TestSigpipe()
   {
-      sigset_t set, oldset;
+      sigset_t set;
+      sigset_t oldset;
       // Initialize the signal set and add the signal to be temporarily unblocked.
       sigemptyset(&set);
       sigaddset(&set, SIGPIPE);
       // Save the current signal mask first.
-      if (sigprocmask(SIG_SETMASK, NULL, &oldset) != 0) {
+      if (sigprocmask(SIG_SETMASK, nullptr, &oldset) != 0) {
           return -1;
       }
       // Temporarily unblock the signal.
-      if (sigprocmask(SIG_UNBLOCK, &set, NULL) != 0) {
+      if (sigprocmask(SIG_UNBLOCK, &set, nullptr) != 0) {
           return -1;
       }
       // After creating the pipe, close the read end first, then continue writing to the write end to construct a SIGPIPE exception scenario.
@@ -1072,16 +1077,16 @@ App bundle name with pid xxxx exit with signal:13
       int src = 1;
       write(pipe[1], reinterpret_cast<const void*>(&src), sizeof(int));
       close(pipe[1]);
-    
+
       // Finally, restore the original mask.
-      if (sigprocmask(SIG_SETMASK, &oldset, NULL) != 0) {
+      if (sigprocmask(SIG_SETMASK, &oldset, nullptr) != 0) {
           return -1;
       }
       return 0;
   }
   ```
 
-  Filter the logs. If the call stack shows that the exception occurs in `testSIGPIPE()`, the feature is enabled successfully.
+  Filter the logs. If the call stack shows that the exception occurs in `TestSigpipe()`, the feature is enabled successfully.
 
   ```text
   ...
@@ -1095,7 +1100,7 @@ App bundle name with pid xxxx exit with signal:13
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Fault thread info:
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     Tid:19787, Name:e.myapplication
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #00 pc 00000000001e8150 /system/lib/ld-musl-aarch64.so.1(write+68)(90776dcdb3f38042fc78b97d93138bde)
-  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #01 pc 0000000000001cf8 /data/storage/el1/bundle/libs/arm64/libentry.so(testSIGPIPE()+228)(d6af99a8111f4c2761800cb1432bea140f5176e4)
+  03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #01 pc 0000000000001cf8 /data/storage/el1/bundle/libs/arm64/libentry.so(TestSigpipe()+228)(d6af99a8111f4c2761800cb1432bea140f5176e4)
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #02 pc 0000000000001e34 /data/storage/el1/bundle/libs/arm64/libentry.so(d6af99a8111f4c2761800cb1432bea140f5176e4)
   ...
   ```

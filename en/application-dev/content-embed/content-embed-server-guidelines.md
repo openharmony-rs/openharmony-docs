@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=16e4c027f369ebe528abfd2256a067c2dde5264f translatedAt=2026-10-08T03:43:09.012Z pushedAt=2026-10-08T06:12:58.758Z -->
+<!-- md-trans-meta sourceCommit=f70c18b4fce2f79f2f5957342d67b8cf123678ec translatedAt=2026-11-28T01:24:29.784Z nl=1 -->
 
 ## When to Use
 
@@ -105,7 +105,9 @@ Configuration description:
 ### Adding Dynamic Libraries
 Add the following link libraries to **src/main/cpp/CMakeLists.txt** of the Native project.
 
-```txt
+<!-- @[content_embed_server_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/CMakeLists.txt) -->  
+
+``` Text
 target_link_libraries(entry PUBLIC
     libcontent_embed_ndk.so
     libhilog_ndk.z.so
@@ -113,15 +115,21 @@ target_link_libraries(entry PUBLIC
     libpixelmap.so
     libability_runtime.so
     libability_base_want.so
-    libohfileuri.so
     libimage_source.so
+    libohfileuri.so
+    libuv.so
 )
 ```
 
 ### Including Header Files
 
-```cpp
+<!-- @[content_embed_server_include_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 #include <cstdint>
+#include <string>
+#include <vector>
+#include <unordered_map>
 #include <fstream>
 #include <hilog/log.h>
 #include <AbilityKit/ability_base/want.h>
@@ -134,7 +142,9 @@ target_link_libraries(entry PUBLIC
 
 ### Defining Global Variables
 
-```cpp
+<!-- @[content_embed_server_global_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static ContentEmbed_ExtensionInstanceHandle g_instance = nullptr;
 ```
 
@@ -142,8 +152,12 @@ static ContentEmbed_ExtensionInstanceHandle g_instance = nullptr;
 
 When the OE Extension of an OE server application is started by the system to respond to an OE client request, the [OH_AbilityRuntime_OnNativeExtensionCreate](../reference/apis-ability-kit/capi-extension-ability-h.md#oh_abilityruntime_onnativeextensioncreate) function is executed first. You need to register OE Extension callbacks in this function to respond to client requests.
 
-```cpp
-extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_ExtensionInstance *instance, const char *abilityName) {
+<!-- @[content_embed_server_register_extension_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
+extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_ExtensionInstance *instance,
+                                                          const char *abilityName)
+{
     if (instance == nullptr) {
         OH_LOG_ERROR(LOG_APP, "instance is null");
         return;
@@ -187,7 +201,9 @@ extern "C" void OH_AbilityRuntime_OnNativeExtensionCreate(AbilityRuntime_Extensi
 
 ### Implementing Lifecycle Callbacks for Creation and Destruction
 
-```cpp
+<!-- @[content_embed_server_on_create_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void NativeOnCreate(ContentEmbed_ExtensionInstanceHandle instance, AbilityBase_Want *want)
 {
     OH_LOG_INFO(LOG_APP, "enter NativeOnCreate");
@@ -205,20 +221,25 @@ When an OE client calls [OH_ContentEmbed_Proxy_StartWork](../reference/apis-cont
 
 When an OE client calls [OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork) to detach the client OE object from the server OE object, the system triggers the `RegisterOnObjectDetachFunc` callback of the OE server. After this callback, the server OE object becomes invalid.
 
-```cpp
+<!-- @[content_embed_server_on_object_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
 {
+    // ...
     ContentEmbed_ErrorCode ret = CE_ERR_OK;
     // This callback is executed when the OE document is created based on a file.
     ret = OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc(object, NativeOnWriteToDataStream);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc failed, errCode: %{public}d.", ret);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc failed, errCode: %{public}d.", ret);
         return;
     }
     // Obtain the capabilities of the current OE Extension.
     ret = OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc(object, NativeOnGetCapability);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc failed, errCode: %{public}d.", ret);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc failed, errCode: %{public}d.", ret);
         return;
     }
     // Trigger the editing operation for the OE document.
@@ -236,7 +257,8 @@ static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle inst
     // Query the current editing status of the OE document.
     ret = OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc(object, NativeOnGetEditStatusFunc);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc failed, errCode: %{public}d.", ret);
+        OH_LOG_ERROR(LOG_APP,
+            "OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc failed, errCode: %{public}d.", ret);
         return;
     }
 }
@@ -244,6 +266,7 @@ static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle inst
 static void RegisterOnObjectDetachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
 {
     OH_LOG_INFO(LOG_APP, "enter RegisterOnObjectDetachFunc");
+    // ...
 }
 ```
 
@@ -251,15 +274,18 @@ static void RegisterOnObjectDetachFunc(ContentEmbed_ExtensionInstanceHandle inst
 
 When an OE client embeds an OE object by creating a new object type or using an existing file, the OE object can be displayed as a document snapshot in the OE client UI. After the OE Extension starts, the OE client obtains the document snapshot by calling [OH_ContentEmbed_Proxy_GetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot), which triggers the `NativeOnGetSnapshot` callback of the OE server. In this callback, the OE server application must call [OH_ContentEmbed_Extension_SetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_setsnapshot) to set the OE document snapshot.
 
-```cpp
+<!-- @[content_embed_server_on_get_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
 {
-    // Path of the current OE document snapshot.
-    std::string path = "/data/storage/el2/base/haps/entry/temp/snapshot_demo.png";
+    // ...
+    std::string objectKey = std::to_string(reinterpret_cast<uintptr_t>(object));
+    std::string path = "/data/storage/el2/base/haps/entry/temp/web_snapshot_" + objectKey + ".png";
     // Check whether a thumbnail generated by the UI exists.
     FILE *srcFile = fopen(path.c_str(), "rb");
     if (!srcFile) {
-        OH_LOG_ERROR(LOG_APP, "Failed to open the file");
+        OH_LOG_ERROR(LOG_APP, "Open file failed");
         return;
     }
     int fd = fileno(srcFile);
@@ -268,6 +294,9 @@ static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
     Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromFd(fd, &source);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreateFromFd failed, errCode: %{public}d.", errCode);
+        if (fclose(srcFile) != 0) {
+            OH_LOG_ERROR(LOG_APP, "NativeOnGetSnapshot fclose failed after CreateFromFd.");
+        }
         return;
     }
     // Create a PixelMap object based on image decoding parameters.
@@ -276,18 +305,25 @@ static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
     // When AUTO is set, decoding is performed based on the image resource format. If the image resource is an HDR resource, it is decoded into an HDR pixel map.
     OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
     OH_PixelmapNative *resPixMap = nullptr;
-
     // The ops parameter can be nullptr. If no decoding parameters need to be set, you do not need to create it.
     errCode = OH_ImageSourceNative_CreatePixelmap(source, ops, &resPixMap);
     OH_DecodingOptions_Release(ops);
     if (errCode != IMAGE_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreatePixelmap failed, errCode: %{public}d.", errCode);
+        OH_ImageSourceNative_Release(source);
+        if (fclose(srcFile) != 0) {
+            OH_LOG_ERROR(LOG_APP, "NativeOnGetSnapshot fclose failed after CreatePixelmap.");
+        }
         return;
     }
     // Set the snapshot.
     ContentEmbed_ErrorCode ret = OH_ContentEmbed_Extension_SetSnapshot(object, resPixMap);
     // Release the ImageSource instance.
     OH_ImageSourceNative_Release(source);
+    OH_PixelmapNative_Release(resPixMap);
+    if (fclose(srcFile) != 0) {
+        OH_LOG_ERROR(LOG_APP, "NativeOnGetSnapshot fclose failed.");
+    }
 }
 ```
 
@@ -295,92 +331,162 @@ static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
 
 After the OE Extension starts, the OE client notifies the OE server to edit the OE document by calling [OH_ContentEmbed_Proxy_DoEdit](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_doedit), which triggers the `NativeOnDoEdit` callback of the OE server. In this callback, the OE server application must call [OH_ContentEmbed_Extension_ContextStartSelfUIAbility](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability) or [OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions) to start the UIAbility of the OE server application for document editing.
 
-```cpp
-static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
+<!-- @[content_embed_server_on_do_edit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
+constexpr const char* TEMP_CACHE_PATH_PREFIX = "/data/storage/el2/base/cache/temp_";
+constexpr const char* DOC_STREAM_NAME = "aaa";
+constexpr uint32_t BUNDLE_NAME_BUFFER_SIZE = 100;
+static void SetTempWantUri(AbilityBase_Want *want, const std::string &objectKey)
 {
-    ContentEmbed_ErrorCode ret = CE_ERR_OK;
-    ContentEmbed_Document* ceDocument;
-    // Obtain the current OE document.
-    ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, &ceDocument);
-    if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument failed, errCode: %{public}d.", ret);
-        return;
+    // Set the file path.
+    std::string tempPath = std::string(TEMP_CACHE_PATH_PREFIX) + objectKey + ".aaa";
+    char *tempFileUri = nullptr;
+    OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
+    if (tempFileUri != nullptr) {
+        OH_AbilityBase_SetWantUri(want, tempFileUri);
+        free(tempFileUri);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "SetTempWantUri GetUriFromPath returned null: %{public}s", tempPath.c_str());
     }
-    // Obtain the current context instance.
-    ContentEmbed_ExtensionContextHandle context;
-    ret = OH_ContentEmbed_Extension_GetContentEmbedContext(g_instance, &context);
-    if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedContext failed, errCode: %{public}d.", ret);
-        return;
+}
+
+static AbilityBase_Want* PrepareDoEditWant(ContentEmbed_Document* ceDocument, const std::string& objectKey,
+                                           char* bundleNameBuffer, uint32_t bundleNameBufferSize)
+{
+    // ...
+    int32_t writeLen = 0;
+    AbilityRuntime_ErrorCode abilityCode =
+        OH_AbilityRuntime_ApplicationContextGetBundleName(bundleNameBuffer, bundleNameBufferSize, &writeLen);
+    if (abilityCode != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
+        OH_LOG_ERROR(LOG_APP, "OnCreate get bundleName failed: %{public}d", abilityCode);
+        return nullptr;
     }
-    // Information about the UIAbility to start.
-    char* bundleName = "com.example.oeserverdemo"; // Bundle name of the server application.
-    char* moduleName = "entry";
-    char* abilityName = "EntryAbility";
-    // Create a Want object.
+    const char* moduleName = "entry";
+    const char* abilityName = "EntryAbility";
     AbilityBase_Element element = {
-        .bundleName = bundleName,
-        .moduleName = moduleName,
-        .abilityName = abilityName,
+        .bundleName = bundleNameBuffer,
+        .moduleName = const_cast<char*>(moduleName),
+        .abilityName = const_cast<char*>(abilityName),
     };
     AbilityBase_Want* want = OH_AbilityBase_CreateWant(element);
-    // Obtain the RootStorage of the OE document.
-    ContentEmbed_Storage *rootStorage = nullptr;
+    if (want == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "NativeOnDoEdit CreateWant failed");
+        return nullptr;
+    }
+    // ...
+    return want;
+}
+
+static bool WriteEmbeddedDocToTemp(ContentEmbed_Stream* childStream, AbilityBase_Want* want,
+                                   const std::string& objectKey)
+{
+    size_t bufferSize = 0;
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Stream_GetSize(childStream, &bufferSize);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_GetSize failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    ret = OH_ContentEmbed_Stream_Seek(childStream, 0);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Seek failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    unsigned char* buffer = nullptr;
+    size_t num = 0;
+    ret = OH_ContentEmbed_Stream_Read(childStream, &buffer, bufferSize, &num);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Read failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    std::string tempPath = std::string(TEMP_CACHE_PATH_PREFIX) + objectKey + ".aaa";
+    std::ofstream outputFile(tempPath, std::ios::out | std::ios::binary);
+    if (outputFile.is_open()) {
+        outputFile.write(reinterpret_cast<const char*>(buffer), bufferSize);
+        outputFile.close();
+        OH_LOG_INFO(LOG_APP, "Write data successful.");
+    } else {
+        OH_LOG_ERROR(LOG_APP, "Cannot open output file.");
+    }
+    SetTempWantUri(want, objectKey);
+    return true;
+}
+
+// ...
+
+static bool AcquireDoEditResources(ContentEmbed_ObjectHandle object, const std::string& objectKey,
+                                   ContentEmbed_Document** doc, ContentEmbed_ExtensionContextHandle* ctx,
+                                   AbilityBase_Want** want, char* bundleNameBuffer,
+                                   uint32_t bundleNameBufferSize)
+{
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, doc);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    ret = OH_ContentEmbed_Extension_GetContentEmbedContext(g_instance, ctx);
+    if (ret != CE_ERR_OK) {
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedContext failed, errCode: %{public}d.", ret);
+        return false;
+    }
+    *want = PrepareDoEditWant(*doc, objectKey, bundleNameBuffer, bundleNameBufferSize);
+    return *want != nullptr;
+}
+
+static void ReleaseDoEditResources(AbilityBase_Want* want, ContentEmbed_Stream* childStream,
+                                   ContentEmbed_Storage* rootStorage)
+{
+    if (want != nullptr) {
+        OH_AbilityBase_DestroyWant(want);
+    }
+    if (childStream != nullptr) {
+        OH_ContentEmbed_DestroyStream(childStream);
+    }
+    if (rootStorage != nullptr) {
+        OH_ContentEmbed_DestroyStorage(rootStorage);
+    }
+}
+
+static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
+{
+    // ...
+    std::string objectKey = std::to_string(reinterpret_cast<uintptr_t>(object));
+    char bundleNameBuffer[BUNDLE_NAME_BUFFER_SIZE] = {};
+    ContentEmbed_Document* ceDocument = nullptr;
+    ContentEmbed_ExtensionContextHandle context = nullptr;
+    AbilityBase_Want* want = nullptr;
+    // Obtain ceDocument and context, and set want.
+    if (!AcquireDoEditResources(object, objectKey, &ceDocument, &context, &want,
+                                 bundleNameBuffer, BUNDLE_NAME_BUFFER_SIZE)) {
+        return;
+    }
+    ContentEmbed_ErrorCode ret = CE_ERR_OK;
+    ContentEmbed_Storage* rootStorage = nullptr;
+    ContentEmbed_Stream* childStream = nullptr;
     ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage failed, errCode: %{public}d.", ret);
+        ReleaseDoEditResources(want, childStream, rootStorage);
         return;
     }
-    // Check whether the document contains the specified stream.
-    ContentEmbed_Stream *childStream;
-    char* fileType = "aaa";
-    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, fileType, &childStream);
+    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, DOC_STREAM_NAME, &childStream);
     if (ret == CE_ERR_OK) {
-        size_t bufferSize;
-        // Obtain the size of the OE document stream.
-        ret = OH_ContentEmbed_Stream_GetSize(childStream, &bufferSize);
-        if (ret != CE_ERR_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_GetSize failed, errCode: %{public}d.", ret);
+        if (!WriteEmbeddedDocToTemp(childStream, want, objectKey)) {
+            ReleaseDoEditResources(want, childStream, rootStorage);
             return;
         }
-        // Reset the stream position before calling Read.
-        ret = OH_ContentEmbed_Stream_Seek(childStream, 0);
-        if (ret != CE_ERR_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Seek failed, errCode: %{public}d.", ret);
-            return;
-        }
-        unsigned char *buffer;
-        size_t num = 0;
-        // Read stream data.
-        ret = OH_ContentEmbed_Stream_Read(childStream, &buffer, bufferSize, &num);
-        if (ret != CE_ERR_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Read failed, errCode: %{public}d.", ret);
-            return;
-        }
-        std::string tempPath = "/data/storage/el2/base/cache/temp_demo.aaa";
-        // Create an output file stream object and open the file in binary mode.
-        std::ofstream outputFile(tempPath, std::ios::out | std::ios::binary);
-        // Check whether the file is opened successfully.
-        if (outputFile.is_open()) {
-            // Write the buffer content to the file.
-            outputFile.write(reinterpret_cast<const char*>(buffer), bufferSize);
-            // Close the file. The destructor closes it automatically, but explicit close is a good practice.
-            outputFile.close();
-            OH_LOG_INFO(LOG_APP, "Data written successfully.");
-        } else {
-            OH_LOG_ERROR(LOG_APP, "Failed to open the file.");
-        }
-        char* tempFileUri;
-        OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
-        // Set the file path.
-        OH_AbilityBase_SetWantUri(want, tempFileUri);
+    } else {
+        // ...
     }
     // Start the UIAbility to edit the document.
     ret = OH_ContentEmbed_Extension_ContextStartSelfUIAbility(context, want);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_ContextStartSelfUIAbility failed, errCode: %{public}d.", ret);
+        ReleaseDoEditResources(want, childStream, rootStorage);
         return;
     }
+    ReleaseDoEditResources(want, childStream, rootStorage);
+    // ...
 }
 ```
 
@@ -388,7 +494,9 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
 
 After the OE Extension starts, the OE client obtains the capabilities of the OE server by calling [OH_ContentEmbed_Proxy_GetCapability](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getcapability), which triggers the `NativeOnGetCapability` callback of the OE server. In this callback, the OE server application assigns a value to the `bitmask` attribute to notify the OE client of its capabilities.
 
-```cpp
+<!-- @[content_embed_server_on_get_capability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
 static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bitmask)
 {
     if (!bitmask) {
@@ -403,7 +511,9 @@ static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bi
 
 After the OE Extension starts, the OE client obtains the editing status of the OE document by calling [OH_ContentEmbed_Proxy_GetEditStatus](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_geteditstatus), which triggers the `NativeOnGetEditStatusFunc` callback of the OE server. In this callback, the OE server application notifies the OE client of the document editing status.
 
-```cpp
+<!-- @[content_embed_server_on_get_edit_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->
+
+``` C++
 static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *isEditing, bool *isModified)
 {
     if (!isEditing || !isModified) {
@@ -413,6 +523,7 @@ static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *is
     // If the document is not being edited.
     *isEditing = false;
     *isModified = false;
+    // ...
 }
 ```
 
@@ -420,7 +531,56 @@ static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *is
 
 When an OE client embeds an OE object based on an existing file and the OE Extension starts, the `NativeOnWriteToDataStream` callback of the OE server is triggered. In this callback, the OE server must write data to the OE document.
 
-```cpp
+<!-- @[content_embed_server_on_write_to_data_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ContentEmbedKit/OEServerDemo/entry/src/main/cpp/ole_ext_ability.cpp) -->  
+
+``` C++
+// Obtain the stream named aaa.
+constexpr const char* DOCUMENT_STREAM_NAME = "aaa";
+static ContentEmbed_ErrorCode OpenOrCreateChildStream(ContentEmbed_Document *document,
+                                                      ContentEmbed_Stream **stream)
+{
+    ContentEmbed_Storage *rootStorage = nullptr;
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Document_GetRootStorage(document, &rootStorage);
+    if (ret != CE_ERR_OK || rootStorage == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "OpenOrCreateChildStream GetRootStorage failed: %{public}d", ret);
+        return ret;
+    }
+    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, DOCUMENT_STREAM_NAME, stream);
+    if (ret != CE_ERR_OK) {
+        ret = OH_ContentEmbed_Storage_CreateStream(rootStorage, DOCUMENT_STREAM_NAME, stream);
+    }
+    OH_ContentEmbed_DestroyStorage(rootStorage);
+    if (ret != CE_ERR_OK || *stream == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "OpenOrCreateChildStream open/create stream failed: %{public}d", ret);
+        if (*stream != nullptr) {
+            OH_ContentEmbed_DestroyStream(*stream);
+            *stream = nullptr;
+        }
+        return ret;
+    }
+    return CE_ERR_OK;
+}
+
+static ContentEmbed_ErrorCode WriteFileToStream(ContentEmbed_Stream *stream, const std::string &filePath)
+{
+    std::ifstream oriFile(filePath, std::ios::binary);
+    if (!oriFile) {
+        OH_LOG_ERROR(LOG_APP, "WriteFileToStream open file failed: %{public}s", filePath.c_str());
+        return CE_ERR_FILE_OPERATION_FAILED;
+    }
+    oriFile.seekg(0, std::ios::end);
+    size_t oriFileSize = static_cast<size_t>(oriFile.tellg());
+    oriFile.seekg(0, std::ios::beg);
+    std::vector<unsigned char> buffer(oriFileSize);
+    oriFile.read(reinterpret_cast<char *>(buffer.data()), static_cast<std::streamsize>(oriFileSize));
+    ContentEmbed_ErrorCode ret = OH_ContentEmbed_Stream_Seek(stream, 0);
+    OH_LOG_INFO(LOG_APP, "WriteFileToStream Seek ret: %{public}d", ret);
+    size_t num = 0;
+    ret = OH_ContentEmbed_Stream_Write(stream, buffer.data(), oriFileSize, &num);
+    OH_LOG_INFO(LOG_APP, "WriteFileToStream Write ret: %{public}d, num: %{public}zu", ret, num);
+    return ret;
+}
+
 static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
 {
     ContentEmbed_ErrorCode ret = CE_ERR_OK;
@@ -431,53 +591,35 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
         return;
     }
-    // Obtain Root Storage.
-    ContentEmbed_Storage *rootStorage = nullptr;
-    ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
+    ContentEmbed_Stream* destStream = nullptr;
+    ret = OpenOrCreateChildStream(ceDocument, &destStream);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OpenOrCreateChildStream failed: %{public}d", ret);
         return;
     }
-
-    ContentEmbed_Stream *destStream;
-    char* fileType = "aaa";
-    // Obtain the stream named aaa.
-    ret = OH_ContentEmbed_Storage_GetStream(rootStorage, fileType, &destStream);
-    if (ret != CE_ERR_OK) {
-        // Create the stream named aaa if the stream fails to be obtained.
-        ret = OH_ContentEmbed_Storage_CreateStream(rootStorage, fileType, &destStream);
-    }
     // Obtain the local file path.
-    char nativeFilePath[MAX_PATH_LENGTH];
+    char nativeFilePath[MAX_PATH_LENGTH] = {0};
     ret = OH_ContentEmbed_Document_GetNativeFilePath(ceDocument, nativeFilePath);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
+        OH_ContentEmbed_DestroyStream(destStream);
         return;
     }
-
-    std::string srcStreamPath = std::string(nativeFilePath);
-    std::ifstream oriFile(srcStreamPath, std::ios::binary);
-    if (!oriFile) {
-        OH_LOG_ERROR(LOG_APP, "File not found");
-        return;
-    }
-    oriFile.seekg(0, std::ios::end);
-    size_t oriFileSize = oriFile.tellg();
-    oriFile.seekg(0, std::ios::beg);
-    std::vector<unsigned char> buffer(oriFileSize);
-    oriFile.read(reinterpret_cast<char*>(buffer.data()), oriFileSize);
-    size_t num = 0;
-    // Write data to the OE document.
-    ret = OH_ContentEmbed_Stream_Write(destStream, buffer.data(), oriFileSize, &num);
+    // Read the local file and write the data to the OE document.
+    ret = WriteFileToStream(destStream, nativeFilePath);
     if (ret != CE_ERR_OK) {
-        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "WriteFileToStream ret: %{public}d", ret);
+        OH_ContentEmbed_DestroyStream(destStream);
         return;
     }
     // Flush the OE document.
     ret = OH_ContentEmbed_Document_Flush(ceDocument);
     if (ret != CE_ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
+        OH_ContentEmbed_DestroyStream(destStream);
         return;
     }
+    OH_LOG_INFO(LOG_APP, "enter NativeOnWriteToDataStream %{public}p", object);
+    OH_ContentEmbed_DestroyStream(destStream);
 }
 ```

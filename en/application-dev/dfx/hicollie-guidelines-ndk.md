@@ -5,7 +5,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b3e6988e0ab25cc1b7ee9318b620b0d585c1093c translatedAt=2026-11-05T00:50:31.275Z pushedAt=2026-09-29T10:13:14.416Z nl=2 -->
+<!-- md-trans-meta sourceCommit=7ee11c1f0301e6100e1f26dcd0b3d3ad99aef3fb translatedAt=2026-11-28T03:06:54.886Z nl=1 -->
 
 ## Overview
 
@@ -30,7 +30,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 1. For details about the fault specifications of service thread jank events detected by **OH_HiCollie_Init_JankDetection**, see [Main Thread Jank Event Detection Principles](hiappevent-watcher-mainthreadjank-events.md#detection-principles).
 
 2. Service thread stuck events:
-   
+
    (1) Principles of **OH_HiCollie_Init_StuckDetection**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than 3 seconds, a BUSSINESS_THREAD_BLOCK_3S thread alarm event is reported. If it remains unexecuted for more than 6 seconds, a BUSSINESS_THREAD_BLOCK_6S thread stuck event is reported. The two events are matched according to system rules to generate an appfreeze fault log.
 
    (2) Principles of **OH_HiCollie_Init_StuckDetectionWithTimeout**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than the **stuckTimeout** duration, a BUSSINESS_THREAD_BLOCK_3S alarm event is reported. If it remains unexecuted for more than **stuckTimeout \* 2**, a BUSSINESS_THREAD_BLOCK_6S thread stuck event is reported. The two events are matched to generate an appfreeze fault log.
@@ -58,7 +58,7 @@ The following demonstrates how to add a button in the app and click the button t
          cpp:
            types:
              libentry:
-               - index.d.ts
+               - Index.d.ts
            - CMakeLists.txt
            - napi_init.cpp
          ets:
@@ -70,8 +70,10 @@ The following demonstrates how to add a button in the app and click the button t
 
 2. Edit the **entry > src > main > cpp > CMakeLists.txt** file in the project to add source files and dynamic libraries:
 
-   ```cmake
-   # Add libhilog_ndk.z.so (log output).
+   <!-- @[hicollie_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
+   # Link the dynamic libraries required for NAPI, log output, and jank detection.
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so)
    ```
 
@@ -79,532 +81,746 @@ The following demonstrates how to add a button in the app and click the button t
 
    - Starting from API version 12, **app thread jank detection** is supported: **OH_HiCollie_Init_JankDetection**. The sample code is as follows:
 
-   ```c++
-   #include <thread>
-   #include <string>
-   #include <unistd.h>
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hicollie/hicollie.h"
-   
-   #undef LOG_TAG
-   #define LOG_TAG "JankTest"
-   
-   // Define two callback function objects.
-   static OH_HiCollie_BeginFunc beginFunc_;
-   static OH_HiCollie_EndFunc endFunc_;
-   
-   // Define the callback functions for monitoring the start and end of app display.
-   void InitBeginFunc(const char* eventName)
-   {
-       std::string str(eventName);
-       OH_LOG_INFO(LogType::LOG_APP, "InitBeginFunc eventName: %{public}s", str.c_str());
-   }
-   void InitEndFunc(const char* eventName)
-   {
-       std::string str(eventName);
-       OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_EndFunc eventName: %{public}s", str.c_str());
-   }
-   
-   void StartDelayTimer()
-   {
-     // Wait for 1s.
-     std::chrono::seconds delay(1);
-     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection delay before");
-     std::this_thread::sleep_for(delay);
-     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection delay after");
-   }
-   
-   // Define the sub-thread callback function.
-   void TestJankDetection()
-   {
-       // Initialize the callback parameters.
-       beginFunc_ = InitBeginFunc;
-       endFunc_ = InitEndFunc;
-       HiCollie_DetectionParam param {0};
-       // Initialize the thread jank detection function.
-       int initResult = OH_HiCollie_Init_JankDetection(&beginFunc_, &endFunc_, param);
-       // Set the thread to be not detected within 1s after being started.
-       StartDelayTimer();
-       // Success result: 0
-       OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection: %{public}d", initResult);
-       int count = 0;
-       while (count < 3) {
-           // Set the callback used to record the start time of the processing event.
-           beginFunc_("TestBegin");
-           // Simulate a thread jank event by putting the thread to sleep for 350 ms.
-           usleep(350 * 1000);
-           // Set the callback used to record the end time of the processing event.
-           endFunc_("TestEnd");
-           count++;
-       }
-   }
-   
-   static napi_value TestHiCollieJankNdk(napi_env env, napi_callback_info info)
-   {
-       // Create a subthread.
-       std::thread threadObj(TestJankDetection);
-       // Execute the TestJankDetection task.
-       threadObj.join();
-       return 0;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "testHiCollieJankNdk", nullptr, TestHiCollieJankNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
+     1. Import the dependent files and define **LOG_TAG**.
+
+        <!-- @[hicollie_NapiInit_JankDetection_Inc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        #include <thread>
+        #include <string>
+        #include <unistd.h>
+        #include "napi/native_api.h"
+        #include "hilog/log.h"
+        #include "hicollie/hicollie.h"
+        // ...
+        #undef LOG_TAG
+        #define LOG_TAG "JankTest"
+        ```
+
+     2. Define the callback function objects.
+
+        <!-- @[hicollie_NapiInit_JankDetection_BeginEnd_Func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Define two callback function objects.
+        static OH_HiCollie_BeginFunc beginFunc_;
+        static OH_HiCollie_EndFunc endFunc_;
+        ```
+
+     3. Define the callback functions for monitoring the start and end of app display.
+
+        <!-- @[hicollie_NapiInit_JankDetection_Init_BeginEnd_Func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Delay after the thread starts, in seconds.
+        constexpr int INIT_DELAY_SECONDS = 1;
+        // Define the callback functions for monitoring the start and end of app display.
+        void InitBeginFunc(const char* eventName)
+        {
+            std::string str(eventName);
+            OH_LOG_INFO(LogType::LOG_APP, "InitBeginFunc eventName: %{public}s", str.c_str());
+        }
+        void InitEndFunc(const char* eventName)
+        {
+            std::string str(eventName);
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_EndFunc eventName: %{public}s", str.c_str());
+        }
+        
+        void StartDelayTimer()
+        {
+            // Wait for 1s.
+            std::chrono::seconds delay(INIT_DELAY_SECONDS);
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection delay before");
+            std::this_thread::sleep_for(delay);
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection delay after");
+        }
+        ```
+
+     4. Define the child thread callback function.
+
+        <!-- @[hicollie_NapiInit_JankDetection_Test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Number of iterations for jank detection.
+        constexpr int JANK_DETECTION_LOOP_COUNT = 3;
+        // Execution time of each simulated task, in milliseconds.
+        constexpr int JANK_TASK_DURATION_MS = 350;
+        // Conversion factor from milliseconds to microseconds (1 ms = 1000 us).
+        constexpr int MICROSECONDS_PER_MILLISECOND = 1000;
+        // Define the sub-thread callback function.
+        void TestJankDetection()
+        {
+            // Initialize the callback parameters.
+            beginFunc_ = InitBeginFunc;
+            endFunc_ = InitEndFunc;
+            HiCollie_DetectionParam param {0};
+            // Initialize the thread jank detection function.
+            int initResult = OH_HiCollie_Init_JankDetection(&beginFunc_, &endFunc_, param);
+            // Set the thread to be not detected within 1s after being started.
+            StartDelayTimer();
+            // Success result: 0
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_JankDetection: %{public}d", initResult);
+            int count = 0;
+            while (count < JANK_DETECTION_LOOP_COUNT) {
+                // Set the callback used to record the start time of the processing event.
+                beginFunc_("TestBegin");
+                // Simulate a thread jank event by putting the thread to sleep for 350 ms.
+                usleep(JANK_TASK_DURATION_MS * MICROSECONDS_PER_MILLISECOND);
+                // Set the callback used to record the end time of the processing event.
+                endFunc_("TestEnd");
+                count++;
+            }
+        }
+        
+        static napi_value TestHiCollieJankNdk(napi_env env, napi_callback_info info)
+        {
+            // Create a subthread.
+            std::thread threadObj(TestJankDetection);
+            // Execute the TestJankDetection task.
+            threadObj.join();
+            return 0;
+        }
+        ```
+
+     5. Define the initialization function.
+
+        <!-- @[hicollie_NapiInit_JankDetection_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        EXTERN_C_START
+        static napi_value Init(napi_env env, napi_value exports)
+        {
+            napi_property_descriptor desc[] = {
+                { "testHiCollieJankNdk", nullptr, TestHiCollieJankNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
+                // ...
+            };
+            napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+            return exports;
+        }
+        EXTERN_C_END
+        ```
+
+     6. Define **demoModule**.
+
+        <!-- @[hicollie_NapiInit_demoModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        static napi_module demoModule = {
+            .nm_version = 1,
+            .nm_flags = 0,
+            .nm_filename = nullptr,
+            .nm_register_func = Init,
+            .nm_modname = "entry",
+            .nm_priv = ((void*)0),
+            .reserved = { 0 },
+        };
+        
+        extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+        {
+            napi_module_register(&demoModule);
+        }
+        ```
 
    - Starting from API version 12, **app thread hang detection** is supported: **OH_HiCollie_Init_StuckDetection**. The sample code is as follows:
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hicollie/hicollie.h"
-   #include <atomic>
-   #include <thread>
-   #include <string>
-   #include <unistd.h>
-   
-   #undef LOG_TAG
-   #define LOG_TAG "StuckTest"
-   
-   // Custom block time for simulating a hang scenario, in seconds.
-   const int64_t BLOCK_TIME = 3; 
-   // Flag indicating the app thread task execution status. true: normal, false: hang.
-   std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
-   // Flag for reporting an app thread hang event.
-   std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
-   
-   void ReportEvent() {
-       bool temp = isSixSecondEvent_->load();
-       int reportResult = OH_HiCollie_Report(&temp);
-       // Success: 0
-       OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Report: %{public}d, isSixSecondEvent: %{public}d", reportResult, isSixSecondEvent_->load());
-       isSixSecondEvent_->store(temp);
-   }
-   
-   void SetTimeout()
-   {
-     int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
-       system_clock::now().time_since_epoch()).count();
-     sleep(BLOCK_TIME);
-     int64_t currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
-       system_clock::now().time_since_epoch()).count();
-     if (currentTime - now < BLOCK_TIME) {
-       appThreadIsAlive_->store(true);
-       return;
-     }
-     appThreadIsAlive_->store(false);
-   }
-   
-   // You can customize the periodic detection task.
-   void Timer()
-   {
-     // Check whether the app is executing tasks normally every 3s.
-     if (appThreadIsAlive_->load()) {
-       OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
-       // Update appThreadIsAlive_. It is set to true for the next normal detection.
-       appThreadIsAlive_->store(false);
-       // Simulate a timeout scenario.
-       SetTimeout();
-       return;
-     }
-     ReportEvent();
-   }
-   
-   // Define the child thread callback function.
-   void InitStuckDetection()
-   {
-     // Initialize the thread hang monitoring function.
-     int initResult = OH_HiCollie_Init_StuckDetection(Timer);
-     // Success result: 0
-     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetection: %{public}d", initResult);
-   }
-   
-   static napi_value TestHiCollieStuckNdk(napi_env env, napi_callback_info info)
-   {
-     // Create a child thread.
-     std::thread threadObj(InitStuckDetection);
-     // Execute the task.
-     threadObj.join();
-     return 0;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "testHiCollieStuckNdk", nullptr, TestHiCollieStuckNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
+     1. Import the dependent files and define **LOG_TAG**.
+
+        <!-- @[hicollie_NapiInit_StuckDetection_Inc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        #include <thread>
+        #include <string>
+        #include <unistd.h>
+        #include "napi/native_api.h"
+        #include "hilog/log.h"
+        #include "hicollie/hicollie.h"
+        #include <atomic>
+        // ...
+        #undef LOG_TAG
+        #define LOG_TAG "StuckTest"
+        ```
+
+     2. Define the blocking time and set the flags for the app thread task execution status and app thread hang event reporting.
+
+        <!-- @[hicollie_NapiInit_StuckDetection_BlockTime_Flag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Custom block time for simulating a hang scenario, in seconds.
+        const int64_t BLOCK_TIME = 3;
+        // ...
+        // Flag indicating the app thread task execution status. true: normal, false: hang.
+        std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
+        // Flag for reporting an app thread hang event.
+        std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
+        ```
+
+     3. Define the event reporting function, timeout function, and periodic detection task.
+
+        <!-- @[hicollie_NapiInit_StuckDetection_Report_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        void ReportEvent()
+        {
+            bool temp = isSixSecondEvent_->load();
+            int reportResult = OH_HiCollie_Report(&temp);
+            // Success: 0
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Report: %{public}d, isSixSecondEvent: %{public}d",
+                reportResult, isSixSecondEvent_->load());
+            isSixSecondEvent_->store(temp);
+        }
+        
+        void SetTimeout()
+        {
+            int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+            sleep(BLOCK_TIME);
+            int64_t currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+            if (currentTime - now < BLOCK_TIME) {
+                appThreadIsAlive_->store(true);
+                return;
+            }
+            appThreadIsAlive_->store(false);
+        }
+        
+        // You can customize the periodic detection task.
+        void Timer()
+        {
+            // Check whether the app is executing tasks normally every 3s.
+            if (appThreadIsAlive_->load()) {
+                OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
+                // Update appThreadIsAlive_. It is set to true for the next normal detection.
+                appThreadIsAlive_->store(false);
+                // Simulate a timeout scenario.
+                SetTimeout();
+                return;
+            }
+            ReportEvent();
+        }
+        ```
+
+     4. Define the child thread callback function.
+
+        <!-- @[hicollie_NapiInit_StuckDetection_Test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Define the child thread callback function.
+        void InitStuckDetection()
+        {
+            // Initialize the thread hang monitoring function.
+            int initResult = OH_HiCollie_Init_StuckDetection(Timer);
+            // Success result: 0
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetection: %{public}d", initResult);
+        }
+        
+        static napi_value TestHiCollieStuckNdk(napi_env env, napi_callback_info info)
+        {
+            // Create a child thread.
+            std::thread threadObj(InitStuckDetection);
+            // Execute the task.
+            threadObj.join();
+            return 0;
+        }
+        ```
+
+     5. Define the initialization function.
+
+        <!-- @[hicollie_NapiInit_StuckDetection_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        EXTERN_C_START
+        static napi_value Init(napi_env env, napi_value exports)
+        {
+            napi_property_descriptor desc[] = {
+                // ...
+                { "testHiCollieStuckNdk", nullptr, TestHiCollieStuckNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
+                // ...
+                // ...
+            };
+            napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+            return exports;
+        }
+        EXTERN_C_END
+        ```
+
+     6. Define **demoModule**.
+
+        <!-- @[hicollie_NapiInit_demoModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        static napi_module demoModule = {
+            .nm_version = 1,
+            .nm_flags = 0,
+            .nm_filename = nullptr,
+            .nm_register_func = Init,
+            .nm_modname = "entry",
+            .nm_priv = ((void*)0),
+            .reserved = { 0 },
+        };
+        
+        extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+        {
+            napi_module_register(&demoModule);
+        }
+        ```
 
    - Starting from API version 18, **app thread hang detection with a custom detection duration** is supported: **OH_HiCollie_Init_StuckDetectionWithTimeout**. The sample code is as follows:
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hicollie/hicollie.h"
-   #include <thread>
-   #include <string>
-   #include <unistd.h>
-   
-   #undef LOG_TAG
-   #define LOG_TAG "StuckTest"
-   
-   // Custom sleep time for simulating a hang scenario.
-   const int64_t BLOCK_TIME = 5; 
-   // Flag indicating the app thread task execution status. true: normal, false: hang.
-   std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
-   // Flag for reporting an app thread hang event.
-   std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
-   
-   void ReportEvent() {
-       bool temp = isSixSecondEvent_->load();
-       int reportResult = OH_HiCollie_Report(&temp);
-       // Success: 0
-       OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Report: %{public}d, isSixSecondEvent: %{public}d", reportResult, isSixSecondEvent_->load());
-       isSixSecondEvent_->store(temp);
-   }
-   
-   void SetTimeout()
-   {
-     int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
-       system_clock::now().time_since_epoch()).count();
-     sleep(BLOCK_TIME);
-     int64_t currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
-       system_clock::now().time_since_epoch()).count();
-     if (currentTime - now < BLOCK_TIME) {
-       appThreadIsAlive_->store(true);
-       return;
-     }
-     appThreadIsAlive_->store(false);
-   }
-   
-   // You can customize the periodic detection task.
-   void Timer()
-   {
-     // Check whether the app is executing tasks normally every 5s.
-     if (appThreadIsAlive_->load()) {
-       OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
-       // Update appThreadIsAlive_. It is set to true for the next normal detection.
-       appThreadIsAlive_->store(false);
-       // Simulate a timeout scenario.
-       SetTimeout();
-       return;
-     }
-     ReportEvent();
-   }
-   
-   // Define the child thread callback function.
-   void InitStuckDetectionWithTimeout()
-   {
-     // Initialize the thread hang monitoring function.
-     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, 5); // 5: hang detection threshold
-     // Success result: 0
-     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetectionWithTimeout: %{public}d", initResult);
-   }
-   
-   static napi_value TestHiCollieStuckWithTimeoutNdk(napi_env env, napi_callback_info info)
-   {
-     // Create a child thread.
-     std::thread threadObj(InitStuckDetectionWithTimeout);
-     // Execute the task.
-     threadObj.join();
-     return 0;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "testHiCollieStuckWithTimeoutNdk", nullptr, TestHiCollieStuckWithTimeoutNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
- 
+     1. Import the dependent files and define **LOG_TAG**.
+
+        <!-- @[hicollie_NapiInit_StuckDetectionWithTimeout_Inc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        #include <thread>
+        #include <string>
+        #include <unistd.h>
+        #include "napi/native_api.h"
+        #include "hilog/log.h"
+        #include "hicollie/hicollie.h"
+        // ...
+        #undef LOG_TAG
+        #define LOG_TAG "StuckTest"
+        ```
+
+     2. Define the blocking time and set the flags for the app thread task execution status and app thread hang event reporting.
+
+        <!-- @[hicollie_NapiInit_StuckDetectionWithTimeout_BlockTime_Flag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Custom block time for simulating a hang scenario, in seconds.
+        // ...
+        const int64_t BLOCK_TIME2 = 5;
+        // Flag indicating the app thread task execution status. true: normal, false: hang.
+        std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
+        // Flag for reporting an app thread hang event.
+        std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
+        ```
+
+     3. Define the event reporting function, timeout function, and periodic detection task.
+
+        <!-- @[hicollie_NapiInit_StuckDetectionWithTimeout_Report_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        void ReportEvent2()
+        {
+            bool temp = isSixSecondEvent_->load();
+            int reportResult = OH_HiCollie_Report(&temp);
+            // Success: 0
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Report: %{public}d, isSixSecondEvent: %{public}d",
+                reportResult, isSixSecondEvent_->load());
+            isSixSecondEvent_->store(temp);
+        }
+        
+        void SetTimeout2()
+        {
+            int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+            sleep(BLOCK_TIME2);
+            int64_t currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+            if (currentTime - now < BLOCK_TIME2) {
+                appThreadIsAlive_->store(true);
+                return;
+            }
+            appThreadIsAlive_->store(false);
+        }
+        
+        // You can customize the periodic detection task.
+        void Timer2()
+        {
+            // Check whether the app is executing tasks normally every 5s.
+            if (appThreadIsAlive_->load()) {
+                OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
+                // Update appThreadIsAlive_. It is set to true for the next normal detection.
+                appThreadIsAlive_->store(false);
+                // Simulate a timeout scenario.
+                SetTimeout2();
+                return;
+            }
+            ReportEvent2();
+        }
+        ```
+
+     4. Define the child thread callback function.
+
+        <!-- @[hicollie_NapiInit_StuckDetectionWithTimeout_Test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Hang detection threshold, in seconds, in the range [3, 15].
+        constexpr int STUCK_DETECTION_TIMEOUT_SECONDS = 5;
+        // Define the child thread callback function.
+        void InitStuckDetectionWithTimeout()
+        {
+            // Initialize the thread hang monitoring function.
+            int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer2, STUCK_DETECTION_TIMEOUT_SECONDS);
+            // Success result: 0
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetectionWithTimeout: %{public}d", initResult);
+        }
+        
+        static napi_value TestHiCollieStuckWithTimeoutNdk(napi_env env, napi_callback_info info)
+        {
+            // Create a child thread.
+            std::thread threadObj(InitStuckDetectionWithTimeout);
+            // Execute the task.
+            threadObj.join();
+            return 0;
+        }
+        ```
+
+     5. Define the initialization function.
+
+        <!-- @[hicollie_NapiInit_StuckDetectionWithTimeout_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        EXTERN_C_START
+        static napi_value Init(napi_env env, napi_value exports)
+        {
+            napi_property_descriptor desc[] = {
+                // ...
+                { "testHiCollieStuckWithTimeoutNdk", nullptr, TestHiCollieStuckWithTimeoutNdk, nullptr, nullptr, nullptr,
+                    napi_default, nullptr },
+                // ...
+            };
+            napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+            return exports;
+        }
+        EXTERN_C_END
+        ```
+
+     6. Define **demoModule**.
+
+        <!-- @[hicollie_NapiInit_demoModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        static napi_module demoModule = {
+            .nm_version = 1,
+            .nm_flags = 0,
+            .nm_filename = nullptr,
+            .nm_register_func = Init,
+            .nm_modname = "entry",
+            .nm_priv = ((void*)0),
+            .reserved = { 0 },
+        };
+        
+        extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+        {
+            napi_module_register(&demoModule);
+        }
+        ```
+
    - Starting from API version 24, **app thread hang detection with proactive reporting of input unresponsiveness faults** is supported: **OH_HiCollie_ReportInputBlock**. The sample code is as follows:
- 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hicollie/hicollie.h"
-   #include <atomic>
-   #include <thread>
-   #include <string>
-   #include <unistd.h>
-   
-   #undef LOG_TAG
-   #define LOG_TAG "StuckTest"
-   
-   // Customize the blocking time (unit: s) to simulate a stuck scenario.
-   const int64_t BLOCK_TIME = 3; 
-   // Set the task execution status flag of the application thread. The value true indicates the thread is normal and the value false indicates the thread is stuck.
-   std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
-   // Set the flag for reporting the application thread stuck event.
-   std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
-   
-   void ReportEvent() {
-       bool temp = isSixSecondEvent_->load();
-       int reportResult = OH_HiCollie_Report(&temp);
-       // Success result: 0
-       OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Report: %{public}d, isSixSecondEvent: %{public}d", reportResult, isSixSecondEvent_->load());
-       isSixSecondEvent_->store(temp);
-   }
-   
-   void SetTimeout()
-   {
-     int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
-       system_clock::now().time_since_epoch()).count();
-     sleep(BLOCK_TIME);
-     int64_t currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::
-       system_clock::now().time_since_epoch()).count();
-     if (currentTime - now < BLOCK_TIME) {
-       appThreadIsAlive_->store(true);
-       return;
-     }
-     appThreadIsAlive_->store(false);
-   }
-   
-   // You can customize periodic detection tasks.
-   void Timer()
-   {
-     // Check whether the application thread runs properly every 3 seconds.
-     if (appThreadIsAlive_->load()) {
-       OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
-       // Update appThreadIsAlive_. The value true indicates that the application thread runs properly.
-       appThreadIsAlive_->store(false);
-       // Simulate a timeout scenario.
-       SetTimeout();
-       return;
-     }
-     ReportEvent();
-   }
-   
-   // Define the sub-thread callback function.
-   void InitStuckDetection()
-   {
-     // Initialize the thread stuck detection function.
-     int initResult = OH_HiCollie_Init_StuckDetection(Timer);
-     // Success result: 0
-     OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetection: %{public}d", initResult);
-   }
-   
-   static napi_value TestHiCollieStuckNdk(napi_env env, napi_callback_info info)
-   {
-     // Create a subthread.
-     std::thread threadObj(InitStuckDetection);
-     // Execute a task.
-     threadObj.join();
-     return 0;
-   }
-   
-   static napi_value TestHiCollieInputBlock(napi_env env, napi_callback_info info)
-   {
-     // The sub-thread is not hung, and no report is made.
-     if (appThreadIsAlive_->load()) {
-       return 0;
-     }
-     OH_HiCollie_ReportInputBlock();
-     return 0;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "testHiCollieStuckNdk", nullptr, TestHiCollieStuckNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "testHiCollieInputBlock", nullptr, TestHiCollieInputBlock, nullptr, nullptr, nullptr, napi_default, nullptr}
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
-   
+
+     1. Import the dependent files and define **LOG_TAG**.
+
+        <!-- @[hicollie_NapiInit_InputBlock_Inc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        #include <thread>
+        #include <string>
+        #include <unistd.h>
+        #include "napi/native_api.h"
+        #include "hilog/log.h"
+        #include "hicollie/hicollie.h"
+        #include <atomic>
+        // ...
+        #undef LOG_TAG
+        #define LOG_TAG "StuckTest"
+        ```
+
+     2. Define the blocking time and set the flags for the app thread task execution status and app thread hang event reporting.
+
+        <!-- @[hicollie_NapiInit_InputBlock_BlockTime_Flag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Customize the blocking time (unit: s) to simulate a stuck scenario.
+        const int64_t BLOCK_TIME = 3;
+        // ...
+        // Set the task execution status flag of the application thread. The value true indicates the thread is normal and the value false indicates the thread is stuck.
+        std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
+        // Set the flag for reporting the application thread stuck event.
+        std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
+        ```
+
+     3. Define the event reporting function, timeout function, and periodic detection task.
+
+        <!-- @[hicollie_NapiInit_InputBlock_Report_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        void ReportEvent()
+        {
+            bool temp = isSixSecondEvent_->load();
+            int reportResult = OH_HiCollie_Report(&temp);
+            // Success result: 0
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Report: %{public}d, isSixSecondEvent: %{public}d",
+                reportResult, isSixSecondEvent_->load());
+            isSixSecondEvent_->store(temp);
+        }
+        
+        void SetTimeout()
+        {
+            int64_t now = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+            sleep(BLOCK_TIME);
+            int64_t currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::system_clock::now().time_since_epoch()).count();
+            if (currentTime - now < BLOCK_TIME) {
+                appThreadIsAlive_->store(true);
+                return;
+            }
+            appThreadIsAlive_->store(false);
+        }
+        
+        // You can customize periodic detection tasks.
+        void Timer()
+        {
+            // Check whether the application thread runs properly every 3 seconds.
+            if (appThreadIsAlive_->load()) {
+                OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
+                // Update appThreadIsAlive_. The value true indicates that the application thread runs properly.
+                appThreadIsAlive_->store(false);
+                // Simulate a timeout scenario.
+                SetTimeout();
+                return;
+            }
+            ReportEvent();
+        }
+        
+        ```
+
+     4. Define the child thread callback function.
+
+        <!-- @[hicollie_NapiInit_InputBlock_Test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        // Define the sub-thread callback function.
+        void InitStuckDetection()
+        {
+            // Initialize the thread stuck detection function.
+            int initResult = OH_HiCollie_Init_StuckDetection(Timer);
+            // Success result: 0
+            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetection: %{public}d", initResult);
+        }
+        
+        static napi_value TestHiCollieStuckNdk(napi_env env, napi_callback_info info)
+        {
+            // Create a subthread.
+            std::thread threadObj(InitStuckDetection);
+            // Execute a task.
+            threadObj.join();
+            return 0;
+        }
+        
+        static napi_value TestHiCollieInputBlock(napi_env env, napi_callback_info info)
+        {
+            // The sub-thread is not hung, and no report is made.
+            if (appThreadIsAlive_->load()) {
+                return 0;
+            }
+            OH_HiCollie_ReportInputBlock();
+            return 0;
+        }
+        ```
+
+     5. Define the initialization function.
+
+        <!-- @[hicollie_NapiInit_InputBlock_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        EXTERN_C_START
+        static napi_value Init(napi_env env, napi_value exports)
+        {
+            napi_property_descriptor desc[] = {
+                // ...
+                { "testHiCollieStuckNdk", nullptr, TestHiCollieStuckNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
+                { "testHiCollieInputBlock", nullptr, TestHiCollieInputBlock, nullptr, nullptr, nullptr, napi_default, nullptr },
+                // ...
+            };
+            napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+            return exports;
+        }
+        EXTERN_C_END
+        ```
+
+     6. Define **demoModule**.
+
+        <!-- @[hicollie_NapiInit_demoModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        static napi_module demoModule = {
+            .nm_version = 1,
+            .nm_flags = 0,
+            .nm_filename = nullptr,
+            .nm_register_func = Init,
+            .nm_modname = "entry",
+            .nm_priv = ((void*)0),
+            .reserved = { 0 },
+        };
+        
+        extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+        {
+            napi_module_register(&demoModule);
+        }
+        ```
+
    - Starting from API version 24, **app thread hang detection with custom log generation by third-party frameworks** is supported: **OH_HiCollie_SetFreezeCallback** and **OH_HiCollie_AssociateProcessReport**. The sample code is as follows:
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hicollie/hicollie.h"
-   #include <thread>
-   #include <string>
-   #include <unistd.h>
-   
-   #undef LOG_TAG
-   #define LOG_TAG "StuckTest"
+     1. Import the dependent files and define **LOG_TAG**.
 
-   static size_t UserCall(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)
-   {
-      std::string source("Freeze is happened");
-      if (type == OH_THREAD_BLOCK_3S) {
-          source += ":block 3s";
-      } else if (type == OH_THREAD_BLOCK_6S) {
-          source += ":block 6s";
-      } else {
-          source += ":other block";
-      }
-      char* buffer1 = (char*)buffer;
-      int needed = snprintf(buffer1, size, "UserCallback%s", source.c_str());
-      return needed; 
-   }
-   
-   static napi_value TestHiCollieSetFreezeCallback(napi_env env, napi_callback_info info)
-   {
-      // Set the user callback.
-      OH_HiCollie_SetFreezeCallback(UserCall);
-      return 0;
-   }
-   
-   static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
-   {
-      // Report the BUSSINESS_THREAD_BLOCK_3S event.
-      OH_HiCollie_AssociateProcessReport(false);
-      sleep(3);
-      // Report the BUSSINESS_THREAD_BLOCK_6S event.
-      OH_HiCollie_AssociateProcessReport(true);
-      return 0;
-   }
+        <!-- @[hicollie_NapiInit_Callback_Inc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        #include <thread>
+        #include <string>
+        #include <unistd.h>
+        #include "napi/native_api.h"
+        #include "hilog/log.h"
+        #include "hicollie/hicollie.h"
+        // ...
+        #undef LOG_TAG
+        #define LOG_TAG "StuckTest"
+        ```
 
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "testHiCollieSetFreezeCallback", nullptr, TestHiCollieSetFreezeCallback, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "testHiCollieAssociateProcessReport", nullptr, TestHiCollieAssociateProcessReport, nullptr, nullptr, nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
+     2. Define the user callback, freeze callback, and event reporting function.
 
-4. Edit the **Index.ets** file under **entry > src > main > cpp > types > libentry** in the project to define the ArkTS APIs.
-   
+        <!-- @[hicollie_NapiInit_Callback_Test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        static size_t UserCall(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)
+        {
+            std::string source("Freeze is happened");
+            if (type == OH_THREAD_BLOCK_3S) {
+                source += ":block 3s";
+            } else if (type == OH_THREAD_BLOCK_6S) {
+                source += ":block 6s";
+            } else {
+                source += ":other block";
+            }
+            if (buffer == nullptr || size == 0) {
+                return 0;
+            }
+            std::string info = "UserCallback" + source;
+            char* dest = static_cast<char*>(buffer);
+            // Reserve the last byte for the null terminator '\0' to prevent buffer overflow.
+            size_t maxCopyLen = size - 1;
+            size_t copyLen = info.size() < maxCopyLen ? info.size() : maxCopyLen;
+            info.copy(dest, copyLen);
+            dest[copyLen] = '\0';
+            return copyLen;
+        }
+        
+        static napi_value TestHiCollieSetFreezeCallback(napi_env env, napi_callback_info info)
+        {
+            // Set the user callback.
+            OH_HiCollie_SetFreezeCallback(UserCall);
+            return 0;
+        }
+        
+        // Simulated thread blocking time, in seconds, used to trigger the BUSINESS_THREAD_BLOCK_3S event.
+        constexpr int THREAD_BLOCK_3S_SECONDS = 3;
+        
+        static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
+        {
+            // Report the BUSINESS_THREAD_BLOCK_3S event.
+            OH_HiCollie_AssociateProcessReport(false);
+            sleep(THREAD_BLOCK_3S_SECONDS);
+            // Report the BUSINESS_THREAD_BLOCK_6S event.
+            OH_HiCollie_AssociateProcessReport(true);
+            return 0;
+        }
+        ```
+
+     3. Define the initialization function.
+
+        <!-- @[hicollie_NapiInit_Callback_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        EXTERN_C_START
+        static napi_value Init(napi_env env, napi_value exports)
+        {
+            napi_property_descriptor desc[] = {
+                // ...
+                { "testHiCollieSetFreezeCallback", nullptr, TestHiCollieSetFreezeCallback, nullptr, nullptr, nullptr,
+                    napi_default, nullptr },
+                { "testHiCollieAssociateProcessReport", nullptr, TestHiCollieAssociateProcessReport, nullptr, nullptr,
+                    nullptr, napi_default, nullptr }
+            };
+            napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+            return exports;
+        }
+        EXTERN_C_END
+        ```
+
+     4. Define **demoModule**.
+
+        <!-- @[hicollie_NapiInit_demoModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/napi_init.cpp) -->
+        
+        ``` C++
+        static napi_module demoModule = {
+            .nm_version = 1,
+            .nm_flags = 0,
+            .nm_filename = nullptr,
+            .nm_register_func = Init,
+            .nm_modname = "entry",
+            .nm_priv = ((void*)0),
+            .reserved = { 0 },
+        };
+        
+        extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+        {
+            napi_module_register(&demoModule);
+        }
+        ```
+
+4. Edit the **Index.d.ts** file under **entry > src > main > cpp > types > libentry** in the project to define the ArkTS APIs.
+
    - Example for **OH_HiCollie_Init_JankDetection**:
 
-   ```ts
-   export const testHiCollieJankNdk: () => void;
-   ```
+     <!-- @[hicollie_Index_d_ts_JankDetection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+     
+     ``` TypeScript
+     export const testHiCollieJankNdk: () => void;
+     ```
 
    - Example for **OH_HiCollie_Init_StuckDetection**:
 
-   ```ts
-   export const testHiCollieStuckNdk: () => void;
-   ```
+     <!-- @[hicollie_Index_d_ts_StuckDetection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+     
+     ``` TypeScript
+     export const testHiCollieStuckNdk: () => void;
+     ```
 
    - Example for **OH_HiCollie_Init_StuckDetectionWithTimeout**:
 
-   ```ts
-   export const testHiCollieStuckWithTimeoutNdk: () => void;
-   ```
+     <!-- @[hicollie_Index_d_ts_StuckDetectionWithTimeout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+     
+     ``` TypeScript
+     export const testHiCollieStuckWithTimeoutNdk: () => void;
+     ```
 
-    - Example for **OH_HiCollie_ReportInputBlock**:
+   - Example for **OH_HiCollie_ReportInputBlock**:
 
-   ```ts
-   export const testHiCollieStuckNdk: () => void;
-   export const testHiCollieInputBlock: () => void;
-   ```
+     <!-- @[hicollie_Index_d_ts_InputBlock](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+     
+     ``` TypeScript
+     export const testHiCollieStuckNdk: () => void;
+     export const testHiCollieInputBlock: () => void;
+     ```
 
-    - Example for **OH_HiCollie_SetFreezeCallback** and **OH_HiCollie_AssociateProcessReport**:
+   - Example for **OH_HiCollie_SetFreezeCallback** and **OH_HiCollie_AssociateProcessReport**:
 
-   ```ts
-   export const testHiCollieSetFreezeCallback: () => void;
-   export const testHiCollieAssociateProcessReport: () => void;
-   ```
+     <!-- @[hicollie_Index_d_ts_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+     
+     ``` TypeScript
+     export const testHiCollieSetFreezeCallback: () => void;
+     export const testHiCollieAssociateProcessReport: () => void;
+     ```
+
 5. Edit the **entry > src > main > ets > pages > Index.ets** file in the project:
 
-   ```ts
-   import testNapi from 'libentry.so'
+   <!-- @[hicollie_Index_ets_IndexStruct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import testNapi from 'libentry.so';
    
    @Entry
    @Component
@@ -613,7 +829,7 @@ The following demonstrates how to add a button in the app and click the button t
        RelativeContainer() {
          Column() {
            // Select the corresponding function below and add different click events here.
-           
+           // ...
          }
          .width('100%')
        }
@@ -625,91 +841,102 @@ The following demonstrates how to add a button in the app and click the button t
 
    - Add a click event to trigger the **OH_HiCollie_Init_JankDetection** method.
 
-   ```ts
-   Column() {
-     Button("testHiCollieJankNdk", { stateEffect:true, type: ButtonType.Capsule})
-       .width('75%')
-       .height(50)
-       .margin(15)
-       .fontSize(20)
-       .fontWeight(FontWeight.Bold)
-       .onClick(testNapi.testHiCollieJankNdk);
-   }
-   ```
+     <!-- @[hicollie_Index_ets_JankDetection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     Column() {
+       Button('testHiCollieJankNdk', { stateEffect: true, type: ButtonType.Capsule })
+         .width('75%')
+         .height(50)
+         .margin(15)
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .onClick(testNapi.testHiCollieJankNdk);
+     }
+     ```
 
    - Add a click event to trigger the **OH_HiCollie_Init_StuckDetection** method.
 
-   ```ts
-   Column() {
-     Button("testHiCollieStuckNdk", { stateEffect:true, type: ButtonType.Capsule})
-       .width('75%')
-       .height(50)
-       .margin(15)
-       .fontSize(20)
-       .fontWeight(FontWeight.Bold)
-       .onClick(testNapi.testHiCollieStuckNdk);
-   }
-   ```
+     <!-- @[hicollie_Index_ets_StuckDetection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     Column() {
+       Button('testHiCollieStuckNdk', { stateEffect: true, type: ButtonType.Capsule })
+         .width('75%')
+         .height(50)
+         .margin(15)
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .onClick(testNapi.testHiCollieStuckNdk);
+     }
+     ```
 
    - Add a click event to trigger the **OH_HiCollie_Init_StuckDetectionWithTimeout** method.
 
-   ```ts
-   Column() {
-     Button("testHiCollieStuckWithTimeoutNdk", { stateEffect:true, type: ButtonType.Capsule})
-       .width('75%')
-       .height(50)
-       .margin(15)
-       .fontSize(20)
-       .fontWeight(FontWeight.Bold)
-       .onClick(testNapi.testHiCollieStuckWithTimeoutNdk);
-   }
-   ```
-   
-    - Add a click event to trigger the **OH_HiCollie_Init_StuckDetectionWithTimeout** method and the **OH_HiCollie_ReportInputBlock** method.
+     <!-- @[hicollie_Index_ets_StuckDetectionWithTimeout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     Column() {
+       Button('testHiCollieStuckWithTimeoutNdk', { stateEffect: true, type: ButtonType.Capsule })
+         .width('75%')
+         .height(50)
+         .margin(15)
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .onClick(testNapi.testHiCollieStuckWithTimeoutNdk);
+     }
+     ```
 
-   ```ts
-   Column() {
-     Button("testHiCollieStuckNdk", { stateEffect:true, type: ButtonType.Capsule})
-       .width('75%')
-       .height(50)
-       .margin(15)
-       .fontSize(20)
-       .fontWeight(FontWeight.Bold)
-       .onClick(testNapi.testHiCollieStuckNdk);
-     Button("testHiCollieInputBlock", { stateEffect:true, type: ButtonType.Capsule})
-       .width('75%')
-       .height(50)
-       .margin(15)
-       .fontSize(20)
-       .fontWeight(FontWeight.Bold)
-       .onClick(testNapi.testHiCollieInputBlock);
-   }
-   ```
-    - Add a click event to trigger the **OH_HiCollie_SetFreezeCallback** method and the **OH_HiCollie_AssociateProcessReport** method.
+   - Add a click event to trigger the **OH_HiCollie_Init_StuckDetection** method and the **OH_HiCollie_ReportInputBlock** method.
 
-   ```ts
-   Column() {
-     Button("testHiCollieSetFreezeCallback", { stateEffect:true, type: ButtonType.Capsule})
-       .width('75%')
-       .height(50)
-       .margin(15)
-       .fontSize(20)
-       .fontWeight(FontWeight.Bold)
-       .onClick(testNapi.testHiCollieSetFreezeCallback);
-     Button("testHiCollieAssociateProcessReport", { stateEffect:true, type: ButtonType.Capsule})
-       .width('75%')
-       .height(50)
-       .margin(15)
-       .fontSize(20)
-       .fontWeight(FontWeight.Bold)
-       .onClick(testNapi.testHiCollieAssociateProcessReport);
-   }
-   ```
+     <!-- @[hicollie_Index_ets_InputBlock](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     Column() {
+       Button('testHiCollieStuckNdk', { stateEffect: true, type: ButtonType.Capsule })
+         .width('75%')
+         .height(50)
+         .margin(15)
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .onClick(testNapi.testHiCollieStuckNdk);
+       Button('testHiCollieInputBlock', { stateEffect: true, type: ButtonType.Capsule })
+         .width('75%')
+         .height(50)
+         .margin(15)
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .onClick(testNapi.testHiCollieInputBlock);
+     }
+     ```
+
+   - Add a click event to trigger the **OH_HiCollie_SetFreezeCallback** method and the **OH_HiCollie_AssociateProcessReport** method.
+
+     <!-- @[hicollie_Index_ets_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hicollie/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     Column() {
+       Button('testHiCollieSetFreezeCallback', { stateEffect: true, type: ButtonType.Capsule })
+         .width('75%')
+         .height(50)
+         .margin(15)
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .onClick(testNapi.testHiCollieSetFreezeCallback);
+       Button('testHiCollieAssociateProcessReport', { stateEffect: true, type: ButtonType.Capsule })
+         .width('75%')
+         .height(50)
+         .margin(15)
+         .fontSize(20)
+         .fontWeight(FontWeight.Bold)
+         .onClick(testNapi.testHiCollieAssociateProcessReport);
+     }
+     ```
 
 6. Click the **Run** button in DevEco Studio to run the project.
 
 7. At the bottom of DevEco Studio, switch to the **Log** tab and filter the custom **LOG_TAG**.
-   
+
    - Click the **testHiCollieJankNdk** button.
 
    The thread timeout information of the sampling stack obtained through **OH_HiCollie_Init_JankDetection()** is displayed. You can obtain the corresponding event by [subscribing to the main thread jank event](hiappevent-watcher-mainthreadjank-events-arkts.md).

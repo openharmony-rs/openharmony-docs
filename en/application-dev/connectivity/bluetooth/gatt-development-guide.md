@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c2b82fd2ac3c56b7fe6f5fc56e974fda85bda0ab translatedAt=2026-09-14T08:23:31.055Z pushedAt=2026-09-14T10:53:47.727Z -->
+<!-- md-trans-meta sourceCommit=f206f7e143272a3ab0ad2cf6f71c881aea953322 translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Introduction
 This document guides you through implementing Bluetooth Low Energy (BLE) connection and data transmission between devices in accordance with the Generic Attribute Profile (GATT). When two devices communicate via GATT, they can be distinguished as client and server based on their respective functions. This guide describes the implementation methods for both the client and server.
@@ -24,6 +24,10 @@ For details about BLE scanning by the client and BLE advertising by the server, 
 
 ### Applying for Required Permissions
 Apply for the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+
+### Checking Whether Bluetooth Is Supported
+
+Call [isBluetoothSupported](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessisbluetoothsupported) to check whether the device supports Bluetooth. Proceed with the following steps only if Bluetooth is supported. Otherwise, do not use the related APIs.
 
 ### Importing Required Modules
 Import the **ble**, **constant**, and **BusinessError** modules.

@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=10a823f5114708793f873c2259ddf0b8d1e5f84e translatedAt=2026-10-31T01:19:45.493Z pushedAt=2026-10-31T02:03:16.766Z nl=2 -->
+<!-- md-trans-meta sourceCommit=73994c4c4ea6022c00782dd468e1cb3936302c87 translatedAt=2026-11-28T02:20:50.261Z nl=2 -->
 
 ## Introduction
 The Wi-Fi STA mode (that is, station mode) enables wireless devices to connect to a wireless local area network (WLAN) as clients. In this mode, devices such as mobile phones, computers, and tablets can access the network by connecting to an access point (AP) or wireless router.
@@ -43,7 +43,7 @@ The following table describes the related APIs.
 1. Import the required Wi-Fi module.
 2. Check that the **SystemCapability.Communication.WiFi.STA** capability is available.
 3. Apply for the **ohos.permission.GET_WIFI_INFO** permission.
-4. Enable Wi-Fi on the device.
+4. Enable Wi-Fi on the device. Before enabling Wi-Fi, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 5. Sample code:
 
    ```ts
@@ -92,7 +92,7 @@ The following table describes the related APIs.
 
 ### Establishing a Wi-Fi Connection
 1. Import the required Wi-Fi module.
-2. Enable Wi-Fi on the device.
+2. Enable Wi-Fi on the device. Before enabling Wi-Fi, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 3. Check that the **SystemCapability.Communication.WiFi.STA** capability is available.
 4. Apply for the **ohos.permission.GET_WIFI_INFO** and **ohos.permission.SET_WIFI_INFO** permissions.
 5. Sample code:

@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=cd8d7c80e214eec0c28814e8db1d37ffcbef77fe translatedAt=2026-11-05T00:59:07.219Z nl=1 -->
+<!-- md-trans-meta sourceCommit=679269da89ade3cb8bea275760b3d0311ec6363e translatedAt=2026-11-28T03:12:44.829Z nl=1 -->
 
 Since API version 26.0.1, you can register an external_log manager to notify the app to clean up and delete files when a fault log sandbox directory reaches its capacity threshold.
 
@@ -53,7 +53,9 @@ For API usage, including parameter constraints and value ranges, see [hiappevent
 
 2. Edit CMakeLists.txt to add the required source files and dynamic libraries.
 
-   ```cmake
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # Check whether the entry/build directory exists.
@@ -63,6 +65,7 @@ For API usage, including parameter constraints and value ranges, see [hiappevent
        WORKING_DIRECTORY ${DEST_DIR})
 
    add_library(entry SHARED napi_init.cpp)
+   // ...
    # Add dependencies on libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output).
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    # Add the third-party libjsoncpp.so dependency to parse JSON strings in subscribed events.
@@ -124,6 +127,8 @@ For API usage, including parameter constraints and value ranges, see [hiappevent
 
 2. Edit napi_init.cpp to expose RegisterExternalLogMgr() as an ArkTS API for registering an external_log manager:
 
+    <!-- @[ExternalLog_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
     ``` C++
     static napi_value Init(napi_env env, napi_value exports)
     {
@@ -139,15 +144,19 @@ For API usage, including parameter constraints and value ranges, see [hiappevent
 
 3. Edit index.d.ts to define the ArkTS API:   
 
-    ``` ts
+    <!-- @[ExternalLog_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
     export const registerExternalLogMgr: () => void;
     ```
 
 4. Edit EntryAbility.ets to add the API call in onCreate():   
-   
-   ``` ts
-   import testNapi from 'libentry.so';
-   ``` 
+
+    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    import testNapi from 'libentry.so';
+    ```
 
    ``` ts
    // Add a C API call in onCreate().

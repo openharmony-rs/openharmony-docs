@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:55.131Z pushedAt=2026-06-22T07:28:27.798Z -->
+<!-- md-trans-meta sourceCommit=b4689218e1c8bd07346af11a67a1c6b68e7c06f2 translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Overview
 Wireless Local Area Network (WLAN) is a technology that transmits and receives data via radio signals, infrared (IR) light signals, or other technologies. It enables network communication between nodes without the need for physical connections. It is widely used in offices and public places where mobile devices are used.

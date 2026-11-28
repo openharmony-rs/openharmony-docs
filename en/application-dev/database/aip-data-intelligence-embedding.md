@@ -1,11 +1,11 @@
 # Application Data Vectorization (ArkTS)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @my-2024; @cuile44; @pancodax-->
-<!--Designer: @fysun17; @AnruiWang; @xd_94-->
+<!--Owner: @my-2024-->
+<!--Designer: @cuile44; @fysun17; @AnruiWang-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=68d43ca5b02177c1c3fdf58e6f700e3a3dd9570e translatedAt=2026-11-04T08:33:43.018Z pushedAt=2026-11-04T08:38:18.142Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d92e24eb4c0dc856d7d28c1028e05b77d433889d translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 ## When to Use
 

@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-29T10:49:15.853Z pushedAt=2026-07-29T12:37:14.473Z -->
+<!-- md-trans-meta sourceCommit=74f6be55956b790cf74f8d4b3682a09b0bdf1754 translatedAt=2026-11-28T03:12:44.836Z nl=2 -->
 
 ## Overview
 
@@ -27,16 +27,20 @@ The following uses subscribing to app freeze warning events as an example to ill
 
 1. In DevEco Studio, create an ArkTS app project, edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and import the dependent modules. The sample code is as follows:
 
-   ```ts
+   <!-- @[AppFreezeWarning_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
 2. Edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and add a subscription for system events in the onCreate function. The sample code is as follows:
 
-   ```ts
+   <!-- @[AppFreezeWarning_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    hiAppEvent.addWatcher({
      // You can customize the watcher name, which the system uses to identify different watchers.
-     name: "watcher",
+     name: 'appFreezeWarningWatcher',
      // You can subscribe to system events of interest. Here, the app freeze warning event is subscribed.
      appEventFilters: [
        {
@@ -93,30 +97,22 @@ The following uses subscribing to app freeze warning events as an example to ill
 
 3. Edit the **Index.ets** file under **entry > src > main > ets > pages** in the project to add a button that triggers the app freeze warning event. The sample code is as follows:
 
-   ```ts
-     @Entry
-     @Component
-     struct Index {
-       build() {
-         RelativeContainer() {
-           Column() {
-             Button("appFreezeWarning", { stateEffect:true, type: ButtonType.Capsule})
-               .width('75%')
-               .height(50)
-               .margin(15)
-               .fontSize(20)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                // Construct an appFreezeWarning scenario in the button click function to trigger an app freeze alarm event.
-                 const t = Date.now();
-                 while (Date.now() - t <= 6500) {}
-               })
-           }.width('100%')
-         }
-         .height('100%')
-         .width('100%')
-       }
-     }
+   <!-- @[AppFreezeWarning_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Button("appFreezeWarning")
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // Construct an appFreezeWarning scenario in the button click function to trigger an app freeze alarm event.
+       const t = Date.now();
+       while (Date.now() - t <= 6500) {}
+     })
    ```
 
 4. Run the app project in DevEco Studio, and then click the **appFreezeWarning** button in the app UI to trigger an app freeze warning event.
@@ -125,7 +121,7 @@ The following uses subscribing to app freeze warning events as an example to ill
 
 After about one minute, the **Log** window displays the logs generated when the system event data is processed:
 
-```text
+``` Text
 HiAppEvent onReceive: domain=OS
 HiAppEvent eventName=APPFREEZE_WARNING
 HiAppEvent eventInfo.domain=OS

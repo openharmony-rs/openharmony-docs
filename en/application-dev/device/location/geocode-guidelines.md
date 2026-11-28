@@ -5,7 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-10-31T01:28:27.005Z pushedAt=2026-10-31T03:41:39.404Z nl=1 -->
+<!-- md-trans-meta sourceCommit=24cb7130c2fa26539d2271d78e3dd3f951ea41dd translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 ## Scenario
 
@@ -34,61 +34,82 @@ The APIs used for conversion between latitude and longitude coordinates and geoc
 
 1. Import the **geoLocationManager** module. All functional APIs related to geocoding and reverse geocoding capabilities are provided by this module.
    
-   ```ts
+   <!-- @[geocode_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
+
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 
-2. Check whether the geocoding and reverse geocoding services are available.
-   - Call **isGeocoderAvailable** to check whether the geocoding and reverse geocoding services are available. If yes, proceed to step 3. If the services are unavailable, the device does not have the geocoding and reverse geocoding capabilities. Do not use the related APIs.
+2. Define the geocoding parameters.
+
+   ``` TypeScript
+   let latitude: number = 31.12;
+   let longitude: number = 121.11;
+   let description: string = 'Zhangjiang Road, Pudong New Area, Shanghai';
+   ```
+
+3. Check whether the geocoding and reverse geocoding services are available.
+   - Call **isGeocoderAvailable** to check whether the geocoding and reverse geocoding services are available. If yes, proceed to step 4. If the services are unavailable, the device does not have the geocoding and reverse geocoding capabilities. Do not use the related APIs.
      
-      ```ts
-      import { geoLocationManager } from '@kit.LocationKit';
+     <!-- @[geocode_is_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
+
+      ``` TypeScript
       try {
-          let isAvailable = geoLocationManager.isGeocoderAvailable();
-          if (!isAvailable) {
-              console.error("current device do not support geocoder");
-          }
+        let isAvailable = geoLocationManager.isGeocoderAvailable();
+        if (!isAvailable) {
+            console.error('current device do not support geocoder');
+        }
+        // ...
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+        console.error('errCode:' + err.code + ', message:'  + err.message);
+        // ...
       }
       ```
 
-3. Obtain the geocoding conversion result.
-   - Call **getAddressesFromLocation** to convert coordinates into geographic descriptions (i.e., location information). Your application can obtain the list of [GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress) objects that match the coordinates and read the corresponding parameter data based on actual usage requirements.
+4. Obtain the geocoding conversion result.
+   - Call **getAddressesFromLocation** to convert coordinates into a list of [GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress) objects that match the coordinates.
      
-      ```ts
-      let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
+     <!-- @[geocode_reverse_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
+
+      ``` TypeScript
+      let reverseGeocodeRequest: geoLocationManager.ReverseGeoCodeRequest = {'latitude': latitude, 'longitude': longitude, 'maxItems': 1};
       try {
-          if (geoLocationManager.isGeocoderAvailable()) {
-            geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
-              if (err) {
-                console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
-              } else {
-                console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
-              }
-            });
-          }
+        if (geoLocationManager.isGeocoderAvailable()) {
+          geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
+            if (err) {
+              console.error('getAddressesFromLocation errCode:' + err.code + ', message:'  + err.message);
+            } else {
+              console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
+            }
+            // ...
+          });
+        }
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+        console.error('errCode:' + err.code + ', message:'  + err.message);
+        // ...
       }
       ```
 
    - Call **getAddressesFromLocationName** to convert geographic descriptions (i.e., location information) into coordinates.
      
-      ```ts
-      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "Zhangjiang Road, Pudong New Area, Shanghai", "maxItems": 1};
+     <!-- @[geocode_forward_geocode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/GeocodePage.ets) -->
+
+      ``` TypeScript
+      let geocodeRequest: geoLocationManager.GeoCodeRequest = {'description': description, 'maxItems': 1};
       try {
-          if (geoLocationManager.isGeocoderAvailable()) {
-            geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
-              if (err) {
-                console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
-              } else {
-                console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
-              }
-            });
-          }
+        if (geoLocationManager.isGeocoderAvailable()) {
+          geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+            if (err) {
+              console.error('getAddressesFromLocationName errCode:' + err.code + ', message:'  + err.message);
+            } else {
+              console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
+            }
+            // ...
+          });
+        }
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+          console.error('errCode:' + err.code + ', message:'  + err.message);
+          // ...
       }
       ```
 

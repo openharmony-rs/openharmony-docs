@@ -5,7 +5,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=4fd9407c1fee7102dc341fb6e7a347fc0d435027 translatedAt=2026-09-20T06:31:02.944Z pushedAt=2026-09-20T07:48:19.903Z -->
+<!-- md-trans-meta sourceCommit=6aca03df325978f397c8f09f3605fe8aa48f05a4 translatedAt=2026-11-28T03:12:44.836Z nl=2 -->
 
 ## Overview
 
@@ -42,8 +42,8 @@ The following describes how to subscribe to the crash event triggered by a butto
 2. Edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and set the [custom crash event parameters](hiappevent-watcher-crash-events.md#customizing-crash-event-parameters) and crash log [custom specification settings](hiappevent-watcher-crash-events.md#customizing-specifications) in the `onCreate` function. The sample code is as follows:
 
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) --> 
-
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
     ``` TypeScript
     // Build custom parameters for the crash event.
     let crashParams: Record<string, hiAppEvent.ParamType> = {

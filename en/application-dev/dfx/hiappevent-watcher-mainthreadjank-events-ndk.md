@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b3002ba9e170e60c2ca2ddd623c2ab4f4030ff0d translatedAt=2026-11-05T06:16:33.940Z pushedAt=2026-07-31T03:59:41.550Z nl=1 -->
+<!-- md-trans-meta sourceCommit=7ee11c1f0301e6100e1f26dcd0b3d3ad99aef3fb translatedAt=2026-11-28T03:12:44.837Z nl=1 -->
 
 ## Overview
 
@@ -53,10 +53,9 @@ The following example shows how to trigger a main thread jank event when a user 
 
 3. Edit the **entry > src > main > cpp > CMakeLists.txt** file in the project to add source files and dynamic libraries.
 
-   ```cmake
-   add_library(entry SHARED napi_init.cpp)
-   # Add dependencies on libhiappevent_ndk.z.so and libhilog_ndk.z.so (for log output).
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # Ensure that the entry/build directory exists.
@@ -64,7 +63,10 @@ The following example shows how to trigger a main thread jank event when a user 
    # Extract jsoncpp-1.9.6.tar.gz to entry/build to obtain the jsoncpp header directory.
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-
+   
+   add_library(entry SHARED napi_init.cpp)
+   # Add dependencies on libhiappevent_ndk.z.so and libhilog_ndk.z.so (for log output).
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    # Add the third-party library libjsoncpp.so to parse JSON strings in subscribed events.
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
@@ -163,11 +165,20 @@ The following example shows how to trigger a main thread jank event when a user 
 
    Edit the **napi_init.cpp** file under **entry > src > main > cpp** in the project to register `RegisterMainThreadJankWatcher` as an ArkTS API:
 
-   <!-- @[MainThreadJank_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[MainThreadJank_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
-   { "RegisterMainThreadJankWatcher", nullptr, RegisterMainThreadJankWatcher, nullptr, nullptr, nullptr,
-       napi_default, nullptr },
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           // ...
+           { "RegisterMainThreadJankWatcher", nullptr, RegisterMainThreadJankWatcher, nullptr, nullptr, nullptr,
+               napi_default, nullptr },
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
    ```
 
    Edit the **Index.d.ts** file under **entry > src > main > cpp > types > libentry** in the project to define the ArkTS API:

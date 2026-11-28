@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=ad8e057349873757a24c06f9fcc7d93b4beded74 translatedAt=2026-11-05T00:54:38.016Z pushedAt=2026-09-20T08:08:16.037Z nl=2 -->
+<!-- md-trans-meta sourceCommit=7656c034629dad05eb248199f5c11dc38d84e3b4 translatedAt=2026-11-28T03:12:44.838Z nl=2 -->
 
 The HiDebug C/C++ APIs are independent. You can call them to obtain debugging information. For details, see the following examples.
 
@@ -376,7 +376,7 @@ Starting from API version 26.0.0, the asynchronous context management capability
 
 > **NOTE**
 >
-> This capability is supported only on the ARM64 architecture and is available only in debug-version applications. It must be used together with the [hiprofiler](hiprofiler.md#async_type-parameter-details) tuning component to trace the complete asynchronous call stack.
+> This capability is supported only on the ARM64 architecture and is available only in debug-version applications. To trace the complete asynchronous call stack, use the [hiprofiler](hiprofiler.md#async_type-parameter-details) tuning component and enable the configuration parameters described in [Step 2: Running the Project](#step-2-running-the-project).
 
 ### Step 1: Adding the Sample Code for the Async Context Management APIs
 
@@ -609,7 +609,13 @@ Starting from API version 26.0.0, the asynchronous context management capability
 
 ### Step 2: Running the Project
 
-1. Start a hiprofiler collection task and enable async context tracing.
+1. Enable the configuration parameters.
+
+   ```shell
+   hdc shell param set hilog.debug.async_stack.enable_developer_stack true
+   ```
+
+2. Start a hiprofiler collection task and enable async context tracing.
 
    ```shell
    hdc shell
@@ -641,6 +647,6 @@ Starting from API version 26.0.0, the asynchronous context management capability
    CONFIG
    ```
 
-2. Click the **Run** button in DevEco Studio, and then click **testAsyncContext** on the application UI.
+3. Click the **Run** button in DevEco Studio, and then click **testAsyncContext** on the application UI.
 
-3. At the bottom of DevEco Studio, switch to the **Log** tab and set the filter criteria to **testTag** to view the asynchronous call chain logs.
+4. At the bottom of DevEco Studio, switch to the **Log** tab and set the filter criteria to **testTag** to view the asynchronous call chain logs.

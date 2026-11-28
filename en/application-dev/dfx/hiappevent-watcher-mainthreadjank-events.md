@@ -6,25 +6,13 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b3e6988e0ab25cc1b7ee9318b620b0d585c1093c translatedAt=2026-11-05T06:16:33.940Z pushedAt=2026-11-05T06:16:33.940Z nl=1 -->
+<!-- md-trans-meta sourceCommit=74f6be55956b790cf74f8d4b3682a09b0bdf1754 translatedAt=2026-11-28T03:17:32.496Z nl=1 -->
 
 ## Introduction
 
 When the main thread of an application executes a time-consuming task, you may perceive jank. However, if the jank duration does not reach the threshold specified for [application freeze detection](appfreeze-guidelines.md), no fault log is generated. To better locate and analyze issues, you can refer to the [main thread jank event detection principles](apptask-timeout-guidelines.md#detection-principles) and analyze the execution status of main-thread tasks based on the generated [main thread jank event log specifications](apptask-timeout-guidelines.md#log-specifications).
 
-This document introduces the detection principles for main thread jank and the meaning and specifications of related fields.
-
-## Detection Principles
-
-For details, see [main thread jank event detection principles](apptask-timeout-guidelines.md#main-thread-timeout-detection).
-
-> **NOTE**
->
-> When you install and start an application by clicking **Debug** in DevEco Studio, timeout detection for the current project is automatically disabled to prevent timeout detection from affecting the debugging process.
-
-## Available APIs
-
-To learn how to subscribe to main thread jank events through HiAppEvent, see the following documents. Both ArkTS and C/C++ APIs are available. Choose the one that fits your scenario.
+This document introduces the detection principles for main thread jank and the meaning and specifications of related fields. To learn how to subscribe to main thread jank events through HiAppEvent, see the following documents. Both ArkTS and C/C++ APIs are available. Choose the one that fits your scenario.
 
 - [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md)
 
@@ -33,6 +21,14 @@ To learn how to subscribe to main thread jank events through HiAppEvent, see the
 > **NOTE**
 >
 > Main thread jank events can be subscribed to through HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, this capability is also supported in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
+## Detection Principles
+
+For details, see [main thread jank event detection principles](apptask-timeout-guidelines.md#main-thread-timeout-detection).
+
+> **NOTE**
+>
+> When you install and start an application by clicking **Debug** in DevEco Studio, timeout detection for the current project is automatically disabled to prevent timeout detection from affecting the debugging process.
 
 ## Custom Parameters
 
@@ -71,67 +67,73 @@ The main thread jank stack sampling configuration parameters are defined as foll
 
 1. **sample_count**:
 
-   (1) **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured **sample_count** cannot exceed the maximum value calculated using the formula.
+   1. **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured **sample_count** cannot exceed the maximum value calculated using the formula.
 
-   (2) **4** represents four sampling intervals reserved by the system: one interval from the timeout to the first detection, two intervals for the waiting and checks between the two fault-tolerance detections, and one interval for stack collection and reporting.
+   2. **4** represents four sampling intervals reserved by the system: one interval from the timeout to the first detection, two intervals for the waiting and checks between the two fault-tolerance detections, and one interval for stack collection and reporting.
 
-   (3) Configure this parameter according to your scenario.
+   3. Configure this parameter according to your scenario.
 
 2. Parameter examples
 
+   Import the modules.
+
+   <!-- @[MainThreadJankConfig_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
+   
    The following examples show **log_type** values **0**, **1**, and **2** for the **setEventConfig** API.
 
-   (1) **log_type=0**, used to sample stacks or traces.
+   1. **log_type=0**, used to sample stacks or traces.
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+      <!-- @[SetMainThreadJank_Type0_Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      let params: Record<string, hiAppEvent.ParamType> = {
+        'log_type': '0'
+      };
+      hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
+        hilog.info(0x0000, 'hiAppEvent', `Setting default value successfully.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'hiAppEvent', `Failed to set default value. Code: ${err.code}, message: ${err.message}`);
+      });
+      ```
 
-   let params: Record<string, hiAppEvent.ParamType> = {
-     "log_type": "0"
-   };
-   hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
-     hilog.info(0x0000, 'hiAppEvent', `Setting default value successfully.`);
-   }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set default value. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+   2. **log_type=1**, used to collect only call stacks.
 
-   (2) **log_type=1**, used to collect only call stacks.
+      <!-- @[SetMainThreadJank_Type1_Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      let params: Record<string, hiAppEvent.ParamType> = {
+        'log_type': '1',
+        'sample_interval': '100',
+        'ignore_startup_time': '11',
+        'sample_count': '21',
+        'report_times_per_app': '3'
+      };
+      hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
+        hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+      });
+      ```
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+   3. **log_type=2**, used to collect only traces.
 
-   let params: Record<string, hiAppEvent.ParamType> = {
-     "log_type": "1",
-     "sample_interval": "100",
-     "ignore_startup_time": "11",
-     "sample_count": "21",
-     "report_times_per_app": "3"
-   };
-   hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
-     hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
-   }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
-
-   (3) **log_type=2**, used to collect only traces.
-
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-
-   let params: Record<string, hiAppEvent.ParamType> = {
-     "log_type": "2"
-   };
-   hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
-     hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
-   }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+      <!-- @[SetMainThreadJank_Type2_Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      let params: Record<string, hiAppEvent.ParamType> = {
+        'log_type': '2'
+      };
+      hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
+        hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
+      });
+      ```
 
 ### configEventPolicy
 
@@ -149,67 +151,73 @@ You can use the HiAppEvent APIs described above to configure stack sampling para
 
 **Examples**
 
-The following examples show **logType** values **0**, **1**, and **2** for the **configEventPolicy** API.
+   Import the modules.
 
-(1) **logType=0**, used to sample stacks or traces. Only **autoStopSampling** needs to be configured. Default values are used for other parameters.
+   <!-- @[MainThreadJankConfig_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+   The following examples show **logType** values **0**, **1**, and **2** for the **configEventPolicy** API.
 
-let policy: hiAppEvent.EventPolicy = {
-  "mainThreadJankPolicy" : {
-    "logType": 0, // Type of logs to collect.
-    "autoStopSampling": true // Stop sampling when jank ends.
-  }
-};
-hiAppEvent.configEventPolicy(policy).then(() => {
-  hilog.info(0x0000, 'hiAppEvent', `Setting default value successfully.`);
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'hiAppEvent', `Failed to set default value. Code: ${err.code}, message: ${err.message}`);
-});
-```
+   1. **logType=0**, used to sample stacks or traces. Only **autoStopSampling** needs to be configured. Default values are used for other parameters.
 
-(2) **logType=1**, used to collect only call stacks. The threshold for triggering detection is user-defined.
+      <!-- @[MainThreadJank_Type0_Policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      let policy: hiAppEvent.EventPolicy = {
+        'mainThreadJankPolicy' : {
+          'logType': 0, // Type of logs to collect.
+          'autoStopSampling': true // Stop sampling when jank ends.
+        }
+      };
+      hiAppEvent.configEventPolicy(policy).then(() => {
+        hilog.info(0x0000, 'hiAppEvent', `Setting default value successfully.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'hiAppEvent', `Failed to set default value. Code: ${err.code}, message: ${err.message}`);
+      });
+      ```
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+   2. **logType=1**, used to collect only call stacks. The threshold for triggering detection is user-defined.
 
-let policy: hiAppEvent.EventPolicy = {
-  "mainThreadJankPolicy" : {
-    "logType": 1, // Type of logs to collect.
-    "sampleInterval": 70, // Detection threshold and stack sampling interval.
-    "ignoreStartupTime": 11, // Time during startup for which main thread jank detection is ignored.
-    "sampleCount": 20, // Number of main thread jank samplings.
-    "reportTimesPerApp": 3, // Number of main thread jank sampling reports.
-    "autoStopSampling": true // Stop sampling when jank ends.
-  }
-};
-hiAppEvent.configEventPolicy(policy).then(() => {
-  hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
-});
-```
+      <!-- @[MainThreadJank_Type1_Policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      let policy: hiAppEvent.EventPolicy = {
+        'mainThreadJankPolicy' : {
+          'logType': 1, // Type of logs to collect.
+          'sampleInterval': 70, // Detection threshold and stack sampling interval.
+          'ignoreStartupTime': 11, // Time during startup for which main thread jank detection is ignored.
+          'sampleCount': 20, // Number of main thread jank samplings.
+          'reportTimesPerApp': 3, // Number of main thread jank sampling reports.
+          'autoStopSampling': true // Stop sampling when jank ends.
+        }
+      };
+      hiAppEvent.configEventPolicy(policy).then(() => {
+        hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+      });
+      ```
 
-(3) **logType=2**, used to collect only traces. Other parameters do not take effect and do not need to be set.
+   3. **logType=2**, used to collect only traces. Other parameters do not take effect and do not need to be set.
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-
-  let policy: hiAppEvent.EventPolicy = {
-    "mainThreadJankPolicy" : {
-      "logType": 2 // Type of logs to collect.
-    }
-  };
-  hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
-  });
-  ```
+      <!-- @[MainThreadJank_Type2_Policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      let policy: hiAppEvent.EventPolicy = {
+        'mainThreadJankPolicy' : {
+          'logType': 2 // Type of logs to collect.
+        }
+      };
+      hiAppEvent.configEventPolicy(policy).then(() => {
+        hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
+      });
+      ```
 
 ### OH_HiAppEvent_SetEventConfig
 
@@ -254,84 +262,84 @@ The following value ranges are described based on the converted variable types.
 
 1. **MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT**:
 
-   (1) **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured value of **MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT** cannot exceed the maximum value calculated using the formula.
+   1. **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured value of **MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT** cannot exceed the maximum value calculated using the formula.
 
-   (2) **4** means the first timeout interval detection time, the second timeout interval detection time (the system provides two chances to detect a repeated timeout event), and the time required to collect and report stack information.
+   2. **4** represents four sampling intervals reserved by the system: one interval from the timeout to the first detection, two intervals for the waiting and checks between the two fault-tolerance detections, and one interval for stack collection and reporting.
 
-   (3) Configure this parameter according to your scenario.
+   3. Configure this parameter according to your scenario.
 
 2. Parameter examples
 
+   Include the header files.
+
+   <!-- @[MainThreadJank_Config_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
+   // ...
+   #include "hiappevent/hiappevent.h"
+   // ...
+   #include "hilog/log.h"
+   
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   ```
+    
    The following examples show **MAIN_THREAD_JANK_PARAM_LOG_TYPE** values **"0"**, **"1"**, and **"2"** in **config** for the **OH_HiAppEvent_SetEventConfig** API.
 
-   (1) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="0"**, used to sample stacks or traces.
+   1. **MAIN_THREAD_JANK_PARAM_LOG_TYPE="0"**, used to sample stacks or traces.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
+      <!-- @[MainThreadJank_Config_Type0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
+      int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+      if (ret == HIAPPEVENT_SUCCESS) {
+          OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
+      }
+      if (config != nullptr) {
+          OH_HiAppEvent_DestroyConfig(config);
+      }
+      ```
 
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
+   2. **MAIN_THREAD_JANK_PARAM_LOG_TYPE="1"**, used to collect only call stacks.
 
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
-    int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
-    if (ret == HIAPPEVENT_SUCCESS) {
-        OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
-    }
-    if (config != nullptr) {
-       OH_HiAppEvent_DestroyConfig(config);
-    }
-   ```
+      <!-- @[MainThreadJank_Config_Type1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME, "11");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT, "21");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
 
-   (2) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="1"**, used to collect only call stacks.
+      int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+      if (ret == HIAPPEVENT_SUCCESS) {
+          OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
+      }
+      if (config != nullptr) {
+          OH_HiAppEvent_DestroyConfig(config);
+      }
+      ```
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
+   3. **MAIN_THREAD_JANK_PARAM_LOG_TYPE="2"**, used to collect only traces.
 
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME, "11");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT, "21");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
+      <!-- @[MainThreadJank_Config_Type2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
 
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
-   }
-   if (config != nullptr) {
-       OH_HiAppEvent_DestroyConfig(config);
-   }
-   ```
-
-   (3) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="2"**, used to collect only traces.
-
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
-
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
-   }
-   if (config != nullptr) {
-       OH_HiAppEvent_DestroyConfig(config);
-   }
-   ```  
+      int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+      if (ret == HIAPPEVENT_SUCCESS) {
+          OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
+      }
+      if (config != nullptr) {
+          OH_HiAppEvent_DestroyConfig(config);
+      }
+      ```
 
 **name** = **EVENT_MAIN_THREAD_JANK_V2**
 
@@ -362,86 +370,86 @@ The following value ranges are described based on the converted variable types.
 
 1. **MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT**:
 
-   (1) **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured value of **MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT** cannot exceed the maximum value calculated using the formula.
+   1. **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured value of **MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT** cannot exceed the maximum value calculated using the formula.
 
-   (2) **4** means the first timeout interval detection time, the second timeout interval detection time (the system provides two chances to detect a repeated timeout event), and the time required to collect and report stack information.
+   2. **4** represents four sampling intervals reserved by the system: one interval from the timeout to the first detection, two intervals for the waiting and checks between the two fault-tolerance detections, and one interval for stack collection and reporting.
 
-   (3) Configure this parameter according to your scenario.
+   3. Configure this parameter according to your scenario.
 
 2. Parameter examples
 
+   Include the header files.
+
+   <!-- @[MainThreadJank_Config_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
+   // ...
+   #include "hiappevent/hiappevent.h"
+   // ...
+   #include "hilog/log.h"
+   
+   #undef LOG_TAG
+   #define LOG_TAG "testTag"
+   ```
+    
    The following examples show **MAIN_THREAD_JANK_PARAM_LOG_TYPE** values **"0"**, **"1"**, and **"2"** in **config** for the **OH_HiAppEvent_SetEventConfig** API.
 
-   (1) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="0"**, used to sample stacks or traces.
+   1. **MAIN_THREAD_JANK_PARAM_LOG_TYPE="0"**, used to sample stacks or traces.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
+      <!-- @[MainThreadJank_Config_V2_Type0](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
+      int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+      if (ret == HIAPPEVENT_SUCCESS) {
+          OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
+      }
+      if (config != nullptr) {
+          OH_HiAppEvent_DestroyConfig(config);
+      }
+      ```
 
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
+   2. **MAIN_THREAD_JANK_PARAM_LOG_TYPE="1"**, used to collect only call stacks.
 
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
-   }
-   if (config != nullptr) {
-       OH_HiAppEvent_DestroyConfig(config);
-   }
-   ```
+      <!-- @[MainThreadJank_Config_V2_Type1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME, "11");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT, "21");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
 
-   (2) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="1"**, used to collect only call stacks.
+      int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+      if (ret == HIAPPEVENT_SUCCESS) {
+          OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
+      }
+      if (config != nullptr) {
+          OH_HiAppEvent_DestroyConfig(config);
+      }
+      ```
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
+   3. **MAIN_THREAD_JANK_PARAM_LOG_TYPE="2"**, used to collect only traces.
 
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_IGNORE_STARTUP_TIME, "11");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT, "21");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
+      <!-- @[MainThreadJank_Config_V2_Type2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      
+      ``` C++
+      HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+      OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
 
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
-   }
-   if (config != nullptr) {
-       OH_HiAppEvent_DestroyConfig(config);
-   }
-   ```
-
-   (3) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="2"**, used to collect only traces.
-
-   ```c++
-   #include "napi/native_api.h"
-   #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
-   OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
-
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
-   }
-   if (config != nullptr) {
-       OH_HiAppEvent_DestroyConfig(config);
-   }
-   ```  
+      int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+      if (ret == HIAPPEVENT_SUCCESS) {
+          OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
+      }
+      if (config != nullptr) {
+          OH_HiAppEvent_DestroyConfig(config);
+      }
+      ```
 
 ## Event Fields
 

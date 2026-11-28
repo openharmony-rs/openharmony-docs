@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4b46da9d28202b88db8195cd5c0fa84b6d3b4e70 translatedAt=2026-10-31T01:25:25.283Z pushedAt=2026-10-31T03:37:19.856Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5170584f3b7b4b226136224b3bcabf1a74ca7a5b translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 
 ## When to Use
@@ -52,7 +52,7 @@ The [DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-da
 | onCreate(want: Want, callback: AsyncCallback&lt;void&gt;): void | Called by the server to initialize service logic when the DataShare client connects to the DataShareExtensionAbility server. This method can be overridden as required.        |
 | insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void | Inserts data. This API is called when the client requests to insert data. This method can be overridden as required.        |
 | update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void | Updates data. This API is called when the client requests to update data. This method can be overridden as required.        |
-| batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | Batch updates data. This API is called when the client requests to batch update data. This method can be overridden as required.   |
+| batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;, callback: AsyncCallback&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;): void | Batch updates data. This API is called when the client requests to batch update data. This method can be overridden as required.   |
 | delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;number&gt;): void | Deletes data. This API is called when the client requests to delete data. This method can be overridden as required.   |
 | query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;DataShareResultSet&gt;): void | Queries data. This API is called when the client requests to query data. This method can be overridden as required.          |
 | batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void | Batch inserts data. This API is called when the client requests to batch insert data. This method can be overridden as required.   |

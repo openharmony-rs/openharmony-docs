@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=10a823f5114708793f873c2259ddf0b8d1e5f84e translatedAt=2026-10-31T01:18:30.626Z pushedAt=2026-10-31T01:49:15.476Z nl=2 -->
+<!-- md-trans-meta sourceCommit=73994c4c4ea6022c00782dd468e1cb3936302c87 translatedAt=2026-11-28T02:20:50.261Z nl=2 -->
 
 ## Introduction
 The peer-to-peer (P2P) mode provides a point-to-point connection between devices in a WLAN. It enables the direct establishment of a TCP/IP connection between two stations (STAs) without the involvement of an access point (AP).
@@ -47,7 +47,7 @@ The following table describes the APIs used in this topic.
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
-2. Enable Wi-Fi on the device.
+2. Enable Wi-Fi on the device. Before enabling Wi-Fi, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Create or remove a P2P group.
    <!-- @[createGroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
@@ -128,7 +128,7 @@ The following table describes the APIs used in this topic.
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
-2. Enable Wi-Fi on the device.
+2. Enable Wi-Fi on the device. Before enabling Wi-Fi, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Register a callback for **p2pPeerDeviceChange** and set up a P2P connection in the callback implementation.
    <!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
@@ -238,7 +238,7 @@ The following table describes the APIs used in this topic.
 
 ### Obtaining the IP Address of the Peer Device and Performing Socket Communication
 1. Import the Wi-Fi module.
-2. Enable Wi-Fi on the device.
+2. Enable Wi-Fi on the device. Before enabling Wi-Fi, you can call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Call [wifiP2pLinkedInfo.connectState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#p2pconnectstate) to check whether the P2P connection status is **CONNECTED**.
 5. Call [wifiP2pGroupInfo.goIpAddress](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifip2pgroupinfo) to obtain the P2P group IP address for socket communication.
