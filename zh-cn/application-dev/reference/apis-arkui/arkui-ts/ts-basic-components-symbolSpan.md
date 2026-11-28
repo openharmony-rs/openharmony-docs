@@ -375,9 +375,7 @@ struct Index {
               .fontSize(96)
           }
         }
-        Column() {
-          Text('            ')
-        }
+        Blank().width(60)
         Column() {
           Text('font weight: 660')
           Text() {
@@ -388,9 +386,7 @@ struct Index {
           }
         }
       }
-      Row() {
-        Text('    ')
-      }
+      Blank().height(20)
       Row() {
         Text('After set system text weight: Bold')
       }
@@ -404,9 +400,7 @@ struct Index {
               .fontSize(96)
           }
         }
-        Column() {
-          Text('    ')
-        }
+        Blank().width(20)
         Column() {
           Text('device category: false')
           Text() {

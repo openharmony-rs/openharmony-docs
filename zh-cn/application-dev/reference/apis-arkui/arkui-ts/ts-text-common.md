@@ -475,7 +475,7 @@ equals(id: TextMenuItemId): boolean
 | id | [TextMenuItemId](#textmenuitemid12) |  否   | 否  | 菜单id。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 快捷键提示。<br>该字段仅2in1设备支持。<br>默认值：undefined，不显示快捷键提示。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
-## EditMenuOptions
+## EditMenuOptions<sup>12+</sup>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1360,8 +1360,6 @@ TextArea组件在文本超长时显示效果。默认值为CLIP，按最大行�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
-
 | 名称 | 类型                                                         | 只读 | 可选 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---- | ---------------- |
 | onlyBetweenLines  | boolean | 否   | 是 | 文本的行间距是否仅在行与行之间生效。<br>当设置为true时，行间距仅适用于行与行之间，首行上方和尾行下方无额外的行间距。当设置为false时，首行上方和尾行下方均会存在行间距。<br>默认值：false |
@@ -1452,7 +1450,7 @@ constructor(options?: NumericTextTransitionOptions)
 | DOWN                  | 0  | 内容往下翻。|
 | UP                    | 1  | 内容往上翻。 |
 
-## TextLayoutOptions对象说明<sup>20+</sup>
+## TextLayoutOptions<sup>20+</sup>对象说明
 
 文本布局选项。
 

@@ -1575,15 +1575,15 @@ struct StyledStringProcessDemo {
             .onClick(() => {
               let styles = this.mutableStyledString1.getStyles(0, this.mutableStyledString1.length);
               if (styles.length == 2) {
-                for (let i = 0; i < styles.length; i++) {
-                  console.info('StyledString style object start:' + styles[i].start);
-                  console.info('StyledString style object length:' + styles[i].length);
-                  console.info('StyledString style object key:' + styles[i].styledKey);
-                  if (styles[i].styledKey === 0) {
-                    let fontAttr = styles[i].styledValue as TextStyle;
+                styles.forEach((style: SpanStyle) => {
+                  console.info('StyledString style object start:' + style.start);
+                  console.info('StyledString style object length:' + style.length);
+                  console.info('StyledString style object key:' + style.styledKey);
+                  if (style.styledKey === 0) {
+                    let fontAttr = style.styledValue as TextStyle;
                     console.info('StyledString fontColor:' + fontAttr.fontColor);
                   }
-                }
+                })
               }
               if (styles[0] !== undefined) {
                 this.mutableStyledString2.setStyle(styles[0]);
@@ -1827,12 +1827,12 @@ struct StyledStringSetTextStyleDemo {
           .onClick(() => {
             let styles = this.mutableStyledString1.getStyles(0, this.mutableStyledString1.length);
             if (styles.length !== 0) {
-              for (let i = 0; i < styles.length; i++) {
-                console.info('mutableStyledString1 style object start:' + styles[i].start);
-                console.info('mutableStyledString1 style object length:' + styles[i].length);
-                console.info('mutableStyledString1 style object key:' + styles[i].styledKey);
-                if (styles[i].styledKey === 0) {
-                  let fontAttr = styles[i].styledValue as TextStyle;
+              styles.forEach((style: SpanStyle) => {
+                console.info('mutableStyledString1 style object start:' + style.start);
+                console.info('mutableStyledString1 style object length:' + style.length);
+                console.info('mutableStyledString1 style object key:' + style.styledKey);
+                if (style.styledKey === 0) {
+                  let fontAttr = style.styledValue as TextStyle;
                   console.info('mutableStyledString1 fontColor:' + fontAttr.fontColor);
                   console.info('mutableStyledString1 fontSize:' + fontAttr.fontSize);
                   console.info('mutableStyledString1 fontWeight:' + fontAttr.fontWeight);
@@ -1840,7 +1840,7 @@ struct StyledStringSetTextStyleDemo {
                   console.info('mutableStyledString1 fontFamily:' + fontAttr.fontFamily);
                   console.info('mutableStyledString1 superscript:' + fontAttr.superscript);
                 }
-              }
+              })
             }
           })
           .margin({ top: 10 })
@@ -1848,37 +1848,37 @@ struct StyledStringSetTextStyleDemo {
           .onClick(() => {
             let styles = this.mutableStyledString2.getStyles(0, this.mutableStyledString2.length);
             if (styles.length !== 0) {
-              for (let i = 0; i < styles.length; i++) {
-                console.info('mutableStyledString2 style object start:' + styles[i].start);
-                console.info('mutableStyledString2 style object length:' + styles[i].length);
-                console.info('mutableStyledString2 style object key:' + styles[i].styledKey);
-                if (styles[i].styledKey === 1) {
-                  let decoAttr = styles[i].styledValue as DecorationStyle;
+              styles.forEach((style: SpanStyle) => {
+                console.info('mutableStyledString2 style object start:' + style.start);
+                console.info('mutableStyledString2 style object length:' + style.length);
+                console.info('mutableStyledString2 style object key:' + style.styledKey);
+                if (style.styledKey === 1) {
+                  let decoAttr = style.styledValue as DecorationStyle;
                   console.info('mutableStyledString2 decoration type:' + decoAttr.type);
                   console.info('mutableStyledString2 decoration color:' + decoAttr.color);
                 }
-                if (styles[i].styledKey === 2) {
-                  let baselineAttr = styles[i].styledValue as BaselineOffsetStyle;
+                if (style.styledKey === 2) {
+                  let baselineAttr = style.styledValue as BaselineOffsetStyle;
                   console.info('mutableStyledString2 baselineOffset:' + baselineAttr.baselineOffset);
                 }
-                if (styles[i].styledKey === 3) {
-                  let letterAttr = styles[i].styledValue as LetterSpacingStyle;
+                if (style.styledKey === 3) {
+                  let letterAttr = style.styledValue as LetterSpacingStyle;
                   console.info('mutableStyledString2 letterSpacing:' + letterAttr.letterSpacing);
                 }
-                if (styles[i].styledKey === 4) {
-                  let textShadowAttr = styles[i].styledValue as TextShadowStyle;
+                if (style.styledKey === 4) {
+                  let textShadowAttr = style.styledValue as TextShadowStyle;
                   let shadowValues = textShadowAttr.textShadow;
                   if (shadowValues.length > 0) {
-                    for (let j = 0; j < shadowValues.length; j++) {
-                      console.info('mutableStyledString2 textShadow type:' + shadowValues[j].type);
-                      console.info('mutableStyledString2 textShadow radius:' + shadowValues[j].radius);
-                      console.info('mutableStyledString2 textShadow color:' + shadowValues[j].color);
-                      console.info('mutableStyledString2 textShadow offsetX:' + shadowValues[j].offsetX);
-                      console.info('mutableStyledString2 textShadow offsetY:' + shadowValues[j].offsetY);
-                    }
+                    shadowValues.forEach((shadow: ShadowOptions) => {
+                      console.info('mutableStyledString2 textShadow type:' + shadow.type);
+                      console.info('mutableStyledString2 textShadow radius:' + shadow.radius);
+                      console.info('mutableStyledString2 textShadow color:' + shadow.color);
+                      console.info('mutableStyledString2 textShadow offsetX:' + shadow.offsetX);
+                      console.info('mutableStyledString2 textShadow offsetY:' + shadow.offsetY);
+                    })
                   }
                 }
-              }
+              })
             }
           })
           .margin({ top: 10 })
@@ -1980,11 +1980,11 @@ struct StyledStringSetImageDemo {
         Button('Image之Get')
           .onClick(() => {
             let imageArray = this.mutableStr.getStyles(0, 1, StyledStringKey.IMAGE);
-            for (let i = 0; i < imageArray.length; ++i) {
-              console.info('mutableStr start ' + imageArray[i].start + ' length ' + imageArray[i].length + ' type ' +
-                imageArray[i].styledKey);
-              if (imageArray[i].styledKey === 300) {
-                let attachment = imageArray[i].styledValue as ImageAttachment;
+            imageArray.forEach((imageStyle: SpanStyle) => {
+              console.info('mutableStr start ' + imageStyle.start + ' length ' + imageStyle.length + ' type ' +
+                imageStyle.styledKey);
+              if (imageStyle.styledKey === 300) {
+                let attachment = imageStyle.styledValue as ImageAttachment;
                 this.imagePixelMap3 = attachment.value;
                 console.info('mutableStr value ' + JSON.stringify(attachment.value));
                 if (attachment.size !== undefined) {
@@ -1997,7 +1997,7 @@ struct StyledStringSetImageDemo {
                   console.info('mutableStr radius ' + JSON.stringify(radius));
                 }
               }
-            }
+            })
           })
         Image(this.imagePixelMap3).width(50).height(50)
         Button('Image之Append')
@@ -2158,29 +2158,6 @@ struct StyledStringSetLineheightParagraphstyleDemo {
           .borderWidth(1)
           .copyOption(CopyOptions.InApp)
           .draggable(true)
-
-        // 查询段落样式
-        Text()
-          .onClick(() => {
-            let styles = this.paragraphStyledString1.getStyles(0, this.paragraphStyledString1.length);
-            if (styles.length !== 0) {
-              for (let i = 0; i < styles.length; i++) {
-                console.info('paragraphStyledString1 style object start:' + styles[i].start);
-                console.info('paragraphStyledString1 style object length:' + styles[i].length);
-                console.info('paragraphStyledString1 style object key:' + styles[i].styledKey);
-                if (styles[i].styledKey === 200) {
-                  let paraAttr = styles[i].styledValue as ParagraphStyle;
-                  console.info('paragraphStyledString1 textAlign:' + paraAttr.textAlign);
-                  console.info('paragraphStyledString1 textIndent:' + paraAttr.textIndent);
-                  console.info('paragraphStyledString1 maxLines:' + paraAttr.maxLines);
-                  console.info('paragraphStyledString1 wordBreak:' + paraAttr.wordBreak);
-                  console.info('paragraphStyledString1 leadingMargin:' + paraAttr.leadingMargin);
-                  console.info('paragraphStyledString1 overflow:' + paraAttr.overflow);
-                }
-              }
-            }
-          })
-          .margin({ top: 10 })
       }
       .width('100%')
     }
@@ -2826,10 +2803,10 @@ struct StyledStringImageAttachmentInterfaceDemo {
   private async updateImageInfoStr() {
     this.message = 'Image info: \n';
     let imageArray = this.mutableStr.getStyles(0, this.mutableStr.length, StyledStringKey.IMAGE);
-    for (let i = 0; i < imageArray.length; ++i) {
+    imageArray.forEach((imageStyle: SpanStyle, i: number) => {
       this.message += (' Image ' + i + ':\n');
-      if (imageArray[i].styledKey === StyledStringKey.IMAGE) {
-        let attachment = imageArray[i].styledValue as ImageAttachment;
+      if (imageStyle.styledKey === StyledStringKey.IMAGE) {
+        let attachment = imageStyle.styledValue as ImageAttachment;
         if (attachment.size !== undefined) {
           let w: number = attachment.size.width as number;
           let h: number = attachment.size.height as number;
@@ -2841,7 +2818,7 @@ struct StyledStringImageAttachmentInterfaceDemo {
           this.message += ('    sizeInVp width = ' + w.toFixed(2) + ' \theight = ' + h.toFixed(2) + '\n\n');
         }
       }
-    }
+    })
   }
 
   private async getPixmapFromMedia(resource: Resource) {
@@ -2996,19 +2973,19 @@ struct leadingMarginSpanDemo {
             if (styles.length == 0) {
               return;
             }
-            for (let i = 0; i < styles.length; i++) {
-              console.info('getStyles style object start:' + styles[i].start);
-              console.info('getStyles style object length:' + styles[i].length);
-              console.info('getStyles style object key:' + styles[i].styledKey);
-              if (styles[i].styledKey === 200) {
-                let paraAttr = styles[i].styledValue as ParagraphStyle;
+            styles.forEach((style: SpanStyle) => {
+              console.info('getStyles style object start:' + style.start);
+              console.info('getStyles style object length:' + style.length);
+              console.info('getStyles style object key:' + style.styledKey);
+              if (style.styledKey === 200) {
+                let paraAttr = style.styledValue as ParagraphStyle;
                 console.info('getStyles leadingMarginSpan:' + paraAttr.leadingMarginSpan);
                 let leadingMarginSpanClass = paraAttr.leadingMarginSpan as MyLeadingMarginSpan;
                 if (leadingMarginSpanClass != null) {
                   console.info('getStyles leadingMarginSpan getText: ' + leadingMarginSpanClass.getText());
                 }
               }
-            }
+            })
           }).margin({ top: 10 })
       }
     }
@@ -3638,12 +3615,12 @@ struct StyledStringImageTagDemo {
           // 获取图片文本标签
           let imageStyles = this.mutableStr.getStyles(0, this.mutableStr.length, StyledStringKey.IMAGE);
           let tags = '';
-          for (let i = 0; i < imageStyles.length; i++) {
-            let attachment = imageStyles[i].styledValue as ImageAttachment;
+          imageStyles.forEach((imageStyle: SpanStyle) => {
+            let attachment = imageStyle.styledValue as ImageAttachment;
             if (attachment.imageTag !== undefined) {
               tags += attachment.imageTag;
             }
-          }
+          })
           this.tagResult = this.plainText + tags;
         })
     }

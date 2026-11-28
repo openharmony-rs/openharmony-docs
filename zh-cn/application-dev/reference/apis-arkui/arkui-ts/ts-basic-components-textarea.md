@@ -1012,7 +1012,7 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | 是   | 扩展菜单选项，用于自定义文本选择菜单扩展项，允许设置扩展项的文本内容、图标、回调方法。 |
+| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions12) | 是   | 扩展菜单选项，用于自定义文本选择菜单扩展项，允许设置扩展项的文本内容、图标、回调方法。 |
 
 ### enablePreviewText<sup>12+</sup>
 
@@ -1804,7 +1804,6 @@ onWillChange(callback: Callback\<EditableTextChangeValue, boolean>)
 >   - onWillChange在文本变更前触发，可通过返回false拦截变更；返回true则允许变更，随后触发onChange。
 >   - onChange在变更完成后触发，无法拦截。
 >   - 两者可以同时使用，onWillChange用于拦截控制，onChange用于获取变更结果。
-onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -3551,9 +3550,9 @@ struct TextAreaExample {
   }
 
   aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.text += this.text
-    }
+    new Array(5).fill(0).forEach(() => {
+      this.text += this.text;
+    })
   }
 }
 ```
