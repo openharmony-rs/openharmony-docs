@@ -51,7 +51,7 @@
 
 <!-- @[touchpad_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/touchpadEvent/TouchPadEventActualApplication.ets) -->
 
-```ts
+``` TypeScript
 import { UIContext, display } from '@kit.ArkUI';
 
 /**
