@@ -455,9 +455,25 @@ Allows a system application to forcibly restore a device to its factory settings
 
 **Since**: 23
 
+## ohos.permission.vehicle.CAR_CONTROL
+
+Allows an application to query, set, and subscribe to the mating part status information via the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.vehicle.HVAC_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (air conditioner).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -473,6 +489,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (air conditioner).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -486,6 +504,8 @@ Allows an application to set the status of the mating part (air conditioner).
 ## ohos.permission.vehicle.FRIDGE_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (refrigerator).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -501,6 +521,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (refrigerator).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -514,6 +536,8 @@ Allows an application to set the status of the mating part (refrigerator).
 ## ohos.permission.vehicle.SEAT_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (seat).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -529,6 +553,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (seat).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -542,6 +568,8 @@ Allows an application to set the status of the mating part (seat).
 ## ohos.permission.vehicle.DOOR_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (door).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -557,6 +585,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (door).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -570,6 +600,8 @@ Allows an application to set the status of the mating part (door).
 ## ohos.permission.vehicle.LOCK_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (car lock).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -585,6 +617,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (car lock).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -598,6 +632,8 @@ Allows an application to set the status of the mating part (car lock).
 ## ohos.permission.vehicle.WINDOW_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (car window).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -613,6 +649,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (car window).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -626,6 +664,8 @@ Allows an application to set the status of the mating part (car window).
 ## ohos.permission.vehicle.SUNROOF_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (sunroof).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -641,6 +681,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (sunroof).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -654,6 +696,8 @@ Allows an application to set the status of the mating part (sunroof).
 ## ohos.permission.vehicle.CONTROL_STEERINGWHEEL
 
 Allows an application to set the status of the mating part (steering wheel).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -669,6 +713,8 @@ Allows an application to set the status of the mating part (steering wheel).
 
 Allows an application to subscribe to and obtain the status of the mating part (energy port cover).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -682,6 +728,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ENERGY_PORT_COVER
 
 Allows an application to set the status of the mating part (energy port cover).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -697,6 +745,8 @@ Allows an application to set the status of the mating part (energy port cover).
 
 Allows an application to subscribe to and obtain the status of the mating part (exterior light).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -710,6 +760,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_LIGHT
 
 Allows an application to set the status of the mating part (exterior light).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -725,6 +777,8 @@ Allows an application to set the status of the mating part (exterior light).
 
 Allows an application to subscribe to and obtain the status of the mating part (interior camera).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -738,6 +792,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_INTERIOR_CAMERA
 
 Allows an application to set the status of the mating part (interior camera).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -753,6 +809,8 @@ Allows an application to set the status of the mating part (interior camera).
 
 Allows an application to subscribe to and obtain the status of the mating part (exterior camera).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -766,6 +824,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_CAMERA
 
 Allows an application to set the status of the mating part (exterior camera).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -781,6 +841,8 @@ Allows an application to set the status of the mating part (exterior camera).
 
 Allows an application to subscribe to and obtain the status of the mating part (interior speaker).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -794,6 +856,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_INTERIOR_SPEAKER
 
 Allows an application to set the status of the mating part (interior speaker).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -809,6 +873,8 @@ Allows an application to set the status of the mating part (interior speaker).
 
 Allows an application to subscribe to and obtain the status of the mating part (exterior speaker).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -822,6 +888,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_SPEAKER
 
 Allows an application to set the status of the mating part (exterior speaker).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -837,6 +905,8 @@ Allows an application to set the status of the mating part (exterior speaker).
 
 Allows an application to subscribe to and obtain the status of the mating part (wiper).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -850,6 +920,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_WIPER
 
 Allows an application to set the status of the mating part (wiper).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -865,6 +937,8 @@ Allows an application to set the status of the mating part (wiper).
 
 Allows an application to subscribe to and obtain the status of the mating part (mirror).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -878,6 +952,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_MIRROR
 
 Allows an application to set the status of the mating part (mirror).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -893,6 +969,8 @@ Allows an application to set the status of the mating part (mirror).
 
 Allows an application to subscribe to and obtain the status of the mating part (horn).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -906,6 +984,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_HORN
 
 Allows an application to set the status of the mating part (horn).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -921,6 +1001,8 @@ Allows an application to set the status of the mating part (horn).
 
 Allows an application to subscribe to and obtain the status of the mating part (cooling and heating box).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -934,6 +1016,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_CHB
 
 Allows an application to set the status of the mating part (cooling and heating box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -949,6 +1033,8 @@ Allows an application to set the status of the mating part (cooling and heating 
 
 Allows an application to subscribe to and obtain the status of the mating part (code box).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -962,6 +1048,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_CODEBOX
 
 Allows an application to set the status of the mating part (code box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -977,6 +1065,8 @@ Allows an application to set the status of the mating part (code box).
 
 Allows an application to subscribe to and obtain the status of the mating part (standing emblem).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -990,6 +1080,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_STANDEMBLEM
 
 Allows an application to set the status of the mating part (standing emblem).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1005,6 +1097,8 @@ Allows an application to set the status of the mating part (standing emblem).
 
 Allows an application to subscribe to and obtain the status of the mating part (grille).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1018,6 +1112,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_GRILLE
 
 Allows an application to set the status of the mating part (grille).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1033,6 +1129,8 @@ Allows an application to set the status of the mating part (grille).
 
 Allows an application to subscribe to and obtain the status of the mating part (wireless charger).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1046,6 +1144,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_WIRELESSCHARGER
 
 Allows an application to set the status of the mating part (wireless charger).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1061,6 +1161,8 @@ Allows an application to set the status of the mating part (wireless charger).
 
 Allows an application to subscribe to and obtain the status of the mating part (projector screen).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1074,6 +1176,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_PROJECTORSCREEN
 
 Allows an application to set the status of the mating part (projector screen).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1089,6 +1193,8 @@ Allows an application to set the status of the mating part (projector screen).
 
 Allows an application to set the status of the mating part (drive information module).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1102,6 +1208,8 @@ Allows an application to set the status of the mating part (drive information mo
 ## ohos.permission.vehicle.BODY_SENSOR_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (body sensor).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1117,6 +1225,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (body sensor).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1131,6 +1241,7 @@ Allows an application to set the status of the mating part (body sensor).
 
 Allows an application to subscribe to and obtain the status of the mating part (vehicle stability control system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1146,6 +1257,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (vehicle stability control system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1159,6 +1272,8 @@ Allows an application to set the status of the mating part (vehicle stability co
 ## ohos.permission.vehicle.CHG_DISCHG_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (charge and discharge control system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1174,6 +1289,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (charge and discharge control system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1187,6 +1304,8 @@ Allows an application to set the status of the mating part (charge and discharge
 ## ohos.permission.vehicle.EPB_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (electronic parking brake).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1202,6 +1321,7 @@ Allows an application to subscribe to and obtain the status of the mating part (
 
 Allows an application to set the status of the mating part (electronic parking brake).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1217,6 +1337,8 @@ Allows an application to set the status of the mating part (electronic parking b
 
 Allows an application to subscribe to and obtain the status of the mating part (power battery system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1230,6 +1352,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_PBS
 
 Allows an application to set the status of the mating part (power battery system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1245,6 +1369,8 @@ Allows an application to set the status of the mating part (power battery system
 
 Allows an application to subscribe to and obtain the status of the mating part (tire system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1258,6 +1384,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_TIRE_SYSTEM
 
 Allows an application to set the status of the mating part (tire system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1273,6 +1401,8 @@ Allows an application to set the status of the mating part (tire system).
 
 Allows an application to subscribe to and obtain the status of the mating part (tow system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1286,6 +1416,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_TOW_SYSTEM
 
 Allows an application to set the status of the mating part (tow system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1301,6 +1433,8 @@ Allows an application to set the status of the mating part (tow system).
 
 Allows an application to subscribe to and obtain the status of the mating part (suspension system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1314,6 +1448,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_SUSPENSION_SYSTEM
 
 Allows an application to set the status of the mating part (suspension system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1329,6 +1465,8 @@ Allows an application to set the status of the mating part (suspension system).
 
 Allows an application to set the status of the mating part (accelerator pedal).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1342,6 +1480,8 @@ Allows an application to set the status of the mating part (accelerator pedal).
 ## ohos.permission.vehicle.CONTROL_BRAKE_PEDAL
 
 Allows an application to set the status of the mating part (brake pedal).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1357,6 +1497,8 @@ Allows an application to set the status of the mating part (brake pedal).
 
 Allows an application to subscribe to and obtain the status of the mating part (vehicle mode).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1370,6 +1512,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_CAR_MODE
 
 Allows an application to set the status of the mating part (vehicle mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1385,6 +1529,8 @@ Allows an application to set the status of the mating part (vehicle mode).
 
 Allows an application to subscribe to and obtain the status of the mating part (driving mode).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1398,6 +1544,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_DRIVING_MODE
 
 Allows an application to set the status of the mating part (driving mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1413,6 +1561,8 @@ Allows an application to set the status of the mating part (driving mode).
 
 Allows an application to subscribe to and obtain the status of the mating part (interior heating module).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1426,6 +1576,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_INTERIOR_HEATING_MODULE
 
 Allows an application to set the status of the mating part (interior heating module).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1441,6 +1593,8 @@ Allows an application to set the status of the mating part (interior heating mod
 
 Allows an application to subscribe to and obtain the status of the mating part (special mobility mode).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1454,6 +1608,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_SPECIAL_MOBILITY_MODE
 
 Allows an application to set the status of the mating part (special mobility mode).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1469,6 +1625,8 @@ Allows an application to set the status of the mating part (special mobility mod
 
 Allows an application to subscribe to and obtain the status of the mating part (button and lever).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1482,6 +1640,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_BUTTON_LEVER
 
 Allows an application to set the status of the mating part (button and lever).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1497,6 +1657,8 @@ Allows an application to set the status of the mating part (button and lever).
 
 Allows an application to subscribe to and obtain the status of the mating part (water dispenser).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1510,6 +1672,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_WHC
 
 Allows an application to set the status of the mating part (water dispenser).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1525,6 +1689,8 @@ Allows an application to set the status of the mating part (water dispenser).
 
 Allows an application to subscribe to and obtain the status of the mating part (privacy curtain).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1538,6 +1704,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_PRIVACYCURTAIN
 
 Allows an application to set the status of the mating part (privacy curtain).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1553,6 +1721,8 @@ Allows an application to set the status of the mating part (privacy curtain).
 
 Allows an application to subscribe to and obtain the status of the mating part (vehicle power management).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1566,6 +1736,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_POWER_MANAGEMENT
 
 Allows an application to set the status of the mating part (vehicle power management).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1581,6 +1753,8 @@ Allows an application to set the status of the mating part (vehicle power manage
 
 Allows an application to subscribe to and obtain the status of the mating part (smart key).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1594,6 +1768,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_SMARTKEY
 
 Allows an application to set the status of the mating part (smart key).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1609,6 +1785,8 @@ Allows an application to set the status of the mating part (smart key).
 
 Allows an application to subscribe to and obtain the status of the mating part (ETC).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1622,6 +1800,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ETC
 
 Allows an application to set the status of the mating part (ETC).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1637,6 +1817,8 @@ Allows an application to set the status of the mating part (ETC).
 
 Allows an application to subscribe to and obtain the status of the mating part (HUD).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1650,6 +1832,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_HUD
 
 Allows an application to set the status of the mating part (HUD).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1665,6 +1849,8 @@ Allows an application to set the status of the mating part (HUD).
 
 Allows an application to subscribe to and obtain the status of the mating part (navigation).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1678,6 +1864,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_NAVIGATION
 
 Allows an application to set the status of the mating part (navigation).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1693,6 +1881,8 @@ Allows an application to set the status of the mating part (navigation).
 
 Allows an application to subscribe to and obtain the status of the mating part (oxygen concentrator).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1706,6 +1896,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_OXYGEN_CONCENTRATOR
 
 Allows an application to set the status of the mating part (oxygen concentrator).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1721,6 +1913,8 @@ Allows an application to set the status of the mating part (oxygen concentrator)
 
 Allows an application to subscribe to and obtain the status of the mating part (electric seat belt).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1734,6 +1928,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_SEAT_BELT
 
 Allows an application to set the status of the mating part (electric seat belt).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1749,6 +1945,8 @@ Allows an application to set the status of the mating part (electric seat belt).
 
 Allows an application to subscribe to and obtain the status of the mating part (front and rear trunk).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1762,6 +1960,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_FRONT_REAR_TRUNK
 
 Allows an application to set the status of the mating part (front and rear trunk).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1777,6 +1977,8 @@ Allows an application to set the status of the mating part (front and rear trunk
 
 Allows an application to subscribe to and obtain the status of the mating part (range extender).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1790,6 +1992,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_RANGE_EXTENDER
 
 Allows an application to set the status of the mating part (range extender).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1805,6 +2009,8 @@ Allows an application to set the status of the mating part (range extender).
 
 Allows an application to subscribe to and obtain the status of the mating part (differential lock).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1818,6 +2024,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_DIFFERENTIAL_LOCK
 
 Allows an application to set the status of the mating part (differential lock).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1833,6 +2041,8 @@ Allows an application to set the status of the mating part (differential lock).
 
 Allows an application to subscribe to and obtain the status of the mating part (armrest screen).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1846,6 +2056,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ARMREST_SCREEN
 
 Allows an application to set the status of the mating part (armrest screen).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1861,6 +2073,8 @@ Allows an application to set the status of the mating part (armrest screen).
 
 Allows an application to subscribe to and obtain the status of the mating part (armrest box).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1874,6 +2088,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ARMREST_BOX
 
 Allows an application to set the status of the mating part (armrest box).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1889,6 +2105,8 @@ Allows an application to set the status of the mating part (armrest box).
 
 Allows an application to subscribe to and obtain the status of the mating part (electric rear spoiler).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1902,6 +2120,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_REAR_SPOILER
 
 Allows an application to set the status of the mating part (electric rear spoiler).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1917,6 +2137,8 @@ Allows an application to set the status of the mating part (electric rear spoile
 
 Allows an application to subscribe to and obtain the status of the mating part (electric pedal).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1930,6 +2152,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_PEDAL
 
 Allows an application to set the status of the mating part (electric pedal).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1945,6 +2169,8 @@ Allows an application to set the status of the mating part (electric pedal).
 
 Allows an application to subscribe to and obtain the status of the mating part (electric drive system).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1958,6 +2184,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_DRIVE_SYSTEM
 
 Allows an application to set the status of the mating part (electric drive system).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1973,6 +2201,8 @@ Allows an application to set the status of the mating part (electric drive syste
 
 Allows an application to subscribe to and obtain the status of the mating part (space partitioning).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1986,6 +2216,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_SPACE_PARTITIONING
 
 Allows an application to set the status of the mating part (space partitioning).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2001,6 +2233,8 @@ Allows an application to set the status of the mating part (space partitioning).
 
 Allows an application to subscribe to and obtain the status of the mating part (USB).
 
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2014,6 +2248,8 @@ Allows an application to subscribe to and obtain the status of the mating part (
 ## ohos.permission.vehicle.CONTROL_USB
 
 Allows an application to set the status of the mating part (USB).
+
+You must request [ohos.permission.vehicle.CAR_CONTROL](#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
