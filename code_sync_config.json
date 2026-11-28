@@ -76244,5 +76244,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-interaction-development-guide-touchpad.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/touchpadEvent/TouchPadEventActualApplication.ets",
+				"functions":[
+					{
+						"end_line":220,
+						"name":"touchpad_event",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
