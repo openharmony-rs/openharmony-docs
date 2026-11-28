@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how an application takes over web media playback, uses a local player (such as AVPlayer) to render video, handles playback control commands and state reporting, and enhances the web media playback experience such as image quality."
+keywords: [media hosting, enableNativeMediaPlayer, onCreateNativeMediaPlayer, NativeMediaPlayerBridge, same-layer rendering]
+doctype: guide
+status: active
+---
+
 # Taking Over the Media Playback on Web Pages
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a8d9416a94ae4b045442b5bb2646df1bfe03120f translatedAt=2026-11-03T03:01:37.216Z pushedAt=2026-11-03T03:04:46.089Z nl=1 -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:04:30.433Z pushedAt=2026-11-27T08:11:49.157Z nl=1 -->
 
 The **Web** component provides the capability for applications to take over media playback on web pages, which improves media playback qualities on the web page.
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Introduces the application-side custom implementation of the three types of JavaScript dialog boxes on a web page: alert, confirm, and prompt. It listens for dialog box requests and uses custom dialog components to handle user confirmation and input."
+keywords: [Web dialog box, onAlert, onConfirm, onPrompt, window.alert, window.confirm, window.prompt, AlertDialog, CustomContentDialog]
+doctype: guide
+status: active
+---
+
 # Displaying Web Page Dialog Boxes
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8966df412c54d2c183da4a3942a542a75feca1f4 translatedAt=2026-11-03T03:05:18.141Z pushedAt=2026-11-03T03:09:37.972Z nl=1 -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:13:35.106Z pushedAt=2026-11-27T08:26:41.521Z nl=1 -->
 
 In HTML, JavaScript can be used to create the following types of dialog boxes: **window.alert(message)**, **window.confirm(message)**, and **window.prompt(message, defaultValue)**. These dialog boxes can be used to convey information, confirm operations, or request input from users.
 

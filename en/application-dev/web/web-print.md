@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes two methods for printing frontend pages with the Web component: the frontend calls the W3C standard window.print() API to launch printing, and the application side creates a print adapter and works with the printing API to complete printing."
+keywords: [page printing, window.print, createWebPrintDocumentAdapter, print.print, print adapter, "@media print", iframe printing, ohos.permission.PRINT]
+doctype: guide
+status: active
+---
+
 # Printing Frontend Pages
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=47c341fd96878f63302426cc10515b4a7384fa50 translatedAt=2026-11-12T04:45:23.014Z pushedAt=2026-11-12T08:31:53.975Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f2b1a652e871f7f05fdf12761d2d0b151c1f50f3 translatedAt=2026-11-27T08:26:51.535Z pushedAt=2026-11-27T09:10:48.775Z nl=1 -->
 
 The **Web** component can print HTML pages in two ways: through the W3C standard protocol API and through the app-side API.
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Introduces the overall capabilities and application scenarios of the ArkWeb Web component, covering web page loading, lifecycle management, cookie and data storage, incognito browsing, and same-layer rendering."
+keywords: [ArkWeb, Web component, ArkWeb, web page loading, incognito browsing, ad blocking, JavaScriptProxy, ohos.permission.INTERNET, Chromium version]
+doctype: guide
+status: active
+---
+
 # About This Kit
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=06e7fb284fc499ec41ef8e10aba31fbe2a39635c translatedAt=2026-11-03T03:04:09.962Z pushedAt=2026-11-03T03:06:06.199Z nl=1 -->
+<!-- md-trans-meta sourceCommit=772f70e39b510f6f48154fc7d450a031abaf6022 translatedAt=2026-11-27T08:10:24.768Z pushedAt=2026-11-27T08:16:16.763Z nl=1 -->
 
 ## When to Use
 
@@ -28,7 +36,7 @@ The **Web** component provides various capabilities for you to control web pages
 
 - Interaction with the application UI: The custom text selection menu, context menu, and file upload page can interact with the application UI.
 
-- Apps interact with web pages through JavaScriptProxy.
+- Apps interact with web pages through `JavaScriptProxy`.
 
 - Security and privacy: incognito mode, advertisement blocking, and Secure Shield mode.
 

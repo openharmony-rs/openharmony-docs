@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "ArkWeb glossary, which lists common Web development concepts and their Chinese-English equivalents in alphabetical order, covering term definitions such as rendering mode, same-layer rendering, safe area, gesture, and pre-rendering, for developers to reference during development and troubleshooting."
+keywords: [ArkWeb, glossary, same-layer rendering, rendering mode, safe area, intelligent word segmentation, pre-rendering, UserAgent, white screen]
+doctype: glossary
+status: active
+---
+
 # Glossary
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T01:52:26.244Z pushedAt=2026-09-21T07:51:56.049Z -->
+<!-- md-trans-meta sourceCommit=a3958046f65a85db8dcb5c29bb752b458446be7c translatedAt=2026-11-27T08:05:40.499Z pushedAt=2026-11-27T08:14:13.767Z nl=1 -->
 
 ## A
 
@@ -99,7 +107,7 @@ A binary file that records process crash information. The file name extension is
 
 ### File Descriptor
 
-A file identifier used to pass PDF file information.
+A file descriptor used to pass PDF file information.
 
 ### Fit Content
 
@@ -385,6 +393,10 @@ A visual flickering phenomenon that occurs when page content is switched.
 
 ## W
 
+### Waterfall Page
+
+A type of web page that uses a waterfall flow layout.
+
 ### Web Dark Mode
 
 A type enum that defines the dark mode state of the Web component.
@@ -404,10 +416,6 @@ A process used to render web content.
 ### WebResourceResponse
 
 A web resource response class used to construct the data structure of a custom resource response.
-
-### Waterfall Page
-
-A type of web page that uses a waterfall layout.
 
 ### WebNativeMessagingExtensionAbility
 

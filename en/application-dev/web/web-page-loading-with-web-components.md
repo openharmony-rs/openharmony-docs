@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how the Web component loads network pages, local pages, and HTML rich text data, covering rawfile and sandbox path loading, local resource access through the resource protocol, and network permission configuration."
+keywords: [Web component, page loading, loadUrl, loadData, rawfile, resource protocol, sandbox path, fileAccess, ohos.permission.INTERNET]
+doctype: guide
+status: active
+---
+
 # Loading Web Pages
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:44:35.819Z pushedAt=2026-11-12T08:29:03.724Z nl=1 -->
+<!-- md-trans-meta sourceCommit=48976b558261885c1693ff9741c0c523e3f3f8c1 translatedAt=2026-11-27T08:24:18.947Z pushedAt=2026-11-27T09:05:47.236Z nl=1 -->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -28,7 +36,7 @@ You can specify the default network page to load when creating a Web component. 
 
 In the following example, after the **www\.example.com** page is loaded by the **Web** component, you can call `loadUrl()` to change the displayed page to **www\.example1.com**.
 
-<!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->
+<!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -47,7 +55,7 @@ struct WebComponent {
             // Upon button clicking, call loadUrl to redirect to www.example1.com.
             this.controller.loadUrl('www.example1.com');
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       // When creating a Web component, set the default network page to be loaded to www.example.com.
@@ -81,7 +89,7 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 
 - Application code:
-  <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
+  <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->  
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -100,7 +108,7 @@ To reference a local CSS file when loading a local HTML file, perform the follow
               // Upon button clicking, call loadUrl to redirect to local1.html.
               this.controller.loadUrl($rawfile('local1.html'));
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           })
         // When creating a Web component, load the local.html file through $rawfile.
@@ -225,7 +233,7 @@ Example of loading local page files in the sandbox:
 ## Loading HTML Rich Text Data
 
 The **Web** component provides the [loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata) API for you to load HTML rich text data. If you need to display only some page fragments, you can use this feature to quickly load the page. To load a large number of HTML files, set **baseUrl** to **"data"**.
-<!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
+<!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -248,7 +256,7 @@ struct WebComponent {
               'UTF-8'
             );
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       // When creating a Web component, set the default network page to be loaded to www.example.com.

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the PostWebMessage capability on the ArkWeb Native side, which directly sends and receives messages between the C++ environment and the frontend page, avoiding redundant ArkTS environment switches and UI thread blocking."
+keywords: [ArkWeb NDK, Native PostWebMessage, OH_ArkWeb_GetNativeAPI, ArkWeb_WebMessagePortAPI, createWebMessagePorts, postWebMessage, setMessageEventHandler, application and frontend page communication]
+doctype: guide
+status: active
+---
+
 # Establishing a Data Channel Between the Application and the Frontend Page (C/C++)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:36:09.929Z pushedAt=2026-11-12T08:18:54.146Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:06:28.328Z pushedAt=2026-11-27T08:14:49.021Z nl=1 -->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 

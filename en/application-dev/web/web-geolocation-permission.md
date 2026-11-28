@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes web page location permission management for the Web component, including declaring location permissions, responding to authorization popups, and adding, querying, and deleting web page permissions of specified sources."
+keywords: [location permission, GeolocationPermissions, onGeolocationShow, allowGeolocation, deleteGeolocation, getAccessibleGeolocation, geolocationAccess, ohos.permission.LOCATION, location information]
+doctype: guide
+status: active
+---
+
 # Managing Location Permissions
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=47c341fd96878f63302426cc10515b4a7384fa50 translatedAt=2026-11-12T04:42:27.229Z pushedAt=2026-11-12T08:26:00.597Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:18:05.650Z pushedAt=2026-11-27T08:42:13.023Z nl=1 -->
 
 Since API version 9, the **Web** component supports the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class and [onGeolocationShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#ongeolocationshow) method for managing web page location permissions. For details, see <!--RP1-->[Privacy Protection](../../device-dev/security/security-privacy-protection.md)<!--RP1End-->.
 

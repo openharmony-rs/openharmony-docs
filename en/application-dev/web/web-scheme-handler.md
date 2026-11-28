@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Introduces how to use SchemeHandler to intercept HTTP(S) and custom protocol requests made by Web components, covering the ArkTS and NDK APIs, scheme registration, request information retrieval, and response construction."
+keywords: [SchemeHandler, network request interception, custom scheme, setWebSchemeHandler, customizeSchemes, onRequestStart, onRequestStop, WebResourceHandler, initializeWebEngine]
+doctype: guide
+status: active
+---
+
 # Intercepting Network Requests Initiated by the Web Component
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=939254bc3f45b3b1a8e176556c718e336d265976 translatedAt=2026-11-12T04:47:16.299Z pushedAt=2026-11-12T08:42:13.720Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fbf2b56d21e7fb83d43a3f70e53f52367eff8464 translatedAt=2026-11-27T08:31:01.830Z pushedAt=2026-11-27T09:25:54.758Z nl=1 -->
 
 The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
@@ -122,7 +130,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 
-  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->
+  <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->  
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -141,7 +149,7 @@ In ArkTS, you can register a custom scheme using **customizeSchemes**. The sampl
       try {
       webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
       } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
       }
   }
   
@@ -189,7 +197,7 @@ In the NDK, obtain information about intercepted requests:
   ```
 
 In ArkTS, obtain information about intercepted requests:
-  <!-- @[Intercept_requested_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets) -->
+  <!-- @[Intercept_requested_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/SchemeHandlerArkts.ets) -->  
   
   ``` TypeScript
   this.schemeHandler.onRequestStart
@@ -215,7 +223,7 @@ In ArkTS, obtain information about intercepted requests:
         console.info('[schemeHandler] onRequestStart has no http body stream');
       }
     } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
     }
   
     // ...

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Introduces the ArkWeb gesture recognition mechanism and its differences from ArkUI gestures, describes the trigger conditions and interception solutions for gesture events, and explains how to handle common issues such as disabling zoom, swiping back to the previous page, and fling white screen."
+keywords: [ArkWeb gesture, gesture recognition, PinchGesture, zoomAccess, onBackPress, accessStep, setCustomUserAgent, max-fling-speed-y, gesture interception]
+doctype: guide
+status: active
+---
+
 # Interacting with Applications Using Gestures
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:15:55.486Z pushedAt=2026-09-21T12:46:52.058Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:19:00.951Z pushedAt=2026-11-27T08:42:31.813Z nl=2 -->
 
 On mobile or touch-enabled web applications, users interact with web pages through gestures. ArkWeb supports the recognition of common gestures, such as touch and hold, swipe, and tap, providing a rich user interaction experience.
 ## ArkWeb Gesture Recognition

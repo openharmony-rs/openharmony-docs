@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how the application side calls JavaScript functions on the frontend page through runJavaScript and runJavaScriptExt, covering scenarios such as no-parameter calls, with-parameter calls, and code passing."
+keywords: [ArkWeb, runJavaScript, runJavaScriptExt, JavaScript call]
+doctype: guide
+status: active
+---
+
 # Invoking Frontend Page Functions on the Application
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:17:09.143Z pushedAt=2026-09-21T12:49:07.192Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:19:38.135Z pushedAt=2026-11-27T09:00:13.424Z nl=1 -->
 
 You can call [runJavaScript()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascript) and [runJavaScriptExt()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10) from the application side to invoke JavaScript functions of frontend pages.
 
@@ -49,7 +57,7 @@ In the following example, when a user clicks the **runJavaScript** button on the
 - Application code:
 
   <!-- @[interact_with_web_pages_through_button_click_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   

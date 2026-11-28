@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Summarizes the approaches to locating and resolving white screen issues on Web pages. Provides troubleshooting steps and fix solutions from the perspectives of permissions and network, DevTools error reports, rendering and layout, H5 compatibility, and memory and cache."
+keywords: [white screen, issue locating, ohos.permission.INTERNET, onInterceptRequest, setPathAllowingUniversalAccess, setCustomUserAgent, setRenderProcessMode, cacheMode, cross-origin access]
+doctype: guide
+status: active
+---
+
 # Troubleshooting White Screen Issues on Web Pages
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4aa686c4e1d049efde30887f870d819bb874da68 translatedAt=2026-11-12T04:50:10.683Z pushedAt=2026-11-12T08:45:37.340Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:32:58.788Z pushedAt=2026-11-27T09:25:31.595Z nl=1 -->
 
 There are many reasons for white screen issues on web pages. This topic describes how to troubleshoot common white screen issues.
 
@@ -332,7 +340,7 @@ If a page uses a complex layout or rendering mode, pay attention to its applicat
 The **Web** component provides two rendering modes, which can be adapted to different container sizes as required. For details, see [Rendering Modes of the Web Component](web-render-mode.md). Pay attention to the following points:
 - In asynchronous rendering mode (renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).ASYNC_RENDER), the width and height of a **Web** component cannot exceed 7,680 px (physical pixels). Otherwise, a white screen is displayed.
 
-The **Web** component provides the capability of adapting to the page layout. For details, see [Fitting In the Page Content Layout](web-fit-content.md). Pay attention to the following restrictions when using the capability:
+The **Web** component provides the adaptive page layout capability. For details, see [Fitting In the Page Content Layout](web-fit-content.md). Pay attention to the following restrictions when using the capability:
 - Set the synchronous rendering mode through **webSetting({renderingMode: WebRenderingMode.SYNCHRONOUS})**.
 - Disable the scrolling effect through **webSetting({overScrollMode: OverScrollMode.NEVER})**.
 - Do not dynamically adjust the component height in this mode to ensure that the page height is fixed.

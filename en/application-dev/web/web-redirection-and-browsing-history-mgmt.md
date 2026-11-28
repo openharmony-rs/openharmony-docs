@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes forward and back navigation of the Web component browsing history, and the methods for implementing in-application page redirect and redirect to other applications by intercepting links via onLoadIntercept."
+keywords: [browsing history navigation, ohos.permission.INTERNET, forward, backward, accessBackward, onLoadIntercept, page redirect, cross-application redirect, router.pushUrl]
+doctype: guide
+status: active
+---
+
 # Managing Page Redirection and Browsing History Navigation
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,9 +13,9 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f4da4da42ee537564eb25e2438e9fae560533c5a translatedAt=2026-11-03T03:11:15.696Z pushedAt=2026-11-03T03:24:41.650Z nl=1 -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:27:02.097Z pushedAt=2026-11-27T09:11:20.817Z nl=1 -->
 
-To improve page access speed, history navigation allows users to switch between pages in the history using the **Forward** and **Backward** buttons. The **Web** component supports redirecting users to other pages within the app or performing cross-app redirection.
+To improve page access speed, history navigation allows users to switch between pages in the history using the **Forward** and **Backward** buttons. The **Web** component supports redirecting users to other pages within the application or performing cross-application redirection.
 
 ## History Navigation
 

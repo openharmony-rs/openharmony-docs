@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to create and mount offline Web components based on NodeController, covering optimization techniques such as pre-start rendering processes and pre-render Web pages, component reuse and release strategies, and blank screen troubleshooting."
+keywords: [offline Web component, pre-render Web page]
+doctype: guide
+status: active
+---
+
 # Using Offline Web Components
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @qianlf-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d9d3817c13eb1347a1cffbfe3b55115b01f7d2f1 translatedAt=2026-11-03T03:09:50.155Z pushedAt=2026-11-03T03:23:48.755Z nl=1 -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:23:20.639Z pushedAt=2026-11-27T09:03:20.653Z nl=1 -->
 
 The **Web** component can be attached to and detached from the component trees in different windows. With this capability, you can create **Web** components in advance to optimize performance. For example, when a tab page is implemented with a **Web** component, pre-creation of the **Web** component allows for ahead-of-time rendering, so that the page appears instantly when accessed.
 

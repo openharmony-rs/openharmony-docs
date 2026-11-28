@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the principles, applicable scenarios, and height specification limits of the two rendering modes of the Web component, asynchronous rendering and synchronous rendering, helping developers select an appropriate rendering mode based on whether the Web component serves as the page subject or an overlong component."
+keywords: [ArkWeb, Web component, rendering mode, renderMode, RenderMode.ASYNC_RENDER, RenderMode.SYNC_RENDER, asynchronous rendering, synchronous rendering]
+doctype: guide
+status: active
+---
+
 # Rendering Modes of the Web Component
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8b5408a78b1779be5394664afc53fc3cab8e1cce translatedAt=2026-09-21T02:29:25.960Z pushedAt=2026-09-21T14:00:09.191Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:27:47.019Z pushedAt=2026-11-27T09:12:47.970Z nl=1 -->
 
 The **Web** component provides two rendering modes, which can be adapted to different container sizes as required.
 

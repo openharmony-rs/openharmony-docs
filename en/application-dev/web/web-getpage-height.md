@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes when to use getPageHeight to obtain the web page content height: for static pages, it can be obtained in lifecycle callbacks; for dynamic web pages, it is recommended to obtain it through JSBridge notification; if that is unavailable, obtain it after a delay."
+keywords: [ArkWeb, getPageHeight, web page height, onPageEnd, JSBridge, javaScriptProxy, dynamic web page, setTimeout, image loading callback]
+doctype: guide
+status: active
+---
+
 # Obtaining the Web Page Content Height
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=1389a0bf562dce26806026e0ecb83e6c9af5454c translatedAt=2026-11-12T04:42:45.142Z pushedAt=2026-11-12T08:26:05.068Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:18:55.301Z pushedAt=2026-11-27T09:00:58.804Z nl=1 -->
 
 The [getPageHeight](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight) API can obtain the actual height of the current web page content. You can select a proper method as required.
 

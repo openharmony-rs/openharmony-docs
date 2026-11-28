@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the focus management mechanism of the Web component, covering the component-level APIs and the W3C standard APIs for elements within the web page, and summarizes the active and passive focus movement scenarios and behavior specifications."
+keywords: [focus management, requestFocus, onFocus, onBlur, move focus, tabindex, autofocus]
+doctype: guide
+status: active
+---
+
 # Managing Focus
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:11:24.928Z pushedAt=2026-09-21T12:41:03.896Z -->
+<!-- md-trans-meta sourceCommit=8a8e6a10c4bce6a42793031134872e637261da72 translatedAt=2026-11-27T08:17:17.400Z pushedAt=2026-11-27T08:40:17.837Z nl=1 -->
 
 You can use the focus management capability of the Web component to effectively manage when the Web component gains or loses focus, and use W3C standard APIs in H5 to manage when the only interactive element on the web page gains or loses focus.
 
@@ -75,7 +83,7 @@ Passive focus traversal occurs in the following scenarios:
 - To set whether a **Web** component can obtain the focus, set the [focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable) attribute. The **Web** component can obtain the focus by default.
 
 **Example**
-1. Use the **requestFocus** API to allow the **Web** component to proactively obtain the focus.
+1. The requestFocus() API allows application developers to actively control the Web component to gain focus.
 2. The **onFocus** and **onBlur** APIs are usually used in pairs to listen for the focus changes of the component.
 
 <!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
@@ -100,7 +108,7 @@ struct WebComponent {
             try {
               this.controller.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
         Button('web2 requestFocus')
@@ -108,7 +116,7 @@ struct WebComponent {
             try {
               this.controller2.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
       }
@@ -142,7 +150,7 @@ struct WebComponent {
 ```
 **Figure 1** Component focus gain/loss events
 
-Use **requestFocus** to request focus, and change the border color of the **Web** component by listening for the **onFocus** and **onBlur** events.
+Actively request focus through the requestFocus() API, listen for the common onFocus and onBlur events, and change the border color of the Web component.
 
 ![web-focus1.gif](figures/web-focus1.gif)
 

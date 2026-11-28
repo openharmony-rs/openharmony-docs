@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to use the ArkWeb ad blocking feature, covering easylist rule syntax, custom rule settings, domain-level filtering switch control, and interception information collection and statistics."
+keywords: [ad blocking, easylist, AdsBlockManager, enableAdsBlock, setAdsBlockRules, onAdsBlocked, addAdsBlockDisallowedList, addAdsBlockAllowedList, element hiding rule]
+doctype: guide
+status: active
+---
+
 # Using the Ad Blocking Feature
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T01:55:12.801Z pushedAt=2026-09-21T09:01:45.546Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:07:30.572Z pushedAt=2026-11-27T08:15:50.538Z nl=1 -->
 
 ArkWeb provides the ad blocking feature for applications, supporting default EasyList rules pushed by the cloud and custom rule files set by applications through APIs. It can intercept the advertisement resource download at the network layer or inject CSS rules into the web page to hide specific advertisement elements.
 

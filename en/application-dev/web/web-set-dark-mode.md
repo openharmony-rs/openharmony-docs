@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the dark mode adaptation methods for the Web component, including defining dark styles on the web page side, controlling dark mode and forced dark on the application side, and providing background color adaptation and FAQ troubleshooting."
+keywords: [dark mode, WebDarkMode, darkMode, forceDarkAccess, forced dark mode, color-scheme, prefers-color-scheme, background color adaptation, backgroundColor]
+doctype: guide
+status: active
+---
+
 # Setting Dark Mode
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d4f09144a4616021c14ccc32ff5169be66ccf32b translatedAt=2026-11-12T04:48:35.180Z pushedAt=2026-11-12T08:45:20.857Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:33:04.068Z pushedAt=2026-11-27T09:24:49.742Z nl=1 -->
 
 The system provides the light and dark theme modes for users. Dark mode reduces the screen brightness and visual stimulus in low-light environments, improving reading experience. The **Web** component is rendered based on the web page style. If the web page is not adapted to dark mode, it will be separated from the system theme. To ensure a consistent user experience, you need to consider users' theme preferences and adapt the web page to dark mode.
 
@@ -175,7 +183,7 @@ The code of the resources/rawfile/darkModePage.html page is as follows:
 
 The styles of the darkModePage.html page when dark mode is disabled, when dark mode is enabled, and when force dark mode is enabled are shown in Figure 3. When dark mode is disabled, the web page adopts the default style. When dark mode is enabled, the color scheme of input1 switches to dark, and the web page applies the gray background and brown text styles defined in @media(prefers-color-scheme: dark). When force dark mode is enabled, the color scheme of input1 is dark and is not converted by Web, while the web page background color, text color, and input2 background color are all converted from the color values in (2) to those shown in (3).
 
-**Figure 3** Effects of the dark color mode and forcible dark color mode on the web page
+**Figure 3** Effects of the dark mode and forcible dark mode on the web page
 
 ![web-dark-mode](figures/arkweb_dark_mode.png)
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the mounting and removal control of Web components on component trees in different windows, implementing cross-window migration of Web components. This applies to scenarios such as dragging a browser tab out into an independent window."
+keywords: [Web component, window migration]
+doctype: guide
+status: active
+---
+
 # Migrating Web Components Between Different Windows
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8e028149653aac680bb71205be9d457ce2f38bfe translatedAt=2026-11-03T03:03:27.041Z pushedAt=2026-11-03T03:05:56.610Z nl=1 -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:08:28.134Z pushedAt=2026-11-27T08:16:13.648Z nl=1 -->
 
 The **Web** component can be attached to and detached from the component trees in different windows, which enables the same **Web** component to be migrated between different windows. For example, you can drag a tab page to an independent window or drag it to another window.
 

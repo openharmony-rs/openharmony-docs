@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the structure and field meanings of the default ArkWeb User-Agent, introduces the APIs and priorities for obtaining and customizing the UA, and applies to device identification, frontend debugging, and H5 compatibility issue handling."
+keywords: [User-Agent, UA, setCustomUserAgent, getUserAgent, getDefaultUserAgent, setAppCustomUserAgent, setUserAgentForHosts, device identification, H5 compatibility]
+doctype: guide
+status: active
+---
+
 # Developing User-Agent
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -6,7 +14,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 <!--RP1-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:41:00.365Z pushedAt=2026-11-12T08:23:50.610Z nl=2 -->
+<!-- md-trans-meta sourceCommit=fbf2b56d21e7fb83d43a3f70e53f52367eff8464 translatedAt=2026-11-27T08:13:26.908Z pushedAt=2026-11-27T08:26:37.543Z nl=2 -->
 
 User-Agent (UA) is a special string that contains key information such as the device type, operating system, and version. In web development, UA is used by the server to identify the source device of the request and its features, so that the server can provide custom content and services. If UAs cannot be correctly identified on a page, multiple exceptions may occur. For example, a page layout optimized for a mobile device may be displayed in disorder on a desktop device, and vice versa. In addition, some browser functionalities or CSS attributes are supported only in specific browser versions. If a page cannot successfully identify the UA, rendering problems or logic errors may occur.
 
@@ -120,7 +128,7 @@ struct WebComponent {
 Since API version 20, you can use the [setAppCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setappcustomuseragent20) API to set an application-level custom user agent or use the [setUserAgentForHosts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setuseragentforhosts20) API to set an application-level custom user agent for a specific website. The custom user agent overwrites the system user agent and takes effect for all **Web** components in the application.
 
 You are advised to first call the static API [getDefaultUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) to obtain the default User-Agent string before creating the Web component, then call `setAppCustomUserAgent()` and `setUserAgentForHosts()` to set the User-Agent, and finally create the Web component with the specified `src` or load the specific page through `loadUrl()`.
-<!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
+<!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';    
@@ -145,7 +153,7 @@ struct WebComponent {
         ]    
       );    
     } catch (error) {    
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);    
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);    
     }    
   }    
 

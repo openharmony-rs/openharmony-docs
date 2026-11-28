@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how the Web component opens a page in a new window, including enabling multi-window access, creating and binding a new window in the new window event callback, and activating an existing window."
+keywords: [new window, onWindowNew, onWindowNewExt, allowWindowOpenMethod]
+doctype: guide
+status: active
+---
+
 # Opening Pages in a New Window
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ed9bb7e8f472425645b6a1e2f271c58d216841a3 translatedAt=2026-09-21T02:22:32.669Z pushedAt=2026-09-21T13:41:44.078Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:24:24.499Z pushedAt=2026-11-27T09:04:00.810Z nl=1 -->
 
 
 The **Web** component provides the capability of opening pages in a new window. You can call [multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9) to specify whether to allow a web page to be opened in a new window. When a new window is opened, the application receives the new window event of the **Web** component through the [onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9) or [onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23) API. You need to create a window for processing the window opening request in the event callback.
@@ -124,7 +132,7 @@ struct WebComponent {
 
 ![web-open-in-new-window](figures/web-open-in-new-window.png)
 
-
+  
 ## Samples
 
 The following samples are provided to help you better understand how to create a window:

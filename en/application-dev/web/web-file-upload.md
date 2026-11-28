@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to handle frontend page file upload requests through onShowFileSelector and how to customize the launching of the file manager, Gallery, or camera to complete the upload, and describes the default popup behavior of ArkWeb."
+keywords: [file upload, onShowFileSelector, handleFileList, showSaveFilePicker, accept attribute, capture attribute]
+doctype: guide
+status: active
+---
+
 # Uploading Files
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:10:16.610Z pushedAt=2026-09-21T12:20:07.588Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:16:29.397Z pushedAt=2026-11-27T08:34:32.329Z nl=1 -->
 
 The **Web** component supports file upload from the frontend page. You can use the [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) API to handle the file upload request from the frontend page. If you do not handle it, ArkWeb provides a default behavior to process the file upload request from the frontend page. You can also customize the Picker to be invoked based on the obtained frontend data.
 
@@ -53,7 +61,7 @@ struct WebComponent {
 ```
 
 - Code of the **local.html** page:
-
+  
   ```html
   <!DOCTYPE html>
   <html>
@@ -77,7 +85,7 @@ In the following example, when a user clicks the **Upload** button on the fronte
 
 
 - Application code:
-
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -116,7 +124,7 @@ In the following example, when a user clicks the **Upload** button on the fronte
 
 
 - Code of the **local.html** page:
-
+  
   ```html
   <!DOCTYPE html>
   <html>
@@ -253,13 +261,15 @@ The sample page includes multiple file selectors, each with different **accept**
 | Image and video types are excluded       | **environment** or **user**| Starts file selection, but cannot start the camera.                   |
 | Image and video types are excluded         | Unspecified                     | Starts file selection, but cannot start the camera.                  |
 
-> Currently, ArkWeb can identify the following file types:
->  - Image: tif, xbm, tiff, pjp, jfif, bmp, avif, apng, ico, webp, svg, gif, svgz, jpg, jpeg, png, pjpeg
->  - Video: mp4, mpg, mpeg, m4v, ogm, ogv, webm
-
 >  **NOTE** 
 >
-> By default, ArkWeb invokes only the rear camera. The value `'user'` is not processed as invoking the front camera. If needed, handle it separately on the application side through the [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) API.
+> By default, ArkWeb launches only the rear camera. The value `'user'` is not handled as launching the front camera. If needed, handle it separately on the application side through the [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) API.
+>
+> The file types currently recognized by ArkWeb are as follows:
+>
+>  - Image: tif, xbm, tiff, pjp, jfif, bmp, avif, apng, ico, webp, svg, gif, svgz, jpg, jpeg, png, pjpeg
+>
+>  - Video: mp4, mpg, mpeg, m4v, ogm, ogv, webm
 
 HTML page code:
 ```html

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to implement immersive full-screen playback of web videos by listening for the full-screen enter and exit events, including adjusting component visibility and layout, switching orientation, and handling swipe to exit full-screen."
+keywords: [full-screen playback, immersive, onFullScreenEnter, onFullScreenExit, setPreferredOrientation, orientation switching]
+doctype: guide
+status: active
+---
+
 # Enabling Immersive Full-Screen Video Playback
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a4932029d318973226050518cff47d00b7c21835 translatedAt=2026-11-03T03:07:02.150Z pushedAt=2026-11-03T03:22:16.859Z nl=1 -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:17:08.439Z pushedAt=2026-11-27T08:41:51.114Z nl=1 -->
 
 ArkWeb provides events for entering and exiting the full-screen mode. An application can listen for these events to enter and exit the immersive full-screen mode.
 

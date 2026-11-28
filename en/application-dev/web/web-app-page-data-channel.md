@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / ArkWeb"]
+description: "Introduces the communication method for bidirectional message exchange between the application side and the frontend page through message ports, covering port creation and sending, callback registration, closing timing, and data type constraints."
+keywords: [ArkWeb, createWebMessagePorts, postMessage, WebMessagePort, message port, data channel, onMessageEvent, bidirectional communication]
+doctype: guide
+status: active
+---
+
 # Establishing a Data Channel Between the Application and the Frontend Page
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:36:52.539Z pushedAt=2026-11-12T08:19:05.121Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:07:51.726Z pushedAt=2026-11-27T09:29:46.662Z nl=1 -->
 
 
 The [createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports) API allows you to create message ports to implement communication between the application and frontend page.

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how the Web component accesses motion and orientation sensor data such as accelerometer and gyroscope through W3C standard APIs to implement scenarios such as fitness guidance and motion-sensing games, covering permission declaration, authorization handling, and frontend invocation examples."
+keywords: [ArkWeb, sensor permission, accelerometer, gyroscope, Accelerometer, Gyroscope, DeviceMotionEvent, DeviceOrientationEvent, onPermissionRequest]
+doctype: guide
+status: active
+---
+
 # Using Motion and Orientation Sensors
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c825e6a7cc75a67ea652eb38bec0a2c70e07052c translatedAt=2026-11-12T04:46:57.422Z pushedAt=2026-11-12T08:43:33.042Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:31:53.455Z pushedAt=2026-11-27T09:23:31.438Z nl=1 -->
 
 ## Overview
 

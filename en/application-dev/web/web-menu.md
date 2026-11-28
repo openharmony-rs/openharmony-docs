@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how to implement the text selection menu and context menu of the Web component, covering scenarios such as adding or removing default menu items, customizing the context menu and text selection menu, and saving images."
+keywords: [Web menu, editMenuOptions, onContextMenuShow, bindSelectionMenu, text selection menu, context menu, custom menu]
+doctype: guide
+status: active
+---
+
 # Using Menus to Process Web Content
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8639a0d43b773b87dfaf606ea59ba5a24af79a51 translatedAt=2026-09-21T02:19:19.037Z pushedAt=2026-09-22T01:23:15.243Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:21:23.018Z pushedAt=2026-11-27T09:01:49.459Z nl=2 -->
 
 As a key component of user interaction, menus build a clear navigation system and present function entries through a structured layout, allowing users to quickly find target content or perform operations. As an important hub of human-machine interaction, menus significantly improve the accessibility and user experience of the Web component and are an indispensable part of app design. The Web component menu types include the [text selection menu](./web-menu.md#text-selection-menu), [context menu](./web-menu.md#context-menu), and [custom menu](./web-menu.md#custom-menu). You can flexibly select a menu type based on your specific requirements.
 |Menu Type|Target Element|Response Type|Customizable|
@@ -92,7 +100,7 @@ struct WebComponent {
 ```
 
 <!---->
-
+  
   ```html
   <!--index.html-->
   <!DOCTYPE html>

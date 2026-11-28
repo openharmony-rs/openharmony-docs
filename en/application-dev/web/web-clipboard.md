@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes how the Web component interacts with the system clipboard, including menu and keyboard shortcuts, the W3C asynchronous clipboard API and clipboard event listeners, as well as clipboard permission requests and copy range settings."
+keywords: [clipboard, Clipboard API, navigator.clipboard, writeText, readText, ClipboardItem, clipboard event]
+doctype: guide
+status: active
+---
+
 # Processing Web Page Content by Interacting with the System Clipboard
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T01:56:03.655Z pushedAt=2026-09-21T09:05:13.697Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:08:14.098Z pushedAt=2026-11-27T08:16:04.725Z nl=1 -->
 
 You can interact with the system clipboard through the Web component to copy and paste various types of data. You can cut, copy, and paste web content through the [menu](web-menu.md), keyboard shortcuts, and the [W3C Clipboard APIs](https://www.w3.org/TR/clipboard-apis/).
 

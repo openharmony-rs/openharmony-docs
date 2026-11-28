@@ -5,9 +5,10 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=129e568b2e3d9e00a1a96f816f5b690da736d5ea translatedAt=2026-09-21T01:53:46.086Z pushedAt=2026-09-22T01:22:52.076Z -->
+<!-- md-trans-meta sourceCommit=602ca68aa8050d3d8f505fe89a3cbd1b0173d03c translatedAt=2026-11-27T08:06:37.726Z pushedAt=2026-11-27T08:15:37.369Z nl=1 -->
 
 - [About This Kit](web-component-overview.md)
+- [Sample Code for the ArkWeb Kit Guide](arkweb-kit-samples.md)
 - [ArkWeb Process](web-component-process.md)
 - [Lifecycle of the Web Component](web-event-sequence.md)
 - Setting Basic Attributes and Events<!--web-set-attributes-events-->

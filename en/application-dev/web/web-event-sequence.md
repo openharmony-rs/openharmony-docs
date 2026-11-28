@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit"]
+description: "Describes the trigger timing and recommended usage of lifecycle callbacks throughout the process of loading web pages with the Web component, covering normal and abnormal loading scenarios, performance metric listening, and page freeze recovery solutions."
+keywords: [onPageBegin, onPageEnd, onControllerAttached, onLoadIntercept, onFirstContentfulPaint, onLargestContentfulPaint]
+doctype: guide
+status: active
+---
+
 # Lifecycle of the Web Component
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
@@ -5,7 +13,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=189644703e282cd7870afaafd2b69610639795a1 translatedAt=2026-11-03T03:06:28.416Z pushedAt=2026-11-03T03:22:03.053Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0e25b28c87c9b8c7dcccc058748b237b4087e9a0 translatedAt=2026-11-27T08:15:27.728Z pushedAt=2026-11-27T08:33:17.060Z nl=1 -->
 
 ## Overview
 
