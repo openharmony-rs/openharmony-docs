@@ -9932,6 +9932,36 @@ Allows an application to manage mouse cursor styles.
 
 **Since**: 26.1.0
 
+## ohos.permission.PROMOTE_BACKGROUND_PROCESS_PRIORITY
+
+Allows a system application to promote the priority of a background process.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.1.0
+
+## ohos.permission.SUPPORT_HIGH_PRIORITY_STARTUP
+
+Allows a system application to start with high priority.
+
+With this permission, the application (callee) can be started with high priority by another application (caller) that holds the [ohos.permission.PROMOTE_BACKGROUND_PROCESS_PRIORITY](#ohospermissionpromote_background_process_priority) permission.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.1.0
+
 ## ohos.permission.MANAGE_DAEMON_SERVICE
  
 Allows a system application to manage daemon services.
