@@ -281,7 +281,11 @@ enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional\<boolean\>)
 
 为XComponent启用Surface可见性生命周期。未通过该接口设置时，默认禁用Surface可见性生命周期。
 
-默认情况下，XComponent持有的Surface生命周期回调跟随组件的挂载与卸载触发。启用后，Surface生命周期回调跟随组件的可见性变化触发：组件不可见时触发[onSurfaceDestroyed](#onsurfacedestroyed12)回调，组件重新可见时触发[onSurfaceCreated](#onsurfacecreated12)回调，可在组件不显示时释放Surface资源，降低内存占用。
+默认情况下，XComponent持有的Surface生命周期回调跟随组件的挂载与卸载触发。启用后，Surface生命周期回调跟随组件的可见性变化触发：组件不可见时触发[onSurfaceDestroyed](#onsurfacedestroyed12)回调，组件重新可见时触发[onSurfaceCreated](#onsurfacecreated12)回调。开发者可在组件不显示时释放Surface资源，降低内存占用。
+
+> **说明：** 
+>
+> 可见性变化涵盖visibility属性修改、组件上下树、组件移出/进入屏幕可视区域、应用窗口前后台切换，以及PC应用窗口被完全不透明上层窗口完全遮挡的场景。
 
 **起始版本：** 26.1.0
 
