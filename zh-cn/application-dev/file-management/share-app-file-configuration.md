@@ -1,4 +1,4 @@
-# 应用共享目录配置
+# 应用可授权沙箱目录范围配置
 <!--Kit: Core File Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @renzehua-->
@@ -6,17 +6,19 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-从API版本23开始，系统支持配置共享目录。在[应用文件分享](share-app-file.md)场景中，开发者可[配置共享目录](#配置共享目录)，配置后仅共享目录中的文件可供用户分享给其他应用查阅，以防止应用敏感数据泄露。配置仅在手机（Phone）、平板（Tablet）上生效。
+## 配置沙箱分享范围
+
+从API版本23开始，系统支持配置沙箱分享范围。开发者配置后，在应用[将文件授权给其他应用访问](share-app-file.md)时（含用户分享场景和应用自身发起的授权场景），都将与配置范围进行比对，仅配置范围内的文件授权会被允许，防止应用敏感数据泄露。该配置在应用安装时写入系统，仅在手机（Phone）、平板（Tablet）上生效。
 
 > **说明：**
 >
-> 从API版本26.0.0开始，可配置共享目录范围扩大，请开发者按照最新范围进行配置，下述配置指导配套版本为26.0.0。
+> 从API版本26.0.0开始，可配置的分享范围扩大，请开发者按照最新范围进行配置，下述配置指导配套版本为26.0.0。
+>
+> 若未配置分享范围（scopes），系统将不进行范围比对，默认允许对应文件URI的分享。
+>
+> 即使应用不需要分享文件，也建议配置分享范围——配置后默认行为从"全放开"变为"仅配置范围内可分享"，可配置一个不对应实际分享路径的符合格式要求的路径来生效限制，使所有分享行为被拦截，起到防护作用。
 
-从API版本26.0.0开始，系统支持配置应用捐献沙箱目录。当配置了共享目录时，开发者可[配置捐献沙箱目录](#配置捐献沙箱目录)。捐献目录为共享目录的子目录。应用配置捐献目录后，文件管理器等系统应用可访问并操作其中的文件数据。配置仅在手机（Phone）、平板（Tablet）上生效（本文档仅用于指导开发者接入能力，达成效果以系统应用的实现为准。当前系统应用陆续接入中，具体交互体验依赖于系统应用的实现）。
-
-## 开发步骤
-
-1. 开发者可在应用模块级配置文件[src/main/module.json5](../quick-start/module-configuration-file.md)的module标签中添加shareFiles标签，以实现对沙箱共享目录权限的限制。若未配置共享目录，则默认允许应用共享其自身沙箱内的文件。
+1. 在应用模块级配置文件[src/main/module.json5](../quick-start/module-configuration-file.md)的module标签中添加shareFiles标签：
 
    **shareFiles标签**
 
@@ -30,29 +32,14 @@
    }
    ```
 
-2. 在开发视图的resources/base/profile目录中定义配置文件share_files.json，以标识当前模块所有共享路径的权限信息。
+2. 在开发视图的resources/base/profile目录中定义资源配置文件（文件名默认share_files.json，可改为符合系统命名规则的其他名称，但需与shareFiles标签配置的文件名一致），在scopes标签中配置分享路径及权限。
 
-   文件名可修改为符合系统命名规则的文件名，但需要和shareFiles标签配置的文件名一致。
+scopes标签的字段说明：
 
-   **share_files标签说明**
-
-   | 属性名称 | 含义 | 数据类型 | 必填 |
-   | -------- | -------- | -------- | -------- |
-   | scopes | 允许共享的范围，详见[配置共享目录](#配置共享目录)。 | 对象数组 | 否 |
-   | sharingOSPath | 应用捐献给操作系统的沙箱目录，详见[配置捐献沙箱目录](#配置捐献沙箱目录)。 | 字符串 | 否 |
-   | sharingOSSubpath | 应用捐献给操作系统的沙箱目录的子目录，详见[配置捐献沙箱目录](#配置捐献沙箱目录)。 | 字符串 | 否 |
-   | sharingOSPermission | 应用捐献给操作系统的沙箱目录的访问权限，详见[配置捐献沙箱目录](#配置捐献沙箱目录)。 | 字符串 | 否 |
-
-   > **说明：**
-   >
-   > 应用更新时如涉及配置变更，将依据新配置进行管控，已分享文件的临时权限不受影响。
-
-### 配置共享目录
-
-   | 属性名称 | 含义 | 数据类型 | 必填 |
-   | -------- | -------- | -------- | -------- |
-   | path | 共享路径配置，路径第一级支持el1~el5级别加密目录，第二级仅支持下列目录：<br/>- `base`<br/>- `distributedfiles`<br/>- `cloud`<br/>详细限制见[路径限制说明](#路径限制说明)。<br/>**起始版本：** 26.0.0  | string | scopes存在时必填 |
-   | permission | 共享路径权限。支持的取值如下：<br/>- `r`：只读。<br/>- `r+w`：读写。<br/>**起始版本：** 23 | string | scopes存在时必填 |
+| 属性名称 | 含义 | 数据类型 | 必填 |
+| -------- | -------- | -------- | -------- |
+| path | 分享路径配置，路径第一级支持el1~el5级别加密目录，第二级仅支持下列目录：<br/>- `base`<br/>- `distributedfiles`<br/>- `cloud`<br/>详细限制见[路径限制说明](#路径限制说明)。<br/>**起始版本：** 26.0.0  | string | scopes存在时必填 |
+| permission | 分享路径权限。支持的取值如下：<br/>- `r`：只读。<br/>- `r+w`：读写。<br/>**起始版本：** 23 | string | scopes存在时必填 |
 
 ### 路径限制说明
 
@@ -67,39 +54,53 @@
    - 必须以/开头，不允许有'.'、'..'、'\0'字符，不允许以'/'结尾。
 
 4. 父子目录限制：
-   - 存在父目录配置时，不允许配置子目录。
-   - 如已配置/el2/base/parentsA，那么不允许再配置/el2/base/parentsA/childrenA，允许配置/el2/base/parentsB/childrenB。
+   - 若某路径已配置，则不允许再配置其子目录。
+   - 如已配置/el2/base/files，则不允许再配置/el2/base/files/documents（已配置路径的子目录），允许配置/el2/base/cache（与已配置路径无父子关系）。
 
-5. 验证方式及定位：
-   - 为保持与旧版本系统的兼容性，当应用的任何一条路径配置不符合路径限制时，会自动清除该应用的全部已配置路径。可通过系统日志搜索相关报错，关键字："TransAndSetToMapInner failed for bundle"。
+配置分享范围的share_files.json示例：
 
-### 配置捐献沙箱目录
-   应用需要向操作系统捐献沙箱目录时，需要在配置文件share_files.json中填写sharingOSPath、sharingOSSubpath、sharingOSPermission三个字段。
+``` json
+{
+  "share_files": {
+    "scopes": [
+      {
+        "path": "/el2/base/files",
+        "permission": "r+w"
+      },
+      {
+        "path": "/el3/distributedfiles/files/tmp",
+        "permission": "r+w"
+      }
+    ]
+  }
+}
+```
 
-   | 属性名称 | 含义 | 数据类型 |
-   | -------- | -------- | -------- |
-   | sharingOSPath | 应用捐献给操作系统的沙箱目录，取值必须为scopes列表中已配置的path值。未配置该字段则表示不向操作系统捐献目录，系统应用如文件管理器、FilePicker等将无法查看应用捐献的沙箱目录。<br/>**起始版本：** 26.0.0 | 字符串 |
-   | sharingOSSubpath | 应用捐献给操作系统的沙箱目录的子目录。仅当sharingOSPath配置时必填，长度不超过32个字符，将"sharingOSPath"+"sharingOSSubpath"拼接后的路径，作为捐献给操作系统的目录，""空串代表直接捐献sharingOSPath，有字符则以/开头，不允许有'.'、'..'、'\0'字符。<br/>**起始版本：** 26.0.0 | 字符串 |
-   | sharingOSPermission | 应用捐献给操作系统的沙箱目录的访问权限。仅当sharingOSPath配置时必填，权限必须是scopes中对应路径permission的一个子集，不可超出原配置权限。<br/>**起始版本：** 26.0.0 | 字符串 |
+> **说明：**
+>
+> 应用更新时如涉及配置变更，将依据新配置进行管控，已持久化的授权不满足新配置时将无法被激活，已分享的临时授权不受影响。
 
-   share_files.json示例：
+### 错误定位
 
-   ``` json
-   {
-     "share_files": {
-       "scopes": [
-         {
-           "path": "/el2/base/files",
-           "permission": "r+w"
-         },
-         {
-           "path": "/el3/distributedfiles/files/tmp",
-           "permission": "r+w"
-         }
-       ],
-       "sharingOSPath" : "/el2/base/files",
-       "sharingOSSubpath" : "/subdir",
-       "sharingOSPermission": "r"
-     }
-   }
-   ```
+当分享行为与预期不符时，可按以下阶段排查配置问题。
+
+**开发、打包阶段**
+
+DevEco Studio与打包工具会对scopes的格式与取值进行静态校验（路径层级、数量、父子目录、字符限制等）。校验不通过时构建直接报错，请根据构建报错信息修正配置文件后重试。
+
+**运行阶段**
+
+分享配置在应用安装或更新时由系统载入。为保持与旧版本系统的兼容性，任一路径不符合路径限制时，系统会自动清除该应用的全部已配置路径，分享行为回到未配置状态。如果分享行为被拦截或者拦截不生效，可通过hdc过滤沙箱管理服务的系统日志，确认具体失败原因：
+
+``` bash
+hdc shell hilog | grep SandboxManagerShare
+```
+
+| 日志关键字 | 原因及处理建议 |
+| ---------- | ---------- |
+| TransAndSetToMapInner failed for bundle xxx, invalid path: yyy | 配置中的某条路径不合法，日志中会指明具体不合法的路径，请修正配置后重新打包安装，否则该应用全部已配置路径将失效，不具备拦截作用。 |
+| TransAndSetToMapInner failed for bundle xxx, exceeds limit | 路径数超过20条上限，请精简配置。 |
+| json parse error | json格式不合法，检查语法（多余逗号、引号缺失等）。 |
+| json size exceeds limit | 配置超过大小限制（5MB），精简。 |
+| scopes is not an array / path is not a string / permission is not a string | scopes结构或字段类型错误，检查share_files.json格式。 |
+| path not allowed to set policy | 分享请求被拦截（路径不在scopes范围内或权限超出）。日志中路径被脱敏，请对照应用分享请求与scopes配置进行判断，调整分享路径或扩大scopes范围及权限。 |
