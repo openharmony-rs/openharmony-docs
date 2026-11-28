@@ -60,6 +60,7 @@ Text(content?: string | Resource, value?: TextOptions)
 | halfLeading<sup>12+</sup> | 设置文本是否垂直居中。与[textVerticalAlign](#textverticalalign20)同时配置时，halfLeading不生效。 |
 | textAlign | 设置文本段落在水平方向的对齐方式。当[textOverflow](#textoverflow)设置为TextOverflow.MARQUEE且文本可滚动时，textAlign属性不生效。 |
 | textContentAlign<sup>21+</sup> | 设置文本内容区在组件内的垂直对齐方式。 |
+| textDirection<sup>23+</sup> | 指定文本排版方向。 |
 | textVerticalAlign<sup>20+</sup> | 设置文本段落在垂直方向的对齐方式。 |
 
 **字体样式**
@@ -89,11 +90,13 @@ Text(content?: string | Resource, value?: TextOptions)
 
 | 属性 | 说明 |
 |------|------|
+| compressLeadingPunctuation<sup>23+</sup> | 设置是否开启行首标点符号压缩。 |
 | ellipsisMode<sup>11+</sup> | 设置省略位置。 |
 | lineBreakStrategy<sup>12+</sup> | 设置折行规则。 |
 | marqueeOptions<sup>18+</sup> | 设置文本跑马灯模式的配置项。 |
 | textOverflow | 设置文本超长时的显示方式。 |
 | wordBreak<sup>11+</sup> | 设置断行规则。 |
+| orphanCharOptimization | 设置文本排版时是否开启孤字优化。<br/>**起始版本：** 26.0.0 |
 | punctuationOverflow | 设置是否启用行尾标点符号悬挂。<br/>**起始版本：** 26.0.0 |
 
 **行与段落**
@@ -101,6 +104,8 @@ Text(content?: string | Resource, value?: TextOptions)
 | 属性 | 说明 |
 |------|------|
 | enableAutoSpacing<sup>20+</sup> | 设置是否开启中文与西文的自动间距。 |
+| fallbackLineSpacing<sup>23+</sup> | 针对多行文字叠加，支持行高基于文字实际高度自适应。 |
+| includeFontPadding<sup>23+</sup> | 设置是否在首行和尾行增加间距以避免文字截断。 |
 | lineHeight | 设置文本的行高。 |
 | lineHeightMultiple<sup>22+</sup> | 设置文本的行高倍数。 |
 | lineSpacing<sup>12+</sup> | 设置文本的行间距。 |
@@ -131,6 +136,7 @@ Text(content?: string | Resource, value?: TextOptions)
 | copyOption<sup>9+</sup> | 设置组件是否支持文本可复制粘贴。 |
 | draggable<sup>9+</sup> | 设置选中文本拖拽效果。 |
 | selectedBackgroundColor<sup>14+</sup> | 设置文本选中高亮颜色。 |
+| selectedDragPreviewStyle<sup>23+</sup> | 设置文本拖拽时的背板样式。 |
 | selection<sup>11+</sup> | 设置选中区域。 |
 | textSelectable<sup>12+</sup> | 设置是否支持文本可选择、可获焦。 |
 
@@ -453,7 +459,7 @@ ArkTS-Sta: editMenuOptions(editMenu: EditMenuOptions | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | ArkTS-Dyn: [EditMenuOptions](ts-text-common.md#editmenuoptions) <br> ArkTS-Sta: [EditMenuOptions](ts-text-common.md#editmenuoptions) \| undefined | 是   | 扩展菜单选项，用于自定义文本选择菜单的扩展项。可设置扩展项的文本内容、图标、回调方法等配置，允许开发者添加自定义菜单项。<br>取值为undefined时，显示系统文本选择菜单。 |
+| editMenu  | ArkTS-Dyn: [EditMenuOptions](ts-text-common.md#editmenuoptions12) <br> ArkTS-Sta: [EditMenuOptions](ts-text-common.md#editmenuoptions12) \| undefined | 是   | 扩展菜单选项，用于自定义文本选择菜单的扩展项。可设置扩展项的文本内容、图标、回调方法等配置，允许开发者添加自定义菜单项。<br>取值为undefined时，显示系统文本选择菜单。 |
 
 ### ellipsisMode<sup>11+</sup>
 
@@ -4842,11 +4848,14 @@ struct Utf16GlyphHighlightPage {
     if (!posAffinity) { this.resultInfo = 'getCharacterPositionAtCoordinate 返回 undefined'; return; }
     const index = posAffinity.position;
     const affinity = posAffinity.affinity;
-    let charStart: number, charEnd: number;
+    let charStart: number;
+    let charEnd: number;
     if (affinity === text.Affinity.UPSTREAM) {
-      charStart = Math.max(0, index - 1); charEnd = index;
+      charStart = Math.max(0, index - 1);
+      charEnd = index;
     } else {
-      charStart = index; charEnd = index + 1;
+      charStart = index;
+      charEnd = index + 1;
     }
     // 根据字符范围查询对应的字形范围与实际字符范围（UTF-16编码）
     const glyphRanges = layoutManager.getGlyphRangeForCharacterRange(
@@ -4874,8 +4883,10 @@ struct Utf16GlyphHighlightPage {
     ctx.clearRect(0, 0, 5000, 5000);
     for (const box of textBoxes) {
       const r = box.rect;
-      const l = uiContext.px2vp(r.left), t = uiContext.px2vp(r.top);
-      const w = uiContext.px2vp(r.right) - l, h = uiContext.px2vp(r.bottom) - t;
+      const l = uiContext.px2vp(r.left);
+      const t = uiContext.px2vp(r.top);
+      const w = uiContext.px2vp(r.right) - l;
+      const h = uiContext.px2vp(r.bottom) - t;
       if (w <= 0 || h <= 0) continue;
       const g = ctx.createLinearGradient(l, t, l + w, t + h);
       g.addColorStop(0, 'rgba(187, 153, 255, 0.66)');

@@ -288,7 +288,7 @@ getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<P
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
 | styledString | [StyledString](arkui-ts/ts-universal-styled-string.md#styledstring) | 是   | 待转换的属性字符串。|
-| options | [TextLayoutOptions](arkui-ts/ts-text-common.md#textlayoutoptions对象说明20) | 否 | 文本布局选项。省略时使用默认布局配置。|
+| options | [TextLayoutOptions](arkui-ts/ts-text-common.md#textlayoutoptions20对象说明) | 否 | 文本布局选项。省略时使用默认布局配置。|
 
 **返回值：**
 
