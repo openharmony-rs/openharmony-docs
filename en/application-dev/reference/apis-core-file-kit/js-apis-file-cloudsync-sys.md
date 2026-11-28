@@ -24,7 +24,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 Enumerates the device-cloud sync types of the gallery.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -287,7 +287,7 @@ Starts the device-cloud sync of gallery media resources according to the specifi
 >
 > The execution of the promise's then callback only indicates that the sync start request has been accepted, not that the entire synchronization round has been completed. The sync progress can be listened for through [on('progress')](#onprogress).
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -345,7 +345,7 @@ Starts device-cloud sync of gallery media resources by the specified type. This 
 >
 > If the start request fails to be submitted, the API immediately throws a BusinessError and the callback is not invoked. If the request is submitted successfully, the callback is invoked asynchronously, but this does not mean that the entire sync round is complete. You can listen for the sync progress through [on('progress')](#onprogress).
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
