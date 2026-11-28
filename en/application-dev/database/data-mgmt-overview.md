@@ -5,7 +5,7 @@
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:37.944Z pushedAt=2026-06-22T08:08:02.523Z -->
+<!-- md-trans-meta sourceCommit=30e4283bf08253ae9c214c3b4b20b868b85c7697 translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 
 ## Function

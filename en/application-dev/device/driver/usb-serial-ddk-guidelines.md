@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b7d40f87aa2d142e8bb56c8840a8683306b0404d translatedAt=2026-09-01T02:17:09.123Z pushedAt=2026-09-01T12:26:02.108Z -->
+<!-- md-trans-meta sourceCommit=5e1a0fc3b8d80ebf3c21aa67ffa37ccea92f2b38 translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 ## Overview
 

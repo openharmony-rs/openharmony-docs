@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e8043e6c44c57237a940088dce9d7197b7cc7999 translatedAt=2026-09-14T08:22:16.656Z pushedAt=2026-09-14T10:41:43.724Z -->
+<!-- md-trans-meta sourceCommit=f206f7e143272a3ab0ad2cf6f71c881aea953322 translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Introduction
 This document provides guidance on how to develop profile capabilities for actively pairing and connecting devices.
@@ -15,6 +15,10 @@ This document provides guidance on how to develop profile capabilities for activ
 
 ### Applying for the Required Permission
 Apply for the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+
+### Checking Whether Bluetooth Is Supported
+
+Call [isBluetoothSupported](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessisbluetoothsupported) to check whether the device supports Bluetooth. Proceed with the following steps only if Bluetooth is supported. Otherwise, do not use the related APIs.
 
 ### Importing Required Modules
 Import the **connection**, **a2dp**, **hfp**, **hid**, **baseProfile**, **constant**, and error code modules.

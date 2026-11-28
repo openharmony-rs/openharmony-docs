@@ -2,10 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
-<!--Designer: @junathuawei1; @zph000-->
+<!--Designer: @xuexuexuehc-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=fadd7d812e259ee0411353f410f7f8f5e48ebdff translatedAt=2026-09-01T02:11:16.849Z pushedAt=2026-09-01T11:38:53.716Z -->
+<!-- md-trans-meta sourceCommit=d92e24eb4c0dc856d7d28c1028e05b77d433889d translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 A Uniform Type Descriptor (UTD) is used to address data type ambiguity in a system. It provides a standardized way to describe the same data type in different representations, such as MIME types and file name extensions. For example, when describing a JPG/JPEG image, you can use **image/jpeg**, **.jpg**, **.jpeg**, or **image/picture**. For details, see [Generic UTDs](#generic-utds).
 
@@ -219,6 +219,17 @@ Generic UTDs represent universal data types that can be identified by the vast m
 | com.apple.iwork.pages.pages                                     |                 general.composite-object,com.apple.iwork                                                            | .pages                            |    application/vnd.apple.pages                   |  Document file of iWork Pages. <!--RP1-->This type is supported since OpenHarmony 6.1.<!--RP1End-->         |
 | com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  **musiccreate** file format. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
 | com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF audio data file. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
+| general.3d-content                                     |                 general.object                                                            | -                            |    -                   |  Base type for 3D content. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.gltf                                     |                 general.3d-content                                                            | .gltf                            |    model/gltf+json                   |  JSON-based glTF 3D scene and model format. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.glb                                     |                 general.3d-content                                                            | .glb                            |    model/gltf-binary                   |  glTF binary container format. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.obj-model                                     |                 general.3d-content                                                            | .obj                            |    model/obj                   |  Text-based 3D model type. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.mtl                                     |                 general.object                                                            | .mtl                            |    model/mtl                   |  Material library file type for Wavefront OBJ models. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.3mf                                     |                 general.3d-content                                                            | .3mf                            |    model/3mf                   |  3D manufacturing format. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.step                                     |                 general.cad, general.3d-content                                                            | .p21, .stp, .step, .stpnc, .210                            |    model/step                   |  STEP exchange file type. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.usdz                                     |                 general.3d-content                                                            | .usdz                            |    model/vnd.usdz+zip                   |  Packaged Universal Scene Description resource type. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.usda                                     |                 general.3d-content                                                            | .usda                            |    model/vnd.usda                   |  Human-readable UTF-8 text type for Universal Scene Description data. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| general.collada                                     |                 general.3d-content                                                            | .dae                            |    model/vnd.collada+xml                   |  XML-based digital asset exchange format. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
+| com.mathworks.matlab-code                                     |                 general.source-code                                                            | .m                            |    text/x-matlab                   |  MATLAB script type. <!--RP3-->This type is supported since OpenHarmony 7.1.<!--RP3End-->         |
 
 
 ## System-specific UTDs

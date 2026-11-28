@@ -1,11 +1,11 @@
-# Device Usage Statistics Development (for System Applications Only)
+# Device Usage Statistics Development (ArkTS) (for System Applications Only)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=4517d8951650b6827c117dbc27949ea5827acec2 translatedAt=2026-09-20T06:25:20.701Z pushedAt=2026-09-20T07:47:37.702Z -->
+<!-- md-trans-meta sourceCommit=b4a254e547c5dc8ed81a57ef18e6c5f64581238b translatedAt=2026-11-28T02:46:21.000Z nl=1 -->
 
 ## When to Use
 
@@ -94,7 +94,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     // Promise mode
     usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res: usageStatistics.BundleStatsMap) => {
         console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise success.');
-        console.info('BUNDLE_ACTIVE queryBundleStatsInfos callback result ' + JSON.stringify(res));
+        console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise result ' + JSON.stringify(res));
     }).catch( (err : BusinessError) => {
         console.error('BUNDLE_ACTIVE queryBundleStatsInfos promise failed. code is: ' + err.code + ',message is: ' + err.message);
     });
@@ -392,7 +392,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     function  onBundleGroupChanged (res: usageStatistics.AppGroupCallbackInfo) {
-        console.info('BUNDLE_ACTIVE registerAppGroupCallBack RegisterGroupCallBack callback success.');
+        console.info('BUNDLE_ACTIVE onBundleGroupChanged RegisterGroupCallBack callback success.');
         console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appOldGroup is : ' + res.appOldGroup);
         console.info('BUNDLE_ACTIVE registerAppGroupCallBack result appNewGroup is : ' + res.appNewGroup);
         console.info('BUNDLE_ACTIVE registerAppGroupCallBack result changeReason is : ' + res.changeReason);

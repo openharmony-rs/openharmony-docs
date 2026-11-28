@@ -6,7 +6,7 @@
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=cd8d7c80e214eec0c28814e8db1d37ffcbef77fe translatedAt=2026-11-05T06:16:33.936Z pushedAt=2026-07-31T08:37:19.426Z nl=1 -->
+<!-- md-trans-meta sourceCommit=319de3d4aa0e68b8b67bcea08b8e643a87c72252 translatedAt=2026-11-28T03:12:44.839Z nl=1 -->
 
 - [About This Kit](performance-analysis-kit-overview.md)
 - Fault Detection<!--fault-analysis-->
@@ -19,11 +19,11 @@
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
   - [Application Killed Detection](appkilled-guidelines.md)
   - General Logs<!--general-log-->
-    - [Page Switch Logs](pageswitch-log.md)<!--RP2--><!--RP2End-->
+    - [Page Switch Logs](pageswitch-log.md)
     - external_log Files<!--external_log-->
       - [Introduction to external_log](external-log.md)
       - [Cleaning Up external_log Files (ArkTS)](external-log-arkts.md)
-      - [Cleaning Up external_log Files (C/C++)](external-log-ndk.md)
+      - [Cleaning Up external_log Files (C/C++)](external-log-ndk.md)<!--RP2--><!--RP2End-->
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)

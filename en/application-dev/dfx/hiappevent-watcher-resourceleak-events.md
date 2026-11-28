@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=ebff5e10b9171acbbf0d8a914d975151d283ad88 translatedAt=2026-09-20T06:35:23.390Z pushedAt=2026-09-20T07:51:09.469Z -->
+<!-- md-trans-meta sourceCommit=e990598b53f76eed2b975160ccd013c8f2069802 translatedAt=2026-11-28T03:12:44.838Z nl=2 -->
 
 ## Overview
 
@@ -32,7 +32,7 @@ For details about the detection principles, see [Resource Leak Detection](https:
 
 | Name| Description|
 | -------- | -------- |
-| setEventConfig(name: string, config: Record<string, ParamType>): Promise&lt;void> | Sets the resource leak log specification parameters. The name parameter must be the resource leak event name constant **hiappevent.event.RESOURCE_OVERLIMIT**. **Only the JS memory leak type is supported.**<br>**Note:** This API is supported since API version 20. |
+| setEventConfig(name: string, config: Record<string, ParamType>): Promise&lt;void> | Sets the resource leak log specification parameters. The name parameter must be the resource leak event name constant **hiAppEvent.event.RESOURCE_OVERLIMIT**. **Only the JS memory leak type is supported.**<br>**Note:** This API is supported since API version 20. |
 
 ### setEventConfig Parameter Setting Description
 
@@ -121,7 +121,7 @@ The **params** parameter in the event information is described as follows.
 | fd | object | (Specific to resource_type fd) File descriptor information. For details, see [fd](#fd). |
 | thread | object | (Specific to resource_type thread) Thread information. For details, see [thread](#thread). |
 | external_log | string[] | Path of the error log file. If the directory files exceed the threshold (for details, see **log_over_limit**), new log files may fail to be written. Therefore, delete the log files immediately after they are processed.|
-| log_over_limit | boolean | Whether the size of generated fault log files and existing log files exceeds the upper limit (2 GB). The value **true** indicates that the upper limit is exceeded and logs fail to be written. The value **false** indicates that the upper limit is not exceeded.|
+| log_over_limit | boolean | Whether the size of generated fault log files and existing log files exceeds the upper limit (2 GB). The value **true** indicates that the upper limit is exceeded and logs fail to be written. The value **false** indicates that the upper limit is not exceeded. If this field is absent, no fault log is generated for this leak. |
 | page_switch_log | string | Page transition log path. For details about the log, see [Page Switch Logs](pageswitch-log.md).<br>**Note:** Supported since API version 24. |
 
 ### resource_type
@@ -130,6 +130,7 @@ The **params** parameter in the event information is described as follows.
 | -------- | -------- |
 | pss_memory | PSS memory leak.|
 | rss_memory | RSS memory leak.<br>**Note:** This field is supported since API version 26.0.0. |
+| ashmem_memory | ashmem memory leak.<br>**Note:** This field is supported since API version 26.0.0. |
 | ion_memory | ION memory leak.<br>**Note:** This field is supported since API version 20. |
 | gpu_memory | GPU memory leak.<br>**Note:** This field is supported since API version 20. |
 | js_heap | JS memory leak. |
@@ -149,7 +150,7 @@ The **params** parameter in the event information is described as follows.
 | sys_avail_mem | number | Size of the available memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | sys_total_mem | number | Size of the total memory (only available for **pss_memory**, **ion_memory**, and **gpu_memory**), in KB.|
 | limit_size | number | Limit of memory size (only available for **js_heap**), in KB.|
-| live_object_size | number | Size of the used memory (only available for **js_heap**), in KB.|
+| live_object_size | number | Size of the used memory (only available for **js_heap**), in B.|
 | rss_detail | object | Detailed distribution information of RSS memory (only available for **rss_memory**). For details, see [detail field description](#detail).<br>**Note:** Supported since API version 26.0.0. |
 | pss_detail | object | Detailed distribution information of PSS memory (only available for **pss_memory**). For details, see [detail field description](#detail).<br>**Note:** Supported since API version 26.0.0. |
 

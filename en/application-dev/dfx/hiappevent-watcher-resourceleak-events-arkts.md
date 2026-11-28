@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=81977b2ca59b47b8c24aa6e8048a712c2cc00126 translatedAt=2026-11-05T01:04:41.259Z pushedAt=2026-08-15T07:14:44.534Z nl=2 -->
+<!-- md-trans-meta sourceCommit=09a7bc88ada00c18ee39567073922ff28ee82a94 translatedAt=2026-11-28T03:12:44.838Z nl=2 -->
 
 ## Available APIs
 
@@ -63,7 +63,7 @@ The following example describes how to subscribe to the memory leak event.
    }
    // Set custom configurations for the resource leak event.
    hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
-   if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24 and later supports setting page switch logs.
+   if (deviceInfo.sdkApiVersion >= 24) {  // Starting from API version 24, setting page switch logs is supported.
      // Configure page switch logs.
      let switchLogPolicy : hiAppEvent.EventPolicy = {
        "resourceOverlimitPolicy": {
@@ -296,13 +296,14 @@ The following example describes how to subscribe to the memory leak event.
    - Perform the initialization.
 
    <!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    static napi_value Init(napi_env env, napi_value exports)
    {
        napi_property_descriptor desc[] = {
            // ...
-           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr}
+           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;

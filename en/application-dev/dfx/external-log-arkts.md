@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=cd8d7c80e214eec0c28814e8db1d37ffcbef77fe translatedAt=2026-11-05T00:59:07.219Z nl=1 -->
+<!-- md-trans-meta sourceCommit=60d5015c976e8d19ee2fa9762dabdd98804fa67e translatedAt=2026-11-28T03:12:44.828Z nl=1 -->
 
 Since API version 26.0.1, you can register an external_log manager to notify the app to clean up and delete files when a fault log sandbox directory reaches its capacity threshold.
 
@@ -23,10 +23,12 @@ For API usage, including parameter constraints and value ranges, see [@ohos.hivi
 
 1. Create an ArkTS app project. Edit entry > src > main > ets > entryability > EntryAbility.ets to import the required modules:
 
-   <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   <!-- @[External_Log_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
    ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   // ...
+   import { fileIo } from '@kit.CoreFileKit';
    ```
 
 2. Edit entry > src > main > ets > entryability > EntryAbility.ets and register an external_log manager in onCreate.
@@ -38,7 +40,7 @@ For API usage, including parameter constraints and value ranges, see [@ohos.hivi
    let deleteFiles: (files: string[]) => void = (files: string[]): void => {
      for (const file of files) {
        try {
-         fs.unlinkSync(file);
+         fileIo.unlinkSync(file);
          hilog.info(0x0000, 'testTag', `[MyLogManager] Deleted: ${file}`);
        } catch (e) {
          hilog.info(0x0000, 'testTag', `[MyLogManager] Failed to delete: ${file}, error: ${e}`);

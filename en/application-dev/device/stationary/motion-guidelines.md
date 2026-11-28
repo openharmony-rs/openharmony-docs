@@ -3,10 +3,10 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @osmanthusblossom-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=1807f481acc53527b1a72da423f2a9782aa8d3ed translatedAt=2026-07-28T02:36:51.729Z pushedAt=2026-07-28T06:18:38.165Z -->
+<!-- md-trans-meta sourceCommit=b7d355011f3767a1d9840e8e91abcc36307cf72a translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 ## When to Use
 

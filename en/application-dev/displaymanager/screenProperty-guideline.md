@@ -5,7 +5,7 @@
 <!--Designer: @wulong158-->
 <!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:36:41.434Z pushedAt=2026-11-04T09:30:30.156Z nl=1 -->
+<!-- md-trans-meta sourceCommit=93f0a77eb09d82193db13066379cfb47808de1ce translatedAt=2026-11-28T03:28:33.000Z nl=1 -->
 
 ## When to Use
 
@@ -243,10 +243,10 @@ try {
     
       // Unregister a single callback.
       display.off('foldStatusChange', callback);
-      hilog.info(DOMAIN, 'DisplayTest', `unregister all foldStatusChange success`);
+      hilog.info(DOMAIN, 'DisplayTest', `unregister foldStatusChange success`);
       // Unregister all the callbacks.
       display.off('foldStatusChange');
-      hilog.info(DOMAIN, 'DisplayTest', `unregister foldStatusChange success`);
+      hilog.info(DOMAIN, 'DisplayTest', `unregister all foldStatusChange success`);
     } catch (exception) {
       hilog.error(DOMAIN, 'DisplayTest',
         `Failed to register/unregister callback. Code: ${exception.code}, message: ${exception.message}`);

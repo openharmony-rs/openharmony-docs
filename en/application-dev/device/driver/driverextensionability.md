@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d8985113333b8c3c0dd4e2a9924806e724527539 translatedAt=2026-08-01T02:49:30.051Z pushedAt=2026-08-01T06:22:14.096Z -->
+<!-- md-trans-meta sourceCommit=5e1a0fc3b8d80ebf3c21aa67ffa37ccea92f2b38 translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 ## When to Use
 
@@ -55,17 +55,22 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
      // Receive a message from the application and return the processing result to the client.
      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
        option: rpc.MessageOption) {
-       if (code === REQUEST_CODE) {
-         // Receive the data sent from the application.
-         // When the application calls data.writeString() multiple times to write data, the driver can receive the corresponding data by calling data.readString() for multiple times.
-         let optFir: string = data.readString();
-         // The driver returns the data processing result to the application.
-         // In the example, "Hello" is received and "Hello World" is returned to the application.
-         reply.writeString(optFir + ` World`);
+       try {
+         if (code === REQUEST_CODE) {
+           // Receive the data sent from the application.
+           // When the application calls data.writeString() multiple times to write data, the driver can receive the corresponding data by calling data.readString() for multiple times.
+           let optFir: string = data.readString();
+           // The driver returns the data processing result to the application.
+           // In the example, "Hello" is received and "Hello World" is returned to the application.
+           reply.writeString(optFir + ` World`);
+         }
+       } catch (err) {
+         console.info('testTag', `onRemoteMessageRequest error code is: ${err.code} with info: ${err.message}`);
        }
        return true;
      }
    }
+  
    ```
 
 6. In the **DriverExtAbility.ets** file, add the import dependency for [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md). This package provides the **onInit()**, **onRelease()**, **onConnect()**, and **onDisconnect()** lifecycle callbacks. Define a custom class that inherits from [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md) and override the lifecycle callbacks as needed.
@@ -167,19 +172,19 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
                "value": "string"
              },
              {
-               "name": "vid," // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
+               "name": "vid", // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
                "value": "0x12D1"
              },
              {
-               "name": "pid," // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
+               "name": "pid", // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
                "value": "0x10A2"
              },
              {
-               "name": "launchOnBind," // Whether to enable delayed driver startup. This parameter is optional. The value **true** indicates delayed startup, and the value **false** indicates immediate startup. The value is **false** by default if the specified value is incorrect or the value is left unspecified.
+               "name": "launchOnBind", // Whether to enable delayed driver startup. This parameter is optional. The value **true** indicates delayed startup, and the value **false** indicates immediate startup. The value is **false** by default if the specified value is incorrect or the value is left unspecified.
                "value": "true"
              },
              {
-               "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value **true** indicates that DDK access is allowed, and the value **false** indicates the opposite. The default value is **false** if the specified value is incorrect or the value is left unspecified.
+               "name": "ohos.permission.ACCESS_DDK_ALLOWED", // Whether to allow DDK access. This parameter is optional. The value **true** indicates that DDK access is allowed, and the value **false** indicates the opposite. The default value is **false** if the specified value is incorrect or the value is left unspecified.
                "value": "true"
              }
            ]

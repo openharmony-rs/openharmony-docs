@@ -6,7 +6,7 @@
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=552600b0ea7451a7ac2f58aae751acd2a0a9b5bf translatedAt=2026-07-31T01:35:21.116Z pushedAt=2026-07-31T08:32:22.547Z -->
+<!-- md-trans-meta sourceCommit=3032b0934101ca138c9ae9e847eb42160338e411 translatedAt=2026-11-28T03:12:44.839Z nl=2 -->
 
 Performance Analysis Kit provides the event, log, and tracing analysis tools to help you check the running status of your application for further behavior, fault, security, and statistical analysis.
 
@@ -46,7 +46,8 @@ Performance Analysis Kit provides a collection of capabilities for improving app
 
 - [App grayscale collection](hiretrieval-intro.md): provides the app grayscale collection capability, allowing you to enable full log collection on a small number of selected devices to obtain more detailed fault logs and better locate faults.
 
-- Command line tools for debugging the system and applications: [hdc](hdc.md), [HiLog](hilog.md), [HiDumper](hidumper.md), [HiTrace](hitrace.md) and [HiPerf](hiperf.md) .
+- Command line tools for debugging the system and applications: [hdc](hdc.md), [HiLog](hilog.md), [HiDumper](hidumper.md), [HiTrace](hitrace.md), [HiPerf](hiperf.md), and [hiprofiler](hiprofiler.md).
+
 
 ## Features
 

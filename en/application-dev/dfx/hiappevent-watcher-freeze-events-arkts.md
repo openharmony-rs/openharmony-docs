@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=511e898cebe4e8bab4e50adc75139ac41da9e351 translatedAt=2026-09-28T02:28:58.007Z pushedAt=2026-09-29T06:01:00.166Z -->
+<!-- md-trans-meta sourceCommit=7ee11c1f0301e6100e1f26dcd0b3d3ad99aef3fb translatedAt=2026-11-28T03:12:44.837Z nl=2 -->
 
 ## Overview
 
@@ -27,122 +27,143 @@ The following walks you through how to subscribe to the application freeze event
 
 1. In DevEco Studio, create an ArkTS app project, edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and import the dependent modules. The sample code is as follows:
 
-   ```ts
-   import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
+   <!-- @[Appfreeze_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   import { deviceInfo } from '@kit.BasicServicesKit';
    ```
 
 2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, set the custom parameters in **onCreate()**. The sample code is as follows:
 
-   ```ts
-    // Assign a value to params, which is a key-value pair.
-    let params: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100,
-    };
-    // Set custom parameters for the application freeze event.
-    hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_FREEZE).then(() => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent success to set event param`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
-    });
-
-    if (deviceInfo.sdkApiVersion >= 24) {  // API version 24 and later supports setting page switch logs.
-      // Configure page switch logs.
-      let switchLogPolicy : hiAppEvent.EventPolicy = {
-        "appFreezePolicy": {
-          "pageSwitchLogEnable": true
-        }
-      };
-      // You can set app freeze log configuration parameters.
-      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
-        hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
-      }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
-      });
-    }
+   <!-- @[FreezeEvent_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+   
+   ``` TypeScript
+   // Assign a value to params, which is a key-value pair.
+   let freezeParams: Record<string, hiAppEvent.ParamType> = {
+     "test_data": 100,
+   };
+   // Set custom parameters for the application freeze event.
+   hiAppEvent.setEventParam(freezeParams, hiAppEvent.domain.OS, hiAppEvent.event.APP_FREEZE).then(() => {
+     hilog.info(0x0000, 'testTag', `HiAppEvent success to set event param`);
+   }).catch((err: BusinessError) => {
+     hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+   });
+   
+   if (deviceInfo.sdkApiVersion >= 24) {  // API version 24 and later supports setting page switch logs.
+     // Configure page switch logs.
+     let switchLogFreezePolicy : hiAppEvent.EventPolicy = {
+       "appFreezePolicy": {
+         "pageSwitchLogEnable": true
+       }
+     };
+     // You can set app freeze log configuration parameters.
+     hiAppEvent.configEventPolicy(switchLogFreezePolicy).then(() => {
+       hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
+     }).catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+     });
+   }
    ```
 
 3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
-   ```ts
-     hiAppEvent.addWatcher({
-      // Set the watcher name. The system identifies different watchers based on their names.
-      name: "watcher",
-      // You can subscribe to system events that you are interested in. Here, the application freeze event is subscribed to.
-      appEventFilters: [
-        {
-          domain: hiAppEvent.domain.OS,
-          names: [hiAppEvent.event.APP_FREEZE]
-        }
-      ],
-      // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
-      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-        hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
-        for (const eventGroup of appEventGroups) {
-          // The event name uniquely identifies a system event.
-          hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
-          for (const eventInfo of eventGroup.appEventInfos) {
-            // Apply custom processing to the event data obtained, for example, print the event data in the log.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
-            // Obtain the timestamp when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
-            // Obtain the foreground/background status of the application when it freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
-            // Obtain the unique associated ID of the app when an app freeze event occurs.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
-            // Obtain the version information of the application when it freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
-            // Obtain the bundle name of the application when it freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
-            // Obtain the process name of the application when it freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
-            // Obtain the process ID of the application when it freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
-            // Obtain the exception type and cause of the application freeze event.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
-            // Obtain the log information when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-            // Obtain the messages that are not yet processed by the main thread when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler.size=${eventInfo.params['event_handler'].length}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
-            // Obtain the synchronous binder call information when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder.size=${eventInfo.params['peer_binder'].length}`);
-            // Obtain the full thread call stack when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
-            // Obtain the memory information when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
-            // Obtain the fault log file when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            // Obtain the custom test_data of the application freeze event.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
-            // Obtain the lifetime of the faulty process when the application freezes.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
-            // Obtain the callback log information of the app freeze event.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_callback_log=${eventInfo.params['external_callback_log']}`);
-            // Obtain the page switch log of the app freeze event.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
-          }
-        }
-      }
-    });
+   <!-- @[FreezeEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   // Add an application freeze event watcher.
+   hiAppEvent.addWatcher({
+     // Set the watcher name. The system identifies different watchers based on their names.
+     name: "freezeEventWatcher",
+     // You can subscribe to system events that you are interested in. Here, the application freeze event is subscribed to.
+     appEventFilters: [
+       {
+         domain: hiAppEvent.domain.OS,
+         names: [hiAppEvent.event.APP_FREEZE]
+       }
+     ],
+     // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
+     onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+       hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
+       for (const eventGroup of appEventGroups) {
+         // The event name uniquely identifies a system event.
+         hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+         for (const eventInfo of eventGroup.appEventInfos) {
+           // Apply custom processing to the event data obtained, for example, print the event data in the log.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
+           // Obtain the timestamp when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
+           // Obtain the foreground/background status of the application when it freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
+           // Obtain the unique associated ID of the app when an app freeze event occurs.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
+           // Obtain the version information of the application when it freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+           // Obtain the bundle name of the application when it freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
+           // Obtain the process name of the application when it freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
+           // Obtain the process ID of the application when it freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
+           // Obtain the exception type and cause of the application freeze event.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
+           // Obtain the log information when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
+           // Obtain the messages that are not yet processed by the main thread when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler.size=${eventInfo.params['event_handler'].length}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
+           // Obtain the synchronous binder call information when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder.size=${eventInfo.params['peer_binder'].length}`);
+           // Obtain the full thread call stack when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
+           // Obtain the memory information when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
+           // Obtain the fault log file when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+           // Obtain the custom test_data of the application freeze event.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
+           // Obtain the lifetime of the faulty process when the application freezes.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
+           // Obtain the callback log information of the app freeze event.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_callback_log=${eventInfo.params['external_callback_log']}`);
+           // Obtain the page switch log of the app freeze event.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
+           // Obtain gc and io information from the application freeze event.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.application_gc_info=${JSON.stringify(eventInfo.params['application_gc_info'])}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.application_io_info=${JSON.stringify(eventInfo.params['application_io_info'])}`);
+         }
+       }
+     }
+   });
    ```
 
 4. In the **entry/src/main/ets/pages/index.ets** file, add a button and construct an application freeze scenario for triggering an application freeze event in **onClick()**. The sample code is as follows:
 
-   ```ts
-    Button("appFreeze").onClick(()=>{
-      // Construct a freeze scenario in onClick() to trigger an application freeze event.
-      setTimeout(() => {
-        let t = Date.now();
-        while (Date.now() - t <= 15000) {}
-      }, 5000);
-    })
+   <!-- @[AppfreezeEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Button('AppFreeze')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // Construct a freeze scenario in onClick() to trigger an application freeze event.
+       setTimeout(() => {
+         let t = Date.now();
+         while (Date.now() - t <= 15000) {}
+       }, 5000);
+     })
    ```
 
 5. In DevEco Studio, click the **Run** button to run the project. Then, click the **appFreeze** button to trigger an application freeze event.
@@ -151,7 +172,7 @@ The following walks you through how to subscribe to the application freeze event
 
 1. The application exits due to the application freeze event. After restarting the application, you can view the following event information in the **Log** window.
 
-   ```text
+   ``` Text
    HiAppEvent onReceive: domain=OS
    HiAppEvent eventName=APP_FREEZE
    HiAppEvent eventInfo.domain=OS
@@ -181,6 +202,7 @@ The following walks you through how to subscribe to the application freeze event
    HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
    HiAppEvent eventInfo.params.page_switch_log=["/data/storage/el2/log/page_switch/snapshot/page_switch-com.example.myapplication-1-1-20260717101852288.log"]
    ```
+
 
 2. If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
 

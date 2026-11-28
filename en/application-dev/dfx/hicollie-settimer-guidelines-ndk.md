@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b3e6988e0ab25cc1b7ee9318b620b0d585c1093c translatedAt=2026-11-05T00:54:37.899Z pushedAt=2026-08-15T07:19:21.383Z nl=2 -->
+<!-- md-trans-meta sourceCommit=74f6be55956b790cf74f8d4b3682a09b0bdf1754 translatedAt=2026-11-28T03:12:44.838Z nl=2 -->
 
 ## Overview
 
@@ -136,8 +136,8 @@ The following demonstrates how to add a button in the app and click the button t
 
    Add a button on the **Index** page to trigger the **TestHiCollieTimerNdk** method.
 
-   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
-
+   <!-- @[hicollie_timer_interface_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
+   
    ``` TypeScript
    // Add a click event to trigger the TestHiCollieTimerNdk method.
    Button('TestHiCollieTimerNdk')

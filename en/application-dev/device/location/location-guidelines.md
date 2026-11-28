@@ -5,7 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-10-31T01:29:20.502Z pushedAt=2026-10-31T03:42:12.623Z nl=1 -->
+<!-- md-trans-meta sourceCommit=24cb7130c2fa26539d2271d78e3dd3f951ea41dd translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 ## When to Use
 
@@ -34,18 +34,23 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
 
 2. Import the **geoLocationManager** module by which you can implement all APIs related to the basic location capabilities.
    
-   ```ts
+   <!-- @[location_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ``` TypeScript
    import { geoLocationManager } from '@kit.LocationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 3. Check whether the location switch is enabled.<br/>
    The return result is a Boolean value. The value **true** indicates that the location switch is enabled, and the value **false** indicates the opposite.
 
-   ```ts
-   import { geoLocationManager } from '@kit.LocationKit';
+   <!-- @[location_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ``` TypeScript
    try {
-       let locationEnabled = geoLocationManager.isLocationEnabled();
+      let locationEnabled = geoLocationManager.isLocationEnabled();
+      // ...
    } catch (err) {
-       console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error('errCode:' + err.code + ', message:' + err.message);
    }
    ```
    If the location switch is not enabled, launch the global switch settings dialog box to guide the user to enable the location switch. For details, see [requestGlobalSwitch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12).
@@ -56,13 +61,15 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
       Using this API to obtain the device location can reduce the system power consumption.<br>
       If a fresh location is expected, your application can first obtain the cached location and then compare the timestamp in it with the current time. If the location is not fresh, try method 2.<br>
 
-      ```ts
-      import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit';
+      <!-- @[location_get_last_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+      ``` TypeScript
       try {
-          let location = geoLocationManager.getLastLocation();
+         let location = geoLocationManager.getLastLocation();
+         // ...
       } catch (err) {
-          console.error("errCode:" + err.code + ", message:"  + err.message);
+         console.error('errCode:' + err.code + ', message:'  + err.message);
+         // ...
       }
       ```
 
@@ -77,9 +84,9 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
          
       The following code snippet uses **PRIORITY_LOCATING_SPEED** as an example.<br>
 
-      ```ts
-      import { geoLocationManager } from '@kit.LocationKit';
-      import { BusinessError } from '@kit.BasicServicesKit';
+      <!-- @[location_get_current_location](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+      ``` TypeScript
       let request: geoLocationManager.SingleLocationRequest = {
          'locatingPriority': geoLocationManager.LocatingPriority.PRIORITY_LOCATING_SPEED,
          'locatingTimeoutMs': 10000
@@ -87,13 +94,16 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
       try {
          geoLocationManager.getCurrentLocation(request).then((result) => { // Call getCurrentLocation to obtain the current device location by using a promise.
             console.info('current location: ' + JSON.stringify(result));
+            // ...
          })
          .catch((error:BusinessError) => { // Receive the reported error code.
             console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
+            // ...
          });
-       } catch (err) {
-         console.error("errCode:" + err.code + ", message:"  + err.message);
-       }
+      } catch (err) {
+         console.error('errCode:' + err.code + ', message:'  + err.message);
+         // ...
+      }
       ```
    The coordinates obtained by this module are in the WGS-84 coordinate system. If you need to use coordinates in other coordinate systems, perform a coordinate system conversion.
 
@@ -108,27 +118,35 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
    
    The following code snippet uses the map navigation scenario as an example.
 
-   ```ts
-   import { geoLocationManager } from '@kit.LocationKit';
+   <!-- @[location_on_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ``` TypeScript
    let request: geoLocationManager.ContinuousLocationRequest= {
       'interval': 1,
       'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION
    }
    let locationCallback = (location:geoLocationManager.Location):void => {
       console.info('locationCallback: data: ' + JSON.stringify(location));
+      // ...
    };
+   // ...
    try {
       geoLocationManager.on('locationChange', request, locationCallback);
+      // ...
    } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error('errCode:' + err.code + ', message:'  + err.message);
+      // ...
    }
    ```
    If your application no longer needs the device location, stop obtaining the device location to avoid high power consumption.
-   ```ts
+   <!-- @[location_off_location_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/LocationKit/entry/src/main/ets/location/pages/LocationPage.ets) -->
+
+   ``` TypeScript
    // The callback must be the same as that passed by the **on** API.
    try {
       geoLocationManager.off('locationChange', locationCallback);
    } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+      console.error('errCode:' + err.code + ', message:'  + err.message);
+      // ...
    }
    ```

@@ -3,10 +3,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
-<!--Designer: @junathuawei1; @zph000-->
+<!--Designer: @xuexuexuehc-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=98721b0592f0d00391dc249e0b65c6685c8906af translatedAt=2026-08-15T01:43:46.234Z pushedAt=2026-08-15T06:27:48.012Z -->
+<!-- md-trans-meta sourceCommit=d92e24eb4c0dc856d7d28c1028e05b77d433889d translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 ## When to Use
 

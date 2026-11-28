@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-29T04:09:17.072Z pushedAt=2026-07-29T06:36:19.557Z -->
+<!-- md-trans-meta sourceCommit=8c80ccbb09d5b92143b13c87f24e3198a47da7da translatedAt=2026-11-28T03:12:44.824Z nl=2 -->
 
 ## Overview
 
@@ -85,7 +85,6 @@ Applications can detect abnormal termination in either of the following ways:
 2. Subscribe to the **APP_KILLED** event through HiAppEvent.
 
     Based on the **APP_KILLED** event, you can obtain key information such as the termination reason and application foreground and background. Perform operations based on the following table.
-
     | reason(string)                | Causes                                                    | Handling Policy                                                    | Whether Control Is Triggered by Application Exceptions| Whether There Are Associated Events|
     | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------ | -------------- |
     | LowMemoryKill                 | The system is low on memory, triggering process termination in ascending order of priority.| Reduce the memory usage of the application.| No                      | No            |
@@ -108,6 +107,7 @@ Applications can detect abnormal termination in either of the following ways:
     | OomKiller                     | The system is low on memory, triggering kernel management and application termination based on specific policies.                | Reduce the memory usage of the application.| No                      | No            |
     | CpaKiller                          | When DRM (Digital Rights Management) services request memory but memory is insufficient, processes are terminated based on certain policies to reclaim memory. | Attempt to reduce the app's own memory usage to reduce the probability of being selected by the device-wide management policy.                                                                         | No             | No        |
     | KillApplication                    | The app exits proactively.                                                       | No handling required.                                                                                                  | No             | No        |
+    | KillProcess | The application exits voluntarily.<br>**Note:** This parameter is supported since API version 26.0.0. | No action is required. | No | No |
     | OnRemoteDied                       | Remote service died.                                                       | Check whether the dependent remote service is functioning properly.                                                                                         | No             | No        |
     | Restart                            | App restart.                                                         | No handling required.                                                                                                  | No             | No        |
     | UserRequest                        | Swiped away or cleared from the recent tasks list.                                                    | No handling required.                                                                                                  | No             | No        |
@@ -116,6 +116,8 @@ Applications can detect abnormal termination in either of the following ways:
     | Logout                             | The app sandbox is uninstalled when the user logs out.                                                 | No handling required.                                                                                                  | No             | No        |
     | PermissionUpdate                   | App permission update.                                                       | Check whether the app's permission usage is reasonable.                                                                                          | No             | No        |
     | aaForceStop                        | The app is forcibly stopped using the aa command.                                                 | No handling required.                                                                                                  | No             | No        |
+    | signalKill | The application is terminated by a signal such as SIGKILL.<br>**Note:** This parameter is supported since API version 26.0.1. | Check whether an external process sent the signal or the system sent it for resource management. | No | No |
+    | signalExit | The application process exits voluntarily through the exit() system call.<br>**Note:** This parameter is supported since API version 26.0.1. | Check the application exit logic to determine whether the exit is expected. For an unexpected exit, investigate the call stack. | No | No |
     | ThreadBlock6S                      | The app's main thread is blocked and times out.                                                    | Check whether there are blocking operations on the app's main thread, and optimize the code logic.                                                                                | Yes             | Yes. For details, see [ThreadBlock6S](./appfreeze-guidelines.md#thread_block_6s-app-main-thread-freeze-timeout).        |
     | AppInputBlock                      | User input response timeout.                                                     | Check whether the app's UI response is timely, and optimize the input handling logic.                                                                                 | Yes             | Yes. For details, see [AppInputBlock](./appfreeze-guidelines.md#app_input_block-user-input-response-timeout).        |
     | LifecycleTimeout                   | App lifecycle timeout.                                                     | Check whether there are time-consuming operations in the app's lifecycle callbacks.                                                                                    | Yes             | No       |

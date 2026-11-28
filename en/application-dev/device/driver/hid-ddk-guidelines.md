@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b7d40f87aa2d142e8bb56c8840a8683306b0404d translatedAt=2026-09-01T02:15:02.095Z pushedAt=2026-09-01T12:04:43.509Z -->
+<!-- md-trans-meta sourceCommit=21759051f511eca013845809fddd6d66d67200dc translatedAt=2026-11-28T02:51:54.480Z nl=1 -->
 
 ## Overview
 
@@ -156,6 +156,8 @@ libhid.z.so
 ```c++
 #include <hid/hid_ddk_api.h>
 #include <hid/hid_ddk_types.h>
+#include <usb/usb_ddk_api.h>
+#include <usb/usb_ddk_types.h>
 ```
 
 1. Initialize the HidDdk.
@@ -175,21 +177,53 @@ libhid.z.so
 
 2. Open the device.
 
-   Call **OH_Hid_Open** in **hid_ddk_api.h** to open the HID device.
+   Call **OH_Hid_Open** in **hid_ddk_api.h** to open the HID device, passing **deviceId** and the **interfaceIndex** interface number. Obtain **deviceId** using the USB DDK API **OH_Usb_GetDevices**, after calling **OH_Usb_Init** to initialize the USB DDK. To obtain **interfaceIndex**, call **OH_Usb_GetConfigDescriptor** to obtain the configuration descriptor, then read `bInterfaceNumber` from each interface.
 
-   <!-- @[driver_hid_report_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
+   <!-- @[driver_hid_report_step2_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
 
    ``` C++
-   uint32_t bInterfaceNum1 = 0x00;
-   // Open the HID device specified by deviceId and interfaceIndex1. Generally, it is a /dev/hidraw0 file.
+   // Initialize the USB DDK and obtain deviceId.
+   ret = OH_Usb_Init();
+   if (ret != USB_DDK_SUCCESS) {
+       OH_LOG_ERROR(LOG_APP, "OH_Usb_Init failed, ret: %{public}d", ret);
+       return ret;
+   }
+   constexpr size_t maxUsbDeviceNum = 255;
+   struct Usb_DeviceArray deviceArray;
+   deviceArray.deviceIds = new uint64_t[maxUsbDeviceNum];
+   ret = OH_Usb_GetDevices(&deviceArray);
+   if (ret != USB_DDK_SUCCESS) {
+       OH_LOG_ERROR(LOG_APP, "OH_Usb_GetDevices failed, ret: %{public}d", ret);
+       delete[] deviceArray.deviceIds;
+       return ret;
+   }
+   deviceID_ = deviceArray.deviceIds[0];
+   delete[] deviceArray.deviceIds;
+
+   // Obtain the configuration descriptor (configIndex defaults to 1) and read bInterfaceNumber from the HID interfaces. The first two HID interfaces are used as an example.
+   struct UsbDdkConfigDescriptor *config = nullptr;
+   ret = OH_Usb_GetConfigDescriptor(deviceID_, 1, &config);
+   if (ret != USB_DDK_SUCCESS) {
+       OH_LOG_ERROR(LOG_APP, "OH_Usb_GetConfigDescriptor failed, ret: %{public}d", ret);
+       return ret;
+   }
+   uint8_t bInterfaceNum1 = config->interface[0].altsetting[0].interfaceDescriptor.bInterfaceNumber;
+   uint8_t bInterfaceNum2 = config->interface[1].altsetting[0].interfaceDescriptor.bInterfaceNumber;
+   OH_Usb_FreeConfigDescriptor(config);
+   ```
+
+   After obtaining **deviceId** and **bInterfaceNumber**, call **OH_Hid_Open** to open the corresponding HID device. The sample device has two HID interfaces, so the API is called twice. The number of calls depends on the number of interfaces on the device; a device with only one HID interface requires only one call.
+
+   <!-- @[driver_hid_report_step2_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
+
+   ``` C++
+   // Use bInterfaceNum read from the configuration descriptor to open the HID device (typically a /dev/hidraw* file).
    ret = OH_Hid_Open(deviceID_, bInterfaceNum1, &hid_);
    if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
            bInterfaceNum1, ret);
        return ret;
    }
-   uint32_t bInterfaceNum2 = 0x01;
-   // Open the HID device specified by deviceId and interfaceIndex2. Generally, it is a /dev/hidraw1 file.
    ret = OH_Hid_Open(deviceID_, bInterfaceNum2, &hid2_);
    if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",

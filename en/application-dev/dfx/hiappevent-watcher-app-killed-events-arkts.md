@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=62cd3afbfc3cb8d5be9bed68f5d83aa9317dd50c translatedAt=2026-08-15T01:46:02.324Z pushedAt=2026-08-15T07:11:29.650Z -->
+<!-- md-trans-meta sourceCommit=8c80ccbb09d5b92143b13c87f24e3198a47da7da translatedAt=2026-11-28T03:12:44.833Z nl=2 -->
 
 ## Event Specifications
 
@@ -25,18 +25,22 @@ For details about how to use the APIs, see [@ohos.hiviewdfx.hiAppEvent (Applicat
 
 To ensure smooth reception of event callbacks during development, you are advised to adopt the following approach: create a new Native C++ project, implement the subscription in ArkTS code, and use fault injection code in C++ to construct faults that trigger `APP_KILLED` events.
 
-1. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules.
+1. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules:
 
-   ```ts
-   import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
+   <!-- @[AppKillEvent_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
 2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
-   ```ts
+   <!-- @[AppKillEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    hiAppEvent.addWatcher({
      // Set the watcher name. The system identifies different watchers based on their names.
-     name: "watcher",
+     name: 'appKilledWatcher',
      // You can subscribe to system events that you are interested in. Here, the application killed event is subscribed to.
      appEventFilters: [
        {
@@ -60,6 +64,10 @@ To ensure smooth reception of event callbacks during development, you are advise
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
            // Obtain the cause of the application killed event.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.reason=${eventInfo.params['reason']}`);
+           // Obtain the ID of the process that initiates process termination.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.calling_pid=${eventInfo.params['calling_pid']}`);
+           // Obtain the name of the process that initiates process termination.
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.calling_process_name=${eventInfo.params['calling_process_name']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.last_exit_detail_info=${JSON.stringify(eventInfo.params['last_exit_detail_info'])}`);
@@ -69,97 +77,112 @@ To ensure smooth reception of event callbacks during development, you are advise
    });
    ```
 
-3. Edit the **napi_init.cpp** file and add the following code to implement the fault-injection functionality in C++.
-
-   ```C++
+3. The following fault injection functionality requires C++ code. Edit **entry > src > main > cpp > napi_init.cpp** in the project and add the header files:
+   
+   <!-- @[AppKillEvent_NativeLeak_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    #include <thread>
+   ```
+
+4. Edit **entry > src > main > cpp > napi_init.cpp** in the project and add the **NativeLeak** and **Leak** methods:
+
+   <!-- @[AppKillEvent_NativeLeak](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    
    static void NativeLeak()
    {
-       constexpr int leak_size_per_time = 500000;
+       constexpr int leakSizePerTime = 500000;
+       constexpr int sleepTimeMs = 10;
        while (true) {
-           char *p = (char *)malloc(leak_size_per_time + 1);
+           char *p = (char *)malloc(leakSizePerTime + 1);
            if (!p) {
                break;
            }
-           memset(p, 'a', leak_size_per_time);
-           std::this_thread::sleep_for(std::chrono::milliseconds(10));
+           memset(p, 'a', leakSizePerTime);
+           std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeMs));
        }
    }
    
-   static napi_value Leak(napi_env env, napi_callback_info info) {
-    std::thread t1(NativeLeak);
-    t1.detach();
+   static napi_value Leak(napi_env env, napi_callback_info info)
+   {
+       std::thread t1(NativeLeak);
+       t1.detach();
        return {};
    }
    ```
 
-4. In the **napi_init.cpp** file, register **Leak** as an ArkTS API.
+5. Edit **entry > src > main > cpp > napi_init.cpp** in the project and register **Leak** as an ArkTS API:
 
-   ```c++
+   <!-- @[AppKillEvent_ArkTS_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    static napi_value Init(napi_env env, napi_value exports)
    {
        napi_property_descriptor desc[] = {
-           { "leak", nullptr, Leak, nullptr, nullptr, nullptr, napi_default, nullptr }, // Add this line.
+           // ...
+           { "leak", nullptr, Leak, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
    }
    ```
 
-5. In the **index.d.ts** file, define the ArkTS API.
+6. Edit **entry > src > main > cpp > types > libentry > Index.d.ts** in the project and define the ArkTS API:
 
-   ```ts
+   <!-- @[AppKillEvent_ArkTS_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
    export const leak: () => void;
    ```
 
-6. In the **entry/src/main/ets/pages/Index.ets** file, add the **OnClick** function under **build()** and call the **Leak** API.
+7. Edit **entry > src > main > ets > pages > Index.ets** in the project and add the **@State** variable:
 
-   ```ts
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
+   <!-- @[AppKillEvent_ArkTS_State](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
-   const DOMAIN = 0x0000;
+   ``` TypeScript
+   @State message: string = 'Start To Leak';
+   ```
+
+8. In the **entry/src/main/ets/pages/Index.ets** file, add the **OnClick** function under **build()** and call the **Leak** API:
+
+   <!-- @[AppKillEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Start To Leak';
-   
-     build() {
-       Row() {
-         Column() {
-           Text(this.message)
-             .fontSize($r('app.float.page_text_font_size'))
-             .fontWeight(FontWeight.Bold)
-             .onClick(() => {
-               if (this.message != 'Leaking') {
-                 this.message = 'Leaking';
-                 hilog.info(DOMAIN, 'testTag', 'Start leaking');
-                 testNapi.leak();
-               }
-             })
-         }
-         .width('100%')
+   ``` TypeScript
+   Button(this.message)
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       if (this.message != 'Leaking') {
+         this.message = 'Leaking';
+         hilog.info(0x0000, 'testTag', 'Start leaking');
+         testNapi.leak();
        }
-       .height('100%')
-     }
-   }
+     })
    ```
 
-7. Click the **Run** button in DevEco Studio to run the project. Click **Start To Leak**, and wait for 2 to 3 minutes until **RssThresholdKiller** is triggered.
+9. Click the **Run** button in DevEco Studio to run the project. Click **Start To Leak**, and wait for 2 to 3 minutes until **RssThresholdKiller** is triggered.
 
-8. After the application is killed, open the application again. The killed event is reported, and the system calls **onReceive()**. You can view the following event information in the **Log** window.
+10. After the application is killed, open the application again. The killed event is reported, and the system calls **onReceive()**. You can view the following event information in the **Log** window.
 
-   Sample stack of the application killed event:
+    Sample stack of the application killed event:
 
-   ```text
-   HiAppEvent eventInfo.domain=OS
-   HiAppEvent eventInfo.name=APP_KILLED
-   HiAppEvent eventInfo.params.time=1717597063727
-   HiAppEvent eventInfo.params.reason="RssThresholdKiller"
-   HiAppEvent eventInfo.params.foreground=true
-   HiAppEvent eventInfo.params.app_running_unique_id=207544
-   HiAppEvent eventInfo.params.bundle_version=1000000
-   HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"THREAD_BLOCK_6S","kill_reason":"ThreadBlock6S","pid":"28549","process_name":"com.samples.freezedebug","process_state":"2","pss":"0","rss":"0","timestamp":"1785743803766","uid":"20020204"}
-   ```
+    ``` Text
+    HiAppEvent eventInfo.domain=OS
+    HiAppEvent eventInfo.name=APP_KILLED
+    HiAppEvent eventInfo.params.time=1792739581978
+    HiAppEvent eventInfo.params.reason="RssThresholdKiller"
+    HiAppEvent eventInfo.params.foreground=true
+    HiAppEvent eventInfo.params.calling_pid="43"
+    HiAppEvent eventInfo.params.calling_process_name="wk:0/0/1/12"
+    HiAppEvent eventInfo.params.app_running_unique_id=8778602711597370439
+    HiAppEvent eventInfo.params.bundle_version=1.0.1
+    HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"","kill_reason":"RssThresholdKiller","pid":"17248","process_name":"com.example.dfx_test","process_state":"2","pss":"227764","rss":"227764","timestamp":"1792739581947","uid":"20020207"}
+    ```

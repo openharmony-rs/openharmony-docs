@@ -2,11 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @yu_haoqiaida-->
+<!--Owner: @mcai_wu-->
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9e7305fd2d0bf3a25be65abfadf2e97b359f1ac7 translatedAt=2026-07-31T01:33:28.565Z pushedAt=2026-07-31T07:54:29.551Z -->
+<!-- md-trans-meta sourceCommit=2b9f3502e13d8c74ca424d25d16573f2b6b11e5c translatedAt=2026-11-28T03:12:44.839Z nl=1 -->
 
 ## Available APIs
 
@@ -53,9 +53,8 @@ For details about how to use HiTraceChain in ArkTS, see the following example. Y
    ```
 
    Define the test methods:
-
-   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->  
+   
    ``` TypeScript
    function initTraceId() {
      let traceId = hiTraceChain.getId();
@@ -81,6 +80,8 @@ For details about how to use HiTraceChain in ArkTS, see the following example. Y
      hilog.info(0x0000, 'testTag', 'record with traceId at first task');
      test(10).then(()=>{
        hilog.info(0x0000, 'testTag', 'record with traceId at then function');
+     }).catch((err: Error) => {
+       hilog.error(0x0000, 'testTag', `test failed, code: ${err.message}`);
      })
      hiTraceChain.end(traceId);
      hilog.info(0x0000, 'testTag', 'hiTraceChain end in main thread');
@@ -102,7 +103,7 @@ For details about how to use HiTraceChain in ArkTS, see the following example. Y
      hilog.info(0x0000, 'testTag', 'hiTraceChain end in main thread');
    }
    ```
-
+   
    Add buttons to trigger API calls:
 
    <!-- @[TestHiTraceChain_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->
@@ -143,9 +144,8 @@ For details about how to use HiTraceChain in ArkTS, see the following example. Y
       - The trace chain identifier **chainId** value obtained in the example is **a92ab104a53adf0**. You can use the **chainId** value to filter logs and view the complete HiLog logs of the service call chain.
 
       - Both the **promise**/**then** and **async**/**await** asynchronous mechanisms automatically transfer **HiTraceId** and generate span identifiers. For example, **32a835e**, **23e9386**, and **38a1eb2** in the sample HiLog logs are span identifiers automatically generated for asynchronous tasks, and the generation chain of these span identifiers can be inferred from the **parentSpanId** information.
-
-      - Both **hiTraceChain.end()** and **hiTraceChain.clear()** can end tracing. After tracing is ended, HiLog logs no longer carry **HiTraceId** information. For example, the log "hiTraceChain end in main thread" no longer carries **HiTraceId** information.
-
+      - Both **hiTraceChain.end()** and **hiTraceChain.clearId()** can end tracing. After tracing is ended, HiLog logs no longer carry **HiTraceId** information. For example, the log "hiTraceChain end in main thread" no longer carries **HiTraceId** information.
+   
    - Scenario where **HiTraceId** does not support automatic transfer:
 
       Tap the **testHiTraceIdPassedManually** button on the device to trigger the service logic. The following content is displayed in the HiLog logs:

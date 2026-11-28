@@ -1,4 +1,4 @@
-# Device Usage Statistics Overview (for System Applications Only)
+# Device Usage Statistics Overview (ArkTS) (for System Applications Only)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -6,7 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=6268b04ebb521797f4d48c577491b7161be5f520 translatedAt=2026-07-29T03:30:04.153Z pushedAt=2026-07-29T03:31:34.471Z -->
+<!-- md-trans-meta sourceCommit=b4a254e547c5dc8ed81a57ef18e6c5f64581238b translatedAt=2026-11-28T02:46:21.000Z nl=1 -->
 
 Device usage statistics include app usage, notification usage, and system usage. Currently, only app usage statistics are supported. Application usage statistics are used to save and query application usage details (app usage), event log data (event log), and bundle group information. The application records (usage history statistics) cached by components are flushed to the database for persistent storage within 30 minutes after an event is reported.
 

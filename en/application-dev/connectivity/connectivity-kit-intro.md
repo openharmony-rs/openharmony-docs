@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-09-28T02:21:43.945Z pushedAt=2026-09-28T11:38:22.142Z -->
+<!-- md-trans-meta sourceCommit=c228affc9573e775befa699635d39cb23d8d10bd translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Overview
 

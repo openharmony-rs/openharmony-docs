@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-15T01:41:24.105Z pushedAt=2026-08-15T06:06:01.485Z -->
+<!-- md-trans-meta sourceCommit=8a0e36109bea79cc35522d2aee4c1b8ad683b256 translatedAt=2026-11-28T02:20:50.261Z nl=1 -->
 
 ## Overview
 
@@ -75,8 +75,7 @@ This callback is triggered when an [ACL](../../connectivity/bluetooth/terminolog
   This callback is triggered when the service is no longer used and the instance is about to be destroyed. The callback reports the reason why the instance is destroyed. You can clear resources in this callback, for example, unbinding devices or printing device lost information.
 
   ``` TypeScript
-  import { partnerAgent } from '@kit.ConnectivityKit';
-  import { PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
+  import { partnerAgent, PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
 
   export default class PartnerAgentAbility extends PartnerAgentExtensionAbility {
     onDeviceDiscovered(deviceAddress: partnerAgent.PartnerDeviceAddress): void {
@@ -187,8 +186,7 @@ if (isBound == true) {
    In the **PartnerAgentAbility.ets** file, import the dependency package of **PartnerAgentExtensionAbility**, define a custom class that inherits from **PartnerAgentExtensionAbility**, and add the required lifecycle callbacks.
 
     ``` TypeScript
-    import { partnerAgent } from '@kit.ConnectivityKit';
-    import { PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
+    import { partnerAgent, PartnerAgentExtensionAbility } from '@kit.ConnectivityKit';
 
     export default class PartnerAgentAbility extends PartnerAgentExtensionAbility {
       onDeviceDiscovered(deviceAddress: partnerAgent.PartnerDeviceAddress): void {
@@ -266,8 +264,7 @@ if (isBound == true) {
 
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
-    import common from '@ohos.bluetooth.common';
-    import partnerAgent from '@ohos.FusionConnectivity.partnerAgent';
+    import { common, partnerAgent } from '@kit.ConnectivityKit';
 
     @Entry
     @Component

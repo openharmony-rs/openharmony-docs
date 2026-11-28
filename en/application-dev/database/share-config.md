@@ -5,7 +5,7 @@
 <!--Designer: @lvcong_oh-->
 <!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-14T08:38:58.363Z pushedAt=2026-09-15T08:04:20.250Z -->
+<!-- md-trans-meta sourceCommit=c0e0718f663e3867481da897473a1ba06dcee7c1 translatedAt=2026-11-28T02:36:28.316Z nl=1 -->
 
 ## When to Use
 
@@ -25,6 +25,7 @@ The working principles of configuration sharing between applications are as foll
 ## Constraints
 
 Before API version 26.0.0, an application can publish up to 32 configuration items. Starting from API version 26.0.0, the limit is increased to 64 configuration items per application. This limit applies to the combined total of static and dynamic configuration items.
+<!--Del-->This feature is not recommended for system applications. If it is required, use only dynamic configuration, not static configuration.<!--DelEnd-->
 
 ## Available APIs
 The following APIs are provided for inter-application configuration sharing. For detailed descriptions of these APIs, see [DataProxyHandle](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxyhandle20).
@@ -87,7 +88,7 @@ The following table describes the parameters in the **crossAppSharedConfig** fie
         {
             "uri": "datashareproxy://com.example.example/key2",
             "value": "SHARED_CONFIG_DEMO2",
-            "allowList": ["6917573298752100864", "6917573298752100864"]
+            "allowList": ["6917573298752100864"]
         },
         {
             "uri": "datashareproxy://com.example.example/key3",
