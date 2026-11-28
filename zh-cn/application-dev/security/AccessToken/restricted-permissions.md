@@ -1493,6 +1493,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：PC/2in1 | Tablet
 
 **起始版本**：26.0.1
+
 ## ohos.permission.ACCESS_SE_KEY
 
 允许应用生成、使用、删除安全芯片密钥。
